@@ -2,6 +2,7 @@
 
 namespace Rafoo\Admin;
 
+use Rafoo\Peers\Engine as PeerEngine;
 use Rafoo\Assets\Library;
 use Rafoo\Assets\Scanner;
 use Rafoo\Assets\Store;
@@ -168,6 +169,18 @@ final class Rest {
 				),
 			)
 		);
+		$interval = array(
+			'interval' => array(
+				'type'    => 'integer',
+				'enum'    => array( 60, 300 ),
+				'default' => 300,
+			),
+		);
+		self::route( '/peers', WP_REST_Server::READABLE, 'peers', $site );
+		self::route( '/peers/join', WP_REST_Server::CREATABLE, 'peers_join', $site, $interval );
+		self::route( '/peers/interval', WP_REST_Server::CREATABLE, 'peers_interval', $site, $interval );
+		self::route( '/peers/leave', WP_REST_Server::CREATABLE, 'peers_leave', $site );
+		self::route( '/peers/check', WP_REST_Server::CREATABLE, 'peers_check', $site );
 
 		do_action( 'rafoo_rest_routes', self::NS );
 	}
@@ -451,6 +464,34 @@ final class Rest {
 
 	public static function purge() {
 		return array( 'purged' => Purge::all() );
+	}
+
+	public static function peers( WP_REST_Request $request ) {
+		return PeerEngine::status( ! empty( $request['fresh'] ) );
+	}
+
+	public static function peers_join( WP_REST_Request $request ) {
+		$result = PeerEngine::join( (int) $request['interval'] );
+		if ( is_wp_error( $result ) ) {
+			$result->add_data( array( 'status' => 502 ) );
+			return $result;
+		}
+		return PeerEngine::status( true );
+	}
+
+	public static function peers_interval( WP_REST_Request $request ) {
+		PeerEngine::set_interval( (int) $request['interval'] );
+		return PeerEngine::status( true );
+	}
+
+	public static function peers_leave() {
+		PeerEngine::leave();
+		return PeerEngine::status();
+	}
+
+	public static function peers_check() {
+		PeerEngine::tick( true );
+		return PeerEngine::status( true );
 	}
 
 	public static function feedback( WP_REST_Request $request ) {

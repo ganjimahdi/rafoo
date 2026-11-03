@@ -46,7 +46,7 @@ final class Signature {
 		return false === $raw ? '' : $raw;
 	}
 
-	private static function ready() {
+	public static function ready() {
 		if ( function_exists( 'sodium_crypto_sign_verify_detached' ) ) {
 			return true;
 		}

@@ -19,11 +19,11 @@ msgstr ""
 msgid "Rafoo"
 msgstr ""
 
-#: src/Admin/Page.php:32 src/Admin/Strings.php:23
+#: src/Admin/Page.php:32 src/Admin/Strings.php:23 src/Admin/Strings.php:57
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/Page.php:40 src/Admin/Strings.php:76
+#: src/Admin/Page.php:40 src/Admin/Strings.php:129
 msgid "Loading…"
 msgstr ""
 
@@ -31,39 +31,39 @@ msgstr ""
 msgid "The Rafoo dashboard needs JavaScript."
 msgstr ""
 
-#: src/Admin/Rest.php:374
+#: src/Admin/Rest.php:387
 msgid "You are not allowed to change this."
 msgstr ""
 
-#: src/Admin/Rest.php:377
+#: src/Admin/Rest.php:390
 msgid "The previous version could not be put back. The files were left as they were."
 msgstr ""
 
-#: src/Admin/Rest.php:427
+#: src/Admin/Rest.php:440
 msgid "This message is no longer waiting."
 msgstr ""
 
-#: src/Admin/Rest.php:435
+#: src/Admin/Rest.php:448
 msgid "Enter a valid mail server address, for example mail.example.ir."
 msgstr ""
 
-#: src/Admin/Rest.php:443
+#: src/Admin/Rest.php:456
 msgid "Save a mail server first."
 msgstr ""
 
-#: src/Admin/Rest.php:460
+#: src/Admin/Rest.php:501
 msgid "Please write between 5 and 2000 characters."
 msgstr ""
 
-#: src/Admin/Rest.php:464
+#: src/Admin/Rest.php:505
 msgid "Please wait a minute before sending another message."
 msgstr ""
 
-#: src/Admin/Rest.php:467
+#: src/Admin/Rest.php:508
 msgid "rafoo.ir could not be reached. Please try again later."
 msgstr ""
 
-#: src/Admin/Rest.php:493
+#: src/Admin/Rest.php:534
 msgid "This file is no longer in the list."
 msgstr ""
 
@@ -87,7 +87,7 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: src/Admin/Strings.php:21 src/Admin/Strings.php:129
+#: src/Admin/Strings.php:21 src/Admin/Strings.php:182
 msgid "Files"
 msgstr ""
 
@@ -99,1739 +99,1915 @@ msgstr ""
 msgid "Feedback"
 msgstr ""
 
-#: src/Admin/Strings.php:26
-msgid "The international internet is available"
+#: src/Admin/Strings.php:25
+msgid "Monitoring"
 msgstr ""
 
 #: src/Admin/Strings.php:27
-msgid "Libraries and fonts the site has copied are served from your own server. Everything else works as usual."
+msgid "Rafoo cooperative network"
 msgstr ""
 
 #: src/Admin/Strings.php:28
-msgid "The international internet is down"
+msgid "Member sites check each other from inside and outside Iran, so you can see whether your site opens for visitors in Iran and abroad, even during an outage."
 msgstr ""
 
 #: src/Admin/Strings.php:29
+msgid "Your site only answers a short signed request at the address ?rafoo-ping. No page, data or visitor is checked."
+msgstr ""
+
+#: src/Admin/Strings.php:30
+msgid "In return, your site checks a few other members the same way, in the background, without slowing down WordPress."
+msgstr ""
+
+#: src/Admin/Strings.php:31
+msgid "rafoo.ir keeps your site address, its country and network, and the check results. Leaving deletes them."
+msgstr ""
+
+#: src/Admin/Strings.php:32
+msgid "Check my site every"
+msgstr ""
+
+#: src/Admin/Strings.php:33
+msgid "1 minute"
+msgstr ""
+
+#: src/Admin/Strings.php:34
+msgid "5 minutes"
+msgstr ""
+
+#: src/Admin/Strings.php:35
+msgid "Join the network"
+msgstr ""
+
+#: src/Admin/Strings.php:36
+msgid "This server cannot create a signing key because the sodium extension is missing."
+msgstr ""
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:38
+#, php-format
+msgid "Member since %s"
+msgstr ""
+
+#. translators: 1: country, 2: network or hosting company
+#: src/Admin/Strings.php:40
+#, php-format
+msgid "Your server: %1$s, %2$s"
+msgstr ""
+
+#: src/Admin/Strings.php:41
+msgid "Points inside Iran"
+msgstr ""
+
+#: src/Admin/Strings.php:42
+msgid "Points outside Iran"
+msgstr ""
+
+#. translators: 1: points that reached the site, 2: all points
+#: src/Admin/Strings.php:44
+#, php-format
+msgid "Opens from %1$d of %2$d points inside Iran"
+msgstr ""
+
+#. translators: 1: points that reached the site, 2: all points
+#: src/Admin/Strings.php:46
+#, php-format
+msgid "Opens from %1$d of %2$d points outside Iran"
+msgstr ""
+
+#: src/Admin/Strings.php:47
+msgid "Opens"
+msgstr ""
+
+#: src/Admin/Strings.php:48
+msgid "Does not open"
+msgstr ""
+
+#: src/Admin/Strings.php:49
+msgid "Paused during the outage"
+msgstr ""
+
+#: src/Admin/Strings.php:50
+msgid "Waiting for a point"
+msgstr ""
+
+#: src/Admin/Strings.php:51
+msgid "Points are assigned as members join. The first results arrive within a few minutes."
+msgstr ""
+
+#. translators: %s: success rate, for example "98%"
+#: src/Admin/Strings.php:53
+#, php-format
+msgid "%s today"
+msgstr ""
+
+#: src/Admin/Strings.php:54 src/Admin/Strings.php:89
+msgid "Check now"
+msgstr ""
+
+#: src/Admin/Strings.php:55
+msgid "Leave the network"
+msgstr ""
+
+#: src/Admin/Strings.php:56
+msgid "Leave the network? Your site will no longer be checked and its data on rafoo.ir will be deleted."
+msgstr ""
+
+#: src/Admin/Strings.php:58
+msgid "Your contribution"
+msgstr ""
+
+#. translators: %d: number of member sites
+#: src/Admin/Strings.php:60
+#, php-format
+msgid "This site checks %d other members."
+msgstr ""
+
+#. translators: %d: number of results
+#: src/Admin/Strings.php:62
+#, php-format
+msgid "%d results are waiting to be sent to rafoo.ir."
+msgstr ""
+
+#: src/Admin/Strings.php:63
+msgid "Iranian sites cannot be reached from this server, so checks are paused and tried again every ten minutes."
+msgstr ""
+
+#: src/Admin/Strings.php:64
+msgid "The international internet is down. Only checks inside Iran run; checks of foreign sites are paused."
+msgstr ""
+
+#: src/Admin/Strings.php:65
+msgid "This server cannot finish a request before running background work, so checks run with WP-Cron. On a low-traffic site, add a real cron job for wp-cron.php."
+msgstr ""
+
+#. translators: 1: all members, 2: members in Iran, 3: members abroad
+#: src/Admin/Strings.php:67
+#, php-format
+msgid "Network: %1$d members, %2$d in Iran, %3$d abroad."
+msgstr ""
+
+#: src/Admin/Strings.php:68
+msgid "Last 14 days"
+msgstr ""
+
+#: src/Admin/Strings.php:69 src/Admin/Strings.php:164
+msgid "Inside Iran"
+msgstr ""
+
+#: src/Admin/Strings.php:70 src/Admin/Strings.php:163 src/Admin/Strings.php:491
+msgid "Outside Iran"
+msgstr ""
+
+#: src/Admin/Strings.php:71
+msgid "How it works"
+msgstr ""
+
+#: src/Admin/Strings.php:72
+msgid "“Opens” means the point received a signed answer from your site. A filter page, an error or a timeout counts as “does not open”."
+msgstr ""
+
+#: src/Admin/Strings.php:73
+msgid "Points are chosen from different networks inside Iran and different countries abroad, and change every day."
+msgstr ""
+
+#: src/Admin/Strings.php:74
+msgid "During a shutdown, points abroad cannot reach Iranian sites or rafoo.ir. They pause, keep their results and send them when the connection returns."
+msgstr ""
+
+#: src/Admin/Strings.php:75
+msgid "If a security plugin or firewall blocks unknown requests, allow addresses that contain ?rafoo-ping."
+msgstr ""
+
+#: src/Admin/Strings.php:76
+msgid "rafoo.ir could not be reached; showing the last known results."
+msgstr ""
+
+#: src/Admin/Strings.php:77
+msgid "Unknown location"
+msgstr ""
+
+#: src/Admin/Strings.php:79
+msgid "The international internet is available"
+msgstr ""
+
+#: src/Admin/Strings.php:80
+msgid "Libraries and fonts the site has copied are served from your own server. Everything else works as usual."
+msgstr ""
+
+#: src/Admin/Strings.php:81
+msgid "The international internet is down"
+msgstr ""
+
+#: src/Admin/Strings.php:82
 msgid "Rafoo serves copied files locally, skips requests to unreachable servers and replaces services that cannot load."
 msgstr ""
 
 #. translators: %s: relative time, for example "2 minutes ago"
-#: src/Admin/Strings.php:31
+#: src/Admin/Strings.php:84
 #, php-format
 msgid "Last check: %s"
 msgstr ""
 
 #. translators: %s: date and time
-#: src/Admin/Strings.php:33
+#: src/Admin/Strings.php:86
 #, php-format
 msgid "down since %s"
 msgstr ""
 
 #. translators: %s: date and time
-#: src/Admin/Strings.php:35
+#: src/Admin/Strings.php:88
 #, php-format
 msgid "available since %s"
 msgstr ""
 
-#: src/Admin/Strings.php:36
-msgid "Check now"
-msgstr ""
-
-#: src/Admin/Strings.php:37
+#: src/Admin/Strings.php:90
 msgid "never"
 msgstr ""
 
-#: src/Admin/Strings.php:39
+#: src/Admin/Strings.php:92
 msgid "Mode"
 msgstr ""
 
-#: src/Admin/Strings.php:40
+#: src/Admin/Strings.php:93
 msgid "Automatic switches by itself. Choose a fixed mode only to test or when detection is wrong."
 msgstr ""
 
-#: src/Admin/Strings.php:41
+#: src/Admin/Strings.php:94
 msgid "Automatic"
 msgstr ""
 
-#: src/Admin/Strings.php:42
+#: src/Admin/Strings.php:95
 msgid "Always outage"
 msgstr ""
 
-#: src/Admin/Strings.php:43
+#: src/Admin/Strings.php:96
 msgid "Always online"
 msgstr ""
 
-#: src/Admin/Strings.php:44
+#: src/Admin/Strings.php:97
 msgid "Outage mode is fixed by hand. Rafoo will not switch back by itself."
 msgstr ""
 
-#: src/Admin/Strings.php:45
+#: src/Admin/Strings.php:98
 msgid "Online mode is fixed by hand. Rafoo will not switch to outage mode by itself."
 msgstr ""
 
-#: src/Admin/Strings.php:46
+#: src/Admin/Strings.php:99
 msgid "The last check could not reach any server, inside or outside Iran. The problem is probably the network of your own server, so the mode was left unchanged."
 msgstr ""
 
-#: src/Admin/Strings.php:47
+#: src/Admin/Strings.php:100
 msgid "Background checks are running late. WordPress runs them when the site has visitors; a real cron job on the server keeps them on time."
 msgstr ""
 
-#: src/Admin/Strings.php:48
+#: src/Admin/Strings.php:101
 msgid "WP-Cron is turned off on this site and no check has run recently. Add a server cron job that calls wp-cron.php every minute."
 msgstr ""
 
-#: src/Admin/Strings.php:50
+#: src/Admin/Strings.php:103
 msgid "Local files"
 msgstr ""
 
 #. translators: %d: number of files
-#: src/Admin/Strings.php:52
+#: src/Admin/Strings.php:105
 #, php-format
 msgid "%d not verified yet"
 msgstr ""
 
-#: src/Admin/Strings.php:53 src/Admin/Strings.php:84
+#: src/Admin/Strings.php:106 src/Admin/Strings.php:137
 msgid "Waiting"
 msgstr ""
 
-#: src/Admin/Strings.php:54 src/Admin/Strings.php:85
+#: src/Admin/Strings.php:107 src/Admin/Strings.php:138
 msgid "Not available"
 msgstr ""
 
-#: src/Admin/Strings.php:55
+#: src/Admin/Strings.php:108
 msgid "Disk space"
 msgstr ""
 
-#: src/Admin/Strings.php:56
+#: src/Admin/Strings.php:109
 msgid "Time in outage mode"
 msgstr ""
 
-#: src/Admin/Strings.php:58
+#: src/Admin/Strings.php:111
 msgid "Recent events"
 msgstr ""
 
-#: src/Admin/Strings.php:59
+#: src/Admin/Strings.php:112
 msgid "Nothing has happened yet."
 msgstr ""
 
-#: src/Admin/Strings.php:60
+#: src/Admin/Strings.php:113
 msgid "Rafoo was activated"
 msgstr ""
 
-#: src/Admin/Strings.php:61
+#: src/Admin/Strings.php:114
 msgid "Mode changed by hand"
 msgstr ""
 
-#: src/Admin/Strings.php:62
+#: src/Admin/Strings.php:115
 msgid "Mode set to automatic"
 msgstr ""
 
-#: src/Admin/Strings.php:63
+#: src/Admin/Strings.php:116
 msgid "Outage mode fixed by hand"
 msgstr ""
 
-#: src/Admin/Strings.php:64
+#: src/Admin/Strings.php:117
 msgid "Online mode fixed by hand"
 msgstr ""
 
-#: src/Admin/Strings.php:65
+#: src/Admin/Strings.php:118
 msgid "The international internet went down"
 msgstr ""
 
-#: src/Admin/Strings.php:66
+#: src/Admin/Strings.php:119
 msgid "The international internet came back"
 msgstr ""
 
-#: src/Admin/Strings.php:67
+#: src/Admin/Strings.php:120
 msgid "The server could not reach any network"
 msgstr ""
 
-#: src/Admin/Strings.php:69
+#: src/Admin/Strings.php:122
 msgid "Local copies"
 msgstr ""
 
-#: src/Admin/Strings.php:70
+#: src/Admin/Strings.php:123
 msgid "Libraries and fonts the site loads from public CDNs. Rafoo copies them from the domestic mirror or the original source, checks them and serves them from your server."
 msgstr ""
 
-#: src/Admin/Strings.php:71
+#: src/Admin/Strings.php:124
 msgid "No files from public CDNs have been found yet. Scan the site, or visit a few pages."
 msgstr ""
 
-#: src/Admin/Strings.php:72
+#: src/Admin/Strings.php:125
 msgid "Scan site"
 msgstr ""
 
-#: src/Admin/Strings.php:73
+#: src/Admin/Strings.php:126
 msgid "Scan finished. New files will be downloaded in the background."
 msgstr ""
 
-#: src/Admin/Strings.php:74
+#: src/Admin/Strings.php:127
 msgid "Download now"
 msgstr ""
 
-#: src/Admin/Strings.php:75
+#: src/Admin/Strings.php:128
 msgid "Download finished."
 msgstr ""
 
-#: src/Admin/Strings.php:77
+#: src/Admin/Strings.php:130
 msgid "File"
 msgstr ""
 
-#: src/Admin/Strings.php:78
+#: src/Admin/Strings.php:131
 msgid "Status"
 msgstr ""
 
-#: src/Admin/Strings.php:79
+#: src/Admin/Strings.php:132
 msgid "Checked by"
 msgstr ""
 
-#: src/Admin/Strings.php:80
+#: src/Admin/Strings.php:133
 msgid "Size"
 msgstr ""
 
-#: src/Admin/Strings.php:81
+#: src/Admin/Strings.php:134
 msgid "Actions"
 msgstr ""
 
-#: src/Admin/Strings.php:82
+#: src/Admin/Strings.php:135
 msgid "Local"
 msgstr ""
 
-#: src/Admin/Strings.php:83
+#: src/Admin/Strings.php:136
 msgid "Local, only during outages"
 msgstr ""
 
-#: src/Admin/Strings.php:86
+#: src/Admin/Strings.php:139
 msgid "Excluded"
 msgstr ""
 
-#: src/Admin/Strings.php:87
+#: src/Admin/Strings.php:140
 msgid "Integrity hash"
 msgstr ""
 
-#: src/Admin/Strings.php:88
+#: src/Admin/Strings.php:141
 msgid "Original file"
 msgstr ""
 
-#: src/Admin/Strings.php:89
+#: src/Admin/Strings.php:142
 msgid "Signed mirror index"
 msgstr ""
 
-#: src/Admin/Strings.php:90
+#: src/Admin/Strings.php:143
 msgid "from the mirror"
 msgstr ""
 
 #. translators: %s: number of files
-#: src/Admin/Strings.php:92
+#: src/Admin/Strings.php:145
 #, php-format
 msgid "%s files"
 msgstr ""
 
-#: src/Admin/Strings.php:93
+#: src/Admin/Strings.php:146
 msgid "Google Fonts"
 msgstr ""
 
-#: src/Admin/Strings.php:94
+#: src/Admin/Strings.php:147
 msgid "Retry"
 msgstr ""
 
-#: src/Admin/Strings.php:95
+#: src/Admin/Strings.php:148
 msgid "Exclude"
 msgstr ""
 
-#: src/Admin/Strings.php:96
+#: src/Admin/Strings.php:149
 msgid "Include"
 msgstr ""
 
-#: src/Admin/Strings.php:97 src/Admin/Strings.php:471
+#: src/Admin/Strings.php:150 src/Admin/Strings.php:524
 msgid "Remove"
 msgstr ""
 
-#: src/Admin/Strings.php:98
+#: src/Admin/Strings.php:151
 msgid "Not found on the mirror or the original source."
 msgstr ""
 
-#: src/Admin/Strings.php:99
+#: src/Admin/Strings.php:152
 msgid "Not on the mirror. It will be copied when the international internet is back."
 msgstr ""
 
-#: src/Admin/Strings.php:100
+#: src/Admin/Strings.php:153
 msgid "The downloaded file did not match its hash and was rejected."
 msgstr ""
 
-#: src/Admin/Strings.php:101
+#: src/Admin/Strings.php:154
 msgid "The file could not be saved. Check that the uploads folder is writable."
 msgstr ""
 
-#: src/Admin/Strings.php:102
+#: src/Admin/Strings.php:155
 msgid "The server did not serve the copied file correctly."
 msgstr ""
 
-#: src/Admin/Strings.php:103
+#: src/Admin/Strings.php:156
 msgid "The local copy was changed or deleted and will be downloaded again."
 msgstr ""
 
-#: src/Admin/Strings.php:104
+#: src/Admin/Strings.php:157
 msgid "The font files could not be downloaded."
 msgstr ""
 
-#: src/Admin/Strings.php:105
+#: src/Admin/Strings.php:158
 msgid "Google Fonts did not return a font stylesheet."
 msgstr ""
 
-#: src/Admin/Strings.php:106
+#: src/Admin/Strings.php:159
 msgid "Download failed. Rafoo will try again later."
 msgstr ""
 
-#: src/Admin/Strings.php:108
+#: src/Admin/Strings.php:161
 msgid "Connection checks"
 msgstr ""
 
-#: src/Admin/Strings.php:109
+#: src/Admin/Strings.php:162
 msgid "Every minute Rafoo contacts a few servers outside and inside Iran. Three failed rounds in a row switch on outage mode; three successful rounds switch it off."
 msgstr ""
 
-#: src/Admin/Strings.php:110 src/Admin/Strings.php:438
-msgid "Outside Iran"
-msgstr ""
-
-#: src/Admin/Strings.php:111
-msgid "Inside Iran"
-msgstr ""
-
-#: src/Admin/Strings.php:112
+#: src/Admin/Strings.php:165
 msgid "No check has run yet."
 msgstr ""
 
-#: src/Admin/Strings.php:113
+#: src/Admin/Strings.php:166
 msgid "Reachable"
 msgstr ""
 
-#: src/Admin/Strings.php:114
+#: src/Admin/Strings.php:167
 msgid "Unreachable"
 msgstr ""
 
-#: src/Admin/Strings.php:115
+#: src/Admin/Strings.php:168
 msgid "rafoo.ir signal"
 msgstr ""
 
-#: src/Admin/Strings.php:116
+#: src/Admin/Strings.php:169
 msgid "A signed message from rafoo.ir lets the switch happen after one round instead of three. Your own checks always decide."
 msgstr ""
 
-#: src/Admin/Strings.php:117
+#: src/Admin/Strings.php:170
 msgid "The signal is not active in this version."
 msgstr ""
 
-#: src/Admin/Strings.php:118
+#: src/Admin/Strings.php:171
 msgid "No recent signal was received."
 msgstr ""
 
 #. translators: %s: date and time
-#: src/Admin/Strings.php:120
+#: src/Admin/Strings.php:173
 #, php-format
 msgid "rafoo.ir reported an outage at %s."
 msgstr ""
 
 #. translators: %s: date and time
-#: src/Admin/Strings.php:122
+#: src/Admin/Strings.php:175
 #, php-format
 msgid "rafoo.ir reported normal access at %s."
 msgstr ""
 
-#: src/Admin/Strings.php:123
+#: src/Admin/Strings.php:176
 msgid "Paused servers"
 msgstr ""
 
-#: src/Admin/Strings.php:124
+#: src/Admin/Strings.php:177
 msgid "A server that fails twice within two minutes is skipped for three minutes. During an outage, a server outside Iran that does not answer within three seconds is skipped for half an hour. Pages and the dashboard do not wait for them."
 msgstr ""
 
-#: src/Admin/Strings.php:125
+#: src/Admin/Strings.php:178
 msgid "No server is paused."
 msgstr ""
 
 #. translators: %s: relative time, for example "in 2 minutes"
-#: src/Admin/Strings.php:127
+#: src/Admin/Strings.php:180
 #, php-format
 msgid "tried again %s"
 msgstr ""
 
-#: src/Admin/Strings.php:130
+#: src/Admin/Strings.php:183
 msgid "Serve local copies"
 msgstr ""
 
-#: src/Admin/Strings.php:131 src/Admin/Strings.php:147
+#: src/Admin/Strings.php:184 src/Admin/Strings.php:200
 msgid "Always"
 msgstr ""
 
-#: src/Admin/Strings.php:132
+#: src/Admin/Strings.php:185
 msgid "Recommended. Local files load faster than public CDNs, even when the internet works."
 msgstr ""
 
-#: src/Admin/Strings.php:133 src/Admin/Strings.php:195
+#: src/Admin/Strings.php:186 src/Admin/Strings.php:248
 msgid "Only during outages"
 msgstr ""
 
-#: src/Admin/Strings.php:134
+#: src/Admin/Strings.php:187
 msgid "Pages use the original addresses until the international internet goes down."
 msgstr ""
 
-#: src/Admin/Strings.php:135 src/Admin/Strings.php:148
+#: src/Admin/Strings.php:188 src/Admin/Strings.php:201
 msgid "Off"
 msgstr ""
 
-#: src/Admin/Strings.php:136
+#: src/Admin/Strings.php:189
 msgid "Nothing is copied or replaced."
 msgstr ""
 
-#: src/Admin/Strings.php:137
+#: src/Admin/Strings.php:190
 msgid "Read the page HTML too"
 msgstr ""
 
-#: src/Admin/Strings.php:138
+#: src/Admin/Strings.php:191
 msgid "Also replaces addresses that themes and page builders write directly into the page. Pages without such addresses are not touched."
 msgstr ""
 
-#: src/Admin/Strings.php:139
+#: src/Admin/Strings.php:192
 msgid "Local Google Fonts"
 msgstr ""
 
-#: src/Admin/Strings.php:140
+#: src/Admin/Strings.php:193
 msgid "Copies Google Fonts to your server while the internet works. During an outage, fonts that were not copied are skipped so pages do not wait for them."
 msgstr ""
 
-#: src/Admin/Strings.php:142
+#: src/Admin/Strings.php:195
 msgid "Outside services"
 msgstr ""
 
-#: src/Admin/Strings.php:143
+#: src/Admin/Strings.php:196
 msgid "Local avatars instead of Gravatar"
 msgstr ""
 
-#: src/Admin/Strings.php:144
+#: src/Admin/Strings.php:197
 msgid "Shows letter avatars only while Gravatar is unreachable."
 msgstr ""
 
-#: src/Admin/Strings.php:145
+#: src/Admin/Strings.php:198
 msgid "Never loads Gravatar. Faster and more private."
 msgstr ""
 
-#: src/Admin/Strings.php:146 src/Admin/Strings.php:212
+#: src/Admin/Strings.php:199 src/Admin/Strings.php:265
 msgid "During outages"
 msgstr ""
 
-#: src/Admin/Strings.php:149
+#: src/Admin/Strings.php:202
 msgid "Placeholders for videos and maps"
 msgstr ""
 
-#: src/Admin/Strings.php:150
+#: src/Admin/Strings.php:203
 msgid "During an outage, YouTube, Vimeo and Google Maps frames are replaced with a short note and a link."
 msgstr ""
 
-#: src/Admin/Strings.php:152 src/Admin/Strings.php:422
+#: src/Admin/Strings.php:205 src/Admin/Strings.php:475
 msgid "Outside requests"
 msgstr ""
 
-#: src/Admin/Strings.php:153
+#: src/Admin/Strings.php:206
 msgid "Always allowed servers"
 msgstr ""
 
-#: src/Admin/Strings.php:154
+#: src/Admin/Strings.php:207
 msgid "During an outage Rafoo skips requests to servers outside Iran. Servers listed here are still contacted. One per line; *.example.com covers subdomains."
 msgstr ""
 
-#: src/Admin/Strings.php:156 src/Admin/Strings.php:218
+#: src/Admin/Strings.php:209 src/Admin/Strings.php:271
 msgid "Privacy"
 msgstr ""
 
-#: src/Admin/Strings.php:157
+#: src/Admin/Strings.php:210
 msgid "Send anonymous usage reports"
 msgstr ""
 
-#: src/Admin/Strings.php:158
+#: src/Admin/Strings.php:211
 msgid "Once a week: a random site ID, versions of WordPress, PHP and Rafoo, installed plugins and themes, and the CDN files the mirror did not have. Never the site address or any personal data. It helps the mirror cover more files."
 msgstr ""
 
-#: src/Admin/Strings.php:159
+#: src/Admin/Strings.php:212
 msgid "Suggested text for your privacy policy"
 msgstr ""
 
-#: src/Admin/Strings.php:160
+#: src/Admin/Strings.php:213
 msgid "Settings saved."
 msgstr ""
 
-#: src/Admin/Strings.php:161 src/Admin/Strings.php:214
+#: src/Admin/Strings.php:214 src/Admin/Strings.php:267
 msgid "Updates and safety"
 msgstr ""
 
-#: src/Admin/Strings.php:162
+#: src/Admin/Strings.php:215
 msgid "WordPress's own outside files"
 msgstr ""
 
-#: src/Admin/Strings.php:163
+#: src/Admin/Strings.php:216
 msgid "During an outage, emoji images, the Google Fonts list of the font library and remote block patterns stop loading from wordpress.org, so the editor and pages do not wait for them."
 msgstr ""
 
-#: src/Admin/Strings.php:164
+#: src/Admin/Strings.php:217
 msgid "Built-in captcha"
 msgstr ""
 
-#: src/Admin/Strings.php:165
+#: src/Admin/Strings.php:218
 msgid "Protects forms, login, comments and checkout with a silent check in the visitor's browser. No cookies and no outside service. It takes the place of reCAPTCHA, hCaptcha and Turnstile."
 msgstr ""
 
-#: src/Admin/Strings.php:166
+#: src/Admin/Strings.php:219
 msgid "Only while the international internet is down, when Google's captcha cannot load."
 msgstr ""
 
-#: src/Admin/Strings.php:167
+#: src/Admin/Strings.php:220
 msgid "Always use Rafoo's captcha. Faster and more private."
 msgstr ""
 
-#: src/Admin/Strings.php:168
+#: src/Admin/Strings.php:221
 msgid "Remove analytics scripts"
 msgstr ""
 
-#: src/Admin/Strings.php:169
+#: src/Admin/Strings.php:222
 msgid "Google Analytics, Tag Manager, Hotjar, Clarity, the Facebook pixel and similar scripts."
 msgstr ""
 
-#: src/Admin/Strings.php:170
+#: src/Admin/Strings.php:223
 msgid "Only during an outage, when they cannot load and slow pages down."
 msgstr ""
 
-#: src/Admin/Strings.php:171
+#: src/Admin/Strings.php:224
 msgid "Never load them."
 msgstr ""
 
-#: src/Admin/Strings.php:172
+#: src/Admin/Strings.php:225
 msgid "Hide sign-in with Google during outages"
 msgstr ""
 
-#: src/Admin/Strings.php:173
+#: src/Admin/Strings.php:226
 msgid "Buttons for signing in with Google, Facebook and similar services are hidden while they cannot work, so visitors use the normal form."
 msgstr ""
 
-#: src/Admin/Strings.php:174
+#: src/Admin/Strings.php:227
 msgid "Keep emails that could not be sent"
 msgstr ""
 
-#: src/Admin/Strings.php:175
+#: src/Admin/Strings.php:228
 msgid "If an email fails because the mail server cannot be reached, it is kept and sent again later instead of being lost."
 msgstr ""
 
-#: src/Admin/Strings.php:176
+#: src/Admin/Strings.php:229
 msgid "Log outside requests"
 msgstr ""
 
-#: src/Admin/Strings.php:177
+#: src/Admin/Strings.php:230
 msgid "Shows which plugin connects to which server, and which requests Rafoo skipped. Kept small and cleared automatically."
 msgstr ""
 
-#: src/Admin/Strings.php:178
+#: src/Admin/Strings.php:231
 msgid "Safe updates"
 msgstr ""
 
-#: src/Admin/Strings.php:179
+#: src/Admin/Strings.php:232
 msgid "Keeps the previous version before a plugin or theme is updated, checks the site afterwards and goes back by itself if the update broke it."
 msgstr ""
 
-#: src/Admin/Strings.php:180
+#: src/Admin/Strings.php:233
 msgid "Automatic backups"
 msgstr ""
 
-#: src/Admin/Strings.php:181
+#: src/Admin/Strings.php:234
 msgid "A full copy of the files and database on a schedule, on this host or on another server."
 msgstr ""
 
 #. translators: %s: name of the ready-made setup
-#: src/Admin/Strings.php:183
+#: src/Admin/Strings.php:236
 #, php-format
 msgid "Current setup: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:184
+#: src/Admin/Strings.php:237
 msgid "Current setup: your own choices"
 msgstr ""
 
-#: src/Admin/Strings.php:185
+#: src/Admin/Strings.php:238
 msgid "Run setup again"
 msgstr ""
 
-#: src/Admin/Strings.php:186
+#: src/Admin/Strings.php:239
 msgid "Rafoo is running with its default settings. Setup takes a minute."
 msgstr ""
 
-#: src/Admin/Strings.php:187
+#: src/Admin/Strings.php:240
 msgid "Start setup"
 msgstr ""
 
-#: src/Admin/Strings.php:188
+#: src/Admin/Strings.php:241
 msgid "Set up Rafoo"
 msgstr ""
 
-#: src/Admin/Strings.php:189
+#: src/Admin/Strings.php:242
 msgid "Choose a ready-made setup, or go through the steps and decide each part yourself. Everything can be changed later."
 msgstr ""
 
-#: src/Admin/Strings.php:190
+#: src/Admin/Strings.php:243
 msgid "Recommended"
 msgstr ""
 
-#: src/Admin/Strings.php:191
+#: src/Admin/Strings.php:244
 msgid "Best for most sites."
 msgstr ""
 
-#: src/Admin/Strings.php:192 src/Admin/Strings.php:203
+#: src/Admin/Strings.php:245 src/Admin/Strings.php:256
 msgid "Local copies of libraries and fonts, always"
 msgstr ""
 
-#: src/Admin/Strings.php:193
+#: src/Admin/Strings.php:246
 msgid "Outside services replaced only during outages"
 msgstr ""
 
-#: src/Admin/Strings.php:194 src/Admin/Strings.php:204
+#: src/Admin/Strings.php:247 src/Admin/Strings.php:257
 msgid "Safe updates and a daily backup"
 msgstr ""
 
-#: src/Admin/Strings.php:196
+#: src/Admin/Strings.php:249
 msgid "The site works as before until the internet goes down."
 msgstr ""
 
-#: src/Admin/Strings.php:197
+#: src/Admin/Strings.php:250
 msgid "Nothing changes while the internet works"
 msgstr ""
 
-#: src/Admin/Strings.php:198
+#: src/Admin/Strings.php:251
 msgid "Local copies and replacements during outages"
 msgstr ""
 
-#: src/Admin/Strings.php:199
+#: src/Admin/Strings.php:252
 msgid "Safe updates, no automatic backup"
 msgstr ""
 
-#: src/Admin/Strings.php:200
+#: src/Admin/Strings.php:253
 msgid "Maximum speed and privacy"
 msgstr ""
 
-#: src/Admin/Strings.php:201
+#: src/Admin/Strings.php:254
 msgid "Uses as few outside services as possible."
 msgstr ""
 
-#: src/Admin/Strings.php:202
+#: src/Admin/Strings.php:255
 msgid "Local avatars and captcha, always"
 msgstr ""
 
-#: src/Admin/Strings.php:205
+#: src/Admin/Strings.php:258
 msgid "Suggested"
 msgstr ""
 
-#: src/Admin/Strings.php:206
+#: src/Admin/Strings.php:259
 msgid "Use this setup"
 msgstr ""
 
-#: src/Admin/Strings.php:207
+#: src/Admin/Strings.php:260
 msgid "A weekly anonymous report helps the mirror cover more files. No site address or personal data."
 msgstr ""
 
-#: src/Admin/Strings.php:208
+#: src/Admin/Strings.php:261
 msgid "Later"
 msgstr ""
 
-#: src/Admin/Strings.php:209
+#: src/Admin/Strings.php:262
 msgid "Set up step by step"
 msgstr ""
 
-#: src/Admin/Strings.php:210
+#: src/Admin/Strings.php:263
 msgid "Files and fonts"
 msgstr ""
 
-#: src/Admin/Strings.php:211
+#: src/Admin/Strings.php:264
 msgid "Libraries and fonts the site loads from public networks."
 msgstr ""
 
-#: src/Admin/Strings.php:213
+#: src/Admin/Strings.php:266
 msgid "What should happen to outside services when the international internet is down."
 msgstr ""
 
-#: src/Admin/Strings.php:215
+#: src/Admin/Strings.php:268
 msgid "Protection against updates that break the site."
 msgstr ""
 
-#: src/Admin/Strings.php:216 src/Admin/Strings.php:260
+#: src/Admin/Strings.php:269 src/Admin/Strings.php:313
 msgid "Backup"
 msgstr ""
 
-#: src/Admin/Strings.php:217
+#: src/Admin/Strings.php:270
 msgid "Regular copies of the whole site."
 msgstr ""
 
-#: src/Admin/Strings.php:219
+#: src/Admin/Strings.php:272
 msgid "Rafoo sends nothing unless you allow it."
 msgstr ""
 
-#: src/Admin/Strings.php:220
+#: src/Admin/Strings.php:273
 msgid "Copies are kept on this host. Another server can be added later on the Backup tab."
 msgstr ""
 
-#: src/Admin/Strings.php:221
+#: src/Admin/Strings.php:274
 msgid "Back"
 msgstr ""
 
-#: src/Admin/Strings.php:222
+#: src/Admin/Strings.php:275
 msgid "Next"
 msgstr ""
 
-#: src/Admin/Strings.php:223
+#: src/Admin/Strings.php:276
 msgid "Finish setup"
 msgstr ""
 
-#: src/Admin/Strings.php:224
+#: src/Admin/Strings.php:277
 msgid "Rafoo is ready"
 msgstr ""
 
-#: src/Admin/Strings.php:225
+#: src/Admin/Strings.php:278
 msgid "Rafoo is now scanning a few pages of the site and copying the files it finds. This happens in the background."
 msgstr ""
 
-#: src/Admin/Strings.php:226
+#: src/Admin/Strings.php:279
 msgid "Open the dashboard"
 msgstr ""
 
-#: src/Admin/Strings.php:227
+#: src/Admin/Strings.php:280
 msgid "Setup finished"
 msgstr ""
 
-#: src/Admin/Strings.php:228
+#: src/Admin/Strings.php:281
 msgid "Waiting emails were sent"
 msgstr ""
 
-#: src/Admin/Strings.php:229
+#: src/Admin/Strings.php:282
 msgid "Emails that waited three days were deleted"
 msgstr ""
 
 #. translators: 1: plugin or theme name, 2: previous version, 3: new version
-#: src/Admin/Strings.php:232
+#: src/Admin/Strings.php:285
 #, php-format
 msgid "%1$s %3$s broke the site and was replaced with %2$s"
 msgstr ""
 
-#: src/Admin/Strings.php:233
+#: src/Admin/Strings.php:286
 msgid "The site had a problem after an update, but going back did not fix it, so the update was kept"
 msgstr ""
 
 #. translators: 1: plugin or theme name, 2: version
-#: src/Admin/Strings.php:235
+#: src/Admin/Strings.php:288
 #, php-format
 msgid "%1$s was set back to %2$s by hand"
 msgstr ""
 
-#: src/Admin/Strings.php:237 src/Admin/Strings.php:510
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:563
 msgid "Updates"
 msgstr ""
 
-#: src/Admin/Strings.php:238
+#: src/Admin/Strings.php:291
 msgid "Name"
 msgstr ""
 
-#: src/Admin/Strings.php:239
+#: src/Admin/Strings.php:292
 msgid "Installed"
 msgstr ""
 
-#: src/Admin/Strings.php:240
+#: src/Admin/Strings.php:293
 msgid "Saved versions"
 msgstr ""
 
-#: src/Admin/Strings.php:241
+#: src/Admin/Strings.php:294
 msgid "Plugin"
 msgstr ""
 
-#: src/Admin/Strings.php:242
+#: src/Admin/Strings.php:295
 msgid "Theme"
 msgstr ""
 
-#: src/Admin/Strings.php:243
+#: src/Admin/Strings.php:296
 msgid "Previous versions"
 msgstr ""
 
-#: src/Admin/Strings.php:244
+#: src/Admin/Strings.php:297
 msgid "Before a plugin or theme is updated, Rafoo keeps a copy of the version you had. If the update breaks the site, Rafoo puts the copy back by itself. You can also go back by hand."
 msgstr ""
 
-#: src/Admin/Strings.php:245
+#: src/Admin/Strings.php:298
 msgid "No copy has been kept yet. One is made at the next update."
 msgstr ""
 
-#: src/Admin/Strings.php:246
+#: src/Admin/Strings.php:299
 msgid "Safe updates are turned off in Settings, so no new copies are made."
 msgstr ""
 
-#: src/Admin/Strings.php:247
+#: src/Admin/Strings.php:300
 msgid "This server has no ZipArchive extension, so copies cannot be made. Ask your host to enable it."
 msgstr ""
 
-#: src/Admin/Strings.php:248
+#: src/Admin/Strings.php:301
 msgid "In use"
 msgstr ""
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:250
+#: src/Admin/Strings.php:303
 #, php-format
 msgid "Use %s"
 msgstr ""
 
 #. translators: 1: plugin or theme name, 2: version number
-#: src/Admin/Strings.php:252
+#: src/Admin/Strings.php:305
 #, php-format
 msgid "%1$s is now on version %2$s and the site works."
 msgstr ""
 
 #. translators: 1: plugin or theme name, 2: version number, 3: problem found
-#: src/Admin/Strings.php:254
+#: src/Admin/Strings.php:307
 #, php-format
 msgid "%1$s is now on version %2$s, but the site still has a problem: %3$s"
 msgstr ""
 
-#: src/Admin/Strings.php:255
+#: src/Admin/Strings.php:308
 msgid "Check the site now"
 msgstr ""
 
-#: src/Admin/Strings.php:256
+#: src/Admin/Strings.php:309
 msgid "The home page, the login page and the dashboard all load without errors."
 msgstr ""
 
 #. translators: %s: problem found
-#: src/Admin/Strings.php:258
+#: src/Admin/Strings.php:311
 #, php-format
 msgid "The site has a problem: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:261
+#: src/Admin/Strings.php:314
 msgid "Backups"
 msgstr ""
 
-#: src/Admin/Strings.php:262
+#: src/Admin/Strings.php:315
 msgid "A full copy of the files and database. Rafoo makes it in small steps, so it works on shared hosting too."
 msgstr ""
 
-#: src/Admin/Strings.php:263
+#: src/Admin/Strings.php:316
 msgid "Back up now"
 msgstr ""
 
-#: src/Admin/Strings.php:264
+#: src/Admin/Strings.php:317
 msgid "Last backup"
 msgstr ""
 
-#: src/Admin/Strings.php:265
+#: src/Admin/Strings.php:318
 msgid "Next backup"
 msgstr ""
 
-#: src/Admin/Strings.php:266
+#: src/Admin/Strings.php:319
 msgid "Automatic backups are off"
 msgstr ""
 
-#: src/Admin/Strings.php:267
+#: src/Admin/Strings.php:320
 msgid "Free space on this host"
 msgstr ""
 
-#: src/Admin/Strings.php:268
+#: src/Admin/Strings.php:321
 msgid "Stop"
 msgstr ""
 
-#: src/Admin/Strings.php:269
+#: src/Admin/Strings.php:322
 msgid "Progress"
 msgstr ""
 
-#: src/Admin/Strings.php:270
+#: src/Admin/Strings.php:323
 msgid "Making a backup"
 msgstr ""
 
-#: src/Admin/Strings.php:271
+#: src/Admin/Strings.php:324
 msgid "Restoring a backup"
 msgstr ""
 
-#: src/Admin/Strings.php:272
+#: src/Admin/Strings.php:325
 msgid "Receiving a site"
 msgstr ""
 
-#: src/Admin/Strings.php:273
+#: src/Admin/Strings.php:326
 msgid "Sending this site"
 msgstr ""
 
-#: src/Admin/Strings.php:274
+#: src/Admin/Strings.php:327
 msgid "Preparing the move to an empty host"
 msgstr ""
 
-#: src/Admin/Strings.php:275
+#: src/Admin/Strings.php:328
 msgid "copying the database"
 msgstr ""
 
-#: src/Admin/Strings.php:276
+#: src/Admin/Strings.php:329
 msgid "listing files"
 msgstr ""
 
-#: src/Admin/Strings.php:277
+#: src/Admin/Strings.php:330
 msgid "packing files"
 msgstr ""
 
-#: src/Admin/Strings.php:278
+#: src/Admin/Strings.php:331
 msgid "closing the archive"
 msgstr ""
 
-#: src/Admin/Strings.php:279
+#: src/Admin/Strings.php:332
 msgid "encrypting"
 msgstr ""
 
-#: src/Admin/Strings.php:280 src/Admin/Strings.php:285
+#: src/Admin/Strings.php:333 src/Admin/Strings.php:338
 msgid "checking the archive"
 msgstr ""
 
-#: src/Admin/Strings.php:281
+#: src/Admin/Strings.php:334
 msgid "sending to the server"
 msgstr ""
 
-#: src/Admin/Strings.php:282
+#: src/Admin/Strings.php:335
 msgid "removing old backups"
 msgstr ""
 
-#: src/Admin/Strings.php:283
+#: src/Admin/Strings.php:336
 msgid "downloading the backup"
 msgstr ""
 
-#: src/Admin/Strings.php:284
+#: src/Admin/Strings.php:337
 msgid "downloading from the other site"
 msgstr ""
 
-#: src/Admin/Strings.php:286
+#: src/Admin/Strings.php:339
 msgid "opening the encrypted archive"
 msgstr ""
 
-#: src/Admin/Strings.php:287
+#: src/Admin/Strings.php:340
 msgid "putting files back"
 msgstr ""
 
-#: src/Admin/Strings.php:288
+#: src/Admin/Strings.php:341
 msgid "reading the database"
 msgstr ""
 
-#: src/Admin/Strings.php:289
+#: src/Admin/Strings.php:342
 msgid "restoring the database"
 msgstr ""
 
-#: src/Admin/Strings.php:290
+#: src/Admin/Strings.php:343
 msgid "updating the site address"
 msgstr ""
 
-#: src/Admin/Strings.php:291
+#: src/Admin/Strings.php:344
 msgid "switching to the restored data"
 msgstr ""
 
-#: src/Admin/Strings.php:292
+#: src/Admin/Strings.php:345
 msgid "checking the site"
 msgstr ""
 
-#: src/Admin/Strings.php:293
+#: src/Admin/Strings.php:346
 msgid "making a copy"
 msgstr ""
 
-#: src/Admin/Strings.php:294
+#: src/Admin/Strings.php:347
 msgid "telling the other site"
 msgstr ""
 
-#: src/Admin/Strings.php:295
+#: src/Admin/Strings.php:348
 msgid "waiting for the other site"
 msgstr ""
 
-#: src/Admin/Strings.php:296
+#: src/Admin/Strings.php:349
 msgid "other site:"
 msgstr ""
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:298
+#: src/Admin/Strings.php:351
 #, php-format
 msgid "The last task did not finish: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:299
+#: src/Admin/Strings.php:352
 msgid "there is not enough free space on this host"
 msgstr ""
 
-#: src/Admin/Strings.php:300
+#: src/Admin/Strings.php:353
 msgid "the archive is damaged or incomplete"
 msgstr ""
 
-#: src/Admin/Strings.php:301
+#: src/Admin/Strings.php:354
 msgid "the password or key is wrong"
 msgstr ""
 
-#: src/Admin/Strings.php:302
+#: src/Admin/Strings.php:355
 msgid "the server could not be reached"
 msgstr ""
 
-#: src/Admin/Strings.php:303
+#: src/Admin/Strings.php:356
 msgid "the restored site did not load, so the previous database was put back"
 msgstr ""
 
-#: src/Admin/Strings.php:304
+#: src/Admin/Strings.php:357
 msgid "the other site did not finish in time"
 msgstr ""
 
-#: src/Admin/Strings.php:305
+#: src/Admin/Strings.php:358
 msgid "the other site refused the copy"
 msgstr ""
 
-#: src/Admin/Strings.php:306
+#: src/Admin/Strings.php:359
 msgid "PHP stopped three times in the same step, usually because the memory limit is too low; ask your host to raise memory_limit"
 msgstr ""
 
-#: src/Admin/Strings.php:307
+#: src/Admin/Strings.php:360
 msgid "The last task stopped responding. WP-Cron may be off; keep this page open to continue it, or start again."
 msgstr ""
 
-#: src/Admin/Strings.php:308
+#: src/Admin/Strings.php:361
 msgid "The backup was restored and the site works. If you are asked to log in, use the accounts from the backup."
 msgstr ""
 
-#: src/Admin/Strings.php:309
+#: src/Admin/Strings.php:362
 msgid "Saved backups"
 msgstr ""
 
-#: src/Admin/Strings.php:310
+#: src/Admin/Strings.php:363
 msgid "No backup has been made yet."
 msgstr ""
 
-#: src/Admin/Strings.php:311
+#: src/Admin/Strings.php:364
 msgid "Date"
 msgstr ""
 
-#: src/Admin/Strings.php:312
+#: src/Admin/Strings.php:365
 msgid "Type"
 msgstr ""
 
-#: src/Admin/Strings.php:313
+#: src/Admin/Strings.php:366
 msgid "Kept on"
 msgstr ""
 
 #. translators: 1: number of files, 2: number of database tables
-#: src/Admin/Strings.php:315
+#: src/Admin/Strings.php:368
 #, php-format
 msgid "%1$s files, %2$s tables"
 msgstr ""
 
-#: src/Admin/Strings.php:316
+#: src/Admin/Strings.php:369
 msgid "Full"
 msgstr ""
 
-#: src/Admin/Strings.php:317
+#: src/Admin/Strings.php:370
 msgid "Changes only"
 msgstr ""
 
-#: src/Admin/Strings.php:318
+#: src/Admin/Strings.php:371
 msgid "Encrypted"
 msgstr ""
 
-#: src/Admin/Strings.php:319
+#: src/Admin/Strings.php:372
 msgid "Not finished"
 msgstr ""
 
-#: src/Admin/Strings.php:320
+#: src/Admin/Strings.php:373
 msgid "This host"
 msgstr ""
 
-#: src/Admin/Strings.php:321
+#: src/Admin/Strings.php:374
 msgid "Download"
 msgstr ""
 
-#: src/Admin/Strings.php:322
+#: src/Admin/Strings.php:375
 msgid "Restore"
 msgstr ""
 
 #. translators: %s: date of the backup
-#: src/Admin/Strings.php:324
+#: src/Admin/Strings.php:377
 #, php-format
 msgid "The files and database of this site will be replaced with the copy from %s. Rafoo keeps the current database until the restored site is checked, and puts it back if the site does not load."
 msgstr ""
 
-#: src/Admin/Strings.php:325
+#: src/Admin/Strings.php:378
 msgid "Restore this backup"
 msgstr ""
 
-#: src/Admin/Strings.php:326
+#: src/Admin/Strings.php:379
 msgid "Backup password"
 msgstr ""
 
-#: src/Admin/Strings.php:327
+#: src/Admin/Strings.php:380
 msgid "Schedule"
 msgstr ""
 
-#: src/Admin/Strings.php:328
+#: src/Admin/Strings.php:381
 msgid "Backups run in the background at a quiet hour. Rafoo keeps 7 daily, 4 weekly and 6 monthly copies."
 msgstr ""
 
-#: src/Admin/Strings.php:329
+#: src/Admin/Strings.php:382
 msgid "How often"
 msgstr ""
 
-#: src/Admin/Strings.php:330
+#: src/Admin/Strings.php:383
 msgid "Every 6 hours"
 msgstr ""
 
-#: src/Admin/Strings.php:331
+#: src/Admin/Strings.php:384
 msgid "Every 12 hours"
 msgstr ""
 
-#: src/Admin/Strings.php:332
+#: src/Admin/Strings.php:385
 msgid "Every day"
 msgstr ""
 
-#: src/Admin/Strings.php:333
+#: src/Admin/Strings.php:386
 msgid "Every 2 days"
 msgstr ""
 
-#: src/Admin/Strings.php:334
+#: src/Admin/Strings.php:387
 msgid "Every week"
 msgstr ""
 
-#: src/Admin/Strings.php:335
+#: src/Admin/Strings.php:388
 msgid "At"
 msgstr ""
 
-#: src/Admin/Strings.php:336
+#: src/Admin/Strings.php:389
 msgid "Copy only what changed"
 msgstr ""
 
-#: src/Admin/Strings.php:337
+#: src/Admin/Strings.php:390
 msgid "After a full copy, the next six copy only new and changed files and the whole database. Faster and smaller. A full copy is made every week."
 msgstr ""
 
-#: src/Admin/Strings.php:338
+#: src/Admin/Strings.php:391
 msgid "Keep copies on this host"
 msgstr ""
 
-#: src/Admin/Strings.php:339
+#: src/Admin/Strings.php:392
 msgid "When off, copies are kept only on the servers below, which protects them if this host fails."
 msgstr ""
 
-#: src/Admin/Strings.php:340 src/Admin/Strings.php:459
+#: src/Admin/Strings.php:393 src/Admin/Strings.php:512
 msgid "Encryption"
 msgstr ""
 
-#: src/Admin/Strings.php:341
+#: src/Admin/Strings.php:394
 msgid "With a password, backups are encrypted before they leave this site. Without the password they cannot be restored, so keep it somewhere safe."
 msgstr ""
 
-#: src/Admin/Strings.php:342
+#: src/Admin/Strings.php:395
 msgid "New backups are encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:343
+#: src/Admin/Strings.php:396
 msgid "Backups are not encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:344
+#: src/Admin/Strings.php:397
 msgid "Password saved. The next backup will be encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:345
+#: src/Admin/Strings.php:398
 msgid "Turn off encryption"
 msgstr ""
 
-#: src/Admin/Strings.php:346
+#: src/Admin/Strings.php:399
 msgid "Encryption turned off for new backups."
 msgstr ""
 
-#: src/Admin/Strings.php:347
+#: src/Admin/Strings.php:400
 msgid "This server's PHP has no sodium extension, so backups cannot be encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:348
+#: src/Admin/Strings.php:401
 msgid "This server has no ZipArchive extension, so backups cannot be made. Ask your host to enable it."
 msgstr ""
 
-#: src/Admin/Strings.php:349 src/Backup/Job.php:33 src/Backup/Maker.php:33
+#: src/Admin/Strings.php:402 src/Backup/Job.php:33 src/Backup/Maker.php:33
 msgid "The uploads folder is not writable, so Rafoo cannot keep backups."
 msgstr ""
 
-#: src/Admin/Strings.php:350
+#: src/Admin/Strings.php:403
 msgid "This shop is in the last step of moving. New orders are paused for a few minutes."
 msgstr ""
 
-#: src/Admin/Strings.php:351
+#: src/Admin/Strings.php:404
 msgid "Other servers"
 msgstr ""
 
-#: src/Admin/Strings.php:352
+#: src/Admin/Strings.php:405
 msgid "Copies are also sent to these servers. Enter the address and login; Rafoo finds the right connection (SFTP, FTPS or FTP) and folder by itself."
 msgstr ""
 
-#: src/Admin/Strings.php:353
+#: src/Admin/Strings.php:406
 msgid "Add a server"
 msgstr ""
 
-#: src/Admin/Strings.php:354 src/Admin/Strings.php:457
+#: src/Admin/Strings.php:407 src/Admin/Strings.php:510
 msgid "Server address"
 msgstr ""
 
-#: src/Admin/Strings.php:355
+#: src/Admin/Strings.php:408
 msgid "More options"
 msgstr ""
 
-#: src/Admin/Strings.php:356
+#: src/Admin/Strings.php:409
 msgid "Folder (optional)"
 msgstr ""
 
-#: src/Admin/Strings.php:357
+#: src/Admin/Strings.php:410
 msgid "Name (optional)"
 msgstr ""
 
-#: src/Admin/Strings.php:358
+#: src/Admin/Strings.php:411
 msgid "SSH private key (optional, instead of a password)"
 msgstr ""
 
-#: src/Admin/Strings.php:359
+#: src/Admin/Strings.php:412
 msgid "Rafoo tries SFTP, then FTPS and plain FTP, creates a folder named rafoo-backups, and checks that it can write, read and delete a test file."
 msgstr ""
 
-#: src/Admin/Strings.php:360
+#: src/Admin/Strings.php:413
 msgid "Connect"
 msgstr ""
 
-#: src/Admin/Strings.php:361
+#: src/Admin/Strings.php:414
 msgid "Finding the connection…"
 msgstr ""
 
 #. translators: 1: connection type, 2: folder, 3: speed per second
-#: src/Admin/Strings.php:363
+#: src/Admin/Strings.php:416
 #, php-format
 msgid "Connected with %1$s. Copies go to %2$s at about %3$s per second."
 msgstr ""
 
-#: src/Admin/Strings.php:364
+#: src/Admin/Strings.php:417
 msgid "Last send failed"
 msgstr ""
 
 #. translators: %s: relative time
-#: src/Admin/Strings.php:366
+#: src/Admin/Strings.php:419
 #, php-format
 msgid "Sent %s"
 msgstr ""
 
-#: src/Admin/Strings.php:367
+#: src/Admin/Strings.php:420
 msgid "Plain FTP is not encrypted. Turn on backup encryption below."
 msgstr ""
 
 #. translators: %s: size per second
-#: src/Admin/Strings.php:369
+#: src/Admin/Strings.php:422
 #, php-format
 msgid "About %s per second"
 msgstr ""
 
 #. translators: %s: size
-#: src/Admin/Strings.php:371
+#: src/Admin/Strings.php:424
 #, php-format
 msgid "%s free"
 msgstr ""
 
-#: src/Admin/Strings.php:372
+#: src/Admin/Strings.php:425
 msgid "Test"
 msgstr ""
 
-#: src/Admin/Strings.php:373
+#: src/Admin/Strings.php:426
 msgid "The server accepted a test file."
 msgstr ""
 
-#: src/Admin/Strings.php:374
+#: src/Admin/Strings.php:427
 msgid "Move or copy the site"
 msgstr ""
 
-#: src/Admin/Strings.php:375
+#: src/Admin/Strings.php:428
 msgid "Copy this whole site to another WordPress site with Rafoo, or to an empty host. The data goes directly between the two servers, encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:376
+#: src/Admin/Strings.php:429
 msgid "Send this site"
 msgstr ""
 
-#: src/Admin/Strings.php:377
+#: src/Admin/Strings.php:430
 msgid "Receive a site here"
 msgstr ""
 
-#: src/Admin/Strings.php:378
+#: src/Admin/Strings.php:431
 msgid "To an empty host"
 msgstr ""
 
-#: src/Admin/Strings.php:379
+#: src/Admin/Strings.php:432
 msgid "Make a code here and enter it on the site you want to copy. This site will be replaced with that site."
 msgstr ""
 
-#: src/Admin/Strings.php:380
+#: src/Admin/Strings.php:433
 msgid "Make a code"
 msgstr ""
 
-#: src/Admin/Strings.php:381
+#: src/Admin/Strings.php:434
 msgid "Make a new code"
 msgstr ""
 
-#: src/Admin/Strings.php:382
+#: src/Admin/Strings.php:435
 msgid "Stop receiving"
 msgstr ""
 
-#: src/Admin/Strings.php:383
+#: src/Admin/Strings.php:436
 msgid "Short code:"
 msgstr ""
 
-#: src/Admin/Strings.php:384
+#: src/Admin/Strings.php:437
 msgid "Full code (works without rafoo.ir)"
 msgstr ""
 
-#: src/Admin/Strings.php:385
+#: src/Admin/Strings.php:438
 msgid "Copy"
 msgstr ""
 
-#: src/Admin/Strings.php:386
+#: src/Admin/Strings.php:439
 msgid "Copied"
 msgstr ""
 
 #. translators: %s: date and time
-#: src/Admin/Strings.php:388
+#: src/Admin/Strings.php:441
 #, php-format
 msgid "Valid until %s"
 msgstr ""
 
-#: src/Admin/Strings.php:389
+#: src/Admin/Strings.php:442
 msgid "Anyone with this code can replace this site. Share it only with yourself."
 msgstr ""
 
-#: src/Admin/Strings.php:390
+#: src/Admin/Strings.php:443
 msgid "Enter the code made on the receiving site. This site stays as it is."
 msgstr ""
 
-#: src/Admin/Strings.php:391
+#: src/Admin/Strings.php:444
 msgid "Code from the other site"
 msgstr ""
 
-#: src/Admin/Strings.php:392
+#: src/Admin/Strings.php:445
 msgid "Finish with a quick second pass for changes made meanwhile (WooCommerce orders pause for a minute)"
 msgstr ""
 
-#: src/Admin/Strings.php:393
+#: src/Admin/Strings.php:446
 msgid "Start sending"
 msgstr ""
 
-#: src/Admin/Strings.php:394
+#: src/Admin/Strings.php:447
 msgid "Rafoo puts an encrypted copy and a small installer on the new host through one of your servers. Then you open the installer and enter the new database details."
 msgstr ""
 
-#: src/Admin/Strings.php:395
+#: src/Admin/Strings.php:448
 msgid "First add the new host under Other servers, with access to its web folder."
 msgstr ""
 
-#: src/Admin/Strings.php:396
+#: src/Admin/Strings.php:449
 msgid "New host"
 msgstr ""
 
-#: src/Admin/Strings.php:397
+#: src/Admin/Strings.php:450
 msgid "Web folder on that host"
 msgstr ""
 
-#: src/Admin/Strings.php:398
+#: src/Admin/Strings.php:451
 msgid "Address of the site on the new host"
 msgstr ""
 
-#: src/Admin/Strings.php:399
+#: src/Admin/Strings.php:452
 msgid "Prepare the move"
 msgstr ""
 
-#: src/Admin/Strings.php:400
+#: src/Admin/Strings.php:453
 msgid "Everything is on the new host."
 msgstr ""
 
-#: src/Admin/Strings.php:401
+#: src/Admin/Strings.php:454
 msgid "Open this address and follow the steps:"
 msgstr ""
 
-#: src/Admin/Strings.php:402
+#: src/Admin/Strings.php:455
 msgid "Restore key (shown only here)"
 msgstr ""
 
 #. translators: 1: size, 2: backup type
-#: src/Admin/Strings.php:404
+#: src/Admin/Strings.php:457
 #, php-format
 msgid "Backup made (%1$s)"
 msgstr ""
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:406
+#: src/Admin/Strings.php:459
 #, php-format
 msgid "Backup failed: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:407
+#: src/Admin/Strings.php:460
 msgid "Backup task stopped by hand"
 msgstr ""
 
-#: src/Admin/Strings.php:408
+#: src/Admin/Strings.php:461
 msgid "Backup restored"
 msgstr ""
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:410
+#: src/Admin/Strings.php:463
 #, php-format
 msgid "Restore failed: %s"
 msgstr ""
 
 #. translators: %s: site address
-#: src/Admin/Strings.php:412
+#: src/Admin/Strings.php:465
 #, php-format
 msgid "Site received from %s"
 msgstr ""
 
 #. translators: %s: site address or reason
-#: src/Admin/Strings.php:414
+#: src/Admin/Strings.php:467
 #, php-format
 msgid "Site sent to %s"
 msgstr ""
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:416
+#: src/Admin/Strings.php:469
 #, php-format
 msgid "Site transfer failed: %s"
 msgstr ""
 
 #. translators: %s: site address
-#: src/Admin/Strings.php:418
+#: src/Admin/Strings.php:471
 #, php-format
 msgid "Move to %s prepared"
 msgstr ""
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:420
+#: src/Admin/Strings.php:473
 #, php-format
 msgid "Move preparation failed: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:423
+#: src/Admin/Strings.php:476
 msgid "Which plugin, theme or part of WordPress connected to which server from this site, and how it went."
 msgstr ""
 
-#: src/Admin/Strings.php:424
+#: src/Admin/Strings.php:477
 msgid "Logging is turned off in Settings."
 msgstr ""
 
-#: src/Admin/Strings.php:425
+#: src/Admin/Strings.php:478
 msgid "No outside request has been made since logging started."
 msgstr ""
 
-#: src/Admin/Strings.php:426
+#: src/Admin/Strings.php:479
 msgid "Clear the log"
 msgstr ""
 
 #. translators: %s: number of rows
-#: src/Admin/Strings.php:428
+#: src/Admin/Strings.php:481
 #, php-format
 msgid "Show all %s rows"
 msgstr ""
 
-#: src/Admin/Strings.php:429
+#: src/Admin/Strings.php:482
 msgid "Made by"
 msgstr ""
 
-#: src/Admin/Strings.php:430
+#: src/Admin/Strings.php:483
 msgid "Server"
 msgstr ""
 
-#: src/Admin/Strings.php:431
+#: src/Admin/Strings.php:484
 msgid "Requests"
 msgstr ""
 
-#: src/Admin/Strings.php:432
+#: src/Admin/Strings.php:485
 msgid "Skipped"
 msgstr ""
 
-#: src/Admin/Strings.php:433
+#: src/Admin/Strings.php:486
 msgid "Failed"
 msgstr ""
 
-#: src/Admin/Strings.php:434
+#: src/Admin/Strings.php:487
 msgid "Average time"
 msgstr ""
 
-#: src/Admin/Strings.php:435
+#: src/Admin/Strings.php:488
 msgid "Last"
 msgstr ""
 
 #. translators: %s: number of milliseconds
-#: src/Admin/Strings.php:437
+#: src/Admin/Strings.php:490
 #, php-format
 msgid "%s ms"
 msgstr ""
 
-#: src/Admin/Strings.php:440
+#: src/Admin/Strings.php:493
 msgid "Emails waiting to be sent"
 msgstr ""
 
-#: src/Admin/Strings.php:441
+#: src/Admin/Strings.php:494
 msgid "Emails that failed because the mail server could not be reached. They are sent again automatically, and deleted after three days if they still cannot go."
 msgstr ""
 
-#: src/Admin/Strings.php:442
+#: src/Admin/Strings.php:495
 msgid "Keeping unsent emails is turned off in Settings."
 msgstr ""
 
-#: src/Admin/Strings.php:443
+#: src/Admin/Strings.php:496
 msgid "No email is waiting."
 msgstr ""
 
-#: src/Admin/Strings.php:444
+#: src/Admin/Strings.php:497
 msgid "The mail server cannot be reached right now. New emails are kept and sent later."
 msgstr ""
 
-#: src/Admin/Strings.php:445
+#: src/Admin/Strings.php:498
 msgid "Try sending now"
 msgstr ""
 
 #. translators: %s: number of emails
-#: src/Admin/Strings.php:447
+#: src/Admin/Strings.php:500
 #, php-format
 msgid "Emails still waiting: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:448
+#: src/Admin/Strings.php:501
 msgid "All waiting emails were sent."
 msgstr ""
 
-#: src/Admin/Strings.php:449
+#: src/Admin/Strings.php:502
 msgid "To"
 msgstr ""
 
-#: src/Admin/Strings.php:450
+#: src/Admin/Strings.php:503
 msgid "Subject"
 msgstr ""
 
-#: src/Admin/Strings.php:451
+#: src/Admin/Strings.php:504
 msgid "Tries"
 msgstr ""
 
-#: src/Admin/Strings.php:452
+#: src/Admin/Strings.php:505
 msgid "Next try"
 msgstr ""
 
-#: src/Admin/Strings.php:453
+#: src/Admin/Strings.php:506
 msgid "Delete"
 msgstr ""
 
-#: src/Admin/Strings.php:455
+#: src/Admin/Strings.php:508
 msgid "Mail server for outages"
 msgstr ""
 
-#: src/Admin/Strings.php:456
+#: src/Admin/Strings.php:509
 msgid "If the site sends email through a server outside Iran, add a domestic mail server here, for example the one your host gives you. Rafoo uses it only while the international internet is down."
 msgstr ""
 
-#: src/Admin/Strings.php:458
+#: src/Admin/Strings.php:511
 msgid "Port"
 msgstr ""
 
-#: src/Admin/Strings.php:460
+#: src/Admin/Strings.php:513
 msgid "STARTTLS"
 msgstr ""
 
-#: src/Admin/Strings.php:461
+#: src/Admin/Strings.php:514
 msgid "SSL/TLS"
 msgstr ""
 
-#: src/Admin/Strings.php:462
+#: src/Admin/Strings.php:515
 msgid "None"
 msgstr ""
 
-#: src/Admin/Strings.php:463
+#: src/Admin/Strings.php:516
 msgid "Without encryption the password and emails cross the network in plain text. Use it only for a server on the same host."
 msgstr ""
 
-#: src/Admin/Strings.php:464
+#: src/Admin/Strings.php:517
 msgid "Username"
 msgstr ""
 
-#: src/Admin/Strings.php:465
+#: src/Admin/Strings.php:518
 msgid "Password"
 msgstr ""
 
-#: src/Admin/Strings.php:466
+#: src/Admin/Strings.php:519
 msgid "Saved. Leave empty to keep it."
 msgstr ""
 
-#: src/Admin/Strings.php:467
+#: src/Admin/Strings.php:520
 msgid "Sender address (optional)"
 msgstr ""
 
-#: src/Admin/Strings.php:468
+#: src/Admin/Strings.php:521
 msgid "Many servers only accept emails from their own domain. If so, enter an address on that domain."
 msgstr ""
 
-#: src/Admin/Strings.php:469
+#: src/Admin/Strings.php:522
 msgid "Save mail server"
 msgstr ""
 
-#: src/Admin/Strings.php:470
+#: src/Admin/Strings.php:523
 msgid "Mail server saved."
 msgstr ""
 
-#: src/Admin/Strings.php:472
+#: src/Admin/Strings.php:525
 msgid "Mail server removed."
 msgstr ""
 
 #. translators: %s: email address
-#: src/Admin/Strings.php:474
+#: src/Admin/Strings.php:527
 #, php-format
 msgid "Send a test to %s"
 msgstr ""
 
-#: src/Admin/Strings.php:475
+#: src/Admin/Strings.php:528
 msgid "Test email sent. Check the inbox."
 msgstr ""
 
-#: src/Admin/Strings.php:476
+#: src/Admin/Strings.php:529
 msgid "Save changes"
 msgstr ""
 
-#: src/Admin/Strings.php:478
+#: src/Admin/Strings.php:531
 msgid "Send a suggestion"
 msgstr ""
 
-#: src/Admin/Strings.php:479
+#: src/Admin/Strings.php:532
 msgid "Tell the Rafoo team what is missing or what went wrong."
 msgstr ""
 
-#: src/Admin/Strings.php:480
+#: src/Admin/Strings.php:533
 msgid "Message"
 msgstr ""
 
-#: src/Admin/Strings.php:481
+#: src/Admin/Strings.php:534
 msgid "Email or phone (optional)"
 msgstr ""
 
-#: src/Admin/Strings.php:482
+#: src/Admin/Strings.php:535
 msgid "Only if you would like an answer."
 msgstr ""
 
-#: src/Admin/Strings.php:483
+#: src/Admin/Strings.php:536
 msgid "Your message is sent to rafoo.ir with the versions of WordPress, PHP and Rafoo. Nothing is sent until you press Send."
 msgstr ""
 
-#: src/Admin/Strings.php:484
+#: src/Admin/Strings.php:537
 msgid "Please write a little more."
 msgstr ""
 
-#: src/Admin/Strings.php:485
+#: src/Admin/Strings.php:538
 msgid "Thank you. Your message was sent."
 msgstr ""
 
-#: src/Admin/Strings.php:486
+#: src/Admin/Strings.php:539
 msgid "Send"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:489
+#: src/Admin/Strings.php:542
 #, php-format
 msgid "%s min"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:491
+#: src/Admin/Strings.php:544
 #, php-format
 msgid "%s h"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:493
+#: src/Admin/Strings.php:546
 #, php-format
 msgid "%s days"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:495
+#: src/Admin/Strings.php:548
 #, php-format
 msgid "%s B"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:497
+#: src/Admin/Strings.php:550
 #, php-format
 msgid "%s KB"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:499
+#: src/Admin/Strings.php:552
 #, php-format
 msgid "%s MB"
 msgstr ""
 
-#: src/Admin/Strings.php:500
+#: src/Admin/Strings.php:553
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: src/Admin/Strings.php:501
+#: src/Admin/Strings.php:554
 msgid "The site could not be reached. Check your connection and try again."
 msgstr ""
 
-#: src/Admin/Strings.php:508
+#: src/Admin/Strings.php:561
 msgid "Translations from the mirror"
 msgstr ""
 
-#: src/Admin/Strings.php:509
+#: src/Admin/Strings.php:562
 msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
 msgstr ""
 
-#: src/Admin/Strings.php:511
+#: src/Admin/Strings.php:564
 msgid "Update from the domestic mirror"
 msgstr ""
 
-#: src/Admin/Strings.php:512
+#: src/Admin/Strings.php:565
 msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
 msgstr ""
 
-#: src/Admin/Strings.php:513
+#: src/Admin/Strings.php:566
 msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
 msgstr ""
 
-#: src/Admin/Strings.php:514
+#: src/Admin/Strings.php:567
 msgid "Mirror coverage"
 msgstr ""
 
-#: src/Admin/Strings.php:515
+#: src/Admin/Strings.php:568
 msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
 msgstr ""
 
-#: src/Admin/Strings.php:516
+#: src/Admin/Strings.php:569
 msgid "Check again"
 msgstr ""
 
-#: src/Admin/Strings.php:517
+#: src/Admin/Strings.php:570
 msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
 msgstr ""
 
-#: src/Admin/Strings.php:518
+#: src/Admin/Strings.php:571
 msgid "Mirror"
 msgstr ""
 
-#: src/Admin/Strings.php:519
+#: src/Admin/Strings.php:572
 msgid "Not on the mirror"
 msgstr ""
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:521
+#: src/Admin/Strings.php:574
 #, php-format
 msgid "Version %s available"
 msgstr ""
 
-#: src/Admin/Strings.php:522
+#: src/Admin/Strings.php:575
 msgid "Up to date"
 msgstr ""
 
-#: src/Admin/Strings.php:523
+#: src/Admin/Strings.php:576
 msgid "WordPress"
 msgstr ""
 
@@ -1957,6 +2133,30 @@ msgstr ""
 
 #: src/Mail/Queue.php:225
 msgid "The message could not be sent."
+msgstr ""
+
+#: src/Peers/Api.php:17
+msgid "The request could not be prepared."
+msgstr ""
+
+#: src/Peers/Api.php:23
+msgid "This site has no key for the network. Join again."
+msgstr ""
+
+#: src/Peers/Api.php:50
+msgid "rafoo.ir did not accept the request."
+msgstr ""
+
+#: src/Peers/Engine.php:55
+msgid "This server cannot create a signing key (the sodium extension is missing)."
+msgstr ""
+
+#: src/Peers/Engine.php:73
+msgid "rafoo.ir gave an answer that could not be read."
+msgstr ""
+
+#: src/Peers/Engine.php:129
+msgid "The task list from rafoo.ir could not be verified."
 msgstr ""
 
 #: src/Privacy.php:14

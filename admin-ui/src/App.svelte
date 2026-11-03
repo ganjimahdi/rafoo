@@ -7,6 +7,7 @@
 	import { store } from './lib/store.svelte';
 	import Connection from './pages/Connection.svelte';
 	import Feedback from './pages/Feedback.svelte';
+	import Monitor from './pages/Monitor.svelte';
 	import Files from './pages/Files.svelte';
 	import Overview from './pages/Overview.svelte';
 	import Settings from './pages/Settings.svelte';
@@ -23,6 +24,7 @@
 		{ id: 'overview', label: t('tab_overview'), page: Overview },
 		{ id: 'files', label: t('tab_files'), page: Files },
 		{ id: 'connection', label: t('tab_connection'), page: Connection },
+		{ id: 'monitor', label: t('tab_monitor'), page: Monitor },
 		{ id: 'updates', label: t('tab_updates'), page: Updates },
 		{ id: 'backup', label: t('tab_backup'), page: Backup },
 		{ id: 'settings', label: t('tab_settings'), page: Settings },

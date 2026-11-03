@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,8 @@ Rafoo talks to the following services. None of them receives anything about your
 
 **Moving a site (only when used).** When an administrator makes a transfer code under Rafoo › Backup, the address of this site's endpoint and a random one-time key are sent to `https://rafoo.ir/api/v1/pair`, which returns a short code that expires within a day. Site data never passes through rafoo.ir; the copy goes directly between the two sites. A long code that works without rafoo.ir is always shown as well.
 
+**Cooperative network (off by default).** Only if an administrator joins the network under Rafoo › Monitoring, the site address, a public signing key, the chosen check interval, the edition and version are sent to `https://rafoo.ir/api/v1/peers/join`. rafoo.ir checks the site once at `?rafoo-ping`, derives the country and network of the server from the request (the IP address is not stored) and sends back a signed list of a few other member sites. The site then requests those members' `?rafoo-ping` address in the background, every one or five minutes, and sends the results (time, whether a signed answer arrived, response time) to `https://rafoo.ir/api/v1/peers/receipts`. Other members request this site's `?rafoo-ping` address the same way. No page, content, user or visitor data is checked or sent. Leaving the network or deactivating Rafoo deletes the membership.
+
 **Backup servers (only when added).** Backups are sent only to servers an administrator adds under Rafoo › Backup, using the login entered there.
 
 **Suggestions.** When an administrator writes a message under Rafoo › Feedback and presses Send, the message, the optional contact detail and the software versions are sent to `https://rafoo.ir/api/v1/feedback`.
@@ -146,6 +148,10 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+
+= 1.2.0 =
+* Monitoring: an opt-in cooperative network of Rafoo sites that check each other from inside and outside Iran, with five points in each and a choice of every one or five minutes.
+* Checks run in the background after a reply is sent, need no cron job and pause automatically when they cannot help, for example during an international shutdown.
 
 = 1.1.0 =
 * Setup after activation with three ready-made setups.

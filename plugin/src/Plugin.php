@@ -60,6 +60,11 @@ final class Plugin {
 		}
 		$this->booted = true;
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- only checks whether this is a signed reachability ping; Engine::serve validates it.
+		if ( isset( $_GET[ Peers\Engine::QUERY ] ) ) {
+			add_action( 'plugins_loaded', array( Peers\Engine::class, 'serve' ), 0 );
+		}
+
 		foreach ( self::hooks() as $hook ) {
 			add_filter( $hook[0], $hook[1], isset( $hook[2] ) ? $hook[2] : 10, isset( $hook[3] ) ? $hook[3] : 1 );
 		}
@@ -217,6 +222,7 @@ final class Plugin {
 
 	public static function check() {
 		Monitor::run();
+		Peers\Engine::tick();
 	}
 
 	public static function sync() {
@@ -269,6 +275,9 @@ final class Plugin {
 		}
 		delete_site_transient( Monitor::LOCK );
 		Telemetry::ping( 'deactivate' );
+		if ( Peers\Keys::member() ) {
+			Peers\Engine::leave();
+		}
 	}
 
 	public static function retire_standard() {

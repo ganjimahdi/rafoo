@@ -253,3 +253,56 @@ export interface Boot {
 	settings: Settings;
 	privacy_url: string;
 }
+
+export interface PeerWatcher {
+	country: string;
+	network: string;
+	scope: 'ir' | 'intl';
+	at: string;
+	ok: boolean;
+	ms: number;
+	checks_today: number;
+	ok_today: number;
+}
+
+export interface PeerDay {
+	day: string;
+	scope: 'ir' | 'intl';
+	checks: number;
+	ok: number;
+	ms: number;
+}
+
+export interface PeerRemote {
+	member: number;
+	country: string;
+	network: string;
+	scope: 'ir' | 'intl';
+	interval: number;
+	intl: 'up' | 'down';
+	watchers: PeerWatcher[] | null;
+	days: PeerDay[] | null;
+	assigned: number;
+	watching: number;
+	network_size: { members: number; iran: number; abroad: number };
+}
+
+export interface PeerStatus {
+	member: boolean;
+	ready: boolean;
+	interval: number;
+	joined_at: number;
+	country: string;
+	network: string;
+	scope: 'ir' | 'intl';
+	watching: number;
+	checked: number;
+	pending: number;
+	sentinel: boolean;
+	offline: boolean;
+	detached: boolean;
+	results: { id: number; at: number; ok: boolean; ms: number }[];
+	remote: PeerRemote | null;
+	error: string;
+	now: number;
+}
