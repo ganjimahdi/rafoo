@@ -1,0 +1,17 @@
+{
+    "selectors": [
+        ".nsl-container",
+        ".the_champ_outer_login_container",
+        ".the_champ_login_container",
+        ".heateor_ss_social_login_title",
+        ".wc-social-login",
+        ".mo-openid-app-icons",
+        ".wp-social-login-widget",
+        ".wp_google_login",
+        ".googlesitekit-sign-in-with-google__frontend-output-button",
+        ".g_id_signin",
+        "#g_id_onload",
+        "#credential_picker_container",
+        "#credential_picker_iframe"
+    ]
+}

@@ -1,0 +1,399 @@
+{
+    "hosts": {
+        "jsdelivr": [
+            "cdn.jsdelivr.net",
+            "fastly.jsdelivr.net",
+            "gcore.jsdelivr.net",
+            "testingcf.jsdelivr.net",
+            "quantil.jsdelivr.net",
+            "originfastly.jsdelivr.net"
+        ],
+        "unpkg": [
+            "unpkg.com"
+        ],
+        "cdnjs": [
+            "cdnjs.cloudflare.com"
+        ],
+        "jquery": [
+            "code.jquery.com"
+        ],
+        "google": [
+            "ajax.googleapis.com"
+        ],
+        "bootstrap": [
+            "stackpath.bootstrapcdn.com",
+            "maxcdn.bootstrapcdn.com",
+            "netdna.bootstrapcdn.com"
+        ],
+        "fontawesome": [
+            "use.fontawesome.com"
+        ]
+    },
+    "needles": [
+        "jsdelivr.net",
+        "unpkg.com",
+        "cdnjs.cloudflare.com",
+        "code.jquery.com",
+        "ajax.googleapis.com",
+        "bootstrapcdn.com",
+        "use.fontawesome.com"
+    ],
+    "google_libs": {
+        "jquery": {
+            "npm": "jquery",
+            "dir": "dist/"
+        },
+        "jqueryui": {
+            "npm": "jquery-ui-dist",
+            "dir": ""
+        },
+        "angularjs": {
+            "npm": "angular",
+            "dir": ""
+        },
+        "hammerjs": {
+            "npm": "hammerjs",
+            "dir": ""
+        },
+        "d3js": {
+            "npm": "d3",
+            "dir": "dist/"
+        }
+    },
+    "cdnjs_libs": {
+        "alpinejs": {
+            "npm": "alpinejs",
+            "dir": "dist/"
+        },
+        "animate.css": {
+            "npm": "animate.css",
+            "dir": ""
+        },
+        "animejs": {
+            "npm": "animejs",
+            "dir": "lib/"
+        },
+        "aos": {
+            "npm": "aos",
+            "dir": "dist/"
+        },
+        "apexcharts": {
+            "npm": "apexcharts",
+            "dir": "dist/"
+        },
+        "axios": {
+            "npm": "axios",
+            "dir": "dist/"
+        },
+        "bodymovin": {
+            "npm": "lottie-web",
+            "dir": "build/player/"
+        },
+        "bootstrap-datepicker": {
+            "npm": "bootstrap-datepicker",
+            "dir": "dist/"
+        },
+        "bootstrap-icons": {
+            "npm": "bootstrap-icons",
+            "dir": ""
+        },
+        "bootstrap-select": {
+            "npm": "bootstrap-select",
+            "dir": "dist/"
+        },
+        "bxslider": {
+            "npm": "bxslider",
+            "dir": "dist/"
+        },
+        "Chart.js": {
+            "npm": "chart.js",
+            "dir": "dist/"
+        },
+        "clipboard.js": {
+            "npm": "clipboard",
+            "dir": "dist/"
+        },
+        "countup.js": {
+            "npm": "countup.js",
+            "dir": "dist/"
+        },
+        "d3": {
+            "npm": "d3",
+            "dir": "dist/"
+        },
+        "datatables": {
+            "npm": "datatables.net",
+            "dir": ""
+        },
+        "dompurify": {
+            "npm": "dompurify",
+            "dir": "dist/"
+        },
+        "echarts": {
+            "npm": "echarts",
+            "dir": "dist/"
+        },
+        "fancybox": {
+            "npm": "@fancyapps/fancybox",
+            "dir": "dist/"
+        },
+        "flag-icon-css": {
+            "npm": "flag-icon-css",
+            "dir": ""
+        },
+        "flatpickr": {
+            "npm": "flatpickr",
+            "dir": "dist/"
+        },
+        "flickity": {
+            "npm": "flickity",
+            "dir": "dist/"
+        },
+        "font-awesome": {
+            "npm": "@fortawesome/fontawesome-free",
+            "dir": "",
+            "legacy": {
+                "5.0.0": "font-awesome"
+            }
+        },
+        "Glide.js": {
+            "npm": "@glidejs/glide",
+            "dir": "dist/"
+        },
+        "gsap": {
+            "npm": "gsap",
+            "dir": "dist/"
+        },
+        "hammer.js": {
+            "npm": "hammerjs",
+            "dir": ""
+        },
+        "highlight.js": {
+            "npm": "@highlightjs/cdn-assets",
+            "dir": ""
+        },
+        "html2canvas": {
+            "npm": "html2canvas",
+            "dir": "dist/"
+        },
+        "htmx": {
+            "npm": "htmx.org",
+            "dir": "dist/"
+        },
+        "imagesloaded": {
+            "npm": "imagesloaded",
+            "dir": ""
+        },
+        "intl-tel-input": {
+            "npm": "intl-tel-input",
+            "dir": "build/"
+        },
+        "izitoast": {
+            "npm": "izitoast",
+            "dir": "dist/"
+        },
+        "jarallax": {
+            "npm": "jarallax",
+            "dir": "dist/"
+        },
+        "jquery": {
+            "npm": "jquery",
+            "dir": "dist/"
+        },
+        "jquery-easing": {
+            "npm": "jquery.easing",
+            "dir": ""
+        },
+        "jquery-migrate": {
+            "npm": "jquery-migrate",
+            "dir": "dist/"
+        },
+        "jquery-validate": {
+            "npm": "jquery-validation",
+            "dir": "dist/"
+        },
+        "jquery.inputmask": {
+            "npm": "inputmask",
+            "dir": "dist/"
+        },
+        "jquery.isotope": {
+            "npm": "isotope-layout",
+            "dir": "dist/"
+        },
+        "jquery.mask": {
+            "npm": "jquery-mask-plugin",
+            "dir": "dist/"
+        },
+        "jqueryui": {
+            "npm": "jquery-ui-dist",
+            "dir": ""
+        },
+        "js-cookie": {
+            "npm": "js-cookie",
+            "dir": "dist/"
+        },
+        "jspdf": {
+            "npm": "jspdf",
+            "dir": "dist/"
+        },
+        "KaTeX": {
+            "npm": "katex",
+            "dir": "dist/"
+        },
+        "lazysizes": {
+            "npm": "lazysizes",
+            "dir": ""
+        },
+        "lightbox2": {
+            "npm": "lightbox2",
+            "dir": "dist/"
+        },
+        "lightgallery": {
+            "npm": "lightgallery",
+            "dir": ""
+        },
+        "limonte-sweetalert2": {
+            "npm": "sweetalert2",
+            "dir": "dist/"
+        },
+        "line-awesome": {
+            "npm": "line-awesome",
+            "dir": "dist/"
+        },
+        "lodash.js": {
+            "npm": "lodash",
+            "dir": ""
+        },
+        "lottie-web": {
+            "npm": "lottie-web",
+            "dir": "build/player/"
+        },
+        "magnific-popup.js": {
+            "npm": "magnific-popup",
+            "dir": "dist/"
+        },
+        "marked": {
+            "npm": "marked",
+            "dir": ""
+        },
+        "masonry": {
+            "npm": "masonry-layout",
+            "dir": "dist/"
+        },
+        "MaterialDesign-Webfont": {
+            "npm": "@mdi/font",
+            "dir": ""
+        },
+        "mixitup": {
+            "npm": "mixitup",
+            "dir": "dist/"
+        },
+        "moment.js": {
+            "npm": "moment",
+            "dir": "min/"
+        },
+        "noUiSlider": {
+            "npm": "nouislider",
+            "dir": "dist/"
+        },
+        "normalize": {
+            "npm": "normalize.css",
+            "dir": ""
+        },
+        "OwlCarousel2": {
+            "npm": "owl.carousel",
+            "dir": "dist/"
+        },
+        "particles.js": {
+            "npm": "particles.js",
+            "dir": ""
+        },
+        "plyr": {
+            "npm": "plyr",
+            "dir": "dist/"
+        },
+        "popper.js": {
+            "npm": "@popperjs/core",
+            "dir": "dist/",
+            "legacy": {
+                "2.0.0": "popper.js"
+            }
+        },
+        "prism": {
+            "npm": "prismjs",
+            "dir": ""
+        },
+        "react": {
+            "npm": "react",
+            "dir": ""
+        },
+        "react-dom": {
+            "npm": "react-dom",
+            "dir": ""
+        },
+        "ScrollMagic": {
+            "npm": "scrollmagic",
+            "dir": "scrollmagic/minified/"
+        },
+        "select2": {
+            "npm": "select2",
+            "dir": "dist/"
+        },
+        "simple-line-icons": {
+            "npm": "simple-line-icons",
+            "dir": ""
+        },
+        "slick-carousel": {
+            "npm": "slick-carousel",
+            "dir": "slick/"
+        },
+        "Sortable": {
+            "npm": "sortablejs",
+            "dir": ""
+        },
+        "Swiper": {
+            "npm": "swiper",
+            "dir": ""
+        },
+        "tippy.js": {
+            "npm": "tippy.js",
+            "dir": "dist/"
+        },
+        "tiny-slider": {
+            "npm": "tiny-slider",
+            "dir": "dist/"
+        },
+        "toastr.js": {
+            "npm": "toastr",
+            "dir": "build/"
+        },
+        "twitter-bootstrap": {
+            "npm": "bootstrap",
+            "dir": "dist/"
+        },
+        "typed.js": {
+            "npm": "typed.js",
+            "dir": "dist/"
+        },
+        "vanilla-lazyload": {
+            "npm": "vanilla-lazyload",
+            "dir": "dist/"
+        },
+        "video.js": {
+            "npm": "video.js",
+            "dir": "dist/"
+        },
+        "vue": {
+            "npm": "vue",
+            "dir": "dist/"
+        },
+        "waypoints": {
+            "npm": "waypoints",
+            "dir": "lib/"
+        },
+        "webfont": {
+            "npm": "webfontloader",
+            "dir": ""
+        }
+    }
+}

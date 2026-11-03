@@ -1,0 +1,2020 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rafoo 1.0.0\n"
+"Report-Msgid-Bugs-To: https://rafoo.ir\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: rafoo\n"
+"Language: fa_IR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/Admin/AdminBar.php:18 src/Admin/Strings.php:18
+msgid "Rafoo: outage mode"
+msgstr "رفو: حالت قطعی"
+
+#: src/Admin/AdminBar.php:20
+msgid "The international internet is down. Rafoo is serving local copies."
+msgstr "اینترنت بین‌الملل قطع است. رفو نسخه‌های محلی را ارائه می‌کند."
+
+#: src/Admin/Page.php:21 src/Admin/Page.php:22 src/Admin/Page.php:40 src/Admin/Strings.php:13
+msgid "Rafoo"
+msgstr "رفو"
+
+#: src/Admin/Page.php:32 src/Admin/Strings.php:23
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: src/Admin/Page.php:40 src/Admin/Strings.php:76
+msgid "Loading…"
+msgstr "در حال بارگذاری…"
+
+#: src/Admin/Page.php:41
+msgid "The Rafoo dashboard needs JavaScript."
+msgstr "پیشخوان رفو به جاوااسکریپت نیاز دارد."
+
+#: src/Admin/Rest.php:374
+msgid "You are not allowed to change this."
+msgstr "اجازه تغییر این مورد را ندارید."
+
+#: src/Admin/Rest.php:377
+msgid "The previous version could not be put back. The files were left as they were."
+msgstr "نسخه قبلی برگردانده نشد. فایل‌ها همان‌طور که بودند ماندند."
+
+#: src/Admin/Rest.php:427
+msgid "This message is no longer waiting."
+msgstr "این پیام دیگر در انتظار نیست."
+
+#: src/Admin/Rest.php:435
+msgid "Enter a valid mail server address, for example mail.example.ir."
+msgstr "نشانی معتبر سرور ایمیل وارد کنید، مثلاً mail.example.ir."
+
+#: src/Admin/Rest.php:443
+msgid "Save a mail server first."
+msgstr "اول یک سرور ایمیل ذخیره کنید."
+
+#: src/Admin/Rest.php:460
+msgid "Please write between 5 and 2000 characters."
+msgstr "لطفاً بین ۵ تا ۲۰۰۰ نویسه بنویسید."
+
+#: src/Admin/Rest.php:464
+msgid "Please wait a minute before sending another message."
+msgstr "لطفاً یک دقیقه صبر کنید و بعد پیام دیگری بفرستید."
+
+#: src/Admin/Rest.php:467
+msgid "rafoo.ir could not be reached. Please try again later."
+msgstr "ارتباط با rafoo.ir برقرار نشد. لطفاً بعداً دوباره تلاش کنید."
+
+#: src/Admin/Rest.php:493
+msgid "This file is no longer in the list."
+msgstr "این فایل دیگر در فهرست نیست."
+
+#: src/Admin/Strings.php:14
+msgid "Offline-ready assets"
+msgstr "فایل‌های آماده قطعی"
+
+#: src/Admin/Strings.php:15
+msgid "Rafoo Complete"
+msgstr "رفو کامل"
+
+#: src/Admin/Strings.php:16
+msgid "Online"
+msgstr "آنلاین"
+
+#: src/Admin/Strings.php:17
+msgid "Outage mode"
+msgstr "حالت قطعی"
+
+#: src/Admin/Strings.php:20
+msgid "Overview"
+msgstr "نمای کلی"
+
+#: src/Admin/Strings.php:21 src/Admin/Strings.php:129
+msgid "Files"
+msgstr "فایل‌ها"
+
+#: src/Admin/Strings.php:22
+msgid "Connection"
+msgstr "اتصال"
+
+#: src/Admin/Strings.php:24
+msgid "Feedback"
+msgstr "پیشنهاد"
+
+#: src/Admin/Strings.php:26
+msgid "The international internet is available"
+msgstr "اینترنت بین‌الملل در دسترس است"
+
+#: src/Admin/Strings.php:27
+msgid "Libraries and fonts the site has copied are served from your own server. Everything else works as usual."
+msgstr "کتابخانه‌ها و فونت‌هایی که رفو نسخه‌برداری کرده از سرور خود سایت ارائه می‌شوند. بقیه بخش‌ها مثل همیشه کار می‌کنند."
+
+#: src/Admin/Strings.php:28
+msgid "The international internet is down"
+msgstr "اینترنت بین‌الملل قطع است"
+
+#: src/Admin/Strings.php:29
+msgid "Rafoo serves copied files locally, skips requests to unreachable servers and replaces services that cannot load."
+msgstr "رفو فایل‌های نسخه‌برداری‌شده را از سرور سایت ارائه می‌کند، درخواست به سرورهایی را که در دسترس نیستند رد می‌کند و سرویس‌هایی را که بار نمی‌شوند جایگزین می‌کند."
+
+#. translators: %s: relative time, for example "2 minutes ago"
+#: src/Admin/Strings.php:31
+#, php-format
+msgid "Last check: %s"
+msgstr "آخرین بررسی: %s"
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:33
+#, php-format
+msgid "down since %s"
+msgstr "قطع از %s"
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:35
+#, php-format
+msgid "available since %s"
+msgstr "وصل از %s"
+
+#: src/Admin/Strings.php:36
+msgid "Check now"
+msgstr "بررسی الان"
+
+#: src/Admin/Strings.php:37
+msgid "never"
+msgstr "هرگز"
+
+#: src/Admin/Strings.php:39
+msgid "Mode"
+msgstr "حالت"
+
+#: src/Admin/Strings.php:40
+msgid "Automatic switches by itself. Choose a fixed mode only to test or when detection is wrong."
+msgstr "حالت خودکار خودش جابه‌جا می‌شود. حالت ثابت را فقط برای آزمایش یا وقتی تشخیص اشتباه است انتخاب کنید."
+
+#: src/Admin/Strings.php:41
+msgid "Automatic"
+msgstr "خودکار"
+
+#: src/Admin/Strings.php:42
+msgid "Always outage"
+msgstr "همیشه قطعی"
+
+#: src/Admin/Strings.php:43
+msgid "Always online"
+msgstr "همیشه آنلاین"
+
+#: src/Admin/Strings.php:44
+msgid "Outage mode is fixed by hand. Rafoo will not switch back by itself."
+msgstr "حالت قطعی دستی تنظیم شده است. رفو خودش به حالت عادی برنمی‌گردد."
+
+#: src/Admin/Strings.php:45
+msgid "Online mode is fixed by hand. Rafoo will not switch to outage mode by itself."
+msgstr "حالت آنلاین دستی تنظیم شده است. رفو خودش به حالت قطعی نمی‌رود."
+
+#: src/Admin/Strings.php:46
+msgid "The last check could not reach any server, inside or outside Iran. The problem is probably the network of your own server, so the mode was left unchanged."
+msgstr "در آخرین بررسی هیچ سروری، داخل یا خارج ایران، در دسترس نبود. احتمالاً مشکل از شبکه خود سرور است، پس حالت تغییر نکرد."
+
+#: src/Admin/Strings.php:47
+msgid "Background checks are running late. WordPress runs them when the site has visitors; a real cron job on the server keeps them on time."
+msgstr "بررسی‌های پس‌زمینه دیر اجرا می‌شوند. وردپرس آن‌ها را با آمدن بازدیدکننده اجرا می‌کند؛ یک کرون‌جاب واقعی روی سرور آن‌ها را سر وقت نگه می‌دارد."
+
+#: src/Admin/Strings.php:48
+msgid "WP-Cron is turned off on this site and no check has run recently. Add a server cron job that calls wp-cron.php every minute."
+msgstr "WP-Cron در این سایت خاموش است و اخیراً بررسی‌ای اجرا نشده است. یک کرون‌جاب روی سرور بسازید که هر دقیقه wp-cron.php را صدا بزند."
+
+#: src/Admin/Strings.php:50
+msgid "Local files"
+msgstr "فایل‌های محلی"
+
+#. translators: %d: number of files
+#: src/Admin/Strings.php:52
+#, php-format
+msgid "%d not verified yet"
+msgstr "%d مورد هنوز بررسی نشده"
+
+#: src/Admin/Strings.php:53 src/Admin/Strings.php:84
+msgid "Waiting"
+msgstr "در انتظار"
+
+#: src/Admin/Strings.php:54 src/Admin/Strings.php:85
+msgid "Not available"
+msgstr "در دسترس نیست"
+
+#: src/Admin/Strings.php:55
+msgid "Disk space"
+msgstr "فضای دیسک"
+
+#: src/Admin/Strings.php:56
+msgid "Time in outage mode"
+msgstr "مدت حالت قطعی"
+
+#: src/Admin/Strings.php:58
+msgid "Recent events"
+msgstr "رویدادهای اخیر"
+
+#: src/Admin/Strings.php:59
+msgid "Nothing has happened yet."
+msgstr "هنوز رویدادی ثبت نشده است."
+
+#: src/Admin/Strings.php:60
+msgid "Rafoo was activated"
+msgstr "رفو فعال شد"
+
+#: src/Admin/Strings.php:61
+msgid "Mode changed by hand"
+msgstr "حالت به‌صورت دستی تغییر کرد"
+
+#: src/Admin/Strings.php:62
+msgid "Mode set to automatic"
+msgstr "حالت روی خودکار تنظیم شد"
+
+#: src/Admin/Strings.php:63
+msgid "Outage mode fixed by hand"
+msgstr "حالت قطعی دستی ثابت شد"
+
+#: src/Admin/Strings.php:64
+msgid "Online mode fixed by hand"
+msgstr "حالت آنلاین دستی ثابت شد"
+
+#: src/Admin/Strings.php:65
+msgid "The international internet went down"
+msgstr "اینترنت بین‌الملل قطع شد"
+
+#: src/Admin/Strings.php:66
+msgid "The international internet came back"
+msgstr "اینترنت بین‌الملل وصل شد"
+
+#: src/Admin/Strings.php:67
+msgid "The server could not reach any network"
+msgstr "سرور به هیچ شبکه‌ای دسترسی نداشت"
+
+#: src/Admin/Strings.php:69
+msgid "Local copies"
+msgstr "نسخه‌های محلی"
+
+#: src/Admin/Strings.php:70
+msgid "Libraries and fonts the site loads from public CDNs. Rafoo copies them from the domestic mirror or the original source, checks them and serves them from your server."
+msgstr "کتابخانه‌ها و فونت‌هایی که سایت از CDNهای عمومی بار می‌کند. رفو آن‌ها را از مخزن داخلی یا منبع اصلی می‌گیرد، بررسی می‌کند و از سرور خود سایت ارائه می‌دهد."
+
+#: src/Admin/Strings.php:71
+msgid "No files from public CDNs have been found yet. Scan the site, or visit a few pages."
+msgstr "هنوز فایلی از CDNهای عمومی پیدا نشده است. سایت را بررسی کنید یا چند صفحه را باز کنید."
+
+#: src/Admin/Strings.php:72
+msgid "Scan site"
+msgstr "بررسی سایت"
+
+#: src/Admin/Strings.php:73
+msgid "Scan finished. New files will be downloaded in the background."
+msgstr "بررسی تمام شد. فایل‌های تازه در پس‌زمینه دانلود می‌شوند."
+
+#: src/Admin/Strings.php:74
+msgid "Download now"
+msgstr "دانلود الان"
+
+#: src/Admin/Strings.php:75
+msgid "Download finished."
+msgstr "دانلود تمام شد."
+
+#: src/Admin/Strings.php:77
+msgid "File"
+msgstr "فایل"
+
+#: src/Admin/Strings.php:78
+msgid "Status"
+msgstr "وضعیت"
+
+#: src/Admin/Strings.php:79
+msgid "Checked by"
+msgstr "روش بررسی"
+
+#: src/Admin/Strings.php:80
+msgid "Size"
+msgstr "حجم"
+
+#: src/Admin/Strings.php:81
+msgid "Actions"
+msgstr "عملیات"
+
+#: src/Admin/Strings.php:82
+msgid "Local"
+msgstr "محلی"
+
+#: src/Admin/Strings.php:83
+msgid "Local, only during outages"
+msgstr "محلی، فقط در قطعی"
+
+#: src/Admin/Strings.php:86
+msgid "Excluded"
+msgstr "کنار گذاشته"
+
+#: src/Admin/Strings.php:87
+msgid "Integrity hash"
+msgstr "هش integrity"
+
+#: src/Admin/Strings.php:88
+msgid "Original file"
+msgstr "فایل اصلی"
+
+#: src/Admin/Strings.php:89
+msgid "Signed mirror index"
+msgstr "نمایه امضاشده مخزن"
+
+#: src/Admin/Strings.php:90
+msgid "from the mirror"
+msgstr "از مخزن"
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:92
+#, php-format
+msgid "%s files"
+msgstr "%s فایل"
+
+#: src/Admin/Strings.php:93
+msgid "Google Fonts"
+msgstr "Google Fonts"
+
+#: src/Admin/Strings.php:94
+msgid "Retry"
+msgstr "تلاش دوباره"
+
+#: src/Admin/Strings.php:95
+msgid "Exclude"
+msgstr "کنار گذاشتن"
+
+#: src/Admin/Strings.php:96
+msgid "Include"
+msgstr "برگرداندن"
+
+#: src/Admin/Strings.php:97 src/Admin/Strings.php:471
+msgid "Remove"
+msgstr "حذف"
+
+#: src/Admin/Strings.php:98
+msgid "Not found on the mirror or the original source."
+msgstr "در مخزن و منبع اصلی پیدا نشد."
+
+#: src/Admin/Strings.php:99
+msgid "Not on the mirror. It will be copied when the international internet is back."
+msgstr "در مخزن نیست. با وصل شدن اینترنت بین‌الملل نسخه‌برداری می‌شود."
+
+#: src/Admin/Strings.php:100
+msgid "The downloaded file did not match its hash and was rejected."
+msgstr "فایل دانلودشده با هش خود برابر نبود و رد شد."
+
+#: src/Admin/Strings.php:101
+msgid "The file could not be saved. Check that the uploads folder is writable."
+msgstr "فایل ذخیره نشد. بررسی کنید پوشه uploads قابل نوشتن باشد."
+
+#: src/Admin/Strings.php:102
+msgid "The server did not serve the copied file correctly."
+msgstr "سرور فایل نسخه‌برداری‌شده را درست ارائه نکرد."
+
+#: src/Admin/Strings.php:103
+msgid "The local copy was changed or deleted and will be downloaded again."
+msgstr "نسخه محلی تغییر کرده یا پاک شده و دوباره دانلود می‌شود."
+
+#: src/Admin/Strings.php:104
+msgid "The font files could not be downloaded."
+msgstr "فایل‌های فونت دانلود نشدند."
+
+#: src/Admin/Strings.php:105
+msgid "Google Fonts did not return a font stylesheet."
+msgstr "Google Fonts فایل استایل فونت برنگرداند."
+
+#: src/Admin/Strings.php:106
+msgid "Download failed. Rafoo will try again later."
+msgstr "دانلود انجام نشد. رفو بعداً دوباره تلاش می‌کند."
+
+#: src/Admin/Strings.php:108
+msgid "Connection checks"
+msgstr "بررسی اتصال"
+
+#: src/Admin/Strings.php:109
+msgid "Every minute Rafoo contacts a few servers outside and inside Iran. Three failed rounds in a row switch on outage mode; three successful rounds switch it off."
+msgstr "رفو هر دقیقه با چند سرور خارج و داخل ایران تماس می‌گیرد. سه دور ناموفق پیاپی حالت قطعی را روشن و سه دور موفق آن را خاموش می‌کند."
+
+#: src/Admin/Strings.php:110 src/Admin/Strings.php:438
+msgid "Outside Iran"
+msgstr "خارج ایران"
+
+#: src/Admin/Strings.php:111
+msgid "Inside Iran"
+msgstr "داخل ایران"
+
+#: src/Admin/Strings.php:112
+msgid "No check has run yet."
+msgstr "هنوز بررسی‌ای انجام نشده است."
+
+#: src/Admin/Strings.php:113
+msgid "Reachable"
+msgstr "در دسترس"
+
+#: src/Admin/Strings.php:114
+msgid "Unreachable"
+msgstr "در دسترس نیست"
+
+#: src/Admin/Strings.php:115
+msgid "rafoo.ir signal"
+msgstr "پیام rafoo.ir"
+
+#: src/Admin/Strings.php:116
+msgid "A signed message from rafoo.ir lets the switch happen after one round instead of three. Your own checks always decide."
+msgstr "پیام امضاشده rafoo.ir باعث می‌شود جابه‌جایی به‌جای سه دور بعد از یک دور انجام شود. تصمیم نهایی همیشه با بررسی‌های خود سایت است."
+
+#: src/Admin/Strings.php:117
+msgid "The signal is not active in this version."
+msgstr "این پیام در این نسخه فعال نیست."
+
+#: src/Admin/Strings.php:118
+msgid "No recent signal was received."
+msgstr "پیام تازه‌ای دریافت نشده است."
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:120
+#, php-format
+msgid "rafoo.ir reported an outage at %s."
+msgstr "rafoo.ir در %s قطعی را گزارش کرد."
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:122
+#, php-format
+msgid "rafoo.ir reported normal access at %s."
+msgstr "rafoo.ir در %s دسترسی عادی را گزارش کرد."
+
+#: src/Admin/Strings.php:123
+msgid "Paused servers"
+msgstr "سرورهای متوقف"
+
+#: src/Admin/Strings.php:124
+msgid "A server that fails twice within two minutes is skipped for three minutes. During an outage, a server outside Iran that does not answer within three seconds is skipped for half an hour. Pages and the dashboard do not wait for them."
+msgstr "سروری که در دو دقیقه دو بار پاسخ ندهد سه دقیقه کنار گذاشته می‌شود. در قطعی، سرور خارج از ایران که در سه ثانیه پاسخ ندهد نیم ساعت کنار گذاشته می‌شود. صفحه‌ها و پیشخوان منتظر آن‌ها نمی‌مانند."
+
+#: src/Admin/Strings.php:125
+msgid "No server is paused."
+msgstr "هیچ سروری متوقف نیست."
+
+#. translators: %s: relative time, for example "in 2 minutes"
+#: src/Admin/Strings.php:127
+#, php-format
+msgid "tried again %s"
+msgstr "تلاش دوباره %s"
+
+#: src/Admin/Strings.php:130
+msgid "Serve local copies"
+msgstr "ارائه نسخه‌های محلی"
+
+#: src/Admin/Strings.php:131 src/Admin/Strings.php:147
+msgid "Always"
+msgstr "همیشه"
+
+#: src/Admin/Strings.php:132
+msgid "Recommended. Local files load faster than public CDNs, even when the internet works."
+msgstr "پیشنهادی. فایل محلی حتی وقتی اینترنت وصل است سریع‌تر از CDN عمومی بار می‌شود."
+
+#: src/Admin/Strings.php:133 src/Admin/Strings.php:195
+msgid "Only during outages"
+msgstr "فقط در قطعی"
+
+#: src/Admin/Strings.php:134
+msgid "Pages use the original addresses until the international internet goes down."
+msgstr "صفحه‌ها تا قطع شدن اینترنت بین‌الملل از نشانی‌های اصلی استفاده می‌کنند."
+
+#: src/Admin/Strings.php:135 src/Admin/Strings.php:148
+msgid "Off"
+msgstr "خاموش"
+
+#: src/Admin/Strings.php:136
+msgid "Nothing is copied or replaced."
+msgstr "هیچ فایلی نسخه‌برداری یا جایگزین نمی‌شود."
+
+#: src/Admin/Strings.php:137
+msgid "Read the page HTML too"
+msgstr "خواندن HTML صفحه"
+
+#: src/Admin/Strings.php:138
+msgid "Also replaces addresses that themes and page builders write directly into the page. Pages without such addresses are not touched."
+msgstr "نشانی‌هایی را هم که قالب‌ها و صفحه‌سازها مستقیم در صفحه می‌نویسند جایگزین می‌کند. به صفحه‌هایی که چنین نشانی‌ای ندارند دست نمی‌زند."
+
+#: src/Admin/Strings.php:139
+msgid "Local Google Fonts"
+msgstr "Google Fonts محلی"
+
+#: src/Admin/Strings.php:140
+msgid "Copies Google Fonts to your server while the internet works. During an outage, fonts that were not copied are skipped so pages do not wait for them."
+msgstr "تا وقتی اینترنت وصل است Google Fonts را روی سرور شما نسخه‌برداری می‌کند. در قطعی، فونت‌هایی که نسخه‌برداری نشده‌اند کنار گذاشته می‌شوند تا صفحه منتظرشان نماند."
+
+#: src/Admin/Strings.php:142
+msgid "Outside services"
+msgstr "سرویس‌های خارجی"
+
+#: src/Admin/Strings.php:143
+msgid "Local avatars instead of Gravatar"
+msgstr "آواتار محلی به‌جای Gravatar"
+
+#: src/Admin/Strings.php:144
+msgid "Shows letter avatars only while Gravatar is unreachable."
+msgstr "فقط وقتی Gravatar در دسترس نیست آواتار حرفی نشان می‌دهد."
+
+#: src/Admin/Strings.php:145
+msgid "Never loads Gravatar. Faster and more private."
+msgstr "هیچ‌وقت Gravatar را بار نمی‌کند. سریع‌تر و با حریم خصوصی بیشتر."
+
+#: src/Admin/Strings.php:146 src/Admin/Strings.php:212
+msgid "During outages"
+msgstr "در قطعی"
+
+#: src/Admin/Strings.php:149
+msgid "Placeholders for videos and maps"
+msgstr "جایگزین ویدیو و نقشه"
+
+#: src/Admin/Strings.php:150
+msgid "During an outage, YouTube, Vimeo and Google Maps frames are replaced with a short note and a link."
+msgstr "در قطعی، قاب‌های یوتیوب، ویمئو و نقشه گوگل با یک توضیح کوتاه و پیوند جایگزین می‌شوند."
+
+#: src/Admin/Strings.php:152 src/Admin/Strings.php:422
+msgid "Outside requests"
+msgstr "درخواست‌های خارجی"
+
+#: src/Admin/Strings.php:153
+msgid "Always allowed servers"
+msgstr "سرورهای همیشه مجاز"
+
+#: src/Admin/Strings.php:154
+msgid "During an outage Rafoo skips requests to servers outside Iran. Servers listed here are still contacted. One per line; *.example.com covers subdomains."
+msgstr "رفو در قطعی درخواست به سرورهای خارج ایران را رد می‌کند. سرورهای این فهرست همچنان تماس گرفته می‌شوند. هر خط یک سرور؛ ‎*.example.com زیردامنه‌ها را هم شامل می‌شود."
+
+#: src/Admin/Strings.php:156 src/Admin/Strings.php:218
+msgid "Privacy"
+msgstr "حریم خصوصی"
+
+#: src/Admin/Strings.php:157
+msgid "Send anonymous usage reports"
+msgstr "ارسال گزارش ناشناس استفاده"
+
+#: src/Admin/Strings.php:158
+msgid "Once a week: a random site ID, versions of WordPress, PHP and Rafoo, installed plugins and themes, and the CDN files the mirror did not have. Never the site address or any personal data. It helps the mirror cover more files."
+msgstr "هفته‌ای یک بار: شناسه تصادفی سایت، نسخه وردپرس، PHP و رفو، افزونه‌ها و قالب‌های نصب‌شده و فایل‌های CDN که در مخزن نبودند. هرگز نشانی سایت یا داده شخصی فرستاده نمی‌شود. این گزارش به پوشش بیشتر مخزن کمک می‌کند."
+
+#: src/Admin/Strings.php:159
+msgid "Suggested text for your privacy policy"
+msgstr "متن پیشنهادی برای سیاست حریم خصوصی"
+
+#: src/Admin/Strings.php:160
+msgid "Settings saved."
+msgstr "تنظیمات ذخیره شد."
+
+#: src/Admin/Strings.php:161 src/Admin/Strings.php:214
+msgid "Updates and safety"
+msgstr "به‌روزرسانی و ایمنی"
+
+#: src/Admin/Strings.php:162
+msgid "WordPress's own outside files"
+msgstr "فایل‌های خارجی خود وردپرس"
+
+#: src/Admin/Strings.php:163
+msgid "During an outage, emoji images, the Google Fonts list of the font library and remote block patterns stop loading from wordpress.org, so the editor and pages do not wait for them."
+msgstr "در قطعی، تصویر ایموجی‌ها، فهرست Google Fonts کتابخانه فونت و الگوهای آماده بلوک دیگر از wordpress.org بار نمی‌شوند تا ویرایشگر و صفحه‌ها منتظرشان نمانند."
+
+#: src/Admin/Strings.php:164
+msgid "Built-in captcha"
+msgstr "کپچای داخلی"
+
+#: src/Admin/Strings.php:165
+msgid "Protects forms, login, comments and checkout with a silent check in the visitor's browser. No cookies and no outside service. It takes the place of reCAPTCHA, hCaptcha and Turnstile."
+msgstr "فرم‌ها، ورود، دیدگاه‌ها و پرداخت را با یک بررسی بی‌صدا در مرورگر بازدیدکننده محافظت می‌کند. بدون کوکی و بدون سرویس خارجی. جای reCAPTCHA، hCaptcha و Turnstile را می‌گیرد."
+
+#: src/Admin/Strings.php:166
+msgid "Only while the international internet is down, when Google's captcha cannot load."
+msgstr "فقط وقتی اینترنت بین‌الملل قطع است و کپچای گوگل بار نمی‌شود."
+
+#: src/Admin/Strings.php:167
+msgid "Always use Rafoo's captcha. Faster and more private."
+msgstr "همیشه کپچای رفو. سریع‌تر و با حریم خصوصی بیشتر."
+
+#: src/Admin/Strings.php:168
+msgid "Remove analytics scripts"
+msgstr "حذف اسکریپت‌های تحلیل"
+
+#: src/Admin/Strings.php:169
+msgid "Google Analytics, Tag Manager, Hotjar, Clarity, the Facebook pixel and similar scripts."
+msgstr "Google Analytics، Tag Manager، Hotjar، Clarity، پیکسل فیسبوک و اسکریپت‌های مشابه."
+
+#: src/Admin/Strings.php:170
+msgid "Only during an outage, when they cannot load and slow pages down."
+msgstr "فقط در قطعی، وقتی بار نمی‌شوند و صفحه را کند می‌کنند."
+
+#: src/Admin/Strings.php:171
+msgid "Never load them."
+msgstr "هیچ‌وقت بار نشوند."
+
+#: src/Admin/Strings.php:172
+msgid "Hide sign-in with Google during outages"
+msgstr "پنهان کردن ورود با گوگل در قطعی"
+
+#: src/Admin/Strings.php:173
+msgid "Buttons for signing in with Google, Facebook and similar services are hidden while they cannot work, so visitors use the normal form."
+msgstr "دکمه‌های ورود با گوگل، فیسبوک و سرویس‌های مشابه تا وقتی کار نمی‌کنند پنهان می‌شوند تا بازدیدکننده از فرم عادی استفاده کند."
+
+#: src/Admin/Strings.php:174
+msgid "Keep emails that could not be sent"
+msgstr "نگه داشتن ایمیل‌های ارسال‌نشده"
+
+#: src/Admin/Strings.php:175
+msgid "If an email fails because the mail server cannot be reached, it is kept and sent again later instead of being lost."
+msgstr "اگر ایمیلی به‌خاطر در دسترس نبودن سرور ایمیل فرستاده نشود، به‌جای گم شدن نگه داشته و بعداً دوباره فرستاده می‌شود."
+
+#: src/Admin/Strings.php:176
+msgid "Log outside requests"
+msgstr "ثبت درخواست‌های خارجی"
+
+#: src/Admin/Strings.php:177
+msgid "Shows which plugin connects to which server, and which requests Rafoo skipped. Kept small and cleared automatically."
+msgstr "نشان می‌دهد کدام افزونه به کدام سرور وصل می‌شود و رفو کدام درخواست‌ها را رد کرده است. کوچک نگه داشته و خودکار پاک می‌شود."
+
+#: src/Admin/Strings.php:178
+msgid "Safe updates"
+msgstr "به‌روزرسانی امن"
+
+#: src/Admin/Strings.php:179
+msgid "Keeps the previous version before a plugin or theme is updated, checks the site afterwards and goes back by itself if the update broke it."
+msgstr "پیش از به‌روزرسانی افزونه یا قالب نسخه قبلی را نگه می‌دارد، بعد از آن سایت را بررسی می‌کند و اگر خراب شده بود خودش برمی‌گردد."
+
+#: src/Admin/Strings.php:180
+msgid "Automatic backups"
+msgstr "پشتیبان خودکار"
+
+#: src/Admin/Strings.php:181
+msgid "A full copy of the files and database on a schedule, on this host or on another server."
+msgstr "نسخه کامل فایل‌ها و پایگاه داده طبق زمان‌بندی، روی همین هاست یا سرور دیگر."
+
+#. translators: %s: name of the ready-made setup
+#: src/Admin/Strings.php:183
+#, php-format
+msgid "Current setup: %s"
+msgstr "تنظیم فعلی: %s"
+
+#: src/Admin/Strings.php:184
+msgid "Current setup: your own choices"
+msgstr "تنظیم فعلی: انتخاب‌های شما"
+
+#: src/Admin/Strings.php:185
+msgid "Run setup again"
+msgstr "اجرای دوباره راه‌اندازی"
+
+#: src/Admin/Strings.php:186
+msgid "Rafoo is running with its default settings. Setup takes a minute."
+msgstr "رفو با تنظیمات پیش‌فرض کار می‌کند. راه‌اندازی یک دقیقه طول می‌کشد."
+
+#: src/Admin/Strings.php:187
+msgid "Start setup"
+msgstr "شروع راه‌اندازی"
+
+#: src/Admin/Strings.php:188
+msgid "Set up Rafoo"
+msgstr "راه‌اندازی رفو"
+
+#: src/Admin/Strings.php:189
+msgid "Choose a ready-made setup, or go through the steps and decide each part yourself. Everything can be changed later."
+msgstr "یک تنظیم آماده انتخاب کنید یا گام‌به‌گام هر بخش را خودتان تعیین کنید. همه چیز بعداً هم قابل تغییر است."
+
+#: src/Admin/Strings.php:190
+msgid "Recommended"
+msgstr "پیشنهادی"
+
+#: src/Admin/Strings.php:191
+msgid "Best for most sites."
+msgstr "مناسب بیشتر سایت‌ها."
+
+#: src/Admin/Strings.php:192 src/Admin/Strings.php:203
+msgid "Local copies of libraries and fonts, always"
+msgstr "نسخه محلی کتابخانه‌ها و فونت‌ها، همیشه"
+
+#: src/Admin/Strings.php:193
+msgid "Outside services replaced only during outages"
+msgstr "جایگزینی سرویس‌های خارجی فقط در قطعی"
+
+#: src/Admin/Strings.php:194 src/Admin/Strings.php:204
+msgid "Safe updates and a daily backup"
+msgstr "به‌روزرسانی امن و پشتیبان روزانه"
+
+#: src/Admin/Strings.php:196
+msgid "The site works as before until the internet goes down."
+msgstr "تا قطع شدن اینترنت سایت مثل قبل کار می‌کند."
+
+#: src/Admin/Strings.php:197
+msgid "Nothing changes while the internet works"
+msgstr "تا اینترنت وصل است چیزی تغییر نمی‌کند"
+
+#: src/Admin/Strings.php:198
+msgid "Local copies and replacements during outages"
+msgstr "نسخه‌های محلی و جایگزین‌ها در قطعی"
+
+#: src/Admin/Strings.php:199
+msgid "Safe updates, no automatic backup"
+msgstr "به‌روزرسانی امن، بدون پشتیبان خودکار"
+
+#: src/Admin/Strings.php:200
+msgid "Maximum speed and privacy"
+msgstr "بیشترین سرعت و حریم خصوصی"
+
+#: src/Admin/Strings.php:201
+msgid "Uses as few outside services as possible."
+msgstr "تا جای ممکن از سرویس‌های خارجی استفاده نمی‌کند."
+
+#: src/Admin/Strings.php:202
+msgid "Local avatars and captcha, always"
+msgstr "آواتار و کپچای محلی، همیشه"
+
+#: src/Admin/Strings.php:205
+msgid "Suggested"
+msgstr "پیشنهاد ما"
+
+#: src/Admin/Strings.php:206
+msgid "Use this setup"
+msgstr "استفاده از این تنظیم"
+
+#: src/Admin/Strings.php:207
+msgid "A weekly anonymous report helps the mirror cover more files. No site address or personal data."
+msgstr "گزارش ناشناس هفتگی به پوشش بیشتر مخزن کمک می‌کند. بدون نشانی سایت و داده شخصی."
+
+#: src/Admin/Strings.php:208
+msgid "Later"
+msgstr "بعداً"
+
+#: src/Admin/Strings.php:209
+msgid "Set up step by step"
+msgstr "راه‌اندازی گام‌به‌گام"
+
+#: src/Admin/Strings.php:210
+msgid "Files and fonts"
+msgstr "فایل‌ها و فونت‌ها"
+
+#: src/Admin/Strings.php:211
+msgid "Libraries and fonts the site loads from public networks."
+msgstr "کتابخانه‌ها و فونت‌هایی که سایت از شبکه‌های عمومی بار می‌کند."
+
+#: src/Admin/Strings.php:213
+msgid "What should happen to outside services when the international internet is down."
+msgstr "وقتی اینترنت بین‌الملل قطع است با سرویس‌های خارجی چه شود."
+
+#: src/Admin/Strings.php:215
+msgid "Protection against updates that break the site."
+msgstr "محافظت در برابر به‌روزرسانی‌هایی که سایت را خراب می‌کنند."
+
+#: src/Admin/Strings.php:216 src/Admin/Strings.php:260
+msgid "Backup"
+msgstr "پشتیبان"
+
+#: src/Admin/Strings.php:217
+msgid "Regular copies of the whole site."
+msgstr "نسخه‌های منظم از کل سایت."
+
+#: src/Admin/Strings.php:219
+msgid "Rafoo sends nothing unless you allow it."
+msgstr "رفو تا اجازه ندهید چیزی نمی‌فرستد."
+
+#: src/Admin/Strings.php:220
+msgid "Copies are kept on this host. Another server can be added later on the Backup tab."
+msgstr "نسخه‌ها روی همین هاست نگه داشته می‌شوند. سرور دیگر را بعداً در زبانه پشتیبان اضافه کنید."
+
+#: src/Admin/Strings.php:221
+msgid "Back"
+msgstr "قبلی"
+
+#: src/Admin/Strings.php:222
+msgid "Next"
+msgstr "بعدی"
+
+#: src/Admin/Strings.php:223
+msgid "Finish setup"
+msgstr "پایان راه‌اندازی"
+
+#: src/Admin/Strings.php:224
+msgid "Rafoo is ready"
+msgstr "رفو آماده است"
+
+#: src/Admin/Strings.php:225
+msgid "Rafoo is now scanning a few pages of the site and copying the files it finds. This happens in the background."
+msgstr "رفو اکنون چند صفحه سایت را بررسی می‌کند و فایل‌هایی را که پیدا کند نسخه‌برداری می‌کند. این کار در پس‌زمینه انجام می‌شود."
+
+#: src/Admin/Strings.php:226
+msgid "Open the dashboard"
+msgstr "رفتن به پیشخوان رفو"
+
+#: src/Admin/Strings.php:227
+msgid "Setup finished"
+msgstr "راه‌اندازی انجام شد"
+
+#: src/Admin/Strings.php:228
+msgid "Waiting emails were sent"
+msgstr "ایمیل‌های در انتظار فرستاده شدند"
+
+#: src/Admin/Strings.php:229
+msgid "Emails that waited three days were deleted"
+msgstr "ایمیل‌هایی که سه روز در انتظار ماندند حذف شدند"
+
+#. translators: 1: plugin or theme name, 2: previous version, 3: new version
+#: src/Admin/Strings.php:232
+#, php-format
+msgid "%1$s %3$s broke the site and was replaced with %2$s"
+msgstr "%1$s نسخه %3$s سایت را از کار انداخت و با نسخه %2$s جایگزین شد"
+
+#: src/Admin/Strings.php:233
+msgid "The site had a problem after an update, but going back did not fix it, so the update was kept"
+msgstr "سایت پس از یک به‌روزرسانی مشکل داشت، ولی برگشت به نسخه قبل آن را حل نکرد؛ پس به‌روزرسانی نگه داشته شد"
+
+#. translators: 1: plugin or theme name, 2: version
+#: src/Admin/Strings.php:235
+#, php-format
+msgid "%1$s was set back to %2$s by hand"
+msgstr "%1$s به‌صورت دستی به نسخه %2$s برگردانده شد"
+
+#: src/Admin/Strings.php:237 src/Admin/Strings.php:510
+msgid "Updates"
+msgstr "به‌روزرسانی"
+
+#: src/Admin/Strings.php:238
+msgid "Name"
+msgstr "نام"
+
+#: src/Admin/Strings.php:239
+msgid "Installed"
+msgstr "نصب‌شده"
+
+#: src/Admin/Strings.php:240
+msgid "Saved versions"
+msgstr "نسخه‌های نگه‌داشته"
+
+#: src/Admin/Strings.php:241
+msgid "Plugin"
+msgstr "افزونه"
+
+#: src/Admin/Strings.php:242
+msgid "Theme"
+msgstr "قالب"
+
+#: src/Admin/Strings.php:243
+msgid "Previous versions"
+msgstr "نسخه‌های قبلی"
+
+#: src/Admin/Strings.php:244
+msgid "Before a plugin or theme is updated, Rafoo keeps a copy of the version you had. If the update breaks the site, Rafoo puts the copy back by itself. You can also go back by hand."
+msgstr "رفو پیش از به‌روزرسانی هر افزونه یا قالب، نسخه‌ای از نسخه فعلی را نگه می‌دارد. اگر به‌روزرسانی سایت را از کار بیندازد، رفو خودش نسخه قبلی را برمی‌گرداند. برگشت دستی هم ممکن است."
+
+#: src/Admin/Strings.php:245
+msgid "No copy has been kept yet. One is made at the next update."
+msgstr "هنوز نسخه‌ای نگه داشته نشده است. در به‌روزرسانی بعدی ساخته می‌شود."
+
+#: src/Admin/Strings.php:246
+msgid "Safe updates are turned off in Settings, so no new copies are made."
+msgstr "به‌روزرسانی امن در تنظیمات خاموش است و نسخه تازه‌ای ساخته نمی‌شود."
+
+#: src/Admin/Strings.php:247
+msgid "This server has no ZipArchive extension, so copies cannot be made. Ask your host to enable it."
+msgstr "افزونه ZipArchive روی این سرور نیست و ساخت نسخه ممکن نیست. از میزبان هاست بخواهید آن را فعال کند."
+
+#: src/Admin/Strings.php:248
+msgid "In use"
+msgstr "در حال استفاده"
+
+#. translators: %s: version number
+#: src/Admin/Strings.php:250
+#, php-format
+msgid "Use %s"
+msgstr "استفاده از %s"
+
+#. translators: 1: plugin or theme name, 2: version number
+#: src/Admin/Strings.php:252
+#, php-format
+msgid "%1$s is now on version %2$s and the site works."
+msgstr "%1$s اکنون روی نسخه %2$s است و سایت کار می‌کند."
+
+#. translators: 1: plugin or theme name, 2: version number, 3: problem found
+#: src/Admin/Strings.php:254
+#, php-format
+msgid "%1$s is now on version %2$s, but the site still has a problem: %3$s"
+msgstr "%1$s اکنون روی نسخه %2$s است، ولی سایت هنوز مشکل دارد: %3$s"
+
+#: src/Admin/Strings.php:255
+msgid "Check the site now"
+msgstr "بررسی سایت"
+
+#: src/Admin/Strings.php:256
+msgid "The home page, the login page and the dashboard all load without errors."
+msgstr "صفحه اصلی، صفحه ورود و پیشخوان بدون خطا باز می‌شوند."
+
+#. translators: %s: problem found
+#: src/Admin/Strings.php:258
+#, php-format
+msgid "The site has a problem: %s"
+msgstr "سایت مشکل دارد: %s"
+
+#: src/Admin/Strings.php:261
+msgid "Backups"
+msgstr "پشتیبان‌ها"
+
+#: src/Admin/Strings.php:262
+msgid "A full copy of the files and database. Rafoo makes it in small steps, so it works on shared hosting too."
+msgstr "نسخه کامل فایل‌ها و پایگاه داده. رفو آن را در گام‌های کوچک می‌سازد تا روی هاست اشتراکی هم کار کند."
+
+#: src/Admin/Strings.php:263
+msgid "Back up now"
+msgstr "پشتیبان‌گیری الان"
+
+#: src/Admin/Strings.php:264
+msgid "Last backup"
+msgstr "آخرین پشتیبان"
+
+#: src/Admin/Strings.php:265
+msgid "Next backup"
+msgstr "پشتیبان بعدی"
+
+#: src/Admin/Strings.php:266
+msgid "Automatic backups are off"
+msgstr "پشتیبان خودکار خاموش است"
+
+#: src/Admin/Strings.php:267
+msgid "Free space on this host"
+msgstr "فضای خالی این هاست"
+
+#: src/Admin/Strings.php:268
+msgid "Stop"
+msgstr "توقف"
+
+#: src/Admin/Strings.php:269
+msgid "Progress"
+msgstr "پیشرفت"
+
+#: src/Admin/Strings.php:270
+msgid "Making a backup"
+msgstr "ساخت پشتیبان"
+
+#: src/Admin/Strings.php:271
+msgid "Restoring a backup"
+msgstr "بازگردانی پشتیبان"
+
+#: src/Admin/Strings.php:272
+msgid "Receiving a site"
+msgstr "دریافت سایت"
+
+#: src/Admin/Strings.php:273
+msgid "Sending this site"
+msgstr "ارسال این سایت"
+
+#: src/Admin/Strings.php:274
+msgid "Preparing the move to an empty host"
+msgstr "آماده‌سازی انتقال به هاست خالی"
+
+#: src/Admin/Strings.php:275
+msgid "copying the database"
+msgstr "نسخه‌برداری از پایگاه داده"
+
+#: src/Admin/Strings.php:276
+msgid "listing files"
+msgstr "فهرست کردن فایل‌ها"
+
+#: src/Admin/Strings.php:277
+msgid "packing files"
+msgstr "بسته‌بندی فایل‌ها"
+
+#: src/Admin/Strings.php:278
+msgid "closing the archive"
+msgstr "بستن بایگانی"
+
+#: src/Admin/Strings.php:279
+msgid "encrypting"
+msgstr "رمزگذاری"
+
+#: src/Admin/Strings.php:280 src/Admin/Strings.php:285
+msgid "checking the archive"
+msgstr "بررسی بایگانی"
+
+#: src/Admin/Strings.php:281
+msgid "sending to the server"
+msgstr "ارسال به سرور"
+
+#: src/Admin/Strings.php:282
+msgid "removing old backups"
+msgstr "حذف پشتیبان‌های قدیمی"
+
+#: src/Admin/Strings.php:283
+msgid "downloading the backup"
+msgstr "دانلود پشتیبان"
+
+#: src/Admin/Strings.php:284
+msgid "downloading from the other site"
+msgstr "دانلود از سایت دیگر"
+
+#: src/Admin/Strings.php:286
+msgid "opening the encrypted archive"
+msgstr "باز کردن بایگانی رمزگذاری‌شده"
+
+#: src/Admin/Strings.php:287
+msgid "putting files back"
+msgstr "بازگرداندن فایل‌ها"
+
+#: src/Admin/Strings.php:288
+msgid "reading the database"
+msgstr "خواندن پایگاه داده"
+
+#: src/Admin/Strings.php:289
+msgid "restoring the database"
+msgstr "بازگردانی پایگاه داده"
+
+#: src/Admin/Strings.php:290
+msgid "updating the site address"
+msgstr "به‌روز کردن نشانی سایت"
+
+#: src/Admin/Strings.php:291
+msgid "switching to the restored data"
+msgstr "جایگزینی با داده‌های بازگردانده"
+
+#: src/Admin/Strings.php:292
+msgid "checking the site"
+msgstr "بررسی سایت"
+
+#: src/Admin/Strings.php:293
+msgid "making a copy"
+msgstr "ساخت نسخه"
+
+#: src/Admin/Strings.php:294
+msgid "telling the other site"
+msgstr "خبر دادن به سایت دیگر"
+
+#: src/Admin/Strings.php:295
+msgid "waiting for the other site"
+msgstr "انتظار برای سایت دیگر"
+
+#: src/Admin/Strings.php:296
+msgid "other site:"
+msgstr "سایت دیگر:"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:298
+#, php-format
+msgid "The last task did not finish: %s"
+msgstr "آخرین کار کامل نشد: %s"
+
+#: src/Admin/Strings.php:299
+msgid "there is not enough free space on this host"
+msgstr "فضای خالی کافی روی این هاست نیست"
+
+#: src/Admin/Strings.php:300
+msgid "the archive is damaged or incomplete"
+msgstr "بایگانی خراب یا ناقص است"
+
+#: src/Admin/Strings.php:301
+msgid "the password or key is wrong"
+msgstr "رمز یا کلید نادرست است"
+
+#: src/Admin/Strings.php:302
+msgid "the server could not be reached"
+msgstr "سرور در دسترس نبود"
+
+#: src/Admin/Strings.php:303
+msgid "the restored site did not load, so the previous database was put back"
+msgstr "سایت بازگردانده باز نشد، پس پایگاه داده قبلی برگردانده شد"
+
+#: src/Admin/Strings.php:304
+msgid "the other site did not finish in time"
+msgstr "سایت دیگر کار را به‌موقع تمام نکرد"
+
+#: src/Admin/Strings.php:305
+msgid "the other site refused the copy"
+msgstr "سایت دیگر نسخه را نپذیرفت"
+
+#: src/Admin/Strings.php:306
+msgid "PHP stopped three times in the same step, usually because the memory limit is too low; ask your host to raise memory_limit"
+msgstr "PHP سه بار در همین مرحله متوقف شد، معمولاً به‌خاطر کم بودن حافظه؛ از میزبان هاست بخواهید memory_limit را بیشتر کند"
+
+#: src/Admin/Strings.php:307
+msgid "The last task stopped responding. WP-Cron may be off; keep this page open to continue it, or start again."
+msgstr "آخرین کار متوقف شده است. شاید WP-Cron خاموش باشد؛ این صفحه را باز نگه دارید تا ادامه یابد، یا دوباره شروع کنید."
+
+#: src/Admin/Strings.php:308
+msgid "The backup was restored and the site works. If you are asked to log in, use the accounts from the backup."
+msgstr "پشتیبان بازگردانی شد و سایت کار می‌کند. اگر ورود خواسته شد، از حساب‌های داخل پشتیبان استفاده کنید."
+
+#: src/Admin/Strings.php:309
+msgid "Saved backups"
+msgstr "پشتیبان‌های ذخیره‌شده"
+
+#: src/Admin/Strings.php:310
+msgid "No backup has been made yet."
+msgstr "هنوز پشتیبانی ساخته نشده است."
+
+#: src/Admin/Strings.php:311
+msgid "Date"
+msgstr "تاریخ"
+
+#: src/Admin/Strings.php:312
+msgid "Type"
+msgstr "نوع"
+
+#: src/Admin/Strings.php:313
+msgid "Kept on"
+msgstr "محل نگه‌داری"
+
+#. translators: 1: number of files, 2: number of database tables
+#: src/Admin/Strings.php:315
+#, php-format
+msgid "%1$s files, %2$s tables"
+msgstr "%1$s فایل، %2$s جدول"
+
+#: src/Admin/Strings.php:316
+msgid "Full"
+msgstr "کامل"
+
+#: src/Admin/Strings.php:317
+msgid "Changes only"
+msgstr "فقط تغییرات"
+
+#: src/Admin/Strings.php:318
+msgid "Encrypted"
+msgstr "رمزگذاری‌شده"
+
+#: src/Admin/Strings.php:319
+msgid "Not finished"
+msgstr "ناتمام"
+
+#: src/Admin/Strings.php:320
+msgid "This host"
+msgstr "همین هاست"
+
+#: src/Admin/Strings.php:321
+msgid "Download"
+msgstr "دانلود"
+
+#: src/Admin/Strings.php:322
+msgid "Restore"
+msgstr "بازگردانی"
+
+#. translators: %s: date of the backup
+#: src/Admin/Strings.php:324
+#, php-format
+msgid "The files and database of this site will be replaced with the copy from %s. Rafoo keeps the current database until the restored site is checked, and puts it back if the site does not load."
+msgstr "فایل‌ها و پایگاه داده این سایت با نسخه %s جایگزین می‌شوند. رفو پایگاه داده فعلی را تا بررسی سایت بازگردانده نگه می‌دارد و اگر سایت باز نشد آن را برمی‌گرداند."
+
+#: src/Admin/Strings.php:325
+msgid "Restore this backup"
+msgstr "بازگردانی این پشتیبان"
+
+#: src/Admin/Strings.php:326
+msgid "Backup password"
+msgstr "رمز پشتیبان"
+
+#: src/Admin/Strings.php:327
+msgid "Schedule"
+msgstr "زمان‌بندی"
+
+#: src/Admin/Strings.php:328
+msgid "Backups run in the background at a quiet hour. Rafoo keeps 7 daily, 4 weekly and 6 monthly copies."
+msgstr "پشتیبان‌گیری در پس‌زمینه و در ساعت کم‌ترافیک انجام می‌شود. رفو ۷ نسخه روزانه، ۴ هفتگی و ۶ ماهانه نگه می‌دارد."
+
+#: src/Admin/Strings.php:329
+msgid "How often"
+msgstr "هر چند وقت"
+
+#: src/Admin/Strings.php:330
+msgid "Every 6 hours"
+msgstr "هر ۶ ساعت"
+
+#: src/Admin/Strings.php:331
+msgid "Every 12 hours"
+msgstr "هر ۱۲ ساعت"
+
+#: src/Admin/Strings.php:332
+msgid "Every day"
+msgstr "هر روز"
+
+#: src/Admin/Strings.php:333
+msgid "Every 2 days"
+msgstr "هر ۲ روز"
+
+#: src/Admin/Strings.php:334
+msgid "Every week"
+msgstr "هر هفته"
+
+#: src/Admin/Strings.php:335
+msgid "At"
+msgstr "ساعت"
+
+#: src/Admin/Strings.php:336
+msgid "Copy only what changed"
+msgstr "فقط نسخه‌برداری از تغییرات"
+
+#: src/Admin/Strings.php:337
+msgid "After a full copy, the next six copy only new and changed files and the whole database. Faster and smaller. A full copy is made every week."
+msgstr "پس از یک نسخه کامل، شش نسخه بعدی فقط فایل‌های تازه و تغییرکرده و کل پایگاه داده را برمی‌دارند. سریع‌تر و کم‌حجم‌تر. هر هفته یک نسخه کامل ساخته می‌شود."
+
+#: src/Admin/Strings.php:338
+msgid "Keep copies on this host"
+msgstr "نگه داشتن نسخه‌ها روی همین هاست"
+
+#: src/Admin/Strings.php:339
+msgid "When off, copies are kept only on the servers below, which protects them if this host fails."
+msgstr "اگر خاموش باشد، نسخه‌ها فقط روی سرورهای زیر نگه داشته می‌شوند تا با از کار افتادن این هاست از بین نروند."
+
+#: src/Admin/Strings.php:340 src/Admin/Strings.php:459
+msgid "Encryption"
+msgstr "رمزگذاری"
+
+#: src/Admin/Strings.php:341
+msgid "With a password, backups are encrypted before they leave this site. Without the password they cannot be restored, so keep it somewhere safe."
+msgstr "با تعیین رمز، پشتیبان‌ها پیش از خروج از سایت رمزگذاری می‌شوند. بدون رمز بازگردانی ممکن نیست، پس آن را جای امنی نگه دارید."
+
+#: src/Admin/Strings.php:342
+msgid "New backups are encrypted."
+msgstr "پشتیبان‌های تازه رمزگذاری می‌شوند."
+
+#: src/Admin/Strings.php:343
+msgid "Backups are not encrypted."
+msgstr "پشتیبان‌ها رمزگذاری نمی‌شوند."
+
+#: src/Admin/Strings.php:344
+msgid "Password saved. The next backup will be encrypted."
+msgstr "رمز ذخیره شد. پشتیبان بعدی رمزگذاری می‌شود."
+
+#: src/Admin/Strings.php:345
+msgid "Turn off encryption"
+msgstr "خاموش کردن رمزگذاری"
+
+#: src/Admin/Strings.php:346
+msgid "Encryption turned off for new backups."
+msgstr "رمزگذاری برای پشتیبان‌های تازه خاموش شد."
+
+#: src/Admin/Strings.php:347
+msgid "This server's PHP has no sodium extension, so backups cannot be encrypted."
+msgstr "PHP این سرور افزونه sodium ندارد و رمزگذاری پشتیبان ممکن نیست."
+
+#: src/Admin/Strings.php:348
+msgid "This server has no ZipArchive extension, so backups cannot be made. Ask your host to enable it."
+msgstr "افزونه ZipArchive روی این سرور نیست و ساخت پشتیبان ممکن نیست. از میزبان هاست بخواهید آن را فعال کند."
+
+#: src/Admin/Strings.php:349 src/Backup/Job.php:33 src/Backup/Maker.php:33
+msgid "The uploads folder is not writable, so Rafoo cannot keep backups."
+msgstr "پوشه uploads قابل نوشتن نیست و رفو نمی‌تواند پشتیبان نگه دارد."
+
+#: src/Admin/Strings.php:350
+msgid "This shop is in the last step of moving. New orders are paused for a few minutes."
+msgstr "این فروشگاه در آخرین مرحله انتقال است. ثبت سفارش تازه چند دقیقه متوقف است."
+
+#: src/Admin/Strings.php:351
+msgid "Other servers"
+msgstr "سرورهای دیگر"
+
+#: src/Admin/Strings.php:352
+msgid "Copies are also sent to these servers. Enter the address and login; Rafoo finds the right connection (SFTP, FTPS or FTP) and folder by itself."
+msgstr "نسخه‌ها به این سرورها هم فرستاده می‌شوند. نشانی و اطلاعات ورود را وارد کنید؛ رفو نوع اتصال (SFTP، FTPS یا FTP) و پوشه را خودش پیدا می‌کند."
+
+#: src/Admin/Strings.php:353
+msgid "Add a server"
+msgstr "افزودن سرور"
+
+#: src/Admin/Strings.php:354 src/Admin/Strings.php:457
+msgid "Server address"
+msgstr "نشانی سرور"
+
+#: src/Admin/Strings.php:355
+msgid "More options"
+msgstr "گزینه‌های بیشتر"
+
+#: src/Admin/Strings.php:356
+msgid "Folder (optional)"
+msgstr "پوشه (اختیاری)"
+
+#: src/Admin/Strings.php:357
+msgid "Name (optional)"
+msgstr "نام (اختیاری)"
+
+#: src/Admin/Strings.php:358
+msgid "SSH private key (optional, instead of a password)"
+msgstr "کلید خصوصی SSH (اختیاری، به‌جای رمز)"
+
+#: src/Admin/Strings.php:359
+msgid "Rafoo tries SFTP, then FTPS and plain FTP, creates a folder named rafoo-backups, and checks that it can write, read and delete a test file."
+msgstr "رفو به‌ترتیب SFTP، FTPS و FTP ساده را امتحان می‌کند، پوشه‌ای به نام rafoo-backups می‌سازد و نوشتن، خواندن و حذف یک فایل آزمایشی را بررسی می‌کند."
+
+#: src/Admin/Strings.php:360
+msgid "Connect"
+msgstr "اتصال"
+
+#: src/Admin/Strings.php:361
+msgid "Finding the connection…"
+msgstr "در حال یافتن اتصال…"
+
+#. translators: 1: connection type, 2: folder, 3: speed per second
+#: src/Admin/Strings.php:363
+#, php-format
+msgid "Connected with %1$s. Copies go to %2$s at about %3$s per second."
+msgstr "با %1$s وصل شد. نسخه‌ها با سرعت حدود %3$s در ثانیه به %2$s می‌روند."
+
+#: src/Admin/Strings.php:364
+msgid "Last send failed"
+msgstr "آخرین ارسال ناموفق بود"
+
+#. translators: %s: relative time
+#: src/Admin/Strings.php:366
+#, php-format
+msgid "Sent %s"
+msgstr "ارسال: %s"
+
+#: src/Admin/Strings.php:367
+msgid "Plain FTP is not encrypted. Turn on backup encryption below."
+msgstr "FTP ساده رمزگذاری ندارد. رمزگذاری پشتیبان را در پایین روشن کنید."
+
+#. translators: %s: size per second
+#: src/Admin/Strings.php:369
+#, php-format
+msgid "About %s per second"
+msgstr "حدود %s در ثانیه"
+
+#. translators: %s: size
+#: src/Admin/Strings.php:371
+#, php-format
+msgid "%s free"
+msgstr "%s خالی"
+
+#: src/Admin/Strings.php:372
+msgid "Test"
+msgstr "آزمایش"
+
+#: src/Admin/Strings.php:373
+msgid "The server accepted a test file."
+msgstr "سرور فایل آزمایشی را پذیرفت."
+
+#: src/Admin/Strings.php:374
+msgid "Move or copy the site"
+msgstr "انتقال یا کپی سایت"
+
+#: src/Admin/Strings.php:375
+msgid "Copy this whole site to another WordPress site with Rafoo, or to an empty host. The data goes directly between the two servers, encrypted."
+msgstr "کل این سایت را به سایت وردپرسی دیگری که رفو دارد یا به یک هاست خالی منتقل کنید. داده‌ها رمزگذاری‌شده و مستقیم بین دو سرور جابه‌جا می‌شوند."
+
+#: src/Admin/Strings.php:376
+msgid "Send this site"
+msgstr "ارسال این سایت"
+
+#: src/Admin/Strings.php:377
+msgid "Receive a site here"
+msgstr "دریافت سایت در این‌جا"
+
+#: src/Admin/Strings.php:378
+msgid "To an empty host"
+msgstr "به هاست خالی"
+
+#: src/Admin/Strings.php:379
+msgid "Make a code here and enter it on the site you want to copy. This site will be replaced with that site."
+msgstr "این‌جا یک کد بسازید و آن را در سایتی که می‌خواهید منتقل شود وارد کنید. این سایت با آن سایت جایگزین می‌شود."
+
+#: src/Admin/Strings.php:380
+msgid "Make a code"
+msgstr "ساخت کد"
+
+#: src/Admin/Strings.php:381
+msgid "Make a new code"
+msgstr "ساخت کد تازه"
+
+#: src/Admin/Strings.php:382
+msgid "Stop receiving"
+msgstr "توقف دریافت"
+
+#: src/Admin/Strings.php:383
+msgid "Short code:"
+msgstr "کد کوتاه:"
+
+#: src/Admin/Strings.php:384
+msgid "Full code (works without rafoo.ir)"
+msgstr "کد کامل (بدون rafoo.ir هم کار می‌کند)"
+
+#: src/Admin/Strings.php:385
+msgid "Copy"
+msgstr "کپی"
+
+#: src/Admin/Strings.php:386
+msgid "Copied"
+msgstr "کپی شد"
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:388
+#, php-format
+msgid "Valid until %s"
+msgstr "معتبر تا %s"
+
+#: src/Admin/Strings.php:389
+msgid "Anyone with this code can replace this site. Share it only with yourself."
+msgstr "هر کس این کد را داشته باشد می‌تواند این سایت را جایگزین کند. آن را به کسی جز خودتان ندهید."
+
+#: src/Admin/Strings.php:390
+msgid "Enter the code made on the receiving site. This site stays as it is."
+msgstr "کدی را که در سایت مقصد ساخته شده وارد کنید. این سایت دست‌نخورده می‌ماند."
+
+#: src/Admin/Strings.php:391
+msgid "Code from the other site"
+msgstr "کد سایت دیگر"
+
+#: src/Admin/Strings.php:392
+msgid "Finish with a quick second pass for changes made meanwhile (WooCommerce orders pause for a minute)"
+msgstr "پایان با یک مرحله کوتاه دوم برای تغییرات این فاصله (ثبت سفارش ووکامرس یک دقیقه متوقف می‌شود)"
+
+#: src/Admin/Strings.php:393
+msgid "Start sending"
+msgstr "شروع ارسال"
+
+#: src/Admin/Strings.php:394
+msgid "Rafoo puts an encrypted copy and a small installer on the new host through one of your servers. Then you open the installer and enter the new database details."
+msgstr "رفو یک نسخه رمزگذاری‌شده و یک نصب‌کننده کوچک را از طریق یکی از سرورهای شما روی هاست تازه می‌گذارد. سپس نصب‌کننده را باز می‌کنید و اطلاعات پایگاه داده تازه را وارد می‌کنید."
+
+#: src/Admin/Strings.php:395
+msgid "First add the new host under Other servers, with access to its web folder."
+msgstr "اول هاست تازه را در «سرورهای دیگر» با دسترسی به پوشه وب آن اضافه کنید."
+
+#: src/Admin/Strings.php:396
+msgid "New host"
+msgstr "هاست تازه"
+
+#: src/Admin/Strings.php:397
+msgid "Web folder on that host"
+msgstr "پوشه وب روی آن هاست"
+
+#: src/Admin/Strings.php:398
+msgid "Address of the site on the new host"
+msgstr "نشانی سایت روی هاست تازه"
+
+#: src/Admin/Strings.php:399
+msgid "Prepare the move"
+msgstr "آماده‌سازی انتقال"
+
+#: src/Admin/Strings.php:400
+msgid "Everything is on the new host."
+msgstr "همه چیز روی هاست تازه است."
+
+#: src/Admin/Strings.php:401
+msgid "Open this address and follow the steps:"
+msgstr "این نشانی را باز کنید و گام‌ها را دنبال کنید:"
+
+#: src/Admin/Strings.php:402
+msgid "Restore key (shown only here)"
+msgstr "کلید بازگردانی (فقط همین‌جا نمایش داده می‌شود)"
+
+#. translators: 1: size, 2: backup type
+#: src/Admin/Strings.php:404
+#, php-format
+msgid "Backup made (%1$s)"
+msgstr "پشتیبان ساخته شد (%1$s)"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:406
+#, php-format
+msgid "Backup failed: %s"
+msgstr "پشتیبان‌گیری ناموفق بود: %s"
+
+#: src/Admin/Strings.php:407
+msgid "Backup task stopped by hand"
+msgstr "کار پشتیبان به‌صورت دستی متوقف شد"
+
+#: src/Admin/Strings.php:408
+msgid "Backup restored"
+msgstr "پشتیبان بازگردانی شد"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:410
+#, php-format
+msgid "Restore failed: %s"
+msgstr "بازگردانی ناموفق بود: %s"
+
+#. translators: %s: site address
+#: src/Admin/Strings.php:412
+#, php-format
+msgid "Site received from %s"
+msgstr "سایت از %s دریافت شد"
+
+#. translators: %s: site address or reason
+#: src/Admin/Strings.php:414
+#, php-format
+msgid "Site sent to %s"
+msgstr "سایت به %s فرستاده شد"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:416
+#, php-format
+msgid "Site transfer failed: %s"
+msgstr "انتقال سایت ناموفق بود: %s"
+
+#. translators: %s: site address
+#: src/Admin/Strings.php:418
+#, php-format
+msgid "Move to %s prepared"
+msgstr "انتقال به %s آماده شد"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:420
+#, php-format
+msgid "Move preparation failed: %s"
+msgstr "آماده‌سازی انتقال ناموفق بود: %s"
+
+#: src/Admin/Strings.php:423
+msgid "Which plugin, theme or part of WordPress connected to which server from this site, and how it went."
+msgstr "کدام افزونه، قالب یا بخش وردپرس از این سایت به کدام سرور وصل شده و نتیجه چه بوده است."
+
+#: src/Admin/Strings.php:424
+msgid "Logging is turned off in Settings."
+msgstr "ثبت درخواست‌ها در تنظیمات خاموش است."
+
+#: src/Admin/Strings.php:425
+msgid "No outside request has been made since logging started."
+msgstr "از شروع ثبت تاکنون هیچ درخواست خارجی انجام نشده است."
+
+#: src/Admin/Strings.php:426
+msgid "Clear the log"
+msgstr "پاک کردن گزارش"
+
+#. translators: %s: number of rows
+#: src/Admin/Strings.php:428
+#, php-format
+msgid "Show all %s rows"
+msgstr "نمایش همه %s ردیف"
+
+#: src/Admin/Strings.php:429
+msgid "Made by"
+msgstr "درخواست‌دهنده"
+
+#: src/Admin/Strings.php:430
+msgid "Server"
+msgstr "سرور"
+
+#: src/Admin/Strings.php:431
+msgid "Requests"
+msgstr "درخواست‌ها"
+
+#: src/Admin/Strings.php:432
+msgid "Skipped"
+msgstr "ردشده"
+
+#: src/Admin/Strings.php:433
+msgid "Failed"
+msgstr "ناموفق"
+
+#: src/Admin/Strings.php:434
+msgid "Average time"
+msgstr "میانگین زمان"
+
+#: src/Admin/Strings.php:435
+msgid "Last"
+msgstr "آخرین"
+
+#. translators: %s: number of milliseconds
+#: src/Admin/Strings.php:437
+#, php-format
+msgid "%s ms"
+msgstr "%s میلی‌ثانیه"
+
+#: src/Admin/Strings.php:440
+msgid "Emails waiting to be sent"
+msgstr "ایمیل‌های در انتظار ارسال"
+
+#: src/Admin/Strings.php:441
+msgid "Emails that failed because the mail server could not be reached. They are sent again automatically, and deleted after three days if they still cannot go."
+msgstr "ایمیل‌هایی که به‌خاطر در دسترس نبودن سرور ایمیل فرستاده نشدند. خودکار دوباره فرستاده می‌شوند و اگر تا سه روز ارسال نشوند حذف می‌شوند."
+
+#: src/Admin/Strings.php:442
+msgid "Keeping unsent emails is turned off in Settings."
+msgstr "نگه داشتن ایمیل‌های ارسال‌نشده در تنظیمات خاموش است."
+
+#: src/Admin/Strings.php:443
+msgid "No email is waiting."
+msgstr "هیچ ایمیلی در انتظار نیست."
+
+#: src/Admin/Strings.php:444
+msgid "The mail server cannot be reached right now. New emails are kept and sent later."
+msgstr "سرور ایمیل اکنون در دسترس نیست. ایمیل‌های تازه نگه داشته و بعداً فرستاده می‌شوند."
+
+#: src/Admin/Strings.php:445
+msgid "Try sending now"
+msgstr "تلاش برای ارسال"
+
+#. translators: %s: number of emails
+#: src/Admin/Strings.php:447
+#, php-format
+msgid "Emails still waiting: %s"
+msgstr "ایمیل‌های هنوز در انتظار: %s"
+
+#: src/Admin/Strings.php:448
+msgid "All waiting emails were sent."
+msgstr "همه ایمیل‌های در انتظار فرستاده شدند."
+
+#: src/Admin/Strings.php:449
+msgid "To"
+msgstr "گیرنده"
+
+#: src/Admin/Strings.php:450
+msgid "Subject"
+msgstr "موضوع"
+
+#: src/Admin/Strings.php:451
+msgid "Tries"
+msgstr "تلاش‌ها"
+
+#: src/Admin/Strings.php:452
+msgid "Next try"
+msgstr "تلاش بعدی"
+
+#: src/Admin/Strings.php:453
+msgid "Delete"
+msgstr "حذف"
+
+#: src/Admin/Strings.php:455
+msgid "Mail server for outages"
+msgstr "سرور ایمیل زمان قطعی"
+
+#: src/Admin/Strings.php:456
+msgid "If the site sends email through a server outside Iran, add a domestic mail server here, for example the one your host gives you. Rafoo uses it only while the international internet is down."
+msgstr "اگر سایت ایمیل‌ها را با سروری خارج از ایران می‌فرستد، یک سرور ایمیل داخلی، مثلاً سرور ایمیل هاست خودتان، را این‌جا وارد کنید. رفو فقط هنگام قطعی اینترنت بین‌الملل از آن استفاده می‌کند."
+
+#: src/Admin/Strings.php:458
+msgid "Port"
+msgstr "پورت"
+
+#: src/Admin/Strings.php:460
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+#: src/Admin/Strings.php:461
+msgid "SSL/TLS"
+msgstr "SSL/TLS"
+
+#: src/Admin/Strings.php:462
+msgid "None"
+msgstr "بدون رمزگذاری"
+
+#: src/Admin/Strings.php:463
+msgid "Without encryption the password and emails cross the network in plain text. Use it only for a server on the same host."
+msgstr "بدون رمزگذاری، رمز عبور و ایمیل‌ها به‌صورت متن ساده از شبکه می‌گذرند. فقط برای سروری روی همین هاست استفاده کنید."
+
+#: src/Admin/Strings.php:464
+msgid "Username"
+msgstr "نام کاربری"
+
+#: src/Admin/Strings.php:465
+msgid "Password"
+msgstr "رمز عبور"
+
+#: src/Admin/Strings.php:466
+msgid "Saved. Leave empty to keep it."
+msgstr "ذخیره شده است. برای حفظ آن خالی بگذارید."
+
+#: src/Admin/Strings.php:467
+msgid "Sender address (optional)"
+msgstr "نشانی فرستنده (اختیاری)"
+
+#: src/Admin/Strings.php:468
+msgid "Many servers only accept emails from their own domain. If so, enter an address on that domain."
+msgstr "بسیاری از سرورها فقط ایمیل‌های دامنه خودشان را می‌پذیرند. در این صورت نشانی‌ای روی همان دامنه وارد کنید."
+
+#: src/Admin/Strings.php:469
+msgid "Save mail server"
+msgstr "ذخیره سرور ایمیل"
+
+#: src/Admin/Strings.php:470
+msgid "Mail server saved."
+msgstr "سرور ایمیل ذخیره شد."
+
+#: src/Admin/Strings.php:472
+msgid "Mail server removed."
+msgstr "سرور ایمیل حذف شد."
+
+#. translators: %s: email address
+#: src/Admin/Strings.php:474
+#, php-format
+msgid "Send a test to %s"
+msgstr "ارسال آزمایشی به %s"
+
+#: src/Admin/Strings.php:475
+msgid "Test email sent. Check the inbox."
+msgstr "ایمیل آزمایشی فرستاده شد. صندوق ورودی را بررسی کنید."
+
+#: src/Admin/Strings.php:476
+msgid "Save changes"
+msgstr "ذخیره تغییرات"
+
+#: src/Admin/Strings.php:478
+msgid "Send a suggestion"
+msgstr "ارسال پیشنهاد"
+
+#: src/Admin/Strings.php:479
+msgid "Tell the Rafoo team what is missing or what went wrong."
+msgstr "به تیم رفو بگویید چه چیزی کم است یا کجا مشکل پیش آمد."
+
+#: src/Admin/Strings.php:480
+msgid "Message"
+msgstr "پیام"
+
+#: src/Admin/Strings.php:481
+msgid "Email or phone (optional)"
+msgstr "ایمیل یا تلفن (اختیاری)"
+
+#: src/Admin/Strings.php:482
+msgid "Only if you would like an answer."
+msgstr "فقط اگر پاسخ می‌خواهید."
+
+#: src/Admin/Strings.php:483
+msgid "Your message is sent to rafoo.ir with the versions of WordPress, PHP and Rafoo. Nothing is sent until you press Send."
+msgstr "پیام شما همراه نسخه وردپرس، PHP و رفو به rafoo.ir فرستاده می‌شود. تا دکمه ارسال را نزنید چیزی فرستاده نمی‌شود."
+
+#: src/Admin/Strings.php:484
+msgid "Please write a little more."
+msgstr "لطفاً کمی بیشتر بنویسید."
+
+#: src/Admin/Strings.php:485
+msgid "Thank you. Your message was sent."
+msgstr "سپاس. پیام شما فرستاده شد."
+
+#: src/Admin/Strings.php:486
+msgid "Send"
+msgstr "ارسال"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:489
+#, php-format
+msgid "%s min"
+msgstr "%s دقیقه"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:491
+#, php-format
+msgid "%s h"
+msgstr "%s ساعت"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:493
+#, php-format
+msgid "%s days"
+msgstr "%s روز"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:495
+#, php-format
+msgid "%s B"
+msgstr "%s بایت"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:497
+#, php-format
+msgid "%s KB"
+msgstr "%s کیلوبایت"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:499
+#, php-format
+msgid "%s MB"
+msgstr "%s مگابایت"
+
+#: src/Admin/Strings.php:500
+msgid "Something went wrong. Please try again."
+msgstr "مشکلی پیش آمد. لطفاً دوباره تلاش کنید."
+
+#: src/Admin/Strings.php:501
+msgid "The site could not be reached. Check your connection and try again."
+msgstr "ارتباط با سایت برقرار نشد. اتصال خود را بررسی کنید و دوباره تلاش کنید."
+
+#: src/Admin/Strings.php:508
+msgid "Translations from the mirror"
+msgstr "ترجمه‌ها از مخزن"
+
+#: src/Admin/Strings.php:509
+msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
+msgstr "در قطعی، ترجمه وردپرس، افزونه‌ها و قالب‌ها فقط برای زبان‌های نصب‌شده این سایت از مخزن به‌روز می‌شوند."
+
+#: src/Admin/Strings.php:511
+msgid "Update from the domestic mirror"
+msgstr "به‌روزرسانی از مخزن داخلی"
+
+#: src/Admin/Strings.php:512
+msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
+msgstr "تا وقتی اینترنت بین‌الملل قطع است، وردپرس، افزونه‌ها و قالب‌ها از مخزن به‌روز می‌شوند."
+
+#: src/Admin/Strings.php:513
+msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
+msgstr "اگر مخزن همان نسخه را داشته باشد، بسته همیشه از مخزن دانلود می‌شود. داخل ایران سریع‌تر است."
+
+#: src/Admin/Strings.php:514
+msgid "Mirror coverage"
+msgstr "پوشش مخزن"
+
+#: src/Admin/Strings.php:515
+msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
+msgstr "مخزن داخلی کدام افزونه‌ها، قالب‌ها و نسخه وردپرس نصب‌شده را می‌تواند به‌روز کند."
+
+#: src/Admin/Strings.php:516
+msgid "Check again"
+msgstr "بررسی دوباره"
+
+#: src/Admin/Strings.php:517
+msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
+msgstr "نمایه امضاشده مخزن هنوز در دسترس نیست. تا آن زمان به‌روزرسانی‌ها از WordPress.org می‌آیند."
+
+#: src/Admin/Strings.php:518
+msgid "Mirror"
+msgstr "مخزن"
+
+#: src/Admin/Strings.php:519
+msgid "Not on the mirror"
+msgstr "در مخزن نیست"
+
+#. translators: %s: version number
+#: src/Admin/Strings.php:521
+#, php-format
+msgid "Version %s available"
+msgstr "نسخه %s آماده است"
+
+#: src/Admin/Strings.php:522
+msgid "Up to date"
+msgstr "به‌روز"
+
+#: src/Admin/Strings.php:523
+msgid "WordPress"
+msgstr "وردپرس"
+
+#: src/Backup/Api.php:160 src/Backup/Api.php:250 src/Backup/Restorer.php:18
+msgid "This backup is no longer in the list."
+msgstr "این پشتیبان دیگر در فهرست نیست."
+
+#: src/Backup/Api.php:164
+msgid "Newer backups are built on this one, so it cannot be deleted on its own."
+msgstr "پشتیبان‌های تازه‌تر بر پایه این یکی ساخته شده‌اند و حذف آن به‌تنهایی ممکن نیست."
+
+#: src/Backup/Api.php:183
+msgid "Use at least 8 characters."
+msgstr "دست‌کم ۸ نویسه وارد کنید."
+
+#: src/Backup/Api.php:194
+msgid "The server answered but did not accept this username or password."
+msgstr "سرور پاسخ داد ولی این نام کاربری یا رمز را نپذیرفت."
+
+#: src/Backup/Api.php:195
+msgid "Enter a server address such as backup.example.ir."
+msgstr "نشانی سرور را وارد کنید، مثلاً backup.example.ir."
+
+#: src/Backup/Api.php:195
+msgid "No SFTP, FTPS or FTP connection could be made to this server. Check the address and that the port is open."
+msgstr "هیچ اتصال SFTP، FTPS یا FTP با این سرور برقرار نشد. نشانی و باز بودن پورت را بررسی کنید."
+
+#: src/Backup/Api.php:200
+msgid "Up to five servers can be added."
+msgstr "حداکثر پنج سرور می‌توان افزود."
+
+#: src/Backup/Api.php:213 src/Backup/Mover.php:14
+msgid "This server is no longer in the list."
+msgstr "این سرور دیگر در فهرست نیست."
+
+#: src/Backup/Api.php:219
+msgid "The server could not be reached or did not accept a test file."
+msgstr "سرور در دسترس نبود یا فایل آزمایشی را نپذیرفت."
+
+#: src/Backup/Job.php:30
+msgid "Another backup task is running. Wait until it finishes."
+msgstr "کار پشتیبان دیگری در جریان است. تا پایان آن صبر کنید."
+
+#: src/Backup/Mover.php:18
+msgid "Enter the address the site will have on the new host."
+msgstr "نشانی‌ای را که سایت روی هاست تازه خواهد داشت وارد کنید."
+
+#: src/Backup/Restorer.php:23
+msgid "This backup is encrypted. Enter its password."
+msgstr "این پشتیبان رمزگذاری شده است. رمز آن را وارد کنید."
+
+#: src/Backup/Sender.php:21
+msgid "The other site did not answer. Check that Rafoo is active there and its code is still valid."
+msgstr "سایت دیگر پاسخ نداد. بررسی کنید رفو در آن فعال و کدش هنوز معتبر باشد."
+
+#: src/Backup/Sender.php:24
+msgid "The other site is busy with another backup task. Try again when it finishes."
+msgstr "سایت دیگر مشغول کار پشتیبان دیگری است. پس از پایان آن دوباره تلاش کنید."
+
+#: src/Backup/Sender.php:27
+msgid "The other server has no ZipArchive extension, so it cannot receive the copy."
+msgstr "سرور دیگر افزونه ZipArchive ندارد و نمی‌تواند نسخه را دریافت کند."
+
+#: src/Backup/Transfer.php:96 src/Backup/Transfer.php:107
+msgid "This code is not valid. Copy it again from the other site."
+msgstr "این کد معتبر نیست. آن را دوباره از سایت دیگر کپی کنید."
+
+#: src/Backup/Transfer.php:100
+msgid "rafoo.ir could not be reached or the code has expired. Use the long code shown under the short one."
+msgstr "rafoo.ir در دسترس نبود یا کد منقضی شده است. از کد کامل زیر کد کوتاه استفاده کنید."
+
+#: src/Backup/Transfer.php:113
+msgid "This code belongs to this same site. Create the code on the site that should receive the copy."
+msgstr "این کد مال همین سایت است. کد را در سایتی بسازید که باید نسخه را دریافت کند."
+
+#: src/Backup/Transfer.php:360
+msgid "The shop is moving to a new server. Please try again in a few minutes."
+msgstr "فروشگاه در حال انتقال به سرور تازه است. لطفاً چند دقیقه دیگر دوباره تلاش کنید."
+
+#: src/Captcha/Captcha.php:65
+msgid "Checking that you are not a robot…"
+msgstr "در حال بررسی این‌که ربات نیستید…"
+
+#: src/Captcha/Captcha.php:66
+msgid "The security check could not finish. Please reload the page and try again."
+msgstr "بررسی امنیتی کامل نشد. لطفاً صفحه را دوباره بارگذاری کنید و دوباره تلاش کنید."
+
+#: src/Captcha/Captcha.php:76 src/Captcha/Captcha.php:98
+msgid "Please turn on JavaScript to send this form."
+msgstr "برای ارسال این فرم، جاوااسکریپت را روشن کنید."
+
+#: src/Captcha/Captcha.php:130
+msgid "The security check did not finish. Please wait a moment and send the form again."
+msgstr "بررسی امنیتی کامل نشد. لطفاً چند لحظه صبر کنید و فرم را دوباره بفرستید."
+
+#: src/Captcha/Captcha.php:211
+msgid "The Rafoo security check was missing or wrong."
+msgstr "بررسی امنیتی رفو انجام نشده یا نادرست بود."
+
+#. translators: %s: host name
+#: src/Http/Guard.php:88
+#, php-format
+msgid "The international internet is unavailable. Rafoo skipped this request to %s."
+msgstr "اینترنت بین‌الملل در دسترس نیست. رفو این درخواست به %s را انجام نداد."
+
+#. translators: %s: host name
+#: src/Http/Guard.php:90
+#, php-format
+msgid "Rafoo skipped this request because %s did not respond recently."
+msgstr "رفو این درخواست را انجام نداد چون %s اخیراً پاسخ نداده است."
+
+#: src/Mail/Queue.php:60
+msgid "The mail server could not be reached during the outage."
+msgstr "سرور ایمیل در زمان قطعی در دسترس نبود."
+
+#: src/Mail/Queue.php:220
+msgid "Rafoo test message"
+msgstr "پیام آزمایشی رفو"
+
+#: src/Mail/Queue.php:221
+msgid "This message was sent through the mail server you set in Rafoo for outages."
+msgstr "این پیام از طریق سرور ایمیلی فرستاده شد که در رفو برای زمان قطعی تنظیم کرده‌اید."
+
+#: src/Mail/Queue.php:225
+msgid "The message could not be sent."
+msgstr "پیام فرستاده نشد."
+
+#: src/Privacy.php:14
+msgid "This site uses Rafoo to serve JavaScript libraries, stylesheets and web fonts from its own server instead of third-party networks such as jsDelivr, cdnjs and Google Fonts. Visitors' browsers therefore do not connect to those networks for these files."
+msgstr "این سایت با رفو کتابخانه‌های جاوااسکریپت، فایل‌های استایل و فونت‌ها را به‌جای شبکه‌های ثالثی مثل jsDelivr، cdnjs و Google Fonts از سرور خودش ارائه می‌کند. بنابراین مرورگر بازدیدکنندگان برای این فایل‌ها به آن شبکه‌ها وصل نمی‌شود."
+
+#: src/Privacy.php:15
+msgid "While the international internet is unavailable, Rafoo may show locally generated avatars instead of Gravatar images and replace embedded videos and maps with a link to the original content."
+msgstr "وقتی اینترنت بین‌الملل در دسترس نیست، رفو ممکن است به‌جای تصویر Gravatar آواتار محلی نشان دهد و ویدیوها و نقشه‌های جاسازی‌شده را با پیوند به محتوای اصلی جایگزین کند."
+
+#: src/Privacy.php:16
+msgid "Forms on this site may be protected by Rafoo's captcha. It runs a short calculation in the visitor's browser and uses no cookies and no outside service."
+msgstr "فرم‌های این سایت ممکن است با کپچای رفو محافظت شوند. این کپچا یک محاسبه کوتاه در مرورگر بازدیدکننده انجام می‌دهد و از کوکی یا سرویس بیرونی استفاده نمی‌کند."
+
+#: src/Privacy.php:17
+msgid "If an email from this site cannot be sent because the mail server is unreachable, Rafoo keeps a copy of the message, including its recipients and attachments, on this server and sends it when the connection returns. Copies are deleted as soon as the message is sent, and after three days at the latest."
+msgstr "اگر ایمیلی از این سایت به‌خاطر در دسترس نبودن سرور ایمیل فرستاده نشود، رفو نسخه‌ای از پیام، همراه گیرندگان و پیوست‌ها، را روی همین سرور نگه می‌دارد و پس از برقراری اتصال می‌فرستد. این نسخه‌ها بلافاصله پس از ارسال، و حداکثر پس از سه روز، حذف می‌شوند."
+
+#: src/Privacy.php:18
+msgid "Rafoo does not collect or send any information about visitors. If the site administrator turns on anonymous usage reports, a weekly report is sent to rafoo.ir with a random site identifier, software versions and the names of installed plugins and themes. It never includes the site address or any personal data."
+msgstr "رفو هیچ اطلاعاتی درباره بازدیدکنندگان جمع‌آوری یا ارسال نمی‌کند. اگر مدیر سایت گزارش ناشناس استفاده را روشن کند، هفته‌ای یک گزارش با شناسه تصادفی سایت، نسخه نرم‌افزارها و نام افزونه‌ها و قالب‌های نصب‌شده به rafoo.ir فرستاده می‌شود. این گزارش هرگز نشانی سایت یا داده شخصی ندارد."
+
+#. translators: %s: list of plugin or theme names
+#: src/Safety/Rollback.php:289
+#, php-format
+msgid "Rafoo put back the previous version of %s because the update broke the site. Details are on the Rafoo page."
+msgstr "رفو نسخه قبلی %s را برگرداند، چون به‌روزرسانی سایت را از کار انداخته بود. جزئیات در صفحه رفو است."
+
+#: src/Services/Embeds.php:68
+msgid "This content is not available while the international internet is down."
+msgstr "این محتوا تا وقتی اینترنت بین‌الملل قطع است در دسترس نیست."
+
+#: src/Services/Embeds.php:70
+msgid "Open the original link"
+msgstr "باز کردن پیوند اصلی"
+
+#: src/Updates/Downloader.php:49
+msgid "The package could not be downloaded from the domestic mirror."
+msgstr "بسته از مخزن داخلی دانلود نشد."
+
+#: src/Updates/Downloader.php:82
+msgid "The downloaded package has the wrong size and was not installed."
+msgstr "حجم بسته دانلودشده درست نبود و نصب نشد."
+
+#: src/Updates/Downloader.php:86
+msgid "The downloaded package did not match its signed hash and was not installed."
+msgstr "بسته دانلودشده با هش امضاشده برابر نبود و نصب نشد."
+
+#: plugin header
+msgid "Rafoo – Offline-Ready Assets & Updates"
+msgstr "رفو – فایل‌ها و به‌روزرسانی آماده قطعی"
+
+#: plugin header
+msgid "Keeps WordPress fast and working when the international internet is cut off: serves CDN libraries and fonts from your own site, fails unreachable outside requests instantly and replaces services that cannot be mirrored."
+msgstr "وردپرس را در قطعی اینترنت بین‌الملل سریع و سرپا نگه می‌دارد: کتابخانه‌ها و فونت‌های CDN را از خود سایت ارائه می‌کند، درخواست‌های خارجی بی‌پاسخ را بی‌درنگ رد می‌کند و سرویس‌هایی را که قابل نسخه‌برداری نیستند جایگزین می‌کند."
+
+#: plugin header
+msgid "Keeps WordPress fast and working when the international internet is cut off, and updates WordPress, plugins and themes from the domestic mirror."
+msgstr "وردپرس را در قطعی اینترنت بین‌الملل سریع و سرپا نگه می‌دارد و وردپرس، افزونه‌ها و قالب‌ها را از مخزن داخلی به‌روز می‌کند."

@@ -1,0 +1,261 @@
+.rafoo {
+	--rf-font: 'Rafoo Vazirmatn', Tahoma, sans-serif;
+	--rf-l0: #ffffff;
+	--rf-l1: #f8f9fa;
+	--rf-l2: #e4e4e7;
+	--rf-l3: #a1a1aa;
+	--rf-l4: #52525b;
+	--rf-l5: #27272a;
+	--rf-l6: #09090b;
+	--rf-success-bg: #e7f1ec;
+	--rf-success-fg: #2e6a4f;
+	--rf-success-dot: #4f9a76;
+	--rf-warning-bg: #f8efdd;
+	--rf-warning-fg: #855b14;
+	--rf-warning-dot: #c08a2e;
+	--rf-danger-bg: #f7e8e8;
+	--rf-danger-fg: #8f3434;
+	--rf-danger-dot: #c25555;
+	--rf-info-bg: #e6eef6;
+	--rf-info-fg: #2f5a84;
+	--rf-info-dot: #5b87b3;
+	--rf-focus: var(--rf-l6);
+	--rf-r-control: 8px;
+	--rf-r-card: 12px;
+	--rf-r-pill: 999px;
+	--rf-fs-xs: 11.5px;
+	--rf-fs-sm: 12.5px;
+	--rf-fs-base: 13.5px;
+	--rf-fs-md: 15px;
+	--rf-fs-lg: 16px;
+	--rf-fs-xl: 20px;
+	--rf-control: 36px;
+	--rf-control-sm: 30px;
+	--rf-dur-1: 120ms;
+	--rf-dur-2: 200ms;
+	--rf-ease-out: cubic-bezier(0.2, 0, 0, 1);
+
+	box-sizing: border-box;
+	max-inline-size: 1200px;
+	margin-block: 20px;
+	margin-inline-end: 20px;
+	color: var(--rf-l6);
+	font-family: var(--rf-font);
+	font-size: var(--rf-fs-base);
+	line-height: 1.7;
+}
+
+.rafoo button,
+.rafoo input,
+.rafoo select,
+.rafoo textarea {
+	font-family: inherit;
+}
+
+.rafoo *,
+.rafoo *::before,
+.rafoo *::after {
+	box-sizing: border-box;
+}
+
+.rafoo h1,
+.rafoo h2,
+.rafoo h3,
+.rafoo p {
+	margin: 0;
+	padding: 0;
+	color: inherit;
+}
+
+.rafoo.rafoo :is(h1, h2, h3, h4, h5, h6) {
+	font-family: inherit;
+}
+
+.rafoo h1 {
+	font-size: var(--rf-fs-xl);
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.rafoo h2 {
+	font-size: var(--rf-fs-lg);
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.rafoo h3 {
+	font-size: var(--rf-fs-md);
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.rafoo a {
+	color: var(--rf-l6);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.rafoo a:focus,
+.rafoo button:focus,
+.rafoo input:focus,
+.rafoo textarea:focus {
+	box-shadow: none;
+}
+
+.rafoo :focus-visible {
+	outline: 2px solid var(--rf-focus);
+	outline-offset: 2px;
+}
+
+.rafoo .rf-subtle {
+	color: var(--rf-l4);
+}
+
+.rafoo .rf-small {
+	font-size: var(--rf-fs-sm);
+}
+
+.rafoo .rf-mono {
+	direction: ltr;
+	unicode-bidi: isolate;
+	font-family: inherit;
+	overflow-wrap: anywhere;
+}
+
+.rafoo .rf-stack {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.rafoo .rf-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.rafoo .rf-spread {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.rafoo .rf-field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.rafoo .rf-field label {
+	font-weight: 700;
+}
+
+.rafoo .rf-input {
+	inline-size: 100%;
+	max-inline-size: 640px;
+	min-block-size: var(--rf-control);
+	margin: 0;
+	padding-block: 8px;
+	padding-inline: 12px;
+	border: 1px solid var(--rf-l2);
+	border-radius: var(--rf-r-control);
+	background: var(--rf-l0);
+	color: var(--rf-l6);
+	font: inherit;
+	line-height: 1.7;
+	box-shadow: none;
+}
+
+.rafoo .rf-input:hover {
+	border-color: var(--rf-l3);
+}
+
+.rafoo .rf-input:focus {
+	border-color: var(--rf-l5);
+}
+
+.rafoo .rf-input[aria-invalid='true'] {
+	border-color: var(--rf-danger-dot);
+}
+
+.rafoo textarea.rf-input {
+	resize: vertical;
+}
+
+.rafoo .rf-table-wrap {
+	overflow-x: auto;
+	border: 1px solid var(--rf-l2);
+	border-radius: var(--rf-r-control);
+}
+
+.rafoo .rf-table {
+	inline-size: 100%;
+	border-collapse: collapse;
+}
+
+.rafoo .rf-table th {
+	padding-block: 10px;
+	padding-inline: 12px;
+	border-block-end: 1px solid var(--rf-l2);
+	background: var(--rf-l1);
+	color: var(--rf-l4);
+	font-size: var(--rf-fs-sm);
+	font-weight: 400;
+	text-align: start;
+	white-space: nowrap;
+}
+
+.rafoo .rf-table td {
+	padding-block: 10px;
+	padding-inline: 12px;
+	border-block-end: 1px solid var(--rf-l2);
+	vertical-align: top;
+}
+
+.rafoo .rf-table tbody tr:last-child td {
+	border-block-end: 0;
+}
+
+.rafoo .rf-list-rows {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.rafoo .rf-list-rows > li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin: 0;
+	padding-block: 10px;
+	border-block-end: 1px solid var(--rf-l2);
+}
+
+.rafoo .rf-list-rows > li:last-child {
+	border-block-end: 0;
+}
+
+.rafoo .rf-sr {
+	position: absolute;
+	inline-size: 1px;
+	block-size: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.rafoo *,
+	.rafoo *::before,
+	.rafoo *::after {
+		transition-duration: 0ms !important;
+		animation-duration: 0ms !important;
+	}
+}
