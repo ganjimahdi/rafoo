@@ -12,13 +12,18 @@ export class ApiError extends Error {
 
 function endpoint(path: string): string {
 	const root = boot.root;
+	let address = root + path;
 	if (root.includes('?')) {
 		const [base, query] = root.split('?');
+		const [route, extra] = path.split('?');
 		const params = new URLSearchParams(query);
-		params.set('rest_route', (params.get('rest_route') ?? '').replace(/\/$/, '') + '/' + path);
-		return base + '?' + params.toString();
+		params.set('rest_route', (params.get('rest_route') ?? '').replace(/\/$/, '') + '/' + route);
+		new URLSearchParams(extra ?? '').forEach((value, key) => params.set(key, value));
+		address = base + '?' + params.toString();
 	}
-	return root + path;
+	const url = new URL(address, location.href);
+	url.searchParams.set('_locale', 'user');
+	return url.toString();
 }
 
 export async function api<T>(path: string, method: 'GET' | 'POST' = 'GET', body?: unknown): Promise<T> {

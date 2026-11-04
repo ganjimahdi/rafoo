@@ -7,7 +7,7 @@
 	import Segmented from '../components/Segmented.svelte';
 	import { api } from '../lib/api';
 	import { boot } from '../lib/boot';
-	import { ago, date, num, t } from '../lib/i18n';
+	import { ago, date, day, help, num, percent, t } from '../lib/i18n';
 	import type { PeerStatus, PeerWatcher } from '../lib/types';
 
 	const SLOTS = 5;
@@ -104,13 +104,13 @@
 	});
 
 	function rate(w: PeerWatcher): string {
-		return w.checks_today ? `${num(Math.round((1000 * w.ok_today) / w.checks_today) / 10)}%` : '—';
+		return w.checks_today ? percent(Math.round((1000 * w.ok_today) / w.checks_today) / 10) : '—';
 	}
 </script>
 
 {#snippet points(title: string, list: PeerWatcher[], scope: 'ir' | 'intl')}
 	{@const reach = list.filter((w) => w.ok).length}
-	<Card {title} description={list.length ? t(scope === 'ir' ? 'peers_inside_sum' : 'peers_outside_sum', reach, list.length) : t('peers_waiting_help')}>
+	<Card {title} help={help('card_peers_points')} description={list.length ? t(scope === 'ir' ? 'peers_inside_sum' : 'peers_outside_sum', reach, list.length) : t('peers_waiting_help')}>
 		<ul class="rf-points">
 			{#each slots(list) as row, i (i)}
 				<li>
@@ -146,7 +146,7 @@
 	{#if status === null}
 		<p class="rf-subtle">{t('loading')}</p>
 	{:else if !status.member}
-		<Card title={t('peers_title')} description={t('peers_intro')}>
+		<Card title={t('peers_title')} help={help('card_peers')} description={t('peers_intro')}>
 			<ul class="rf-promise">
 				<li>{t('peers_point_1')}</li>
 				<li>{t('peers_point_2')}</li>
@@ -164,7 +164,7 @@
 			</div>
 		</Card>
 	{:else}
-		<Card title={t('peers_title')} description={status.joined_at ? t('peers_joined', date(status.joined_at)) : ''}>
+		<Card title={t('peers_title')} help={help('card_peers')} description={status.joined_at ? t('peers_joined', date(status.joined_at)) : ''}>
 			{#snippet actions()}
 				<Button size="sm" busy={busy === 'peers/check'} onclick={() => run('peers/check', 'POST')}>{t('peers_check_now')}</Button>
 			{/snippet}
@@ -173,7 +173,7 @@
 					<p class="rf-small">
 						{status.network
 							? t('peers_location', region(status.country), status.network)
-							: `${t('peers_location', region(status.country), '').replace(/[،,]\s*$/, '')}`}
+							: region(status.country)}
 					</p>
 				{/if}
 				{#if remote}
@@ -191,7 +191,7 @@
 		</div>
 
 		{#if days.length}
-			<Card title={t('peers_days')}>
+			<Card title={t('peers_days')} help={help('card_peers_days')}>
 				<div class="rf-table-wrap">
 					<table class="rf-table">
 						<thead>
@@ -200,9 +200,9 @@
 						<tbody>
 							{#each days as d (d.day)}
 								<tr>
-									<td class="rf-small">{date(Date.parse(d.day + 'T12:00:00Z') / 1000).split(/[,،]/)[0]}</td>
-									<td>{d.ir === undefined ? '—' : `${num(d.ir)}%`}</td>
-									<td>{d.intl === undefined ? '—' : `${num(d.intl)}%`}</td>
+									<td class="rf-small">{day(d.day)}</td>
+									<td>{d.ir === undefined ? '—' : percent(d.ir)}</td>
+									<td>{d.intl === undefined ? '—' : percent(d.intl)}</td>
 								</tr>
 							{/each}
 						</tbody>
@@ -212,7 +212,7 @@
 		{/if}
 
 		<div class="rf-grid">
-			<Card title={t('peers_settings')}>
+			<Card title={t('peers_settings')} help={help('card_peers_settings')}>
 				<div class="rf-join-interval">
 					<span class="rf-small">{t('peers_interval')}</span>
 					<Segmented
@@ -229,7 +229,7 @@
 				</div>
 				<div><Button variant="danger" size="sm" busy={busy === 'peers/leave'} onclick={leave}>{t('peers_leave')}</Button></div>
 			</Card>
-			<Card title={t('peers_contribution')}>
+			<Card title={t('peers_contribution')} help={help('card_peers_contribution')}>
 				<p>{t('peers_watching', status.watching)}</p>
 				{#if status.checked}<p class="rf-small rf-subtle">{t('last_check', ago(status.checked, status.now))}</p>{/if}
 				{#if status.pending}<p class="rf-small rf-subtle">{t('peers_pending', status.pending)}</p>{/if}
@@ -238,7 +238,7 @@
 		</div>
 	{/if}
 
-	<Card title={t('peers_guide_title')}>
+	<Card title={t('peers_guide_title')} help={help('card_peers_guide')}>
 		<ul class="rf-promise">
 			<li>{t('peers_guide_1')}</li>
 			<li>{t('peers_guide_2')}</li>

@@ -1,0 +1,2892 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rafoo 1.3.0\n"
+"Report-Msgid-Bugs-To: https://rafoo.ir\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: rafoo\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=(n == 0) ? 0 : ((n == 1) ? 1 : ((n == 2) ? 2 : ((n % 100 >= 3 && n % 100 <= 10) ? 3 : ((n % 100 >= 11 && n % 100 <= 99) ? 4 : 5))));\n"
+
+#: src/Admin/AdminBar.php:20
+msgid "Rafoo: paused"
+msgstr "Rafoo: متوقف مؤقتًا"
+
+#: src/Admin/AdminBar.php:22 src/Admin/Strings.php:576
+msgid "Rafoo is paused and changes nothing on the site."
+msgstr "Rafoo متوقف مؤقتًا ولا يغيّر شيئًا في الموقع."
+
+#: src/Admin/AdminBar.php:33 src/Admin/Strings.php:18
+msgid "Rafoo: outage mode"
+msgstr "Rafoo: وضع الانقطاع"
+
+#: src/Admin/AdminBar.php:35
+msgid "The international internet is down. Rafoo is serving local copies."
+msgstr "الإنترنت الدولي مقطوع. يقدّم Rafoo النسخ المحلية."
+
+#: src/Admin/Page.php:23 src/Admin/Page.php:24 src/Admin/Page.php:35 src/Admin/Page.php:36
+msgid "Rafoo"
+msgstr "Rafoo"
+
+#: src/Admin/Page.php:46 src/Admin/SiteHealth.php:169
+msgid "Network settings"
+msgstr "إعدادات الشبكة"
+
+#: src/Admin/Page.php:51 src/Admin/Strings.php:23 src/Admin/Strings.php:57
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: src/Admin/Page.php:59 src/Admin/Strings.php:129
+msgid "Loading…"
+msgstr "جارٍ التحميل…"
+
+#: src/Admin/Page.php:60
+msgid "The Rafoo dashboard needs JavaScript."
+msgstr "تحتاج لوحة Rafoo إلى جافاسكربت."
+
+#: src/Admin/Rest.php:457
+msgid "You are not allowed to change this."
+msgstr "غير مسموح لك بتغيير هذا."
+
+#: src/Admin/Rest.php:460
+msgid "The previous version could not be put back. The files were left as they were."
+msgstr "تعذّرت إعادة الإصدار السابق. تُركت الملفات كما كانت."
+
+#: src/Admin/Rest.php:540
+msgid "This message is no longer waiting."
+msgstr "لم تعد هذه الرسالة بالانتظار."
+
+#: src/Admin/Rest.php:548
+msgid "Enter a valid mail server address, for example mail.example.ir."
+msgstr "أدخل عنوان خادم بريد صالحًا، مثل mail.example.ir."
+
+#: src/Admin/Rest.php:556
+msgid "Save a mail server first."
+msgstr "احفظ خادم بريد أولًا."
+
+#: src/Admin/Rest.php:601
+msgid "Please write between 5 and 2000 characters."
+msgstr "يُرجى كتابة ما بين 5 و2000 حرف."
+
+#: src/Admin/Rest.php:605
+msgid "Please wait a minute before sending another message."
+msgstr "يُرجى الانتظار دقيقة قبل إرسال رسالة أخرى."
+
+#: src/Admin/Rest.php:608
+msgid "rafoo.ir could not be reached. Please try again later."
+msgstr "تعذّر الوصول إلى rafoo.ir. يُرجى المحاولة لاحقًا."
+
+#: src/Admin/Rest.php:651
+msgid "This file is no longer in the list."
+msgstr "لم يعد هذا الملف في القائمة."
+
+#: src/Admin/SiteHealth.php:21
+msgid "Rafoo connection state"
+msgstr "حالة اتصال Rafoo"
+
+#: src/Admin/SiteHealth.php:22
+msgid "Rafoo connection checks"
+msgstr "فحوص اتصال Rafoo"
+
+#: src/Admin/SiteHealth.php:23
+msgid "Rafoo local copies"
+msgstr "نسخ Rafoo المحلية"
+
+#: src/Admin/SiteHealth.php:24 src/Admin/SiteHealth.php:102
+msgid "Rafoo is active"
+msgstr "Rafoo مفعّل"
+
+#: src/Admin/SiteHealth.php:37
+msgid "This server cannot reach any network"
+msgstr "لا يستطيع هذا الخادم الوصول إلى أي شبكة"
+
+#: src/Admin/SiteHealth.php:37
+msgid "Rafoo could not reach servers inside or outside Iran. The problem is the network of this server, so Rafoo leaves the mode as it is. Ask your host to check the server connection."
+msgstr "لم يصل Rafoo إلى خوادم داخل إيران أو خارجها. المشكلة في شبكة هذا الخادم، لذلك يترك Rafoo الوضع كما هو. اطلب من الاستضافة فحص اتصال الخادم."
+
+#: src/Admin/SiteHealth.php:40
+msgid "Rafoo is fixed in outage mode by hand"
+msgstr "Rafoo مثبّت يدويًا على وضع الانقطاع"
+
+#: src/Admin/SiteHealth.php:40
+msgid "Outage mode stays on even when the internet works, so outside requests keep failing at once. Switch the mode back to automatic when you have finished testing."
+msgstr "يبقى وضع الانقطاع مفعّلًا حتى عندما يعمل الإنترنت، فتظل الطلبات الخارجية تفشل فورًا. أعد الوضع إلى تلقائي عند انتهاء الاختبار."
+
+#: src/Admin/SiteHealth.php:43
+msgid "Rafoo is fixed in online mode by hand"
+msgstr "Rafoo مثبّت يدويًا على وضع الاتصال"
+
+#: src/Admin/SiteHealth.php:43
+msgid "Outage mode will not switch on by itself, so during an outage pages and the dashboard will wait for unreachable servers. Switch the mode back to automatic."
+msgstr "لن يتفعّل وضع الانقطاع من تلقاء نفسه، فأثناء الانقطاع ستنتظر الصفحات ولوحة التحكم خوادم غير متاحة. أعد الوضع إلى تلقائي."
+
+#: src/Admin/SiteHealth.php:46 src/Admin/Strings.php:81
+msgid "The international internet is down"
+msgstr "الإنترنت الدولي مقطوع"
+
+#: src/Admin/SiteHealth.php:46
+msgid "Rafoo has switched on outage mode by itself: local copies are served and requests to unreachable servers fail at once. It switches off by itself when the internet is back."
+msgstr "فعّل Rafoo وضع الانقطاع من تلقاء نفسه: تُقدَّم النسخ المحلية وتفشل فورًا الطلبات إلى الخوادم غير المتاحة. يتوقف من تلقاء نفسه عند عودة الإنترنت."
+
+#: src/Admin/SiteHealth.php:48
+msgid "Rafoo detects outages automatically"
+msgstr "يكتشف Rafoo الانقطاع تلقائيًا"
+
+#: src/Admin/SiteHealth.php:48
+msgid "The international internet is reachable. If it is cut off, Rafoo switches on outage mode by itself within about three minutes."
+msgstr "الإنترنت الدولي متاح. إذا انقطع، يفعّل Rafoo وضع الانقطاع من تلقاء نفسه خلال نحو ثلاث دقائق."
+
+#: src/Admin/SiteHealth.php:58
+msgid "WP-Cron is turned off on this site and no system cron job runs it, so Rafoo cannot notice an outage. Add a cron job that requests wp-cron.php every minute."
+msgstr "WP-Cron معطّل في هذا الموقع ولا تشغّله أي مهمة cron على الخادم، لذلك لا يستطيع Rafoo ملاحظة الانقطاع. أضف مهمة cron تستدعي wp-cron.php كل دقيقة."
+
+#: src/Admin/SiteHealth.php:59
+msgid "WP-Cron runs only when someone visits the site, so on quiet sites an outage is noticed late. Add a cron job that requests wp-cron.php every minute."
+msgstr "لا يعمل WP-Cron إلا عندما يزور أحدٌ الموقع، لذلك يُلاحظ الانقطاع متأخرًا في المواقع الهادئة. أضف مهمة cron تستدعي wp-cron.php كل دقيقة."
+
+#: src/Admin/SiteHealth.php:60
+msgid "Rafoo connection checks are not running on time"
+msgstr "فحوص اتصال Rafoo لا تعمل في وقتها"
+
+#: src/Admin/SiteHealth.php:62
+msgid "Rafoo connection checks run on time"
+msgstr "فحوص اتصال Rafoo تعمل في وقتها"
+
+#: src/Admin/SiteHealth.php:62
+msgid "Rafoo checks the connection every minute in the background."
+msgstr "يفحص Rafoo الاتصال كل دقيقة في الخلفية."
+
+#: src/Admin/SiteHealth.php:71
+msgid "Rafoo cannot save local copies"
+msgstr "لا يستطيع Rafoo حفظ النسخ المحلية"
+
+#. translators: %s: folder path
+#: src/Admin/SiteHealth.php:73
+#, php-format
+msgid "The folder %s is not writable, so libraries and fonts cannot be copied to this server. Ask your host to give PHP write access to the uploads folder."
+msgstr "المجلد %s غير قابل للكتابة، لذلك لا يمكن نسخ المكتبات والخطوط إلى هذا الخادم. اطلب من الاستضافة منح PHP صلاحية الكتابة في مجلد uploads."
+
+#. translators: %d: number of files
+#: src/Admin/SiteHealth.php:83
+#, php-format
+msgid "Rafoo could not copy %d files"
+msgstr "تعذّر على Rafoo نسخ %d ملفات"
+
+#: src/Admin/SiteHealth.php:84
+msgid "These files are still loaded from their original address and will not load during an outage. Open Rafoo › Files to see why and try again."
+msgstr "ما زالت هذه الملفات تُحمَّل من عنوانها الأصلي ولن تُحمَّل أثناء الانقطاع. افتح Rafoo › الملفات لمعرفة السبب والمحاولة مجددًا."
+
+#. translators: %d: number of files
+#: src/Admin/SiteHealth.php:92
+#, php-format
+msgid "Rafoo serves %d local copies"
+msgstr "يقدّم Rafoo %d نسخة محلية"
+
+#: src/Admin/SiteHealth.php:93
+msgid "Libraries and fonts from public CDNs are served from this server."
+msgstr "تُقدَّم مكتبات وخطوط شبكات CDN العامة من هذا الخادم."
+
+#: src/Admin/SiteHealth.php:100
+msgid "Rafoo is paused"
+msgstr "Rafoo متوقف مؤقتًا"
+
+#: src/Admin/SiteHealth.php:100
+msgid "Rafoo changes nothing on the site while it is paused, so it cannot help during an outage. Resume it when you have finished testing."
+msgstr "لا يغيّر Rafoo شيئًا في الموقع أثناء الإيقاف المؤقت، لذلك لا يستطيع المساعدة أثناء الانقطاع. استأنفه عند انتهاء الاختبار."
+
+#: src/Admin/SiteHealth.php:102
+msgid "Rafoo makes the changes chosen in its settings."
+msgstr "يُجري Rafoo التغييرات المختارة في إعداداته."
+
+#: src/Admin/SiteHealth.php:110
+msgid "Yes"
+msgstr "نعم"
+
+#: src/Admin/SiteHealth.php:111
+msgid "No"
+msgstr "لا"
+
+#: src/Admin/SiteHealth.php:120
+msgid "Version"
+msgstr "الإصدار"
+
+#: src/Admin/SiteHealth.php:124 src/Admin/Strings.php:92
+msgid "Mode"
+msgstr "الوضع"
+
+#: src/Admin/SiteHealth.php:125
+msgid "Outage"
+msgstr "انقطاع"
+
+#: src/Admin/SiteHealth.php:125 src/Admin/Strings.php:16
+msgid "Online"
+msgstr "متصل"
+
+#: src/Admin/SiteHealth.php:129
+msgid "Last connection check"
+msgstr "آخر فحص للاتصال"
+
+#: src/Admin/SiteHealth.php:130 src/Admin/Strings.php:90
+msgid "never"
+msgstr "أبدًا"
+
+#: src/Admin/SiteHealth.php:134 src/Admin/Strings.php:122
+msgid "Local copies"
+msgstr "النسخ المحلية"
+
+#. translators: 1: ready files, 2: pending files, 3: failed files
+#: src/Admin/SiteHealth.php:136
+#, php-format
+msgid "%1$d ready, %2$d waiting, %3$d failed"
+msgstr "%1$d جاهز، %2$d بالانتظار، %3$d فاشل"
+
+#: src/Admin/SiteHealth.php:140
+msgid "Disk space used"
+msgstr "مساحة القرص المستخدمة"
+
+#: src/Admin/SiteHealth.php:144
+msgid "Folder writable"
+msgstr "المجلد قابل للكتابة"
+
+#: src/Admin/SiteHealth.php:145 src/Admin/Strings.php:577
+msgid "Paused"
+msgstr "متوقف مؤقتًا"
+
+#: src/Admin/SiteHealth.php:147
+msgid "Use local copies"
+msgstr "استخدام النسخ المحلية"
+
+#: src/Admin/SiteHealth.php:150 src/Admin/Strings.php:554
+msgid "Browser guard"
+msgstr "حارس المتصفح"
+
+#: src/Admin/SiteHealth.php:151
+msgid "Merge identical requests"
+msgstr "دمج الطلبات المتطابقة"
+
+#: src/Admin/SiteHealth.php:153
+msgid "Heartbeat"
+msgstr "Heartbeat"
+
+#: src/Admin/SiteHealth.php:157
+msgid "Allowed hosts"
+msgstr "المضيفون المسموح بهم"
+
+#: src/Admin/SiteHealth.php:161
+msgid "Blocked hosts"
+msgstr "المضيفون المحظورون"
+
+#: src/Admin/SiteHealth.php:164
+msgid "WP-Cron turned off"
+msgstr "WP-Cron معطّل"
+
+#: src/Admin/SiteHealth.php:170
+msgid "Applied to every site"
+msgstr "مطبّقة على كل المواقع"
+
+#: src/Admin/SiteHealth.php:170
+msgid "Defaults for new sites"
+msgstr "افتراضية للمواقع الجديدة"
+
+#: src/Admin/SiteHealth.php:190
+msgid "Open Rafoo"
+msgstr "افتح Rafoo"
+
+#: src/Admin/Strings.php:14
+msgid "Offline-ready assets"
+msgstr "ملفات جاهزة للعمل دون اتصال"
+
+#: src/Admin/Strings.php:15
+msgid "Rafoo Complete"
+msgstr "Rafoo الكامل"
+
+#: src/Admin/Strings.php:17
+msgid "Outage mode"
+msgstr "وضع الانقطاع"
+
+#: src/Admin/Strings.php:20
+msgid "Overview"
+msgstr "نظرة عامة"
+
+#: src/Admin/Strings.php:21 src/Admin/Strings.php:182
+msgid "Files"
+msgstr "الملفات"
+
+#: src/Admin/Strings.php:22
+msgid "Connection"
+msgstr "الاتصال"
+
+#: src/Admin/Strings.php:24
+msgid "Feedback"
+msgstr "الاقتراحات"
+
+#: src/Admin/Strings.php:25
+msgid "Monitoring"
+msgstr "المراقبة"
+
+#: src/Admin/Strings.php:27
+msgid "Rafoo cooperative network"
+msgstr "شبكة Rafoo التعاونية"
+
+#: src/Admin/Strings.php:28
+msgid "Member sites check each other from inside and outside Iran, so you can see whether your site opens for visitors in Iran and abroad, even during an outage."
+msgstr "المواقع الأعضاء يفحص بعضها بعضًا من داخل إيران وخارجها، فترى هل يُفتح موقعك للزوار في إيران وخارجها، حتى أثناء الانقطاع."
+
+#: src/Admin/Strings.php:29
+msgid "Your site only answers a short signed request at the address ?rafoo-ping. No page, data or visitor is checked."
+msgstr "يجيب موقعك فقط عن طلب قصير موقّع على العنوان ‎?rafoo-ping. لا تُفحص أي صفحة أو بيانات أو زائر."
+
+#: src/Admin/Strings.php:30
+msgid "In return, your site checks a few other members the same way, in the background, without slowing down WordPress."
+msgstr "في المقابل، يفحص موقعك بعض الأعضاء الآخرين بالطريقة نفسها، في الخلفية، دون إبطاء ووردبريس."
+
+#: src/Admin/Strings.php:31
+msgid "rafoo.ir keeps your site address, its country and network, and the check results. Leaving deletes them."
+msgstr "يحتفظ rafoo.ir بعنوان موقعك وبلده وشبكته ونتائج الفحص. المغادرة تحذفها."
+
+#: src/Admin/Strings.php:32
+msgid "Check my site every"
+msgstr "افحص موقعي كل"
+
+#: src/Admin/Strings.php:33
+msgid "1 minute"
+msgstr "دقيقة واحدة"
+
+#: src/Admin/Strings.php:34
+msgid "5 minutes"
+msgstr "5 دقائق"
+
+#: src/Admin/Strings.php:35
+msgid "Join the network"
+msgstr "انضم إلى الشبكة"
+
+#: src/Admin/Strings.php:36
+msgid "This server cannot create a signing key because the sodium extension is missing."
+msgstr "لا يستطيع هذا الخادم إنشاء مفتاح توقيع لأن امتداد sodium مفقود."
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:38
+#, php-format
+msgid "Member since %s"
+msgstr "عضو منذ %s"
+
+#. translators: 1: country, 2: network or hosting company
+#: src/Admin/Strings.php:40
+#, php-format
+msgid "Your server: %1$s, %2$s"
+msgstr "خادمك: %1$s، %2$s"
+
+#: src/Admin/Strings.php:41
+msgid "Points inside Iran"
+msgstr "نقاط داخل إيران"
+
+#: src/Admin/Strings.php:42
+msgid "Points outside Iran"
+msgstr "نقاط خارج إيران"
+
+#. translators: 1: points that reached the site, 2: all points
+#: src/Admin/Strings.php:44
+#, php-format
+msgid "Opens from %1$d of %2$d points inside Iran"
+msgstr "يُفتح من %1$d من أصل %2$d نقاط داخل إيران"
+
+#. translators: 1: points that reached the site, 2: all points
+#: src/Admin/Strings.php:46
+#, php-format
+msgid "Opens from %1$d of %2$d points outside Iran"
+msgstr "يُفتح من %1$d من أصل %2$d نقاط خارج إيران"
+
+#: src/Admin/Strings.php:47
+msgid "Opens"
+msgstr "يُفتح"
+
+#: src/Admin/Strings.php:48
+msgid "Does not open"
+msgstr "لا يُفتح"
+
+#: src/Admin/Strings.php:49
+msgid "Paused during the outage"
+msgstr "متوقف أثناء الانقطاع"
+
+#: src/Admin/Strings.php:50
+msgid "Waiting for a point"
+msgstr "بانتظار نقطة"
+
+#: src/Admin/Strings.php:51
+msgid "Points are assigned as members join. The first results arrive within a few minutes."
+msgstr "تُوزَّع النقاط مع انضمام الأعضاء. تصل النتائج الأولى خلال دقائق."
+
+#. translators: %s: success rate, for example "98%"
+#: src/Admin/Strings.php:53
+#, php-format
+msgid "%s today"
+msgstr "اليوم %s"
+
+#: src/Admin/Strings.php:54 src/Admin/Strings.php:89
+msgid "Check now"
+msgstr "افحص الآن"
+
+#: src/Admin/Strings.php:55
+msgid "Leave the network"
+msgstr "غادر الشبكة"
+
+#: src/Admin/Strings.php:56
+msgid "Leave the network? Your site will no longer be checked and its data on rafoo.ir will be deleted."
+msgstr "هل تغادر الشبكة؟ لن يُفحص موقعك بعد الآن وستُحذف بياناته على rafoo.ir."
+
+#: src/Admin/Strings.php:58
+msgid "Your contribution"
+msgstr "مساهمتك"
+
+#. translators: %d: number of member sites
+#: src/Admin/Strings.php:60
+#, php-format
+msgid "This site checks %d other members."
+msgstr "يفحص هذا الموقع %d أعضاء آخرين."
+
+#. translators: %d: number of results
+#: src/Admin/Strings.php:62
+#, php-format
+msgid "%d results are waiting to be sent to rafoo.ir."
+msgstr "%d نتائج بانتظار الإرسال إلى rafoo.ir."
+
+#: src/Admin/Strings.php:63
+msgid "Iranian sites cannot be reached from this server, so checks are paused and tried again every ten minutes."
+msgstr "لا يمكن الوصول إلى المواقع الإيرانية من هذا الخادم، لذلك الفحوص متوقفة وتُعاد المحاولة كل عشر دقائق."
+
+#: src/Admin/Strings.php:64
+msgid "The international internet is down. Only checks inside Iran run; checks of foreign sites are paused."
+msgstr "الإنترنت الدولي مقطوع. تعمل الفحوص داخل إيران فقط؛ فحوص المواقع الأجنبية متوقفة."
+
+#: src/Admin/Strings.php:65
+msgid "This server cannot finish a request before running background work, so checks run with WP-Cron. On a low-traffic site, add a real cron job for wp-cron.php."
+msgstr "لا يستطيع هذا الخادم إنهاء الطلب قبل تشغيل العمل في الخلفية، لذلك تعمل الفحوص عبر WP-Cron. في موقع قليل الزيارات أضف مهمة cron حقيقية لـ wp-cron.php."
+
+#. translators: 1: all members, 2: members in Iran, 3: members abroad
+#: src/Admin/Strings.php:67
+#, php-format
+msgid "Network: %1$d members, %2$d in Iran, %3$d abroad."
+msgstr "الشبكة: %1$d عضو، %2$d في إيران، %3$d في الخارج."
+
+#: src/Admin/Strings.php:68
+msgid "Last 14 days"
+msgstr "آخر 14 يومًا"
+
+#: src/Admin/Strings.php:69 src/Admin/Strings.php:164
+msgid "Inside Iran"
+msgstr "داخل إيران"
+
+#: src/Admin/Strings.php:70 src/Admin/Strings.php:163 src/Admin/Strings.php:491
+msgid "Outside Iran"
+msgstr "خارج إيران"
+
+#: src/Admin/Strings.php:71
+msgid "How it works"
+msgstr "كيف يعمل"
+
+#: src/Admin/Strings.php:72
+msgid "“Opens” means the point received a signed answer from your site. A filter page, an error or a timeout counts as “does not open”."
+msgstr "«يُفتح» تعني أن النقطة تلقّت إجابة موقّعة من موقعك. صفحة الحجب أو الخطأ أو انتهاء المهلة تُعدّ «لا يُفتح»."
+
+#: src/Admin/Strings.php:73
+msgid "Points are chosen from different networks inside Iran and different countries abroad, and change every day."
+msgstr "تُختار النقاط من شبكات مختلفة داخل إيران ومن بلدان مختلفة في الخارج، وتتغير كل يوم."
+
+#: src/Admin/Strings.php:74
+msgid "During a shutdown, points abroad cannot reach Iranian sites or rafoo.ir. They pause, keep their results and send them when the connection returns."
+msgstr "أثناء الانقطاع الشامل لا تستطيع النقاط في الخارج الوصول إلى المواقع الإيرانية ولا إلى rafoo.ir. فتتوقف وتحتفظ بنتائجها وترسلها عند عودة الاتصال."
+
+#: src/Admin/Strings.php:75
+msgid "If a security plugin or firewall blocks unknown requests, allow addresses that contain ?rafoo-ping."
+msgstr "إذا كانت إضافة أمان أو جدار حماية يحجب الطلبات المجهولة، فاسمح بالعناوين التي تحتوي على ‎?rafoo-ping."
+
+#: src/Admin/Strings.php:76
+msgid "rafoo.ir could not be reached; showing the last known results."
+msgstr "تعذّر الوصول إلى rafoo.ir؛ تُعرض آخر نتائج معروفة."
+
+#: src/Admin/Strings.php:77
+msgid "Unknown location"
+msgstr "موقع غير معروف"
+
+#: src/Admin/Strings.php:79
+msgid "The international internet is available"
+msgstr "الإنترنت الدولي متاح"
+
+#: src/Admin/Strings.php:80
+msgid "Libraries and fonts the site has copied are served from your own server. Everything else works as usual."
+msgstr "المكتبات والخطوط التي نسخها الموقع تُقدَّم من خادمك. كل شيء آخر يعمل كالمعتاد."
+
+#: src/Admin/Strings.php:82
+msgid "Rafoo serves copied files locally, skips requests to unreachable servers and replaces services that cannot load."
+msgstr "يقدّم Rafoo الملفات المنسوخة محليًا، ويتخطى الطلبات إلى الخوادم غير المتاحة، ويستبدل الخدمات التي لا يمكن تحميلها."
+
+#. translators: %s: relative time, for example "2 minutes ago"
+#: src/Admin/Strings.php:84
+#, php-format
+msgid "Last check: %s"
+msgstr "آخر فحص: %s"
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:86
+#, php-format
+msgid "down since %s"
+msgstr "مقطوع منذ %s"
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:88
+#, php-format
+msgid "available since %s"
+msgstr "متاح منذ %s"
+
+#: src/Admin/Strings.php:93
+msgid "Automatic switches by itself. Choose a fixed mode only to test or when detection is wrong."
+msgstr "الوضع التلقائي يتبدّل من تلقاء نفسه. اختر وضعًا ثابتًا فقط للاختبار أو عندما يكون الاكتشاف خاطئًا."
+
+#: src/Admin/Strings.php:94
+msgid "Automatic"
+msgstr "تلقائي"
+
+#: src/Admin/Strings.php:95
+msgid "Always outage"
+msgstr "انقطاع دائمًا"
+
+#: src/Admin/Strings.php:96
+msgid "Always online"
+msgstr "متصل دائمًا"
+
+#: src/Admin/Strings.php:97
+msgid "Outage mode is fixed by hand. Rafoo will not switch back by itself."
+msgstr "وضع الانقطاع مثبّت يدويًا. لن يعود Rafoo من تلقاء نفسه."
+
+#: src/Admin/Strings.php:98
+msgid "Online mode is fixed by hand. Rafoo will not switch to outage mode by itself."
+msgstr "وضع الاتصال مثبّت يدويًا. لن ينتقل Rafoo إلى وضع الانقطاع من تلقاء نفسه."
+
+#: src/Admin/Strings.php:99
+msgid "The last check could not reach any server, inside or outside Iran. The problem is probably the network of your own server, so the mode was left unchanged."
+msgstr "لم يصل الفحص الأخير إلى أي خادم داخل إيران أو خارجها. المشكلة على الأرجح في شبكة خادمك، لذلك لم يُغيَّر الوضع."
+
+#: src/Admin/Strings.php:100
+msgid "Background checks are running late. WordPress runs them when the site has visitors; a real cron job on the server keeps them on time."
+msgstr "الفحوص في الخلفية متأخرة. يشغّلها ووردبريس عندما يزور أحدٌ الموقع؛ مهمة cron حقيقية على الخادم تبقيها في وقتها."
+
+#: src/Admin/Strings.php:101
+msgid "WP-Cron is turned off on this site and no check has run recently. Add a server cron job that calls wp-cron.php every minute."
+msgstr "WP-Cron معطّل في هذا الموقع ولم يُجرَ أي فحص مؤخرًا. أضف مهمة cron على الخادم تستدعي wp-cron.php كل دقيقة."
+
+#: src/Admin/Strings.php:103
+msgid "Local files"
+msgstr "الملفات المحلية"
+
+#. translators: %d: number of files
+#: src/Admin/Strings.php:105
+#, php-format
+msgid "%d not verified yet"
+msgstr "%d لم يُتحقَّق منها بعد"
+
+#: src/Admin/Strings.php:106 src/Admin/Strings.php:137
+msgid "Waiting"
+msgstr "بالانتظار"
+
+#: src/Admin/Strings.php:107 src/Admin/Strings.php:138
+msgid "Not available"
+msgstr "غير متاح"
+
+#: src/Admin/Strings.php:108
+msgid "Disk space"
+msgstr "مساحة القرص"
+
+#: src/Admin/Strings.php:109
+msgid "Time in outage mode"
+msgstr "المدة في وضع الانقطاع"
+
+#: src/Admin/Strings.php:111
+msgid "Recent events"
+msgstr "الأحداث الأخيرة"
+
+#: src/Admin/Strings.php:112
+msgid "Nothing has happened yet."
+msgstr "لم يحدث شيء بعد."
+
+#: src/Admin/Strings.php:113
+msgid "Rafoo was activated"
+msgstr "تم تفعيل Rafoo"
+
+#: src/Admin/Strings.php:114
+msgid "Mode changed by hand"
+msgstr "تم تغيير الوضع يدويًا"
+
+#: src/Admin/Strings.php:115
+msgid "Mode set to automatic"
+msgstr "تم ضبط الوضع على تلقائي"
+
+#: src/Admin/Strings.php:116
+msgid "Outage mode fixed by hand"
+msgstr "تم تثبيت وضع الانقطاع يدويًا"
+
+#: src/Admin/Strings.php:117
+msgid "Online mode fixed by hand"
+msgstr "تم تثبيت وضع الاتصال يدويًا"
+
+#: src/Admin/Strings.php:118
+msgid "The international internet went down"
+msgstr "انقطع الإنترنت الدولي"
+
+#: src/Admin/Strings.php:119
+msgid "The international internet came back"
+msgstr "عاد الإنترنت الدولي"
+
+#: src/Admin/Strings.php:120
+msgid "The server could not reach any network"
+msgstr "تعذّر على الخادم الوصول إلى أي شبكة"
+
+#: src/Admin/Strings.php:123
+msgid "Libraries and fonts the site loads from public CDNs. Rafoo copies them from the domestic mirror or the original source, checks them and serves them from your server."
+msgstr "المكتبات والخطوط التي يحمّلها الموقع من شبكات CDN العامة. ينسخها Rafoo من المرآة المحلية أو من المصدر الأصلي، ويتحقق منها ويقدّمها من خادمك."
+
+#: src/Admin/Strings.php:124
+msgid "No files from public CDNs have been found yet. Scan the site, or visit a few pages."
+msgstr "لم يُعثر بعد على ملفات من شبكات CDN العامة. افحص الموقع أو زُر بعض الصفحات."
+
+#: src/Admin/Strings.php:125
+msgid "Scan site"
+msgstr "افحص الموقع"
+
+#: src/Admin/Strings.php:126
+msgid "Scan finished. New files will be downloaded in the background."
+msgstr "انتهى الفحص. ستُنزَّل الملفات الجديدة في الخلفية."
+
+#: src/Admin/Strings.php:127
+msgid "Download now"
+msgstr "نزّل الآن"
+
+#: src/Admin/Strings.php:128
+msgid "Download finished."
+msgstr "انتهى التنزيل."
+
+#: src/Admin/Strings.php:130
+msgid "File"
+msgstr "الملف"
+
+#: src/Admin/Strings.php:131
+msgid "Status"
+msgstr "الحالة"
+
+#: src/Admin/Strings.php:132
+msgid "Checked by"
+msgstr "تم التحقق بواسطة"
+
+#: src/Admin/Strings.php:133
+msgid "Size"
+msgstr "الحجم"
+
+#: src/Admin/Strings.php:134
+msgid "Actions"
+msgstr "الإجراءات"
+
+#: src/Admin/Strings.php:135
+msgid "Local"
+msgstr "محلي"
+
+#: src/Admin/Strings.php:136
+msgid "Local, only during outages"
+msgstr "محلي، أثناء الانقطاع فقط"
+
+#: src/Admin/Strings.php:139
+msgid "Excluded"
+msgstr "مستبعد"
+
+#: src/Admin/Strings.php:140
+msgid "Integrity hash"
+msgstr "بصمة السلامة"
+
+#: src/Admin/Strings.php:141
+msgid "Original file"
+msgstr "الملف الأصلي"
+
+#: src/Admin/Strings.php:142
+msgid "Signed mirror index"
+msgstr "فهرس المرآة الموقّع"
+
+#: src/Admin/Strings.php:143
+msgid "from the mirror"
+msgstr "من المرآة"
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:145
+#, php-format
+msgid "%s files"
+msgstr "%s ملفات"
+
+#: src/Admin/Strings.php:146
+msgid "Google Fonts"
+msgstr "خطوط Google"
+
+#: src/Admin/Strings.php:147
+msgid "Retry"
+msgstr "أعد المحاولة"
+
+#: src/Admin/Strings.php:148
+msgid "Exclude"
+msgstr "استبعد"
+
+#: src/Admin/Strings.php:149
+msgid "Include"
+msgstr "أدرِج"
+
+#: src/Admin/Strings.php:150 src/Admin/Strings.php:524
+msgid "Remove"
+msgstr "احذف"
+
+#: src/Admin/Strings.php:151
+msgid "Not found on the mirror or the original source."
+msgstr "لم يُعثر عليه في المرآة ولا في المصدر الأصلي."
+
+#: src/Admin/Strings.php:152
+msgid "Not on the mirror. It will be copied when the international internet is back."
+msgstr "غير موجود في المرآة. سيُنسخ عند عودة الإنترنت الدولي."
+
+#: src/Admin/Strings.php:153
+msgid "The downloaded file did not match its hash and was rejected."
+msgstr "لم يطابق الملف المنزَّل بصمته فتم رفضه."
+
+#: src/Admin/Strings.php:154
+msgid "The file could not be saved. Check that the uploads folder is writable."
+msgstr "تعذّر حفظ الملف. تأكد من أن مجلد uploads قابل للكتابة."
+
+#: src/Admin/Strings.php:155
+msgid "The server did not serve the copied file correctly."
+msgstr "لم يقدّم الخادم الملف المنسوخ بشكل صحيح."
+
+#: src/Admin/Strings.php:156
+msgid "The local copy was changed or deleted and will be downloaded again."
+msgstr "تم تغيير النسخة المحلية أو حذفها وستُنزَّل مرة أخرى."
+
+#: src/Admin/Strings.php:157
+msgid "The font files could not be downloaded."
+msgstr "تعذّر تنزيل ملفات الخط."
+
+#: src/Admin/Strings.php:158
+msgid "Google Fonts did not return a font stylesheet."
+msgstr "لم تُرجع خطوط Google ورقة أنماط للخط."
+
+#: src/Admin/Strings.php:159
+msgid "Download failed. Rafoo will try again later."
+msgstr "فشل التنزيل. سيحاول Rafoo مجددًا لاحقًا."
+
+#: src/Admin/Strings.php:161
+msgid "Connection checks"
+msgstr "فحوص الاتصال"
+
+#: src/Admin/Strings.php:162
+msgid "Every minute Rafoo contacts a few servers outside and inside Iran. Three failed rounds in a row switch on outage mode; three successful rounds switch it off."
+msgstr "كل دقيقة يتصل Rafoo ببعض الخوادم خارج إيران وداخلها. ثلاث جولات فاشلة متتالية تشغّل وضع الانقطاع، وثلاث جولات ناجحة توقفه."
+
+#: src/Admin/Strings.php:165
+msgid "No check has run yet."
+msgstr "لم يُجرَ أي فحص بعد."
+
+#: src/Admin/Strings.php:166
+msgid "Reachable"
+msgstr "متاح"
+
+#: src/Admin/Strings.php:167
+msgid "Unreachable"
+msgstr "غير متاح"
+
+#: src/Admin/Strings.php:168
+msgid "rafoo.ir signal"
+msgstr "إشارة rafoo.ir"
+
+#: src/Admin/Strings.php:169
+msgid "A signed message from rafoo.ir lets the switch happen after one round instead of three. Your own checks always decide."
+msgstr "رسالة موقّعة من rafoo.ir تتيح التبديل بعد جولة واحدة بدل ثلاث. فحوصك أنت هي التي تقرر دائمًا."
+
+#: src/Admin/Strings.php:170
+msgid "The signal is not active in this version."
+msgstr "الإشارة غير مفعّلة في هذا الإصدار."
+
+#: src/Admin/Strings.php:171
+msgid "No recent signal was received."
+msgstr "لم تصل إشارة حديثة."
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:173
+#, php-format
+msgid "rafoo.ir reported an outage at %s."
+msgstr "أبلغ rafoo.ir عن انقطاع في %s."
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:175
+#, php-format
+msgid "rafoo.ir reported normal access at %s."
+msgstr "أبلغ rafoo.ir عن وصول طبيعي في %s."
+
+#: src/Admin/Strings.php:176
+msgid "Paused servers"
+msgstr "الخوادم الموقوفة مؤقتًا"
+
+#: src/Admin/Strings.php:177
+msgid "A server that fails twice within two minutes is skipped for three minutes. During an outage, a server outside Iran that does not answer within three seconds is skipped for half an hour. Pages and the dashboard do not wait for them."
+msgstr "الخادم الذي يفشل مرتين خلال دقيقتين يُتخطّى ثلاث دقائق. أثناء الانقطاع، الخادم خارج إيران الذي لا يجيب خلال ثلاث ثوانٍ يُتخطّى نصف ساعة. لا تنتظره الصفحات ولا لوحة التحكم."
+
+#: src/Admin/Strings.php:178
+msgid "No server is paused."
+msgstr "لا يوجد خادم موقوف."
+
+#. translators: %s: relative time, for example "in 2 minutes"
+#: src/Admin/Strings.php:180
+#, php-format
+msgid "tried again %s"
+msgstr "أُعيدت المحاولة %s"
+
+#: src/Admin/Strings.php:183
+msgid "Serve local copies"
+msgstr "تقديم النسخ المحلية"
+
+#: src/Admin/Strings.php:184 src/Admin/Strings.php:200
+msgid "Always"
+msgstr "دائمًا"
+
+#: src/Admin/Strings.php:185
+msgid "Recommended. Local files load faster than public CDNs, even when the internet works."
+msgstr "موصى به. الملفات المحلية أسرع تحميلًا من شبكات CDN العامة حتى عندما يعمل الإنترنت."
+
+#: src/Admin/Strings.php:186 src/Admin/Strings.php:248
+msgid "Only during outages"
+msgstr "أثناء الانقطاع فقط"
+
+#: src/Admin/Strings.php:187
+msgid "Pages use the original addresses until the international internet goes down."
+msgstr "تستخدم الصفحات العناوين الأصلية إلى أن ينقطع الإنترنت الدولي."
+
+#: src/Admin/Strings.php:188 src/Admin/Strings.php:201
+msgid "Off"
+msgstr "معطّل"
+
+#: src/Admin/Strings.php:189
+msgid "Nothing is copied or replaced."
+msgstr "لا يُنسخ ولا يُستبدل شيء."
+
+#: src/Admin/Strings.php:190
+msgid "Read the page HTML too"
+msgstr "قراءة HTML الصفحة أيضًا"
+
+#: src/Admin/Strings.php:191
+msgid "Also replaces addresses that themes and page builders write directly into the page. Pages without such addresses are not touched."
+msgstr "يستبدل أيضًا العناوين التي تكتبها القوالب وأدوات بناء الصفحات مباشرة في الصفحة. الصفحات التي لا تحتوي على هذه العناوين لا تُمسّ."
+
+#: src/Admin/Strings.php:192
+msgid "Local Google Fonts"
+msgstr "خطوط Google محلية"
+
+#: src/Admin/Strings.php:193
+msgid "Copies Google Fonts to your server while the internet works. During an outage, fonts that were not copied are skipped so pages do not wait for them."
+msgstr "ينسخ خطوط Google إلى خادمك ما دام الإنترنت يعمل. أثناء الانقطاع تُتخطّى الخطوط التي لم تُنسخ كي لا تنتظرها الصفحات."
+
+#: src/Admin/Strings.php:195
+msgid "Outside services"
+msgstr "الخدمات الخارجية"
+
+#: src/Admin/Strings.php:196
+msgid "Local avatars instead of Gravatar"
+msgstr "صور رمزية محلية بدل Gravatar"
+
+#: src/Admin/Strings.php:197
+msgid "Shows letter avatars only while Gravatar is unreachable."
+msgstr "يعرض صورًا رمزية بالأحرف فقط عندما يتعذّر الوصول إلى Gravatar."
+
+#: src/Admin/Strings.php:198
+msgid "Never loads Gravatar. Faster and more private."
+msgstr "لا يحمّل Gravatar أبدًا. أسرع وأكثر خصوصية."
+
+#: src/Admin/Strings.php:199 src/Admin/Strings.php:265
+msgid "During outages"
+msgstr "أثناء الانقطاع"
+
+#: src/Admin/Strings.php:202
+msgid "Placeholders for videos and maps"
+msgstr "بدائل للفيديوهات والخرائط"
+
+#: src/Admin/Strings.php:203
+msgid "During an outage, YouTube, Vimeo and Google Maps frames are replaced with a short note and a link."
+msgstr "أثناء الانقطاع تُستبدل إطارات YouTube وVimeo وخرائط Google بملاحظة قصيرة ورابط."
+
+#: src/Admin/Strings.php:205 src/Admin/Strings.php:475
+msgid "Outside requests"
+msgstr "الطلبات الخارجية"
+
+#: src/Admin/Strings.php:206
+msgid "Always allowed servers"
+msgstr "خوادم مسموح بها دائمًا"
+
+#: src/Admin/Strings.php:207
+msgid "During an outage Rafoo skips requests to servers outside Iran. Servers listed here are still contacted. One per line; *.example.com covers subdomains."
+msgstr "أثناء الانقطاع يتخطى Rafoo الطلبات إلى الخوادم خارج إيران. الخوادم المذكورة هنا يُتصل بها رغم ذلك. خادم في كل سطر؛ ‎*.example.com يشمل النطاقات الفرعية."
+
+#: src/Admin/Strings.php:209 src/Admin/Strings.php:271
+msgid "Privacy"
+msgstr "الخصوصية"
+
+#: src/Admin/Strings.php:210
+msgid "Send anonymous usage reports"
+msgstr "إرسال تقارير استخدام مجهولة"
+
+#: src/Admin/Strings.php:211
+msgid "Once a week: a random site ID, versions of WordPress, PHP and Rafoo, installed plugins and themes, and the CDN files the mirror did not have. Never the site address or any personal data. It helps the mirror cover more files."
+msgstr "مرة في الأسبوع: معرّف عشوائي للموقع، وإصدارات ووردبريس وPHP وRafoo، والإضافات والقوالب المثبتة، وملفات CDN التي لم تكن في المرآة. لا يُرسل عنوان الموقع ولا أي بيانات شخصية أبدًا. يساعد ذلك المرآة على تغطية ملفات أكثر."
+
+#: src/Admin/Strings.php:212
+msgid "Suggested text for your privacy policy"
+msgstr "نص مقترح لسياسة الخصوصية"
+
+#: src/Admin/Strings.php:213
+msgid "Settings saved."
+msgstr "تم حفظ الإعدادات."
+
+#: src/Admin/Strings.php:214 src/Admin/Strings.php:267
+msgid "Updates and safety"
+msgstr "التحديثات والأمان"
+
+#: src/Admin/Strings.php:215
+msgid "WordPress's own outside files"
+msgstr "ملفات ووردبريس الخارجية"
+
+#: src/Admin/Strings.php:216
+msgid "During an outage, emoji images, the Google Fonts list of the font library and remote block patterns stop loading from wordpress.org, so the editor and pages do not wait for them."
+msgstr "أثناء الانقطاع يتوقف تحميل صور الإيموجي وقائمة خطوط Google في مكتبة الخطوط والأنماط البعيدة من wordpress.org، فلا ينتظرها المحرر ولا الصفحات."
+
+#: src/Admin/Strings.php:217
+msgid "Built-in captcha"
+msgstr "كابتشا مدمجة"
+
+#: src/Admin/Strings.php:218
+msgid "Protects forms, login, comments and checkout with a silent check in the visitor's browser. No cookies and no outside service. It takes the place of reCAPTCHA, hCaptcha and Turnstile."
+msgstr "تحمي النماذج وتسجيل الدخول والتعليقات وإتمام الطلب بفحص صامت في متصفح الزائر. بلا ملفات تعريف ارتباط وبلا خدمة خارجية. تحل محل reCAPTCHA وhCaptcha وTurnstile."
+
+#: src/Admin/Strings.php:219
+msgid "Only while the international internet is down, when Google's captcha cannot load."
+msgstr "فقط عندما يكون الإنترنت الدولي مقطوعًا ولا يمكن تحميل كابتشا Google."
+
+#: src/Admin/Strings.php:220
+msgid "Always use Rafoo's captcha. Faster and more private."
+msgstr "استخدم كابتشا Rafoo دائمًا. أسرع وأكثر خصوصية."
+
+#: src/Admin/Strings.php:221
+msgid "Remove analytics scripts"
+msgstr "إزالة سكربتات التحليلات"
+
+#: src/Admin/Strings.php:222
+msgid "Google Analytics, Tag Manager, Hotjar, Clarity, the Facebook pixel and similar scripts."
+msgstr "Google Analytics وTag Manager وHotjar وClarity وبكسل فيسبوك والسكربتات المشابهة."
+
+#: src/Admin/Strings.php:223
+msgid "Only during an outage, when they cannot load and slow pages down."
+msgstr "أثناء الانقطاع فقط، حين لا يمكن تحميلها وتبطئ الصفحات."
+
+#: src/Admin/Strings.php:224
+msgid "Never load them."
+msgstr "لا تحمّلها أبدًا."
+
+#: src/Admin/Strings.php:225
+msgid "Hide sign-in with Google during outages"
+msgstr "إخفاء تسجيل الدخول عبر Google أثناء الانقطاع"
+
+#: src/Admin/Strings.php:226
+msgid "Buttons for signing in with Google, Facebook and similar services are hidden while they cannot work, so visitors use the normal form."
+msgstr "تُخفى أزرار تسجيل الدخول عبر Google وفيسبوك والخدمات المشابهة ما دامت لا تعمل، فيستخدم الزوار النموذج العادي."
+
+#: src/Admin/Strings.php:227
+msgid "Keep emails that could not be sent"
+msgstr "الاحتفاظ بالرسائل التي تعذّر إرسالها"
+
+#: src/Admin/Strings.php:228
+msgid "If an email fails because the mail server cannot be reached, it is kept and sent again later instead of being lost."
+msgstr "إذا فشلت رسالة بريد لأن خادم البريد غير متاح، تُحفظ وتُرسل لاحقًا بدل أن تضيع."
+
+#: src/Admin/Strings.php:229
+msgid "Log outside requests"
+msgstr "تسجيل الطلبات الخارجية"
+
+#: src/Admin/Strings.php:230
+msgid "Shows which plugin connects to which server, and which requests Rafoo skipped. Kept small and cleared automatically."
+msgstr "يعرض أي إضافة تتصل بأي خادم، وأي الطلبات تخطّاها Rafoo. السجل صغير ويُمسح تلقائيًا."
+
+#: src/Admin/Strings.php:231
+msgid "Safe updates"
+msgstr "تحديثات آمنة"
+
+#: src/Admin/Strings.php:232
+msgid "Keeps the previous version before a plugin or theme is updated, checks the site afterwards and goes back by itself if the update broke it."
+msgstr "يحتفظ بالإصدار السابق قبل تحديث إضافة أو قالب، ويفحص الموقع بعد ذلك ويعود من تلقاء نفسه إذا أفسد التحديث الموقع."
+
+#: src/Admin/Strings.php:233
+msgid "Automatic backups"
+msgstr "نسخ احتياطية تلقائية"
+
+#: src/Admin/Strings.php:234
+msgid "A full copy of the files and database on a schedule, on this host or on another server."
+msgstr "نسخة كاملة من الملفات وقاعدة البيانات وفق جدول، على هذه الاستضافة أو على خادم آخر."
+
+#. translators: %s: name of the ready-made setup
+#: src/Admin/Strings.php:236
+#, php-format
+msgid "Current setup: %s"
+msgstr "الإعداد الحالي: %s"
+
+#: src/Admin/Strings.php:237
+msgid "Current setup: your own choices"
+msgstr "الإعداد الحالي: اختياراتك أنت"
+
+#: src/Admin/Strings.php:238
+msgid "Run setup again"
+msgstr "أعد تشغيل الإعداد"
+
+#: src/Admin/Strings.php:239
+msgid "Rafoo is running with its default settings. Setup takes a minute."
+msgstr "يعمل Rafoo بإعداداته الافتراضية. يستغرق الإعداد دقيقة."
+
+#: src/Admin/Strings.php:240
+msgid "Start setup"
+msgstr "ابدأ الإعداد"
+
+#: src/Admin/Strings.php:241
+msgid "Set up Rafoo"
+msgstr "إعداد Rafoo"
+
+#: src/Admin/Strings.php:242
+msgid "Choose a ready-made setup, or go through the steps and decide each part yourself. Everything can be changed later."
+msgstr "اختر إعدادًا جاهزًا، أو اتبع الخطوات وقرّر كل جزء بنفسك. يمكن تغيير كل شيء لاحقًا."
+
+#: src/Admin/Strings.php:243
+msgid "Recommended"
+msgstr "موصى به"
+
+#: src/Admin/Strings.php:244
+msgid "Best for most sites."
+msgstr "الأفضل لمعظم المواقع."
+
+#: src/Admin/Strings.php:245 src/Admin/Strings.php:256
+msgid "Local copies of libraries and fonts, always"
+msgstr "نسخ محلية من المكتبات والخطوط، دائمًا"
+
+#: src/Admin/Strings.php:246
+msgid "Outside services replaced only during outages"
+msgstr "استبدال الخدمات الخارجية أثناء الانقطاع فقط"
+
+#: src/Admin/Strings.php:247 src/Admin/Strings.php:257
+msgid "Safe updates and a daily backup"
+msgstr "تحديثات آمنة ونسخة احتياطية يومية"
+
+#: src/Admin/Strings.php:249
+msgid "The site works as before until the internet goes down."
+msgstr "يعمل الموقع كما كان إلى أن ينقطع الإنترنت."
+
+#: src/Admin/Strings.php:250
+msgid "Nothing changes while the internet works"
+msgstr "لا يتغير شيء ما دام الإنترنت يعمل"
+
+#: src/Admin/Strings.php:251
+msgid "Local copies and replacements during outages"
+msgstr "نسخ محلية وبدائل أثناء الانقطاع"
+
+#: src/Admin/Strings.php:252
+msgid "Safe updates, no automatic backup"
+msgstr "تحديثات آمنة، بلا نسخ احتياطي تلقائي"
+
+#: src/Admin/Strings.php:253
+msgid "Maximum speed and privacy"
+msgstr "أقصى سرعة وخصوصية"
+
+#: src/Admin/Strings.php:254
+msgid "Uses as few outside services as possible."
+msgstr "يستخدم أقل عدد ممكن من الخدمات الخارجية."
+
+#: src/Admin/Strings.php:255
+msgid "Local avatars and captcha, always"
+msgstr "صور رمزية وكابتشا محلية، دائمًا"
+
+#: src/Admin/Strings.php:258
+msgid "Suggested"
+msgstr "مقترح"
+
+#: src/Admin/Strings.php:259
+msgid "Use this setup"
+msgstr "استخدم هذا الإعداد"
+
+#: src/Admin/Strings.php:260
+msgid "A weekly anonymous report helps the mirror cover more files. No site address or personal data."
+msgstr "تقرير أسبوعي مجهول يساعد المرآة على تغطية ملفات أكثر. بلا عنوان الموقع وبلا بيانات شخصية."
+
+#: src/Admin/Strings.php:261
+msgid "Later"
+msgstr "لاحقًا"
+
+#: src/Admin/Strings.php:262
+msgid "Set up step by step"
+msgstr "إعداد خطوة بخطوة"
+
+#: src/Admin/Strings.php:263
+msgid "Files and fonts"
+msgstr "الملفات والخطوط"
+
+#: src/Admin/Strings.php:264
+msgid "Libraries and fonts the site loads from public networks."
+msgstr "المكتبات والخطوط التي يحمّلها الموقع من الشبكات العامة."
+
+#: src/Admin/Strings.php:266
+msgid "What should happen to outside services when the international internet is down."
+msgstr "ما الذي يجب أن يحدث للخدمات الخارجية حين ينقطع الإنترنت الدولي."
+
+#: src/Admin/Strings.php:268
+msgid "Protection against updates that break the site."
+msgstr "حماية من التحديثات التي تُفسد الموقع."
+
+#: src/Admin/Strings.php:269 src/Admin/Strings.php:313
+msgid "Backup"
+msgstr "النسخ الاحتياطي"
+
+#: src/Admin/Strings.php:270
+msgid "Regular copies of the whole site."
+msgstr "نسخ منتظمة من الموقع كاملًا."
+
+#: src/Admin/Strings.php:272
+msgid "Rafoo sends nothing unless you allow it."
+msgstr "لا يرسل Rafoo شيئًا ما لم تسمح بذلك."
+
+#: src/Admin/Strings.php:273
+msgid "Copies are kept on this host. Another server can be added later on the Backup tab."
+msgstr "تُحفظ النسخ على هذه الاستضافة. يمكن إضافة خادم آخر لاحقًا من تبويب النسخ الاحتياطي."
+
+#: src/Admin/Strings.php:274
+msgid "Back"
+msgstr "رجوع"
+
+#: src/Admin/Strings.php:275
+msgid "Next"
+msgstr "التالي"
+
+#: src/Admin/Strings.php:276
+msgid "Finish setup"
+msgstr "إنهاء الإعداد"
+
+#: src/Admin/Strings.php:277
+msgid "Rafoo is ready"
+msgstr "Rafoo جاهز"
+
+#: src/Admin/Strings.php:278
+msgid "Rafoo is now scanning a few pages of the site and copying the files it finds. This happens in the background."
+msgstr "يفحص Rafoo الآن بعض صفحات الموقع وينسخ الملفات التي يجدها. يحدث ذلك في الخلفية."
+
+#: src/Admin/Strings.php:279
+msgid "Open the dashboard"
+msgstr "افتح لوحة التحكم"
+
+#: src/Admin/Strings.php:280
+msgid "Setup finished"
+msgstr "انتهى الإعداد"
+
+#: src/Admin/Strings.php:281
+msgid "Waiting emails were sent"
+msgstr "تم إرسال الرسائل المنتظرة"
+
+#: src/Admin/Strings.php:282
+msgid "Emails that waited three days were deleted"
+msgstr "حُذفت الرسائل التي انتظرت ثلاثة أيام"
+
+#. translators: 1: plugin or theme name, 2: previous version, 3: new version
+#: src/Admin/Strings.php:285
+#, php-format
+msgid "%1$s %3$s broke the site and was replaced with %2$s"
+msgstr "أفسد %1$s %3$s الموقع فاستُبدل بـ %2$s"
+
+#: src/Admin/Strings.php:286
+msgid "The site had a problem after an update, but going back did not fix it, so the update was kept"
+msgstr "واجه الموقع مشكلة بعد تحديث، لكن الرجوع لم يحلّها، فأُبقي التحديث"
+
+#. translators: 1: plugin or theme name, 2: version
+#: src/Admin/Strings.php:288
+#, php-format
+msgid "%1$s was set back to %2$s by hand"
+msgstr "أُعيد %1$s يدويًا إلى %2$s"
+
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:663
+msgid "Updates"
+msgstr "التحديثات"
+
+#: src/Admin/Strings.php:291
+msgid "Name"
+msgstr "الاسم"
+
+#: src/Admin/Strings.php:292
+msgid "Installed"
+msgstr "المثبَّت"
+
+#: src/Admin/Strings.php:293
+msgid "Saved versions"
+msgstr "الإصدارات المحفوظة"
+
+#: src/Admin/Strings.php:294
+msgid "Plugin"
+msgstr "إضافة"
+
+#: src/Admin/Strings.php:295
+msgid "Theme"
+msgstr "قالب"
+
+#: src/Admin/Strings.php:296
+msgid "Previous versions"
+msgstr "الإصدارات السابقة"
+
+#: src/Admin/Strings.php:297
+msgid "Before a plugin or theme is updated, Rafoo keeps a copy of the version you had. If the update breaks the site, Rafoo puts the copy back by itself. You can also go back by hand."
+msgstr "قبل تحديث إضافة أو قالب، يحتفظ Rafoo بنسخة من الإصدار الذي كان لديك. إذا أفسد التحديث الموقع، يعيد Rafoo النسخة من تلقاء نفسه. ويمكنك الرجوع يدويًا أيضًا."
+
+#: src/Admin/Strings.php:298
+msgid "No copy has been kept yet. One is made at the next update."
+msgstr "لم تُحفظ أي نسخة بعد. ستُنشأ واحدة عند التحديث التالي."
+
+#: src/Admin/Strings.php:299
+msgid "Safe updates are turned off in Settings, so no new copies are made."
+msgstr "التحديثات الآمنة معطّلة في الإعدادات، لذلك لا تُنشأ نسخ جديدة."
+
+#: src/Admin/Strings.php:300
+msgid "This server has no ZipArchive extension, so copies cannot be made. Ask your host to enable it."
+msgstr "لا يحتوي هذا الخادم على امتداد ZipArchive، لذلك لا يمكن إنشاء النسخ. اطلب من الاستضافة تفعيله."
+
+#: src/Admin/Strings.php:301
+msgid "In use"
+msgstr "قيد الاستخدام"
+
+#. translators: %s: version number
+#: src/Admin/Strings.php:303
+#, php-format
+msgid "Use %s"
+msgstr "استخدم %s"
+
+#. translators: 1: plugin or theme name, 2: version number
+#: src/Admin/Strings.php:305
+#, php-format
+msgid "%1$s is now on version %2$s and the site works."
+msgstr "أصبح %1$s على الإصدار %2$s والموقع يعمل."
+
+#. translators: 1: plugin or theme name, 2: version number, 3: problem found
+#: src/Admin/Strings.php:307
+#, php-format
+msgid "%1$s is now on version %2$s, but the site still has a problem: %3$s"
+msgstr "أصبح %1$s على الإصدار %2$s، لكن الموقع ما زال يواجه مشكلة: %3$s"
+
+#: src/Admin/Strings.php:308
+msgid "Check the site now"
+msgstr "افحص الموقع الآن"
+
+#: src/Admin/Strings.php:309
+msgid "The home page, the login page and the dashboard all load without errors."
+msgstr "الصفحة الرئيسية وصفحة الدخول ولوحة التحكم تُحمَّل كلها دون أخطاء."
+
+#. translators: %s: problem found
+#: src/Admin/Strings.php:311
+#, php-format
+msgid "The site has a problem: %s"
+msgstr "يواجه الموقع مشكلة: %s"
+
+#: src/Admin/Strings.php:314
+msgid "Backups"
+msgstr "النسخ الاحتياطية"
+
+#: src/Admin/Strings.php:315
+msgid "A full copy of the files and database. Rafoo makes it in small steps, so it works on shared hosting too."
+msgstr "نسخة كاملة من الملفات وقاعدة البيانات. يصنعها Rafoo على خطوات صغيرة، فتعمل على الاستضافة المشتركة أيضًا."
+
+#: src/Admin/Strings.php:316
+msgid "Back up now"
+msgstr "انسخ احتياطيًا الآن"
+
+#: src/Admin/Strings.php:317
+msgid "Last backup"
+msgstr "آخر نسخة احتياطية"
+
+#: src/Admin/Strings.php:318
+msgid "Next backup"
+msgstr "النسخة الاحتياطية التالية"
+
+#: src/Admin/Strings.php:319
+msgid "Automatic backups are off"
+msgstr "النسخ الاحتياطية التلقائية معطّلة"
+
+#: src/Admin/Strings.php:320
+msgid "Free space on this host"
+msgstr "المساحة الحرة على هذه الاستضافة"
+
+#: src/Admin/Strings.php:321
+msgid "Stop"
+msgstr "إيقاف"
+
+#: src/Admin/Strings.php:322
+msgid "Progress"
+msgstr "التقدّم"
+
+#: src/Admin/Strings.php:323
+msgid "Making a backup"
+msgstr "إنشاء نسخة احتياطية"
+
+#: src/Admin/Strings.php:324
+msgid "Restoring a backup"
+msgstr "استعادة نسخة احتياطية"
+
+#: src/Admin/Strings.php:325
+msgid "Receiving a site"
+msgstr "استقبال موقع"
+
+#: src/Admin/Strings.php:326
+msgid "Sending this site"
+msgstr "إرسال هذا الموقع"
+
+#: src/Admin/Strings.php:327
+msgid "Preparing the move to an empty host"
+msgstr "تجهيز النقل إلى استضافة فارغة"
+
+#: src/Admin/Strings.php:328
+msgid "copying the database"
+msgstr "نسخ قاعدة البيانات"
+
+#: src/Admin/Strings.php:329
+msgid "listing files"
+msgstr "سرد الملفات"
+
+#: src/Admin/Strings.php:330
+msgid "packing files"
+msgstr "حزم الملفات"
+
+#: src/Admin/Strings.php:331
+msgid "closing the archive"
+msgstr "إغلاق الأرشيف"
+
+#: src/Admin/Strings.php:332
+msgid "encrypting"
+msgstr "التشفير"
+
+#: src/Admin/Strings.php:333 src/Admin/Strings.php:338
+msgid "checking the archive"
+msgstr "فحص الأرشيف"
+
+#: src/Admin/Strings.php:334
+msgid "sending to the server"
+msgstr "الإرسال إلى الخادم"
+
+#: src/Admin/Strings.php:335
+msgid "removing old backups"
+msgstr "حذف النسخ القديمة"
+
+#: src/Admin/Strings.php:336
+msgid "downloading the backup"
+msgstr "تنزيل النسخة الاحتياطية"
+
+#: src/Admin/Strings.php:337
+msgid "downloading from the other site"
+msgstr "التنزيل من الموقع الآخر"
+
+#: src/Admin/Strings.php:339
+msgid "opening the encrypted archive"
+msgstr "فتح الأرشيف المشفّر"
+
+#: src/Admin/Strings.php:340
+msgid "putting files back"
+msgstr "إعادة الملفات"
+
+#: src/Admin/Strings.php:341
+msgid "reading the database"
+msgstr "قراءة قاعدة البيانات"
+
+#: src/Admin/Strings.php:342
+msgid "restoring the database"
+msgstr "استعادة قاعدة البيانات"
+
+#: src/Admin/Strings.php:343
+msgid "updating the site address"
+msgstr "تحديث عنوان الموقع"
+
+#: src/Admin/Strings.php:344
+msgid "switching to the restored data"
+msgstr "التبديل إلى البيانات المستعادة"
+
+#: src/Admin/Strings.php:345
+msgid "checking the site"
+msgstr "فحص الموقع"
+
+#: src/Admin/Strings.php:346
+msgid "making a copy"
+msgstr "إنشاء نسخة"
+
+#: src/Admin/Strings.php:347
+msgid "telling the other site"
+msgstr "إبلاغ الموقع الآخر"
+
+#: src/Admin/Strings.php:348
+msgid "waiting for the other site"
+msgstr "انتظار الموقع الآخر"
+
+#: src/Admin/Strings.php:349
+msgid "other site:"
+msgstr "الموقع الآخر:"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:351
+#, php-format
+msgid "The last task did not finish: %s"
+msgstr "لم تكتمل المهمة الأخيرة: %s"
+
+#: src/Admin/Strings.php:352
+msgid "there is not enough free space on this host"
+msgstr "لا توجد مساحة حرة كافية على هذه الاستضافة"
+
+#: src/Admin/Strings.php:353
+msgid "the archive is damaged or incomplete"
+msgstr "الأرشيف تالف أو غير مكتمل"
+
+#: src/Admin/Strings.php:354
+msgid "the password or key is wrong"
+msgstr "كلمة المرور أو المفتاح خاطئ"
+
+#: src/Admin/Strings.php:355
+msgid "the server could not be reached"
+msgstr "تعذّر الوصول إلى الخادم"
+
+#: src/Admin/Strings.php:356
+msgid "the restored site did not load, so the previous database was put back"
+msgstr "لم يُحمَّل الموقع المستعاد، فأُعيدت قاعدة البيانات السابقة"
+
+#: src/Admin/Strings.php:357
+msgid "the other site did not finish in time"
+msgstr "لم يُنهِ الموقع الآخر في الوقت المحدد"
+
+#: src/Admin/Strings.php:358
+msgid "the other site refused the copy"
+msgstr "رفض الموقع الآخر النسخة"
+
+#: src/Admin/Strings.php:359
+msgid "PHP stopped three times in the same step, usually because the memory limit is too low; ask your host to raise memory_limit"
+msgstr "توقف PHP ثلاث مرات في الخطوة نفسها، عادةً لأن حد الذاكرة منخفض جدًا؛ اطلب من الاستضافة رفع memory_limit"
+
+#: src/Admin/Strings.php:360
+msgid "The last task stopped responding. WP-Cron may be off; keep this page open to continue it, or start again."
+msgstr "توقفت المهمة الأخيرة عن الاستجابة. قد يكون WP-Cron معطّلًا؛ أبقِ هذه الصفحة مفتوحة لمتابعتها، أو ابدأ من جديد."
+
+#: src/Admin/Strings.php:361
+msgid "The backup was restored and the site works. If you are asked to log in, use the accounts from the backup."
+msgstr "تمت استعادة النسخة الاحتياطية والموقع يعمل. إن طُلب منك تسجيل الدخول، فاستخدم الحسابات الموجودة في النسخة."
+
+#: src/Admin/Strings.php:362
+msgid "Saved backups"
+msgstr "النسخ الاحتياطية المحفوظة"
+
+#: src/Admin/Strings.php:363
+msgid "No backup has been made yet."
+msgstr "لم تُنشأ أي نسخة احتياطية بعد."
+
+#: src/Admin/Strings.php:364
+msgid "Date"
+msgstr "التاريخ"
+
+#: src/Admin/Strings.php:365
+msgid "Type"
+msgstr "النوع"
+
+#: src/Admin/Strings.php:366
+msgid "Kept on"
+msgstr "محفوظة على"
+
+#. translators: 1: number of files, 2: number of database tables
+#: src/Admin/Strings.php:368
+#, php-format
+msgid "%1$s files, %2$s tables"
+msgstr "%1$s ملف، %2$s جدول"
+
+#: src/Admin/Strings.php:369
+msgid "Full"
+msgstr "كاملة"
+
+#: src/Admin/Strings.php:370
+msgid "Changes only"
+msgstr "التغييرات فقط"
+
+#: src/Admin/Strings.php:371
+msgid "Encrypted"
+msgstr "مشفّرة"
+
+#: src/Admin/Strings.php:372
+msgid "Not finished"
+msgstr "غير مكتملة"
+
+#: src/Admin/Strings.php:373
+msgid "This host"
+msgstr "هذه الاستضافة"
+
+#: src/Admin/Strings.php:374
+msgid "Download"
+msgstr "تنزيل"
+
+#: src/Admin/Strings.php:375
+msgid "Restore"
+msgstr "استعادة"
+
+#. translators: %s: date of the backup
+#: src/Admin/Strings.php:377
+#, php-format
+msgid "The files and database of this site will be replaced with the copy from %s. Rafoo keeps the current database until the restored site is checked, and puts it back if the site does not load."
+msgstr "ستُستبدل ملفات هذا الموقع وقاعدة بياناته بالنسخة المؤرخة %s. يحتفظ Rafoo بقاعدة البيانات الحالية حتى يُفحص الموقع المستعاد، ويعيدها إن لم يُحمَّل الموقع."
+
+#: src/Admin/Strings.php:378
+msgid "Restore this backup"
+msgstr "استعد هذه النسخة"
+
+#: src/Admin/Strings.php:379
+msgid "Backup password"
+msgstr "كلمة مرور النسخ الاحتياطي"
+
+#: src/Admin/Strings.php:380
+msgid "Schedule"
+msgstr "الجدول الزمني"
+
+#: src/Admin/Strings.php:381
+msgid "Backups run in the background at a quiet hour. Rafoo keeps 7 daily, 4 weekly and 6 monthly copies."
+msgstr "تعمل النسخ الاحتياطية في الخلفية في ساعة هادئة. يحتفظ Rafoo بـ 7 نسخ يومية و4 أسبوعية و6 شهرية."
+
+#: src/Admin/Strings.php:382
+msgid "How often"
+msgstr "كم مرة"
+
+#: src/Admin/Strings.php:383
+msgid "Every 6 hours"
+msgstr "كل 6 ساعات"
+
+#: src/Admin/Strings.php:384
+msgid "Every 12 hours"
+msgstr "كل 12 ساعة"
+
+#: src/Admin/Strings.php:385
+msgid "Every day"
+msgstr "كل يوم"
+
+#: src/Admin/Strings.php:386
+msgid "Every 2 days"
+msgstr "كل يومين"
+
+#: src/Admin/Strings.php:387
+msgid "Every week"
+msgstr "كل أسبوع"
+
+#: src/Admin/Strings.php:388
+msgid "At"
+msgstr "في الساعة"
+
+#: src/Admin/Strings.php:389
+msgid "Copy only what changed"
+msgstr "انسخ ما تغيّر فقط"
+
+#: src/Admin/Strings.php:390
+msgid "After a full copy, the next six copy only new and changed files and the whole database. Faster and smaller. A full copy is made every week."
+msgstr "بعد نسخة كاملة، تنسخ الست التالية الملفات الجديدة والمعدّلة فقط وقاعدة البيانات كاملة. أسرع وأصغر. تُنشأ نسخة كاملة كل أسبوع."
+
+#: src/Admin/Strings.php:391
+msgid "Keep copies on this host"
+msgstr "احتفظ بالنسخ على هذه الاستضافة"
+
+#: src/Admin/Strings.php:392
+msgid "When off, copies are kept only on the servers below, which protects them if this host fails."
+msgstr "عند التعطيل تُحفظ النسخ على الخوادم أدناه فقط، مما يحميها إن تعطلت هذه الاستضافة."
+
+#: src/Admin/Strings.php:393 src/Admin/Strings.php:512
+msgid "Encryption"
+msgstr "التشفير"
+
+#: src/Admin/Strings.php:394
+msgid "With a password, backups are encrypted before they leave this site. Without the password they cannot be restored, so keep it somewhere safe."
+msgstr "مع كلمة مرور تُشفَّر النسخ الاحتياطية قبل مغادرة هذا الموقع. دون كلمة المرور لا يمكن استعادتها، فاحفظها في مكان آمن."
+
+#: src/Admin/Strings.php:395
+msgid "New backups are encrypted."
+msgstr "النسخ الاحتياطية الجديدة مشفّرة."
+
+#: src/Admin/Strings.php:396
+msgid "Backups are not encrypted."
+msgstr "النسخ الاحتياطية غير مشفّرة."
+
+#: src/Admin/Strings.php:397
+msgid "Password saved. The next backup will be encrypted."
+msgstr "تم حفظ كلمة المرور. ستكون النسخة الاحتياطية التالية مشفّرة."
+
+#: src/Admin/Strings.php:398
+msgid "Turn off encryption"
+msgstr "أوقف التشفير"
+
+#: src/Admin/Strings.php:399
+msgid "Encryption turned off for new backups."
+msgstr "تم إيقاف التشفير للنسخ الجديدة."
+
+#: src/Admin/Strings.php:400
+msgid "This server's PHP has no sodium extension, so backups cannot be encrypted."
+msgstr "لا يحتوي PHP على هذا الخادم على امتداد sodium، لذلك لا يمكن تشفير النسخ الاحتياطية."
+
+#: src/Admin/Strings.php:401
+msgid "This server has no ZipArchive extension, so backups cannot be made. Ask your host to enable it."
+msgstr "لا يحتوي هذا الخادم على امتداد ZipArchive، لذلك لا يمكن إنشاء نسخ احتياطية. اطلب من الاستضافة تفعيله."
+
+#: src/Admin/Strings.php:402 src/Backup/Job.php:33 src/Backup/Maker.php:33
+msgid "The uploads folder is not writable, so Rafoo cannot keep backups."
+msgstr "مجلد uploads غير قابل للكتابة، لذلك لا يستطيع Rafoo حفظ النسخ الاحتياطية."
+
+#: src/Admin/Strings.php:403
+msgid "This shop is in the last step of moving. New orders are paused for a few minutes."
+msgstr "هذا المتجر في الخطوة الأخيرة من النقل. الطلبات الجديدة متوقفة لبضع دقائق."
+
+#: src/Admin/Strings.php:404
+msgid "Other servers"
+msgstr "خوادم أخرى"
+
+#: src/Admin/Strings.php:405
+msgid "Copies are also sent to these servers. Enter the address and login; Rafoo finds the right connection (SFTP, FTPS or FTP) and folder by itself."
+msgstr "تُرسل النسخ أيضًا إلى هذه الخوادم. أدخل العنوان وبيانات الدخول؛ يجد Rafoo الاتصال المناسب (SFTP أو FTPS أو FTP) والمجلد من تلقاء نفسه."
+
+#: src/Admin/Strings.php:406
+msgid "Add a server"
+msgstr "أضف خادمًا"
+
+#: src/Admin/Strings.php:407 src/Admin/Strings.php:510
+msgid "Server address"
+msgstr "عنوان الخادم"
+
+#: src/Admin/Strings.php:408
+msgid "More options"
+msgstr "خيارات أكثر"
+
+#: src/Admin/Strings.php:409
+msgid "Folder (optional)"
+msgstr "المجلد (اختياري)"
+
+#: src/Admin/Strings.php:410
+msgid "Name (optional)"
+msgstr "الاسم (اختياري)"
+
+#: src/Admin/Strings.php:411
+msgid "SSH private key (optional, instead of a password)"
+msgstr "مفتاح SSH الخاص (اختياري، بدل كلمة المرور)"
+
+#: src/Admin/Strings.php:412
+msgid "Rafoo tries SFTP, then FTPS and plain FTP, creates a folder named rafoo-backups, and checks that it can write, read and delete a test file."
+msgstr "يجرّب Rafoo بروتوكول SFTP ثم FTPS ثم FTP العادي، وينشئ مجلدًا باسم rafoo-backups، ويتحقق من قدرته على كتابة ملف اختبار وقراءته وحذفه."
+
+#: src/Admin/Strings.php:413
+msgid "Connect"
+msgstr "اتصل"
+
+#: src/Admin/Strings.php:414
+msgid "Finding the connection…"
+msgstr "جارٍ البحث عن الاتصال…"
+
+#. translators: 1: connection type, 2: folder, 3: speed per second
+#: src/Admin/Strings.php:416
+#, php-format
+msgid "Connected with %1$s. Copies go to %2$s at about %3$s per second."
+msgstr "تم الاتصال عبر %1$s. تذهب النسخ إلى %2$s بسرعة نحو %3$s في الثانية."
+
+#: src/Admin/Strings.php:417
+msgid "Last send failed"
+msgstr "فشل آخر إرسال"
+
+#. translators: %s: relative time
+#: src/Admin/Strings.php:419
+#, php-format
+msgid "Sent %s"
+msgstr "أُرسل %s"
+
+#: src/Admin/Strings.php:420
+msgid "Plain FTP is not encrypted. Turn on backup encryption below."
+msgstr "FTP العادي غير مشفّر. فعّل تشفير النسخ الاحتياطية أدناه."
+
+#. translators: %s: size per second
+#: src/Admin/Strings.php:422
+#, php-format
+msgid "About %s per second"
+msgstr "نحو %s في الثانية"
+
+#. translators: %s: size
+#: src/Admin/Strings.php:424
+#, php-format
+msgid "%s free"
+msgstr "%s متاح"
+
+#: src/Admin/Strings.php:425
+msgid "Test"
+msgstr "اختبار"
+
+#: src/Admin/Strings.php:426
+msgid "The server accepted a test file."
+msgstr "قبل الخادم ملف اختبار."
+
+#: src/Admin/Strings.php:427
+msgid "Move or copy the site"
+msgstr "انقل الموقع أو انسخه"
+
+#: src/Admin/Strings.php:428
+msgid "Copy this whole site to another WordPress site with Rafoo, or to an empty host. The data goes directly between the two servers, encrypted."
+msgstr "انسخ هذا الموقع كاملًا إلى موقع ووردبريس آخر عليه Rafoo، أو إلى استضافة فارغة. تنتقل البيانات مباشرة بين الخادمين، مشفّرة."
+
+#: src/Admin/Strings.php:429
+msgid "Send this site"
+msgstr "أرسل هذا الموقع"
+
+#: src/Admin/Strings.php:430
+msgid "Receive a site here"
+msgstr "استقبل موقعًا هنا"
+
+#: src/Admin/Strings.php:431
+msgid "To an empty host"
+msgstr "إلى استضافة فارغة"
+
+#: src/Admin/Strings.php:432
+msgid "Make a code here and enter it on the site you want to copy. This site will be replaced with that site."
+msgstr "أنشئ رمزًا هنا وأدخله في الموقع الذي تريد نسخه. سيُستبدل هذا الموقع بذلك الموقع."
+
+#: src/Admin/Strings.php:433
+msgid "Make a code"
+msgstr "أنشئ رمزًا"
+
+#: src/Admin/Strings.php:434
+msgid "Make a new code"
+msgstr "أنشئ رمزًا جديدًا"
+
+#: src/Admin/Strings.php:435
+msgid "Stop receiving"
+msgstr "أوقف الاستقبال"
+
+#: src/Admin/Strings.php:436
+msgid "Short code:"
+msgstr "الرمز القصير:"
+
+#: src/Admin/Strings.php:437
+msgid "Full code (works without rafoo.ir)"
+msgstr "الرمز الكامل (يعمل دون rafoo.ir)"
+
+#: src/Admin/Strings.php:438
+msgid "Copy"
+msgstr "نسخ"
+
+#: src/Admin/Strings.php:439
+msgid "Copied"
+msgstr "تم النسخ"
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:441
+#, php-format
+msgid "Valid until %s"
+msgstr "صالح حتى %s"
+
+#: src/Admin/Strings.php:442
+msgid "Anyone with this code can replace this site. Share it only with yourself."
+msgstr "أي شخص لديه هذا الرمز يستطيع استبدال هذا الموقع. لا تشاركه إلا مع نفسك."
+
+#: src/Admin/Strings.php:443
+msgid "Enter the code made on the receiving site. This site stays as it is."
+msgstr "أدخل الرمز الذي أُنشئ في الموقع المستقبِل. يبقى هذا الموقع كما هو."
+
+#: src/Admin/Strings.php:444
+msgid "Code from the other site"
+msgstr "الرمز من الموقع الآخر"
+
+#: src/Admin/Strings.php:445
+msgid "Finish with a quick second pass for changes made meanwhile (WooCommerce orders pause for a minute)"
+msgstr "اختم بجولة ثانية سريعة للتغييرات التي حدثت في الأثناء (تتوقف طلبات WooCommerce دقيقة)"
+
+#: src/Admin/Strings.php:446
+msgid "Start sending"
+msgstr "ابدأ الإرسال"
+
+#: src/Admin/Strings.php:447
+msgid "Rafoo puts an encrypted copy and a small installer on the new host through one of your servers. Then you open the installer and enter the new database details."
+msgstr "يضع Rafoo نسخة مشفّرة ومثبّتًا صغيرًا على الاستضافة الجديدة عبر أحد خوادمك. ثم تفتح المثبّت وتدخل بيانات قاعدة البيانات الجديدة."
+
+#: src/Admin/Strings.php:448
+msgid "First add the new host under Other servers, with access to its web folder."
+msgstr "أضف أولًا الاستضافة الجديدة ضمن خوادم أخرى، مع صلاحية الوصول إلى مجلد الويب فيها."
+
+#: src/Admin/Strings.php:449
+msgid "New host"
+msgstr "الاستضافة الجديدة"
+
+#: src/Admin/Strings.php:450
+msgid "Web folder on that host"
+msgstr "مجلد الويب على تلك الاستضافة"
+
+#: src/Admin/Strings.php:451
+msgid "Address of the site on the new host"
+msgstr "عنوان الموقع على الاستضافة الجديدة"
+
+#: src/Admin/Strings.php:452
+msgid "Prepare the move"
+msgstr "جهّز النقل"
+
+#: src/Admin/Strings.php:453
+msgid "Everything is on the new host."
+msgstr "كل شيء موجود على الاستضافة الجديدة."
+
+#: src/Admin/Strings.php:454
+msgid "Open this address and follow the steps:"
+msgstr "افتح هذا العنوان واتبع الخطوات:"
+
+#: src/Admin/Strings.php:455
+msgid "Restore key (shown only here)"
+msgstr "مفتاح الاستعادة (يظهر هنا فقط)"
+
+#. translators: 1: size, 2: backup type
+#: src/Admin/Strings.php:457
+#, php-format
+msgid "Backup made (%1$s)"
+msgstr "تم إنشاء نسخة احتياطية (%1$s)"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:459
+#, php-format
+msgid "Backup failed: %s"
+msgstr "فشل النسخ الاحتياطي: %s"
+
+#: src/Admin/Strings.php:460
+msgid "Backup task stopped by hand"
+msgstr "أُوقفت مهمة النسخ الاحتياطي يدويًا"
+
+#: src/Admin/Strings.php:461
+msgid "Backup restored"
+msgstr "تمت استعادة النسخة الاحتياطية"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:463
+#, php-format
+msgid "Restore failed: %s"
+msgstr "فشلت الاستعادة: %s"
+
+#. translators: %s: site address
+#: src/Admin/Strings.php:465
+#, php-format
+msgid "Site received from %s"
+msgstr "تم استقبال الموقع من %s"
+
+#. translators: %s: site address or reason
+#: src/Admin/Strings.php:467
+#, php-format
+msgid "Site sent to %s"
+msgstr "تم إرسال الموقع إلى %s"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:469
+#, php-format
+msgid "Site transfer failed: %s"
+msgstr "فشل نقل الموقع: %s"
+
+#. translators: %s: site address
+#: src/Admin/Strings.php:471
+#, php-format
+msgid "Move to %s prepared"
+msgstr "تم تجهيز النقل إلى %s"
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:473
+#, php-format
+msgid "Move preparation failed: %s"
+msgstr "فشل تجهيز النقل: %s"
+
+#: src/Admin/Strings.php:476
+msgid "Which plugin, theme or part of WordPress connected to which server from this site, and how it went."
+msgstr "أي إضافة أو قالب أو جزء من ووردبريس اتصل بأي خادم من هذا الموقع، وكيف كانت النتيجة."
+
+#: src/Admin/Strings.php:477
+msgid "Logging is turned off in Settings."
+msgstr "التسجيل معطّل في الإعدادات."
+
+#: src/Admin/Strings.php:478
+msgid "No outside request has been made since logging started."
+msgstr "لم يُرسل أي طلب خارجي منذ بدء التسجيل."
+
+#: src/Admin/Strings.php:479
+msgid "Clear the log"
+msgstr "امسح السجل"
+
+#. translators: %s: number of rows
+#: src/Admin/Strings.php:481
+#, php-format
+msgid "Show all %s rows"
+msgstr "اعرض كل الصفوف (%s)"
+
+#: src/Admin/Strings.php:482
+msgid "Made by"
+msgstr "بواسطة"
+
+#: src/Admin/Strings.php:483
+msgid "Server"
+msgstr "الخادم"
+
+#: src/Admin/Strings.php:484
+msgid "Requests"
+msgstr "الطلبات"
+
+#: src/Admin/Strings.php:485
+msgid "Skipped"
+msgstr "متخطّاة"
+
+#: src/Admin/Strings.php:486
+msgid "Failed"
+msgstr "فاشلة"
+
+#: src/Admin/Strings.php:487
+msgid "Average time"
+msgstr "متوسط الوقت"
+
+#: src/Admin/Strings.php:488
+msgid "Last"
+msgstr "الأخير"
+
+#. translators: %s: number of milliseconds
+#: src/Admin/Strings.php:490
+#, php-format
+msgid "%s ms"
+msgstr "%s م.ث"
+
+#: src/Admin/Strings.php:493
+msgid "Emails waiting to be sent"
+msgstr "رسائل بانتظار الإرسال"
+
+#: src/Admin/Strings.php:494
+msgid "Emails that failed because the mail server could not be reached. They are sent again automatically, and deleted after three days if they still cannot go."
+msgstr "رسائل فشلت لأن خادم البريد لم يكن متاحًا. تُرسل مجددًا تلقائيًا، وتُحذف بعد ثلاثة أيام إن ظل إرسالها متعذرًا."
+
+#: src/Admin/Strings.php:495
+msgid "Keeping unsent emails is turned off in Settings."
+msgstr "الاحتفاظ بالرسائل غير المرسلة معطّل في الإعدادات."
+
+#: src/Admin/Strings.php:496
+msgid "No email is waiting."
+msgstr "لا توجد رسالة بالانتظار."
+
+#: src/Admin/Strings.php:497
+msgid "The mail server cannot be reached right now. New emails are kept and sent later."
+msgstr "خادم البريد غير متاح حاليًا. تُحفظ الرسائل الجديدة وتُرسل لاحقًا."
+
+#: src/Admin/Strings.php:498
+msgid "Try sending now"
+msgstr "حاول الإرسال الآن"
+
+#. translators: %s: number of emails
+#: src/Admin/Strings.php:500
+#, php-format
+msgid "Emails still waiting: %s"
+msgstr "رسائل ما زالت بالانتظار: %s"
+
+#: src/Admin/Strings.php:501
+msgid "All waiting emails were sent."
+msgstr "أُرسلت كل الرسائل المنتظرة."
+
+#: src/Admin/Strings.php:502
+msgid "To"
+msgstr "إلى"
+
+#: src/Admin/Strings.php:503
+msgid "Subject"
+msgstr "الموضوع"
+
+#: src/Admin/Strings.php:504
+msgid "Tries"
+msgstr "المحاولات"
+
+#: src/Admin/Strings.php:505
+msgid "Next try"
+msgstr "المحاولة التالية"
+
+#: src/Admin/Strings.php:506
+msgid "Delete"
+msgstr "احذف"
+
+#: src/Admin/Strings.php:508
+msgid "Mail server for outages"
+msgstr "خادم بريد لأوقات الانقطاع"
+
+#: src/Admin/Strings.php:509
+msgid "If the site sends email through a server outside Iran, add a domestic mail server here, for example the one your host gives you. Rafoo uses it only while the international internet is down."
+msgstr "إذا كان الموقع يرسل البريد عبر خادم خارج إيران، أضف هنا خادم بريد محليًا، مثل الذي تمنحه لك الاستضافة. يستخدمه Rafoo فقط ما دام الإنترنت الدولي مقطوعًا."
+
+#: src/Admin/Strings.php:511
+msgid "Port"
+msgstr "المنفذ"
+
+#: src/Admin/Strings.php:513
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+#: src/Admin/Strings.php:514
+msgid "SSL/TLS"
+msgstr "SSL/TLS"
+
+#: src/Admin/Strings.php:515
+msgid "None"
+msgstr "بلا"
+
+#: src/Admin/Strings.php:516
+msgid "Without encryption the password and emails cross the network in plain text. Use it only for a server on the same host."
+msgstr "دون تشفير تمر كلمة المرور والرسائل عبر الشبكة نصًا واضحًا. استخدمه فقط لخادم على الاستضافة نفسها."
+
+#: src/Admin/Strings.php:517 src/Backup/Installer.php:24
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: src/Admin/Strings.php:518 src/Backup/Installer.php:25
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: src/Admin/Strings.php:519
+msgid "Saved. Leave empty to keep it."
+msgstr "محفوظة. اتركها فارغة للإبقاء عليها."
+
+#: src/Admin/Strings.php:520
+msgid "Sender address (optional)"
+msgstr "عنوان المرسل (اختياري)"
+
+#: src/Admin/Strings.php:521
+msgid "Many servers only accept emails from their own domain. If so, enter an address on that domain."
+msgstr "كثير من الخوادم لا تقبل إلا رسائل من نطاقها. إن كان كذلك، أدخل عنوانًا على ذلك النطاق."
+
+#: src/Admin/Strings.php:522
+msgid "Save mail server"
+msgstr "احفظ خادم البريد"
+
+#: src/Admin/Strings.php:523
+msgid "Mail server saved."
+msgstr "تم حفظ خادم البريد."
+
+#: src/Admin/Strings.php:525
+msgid "Mail server removed."
+msgstr "تمت إزالة خادم البريد."
+
+#. translators: %s: email address
+#: src/Admin/Strings.php:527
+#, php-format
+msgid "Send a test to %s"
+msgstr "أرسل رسالة اختبار إلى %s"
+
+#: src/Admin/Strings.php:528
+msgid "Test email sent. Check the inbox."
+msgstr "أُرسلت رسالة الاختبار. تحقّق من صندوق الوارد."
+
+#: src/Admin/Strings.php:529
+msgid "Save changes"
+msgstr "احفظ التغييرات"
+
+#: src/Admin/Strings.php:531
+msgid "Send a suggestion"
+msgstr "أرسل اقتراحًا"
+
+#: src/Admin/Strings.php:532
+msgid "Tell the Rafoo team what is missing or what went wrong."
+msgstr "أخبر فريق Rafoo بما ينقص أو بما حدث بشكل خاطئ."
+
+#: src/Admin/Strings.php:533
+msgid "Message"
+msgstr "الرسالة"
+
+#: src/Admin/Strings.php:534
+msgid "Email or phone (optional)"
+msgstr "البريد الإلكتروني أو الهاتف (اختياري)"
+
+#: src/Admin/Strings.php:535
+msgid "Only if you would like an answer."
+msgstr "فقط إن كنت تريد ردًا."
+
+#: src/Admin/Strings.php:536
+msgid "Your message is sent to rafoo.ir with the versions of WordPress, PHP and Rafoo. Nothing is sent until you press Send."
+msgstr "تُرسل رسالتك إلى rafoo.ir مع إصدارات ووردبريس وPHP وRafoo. لا يُرسل شيء قبل أن تضغط إرسال."
+
+#: src/Admin/Strings.php:537
+msgid "Please write a little more."
+msgstr "يُرجى كتابة المزيد قليلًا."
+
+#: src/Admin/Strings.php:538
+msgid "Thank you. Your message was sent."
+msgstr "شكرًا لك. تم إرسال رسالتك."
+
+#: src/Admin/Strings.php:539
+msgid "Send"
+msgstr "إرسال"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:542
+#, php-format
+msgid "%s min"
+msgstr "%s دقيقة"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:544
+#, php-format
+msgid "%s h"
+msgstr "%s ساعة"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:546
+#, php-format
+msgid "%s days"
+msgstr "%s يوم"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:548
+#, php-format
+msgid "%s B"
+msgstr "%s بايت"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:550
+#, php-format
+msgid "%s KB"
+msgstr "%s ك.ب"
+
+#. translators: %s: number
+#: src/Admin/Strings.php:552
+#, php-format
+msgid "%s MB"
+msgstr "%s م.ب"
+
+#: src/Admin/Strings.php:553
+msgid "Browser and internal requests"
+msgstr "طلبات المتصفح والطلبات الداخلية"
+
+#: src/Admin/Strings.php:555
+msgid "During an outage, requests that scripts make in the visitor's browser to unreachable servers fail at once instead of hanging. Hosts on the block list are always stopped."
+msgstr "أثناء الانقطاع تفشل فورًا الطلبات التي تجريها السكربتات في متصفح الزائر إلى الخوادم غير المتاحة بدل أن تعلق. المضيفون في قائمة الحظر يُوقفون دائمًا."
+
+#: src/Admin/Strings.php:556
+msgid "Merge repeated requests"
+msgstr "دمج الطلبات المتكررة"
+
+#: src/Admin/Strings.php:557
+msgid "When a page asks the site's own AJAX or REST address for the same thing several times at once, it is sent once and the answer is shared."
+msgstr "عندما تطلب الصفحة الشيء نفسه من عنوان AJAX أو REST الخاص بالموقع عدة مرات في الوقت نفسه، يُرسل الطلب مرة واحدة وتُشارك الإجابة."
+
+#: src/Admin/Strings.php:558
+msgid "WordPress Heartbeat"
+msgstr "WordPress Heartbeat"
+
+#: src/Admin/Strings.php:559
+msgid "Smart"
+msgstr "ذكي"
+
+#: src/Admin/Strings.php:560
+msgid "Every 60 seconds in editors, every 120 seconds elsewhere. Autosave and post locks keep working."
+msgstr "كل 60 ثانية في المحررات، وكل 120 ثانية في غيرها. الحفظ التلقائي وأقفال المقالات تبقى عاملة."
+
+#: src/Admin/Strings.php:561
+msgid "WordPress default"
+msgstr "افتراضي ووردبريس"
+
+#: src/Admin/Strings.php:562
+msgid "Unchanged, usually every 15 to 60 seconds."
+msgstr "دون تغيير، عادةً كل 15 إلى 60 ثانية."
+
+#: src/Admin/Strings.php:563
+msgid "Block list"
+msgstr "قائمة الحظر"
+
+#: src/Admin/Strings.php:564
+msgid "These servers or addresses are always blocked: on the server, in the page and in the browser. One per line: example.com, *.example.com or the start of a full address."
+msgstr "هذه الخوادم أو العناوين محظورة دائمًا: على الخادم وفي الصفحة وفي المتصفح. واحد في كل سطر: example.com أو ‎*.example.com أو بداية عنوان كامل."
+
+#: src/Admin/Strings.php:565
+msgid "Scan as my account too"
+msgstr "افحص بحسابي أيضًا"
+
+#: src/Admin/Strings.php:566
+msgid "The manual scan also opens the first pages with your login, so files loaded only for signed-in users are found."
+msgstr "يفتح الفحص اليدوي أيضًا الصفحات الأولى بحسابك، فتُكتشف الملفات التي تُحمَّل للمستخدمين المسجلين فقط."
+
+#: src/Admin/Strings.php:567
+msgid "Block"
+msgstr "احظر"
+
+#: src/Admin/Strings.php:568
+msgid "Unblock"
+msgstr "ألغِ الحظر"
+
+#: src/Admin/Strings.php:569
+msgid "Blocked"
+msgstr "محظور"
+
+#: src/Admin/Strings.php:570
+msgid "Pause Rafoo"
+msgstr "إيقاف Rafoo مؤقتًا"
+
+#: src/Admin/Strings.php:571
+msgid "Rafoo is active and makes the changes chosen in the settings."
+msgstr "Rafoo مفعّل ويُجري التغييرات المختارة في الإعدادات."
+
+#: src/Admin/Strings.php:572
+msgid "Rafoo is paused. The site works as if Rafoo were not installed."
+msgstr "Rafoo متوقف مؤقتًا. يعمل الموقع كما لو أن Rafoo غير مثبّت."
+
+#: src/Admin/Strings.php:573
+msgid "Pause"
+msgstr "إيقاف مؤقت"
+
+#: src/Admin/Strings.php:574
+msgid "Resume Rafoo"
+msgstr "استئناف Rafoo"
+
+#: src/Admin/Strings.php:575
+msgid "While paused, connection checks, local copies, backups and the monitoring engine keep running."
+msgstr "أثناء الإيقاف المؤقت تستمر فحوص الاتصال والنسخ المحلية والنسخ الاحتياطية ومحرك المراقبة في العمل."
+
+#: src/Admin/Strings.php:578
+msgid "Rafoo was paused"
+msgstr "تم إيقاف Rafoo مؤقتًا"
+
+#: src/Admin/Strings.php:579
+msgid "Rafoo resumed"
+msgstr "استُؤنف Rafoo"
+
+#. translators: %s: name of the setting or section
+#: src/Admin/Strings.php:581
+#, php-format
+msgid "Help: %s"
+msgstr "مساعدة: %s"
+
+#: src/Admin/Strings.php:582
+msgid "Chooses when copies on your server replace CDN files. Always: faster pages every day. Outage only: nothing changes while the internet works."
+msgstr "يحدد متى تحل النسخ على خادمك محل ملفات CDN. دائمًا: صفحات أسرع كل يوم. أثناء الانقطاع فقط: لا يتغير شيء ما دام الإنترنت يعمل."
+
+#: src/Admin/Strings.php:583
+msgid "Also finds CDN addresses that themes and builders such as Elementor write directly into the page HTML. It adds a little processing to each page."
+msgstr "يجد أيضًا عناوين CDN التي تكتبها القوالب وأدوات البناء مثل Elementor مباشرة في HTML الصفحة. يضيف معالجة بسيطة لكل صفحة."
+
+#: src/Admin/Strings.php:584
+msgid "Copies Google Fonts to your server. Text keeps its font during an outage and pages do not wait for Google."
+msgstr "ينسخ خطوط Google إلى خادمك. يحافظ النص على خطه أثناء الانقطاع ولا تنتظر الصفحات Google."
+
+#: src/Admin/Strings.php:585
+msgid "During an outage, turns off WordPress parts that call outside servers: emoji, the font library, remote patterns and the dashboard news."
+msgstr "أثناء الانقطاع يوقف أجزاء ووردبريس التي تتصل بخوادم خارجية: الإيموجي ومكتبة الخطوط والأنماط البعيدة وأخبار لوحة التحكم."
+
+#: src/Admin/Strings.php:586
+msgid "The manual scan also opens three pages with your login. Files that appear only for signed-in users, like the admin bar or a page builder, get local copies too."
+msgstr "يفتح الفحص اليدوي أيضًا ثلاث صفحات بحسابك. الملفات التي تظهر للمستخدمين المسجلين فقط، كشريط الإدارة أو أداة بناء الصفحات، تحصل على نسخ محلية أيضًا."
+
+#: src/Admin/Strings.php:587
+msgid "A tiny script at the top of each page stops browser requests to unreachable servers during an outage, and to blocked hosts always. Scripts get an instant error instead of waiting."
+msgstr "سكربت صغير في أعلى كل صفحة يوقف طلبات المتصفح إلى الخوادم غير المتاحة أثناء الانقطاع، وإلى المضيفين المحظورين دائمًا. تحصل السكربتات على خطأ فوري بدل الانتظار."
+
+#: src/Admin/Strings.php:588
+msgid "Identical requests that a page sends to its own admin-ajax or REST at the same moment go out once. Server load drops; form posts and saves are never merged."
+msgstr "الطلبات المتطابقة التي ترسلها الصفحة إلى admin-ajax أو REST الخاص بها في اللحظة نفسها تُرسل مرة واحدة. ينخفض الحمل على الخادم؛ ولا تُدمج أبدًا عمليات إرسال النماذج والحفظ."
+
+#: src/Admin/Strings.php:589
+msgid "WordPress sends a background request every few seconds while a page is open. Smart mode slows it down to cut server load, without breaking autosave or post locks."
+msgstr "يرسل ووردبريس طلبًا في الخلفية كل بضع ثوانٍ ما دامت الصفحة مفتوحة. الوضع الذكي يبطئه لتخفيف الحمل على الخادم، دون تعطيل الحفظ التلقائي أو أقفال المقالات."
+
+#: src/Admin/Strings.php:590
+msgid "For services you never want, like an ad or chat script that slows the site. Everything from these addresses is stopped, with or without internet."
+msgstr "للخدمات التي لا تريدها أبدًا، مثل سكربت إعلانات أو دردشة يبطئ الموقع. كل ما يأتي من هذه العناوين يُوقف، مع الإنترنت أو دونه."
+
+#: src/Admin/Strings.php:591
+msgid "Replaces Gravatar pictures with simple letter avatars made on your server, so comment lists load without a foreign server."
+msgstr "يستبدل صور Gravatar بصور رمزية بسيطة بالأحرف تُنشأ على خادمك، فتُحمَّل قوائم التعليقات دون خادم أجنبي."
+
+#: src/Admin/Strings.php:592
+msgid "Uses Rafoo's own captcha instead of reCAPTCHA, hCaptcha or Turnstile. Login and forms keep working and stay protected when Google or Cloudflare is unreachable."
+msgstr "يستخدم كابتشا Rafoo بدل reCAPTCHA أو hCaptcha أو Turnstile. يستمر تسجيل الدخول والنماذج في العمل وتبقى محمية حين يتعذّر الوصول إلى Google أو Cloudflare."
+
+#: src/Admin/Strings.php:593
+msgid "Removes Google Analytics, Tag Manager, pixels and similar trackers from pages. Visits are not recorded while they are removed."
+msgstr "يزيل Google Analytics وTag Manager والبكسلات وأدوات التتبع المشابهة من الصفحات. لا تُسجَّل الزيارات ما دامت مزالة."
+
+#: src/Admin/Strings.php:594
+msgid "During an outage, YouTube, Vimeo and Google Maps frames become a light box with a link, so the page does not wait for them."
+msgstr "أثناء الانقطاع تصبح إطارات YouTube وVimeo وخرائط Google مربعًا خفيفًا فيه رابط، فلا تنتظرها الصفحة."
+
+#: src/Admin/Strings.php:595
+msgid "During an outage, hides Google and Facebook login buttons that cannot work, so users sign in the normal way."
+msgstr "أثناء الانقطاع يخفي أزرار تسجيل الدخول عبر Google وفيسبوك التي لا تعمل، فيسجّل المستخدمون الدخول بالطريقة العادية."
+
+#: src/Admin/Strings.php:596
+msgid "Emails that fail because the mail server is unreachable are kept and sent again later instead of being lost."
+msgstr "الرسائل التي تفشل لأن خادم البريد غير متاح تُحفظ وتُرسل مجددًا لاحقًا بدل أن تضيع."
+
+#: src/Admin/Strings.php:597
+msgid "Keeps a copy before each plugin or theme update and checks the site after it. If the site breaks, that update is undone automatically."
+msgstr "يحتفظ بنسخة قبل كل تحديث لإضافة أو قالب ويفحص الموقع بعده. إذا تعطّل الموقع، يُلغى ذلك التحديث تلقائيًا."
+
+#: src/Admin/Strings.php:598
+msgid "Makes scheduled backups of files and the database to the destinations you choose. After a serious problem, a backup is the way back."
+msgstr "يُنشئ نسخًا احتياطية مجدولة من الملفات وقاعدة البيانات إلى الوجهات التي تختارها. بعد مشكلة خطيرة، النسخة الاحتياطية هي طريق العودة."
+
+#: src/Admin/Strings.php:599
+msgid "After the first full backup, later ones keep only changed files. Faster and smaller."
+msgstr "بعد أول نسخة كاملة، تحتفظ النسخ اللاحقة بالملفات المتغيرة فقط. أسرع وأصغر."
+
+#: src/Admin/Strings.php:600
+msgid "Also keeps the latest backup on this host. Good for a quick restore, but it uses disk space."
+msgstr "يحتفظ أيضًا بآخر نسخة احتياطية على هذه الاستضافة. مفيد لاستعادة سريعة، لكنه يستهلك مساحة القرص."
+
+#: src/Admin/Strings.php:601
+msgid "Records which plugin or theme connects to which outside server, how often and how long it takes. Use it to find what slows the site."
+msgstr "يسجّل أي إضافة أو قالب يتصل بأي خادم خارجي، وكم مرة، وكم يستغرق. استخدمه لمعرفة ما يبطئ الموقع."
+
+#: src/Admin/Strings.php:602
+msgid "Servers outside Iran that should still be tried during an outage, such as a payment or SMS service that works for you."
+msgstr "خوادم خارج إيران يجب أن تُجرَّب رغم الانقطاع، مثل خدمة دفع أو رسائل قصيرة تعمل لديك."
+
+#: src/Admin/Strings.php:603
+msgid "Sends an anonymous weekly report that helps improve Rafoo and the Iranian mirror. Nothing identifies the site; it is off by default."
+msgstr "يرسل تقريرًا أسبوعيًا مجهولًا يساعد على تحسين Rafoo والمرآة الإيرانية. لا شيء يعرّف الموقع؛ وهو معطّل افتراضيًا."
+
+#: src/Admin/Strings.php:604
+msgid "Automatic follows the internet checks. Use a fixed mode to test the site as if in an outage, or when detection is wrong."
+msgstr "الوضع التلقائي يتبع فحوص الإنترنت. استخدم وضعًا ثابتًا لاختبار الموقع كأنه في انقطاع، أو عندما يكون الاكتشاف خاطئًا."
+
+#: src/Admin/Strings.php:605
+msgid "How Rafoo copies CDN files and fonts and serves them from your own server."
+msgstr "كيف ينسخ Rafoo ملفات CDN والخطوط ويقدّمها من خادمك."
+
+#: src/Admin/Strings.php:606
+msgid "Speed controls inside the visitor's browser and for requests the site sends to itself."
+msgstr "ضوابط السرعة داخل متصفح الزائر وللطلبات التي يرسلها الموقع إلى نفسه."
+
+#: src/Admin/Strings.php:607
+msgid "Replacements for outside services that cannot load during an outage."
+msgstr "بدائل للخدمات الخارجية التي لا يمكن تحميلها أثناء الانقطاع."
+
+#: src/Admin/Strings.php:608
+msgid "Protection against broken updates and data loss."
+msgstr "الحماية من التحديثات المعطوبة وفقدان البيانات."
+
+#: src/Admin/Strings.php:609
+msgid "What the site's server sends to outside servers, and which servers stay allowed during an outage."
+msgstr "ما يرسله خادم الموقع إلى الخوادم الخارجية، وأي الخوادم تبقى مسموحة أثناء الانقطاع."
+
+#: src/Admin/Strings.php:610
+msgid "What Rafoo may send to rafoo.ir. By default, nothing that identifies the site."
+msgstr "ما الذي يجوز لـ Rafoo إرساله إلى rafoo.ir. افتراضيًا لا شيء يعرّف الموقع."
+
+#: src/Admin/Strings.php:611
+msgid "Turns off every change Rafoo makes to pages and requests in one click, to test or to find a conflict. The same button turns it back on."
+msgstr "يوقف بنقرة واحدة كل تغيير يجريه Rafoo على الصفحات والطلبات، للاختبار أو لإيجاد تعارض. الزر نفسه يعيد تشغيله."
+
+#: src/Admin/Strings.php:612
+msgid "The latest changes of mode and settings and other important actions, newest first."
+msgstr "آخر تغييرات الوضع والإعدادات وغيرها من الإجراءات المهمة، الأحدث أولًا."
+
+#: src/Admin/Strings.php:613
+msgid "CDN files Rafoo found on the site and their local copies. Scanning finds new ones; downloading fetches missing copies."
+msgstr "ملفات CDN التي وجدها Rafoo في الموقع ونسخها المحلية. الفحص يجد الجديد منها؛ والتنزيل يجلب النسخ الناقصة."
+
+#: src/Admin/Strings.php:614
+msgid "Rafoo checks servers inside and outside Iran every minute to know whether the international internet is cut."
+msgstr "يفحص Rafoo خوادم داخل إيران وخارجها كل دقيقة ليعرف هل الإنترنت الدولي مقطوع."
+
+#: src/Admin/Strings.php:615
+msgid "A signed notice from rafoo.ir about the internet state, used together with the site's own checks."
+msgstr "إشعار موقّع من rafoo.ir عن حالة الإنترنت، يُستخدم مع فحوص الموقع نفسه."
+
+#: src/Admin/Strings.php:616
+msgid "Servers that did not answer recently are skipped for a few minutes, so pages do not wait for them again."
+msgstr "الخوادم التي لم تُجب مؤخرًا تُتخطّى بضع دقائق، فلا تنتظرها الصفحات مرة أخرى."
+
+#: src/Admin/Strings.php:617
+msgid "Every outside server the site contacted, by plugin or theme. Block stops a host everywhere; the same button opens it again."
+msgstr "كل خادم خارجي اتصل به الموقع، مرتّبًا حسب الإضافة أو القالب. الحظر يوقف المضيف في كل مكان؛ والزر نفسه يفتحه مجددًا."
+
+#: src/Admin/Strings.php:618
+msgid "Emails waiting to be sent again after the mail server was unreachable."
+msgstr "رسائل تنتظر الإرسال مجددًا بعد أن كان خادم البريد غير متاح."
+
+#: src/Admin/Strings.php:619
+msgid "An optional SMTP server inside Iran, used when the normal mail server is unreachable."
+msgstr "خادم SMTP اختياري داخل إيران، يُستخدم عندما يكون خادم البريد العادي غير متاح."
+
+#: src/Admin/Strings.php:620
+msgid "The monitoring engine checks your site from 5 points inside and 5 outside Iran through a network of Rafoo sites. Joining is optional."
+msgstr "يفحص محرك المراقبة موقعك من 5 نقاط داخل إيران و5 خارجها عبر شبكة من مواقع Rafoo. الانضمام اختياري."
+
+#: src/Admin/Strings.php:621
+msgid "Each point is another Rafoo site that checks yours. Green means your site opened from there."
+msgstr "كل نقطة موقع Rafoo آخر يفحص موقعك. الأخضر يعني أن موقعك فُتح من هناك."
+
+#: src/Admin/Strings.php:622
+msgid "How reachable the site was each day, from inside and outside Iran."
+msgstr "مدى إمكانية الوصول إلى الموقع كل يوم، من داخل إيران وخارجها."
+
+#: src/Admin/Strings.php:623
+msgid "How often your site is checked. Leaving deletes your membership data."
+msgstr "كم مرة يُفحص موقعك. المغادرة تحذف بيانات عضويتك."
+
+#: src/Admin/Strings.php:624
+msgid "In return, your site checks a few other members. It uses almost no resources."
+msgstr "في المقابل يفحص موقعك بعض الأعضاء الآخرين. لا يكاد يستهلك أي موارد."
+
+#: src/Admin/Strings.php:625
+msgid "What to check when the results look wrong."
+msgstr "ما الذي يجب فحصه عندما تبدو النتائج خاطئة."
+
+#: src/Admin/Strings.php:626
+msgid "Updates from the Iranian mirror for what is installed on this site."
+msgstr "تحديثات من المرآة الإيرانية لما هو مثبت في هذا الموقع."
+
+#: src/Admin/Strings.php:627
+msgid "Earlier versions kept by safe updates. Restoring puts one back and checks the site."
+msgstr "إصدارات سابقة احتفظت بها التحديثات الآمنة. الاستعادة تعيد أحدها وتفحص الموقع."
+
+#: src/Admin/Strings.php:628
+msgid "Make a backup now or follow the job that is running."
+msgstr "أنشئ نسخة احتياطية الآن أو تابع المهمة الجارية."
+
+#: src/Admin/Strings.php:629
+msgid "Backups made so far, where each one is stored, and restore or download."
+msgstr "النسخ الاحتياطية المنشأة حتى الآن، ومكان حفظ كل منها، والاستعادة أو التنزيل."
+
+#: src/Admin/Strings.php:630
+msgid "When automatic backups run and what they include."
+msgstr "متى تعمل النسخ الاحتياطية التلقائية وما الذي تتضمنه."
+
+#: src/Admin/Strings.php:631
+msgid "Backups are encrypted with this password. Without it they cannot be restored, so keep it somewhere safe."
+msgstr "تُشفَّر النسخ الاحتياطية بكلمة المرور هذه. دونها لا يمكن استعادتها، فاحفظها في مكان آمن."
+
+#: src/Admin/Strings.php:632
+msgid "Other servers that receive a copy of each backup over SFTP, FTPS or FTP."
+msgstr "خوادم أخرى تستقبل نسخة من كل نسخة احتياطية عبر SFTP أو FTPS أو FTP."
+
+#: src/Admin/Strings.php:633
+msgid "Move the whole site to another host with a short code. Files go directly between the two sites."
+msgstr "انقل الموقع كاملًا إلى استضافة أخرى برمز قصير. تنتقل الملفات مباشرة بين الموقعين."
+
+#: src/Admin/Strings.php:634
+msgid "Send a question, an idea or a bug report to the Rafoo team."
+msgstr "أرسل سؤالًا أو فكرة أو بلاغًا عن خطأ إلى فريق Rafoo."
+
+#: src/Admin/Strings.php:635
+msgid "Network"
+msgstr "الشبكة"
+
+#: src/Admin/Strings.php:636
+msgid "These settings apply to the sites of this network. The connection state is shared by all sites; files, logs and backups are managed on each site."
+msgstr "هذه الإعدادات تخص مواقع هذه الشبكة. حالة الاتصال مشتركة بين كل المواقع؛ أما الملفات والسجلات والنسخ الاحتياطية فتُدار في كل موقع."
+
+#: src/Admin/Strings.php:637
+msgid "Network policy"
+msgstr "سياسة الشبكة"
+
+#. translators: %d: number of sites
+#: src/Admin/Strings.php:639
+#, php-format
+msgid "Sites in this network: %d"
+msgstr "المواقع في هذه الشبكة: %d"
+
+#: src/Admin/Strings.php:640
+msgid "How sites use these settings"
+msgstr "كيف تستخدم المواقع هذه الإعدادات"
+
+#: src/Admin/Strings.php:641
+msgid "Starting point for new sites"
+msgstr "نقطة بداية للمواقع الجديدة"
+
+#: src/Admin/Strings.php:642
+msgid "Sites that have not saved their own Rafoo settings use these. Site administrators can still change them."
+msgstr "المواقع التي لم تحفظ إعدادات Rafoo الخاصة بها تستخدم هذه. ويستطيع مدير كل موقع تغييرها."
+
+#: src/Admin/Strings.php:643
+msgid "Apply to every site"
+msgstr "طبّق على كل المواقع"
+
+#: src/Admin/Strings.php:644
+msgid "Every site uses these settings and site administrators can only see them. Privacy and backup settings stay with each site."
+msgstr "كل المواقع تستخدم هذه الإعدادات، ولا يستطيع مدير الموقع إلا رؤيتها. تبقى إعدادات الخصوصية والنسخ الاحتياطي لكل موقع."
+
+#: src/Admin/Strings.php:645
+msgid "The network administrator manages these settings for every site. Privacy and backup settings are still yours."
+msgstr "يدير مدير الشبكة هذه الإعدادات لكل المواقع. تبقى إعدادات الخصوصية والنسخ الاحتياطي لك."
+
+#: src/Admin/Strings.php:646
+msgid "Open network settings"
+msgstr "افتح إعدادات الشبكة"
+
+#: src/Admin/Strings.php:647
+msgid "Save for the network"
+msgstr "احفظ للشبكة"
+
+#: src/Admin/Strings.php:648
+msgid "Network settings changed"
+msgstr "تغيّرت إعدادات الشبكة"
+
+#: src/Admin/Strings.php:649
+msgid "Settings for every site of the network, managed in one place."
+msgstr "إعدادات كل مواقع الشبكة، في مكان واحد."
+
+#: src/Admin/Strings.php:650
+msgid "A starting point only fills in sites that have not chosen their own settings. Applying to every site overrides them and locks the form on each site."
+msgstr "نقطة البداية تملأ فقط المواقع التي لم تختر إعداداتها. والتطبيق على كل المواقع يتجاوز إعداداتها ويقفل النموذج في كل موقع."
+
+#: src/Admin/Strings.php:651
+msgid "Something went wrong. Please try again."
+msgstr "حدث خطأ ما. يُرجى المحاولة مجددًا."
+
+#: src/Admin/Strings.php:652
+msgid "The site could not be reached. Check your connection and try again."
+msgstr "تعذّر الوصول إلى الموقع. تحقّق من اتصالك وحاول مجددًا."
+
+#: src/Admin/Strings.php:659
+msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
+msgstr "يحدّث ووردبريس والإضافات والقوالب من المرآة الإيرانية مع التحقق من التوقيع، فتعمل التحديثات أثناء الانقطاع."
+
+#: src/Admin/Strings.php:660
+msgid "Translation updates come from the mirror too, only for the languages installed on the site."
+msgstr "تأتي تحديثات الترجمة من المرآة أيضًا، للغات المثبتة في الموقع فقط."
+
+#: src/Admin/Strings.php:661
+msgid "Translations from the mirror"
+msgstr "الترجمات من المرآة"
+
+#: src/Admin/Strings.php:662
+msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
+msgstr "أثناء الانقطاع تُحدَّث ترجمات ووردبريس والإضافات والقوالب من المرآة، للغات المثبتة في هذا الموقع فقط."
+
+#: src/Admin/Strings.php:664
+msgid "Update from the domestic mirror"
+msgstr "التحديث من المرآة المحلية"
+
+#: src/Admin/Strings.php:665
+msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
+msgstr "تُحدَّث ووردبريس والإضافات والقوالب من المرآة ما دام الإنترنت الدولي مقطوعًا."
+
+#: src/Admin/Strings.php:666
+msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
+msgstr "تُنزَّل الحزم دائمًا من المرآة عندما يكون لديها الإصدار نفسه. أسرع داخل إيران."
+
+#: src/Admin/Strings.php:667
+msgid "Mirror coverage"
+msgstr "تغطية المرآة"
+
+#: src/Admin/Strings.php:668
+msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
+msgstr "أيّ الإضافات والقوالب المثبتة وإصدار ووردبريس لديك يمكن للمرآة المحلية تحديثها."
+
+#: src/Admin/Strings.php:669
+msgid "Check again"
+msgstr "افحص مجددًا"
+
+#: src/Admin/Strings.php:670
+msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
+msgstr "فهرس المرآة الموقّع غير متاح بعد. تستمر التحديثات من WordPress.org حتى يتوفر."
+
+#: src/Admin/Strings.php:671
+msgid "Mirror"
+msgstr "المرآة"
+
+#: src/Admin/Strings.php:672
+msgid "Not on the mirror"
+msgstr "غير موجود في المرآة"
+
+#. translators: %s: version number
+#: src/Admin/Strings.php:674
+#, php-format
+msgid "Version %s available"
+msgstr "الإصدار %s متاح"
+
+#: src/Admin/Strings.php:675
+msgid "Up to date"
+msgstr "محدَّث"
+
+#: src/Admin/Strings.php:676
+msgid "WordPress"
+msgstr "ووردبريس"
+
+#: src/Backup/Api.php:160 src/Backup/Api.php:250 src/Backup/Restorer.php:18
+msgid "This backup is no longer in the list."
+msgstr "لم تعد هذه النسخة الاحتياطية في القائمة."
+
+#: src/Backup/Api.php:164
+msgid "Newer backups are built on this one, so it cannot be deleted on its own."
+msgstr "تعتمد نسخ أحدث على هذه النسخة، لذلك لا يمكن حذفها وحدها."
+
+#: src/Backup/Api.php:183
+msgid "Use at least 8 characters."
+msgstr "استخدم 8 أحرف على الأقل."
+
+#: src/Backup/Api.php:194
+msgid "The server answered but did not accept this username or password."
+msgstr "أجاب الخادم لكنه لم يقبل اسم المستخدم أو كلمة المرور."
+
+#: src/Backup/Api.php:195
+msgid "Enter a server address such as backup.example.ir."
+msgstr "أدخل عنوان خادم مثل backup.example.ir."
+
+#: src/Backup/Api.php:195
+msgid "No SFTP, FTPS or FTP connection could be made to this server. Check the address and that the port is open."
+msgstr "تعذّر إنشاء اتصال SFTP أو FTPS أو FTP بهذا الخادم. تحقّق من العنوان ومن أن المنفذ مفتوح."
+
+#: src/Backup/Api.php:200
+msgid "Up to five servers can be added."
+msgstr "يمكن إضافة خمسة خوادم كحد أقصى."
+
+#: src/Backup/Api.php:213 src/Backup/Mover.php:14
+msgid "This server is no longer in the list."
+msgstr "لم يعد هذا الخادم في القائمة."
+
+#: src/Backup/Api.php:219
+msgid "The server could not be reached or did not accept a test file."
+msgstr "تعذّر الوصول إلى الخادم أو لم يقبل ملف اختبار."
+
+#: src/Backup/Installer.php:19
+msgid "Restore the site with Rafoo"
+msgstr "استعادة الموقع باستخدام Rafoo"
+
+#: src/Backup/Installer.php:20
+msgid "This server lacks PHP extensions Rafoo needs (sodium, ZipArchive and mysqli)."
+msgstr "يفتقر هذا الخادم إلى امتدادات PHP التي يحتاجها Rafoo (sodium وZipArchive وmysqli)."
+
+#: src/Backup/Installer.php:21
+msgid "Enter the details of the new database and the key Rafoo showed on the old site. All files and data are restored on this host."
+msgstr "أدخل بيانات قاعدة البيانات الجديدة والمفتاح الذي عرضه Rafoo في الموقع القديم. تُستعاد كل الملفات والبيانات على هذه الاستضافة."
+
+#: src/Backup/Installer.php:22
+msgid "Database host"
+msgstr "مضيف قاعدة البيانات"
+
+#: src/Backup/Installer.php:23
+msgid "Database name"
+msgstr "اسم قاعدة البيانات"
+
+#: src/Backup/Installer.php:26
+msgid "Restore key"
+msgstr "مفتاح الاستعادة"
+
+#: src/Backup/Installer.php:27
+msgid "Start restore"
+msgstr "ابدأ الاستعادة"
+
+#: src/Backup/Installer.php:28
+msgid "Checking…"
+msgstr "جارٍ الفحص…"
+
+#. translators: %s: error code
+#: src/Backup/Installer.php:30
+#, php-format
+msgid "Error: %s"
+msgstr "خطأ: %s"
+
+#: src/Backup/Installer.php:31
+msgid "The key is not correct."
+msgstr "المفتاح غير صحيح."
+
+#: src/Backup/Installer.php:32
+msgid "Too many failed attempts. Send the file again."
+msgstr "محاولات فاشلة كثيرة. أرسل الملف مجددًا."
+
+#: src/Backup/Installer.php:33
+msgid "Restore finished. Go to the dashboard"
+msgstr "انتهت الاستعادة. انتقل إلى لوحة التحكم"
+
+#: src/Backup/Installer.php:35
+msgid "Opening the backup"
+msgstr "فتح النسخة الاحتياطية"
+
+#: src/Backup/Installer.php:36
+msgid "Restoring files"
+msgstr "استعادة الملفات"
+
+#: src/Backup/Installer.php:37
+msgid "Setting up wp-config.php"
+msgstr "ضبط wp-config.php"
+
+#: src/Backup/Installer.php:38
+msgid "Restoring the database"
+msgstr "استعادة قاعدة البيانات"
+
+#: src/Backup/Installer.php:39
+msgid "Updating the site address"
+msgstr "تحديث عنوان الموقع"
+
+#: src/Backup/Installer.php:40
+msgid "Cleaning up"
+msgstr "التنظيف"
+
+#: src/Backup/Job.php:30
+msgid "Another backup task is running. Wait until it finishes."
+msgstr "تعمل مهمة نسخ احتياطي أخرى. انتظر حتى تنتهي."
+
+#: src/Backup/Mover.php:18
+msgid "Enter the address the site will have on the new host."
+msgstr "أدخل العنوان الذي سيكون للموقع على الاستضافة الجديدة."
+
+#: src/Backup/Restorer.php:23
+msgid "This backup is encrypted. Enter its password."
+msgstr "هذه النسخة الاحتياطية مشفّرة. أدخل كلمة مرورها."
+
+#: src/Backup/Sender.php:21
+msgid "The other site did not answer. Check that Rafoo is active there and its code is still valid."
+msgstr "لم يُجب الموقع الآخر. تأكّد من أن Rafoo مفعّل هناك وأن رمزه ما زال صالحًا."
+
+#: src/Backup/Sender.php:24
+msgid "The other site is busy with another backup task. Try again when it finishes."
+msgstr "الموقع الآخر مشغول بمهمة نسخ احتياطي أخرى. حاول مجددًا عندما تنتهي."
+
+#: src/Backup/Sender.php:27
+msgid "The other server has no ZipArchive extension, so it cannot receive the copy."
+msgstr "لا يحتوي الخادم الآخر على امتداد ZipArchive، لذلك لا يستطيع استقبال النسخة."
+
+#: src/Backup/Transfer.php:96 src/Backup/Transfer.php:107
+msgid "This code is not valid. Copy it again from the other site."
+msgstr "هذا الرمز غير صالح. انسخه مجددًا من الموقع الآخر."
+
+#: src/Backup/Transfer.php:100
+msgid "rafoo.ir could not be reached or the code has expired. Use the long code shown under the short one."
+msgstr "تعذّر الوصول إلى rafoo.ir أو انتهت صلاحية الرمز. استخدم الرمز الطويل المعروض تحت القصير."
+
+#: src/Backup/Transfer.php:113
+msgid "This code belongs to this same site. Create the code on the site that should receive the copy."
+msgstr "هذا الرمز يخص هذا الموقع نفسه. أنشئ الرمز في الموقع الذي يجب أن يستقبل النسخة."
+
+#: src/Backup/Transfer.php:360
+msgid "The shop is moving to a new server. Please try again in a few minutes."
+msgstr "ينتقل المتجر إلى خادم جديد. يُرجى المحاولة بعد بضع دقائق."
+
+#: src/Captcha/Captcha.php:65
+msgid "Checking that you are not a robot…"
+msgstr "جارٍ التحقق من أنك لست روبوتًا…"
+
+#: src/Captcha/Captcha.php:66
+msgid "The security check could not finish. Please reload the page and try again."
+msgstr "تعذّر إكمال الفحص الأمني. يُرجى إعادة تحميل الصفحة والمحاولة مجددًا."
+
+#: src/Captcha/Captcha.php:76 src/Captcha/Captcha.php:98
+msgid "Please turn on JavaScript to send this form."
+msgstr "يُرجى تفعيل جافاسكربت لإرسال هذا النموذج."
+
+#: src/Captcha/Captcha.php:130
+msgid "The security check did not finish. Please wait a moment and send the form again."
+msgstr "لم يكتمل الفحص الأمني. يُرجى الانتظار لحظة ثم إرسال النموذج مجددًا."
+
+#: src/Captcha/Captcha.php:211
+msgid "The Rafoo security check was missing or wrong."
+msgstr "الفحص الأمني لـ Rafoo مفقود أو خاطئ."
+
+#. translators: %s: host name
+#: src/Http/Guard.php:88
+#, php-format
+msgid "Rafoo blocked this request to %s because it is on the block list."
+msgstr "حظر Rafoo هذا الطلب إلى %s لأنه في قائمة الحظر."
+
+#. translators: %s: host name
+#: src/Http/Guard.php:98
+#, php-format
+msgid "The international internet is unavailable. Rafoo skipped this request to %s."
+msgstr "الإنترنت الدولي غير متاح. تخطّى Rafoo هذا الطلب إلى %s."
+
+#. translators: %s: host name
+#: src/Http/Guard.php:100
+#, php-format
+msgid "Rafoo skipped this request because %s did not respond recently."
+msgstr "تخطّى Rafoo هذا الطلب لأن %s لم يستجب مؤخرًا."
+
+#: src/Http/Log.php:189
+msgid "Browser"
+msgstr "المتصفح"
+
+#: src/Mail/Queue.php:60
+msgid "The mail server could not be reached during the outage."
+msgstr "تعذّر الوصول إلى خادم البريد أثناء الانقطاع."
+
+#: src/Mail/Queue.php:220
+msgid "Rafoo test message"
+msgstr "رسالة اختبار من Rafoo"
+
+#: src/Mail/Queue.php:221
+msgid "This message was sent through the mail server you set in Rafoo for outages."
+msgstr "أُرسلت هذه الرسالة عبر خادم البريد الذي ضبطته في Rafoo لأوقات الانقطاع."
+
+#: src/Mail/Queue.php:225
+msgid "The message could not be sent."
+msgstr "تعذّر إرسال الرسالة."
+
+#: src/Peers/Api.php:17
+msgid "The request could not be prepared."
+msgstr "تعذّر تجهيز الطلب."
+
+#: src/Peers/Api.php:23
+msgid "This site has no key for the network. Join again."
+msgstr "لا يملك هذا الموقع مفتاحًا للشبكة. انضم مجددًا."
+
+#: src/Peers/Api.php:50
+msgid "rafoo.ir did not accept the request."
+msgstr "لم يقبل rafoo.ir الطلب."
+
+#: src/Peers/Engine.php:55
+msgid "This server cannot create a signing key (the sodium extension is missing)."
+msgstr "لا يستطيع هذا الخادم إنشاء مفتاح توقيع (امتداد sodium مفقود)."
+
+#: src/Peers/Engine.php:73
+msgid "rafoo.ir gave an answer that could not be read."
+msgstr "أعاد rafoo.ir إجابة تعذّرت قراءتها."
+
+#: src/Peers/Engine.php:129
+msgid "The task list from rafoo.ir could not be verified."
+msgstr "تعذّر التحقق من قائمة المهام الواردة من rafoo.ir."
+
+#: src/Privacy.php:14
+msgid "This site uses Rafoo to serve JavaScript libraries, stylesheets and web fonts from its own server instead of third-party networks such as jsDelivr, cdnjs and Google Fonts. Visitors' browsers therefore do not connect to those networks for these files."
+msgstr "يستخدم هذا الموقع Rafoo لتقديم مكتبات جافاسكربت وأوراق الأنماط وخطوط الويب من خادمه بدل شبكات خارجية مثل jsDelivr وcdnjs وخطوط Google. لذلك لا تتصل متصفحات الزوار بتلك الشبكات لهذه الملفات."
+
+#: src/Privacy.php:15
+msgid "While the international internet is unavailable, Rafoo may show locally generated avatars instead of Gravatar images and replace embedded videos and maps with a link to the original content."
+msgstr "ما دام الإنترنت الدولي غير متاح، قد يعرض Rafoo صورًا رمزية مولّدة محليًا بدل صور Gravatar، ويستبدل الفيديوهات والخرائط المضمّنة برابط إلى المحتوى الأصلي."
+
+#: src/Privacy.php:16
+msgid "Forms on this site may be protected by Rafoo's captcha. It runs a short calculation in the visitor's browser and uses no cookies and no outside service."
+msgstr "قد تكون النماذج في هذا الموقع محمية بكابتشا Rafoo. تُجري حسابًا قصيرًا في متصفح الزائر ولا تستخدم ملفات تعريف ارتباط ولا خدمة خارجية."
+
+#: src/Privacy.php:17
+msgid "If an email from this site cannot be sent because the mail server is unreachable, Rafoo keeps a copy of the message, including its recipients and attachments, on this server and sends it when the connection returns. Copies are deleted as soon as the message is sent, and after three days at the latest."
+msgstr "إذا تعذّر إرسال بريد من هذا الموقع لأن خادم البريد غير متاح، يحتفظ Rafoo بنسخة من الرسالة، بما فيها المستلمون والمرفقات، على هذا الخادم ويرسلها عند عودة الاتصال. تُحذف النسخ فور إرسال الرسالة، وبعد ثلاثة أيام على الأكثر."
+
+#: src/Privacy.php:18
+msgid "Rafoo does not collect or send any information about visitors. If the site administrator turns on anonymous usage reports, a weekly report is sent to rafoo.ir with a random site identifier, software versions and the names of installed plugins and themes. It never includes the site address or any personal data."
+msgstr "لا يجمع Rafoo أي معلومات عن الزوار ولا يرسلها. إذا شغّل مدير الموقع تقارير الاستخدام المجهولة، يُرسل تقرير أسبوعي إلى rafoo.ir يتضمن معرّفًا عشوائيًا للموقع وإصدارات البرامج وأسماء الإضافات والقوالب المثبتة. لا يتضمن أبدًا عنوان الموقع ولا أي بيانات شخصية."
+
+#. translators: %s: list of plugin or theme names
+#: src/Safety/Rollback.php:289
+#, php-format
+msgid "Rafoo put back the previous version of %s because the update broke the site. Details are on the Rafoo page."
+msgstr "أعاد Rafoo الإصدار السابق من %s لأن التحديث أفسد الموقع. التفاصيل في صفحة Rafoo."
+
+#: src/Services/Embeds.php:68
+msgid "This content is not available while the international internet is down."
+msgstr "هذا المحتوى غير متاح ما دام الإنترنت الدولي مقطوعًا."
+
+#: src/Services/Embeds.php:70
+msgid "Open the original link"
+msgstr "افتح الرابط الأصلي"
+
+#: src/Updates/Downloader.php:49
+msgid "The package could not be downloaded from the domestic mirror."
+msgstr "تعذّر تنزيل الحزمة من المرآة المحلية."
+
+#: src/Updates/Downloader.php:82
+msgid "The downloaded package has the wrong size and was not installed."
+msgstr "حجم الحزمة المنزّلة غير صحيح فلم تُثبَّت."
+
+#: src/Updates/Downloader.php:86
+msgid "The downloaded package did not match its signed hash and was not installed."
+msgstr "لم تطابق الحزمة المنزّلة بصمتها الموقّعة فلم تُثبَّت."
+
+#: plugin header
+msgid "Rafoo – Offline-Ready Assets & Updates"
+msgstr "Rafoo – ملفات وتحديثات جاهزة للانقطاع"
+
+#: plugin header
+msgid "Keeps WordPress fast and working when the international internet is cut off: serves CDN libraries and fonts from your own site, fails unreachable outside requests instantly and replaces services that cannot be mirrored."
+msgstr "يبقي ووردبريس سريعًا وعاملًا حين ينقطع الإنترنت الدولي: يقدّم مكتبات CDN والخطوط من موقعك، ويُفشل فورًا الطلبات الخارجية غير المتاحة، ويستبدل الخدمات التي لا يمكن نسخها."
+
+#: plugin header
+msgid "Keeps WordPress fast and working when the international internet is cut off, and updates WordPress, plugins and themes from the domestic mirror."
+msgstr "يبقي ووردبريس سريعًا وعاملًا حين ينقطع الإنترنت الدولي، ويحدّث ووردبريس والإضافات والقوالب من المرآة المحلية."

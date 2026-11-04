@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Button from '../components/Button.svelte';
 	import Card from '../components/Card.svelte';
+	import Help from '../components/Help.svelte';
 	import Notice from '../components/Notice.svelte';
 	import Segmented from '../components/Segmented.svelte';
 	import Stat from '../components/Stat.svelte';
-	import { ago, bytes, date, duration, num, t } from '../lib/i18n';
+	import { ago, bytes, date, duration, help, num, t } from '../lib/i18n';
 	import { store } from '../lib/store.svelte';
 	import type { Override } from '../lib/types';
 
@@ -32,6 +33,14 @@
 		checking = true;
 		await run(() => store.check());
 		checking = false;
+	}
+
+	let pausing = $state(false);
+
+	async function togglePause() {
+		pausing = true;
+		await run(() => store.setPaused(!overview.paused));
+		pausing = false;
 	}
 
 	function eventLabel(type: string, data: Record<string, unknown>): string {
@@ -63,7 +72,7 @@
 
 		<div class="rf-mode">
 			<div class="rf-mode-text">
-				<span class="rf-mode-label">{t('mode_label')}</span>
+				<span class="rf-mode-label">{t('mode_label')}<Help text={help('mode')} label={t('mode_label')} /></span>
 				<span class="rf-subtle rf-small">{t('mode_help')}</span>
 			</div>
 			<Segmented
@@ -98,7 +107,16 @@
 		<Stat label={t('stat_outage_total')} value={overview.outage_total > 0 ? duration(overview.outage_total) : '—'} />
 	</div>
 
-	<Card title={t('events_title')}>
+	<Card title={t('pause_title')} description={overview.paused ? t('pause_on_text') : t('pause_off_text')} help={help('card_pause')}>
+		{#snippet actions()}
+			<Button variant={overview.paused ? 'primary' : 'secondary'} busy={pausing} disabled={!overview.network} onclick={togglePause}>
+				{overview.paused ? t('pause_resume') : t('pause_now')}
+			</Button>
+		{/snippet}
+		<p class="rf-subtle rf-small">{t('pause_keeps')}</p>
+	</Card>
+
+	<Card title={t('events_title')} help={help('card_events')}>
 		{#if overview.events.length === 0}
 			<p class="rf-subtle">{t('events_empty')}</p>
 		{:else}
@@ -156,6 +174,9 @@
 		gap: 2px;
 	}
 	.rf-mode-label {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
 		font-weight: 700;
 	}
 	.rf-stats {

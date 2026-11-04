@@ -38,6 +38,7 @@ export interface Overview {
 	events: RafooEvent[];
 	edition: 'standard' | 'complete';
 	version: string;
+	paused: boolean;
 	network: boolean;
 	cron: { disabled: boolean; next_check: number; late: boolean };
 	now: number;
@@ -88,6 +89,12 @@ export interface Settings {
 	backup_hour: number;
 	backup_mode: 'incremental' | 'full';
 	backup_local: boolean;
+	browser_guard: boolean;
+	dedupe: boolean;
+	heartbeat: 'smart' | 'default';
+	block_hosts: string[];
+	scan_as_user: boolean;
+	paused: boolean;
 	setup: '' | 'done' | 'skipped';
 	preset: '' | Preset | 'custom';
 }
@@ -114,6 +121,7 @@ export interface RequestEntry {
 	name: string;
 	host: string;
 	foreign: boolean;
+	blocked: boolean;
 	count: number;
 	ok: number;
 	failed: number;
@@ -249,9 +257,27 @@ export interface Boot {
 	locale: string;
 	timezone: string;
 	strings: Record<string, string>;
+	context: 'site' | 'network';
 	overview: Overview;
 	settings: Settings;
+	network: NetworkView | null;
+	managed: Managed;
 	privacy_url: string;
+}
+
+export type NetworkPolicy = 'defaults' | 'enforced';
+
+export interface NetworkView {
+	policy: NetworkPolicy;
+	settings: Partial<Settings>;
+	keys: (keyof Settings)[];
+	sites: number;
+}
+
+export interface Managed {
+	enforced: boolean;
+	keys: (keyof Settings)[];
+	url: string;
 }
 
 export interface PeerWatcher {

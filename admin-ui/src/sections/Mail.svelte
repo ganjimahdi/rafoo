@@ -5,7 +5,7 @@
 	import Notice from '../components/Notice.svelte';
 	import Segmented from '../components/Segmented.svelte';
 	import { api } from '../lib/api';
-	import { ago, num, t } from '../lib/i18n';
+	import { ago, help, num, t } from '../lib/i18n';
 	import type { MailReport, RelaySecure } from '../lib/types';
 
 	let report = $state.raw<MailReport | null>(null);
@@ -99,7 +99,7 @@
 	}
 </script>
 
-<Card title={t('mail_title')} description={t('mail_help')}>
+<Card title={t('mail_title')} help={help('card_mail')} description={t('mail_help')}>
 	{#snippet actions()}
 		<Button onclick={sendNow} busy={busy === 'send'} disabled={busy !== '' || !report || report.queue.length === 0}>{t('mail_send_now')}</Button>
 	{/snippet}
@@ -151,7 +151,7 @@
 	{/if}
 </Card>
 
-<Card title={t('relay_title')} description={t('relay_help')}>
+<Card title={t('relay_title')} help={help('card_relay')} description={t('relay_help')}>
 	<form class="rf-stack" onsubmit={save} novalidate>
 		<div class="rf-relay">
 			<div class="rf-field">

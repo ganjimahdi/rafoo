@@ -75,6 +75,17 @@ final class Breaker {
 		}
 	}
 
+	public static function reachable_hosts( $now = null ) {
+		$now = null === $now ? time() : $now;
+		$out = array();
+		foreach ( self::entries() as $host => $entry ) {
+			if ( ! empty( $entry['ok'] ) && $entry['ok'] > $now ) {
+				$out[] = (string) $host;
+			}
+		}
+		return $out;
+	}
+
 	public static function snapshot( $now = null ) {
 		$now = null === $now ? time() : $now;
 		$out = array();

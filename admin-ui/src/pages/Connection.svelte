@@ -5,7 +5,7 @@
 	import Notice from '../components/Notice.svelte';
 	import Mail from '../sections/Mail.svelte';
 	import Requests from '../sections/Requests.svelte';
-	import { ago, date, t } from '../lib/i18n';
+	import { ago, date, help, t } from '../lib/i18n';
 	import { store } from '../lib/store.svelte';
 	import type { Target } from '../lib/types';
 
@@ -56,7 +56,7 @@
 {/snippet}
 
 <div class="rf-stack">
-	<Card title={t('connection_title')} description={t('connection_help')}>
+	<Card title={t('connection_title')} help={help('card_connection')} description={t('connection_help')}>
 		{#snippet actions()}
 			<Button onclick={check} busy={checking}>{t('check_now')}</Button>
 		{/snippet}
@@ -74,7 +74,7 @@
 		</div>
 	</Card>
 
-	<Card title={t('signal_title')} description={t('signal_help')}>
+	<Card title={t('signal_title')} help={help('card_signal')} description={t('signal_help')}>
 		{#if !overview.signature}
 			<p class="rf-subtle">{t('signal_unavailable')}</p>
 		{:else if overview.hint}
@@ -84,7 +84,7 @@
 		{/if}
 	</Card>
 
-	<Card title={t('breaker_title')} description={t('breaker_help')}>
+	<Card title={t('breaker_title')} help={help('card_breaker')} description={t('breaker_help')}>
 		{#if overview.breaker.length === 0}
 			<p class="rf-subtle">{t('breaker_empty')}</p>
 		{:else}

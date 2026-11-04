@@ -32,6 +32,10 @@ final class Guard {
 		if ( '' === $host || Hosts::local( $host ) ) {
 			return $pre;
 		}
+		if ( Hosts::blocked( $url ) ) {
+			Log::record( $host, 'refused' );
+			return new \WP_Error( 'rafoo_blocked', self::message( 'rafoo_blocked', $host ) );
+		}
 		$offline = State::offline();
 		if ( $offline && ! Hosts::allowed( $host ) && Hosts::foreign( $host ) ) {
 			Log::record( $host, 'refused' );
@@ -78,6 +82,12 @@ final class Guard {
 	}
 
 	private static function message( $code, $host ) {
+		if ( 'rafoo_blocked' === $code ) {
+			return did_action( 'init' )
+				/* translators: %s: host name */
+				? sprintf( __( 'Rafoo blocked this request to %s because it is on the block list.', 'rafoo' ), $host )
+				: sprintf( 'Rafoo blocked this request to %s because it is on the block list.', $host );
+		}
 		if ( ! did_action( 'init' ) ) {
 			return 'rafoo_offline' === $code
 				? sprintf( 'The international internet is unavailable. Rafoo skipped this request to %s.', $host )

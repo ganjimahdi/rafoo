@@ -6,7 +6,7 @@
 	import Notice from '../components/Notice.svelte';
 	import Toggle from '../components/Toggle.svelte';
 	import { api } from '../lib/api';
-	import { ago, bytes, date, num, t } from '../lib/i18n';
+	import { ago, bytes, date, help, hour as clock, list, num, percent as pct, t } from '../lib/i18n';
 	import { store } from '../lib/store.svelte';
 	import type { BackupEntry, BackupStatus, Settings } from '../lib/types';
 	import Destinations from '../sections/Destinations.svelte';
@@ -117,7 +117,7 @@
 	{#if status && !status.support.writable}<Notice tone="danger">{t('backup_not_writable')}</Notice>{/if}
 	{#if status?.frozen}<Notice tone="warning">{t('backup_frozen')}</Notice>{/if}
 
-	<Card title={t('backup_title')} description={t('backup_intro')}>
+	<Card title={t('backup_title')} help={help('card_backup')} description={t('backup_intro')}>
 		{#snippet actions()}
 			<Button variant="primary" onclick={() => act('run', () => api<BackupStatus>('backup/run', 'POST', {}))} busy={busy === 'run'} disabled={busy !== '' || running || !status?.support.zip}>
 				{t('backup_now')}
@@ -143,7 +143,7 @@
 						<Button size="sm" variant="ghost" onclick={() => act('cancel', () => api<BackupStatus>('backup/cancel', 'POST'))} busy={busy === 'cancel'}>{t('backup_cancel')}</Button>
 					</div>
 					<progress max="100" value={percent()} aria-label={t('backup_progress')}></progress>
-					{#if job.progress.total}<span class="rf-subtle rf-small">{num(percent())}٪</span>{/if}
+					{#if job.progress.total}<span class="rf-subtle rf-small">{pct(percent())}</span>{/if}
 				</div>
 			{:else if job && job.status === 'failed' && job.error !== 'cancelled'}
 				<Notice tone="danger">{t('backup_failed', errorLabel(job.error))}</Notice>
@@ -156,7 +156,7 @@
 	</Card>
 
 	{#if status}
-		<Card title={t('backup_list_title')}>
+		<Card title={t('backup_list_title')} help={help('card_backup_list')}>
 			{#if status.backups.length === 0}
 				<p class="rf-subtle">{t('backup_empty')}</p>
 			{:else}
@@ -189,7 +189,7 @@
 										</div>
 									</td>
 									<td class="rf-small">{bytes(entry.size)}</td>
-									<td class="rf-small">{places(entry).join('، ') || '—'}</td>
+									<td class="rf-small">{list(places(entry)) || '—'}</td>
 									<td>
 										<div class="rf-actions">
 											{#if entry.local}
@@ -240,8 +240,8 @@
 			{/if}
 		</Card>
 
-		<Card title={t('backup_schedule_title')} description={t('backup_schedule_help')}>
-			<Toggle label={t('backup_label')} description={t('backup_help')} bind:checked={schedule.backup} />
+		<Card title={t('backup_schedule_title')} help={help('card_backup_schedule')} description={t('backup_schedule_help')}>
+			<Toggle label={t('backup_label')} help={help('backup')} description={t('backup_help')} bind:checked={schedule.backup} />
 			<div class="rf-grid">
 				<div class="rf-field">
 					<label for="rafoo-backup-hours">{t('backup_every')}</label>
@@ -255,13 +255,13 @@
 					<label for="rafoo-backup-hour">{t('backup_at')}</label>
 					<select id="rafoo-backup-hour" class="rf-input" bind:value={schedule.backup_hour} disabled={schedule.backup_hours < 24}>
 						{#each Array.from({ length: 24 }, (_, i) => i) as hour (hour)}
-							<option value={hour}>{num(hour)}:۰۰</option>
+							<option value={hour}>{clock(hour)}</option>
 						{/each}
 					</select>
 				</div>
 			</div>
-			<Toggle label={t('backup_mode_label')} description={t('backup_mode_help')} bind:checked={incremental} />
-			<Toggle label={t('backup_local_label')} description={t('backup_local_help')} bind:checked={schedule.backup_local} />
+			<Toggle label={t('backup_mode_label')} help={help('backup_mode')} description={t('backup_mode_help')} bind:checked={incremental} />
+			<Toggle label={t('backup_local_label')} help={help('backup_local')} description={t('backup_local_help')} bind:checked={schedule.backup_local} />
 			<div class="rf-save">
 				<Button variant="primary" onclick={saveSchedule} busy={busy === 'schedule'}>{t('save')}</Button>
 			</div>
@@ -269,7 +269,7 @@
 
 		<Destinations {status} onupdate={update} />
 
-		<Card title={t('backup_password_title')} description={t('backup_password_help')}>
+		<Card title={t('backup_password_title')} help={help('card_backup_password')} description={t('backup_password_help')}>
 			{#if !status.support.crypt}
 				<Notice tone="warning">{t('backup_no_crypt')}</Notice>
 			{:else}

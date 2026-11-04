@@ -2,6 +2,8 @@
 
 namespace Rafoo\Assets;
 
+use Rafoo\Http\Hosts;
+
 defined( 'ABSPATH' ) || exit;
 
 final class Scanner {
@@ -37,16 +39,31 @@ final class Scanner {
 		return array_slice( array_values( array_unique( array_filter( $urls ) ) ), 0, self::LIMIT );
 	}
 
-	public static function run() {
-		$seen = 0;
-		foreach ( self::pages() as $url ) {
+	const AS_USER = 3;
+
+	public static function run( array $cookies = array() ) {
+		$seen  = 0;
+		$pages = self::pages();
+		$jobs  = array();
+		foreach ( $pages as $url ) {
+			$jobs[] = array( $url, array() );
+		}
+		if ( $cookies ) {
+			foreach ( array_slice( $pages, 0, self::AS_USER ) as $url ) {
+				if ( in_array( Hosts::of( $url ), Hosts::own(), true ) ) {
+					$jobs[] = array( $url, $cookies );
+				}
+			}
+		}
+		foreach ( $jobs as $job ) {
 			$response = wp_remote_get(
-				add_query_arg( 'rafoo-scan', wp_generate_password( 6, false ), $url ),
+				add_query_arg( 'rafoo-scan', wp_generate_password( 6, false ), $job[0] ),
 				array(
 					'timeout'     => 15,
-					'redirection' => 2,
+					'redirection' => $job[1] ? 0 : 2,
 					'sslverify'   => (bool) apply_filters( 'https_local_ssl_verify', false ),
 					'headers'     => array( 'Cache-Control' => 'no-cache' ),
+					'cookies'     => $job[1],
 				)
 			);
 			if ( ! is_wp_error( $response ) && 200 === (int) wp_remote_retrieve_response_code( $response ) ) {

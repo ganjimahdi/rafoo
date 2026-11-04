@@ -31,11 +31,11 @@ final class Log {
 		return $args;
 	}
 
-	public static function record( $host, $outcome, $args = array() ) {
+	public static function record( $host, $outcome, $args = array(), $origin = '' ) {
 		if ( '' === $host || ! self::enabled() || ! in_array( $outcome, array( 'ok', 'failed', 'refused' ), true ) ) {
 			return;
 		}
-		$origin = self::origin();
+		$origin = '' !== $origin ? $origin : self::origin();
 		$key    = $origin . '|' . $host;
 		if ( ! isset( self::$pending[ $key ] ) ) {
 			self::$pending[ $key ] = self::blank( $origin, $host );
@@ -105,6 +105,7 @@ final class Log {
 				'name'    => isset( $names[ $origin ] ) ? $names[ $origin ] : self::fallback_name( $origin ),
 				'host'    => (string) $entry['host'],
 				'foreign' => ! Hosts::domestic( (string) $entry['host'] ),
+				'blocked' => Hosts::blocked( 'https://' . $entry['host'] . '/' ),
 				'count'   => (int) $entry['count'],
 				'ok'      => (int) $entry['ok'],
 				'failed'  => (int) $entry['failed'],
@@ -183,7 +184,10 @@ final class Log {
 	}
 
 	private static function names() {
-		$names = array( 'core' => 'WordPress' );
+		$names = array(
+			'core'    => 'WordPress',
+			'browser' => __( 'Browser', 'rafoo' ),
+		);
 		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}

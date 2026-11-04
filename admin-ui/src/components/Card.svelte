@@ -1,21 +1,28 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import Help from './Help.svelte';
 
 	interface Props {
 		title?: string;
 		description?: string;
+		help?: string;
 		actions?: Snippet;
 		children: Snippet;
 	}
 
-	let { title, description, actions, children }: Props = $props();
+	let { title, description, help, actions, children }: Props = $props();
 </script>
 
 <section class="rf-card">
 	{#if title || actions}
 		<header class="rf-card-head">
 			<div class="rf-card-titles">
-				{#if title}<h2>{title}</h2>{/if}
+				{#if title}
+					<div class="rf-card-title">
+						<h2>{title}</h2>
+						{#if help}<Help text={help} label={title} />{/if}
+					</div>
+				{/if}
 				{#if description}<p class="rf-card-desc">{description}</p>{/if}
 			</div>
 			{#if actions}<div class="rf-card-actions">{@render actions()}</div>{/if}
@@ -46,6 +53,11 @@
 		flex-direction: column;
 		gap: 4px;
 		min-inline-size: 0;
+	}
+	.rf-card-title {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
 	}
 	.rf-card-desc {
 		color: var(--rf-l4);

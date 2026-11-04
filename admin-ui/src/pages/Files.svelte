@@ -4,7 +4,7 @@
 	import Button from '../components/Button.svelte';
 	import Card from '../components/Card.svelte';
 	import Notice from '../components/Notice.svelte';
-	import { bytes, num, t } from '../lib/i18n';
+	import { bytes, help, num, t } from '../lib/i18n';
 	import { store } from '../lib/store.svelte';
 	import type { Asset } from '../lib/types';
 
@@ -69,7 +69,7 @@
 </script>
 
 <div class="rf-stack">
-	<Card title={t('files_title')} description={t('files_help')}>
+	<Card title={t('files_title')} help={help('card_files')} description={t('files_help')}>
 		{#snippet actions()}
 			<Button onclick={() => act('scan', () => store.assetAction('scan'), t('scan_done'))} busy={busy === 'scan'} disabled={busy !== ''}>
 				{t('scan_site')}

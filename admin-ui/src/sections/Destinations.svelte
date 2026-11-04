@@ -4,7 +4,7 @@
 	import Card from '../components/Card.svelte';
 	import Notice from '../components/Notice.svelte';
 	import { api } from '../lib/api';
-	import { ago, bytes, t } from '../lib/i18n';
+	import { ago, bytes, help, t } from '../lib/i18n';
 	import type { BackupStatus } from '../lib/types';
 
 	interface Props {
@@ -50,7 +50,7 @@
 	}
 </script>
 
-<Card title={t('destinations_title')} description={t('destinations_help')}>
+<Card title={t('destinations_title')} help={help('card_destinations')} description={t('destinations_help')}>
 	{#if message}<Notice tone="success" live>{message}</Notice>{/if}
 	{#if error}<Notice tone="danger" live>{error}</Notice>{/if}
 

@@ -9,9 +9,45 @@ final class Installer {
 	const NAME = 'rafoo-restore.php';
 
 	public static function source() {
+		return str_replace( "'__RAFOO_TEXT__'", "'" . addcslashes( (string) wp_json_encode( self::text(), JSON_UNESCAPED_UNICODE ), "'\\" ) . "'", self::template() );
+	}
+
+	public static function text() {
+		return array(
+			'lang'     => str_replace( '_', '-', determine_locale() ),
+			'dir'      => is_rtl() ? 'rtl' : 'ltr',
+			'title'    => __( 'Restore the site with Rafoo', 'rafoo' ),
+			'missing'  => __( 'This server lacks PHP extensions Rafoo needs (sodium, ZipArchive and mysqli).', 'rafoo' ),
+			'intro'    => __( 'Enter the details of the new database and the key Rafoo showed on the old site. All files and data are restored on this host.', 'rafoo' ),
+			'host'     => __( 'Database host', 'rafoo' ),
+			'name'     => __( 'Database name', 'rafoo' ),
+			'user'     => __( 'Username', 'rafoo' ),
+			'pass'     => __( 'Password', 'rafoo' ),
+			'key'      => __( 'Restore key', 'rafoo' ),
+			'start'    => __( 'Start restore', 'rafoo' ),
+			'checking' => __( 'Checking…', 'rafoo' ),
+			/* translators: %s: error code */
+			'error'    => __( 'Error: %s', 'rafoo' ),
+			'bad_key'  => __( 'The key is not correct.', 'rafoo' ),
+			'locked'   => __( 'Too many failed attempts. Send the file again.', 'rafoo' ),
+			'done'     => __( 'Restore finished. Go to the dashboard', 'rafoo' ),
+			'steps'    => array(
+				'decrypt' => __( 'Opening the backup', 'rafoo' ),
+				'files'   => __( 'Restoring files', 'rafoo' ),
+				'config'  => __( 'Setting up wp-config.php', 'rafoo' ),
+				'import'  => __( 'Restoring the database', 'rafoo' ),
+				'replace' => __( 'Updating the site address', 'rafoo' ),
+				'finish'  => __( 'Cleaning up', 'rafoo' ),
+			),
+		);
+	}
+
+	private static function template() {
 		return <<<'PHP'
 <?php
 declare( strict_types = 1 );
+
+$rr_text = (array) json_decode( '__RAFOO_TEXT__', true );
 
 const RAFOO_STATE = __DIR__ . '/rafoo-restore-state.json';
 const RAFOO_CHUNK = 1048576;
@@ -391,8 +427,11 @@ if ( 'step' === $action ) {
 }
 
 $ready = function_exists( 'sodium_crypto_secretstream_xchacha20poly1305_init_pull' ) && class_exists( 'ZipArchive' ) && class_exists( 'mysqli' );
+function rr_h( string $text ): string {
+	return htmlspecialchars( $text, ENT_QUOTES, 'UTF-8' );
+}
 ?><!doctype html>
-<html lang="fa" dir="rtl">
+<html lang="<?php echo rr_h( $rr_text['lang'] ); ?>" dir="<?php echo rr_h( $rr_text['dir'] ); ?>">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -414,25 +453,27 @@ progress{width:100%}
 </head>
 <body>
 <main>
-<h1>بازگردانی سایت با رفو</h1>
+<h1><?php echo rr_h( $rr_text['title'] ); ?></h1>
 <?php if ( ! $ready ) : ?>
-<p>این سرور افزونه‌های لازم PHP (sodium، ZipArchive و mysqli) را ندارد.</p>
+<p><?php echo rr_h( $rr_text['missing'] ); ?></p>
 <?php else : ?>
-<p>اطلاعات پایگاه داده تازه و کلیدی را که رفو در سایت قبلی نشان داد وارد کنید. همه فایل‌ها و داده‌ها روی همین هاست بازگردانی می‌شوند.</p>
+<p><?php echo rr_h( $rr_text['intro'] ); ?></p>
 <form id="form">
-<label for="host">میزبان پایگاه داده</label><input id="host" name="host" value="localhost" required>
-<label for="name">نام پایگاه داده</label><input id="name" name="name" required>
-<label for="user">نام کاربری</label><input id="user" name="user" required autocomplete="off">
-<label for="pass">رمز عبور</label><input id="pass" name="pass" type="password" autocomplete="new-password">
-<label for="key">کلید بازگردانی</label><input id="key" name="key" required autocomplete="off" spellcheck="false">
-<button type="submit">شروع بازگردانی</button>
+<label for="host"><?php echo rr_h( $rr_text['host'] ); ?></label><input id="host" name="host" value="localhost" required>
+<label for="name"><?php echo rr_h( $rr_text['name'] ); ?></label><input id="name" name="name" required>
+<label for="user"><?php echo rr_h( $rr_text['user'] ); ?></label><input id="user" name="user" required autocomplete="off">
+<label for="pass"><?php echo rr_h( $rr_text['pass'] ); ?></label><input id="pass" name="pass" type="password" autocomplete="new-password">
+<label for="key"><?php echo rr_h( $rr_text['key'] ); ?></label><input id="key" name="key" required autocomplete="off" spellcheck="false">
+<button type="submit"><?php echo rr_h( $rr_text['start'] ); ?></button>
 </form>
 <div id="status" role="status" aria-live="polite"></div>
 <script>
 (function () {
 	var form = document.getElementById('form');
 	var status = document.getElementById('status');
-	var names = { decrypt: 'باز کردن نسخه پشتیبان', files: 'بازگردانی فایل‌ها', config: 'تنظیم wp-config.php', import: 'بازگردانی پایگاه داده', replace: 'به‌روز کردن نشانی سایت', finish: 'پاک‌سازی' };
+	var text = <?php echo json_encode( $rr_text, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE ); ?>;
+	var names = text.steps;
+	function failed(code) { return text.error.replace('%s', code); }
 	function post(data) {
 		var body = new URLSearchParams(data);
 		return fetch(location.pathname, { method: 'POST', body: body, credentials: 'same-origin' }).then(function (r) { return r.json(); });
@@ -440,14 +481,14 @@ progress{width:100%}
 	function loop() {
 		post({ action: 'step' }).then(function (reply) {
 			if (!reply.ok) {
-				status.textContent = 'خطا: ' + reply.error;
+				status.textContent = failed(reply.error);
 				return;
 			}
 			if (reply.step === 'done') {
 				status.innerHTML = '';
 				var link = document.createElement('a');
 				link.href = location.pathname;
-				link.textContent = 'بازگردانی تمام شد. ورود به پیشخوان';
+				link.textContent = text.done;
 				status.appendChild(link);
 				return;
 			}
@@ -466,11 +507,11 @@ progress{width:100%}
 		var data = Object.fromEntries(new FormData(form));
 		data.action = 'start';
 		form.querySelector('button').disabled = true;
-		status.textContent = 'در حال بررسی…';
+		status.textContent = text.checking;
 		post(data).then(function (reply) {
 			if (!reply.ok) {
 				form.querySelector('button').disabled = false;
-				status.textContent = reply.error === 'key' ? 'کلید درست نیست.' : reply.error === 'locked' ? 'تلاش‌های ناموفق زیاد بود. فایل را دوباره بفرستید.' : 'خطا: ' + reply.error;
+				status.textContent = reply.error === 'key' ? text.bad_key : reply.error === 'locked' ? text.locked : failed(reply.error);
 				return;
 			}
 			form.hidden = true;

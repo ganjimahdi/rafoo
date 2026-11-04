@@ -1,12 +1,15 @@
 <script lang="ts">
+	import Help from './Help.svelte';
+
 	interface Props {
 		label: string;
 		description?: string;
+		help?: string;
 		checked: boolean;
 		disabled?: boolean;
 	}
 
-	let { label, description, checked = $bindable(), disabled = false }: Props = $props();
+	let { label, description, help, checked = $bindable(), disabled = false }: Props = $props();
 	const uid = $props.id();
 	const id = 'rf-toggle-' + uid;
 </script>
@@ -24,7 +27,10 @@
 		<span class="rf-track" aria-hidden="true"></span>
 	</span>
 	<span class="rf-text">
-		<label for={id}>{label}</label>
+		<span class="rf-label-row">
+			<label for={id}>{label}</label>
+			{#if help}<Help text={help} {label} />{/if}
+		</span>
 		{#if description}<span id={id + '-desc'} class="rf-desc">{description}</span>{/if}
 	</span>
 </div>
@@ -98,6 +104,11 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2px;
+	}
+	.rf-label-row {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
 	}
 	.rf-text label {
 		font-weight: 700;

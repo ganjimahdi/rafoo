@@ -1,6 +1,6 @@
 import { api } from './api';
 import { boot } from './boot';
-import type { Asset, Overview, Override, Preset, Settings } from './types';
+import type { Asset, NetworkPolicy, NetworkView, Overview, Override, Preset, Settings } from './types';
 
 function syncAdminBar(overview: Overview) {
 	const offline = overview.mode === 'offline';
@@ -29,6 +29,7 @@ class Store {
 		});
 	}
 	settings = $state.raw<Settings>(boot.settings);
+	network = $state.raw<NetworkView | null>(boot.network);
 	assets = $state.raw<Asset[] | null>(null);
 
 	async refresh() {
@@ -43,6 +44,11 @@ class Store {
 		this.overview = await api<Overview>('mode', 'POST', { mode });
 	}
 
+	async setPaused(paused: boolean) {
+		this.overview = await api<Overview>('pause', 'POST', { paused });
+		this.settings = { ...this.settings, paused: this.overview.paused };
+	}
+
 	async loadAssets() {
 		this.assets = await api<Asset[]>('assets');
 	}
@@ -55,6 +61,10 @@ class Store {
 
 	async saveSettings(changes: Partial<Settings>) {
 		this.settings = await api<Settings>('settings', 'POST', changes);
+	}
+
+	async saveNetwork(policy: NetworkPolicy, settings: Partial<Settings>) {
+		this.network = await api<NetworkView>('network', 'POST', { policy, settings });
 	}
 
 	async setup(preset: Preset | 'custom' | 'skip', settings: Partial<Settings> = {}) {

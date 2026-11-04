@@ -24,8 +24,33 @@ export function t(key: string, ...values: (string | number)[]): string {
 	});
 }
 
+export function help(key: string): string {
+	return t('help_' + key);
+}
+
 export function num(value: number): string {
 	return numbers.format(value);
+}
+
+const percents = new Intl.NumberFormat(locale, { style: 'percent', maximumFractionDigits: 1 });
+const days = new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeZone: 'UTC' });
+const clock = new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'UTC' });
+const lists = typeof Intl.ListFormat === 'function' ? new Intl.ListFormat(locale, { style: 'narrow', type: 'unit' }) : null;
+
+export function percent(value: number): string {
+	return percents.format(value / 100);
+}
+
+export function day(iso: string): string {
+	return days.format(new Date(iso + 'T12:00:00Z'));
+}
+
+export function hour(value: number): string {
+	return clock.format(new Date(Date.UTC(2000, 0, 1, value)));
+}
+
+export function list(items: string[]): string {
+	return lists ? lists.format(items) : items.join(', ');
 }
 
 export function date(seconds: number): string {

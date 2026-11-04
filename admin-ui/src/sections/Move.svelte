@@ -4,7 +4,7 @@
 	import Notice from '../components/Notice.svelte';
 	import Segmented from '../components/Segmented.svelte';
 	import { api } from '../lib/api';
-	import { date, t } from '../lib/i18n';
+	import { date, help, t } from '../lib/i18n';
 	import type { BackupStatus } from '../lib/types';
 
 	interface Props {
@@ -53,7 +53,7 @@
 	}
 </script>
 
-<Card title={t('move_title')} description={t('move_help')}>
+<Card title={t('move_title')} help={help('card_move')} description={t('move_help')}>
 	<Segmented
 		name="rafoo-move-mode"
 		label={t('move_title')}

@@ -3,7 +3,7 @@
 	import Card from '../components/Card.svelte';
 	import Notice from '../components/Notice.svelte';
 	import { api } from '../lib/api';
-	import { t } from '../lib/i18n';
+	import { help, t } from '../lib/i18n';
 
 	let message = $state('');
 	let contact = $state('');
@@ -34,7 +34,7 @@
 	}
 </script>
 
-<Card title={t('feedback_title')} description={t('feedback_help')}>
+<Card title={t('feedback_title')} help={help('card_feedback')} description={t('feedback_help')}>
 	<form class="rf-stack" onsubmit={send} novalidate>
 		<div class="rf-field">
 			<label for="rafoo-feedback">{t('feedback_message')}</label>

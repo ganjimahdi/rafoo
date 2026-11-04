@@ -14,8 +14,8 @@ foreach ( $rafoo_editions as $rafoo_edition ) {
 	}
 }
 
-$rafoo_site_options = array( 'rafoo_settings', 'rafoo_map', 'rafoo_assets', 'rafoo_telemetry', 'rafoo_requests', 'rafoo_mail_queue', 'rafoo_mail_relay', 'rafoo_rollback', 'rafoo_backup_destinations', 'rafoo_backup_secret', 'rafoo_transfer_invite', 'rafoo_transfer_outgoing', 'rafoo_freeze_until', 'rafoo_peer', 'rafoo_peer_log' );
-$rafoo_network      = array( 'rafoo_state', 'rafoo_events', 'rafoo_breaker' );
+$rafoo_site_options = array( 'rafoo_settings', 'rafoo_map', 'rafoo_assets', 'rafoo_telemetry', 'rafoo_requests', 'rafoo_mail_queue', 'rafoo_mail_relay', 'rafoo_rollback', 'rafoo_backup_destinations', 'rafoo_backup_secret', 'rafoo_transfer_invite', 'rafoo_transfer_outgoing', 'rafoo_freeze_until', 'rafoo_peer', 'rafoo_peer_log', 'rafoo_network_rev' );
+$rafoo_network      = array( 'rafoo_state', 'rafoo_events', 'rafoo_breaker', 'rafoo_network' );
 $rafoo_hooks        = array( 'rafoo_check', 'rafoo_sync', 'rafoo_scan', 'rafoo_daily', 'rafoo_mail', 'rafoo_backup', 'rafoo_backup_tick' );
 
 $rafoo_clean_site = static function () use ( $rafoo_site_options, $rafoo_hooks ) {

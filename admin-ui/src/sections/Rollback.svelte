@@ -5,7 +5,7 @@
 	import Card from '../components/Card.svelte';
 	import Notice from '../components/Notice.svelte';
 	import { api } from '../lib/api';
-	import { bytes, date, t } from '../lib/i18n';
+	import { bytes, date, help, t } from '../lib/i18n';
 	import { store } from '../lib/store.svelte';
 	import type { HealthReport, RollbackReport } from '../lib/types';
 
@@ -49,7 +49,7 @@
 	}
 </script>
 
-<Card title={t('rollback_title')} description={t('rollback_help')}>
+<Card title={t('rollback_title')} help={help('card_rollback')} description={t('rollback_help')}>
 	{#snippet actions()}
 		<Button onclick={check} busy={busy === 'health'} disabled={busy !== ''}>{t('health_check')}</Button>
 	{/snippet}

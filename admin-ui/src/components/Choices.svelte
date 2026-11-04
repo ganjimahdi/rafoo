@@ -1,4 +1,6 @@
 <script lang="ts" generics="T extends string">
+	import Help from './Help.svelte';
+
 	interface Option {
 		value: T;
 		label: string;
@@ -9,15 +11,17 @@
 		name: string;
 		legend: string;
 		description?: string;
+		help?: string;
 		options: Option[];
 		value: T;
+		disabled?: boolean;
 	}
 
-	let { name, legend, description, options, value = $bindable() }: Props = $props();
+	let { name, legend, description, help, options, value = $bindable(), disabled = false }: Props = $props();
 </script>
 
-<fieldset class="rf-choices">
-	<legend>{legend}</legend>
+<fieldset class="rf-choices" {disabled}>
+	<legend><span class="rf-legend-row">{legend}{#if help}<Help text={help} label={legend} />{/if}</span></legend>
 	{#if description}<p class="rf-desc">{description}</p>{/if}
 	<div class="rf-list">
 		{#each options as option (option.value)}
@@ -46,6 +50,11 @@
 		padding: 0;
 		font-weight: 700;
 	}
+	.rf-legend-row {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+	}
 	.rf-list {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -67,6 +76,13 @@
 	}
 	.rf-choice.rf-on {
 		border-color: var(--rf-l5);
+	}
+	.rf-choices:disabled .rf-choice {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+	.rf-choices:disabled .rf-choice:hover {
+		border-color: var(--rf-l2);
 	}
 	.rf-choice input {
 		flex: none;

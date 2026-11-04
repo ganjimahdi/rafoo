@@ -2,6 +2,8 @@
 
 namespace Rafoo\Admin;
 
+use Rafoo\Network;
+
 defined( 'ABSPATH' ) || exit;
 
 final class Page {
@@ -28,13 +30,30 @@ final class Page {
 		);
 	}
 
+	public static function network_menu() {
+		self::$hook = (string) add_menu_page(
+			__( 'Rafoo', 'rafoo' ),
+			__( 'Rafoo', 'rafoo' ),
+			'manage_network_options',
+			self::SLUG,
+			array( __CLASS__, 'render' ),
+			self::ICON,
+			81
+		);
+	}
+
+	public static function network_links( $links ) {
+		array_unshift( $links, '<a href="' . esc_url( network_admin_url( 'admin.php?page=' . self::SLUG ) ) . '">' . esc_html__( 'Network settings', 'rafoo' ) . '</a>' );
+		return $links;
+	}
+
 	public static function links( $links ) {
 		array_unshift( $links, '<a href="' . esc_url( self::url() ) . '">' . esc_html__( 'Settings', 'rafoo' ) . '</a>' );
 		return $links;
 	}
 
 	public static function render() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( is_network_admin() ? 'manage_network_options' : 'manage_options' ) ) {
 			return;
 		}
 		echo '<div class="wrap"><h1 class="screen-reader-text">' . esc_html__( 'Rafoo', 'rafoo' ) . '</h1><div id="rafoo-app"><p>' . esc_html__( 'Loading…', 'rafoo' ) . '</p>';
@@ -66,17 +85,21 @@ final class Page {
 
 	public static function boot() {
 		$privacy = (int) get_option( 'wp_page_for_privacy_policy' );
+		$network = is_network_admin();
 		return array(
 			'root'        => esc_url_raw( rest_url( Rest::NS . '/' ) ),
 			'nonce'       => wp_create_nonce( 'wp_rest' ),
 			'edition'     => RAFOO_EDITION,
 			'version'     => RAFOO_VERSION,
+			'context'     => $network ? 'network' : 'site',
 			'rtl'         => is_rtl(),
 			'locale'      => get_user_locale(),
 			'timezone'    => wp_timezone_string(),
 			'strings'     => Strings::all(),
 			'overview'    => Rest::overview(),
 			'settings'    => Rest::public_settings(),
+			'network'     => $network ? Network::view() : null,
+			'managed'     => Rest::managed(),
 			'privacy_url' => current_user_can( 'manage_privacy_options' ) ? admin_url( 'options-privacy.php?tab=policyguide' ) : ( $privacy ? (string) get_permalink( $privacy ) : '' ),
 		);
 	}

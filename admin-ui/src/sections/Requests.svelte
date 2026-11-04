@@ -5,7 +5,8 @@
 	import Card from '../components/Card.svelte';
 	import Notice from '../components/Notice.svelte';
 	import { api } from '../lib/api';
-	import { ago, num, t } from '../lib/i18n';
+	import { ago, help, num, t } from '../lib/i18n';
+	import { store } from '../lib/store.svelte';
 	import type { RequestsReport } from '../lib/types';
 
 	const LIMIT = 20;
@@ -31,9 +32,17 @@
 	onMount(() => {
 		run(() => api<RequestsReport>('requests'));
 	});
+
+	function block(host: string, blocked: boolean) {
+		run(async () => {
+			const result = await api<RequestsReport & { block_hosts: string[] }>('requests/block', 'POST', { host, blocked });
+			store.settings = { ...store.settings, block_hosts: result.block_hosts };
+			return result;
+		});
+	}
 </script>
 
-<Card title={t('requests_title')} description={t('requests_help')}>
+<Card title={t('requests_title')} description={t('requests_help')} help={help('card_requests')}>
 	{#snippet actions()}
 		<Button onclick={() => run(() => api<RequestsReport>('requests/clear', 'POST'))} {busy} disabled={!report || report.items.length === 0}>
 			{t('requests_clear')}
@@ -70,7 +79,10 @@
 								<td>
 									<div class="rf-host">
 										<span class="rf-mono">{row.host}</span>
-										{#if row.foreign}<Badge>{t('host_foreign')}</Badge>{/if}
+										{#if row.blocked}<Badge tone="danger">{t('host_blocked')}</Badge>{:else if row.foreign}<Badge>{t('host_foreign')}</Badge>{/if}
+										<Button size="sm" variant="ghost" disabled={busy} onclick={() => block(row.host, !row.blocked)}>
+											{row.blocked ? t('host_unblock') : t('host_block')}
+										</Button>
 									</div>
 								</td>
 								<td>{num(row.count)}</td>

@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,13 +73,26 @@ Rafoo fixes this without touching the files of your theme or plugins.
 * Copy the whole site to another WordPress site with Rafoo using a one-time code, directly between the two servers, with a short final pass for WooCommerce orders. A different domain and table prefix are handled.
 * Move to an empty host with a small installer.
 
+**Browser and internal requests**
+
+* A small script at the top of every page makes browser requests to unreachable servers fail at once during an outage, so sliders, chat widgets and page builders do not hang.
+* A block list stops any host or address you never want, on the server, in the page and in the browser.
+* Identical requests a page sends to its own AJAX or REST address at the same moment go out once. WordPress Heartbeat slows down in smart mode without breaking autosave or post locks.
+* One Pause switch turns off every change Rafoo makes, to test or to find a conflict.
+
+**Site Health and Multisite**
+
+* Tools › Site Health shows whether outage detection runs on time, whether local copies can be saved, and whether Rafoo is paused or fixed in a mode by hand. The Info tab has a Rafoo section for support requests.
+* On Multisite, the network administrator can set Rafoo once for every site: as a starting point for new sites, or applied to all sites and locked. Privacy and backup choices stay with each site.
+
 **Built to stay out of the way**
 
 * A page costs one small option lookup. The page HTML is only searched when it mentions a known CDN.
 * Page caches of WP Rocket, LiteSpeed Cache, W3 Total Cache, WP Super Cache, WP Fastest Cache, SiteGround Optimizer, Breeze and Autoptimize are cleared when the mode or the list of local files changes.
 * Works on Multisite, PHP 7.4 to 8.4, Apache, LiteSpeed and Nginx.
 * WP-CLI: `wp rafoo status`, `mode`, `check`, `scan`, `sync`, `assets`, `verify`, `purge`.
-* Persian and English, right-to-left and left-to-right.
+* In English, Persian, Arabic, Turkish and Russian, right-to-left and left-to-right, with dates and numbers in the user's own format.
+* A help button next to every section and switch explains it in two sentences.
 * Nothing is sent anywhere about your visitors. Usage reports are off unless you turn them on.
 
 == External services ==
@@ -137,9 +150,35 @@ Local files are the same bytes as the originals, so `integrity` attributes keep 
 
 Yes. Local copies of CDN files and fonts make any site faster and more private. Outage mode simply never switches on.
 
+= Does it work with Elementor, Divi and other page builders? =
+
+Yes. The editors of Elementor (including the Hello theme), Divi, Beaver Builder, Bricks and Oxygen, and the Customizer, load normally during an outage. Rafoo's first script is marked so that cache and "delay JavaScript" plugins leave it alone.
+
+= Something looks wrong after activating Rafoo. What should I do? =
+
+Press Pause on the Rafoo overview. The site then works as if Rafoo were not installed. If the problem goes away, turn off the switches in Settings one at a time to find the cause, and tell us under Rafoo › Feedback.
+
+= How does it work on Multisite? =
+
+The internet state is shared by the whole network, and each site has its own copies, log and backups. Network administrators can set Rafoo for all sites under Network Admin › Rafoo.
+
+= Can I translate Rafoo? =
+
+Yes. All text is in the `rafoo` text domain and a `rafoo.pot` file is in the `languages` folder.
+
 = Where is the source of the admin screen? =
 
 The readable Svelte source is in the `admin-ui` folder of the plugin. Build it with `pnpm install` and `pnpm build`.
+
+== Screenshots ==
+
+1. Overview: the internet state, the mode, local files and the Pause switch.
+2. Libraries and fonts the site loads from public CDNs, with their local copies.
+3. Connection checks and the log of outside requests, with a Block button per host.
+4. Settings, with a help button next to every section and switch.
+5. Backups: schedule, encryption, other servers and moving the site.
+6. The optional cooperative monitoring network.
+7. Network settings on Multisite.
 
 == Credits ==
 
@@ -148,6 +187,19 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+
+= 1.3.0 =
+* Browser guard: during an outage, requests that scripts make in the browser (fetch, XHR, beacons, WebSocket, and scripts, styles, frames and images added later) to unreachable servers fail at once instead of hanging, and the resulting errors stay quiet.
+* Block list: stop any host or address everywhere, on the server, in the page and in the browser, also from a button in the request log.
+* WordPress Heartbeat in smart mode and merging of identical requests a page sends to its own AJAX or REST address.
+* The manual scan also opens pages with your own login, so files that only signed-in users load get local copies too.
+* Pause: one switch turns off every change Rafoo makes, for testing or finding a conflict.
+* A help button next to every section and switch.
+* Works with Elementor and Hello, Divi, Beaver Builder, Bricks, Oxygen and the Customizer, and keeps its first script out of cache and delay-JS optimizations.
+* Site Health: four checks and a Rafoo section in the Info tab.
+* Multisite: network settings, as a starting point for new sites or applied to every site.
+* Arabic, Turkish and Russian translations. Dates, numbers and percentages follow the user's language everywhere, and the restore page for an empty host is translated too.
+* The dashboard now answers in each user's own language, even when it differs from the site language.
 
 = 1.2.0 =
 * Monitoring: an opt-in cooperative network of Rafoo sites that check each other from inside and outside Iran, with five points in each and a choice of every one or five minutes.
@@ -163,3 +215,8 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 
 = 1.0.0 =
 * First release.
+
+== Upgrade Notice ==
+
+= 1.3.0 =
+Browser guard, block list, Pause switch, Site Health checks, Multisite network settings and three new languages.

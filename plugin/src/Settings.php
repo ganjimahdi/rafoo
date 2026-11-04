@@ -14,7 +14,7 @@ final class Settings {
 
 	const PRESETS = array( 'recommended', 'outage', 'maximum' );
 
-	const EDITABLE = array( 'replace', 'html_scan', 'fonts', 'avatars', 'embeds', 'updates', 'telemetry', 'allow_hosts', 'core_assets', 'analytics', 'social_login', 'mail_queue', 'request_log', 'captcha', 'safe_updates', 'translations', 'backup', 'backup_hours', 'backup_hour', 'backup_mode', 'backup_local' );
+	const EDITABLE = array( 'replace', 'html_scan', 'fonts', 'avatars', 'embeds', 'updates', 'telemetry', 'allow_hosts', 'core_assets', 'analytics', 'social_login', 'mail_queue', 'request_log', 'captcha', 'safe_updates', 'translations', 'backup', 'backup_hours', 'backup_hour', 'backup_mode', 'backup_local', 'browser_guard', 'dedupe', 'heartbeat', 'block_hosts', 'scan_as_user' );
 
 	private static $cache = null;
 
@@ -45,6 +45,12 @@ final class Settings {
 			'backup_hour'  => 3,
 			'backup_mode'  => 'incremental',
 			'backup_local' => true,
+			'browser_guard' => true,
+			'dedupe'       => true,
+			'heartbeat'    => 'smart',
+			'block_hosts'  => array(),
+			'scan_as_user' => true,
+			'paused'       => false,
 			'setup'        => '',
 			'preset'       => '',
 		);
@@ -68,6 +74,10 @@ final class Settings {
 				'safe_updates' => true,
 				'translations' => true,
 				'backup'       => true,
+				'browser_guard' => true,
+				'dedupe'       => true,
+				'heartbeat'    => 'smart',
+				'scan_as_user' => true,
 			),
 			'outage'      => array(
 				'replace'      => 'outage',
@@ -85,6 +95,10 @@ final class Settings {
 				'safe_updates' => true,
 				'translations' => true,
 				'backup'       => false,
+				'browser_guard' => true,
+				'dedupe'       => false,
+				'heartbeat'    => 'default',
+				'scan_as_user' => true,
 			),
 			'maximum'     => array(
 				'replace'      => 'always',
@@ -102,6 +116,10 @@ final class Settings {
 				'safe_updates' => true,
 				'translations' => true,
 				'backup'       => true,
+				'browser_guard' => true,
+				'dedupe'       => true,
+				'heartbeat'    => 'smart',
+				'scan_as_user' => true,
 			),
 		);
 		return isset( $presets[ $name ] ) ? $presets[ $name ] : array();
@@ -109,8 +127,13 @@ final class Settings {
 
 	public static function all() {
 		if ( null === self::$cache ) {
-			$stored      = get_option( self::OPTION, array() );
-			self::$cache = self::normalize( is_array( $stored ) ? $stored : array() );
+			$stored  = get_option( self::OPTION, array() );
+			$stored  = is_array( $stored ) ? $stored : array();
+			$network = Network::settings();
+			if ( $network && ( Network::enforced() || ! $stored ) ) {
+				$stored = array_merge( $stored, $network );
+			}
+			self::$cache = self::normalize( $stored );
 		}
 		return self::$cache;
 	}
@@ -126,6 +149,9 @@ final class Settings {
 	}
 
 	public static function update( array $changes ) {
+		if ( Network::enforced() ) {
+			$changes = array_diff_key( $changes, array_flip( Network::keys() ) );
+		}
 		$next = self::normalize( array_merge( self::all(), $changes ) );
 		if ( $next['telemetry'] && ! self::all()['telemetry'] ) {
 			$next['consent_at'] = time();
@@ -152,13 +178,14 @@ final class Settings {
 			'analytics' => array( 'off', 'outage', 'always' ),
 			'captcha'  => array( 'off', 'outage', 'always' ),
 			'backup_mode' => array( 'incremental', 'full' ),
+			'heartbeat' => array( 'smart', 'default' ),
 			'setup'    => array( '', 'done', 'skipped' ),
 			'preset'   => array( '', 'recommended', 'outage', 'maximum', 'custom' ),
 		);
 		foreach ( $choices as $key => $allowed ) {
 			$out[ $key ] = self::choice( $in, $key, $allowed, $defaults[ $key ] );
 		}
-		foreach ( array( 'html_scan', 'fonts', 'embeds', 'telemetry', 'core_assets', 'social_login', 'mail_queue', 'request_log', 'safe_updates', 'translations', 'backup', 'backup_local' ) as $key ) {
+		foreach ( array( 'html_scan', 'fonts', 'embeds', 'telemetry', 'core_assets', 'social_login', 'mail_queue', 'request_log', 'safe_updates', 'translations', 'backup', 'backup_local', 'browser_guard', 'dedupe', 'scan_as_user', 'paused' ) as $key ) {
 			$out[ $key ] = self::flag( $in, $key, $defaults[ $key ] );
 		}
 		$hours               = isset( $in['backup_hours'] ) ? (int) $in['backup_hours'] : $defaults['backup_hours'];
@@ -167,6 +194,7 @@ final class Settings {
 		$out['backup_hour']  = $hour >= 0 && $hour <= 23 ? $hour : $defaults['backup_hour'];
 		$out['consent_at']  = isset( $in['consent_at'] ) ? max( 0, (int) $in['consent_at'] ) : 0;
 		$out['allow_hosts'] = self::hosts( isset( $in['allow_hosts'] ) ? $in['allow_hosts'] : array() );
+		$out['block_hosts'] = self::blocks( isset( $in['block_hosts'] ) ? $in['block_hosts'] : array() );
 		$out['exclude']     = self::urls( isset( $in['exclude'] ) ? $in['exclude'] : array() );
 		$out['npm_mirrors'] = self::mirrors( isset( $in['npm_mirrors'] ) ? $in['npm_mirrors'] : array(), self::NPM_MIRRORS );
 		$out['wp_mirrors']  = self::mirrors( isset( $in['wp_mirrors'] ) ? $in['wp_mirrors'] : array(), self::WP_MIRRORS );
@@ -200,6 +228,29 @@ final class Settings {
 			if ( preg_match( '/^(\*\.)?[a-z0-9-]+(\.[a-z0-9-]+)+$/', $host ) ) {
 				$out[] = $host;
 			}
+		}
+		return array_slice( array_values( array_unique( $out ) ), 0, 200 );
+	}
+
+	public static function paused() {
+		return (bool) self::get( 'paused' );
+	}
+
+	private static function blocks( $value ) {
+		$out = array();
+		foreach ( self::lines( $value ) as $rule ) {
+			if ( preg_match( '#^https?://#i', $rule ) ) {
+				$url  = esc_url_raw( $rule, array( 'http', 'https' ) );
+				$host = strtolower( (string) wp_parse_url( $url, PHP_URL_HOST ) );
+				if ( '' !== $url && preg_match( '/^[a-z0-9-]+(\.[a-z0-9-]+)+$/', $host ) ) {
+					$out[] = preg_replace( '#^(https?://)([^/]+)#i', '$1' . $host, $url );
+				}
+				continue;
+			}
+			if ( preg_match( '#^[a-z][a-z0-9+.\-]*://#i', $rule ) ) {
+				continue;
+			}
+			$out = array_merge( $out, self::hosts( array( $rule ) ) );
 		}
 		return array_slice( array_values( array_unique( $out ) ), 0, 200 );
 	}

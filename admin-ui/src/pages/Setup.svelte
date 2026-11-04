@@ -5,7 +5,7 @@
 	import Notice from '../components/Notice.svelte';
 	import Toggle from '../components/Toggle.svelte';
 	import { boot } from '../lib/boot';
-	import { t } from '../lib/i18n';
+	import { help, t } from '../lib/i18n';
 	import { store } from '../lib/store.svelte';
 	import type { Preset, Settings } from '../lib/types';
 
@@ -34,7 +34,7 @@
 		busy = preset;
 		error = '';
 		try {
-			const { setup: _setup, preset: _preset, consent_at: _consent, ...settings } = draft;
+			const { setup: _setup, preset: _preset, consent_at: _consent, paused: _paused, ...settings } = draft;
 			await store.setup(preset, preset === 'custom' ? settings : { telemetry: draft.telemetry });
 			if (preset === 'skip') {
 				onfinish();
@@ -117,7 +117,7 @@
 			{#if steps[step] === 'files'}
 				<Choices
 					name="setup-replace"
-					legend={t('replace_label')}
+					legend={t('replace_label')} help={help('replace')}
 					bind:value={draft.replace}
 					options={[
 						{ value: 'always', label: t('replace_always'), description: t('replace_always_help') },
@@ -125,12 +125,13 @@
 						{ value: 'off', label: t('replace_off'), description: t('replace_off_help') }
 					]}
 				/>
-				<Toggle label={t('html_scan_label')} description={t('html_scan_help')} bind:checked={draft.html_scan} />
-				<Toggle label={t('fonts_label')} description={t('fonts_help')} bind:checked={draft.fonts} />
+				<Toggle label={t('html_scan_label')} help={help('html_scan')} description={t('html_scan_help')} bind:checked={draft.html_scan} />
+				<Toggle label={t('fonts_label')} help={help('fonts')} description={t('fonts_help')} bind:checked={draft.fonts} />
+				<Toggle label={t('scan_as_user_label')} help={help('scan_as_user')} description={t('scan_as_user_help')} bind:checked={draft.scan_as_user} />
 			{:else if steps[step] === 'outage'}
 				<Choices
 					name="setup-avatars"
-					legend={t('avatars_label')}
+					legend={t('avatars_label')} help={help('avatars')}
 					bind:value={draft.avatars}
 					options={[
 						{ value: 'outage', label: t('choice_outage'), description: t('avatars_outage_help') },
@@ -140,7 +141,7 @@
 				/>
 				<Choices
 					name="setup-captcha"
-					legend={t('captcha_label')}
+					legend={t('captcha_label')} help={help('captcha')}
 					description={t('captcha_help')}
 					bind:value={draft.captcha}
 					options={[
@@ -151,7 +152,7 @@
 				/>
 				<Choices
 					name="setup-analytics"
-					legend={t('analytics_label')}
+					legend={t('analytics_label')} help={help('analytics')}
 					description={t('analytics_help')}
 					bind:value={draft.analytics}
 					options={[
@@ -160,15 +161,27 @@
 						{ value: 'off', label: t('choice_off') }
 					]}
 				/>
-				<Toggle label={t('embeds_label')} description={t('embeds_help')} bind:checked={draft.embeds} />
-				<Toggle label={t('core_assets_label')} description={t('core_assets_help')} bind:checked={draft.core_assets} />
-				<Toggle label={t('social_login_label')} description={t('social_login_help')} bind:checked={draft.social_login} />
-				<Toggle label={t('mail_queue_label')} description={t('mail_queue_help')} bind:checked={draft.mail_queue} />
+				<Toggle label={t('embeds_label')} help={help('embeds')} description={t('embeds_help')} bind:checked={draft.embeds} />
+				<Toggle label={t('core_assets_label')} help={help('core_assets')} description={t('core_assets_help')} bind:checked={draft.core_assets} />
+				<Toggle label={t('social_login_label')} help={help('social_login')} description={t('social_login_help')} bind:checked={draft.social_login} />
+				<Toggle label={t('mail_queue_label')} help={help('mail_queue')} description={t('mail_queue_help')} bind:checked={draft.mail_queue} />
+				<Toggle label={t('browser_guard_label')} help={help('browser_guard')} description={t('browser_guard_help')} bind:checked={draft.browser_guard} />
+				<Toggle label={t('dedupe_label')} help={help('dedupe')} description={t('dedupe_help')} bind:checked={draft.dedupe} />
+				<Choices
+					name="setup-heartbeat"
+					legend={t('heartbeat_label')}
+					help={help('heartbeat')}
+					bind:value={draft.heartbeat}
+					options={[
+						{ value: 'smart', label: t('heartbeat_smart'), description: t('heartbeat_smart_help') },
+						{ value: 'default', label: t('heartbeat_default'), description: t('heartbeat_default_help') }
+					]}
+				/>
 			{:else if steps[step] === 'safety'}
 				{#if complete}
 					<Choices
 						name="setup-updates"
-						legend={t('updates_label')}
+						legend={t('updates_label')} help={help('updates')}
 						bind:value={draft.updates}
 						options={[
 							{ value: 'outage', label: t('choice_outage'), description: t('updates_outage_help') },
@@ -176,15 +189,15 @@
 							{ value: 'off', label: t('choice_off') }
 						]}
 					/>
-					<Toggle label={t('translations_label')} description={t('translations_help')} bind:checked={draft.translations} />
+					<Toggle label={t('translations_label')} help={help('translations')} description={t('translations_help')} bind:checked={draft.translations} />
 				{/if}
-				<Toggle label={t('safe_updates_label')} description={t('safe_updates_help')} bind:checked={draft.safe_updates} />
-				<Toggle label={t('request_log_label')} description={t('request_log_help')} bind:checked={draft.request_log} />
+				<Toggle label={t('safe_updates_label')} help={help('safe_updates')} description={t('safe_updates_help')} bind:checked={draft.safe_updates} />
+				<Toggle label={t('request_log_label')} help={help('request_log')} description={t('request_log_help')} bind:checked={draft.request_log} />
 			{:else if steps[step] === 'backup'}
-				<Toggle label={t('backup_label')} description={t('backup_help')} bind:checked={draft.backup} />
+				<Toggle label={t('backup_label')} help={help('backup')} description={t('backup_help')} bind:checked={draft.backup} />
 				<p class="rf-subtle rf-small">{t('setup_backup_later')}</p>
 			{:else}
-				<Toggle label={t('telemetry_label')} description={t('telemetry_help')} bind:checked={draft.telemetry} />
+				<Toggle label={t('telemetry_label')} help={help('telemetry')} description={t('telemetry_help')} bind:checked={draft.telemetry} />
 			{/if}
 		</Card>
 

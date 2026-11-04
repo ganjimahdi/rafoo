@@ -34,11 +34,17 @@ final class Rewriter {
 	}
 
 	public static function script_tag( $tag, $handle, $src ) {
+		if ( self::external( $src ) && Hosts::blocked( $src ) ) {
+			return '';
+		}
 		self::learn_integrity( $tag, $src );
 		return $tag;
 	}
 
 	public static function style_tag( $tag, $handle, $href ) {
+		if ( self::external( $href ) && Hosts::blocked( $href ) ) {
+			return '';
+		}
 		if ( ! self::external( $href ) ) {
 			return $tag;
 		}
@@ -95,6 +101,9 @@ final class Rewriter {
 			if ( '' === $host ) {
 				$host = strtolower( preg_replace( '#[/:].*$#', '', ltrim( $href, '/' ) ) );
 			}
+			if ( '' !== $host && Hosts::blocked( 'https://' . $host . '/' ) ) {
+				continue;
+			}
 			if ( self::managed_host( $host ) ) {
 				$needed = null === $needed ? self::needed_hosts() : $needed;
 				if ( ! isset( $needed[ $host ] ) ) {
@@ -107,9 +116,10 @@ final class Rewriter {
 	}
 
 	public static function start_buffer() {
-		if ( ! ( Settings::get( 'html_scan' ) || Analytics::active() || Captcha::replacing() ) || ! self::bufferable() ) {
+		if ( ! ( Settings::get( 'html_scan' ) || Analytics::active() || Captcha::replacing() || Settings::get( 'block_hosts' ) || Browser::active() ) || ! self::bufferable() ) {
 			return;
 		}
+		Browser::buffering();
 		ob_start( array( __CLASS__, 'buffer' ) );
 	}
 
@@ -123,9 +133,54 @@ final class Rewriter {
 		if ( Captcha::replacing() ) {
 			$html = Captcha::strip( $html );
 		}
-		if ( ! Settings::get( 'html_scan' ) ) {
-			return $html;
+		if ( Settings::get( 'block_hosts' ) ) {
+			$html = self::strip_blocked( $html );
 		}
+		if ( Settings::get( 'html_scan' ) ) {
+			$html = self::rewrite( $html );
+		}
+		return Browser::active() ? Browser::inject( $html ) : $html;
+	}
+
+	public static function strip_blocked( $html ) {
+		$out = preg_replace_callback(
+			'#<script\b([^>]*)>\s*</script\s*>#is',
+			static function ( $m ) {
+				return self::blocked_attr( $m[1], 'src' ) ? '' : $m[0];
+			},
+			$html
+		);
+		$out = null === $out ? $html : $out;
+		$out = preg_replace_callback(
+			'#<link\b[^>]*>#i',
+			static function ( $m ) {
+				return self::blocked_attr( $m[0], 'href' ) ? '' : $m[0];
+			},
+			$out
+		);
+		$out = null === $out ? $html : $out;
+		$res = preg_replace_callback(
+			'#<iframe\b[^>]*>#i',
+			static function ( $m ) {
+				if ( ! preg_match( '#\bsrc\s*=\s*(["\'])([^"\']+)\1#i', $m[0], $src, PREG_OFFSET_CAPTURE ) || ! Hosts::blocked( html_entity_decode( $src[2][0] ) ) ) {
+					return $m[0];
+				}
+				$tag = substr_replace( $m[0], 'about:blank', $src[2][1], strlen( $src[2][0] ) );
+				return preg_replace( '#^<iframe\b#i', '<iframe data-rafoo-blocked="' . esc_attr( $src[2][0] ) . '"', $tag );
+			},
+			$out
+		);
+		return null === $res ? $out : $res;
+	}
+
+	private static function blocked_attr( $attributes, $name ) {
+		if ( ! preg_match( '#\b' . $name . '\s*=\s*(["\']?)([^"\'\s>]+)\1#i', $attributes, $m ) ) {
+			return false;
+		}
+		return Hosts::blocked( html_entity_decode( $m[2] ) );
+	}
+
+	private static function rewrite( $html ) {
 		$offline = State::offline();
 		$embeds  = $offline && Embeds::enabled();
 		if ( ! self::mentions_managed( $html ) && ! ( $embeds && Embeds::mentions( $html ) ) ) {

@@ -5,6 +5,8 @@ namespace Rafoo;
 use Rafoo\Admin\AdminBar;
 use Rafoo\Admin\Page;
 use Rafoo\Admin\Rest;
+use Rafoo\Admin\SiteHealth;
+use Rafoo\Assets\Browser;
 use Rafoo\Assets\Library;
 use Rafoo\Assets\Rewriter;
 use Rafoo\Backup\Api;
@@ -27,6 +29,7 @@ use Rafoo\Safety\Rollback;
 use Rafoo\Services\Avatars;
 use Rafoo\Services\Core;
 use Rafoo\Services\Embeds;
+use Rafoo\Services\Heartbeat;
 use Rafoo\Services\SocialLogin;
 
 defined( 'ABSPATH' ) || exit;
@@ -65,7 +68,8 @@ final class Plugin {
 			add_action( 'plugins_loaded', array( Peers\Engine::class, 'serve' ), 0 );
 		}
 
-		foreach ( self::hooks() as $hook ) {
+		$hooks = Settings::paused() ? self::hooks() : array_merge( self::hooks(), self::changes() );
+		foreach ( $hooks as $hook ) {
 			add_filter( $hook[0], $hook[1], isset( $hook[2] ) ? $hook[2] : 10, isset( $hook[3] ) ? $hook[3] : 1 );
 		}
 
@@ -73,47 +77,26 @@ final class Plugin {
 			add_action( 'admin_menu', array( Page::class, 'menu' ) );
 			add_action( 'admin_enqueue_scripts', array( Page::class, 'assets' ) );
 			add_filter( 'plugin_action_links_' . plugin_basename( RAFOO_FILE ), array( Page::class, 'links' ) );
+			if ( is_multisite() ) {
+				add_action( 'network_admin_menu', array( Page::class, 'network_menu' ) );
+				add_filter( 'network_admin_plugin_action_links_' . plugin_basename( RAFOO_FILE ), array( Page::class, 'network_links' ) );
+			}
 			add_action( 'admin_init', array( __CLASS__, 'privacy' ) );
 			add_action( 'admin_init', array( __CLASS__, 'setup_redirect' ), 1 );
 		}
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			Command::register();
 		}
-		if ( self::complete() ) {
+		if ( self::complete() && ! Settings::paused() ) {
 			Updates\Updates::register();
 			add_action( 'admin_init', array( __CLASS__, 'retire_standard' ) );
 		}
 	}
 
-	private static function hooks() {
+	public static function hooks() {
 		return array(
-			array( 'http_request_args', array( Guard::class, 'args' ), 99, 2 ),
-			array( 'pre_http_request', array( Guard::class, 'filter' ), 5, 3 ),
 			array( 'http_api_debug', array( Guard::class, 'observe' ), 10, 5 ),
-			array( 'script_loader_src', array( Rewriter::class, 'script_src' ), 999 ),
-			array( 'style_loader_src', array( Rewriter::class, 'style_src' ), 999 ),
-			array( 'script_loader_tag', array( Rewriter::class, 'script_tag' ), 999, 3 ),
-			array( 'style_loader_tag', array( Rewriter::class, 'style_tag' ), 999, 3 ),
-			array( 'wp_resource_hints', array( Rewriter::class, 'hints' ), 999, 2 ),
-			array( 'template_redirect', array( Rewriter::class, 'start_buffer' ), PHP_INT_MAX - 10 ),
-			array( 'pre_get_avatar_data', array( Avatars::class, 'data' ), 20, 2 ),
-			array( 'the_content', array( Embeds::class, 'content' ), 99 ),
-			array( 'widget_text_content', array( Embeds::class, 'content' ), 99 ),
-			array( 'widget_block_content', array( Embeds::class, 'content' ), 99 ),
-			array( 'embed_oembed_html', array( Embeds::class, 'content' ), 99 ),
 			array( 'http_request_args', array( Log::class, 'stamp' ), 100, 2 ),
-			array( 'init', array( Core::class, 'init' ), 20 ),
-			array( 'should_load_remote_block_patterns', array( Core::class, 'patterns' ) ),
-			array( 'block_editor_settings_all', array( Core::class, 'editor' ) ),
-			array( 'wp_dashboard_setup', array( Core::class, 'dashboard' ) ),
-			array( 'wp_network_dashboard_setup', array( Core::class, 'dashboard' ) ),
-			array( 'wp_enqueue_scripts', array( SocialLogin::class, 'style' ) ),
-			array( 'login_enqueue_scripts', array( SocialLogin::class, 'style' ) ),
-			array( 'wp_mail', array( Queue::class, 'remember' ), PHP_INT_MAX ),
-			array( 'pre_wp_mail', array( Queue::class, 'pre' ), 10, 2 ),
-			array( 'phpmailer_init', array( Queue::class, 'mailer' ), PHP_INT_MAX ),
-			array( 'wp_mail_failed', array( Queue::class, 'failed' ) ),
-			array( 'wp_mail_succeeded', array( Queue::class, 'sent' ) ),
 			array( Queue::HOOK, array( Queue::class, 'run' ), 10, 0 ),
 			array( Schedule::HOOK, array( Schedule::class, 'run' ), 10, 0 ),
 			array( Job::HOOK, array( Job::class, 'cron' ), 10, 0 ),
@@ -126,6 +109,55 @@ final class Plugin {
 			array( 'rafoo_settings_changed', array( Schedule::class, 'changed' ), 10, 2 ),
 			array( 'woocommerce_checkout_process', array( Transfer::class, 'block_checkout' ), 1, 0 ),
 			array( 'rest_request_before_callbacks', array( Transfer::class, 'block_store' ), 9, 3 ),
+			array( 'admin_bar_menu', array( AdminBar::class, 'node' ), 100 ),
+			array( 'site_status_tests', array( SiteHealth::class, 'tests' ) ),
+			array( 'debug_information', array( SiteHealth::class, 'info' ) ),
+			array( 'rafoo_mode_changed', array( Purge::class, 'later' ) ),
+			array( 'rafoo_map_changed', array( Purge::class, 'later' ) ),
+			array( 'rafoo_mode_changed', array( __CLASS__, 'mode_changed' ) ),
+			array( 'cron_schedules', array( __CLASS__, 'schedules' ) ),
+			array( 'init', array( __CLASS__, 'init' ) ),
+			array( 'rest_api_init', array( Rest::class, 'register' ) ),
+			array( 'rafoo_check', array( __CLASS__, 'check' ) ),
+			array( 'rafoo_sync', array( __CLASS__, 'sync' ) ),
+			array( 'rafoo_scan', array( __CLASS__, 'scan' ) ),
+			array( self::DAILY, array( __CLASS__, 'daily' ) ),
+		);
+	}
+
+	public static function changes() {
+		return array(
+			array( 'http_request_args', array( Guard::class, 'args' ), 99, 2 ),
+			array( 'pre_http_request', array( Guard::class, 'filter' ), 5, 3 ),
+			array( 'heartbeat_settings', array( Heartbeat::class, 'settings' ), 99 ),
+			array( 'wp_head', array( Browser::class, 'head' ), -1000, 0 ),
+			array( 'admin_print_styles', array( Browser::class, 'output' ), -1000, 0 ),
+			array( 'login_enqueue_scripts', array( Browser::class, 'output' ), -1000, 0 ),
+			array( 'customize_controls_print_styles', array( Browser::class, 'output' ), -1000, 0 ),
+			array( 'elementor/editor/wp_head', array( Browser::class, 'output' ), -1000, 0 ),
+			array( 'script_loader_src', array( Rewriter::class, 'script_src' ), 999 ),
+			array( 'style_loader_src', array( Rewriter::class, 'style_src' ), 999 ),
+			array( 'script_loader_tag', array( Rewriter::class, 'script_tag' ), 999, 3 ),
+			array( 'style_loader_tag', array( Rewriter::class, 'style_tag' ), 999, 3 ),
+			array( 'wp_resource_hints', array( Rewriter::class, 'hints' ), 999, 2 ),
+			array( 'template_redirect', array( Rewriter::class, 'start_buffer' ), PHP_INT_MAX - 10 ),
+			array( 'pre_get_avatar_data', array( Avatars::class, 'data' ), 20, 2 ),
+			array( 'the_content', array( Embeds::class, 'content' ), 99 ),
+			array( 'widget_text_content', array( Embeds::class, 'content' ), 99 ),
+			array( 'widget_block_content', array( Embeds::class, 'content' ), 99 ),
+			array( 'embed_oembed_html', array( Embeds::class, 'content' ), 99 ),
+			array( 'init', array( Core::class, 'init' ), 20 ),
+			array( 'should_load_remote_block_patterns', array( Core::class, 'patterns' ) ),
+			array( 'block_editor_settings_all', array( Core::class, 'editor' ) ),
+			array( 'wp_dashboard_setup', array( Core::class, 'dashboard' ) ),
+			array( 'wp_network_dashboard_setup', array( Core::class, 'dashboard' ) ),
+			array( 'wp_enqueue_scripts', array( SocialLogin::class, 'style' ) ),
+			array( 'login_enqueue_scripts', array( SocialLogin::class, 'style' ) ),
+			array( 'wp_mail', array( Queue::class, 'remember' ), PHP_INT_MAX ),
+			array( 'pre_wp_mail', array( Queue::class, 'pre' ), 10, 2 ),
+			array( 'phpmailer_init', array( Queue::class, 'mailer' ), PHP_INT_MAX ),
+			array( 'wp_mail_failed', array( Queue::class, 'failed' ) ),
+			array( 'wp_mail_succeeded', array( Queue::class, 'sent' ) ),
 			array( 'upgrader_pre_install', array( Rollback::class, 'before' ), 5, 2 ),
 			array( 'upgrader_process_complete', array( Rollback::class, 'after' ), 20, 2 ),
 			array( 'load-plugins.php', array( Rollback::class, 'screens' ), 10, 0 ),
@@ -160,17 +192,6 @@ final class Plugin {
 			array( 'wpforms_process_before', array( Captcha::class, 'wpforms' ), 10, 2 ),
 			array( 'pre_http_request', array( Captcha::class, 'siteverify' ), 4, 3 ),
 			array( 'script_loader_tag', array( Captcha::class, 'script_tag' ), 1000, 3 ),
-			array( 'admin_bar_menu', array( AdminBar::class, 'node' ), 100 ),
-			array( 'rafoo_mode_changed', array( Purge::class, 'later' ) ),
-			array( 'rafoo_map_changed', array( Purge::class, 'later' ) ),
-			array( 'rafoo_mode_changed', array( __CLASS__, 'mode_changed' ) ),
-			array( 'cron_schedules', array( __CLASS__, 'schedules' ) ),
-			array( 'init', array( __CLASS__, 'init' ) ),
-			array( 'rest_api_init', array( Rest::class, 'register' ) ),
-			array( 'rafoo_check', array( __CLASS__, 'check' ) ),
-			array( 'rafoo_sync', array( __CLASS__, 'sync' ) ),
-			array( 'rafoo_scan', array( __CLASS__, 'scan' ) ),
-			array( self::DAILY, array( __CLASS__, 'daily' ) ),
 		);
 	}
 
@@ -179,7 +200,7 @@ final class Plugin {
 		if ( false === $user ) {
 			return;
 		}
-		if ( wp_doing_ajax() || (int) $user !== get_current_user_id() || null !== filter_input( INPUT_GET, 'activate-multi' ) || ! current_user_can( 'manage_options' ) ) {
+		if ( wp_doing_ajax() || (int) $user !== get_current_user_id() || null !== filter_input( INPUT_GET, 'activate-multi' ) || ! current_user_can( 'manage_options' ) || Network::enforced() ) {
 			return;
 		}
 		delete_transient( 'rafoo_setup_redirect' );
@@ -195,6 +216,7 @@ final class Plugin {
 
 	public static function init() {
 		load_plugin_textdomain( 'rafoo', false, dirname( plugin_basename( RAFOO_FILE ) ) . '/languages' );
+		Network::sync();
 		if ( is_admin() || wp_doing_cron() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 			self::schedule();
 		}

@@ -1,70 +1,294 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.0.0\n"
+"Project-Id-Version: Rafoo 1.3.0\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: rafoo\n"
 
-#: src/Admin/AdminBar.php:18 src/Admin/Strings.php:18
+#: src/Admin/AdminBar.php:20
+msgid "Rafoo: paused"
+msgstr ""
+
+#: src/Admin/AdminBar.php:22 src/Admin/Strings.php:576
+msgid "Rafoo is paused and changes nothing on the site."
+msgstr ""
+
+#: src/Admin/AdminBar.php:33 src/Admin/Strings.php:18
 msgid "Rafoo: outage mode"
 msgstr ""
 
-#: src/Admin/AdminBar.php:20
+#: src/Admin/AdminBar.php:35
 msgid "The international internet is down. Rafoo is serving local copies."
 msgstr ""
 
-#: src/Admin/Page.php:21 src/Admin/Page.php:22 src/Admin/Page.php:40 src/Admin/Strings.php:13
+#: src/Admin/Page.php:23 src/Admin/Page.php:24 src/Admin/Page.php:35 src/Admin/Page.php:36
 msgid "Rafoo"
 msgstr ""
 
-#: src/Admin/Page.php:32 src/Admin/Strings.php:23 src/Admin/Strings.php:57
+#: src/Admin/Page.php:46 src/Admin/SiteHealth.php:169
+msgid "Network settings"
+msgstr ""
+
+#: src/Admin/Page.php:51 src/Admin/Strings.php:23 src/Admin/Strings.php:57
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/Page.php:40 src/Admin/Strings.php:129
+#: src/Admin/Page.php:59 src/Admin/Strings.php:129
 msgid "Loading…"
 msgstr ""
 
-#: src/Admin/Page.php:41
+#: src/Admin/Page.php:60
 msgid "The Rafoo dashboard needs JavaScript."
 msgstr ""
 
-#: src/Admin/Rest.php:387
+#: src/Admin/Rest.php:457
 msgid "You are not allowed to change this."
 msgstr ""
 
-#: src/Admin/Rest.php:390
+#: src/Admin/Rest.php:460
 msgid "The previous version could not be put back. The files were left as they were."
 msgstr ""
 
-#: src/Admin/Rest.php:440
+#: src/Admin/Rest.php:540
 msgid "This message is no longer waiting."
 msgstr ""
 
-#: src/Admin/Rest.php:448
+#: src/Admin/Rest.php:548
 msgid "Enter a valid mail server address, for example mail.example.ir."
 msgstr ""
 
-#: src/Admin/Rest.php:456
+#: src/Admin/Rest.php:556
 msgid "Save a mail server first."
 msgstr ""
 
-#: src/Admin/Rest.php:501
+#: src/Admin/Rest.php:601
 msgid "Please write between 5 and 2000 characters."
 msgstr ""
 
-#: src/Admin/Rest.php:505
+#: src/Admin/Rest.php:605
 msgid "Please wait a minute before sending another message."
 msgstr ""
 
-#: src/Admin/Rest.php:508
+#: src/Admin/Rest.php:608
 msgid "rafoo.ir could not be reached. Please try again later."
 msgstr ""
 
-#: src/Admin/Rest.php:534
+#: src/Admin/Rest.php:651
 msgid "This file is no longer in the list."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:21
+msgid "Rafoo connection state"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:22
+msgid "Rafoo connection checks"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:23
+msgid "Rafoo local copies"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:24 src/Admin/SiteHealth.php:102
+msgid "Rafoo is active"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:37
+msgid "This server cannot reach any network"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:37
+msgid "Rafoo could not reach servers inside or outside Iran. The problem is the network of this server, so Rafoo leaves the mode as it is. Ask your host to check the server connection."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:40
+msgid "Rafoo is fixed in outage mode by hand"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:40
+msgid "Outage mode stays on even when the internet works, so outside requests keep failing at once. Switch the mode back to automatic when you have finished testing."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:43
+msgid "Rafoo is fixed in online mode by hand"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:43
+msgid "Outage mode will not switch on by itself, so during an outage pages and the dashboard will wait for unreachable servers. Switch the mode back to automatic."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:46 src/Admin/Strings.php:81
+msgid "The international internet is down"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:46
+msgid "Rafoo has switched on outage mode by itself: local copies are served and requests to unreachable servers fail at once. It switches off by itself when the internet is back."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:48
+msgid "Rafoo detects outages automatically"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:48
+msgid "The international internet is reachable. If it is cut off, Rafoo switches on outage mode by itself within about three minutes."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:58
+msgid "WP-Cron is turned off on this site and no system cron job runs it, so Rafoo cannot notice an outage. Add a cron job that requests wp-cron.php every minute."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:59
+msgid "WP-Cron runs only when someone visits the site, so on quiet sites an outage is noticed late. Add a cron job that requests wp-cron.php every minute."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:60
+msgid "Rafoo connection checks are not running on time"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:62
+msgid "Rafoo connection checks run on time"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:62
+msgid "Rafoo checks the connection every minute in the background."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:71
+msgid "Rafoo cannot save local copies"
+msgstr ""
+
+#. translators: %s: folder path
+#: src/Admin/SiteHealth.php:73
+#, php-format
+msgid "The folder %s is not writable, so libraries and fonts cannot be copied to this server. Ask your host to give PHP write access to the uploads folder."
+msgstr ""
+
+#. translators: %d: number of files
+#: src/Admin/SiteHealth.php:83
+#, php-format
+msgid "Rafoo could not copy %d files"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:84
+msgid "These files are still loaded from their original address and will not load during an outage. Open Rafoo › Files to see why and try again."
+msgstr ""
+
+#. translators: %d: number of files
+#: src/Admin/SiteHealth.php:92
+#, php-format
+msgid "Rafoo serves %d local copies"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:93
+msgid "Libraries and fonts from public CDNs are served from this server."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:100
+msgid "Rafoo is paused"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:100
+msgid "Rafoo changes nothing on the site while it is paused, so it cannot help during an outage. Resume it when you have finished testing."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:102
+msgid "Rafoo makes the changes chosen in its settings."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:110
+msgid "Yes"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:111
+msgid "No"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:120
+msgid "Version"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:124 src/Admin/Strings.php:92
+msgid "Mode"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:125
+msgid "Outage"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:125 src/Admin/Strings.php:16
+msgid "Online"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:129
+msgid "Last connection check"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:130 src/Admin/Strings.php:90
+msgid "never"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:134 src/Admin/Strings.php:122
+msgid "Local copies"
+msgstr ""
+
+#. translators: 1: ready files, 2: pending files, 3: failed files
+#: src/Admin/SiteHealth.php:136
+#, php-format
+msgid "%1$d ready, %2$d waiting, %3$d failed"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:140
+msgid "Disk space used"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:144
+msgid "Folder writable"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:145 src/Admin/Strings.php:577
+msgid "Paused"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:147
+msgid "Use local copies"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:150 src/Admin/Strings.php:554
+msgid "Browser guard"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:151
+msgid "Merge identical requests"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:153
+msgid "Heartbeat"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:157
+msgid "Allowed hosts"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:161
+msgid "Blocked hosts"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:164
+msgid "WP-Cron turned off"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:170
+msgid "Applied to every site"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:170
+msgid "Defaults for new sites"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:190
+msgid "Open Rafoo"
 msgstr ""
 
 #: src/Admin/Strings.php:14
@@ -73,10 +297,6 @@ msgstr ""
 
 #: src/Admin/Strings.php:15
 msgid "Rafoo Complete"
-msgstr ""
-
-#: src/Admin/Strings.php:16
-msgid "Online"
 msgstr ""
 
 #: src/Admin/Strings.php:17
@@ -295,10 +515,6 @@ msgstr ""
 msgid "Libraries and fonts the site has copied are served from your own server. Everything else works as usual."
 msgstr ""
 
-#: src/Admin/Strings.php:81
-msgid "The international internet is down"
-msgstr ""
-
 #: src/Admin/Strings.php:82
 msgid "Rafoo serves copied files locally, skips requests to unreachable servers and replaces services that cannot load."
 msgstr ""
@@ -319,14 +535,6 @@ msgstr ""
 #: src/Admin/Strings.php:88
 #, php-format
 msgid "available since %s"
-msgstr ""
-
-#: src/Admin/Strings.php:90
-msgid "never"
-msgstr ""
-
-#: src/Admin/Strings.php:92
-msgid "Mode"
 msgstr ""
 
 #: src/Admin/Strings.php:93
@@ -429,10 +637,6 @@ msgstr ""
 
 #: src/Admin/Strings.php:120
 msgid "The server could not reach any network"
-msgstr ""
-
-#: src/Admin/Strings.php:122
-msgid "Local copies"
 msgstr ""
 
 #: src/Admin/Strings.php:123
@@ -1005,7 +1209,7 @@ msgstr ""
 msgid "%1$s was set back to %2$s by hand"
 msgstr ""
 
-#: src/Admin/Strings.php:290 src/Admin/Strings.php:563
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:663
 msgid "Updates"
 msgstr ""
 
@@ -1827,11 +2031,11 @@ msgstr ""
 msgid "Without encryption the password and emails cross the network in plain text. Use it only for a server on the same host."
 msgstr ""
 
-#: src/Admin/Strings.php:517
+#: src/Admin/Strings.php:517 src/Backup/Installer.php:24
 msgid "Username"
 msgstr ""
 
-#: src/Admin/Strings.php:518
+#: src/Admin/Strings.php:518 src/Backup/Installer.php:25
 msgid "Password"
 msgstr ""
 
@@ -1946,68 +2150,452 @@ msgid "%s MB"
 msgstr ""
 
 #: src/Admin/Strings.php:553
-msgid "Something went wrong. Please try again."
+msgid "Browser and internal requests"
 msgstr ""
 
-#: src/Admin/Strings.php:554
-msgid "The site could not be reached. Check your connection and try again."
+#: src/Admin/Strings.php:555
+msgid "During an outage, requests that scripts make in the visitor's browser to unreachable servers fail at once instead of hanging. Hosts on the block list are always stopped."
+msgstr ""
+
+#: src/Admin/Strings.php:556
+msgid "Merge repeated requests"
+msgstr ""
+
+#: src/Admin/Strings.php:557
+msgid "When a page asks the site's own AJAX or REST address for the same thing several times at once, it is sent once and the answer is shared."
+msgstr ""
+
+#: src/Admin/Strings.php:558
+msgid "WordPress Heartbeat"
+msgstr ""
+
+#: src/Admin/Strings.php:559
+msgid "Smart"
+msgstr ""
+
+#: src/Admin/Strings.php:560
+msgid "Every 60 seconds in editors, every 120 seconds elsewhere. Autosave and post locks keep working."
 msgstr ""
 
 #: src/Admin/Strings.php:561
-msgid "Translations from the mirror"
+msgid "WordPress default"
 msgstr ""
 
 #: src/Admin/Strings.php:562
-msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
+msgid "Unchanged, usually every 15 to 60 seconds."
+msgstr ""
+
+#: src/Admin/Strings.php:563
+msgid "Block list"
 msgstr ""
 
 #: src/Admin/Strings.php:564
-msgid "Update from the domestic mirror"
+msgid "These servers or addresses are always blocked: on the server, in the page and in the browser. One per line: example.com, *.example.com or the start of a full address."
 msgstr ""
 
 #: src/Admin/Strings.php:565
-msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
+msgid "Scan as my account too"
 msgstr ""
 
 #: src/Admin/Strings.php:566
-msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
+msgid "The manual scan also opens the first pages with your login, so files loaded only for signed-in users are found."
 msgstr ""
 
 #: src/Admin/Strings.php:567
-msgid "Mirror coverage"
+msgid "Block"
 msgstr ""
 
 #: src/Admin/Strings.php:568
-msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
+msgid "Unblock"
 msgstr ""
 
 #: src/Admin/Strings.php:569
-msgid "Check again"
+msgid "Blocked"
 msgstr ""
 
 #: src/Admin/Strings.php:570
-msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
+msgid "Pause Rafoo"
 msgstr ""
 
 #: src/Admin/Strings.php:571
-msgid "Mirror"
+msgid "Rafoo is active and makes the changes chosen in the settings."
 msgstr ""
 
 #: src/Admin/Strings.php:572
+msgid "Rafoo is paused. The site works as if Rafoo were not installed."
+msgstr ""
+
+#: src/Admin/Strings.php:573
+msgid "Pause"
+msgstr ""
+
+#: src/Admin/Strings.php:574
+msgid "Resume Rafoo"
+msgstr ""
+
+#: src/Admin/Strings.php:575
+msgid "While paused, connection checks, local copies, backups and the monitoring engine keep running."
+msgstr ""
+
+#: src/Admin/Strings.php:578
+msgid "Rafoo was paused"
+msgstr ""
+
+#: src/Admin/Strings.php:579
+msgid "Rafoo resumed"
+msgstr ""
+
+#. translators: %s: name of the setting or section
+#: src/Admin/Strings.php:581
+#, php-format
+msgid "Help: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:582
+msgid "Chooses when copies on your server replace CDN files. Always: faster pages every day. Outage only: nothing changes while the internet works."
+msgstr ""
+
+#: src/Admin/Strings.php:583
+msgid "Also finds CDN addresses that themes and builders such as Elementor write directly into the page HTML. It adds a little processing to each page."
+msgstr ""
+
+#: src/Admin/Strings.php:584
+msgid "Copies Google Fonts to your server. Text keeps its font during an outage and pages do not wait for Google."
+msgstr ""
+
+#: src/Admin/Strings.php:585
+msgid "During an outage, turns off WordPress parts that call outside servers: emoji, the font library, remote patterns and the dashboard news."
+msgstr ""
+
+#: src/Admin/Strings.php:586
+msgid "The manual scan also opens three pages with your login. Files that appear only for signed-in users, like the admin bar or a page builder, get local copies too."
+msgstr ""
+
+#: src/Admin/Strings.php:587
+msgid "A tiny script at the top of each page stops browser requests to unreachable servers during an outage, and to blocked hosts always. Scripts get an instant error instead of waiting."
+msgstr ""
+
+#: src/Admin/Strings.php:588
+msgid "Identical requests that a page sends to its own admin-ajax or REST at the same moment go out once. Server load drops; form posts and saves are never merged."
+msgstr ""
+
+#: src/Admin/Strings.php:589
+msgid "WordPress sends a background request every few seconds while a page is open. Smart mode slows it down to cut server load, without breaking autosave or post locks."
+msgstr ""
+
+#: src/Admin/Strings.php:590
+msgid "For services you never want, like an ad or chat script that slows the site. Everything from these addresses is stopped, with or without internet."
+msgstr ""
+
+#: src/Admin/Strings.php:591
+msgid "Replaces Gravatar pictures with simple letter avatars made on your server, so comment lists load without a foreign server."
+msgstr ""
+
+#: src/Admin/Strings.php:592
+msgid "Uses Rafoo's own captcha instead of reCAPTCHA, hCaptcha or Turnstile. Login and forms keep working and stay protected when Google or Cloudflare is unreachable."
+msgstr ""
+
+#: src/Admin/Strings.php:593
+msgid "Removes Google Analytics, Tag Manager, pixels and similar trackers from pages. Visits are not recorded while they are removed."
+msgstr ""
+
+#: src/Admin/Strings.php:594
+msgid "During an outage, YouTube, Vimeo and Google Maps frames become a light box with a link, so the page does not wait for them."
+msgstr ""
+
+#: src/Admin/Strings.php:595
+msgid "During an outage, hides Google and Facebook login buttons that cannot work, so users sign in the normal way."
+msgstr ""
+
+#: src/Admin/Strings.php:596
+msgid "Emails that fail because the mail server is unreachable are kept and sent again later instead of being lost."
+msgstr ""
+
+#: src/Admin/Strings.php:597
+msgid "Keeps a copy before each plugin or theme update and checks the site after it. If the site breaks, that update is undone automatically."
+msgstr ""
+
+#: src/Admin/Strings.php:598
+msgid "Makes scheduled backups of files and the database to the destinations you choose. After a serious problem, a backup is the way back."
+msgstr ""
+
+#: src/Admin/Strings.php:599
+msgid "After the first full backup, later ones keep only changed files. Faster and smaller."
+msgstr ""
+
+#: src/Admin/Strings.php:600
+msgid "Also keeps the latest backup on this host. Good for a quick restore, but it uses disk space."
+msgstr ""
+
+#: src/Admin/Strings.php:601
+msgid "Records which plugin or theme connects to which outside server, how often and how long it takes. Use it to find what slows the site."
+msgstr ""
+
+#: src/Admin/Strings.php:602
+msgid "Servers outside Iran that should still be tried during an outage, such as a payment or SMS service that works for you."
+msgstr ""
+
+#: src/Admin/Strings.php:603
+msgid "Sends an anonymous weekly report that helps improve Rafoo and the Iranian mirror. Nothing identifies the site; it is off by default."
+msgstr ""
+
+#: src/Admin/Strings.php:604
+msgid "Automatic follows the internet checks. Use a fixed mode to test the site as if in an outage, or when detection is wrong."
+msgstr ""
+
+#: src/Admin/Strings.php:605
+msgid "How Rafoo copies CDN files and fonts and serves them from your own server."
+msgstr ""
+
+#: src/Admin/Strings.php:606
+msgid "Speed controls inside the visitor's browser and for requests the site sends to itself."
+msgstr ""
+
+#: src/Admin/Strings.php:607
+msgid "Replacements for outside services that cannot load during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:608
+msgid "Protection against broken updates and data loss."
+msgstr ""
+
+#: src/Admin/Strings.php:609
+msgid "What the site's server sends to outside servers, and which servers stay allowed during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:610
+msgid "What Rafoo may send to rafoo.ir. By default, nothing that identifies the site."
+msgstr ""
+
+#: src/Admin/Strings.php:611
+msgid "Turns off every change Rafoo makes to pages and requests in one click, to test or to find a conflict. The same button turns it back on."
+msgstr ""
+
+#: src/Admin/Strings.php:612
+msgid "The latest changes of mode and settings and other important actions, newest first."
+msgstr ""
+
+#: src/Admin/Strings.php:613
+msgid "CDN files Rafoo found on the site and their local copies. Scanning finds new ones; downloading fetches missing copies."
+msgstr ""
+
+#: src/Admin/Strings.php:614
+msgid "Rafoo checks servers inside and outside Iran every minute to know whether the international internet is cut."
+msgstr ""
+
+#: src/Admin/Strings.php:615
+msgid "A signed notice from rafoo.ir about the internet state, used together with the site's own checks."
+msgstr ""
+
+#: src/Admin/Strings.php:616
+msgid "Servers that did not answer recently are skipped for a few minutes, so pages do not wait for them again."
+msgstr ""
+
+#: src/Admin/Strings.php:617
+msgid "Every outside server the site contacted, by plugin or theme. Block stops a host everywhere; the same button opens it again."
+msgstr ""
+
+#: src/Admin/Strings.php:618
+msgid "Emails waiting to be sent again after the mail server was unreachable."
+msgstr ""
+
+#: src/Admin/Strings.php:619
+msgid "An optional SMTP server inside Iran, used when the normal mail server is unreachable."
+msgstr ""
+
+#: src/Admin/Strings.php:620
+msgid "The monitoring engine checks your site from 5 points inside and 5 outside Iran through a network of Rafoo sites. Joining is optional."
+msgstr ""
+
+#: src/Admin/Strings.php:621
+msgid "Each point is another Rafoo site that checks yours. Green means your site opened from there."
+msgstr ""
+
+#: src/Admin/Strings.php:622
+msgid "How reachable the site was each day, from inside and outside Iran."
+msgstr ""
+
+#: src/Admin/Strings.php:623
+msgid "How often your site is checked. Leaving deletes your membership data."
+msgstr ""
+
+#: src/Admin/Strings.php:624
+msgid "In return, your site checks a few other members. It uses almost no resources."
+msgstr ""
+
+#: src/Admin/Strings.php:625
+msgid "What to check when the results look wrong."
+msgstr ""
+
+#: src/Admin/Strings.php:626
+msgid "Updates from the Iranian mirror for what is installed on this site."
+msgstr ""
+
+#: src/Admin/Strings.php:627
+msgid "Earlier versions kept by safe updates. Restoring puts one back and checks the site."
+msgstr ""
+
+#: src/Admin/Strings.php:628
+msgid "Make a backup now or follow the job that is running."
+msgstr ""
+
+#: src/Admin/Strings.php:629
+msgid "Backups made so far, where each one is stored, and restore or download."
+msgstr ""
+
+#: src/Admin/Strings.php:630
+msgid "When automatic backups run and what they include."
+msgstr ""
+
+#: src/Admin/Strings.php:631
+msgid "Backups are encrypted with this password. Without it they cannot be restored, so keep it somewhere safe."
+msgstr ""
+
+#: src/Admin/Strings.php:632
+msgid "Other servers that receive a copy of each backup over SFTP, FTPS or FTP."
+msgstr ""
+
+#: src/Admin/Strings.php:633
+msgid "Move the whole site to another host with a short code. Files go directly between the two sites."
+msgstr ""
+
+#: src/Admin/Strings.php:634
+msgid "Send a question, an idea or a bug report to the Rafoo team."
+msgstr ""
+
+#: src/Admin/Strings.php:635
+msgid "Network"
+msgstr ""
+
+#: src/Admin/Strings.php:636
+msgid "These settings apply to the sites of this network. The connection state is shared by all sites; files, logs and backups are managed on each site."
+msgstr ""
+
+#: src/Admin/Strings.php:637
+msgid "Network policy"
+msgstr ""
+
+#. translators: %d: number of sites
+#: src/Admin/Strings.php:639
+#, php-format
+msgid "Sites in this network: %d"
+msgstr ""
+
+#: src/Admin/Strings.php:640
+msgid "How sites use these settings"
+msgstr ""
+
+#: src/Admin/Strings.php:641
+msgid "Starting point for new sites"
+msgstr ""
+
+#: src/Admin/Strings.php:642
+msgid "Sites that have not saved their own Rafoo settings use these. Site administrators can still change them."
+msgstr ""
+
+#: src/Admin/Strings.php:643
+msgid "Apply to every site"
+msgstr ""
+
+#: src/Admin/Strings.php:644
+msgid "Every site uses these settings and site administrators can only see them. Privacy and backup settings stay with each site."
+msgstr ""
+
+#: src/Admin/Strings.php:645
+msgid "The network administrator manages these settings for every site. Privacy and backup settings are still yours."
+msgstr ""
+
+#: src/Admin/Strings.php:646
+msgid "Open network settings"
+msgstr ""
+
+#: src/Admin/Strings.php:647
+msgid "Save for the network"
+msgstr ""
+
+#: src/Admin/Strings.php:648
+msgid "Network settings changed"
+msgstr ""
+
+#: src/Admin/Strings.php:649
+msgid "Settings for every site of the network, managed in one place."
+msgstr ""
+
+#: src/Admin/Strings.php:650
+msgid "A starting point only fills in sites that have not chosen their own settings. Applying to every site overrides them and locks the form on each site."
+msgstr ""
+
+#: src/Admin/Strings.php:651
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: src/Admin/Strings.php:652
+msgid "The site could not be reached. Check your connection and try again."
+msgstr ""
+
+#: src/Admin/Strings.php:659
+msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:660
+msgid "Translation updates come from the mirror too, only for the languages installed on the site."
+msgstr ""
+
+#: src/Admin/Strings.php:661
+msgid "Translations from the mirror"
+msgstr ""
+
+#: src/Admin/Strings.php:662
+msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
+msgstr ""
+
+#: src/Admin/Strings.php:664
+msgid "Update from the domestic mirror"
+msgstr ""
+
+#: src/Admin/Strings.php:665
+msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
+msgstr ""
+
+#: src/Admin/Strings.php:666
+msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
+msgstr ""
+
+#: src/Admin/Strings.php:667
+msgid "Mirror coverage"
+msgstr ""
+
+#: src/Admin/Strings.php:668
+msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
+msgstr ""
+
+#: src/Admin/Strings.php:669
+msgid "Check again"
+msgstr ""
+
+#: src/Admin/Strings.php:670
+msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
+msgstr ""
+
+#: src/Admin/Strings.php:671
+msgid "Mirror"
+msgstr ""
+
+#: src/Admin/Strings.php:672
 msgid "Not on the mirror"
 msgstr ""
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:574
+#: src/Admin/Strings.php:674
 #, php-format
 msgid "Version %s available"
 msgstr ""
 
-#: src/Admin/Strings.php:575
+#: src/Admin/Strings.php:675
 msgid "Up to date"
 msgstr ""
 
-#: src/Admin/Strings.php:576
+#: src/Admin/Strings.php:676
 msgid "WordPress"
 msgstr ""
 
@@ -2045,6 +2633,80 @@ msgstr ""
 
 #: src/Backup/Api.php:219
 msgid "The server could not be reached or did not accept a test file."
+msgstr ""
+
+#: src/Backup/Installer.php:19
+msgid "Restore the site with Rafoo"
+msgstr ""
+
+#: src/Backup/Installer.php:20
+msgid "This server lacks PHP extensions Rafoo needs (sodium, ZipArchive and mysqli)."
+msgstr ""
+
+#: src/Backup/Installer.php:21
+msgid "Enter the details of the new database and the key Rafoo showed on the old site. All files and data are restored on this host."
+msgstr ""
+
+#: src/Backup/Installer.php:22
+msgid "Database host"
+msgstr ""
+
+#: src/Backup/Installer.php:23
+msgid "Database name"
+msgstr ""
+
+#: src/Backup/Installer.php:26
+msgid "Restore key"
+msgstr ""
+
+#: src/Backup/Installer.php:27
+msgid "Start restore"
+msgstr ""
+
+#: src/Backup/Installer.php:28
+msgid "Checking…"
+msgstr ""
+
+#. translators: %s: error code
+#: src/Backup/Installer.php:30
+#, php-format
+msgid "Error: %s"
+msgstr ""
+
+#: src/Backup/Installer.php:31
+msgid "The key is not correct."
+msgstr ""
+
+#: src/Backup/Installer.php:32
+msgid "Too many failed attempts. Send the file again."
+msgstr ""
+
+#: src/Backup/Installer.php:33
+msgid "Restore finished. Go to the dashboard"
+msgstr ""
+
+#: src/Backup/Installer.php:35
+msgid "Opening the backup"
+msgstr ""
+
+#: src/Backup/Installer.php:36
+msgid "Restoring files"
+msgstr ""
+
+#: src/Backup/Installer.php:37
+msgid "Setting up wp-config.php"
+msgstr ""
+
+#: src/Backup/Installer.php:38
+msgid "Restoring the database"
+msgstr ""
+
+#: src/Backup/Installer.php:39
+msgid "Updating the site address"
+msgstr ""
+
+#: src/Backup/Installer.php:40
+msgid "Cleaning up"
 msgstr ""
 
 #: src/Backup/Job.php:30
@@ -2110,13 +2772,23 @@ msgstr ""
 #. translators: %s: host name
 #: src/Http/Guard.php:88
 #, php-format
+msgid "Rafoo blocked this request to %s because it is on the block list."
+msgstr ""
+
+#. translators: %s: host name
+#: src/Http/Guard.php:98
+#, php-format
 msgid "The international internet is unavailable. Rafoo skipped this request to %s."
 msgstr ""
 
 #. translators: %s: host name
-#: src/Http/Guard.php:90
+#: src/Http/Guard.php:100
 #, php-format
 msgid "Rafoo skipped this request because %s did not respond recently."
+msgstr ""
+
+#: src/Http/Log.php:189
+msgid "Browser"
 msgstr ""
 
 #: src/Mail/Queue.php:60

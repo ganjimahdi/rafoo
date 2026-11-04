@@ -4,15 +4,18 @@ namespace Rafoo\Admin;
 
 use Rafoo\Peers\Engine as PeerEngine;
 use Rafoo\Assets\Library;
+use Rafoo\Assets\Loopback;
 use Rafoo\Assets\Scanner;
 use Rafoo\Assets\Store;
 use Rafoo\Assets\Sync;
 use Rafoo\Cache\Purge;
 use Rafoo\Connectivity\Monitor;
 use Rafoo\Http\Breaker;
+use Rafoo\Http\Hosts;
 use Rafoo\Http\Log;
 use Rafoo\Mail\Queue;
 use Rafoo\Mail\Relay;
+use Rafoo\Network;
 use Rafoo\Plugin;
 use Rafoo\Report\Telemetry;
 use Rafoo\Safety\Health;
@@ -120,6 +123,52 @@ final class Rest {
 		self::route( '/health', WP_REST_Server::CREATABLE, 'health', $site );
 		self::route( '/requests', WP_REST_Server::READABLE, 'requests', $site );
 		self::route( '/requests/clear', WP_REST_Server::CREATABLE, 'clear_requests', $site );
+		self::route(
+			'/requests/block',
+			WP_REST_Server::CREATABLE,
+			'block_host',
+			$site,
+			array(
+				'host'    => array(
+					'type'     => 'string',
+					'required' => true,
+					'pattern'  => '^[A-Za-z0-9.\-]{1,253}$',
+				),
+				'blocked' => array(
+					'type'     => 'boolean',
+					'required' => true,
+				),
+			)
+		);
+		self::route(
+			'/requests/browser',
+			WP_REST_Server::CREATABLE,
+			'browser_report',
+			$site,
+			array(
+				'hosts' => array(
+					'type'     => 'array',
+					'required' => true,
+					'maxItems' => 20,
+					'items'    => array(
+						'type'    => 'string',
+						'pattern' => '^[A-Za-z0-9.\-]{1,253}$',
+					),
+				),
+			)
+		);
+		self::route(
+			'/pause',
+			WP_REST_Server::CREATABLE,
+			'pause',
+			$network,
+			array(
+				'paused' => array(
+					'type'     => 'boolean',
+					'required' => true,
+				),
+			)
+		);
 		self::route( '/mail', WP_REST_Server::READABLE, 'mail', $site );
 		self::route( '/mail/send', WP_REST_Server::CREATABLE, 'send_mail', $site );
 		self::route( '/mail/test', WP_REST_Server::CREATABLE, 'test_mail', $site );
@@ -181,6 +230,26 @@ final class Rest {
 		self::route( '/peers/interval', WP_REST_Server::CREATABLE, 'peers_interval', $site, $interval );
 		self::route( '/peers/leave', WP_REST_Server::CREATABLE, 'peers_leave', $site );
 		self::route( '/peers/check', WP_REST_Server::CREATABLE, 'peers_check', $site );
+		if ( is_multisite() ) {
+			self::route( '/network', WP_REST_Server::READABLE, 'network', $network );
+			self::route(
+				'/network',
+				WP_REST_Server::CREATABLE,
+				'save_network',
+				$network,
+				array(
+					'policy'   => array(
+						'type'     => 'string',
+						'required' => true,
+						'enum'     => Network::POLICIES,
+					),
+					'settings' => array(
+						'type'     => 'object',
+						'required' => true,
+					),
+				)
+			);
+		}
 
 		do_action( 'rafoo_rest_routes', self::NS );
 	}
@@ -216,6 +285,7 @@ final class Rest {
 			'events'       => State::events( 10 ),
 			'edition'      => RAFOO_EDITION,
 			'version'      => RAFOO_VERSION,
+			'paused'       => Settings::paused(),
 			'network'      => self::can_manage_network(),
 			'cron'         => array(
 				'disabled'   => defined( 'DISABLE_WP_CRON' ) && DISABLE_WP_CRON,
@@ -281,7 +351,7 @@ final class Rest {
 	}
 
 	public static function scan() {
-		Scanner::run();
+		Scanner::run( Settings::get( 'scan_as_user' ) ? Loopback::cookies() : array() );
 		Library::schedule_soon();
 		return array( 'assets' => self::assets() );
 	}
@@ -420,6 +490,36 @@ final class Rest {
 		return self::requests();
 	}
 
+	public static function block_host( WP_REST_Request $request ) {
+		$host  = strtolower( (string) $request['host'] );
+		$rules = array_values( array_diff( Settings::get( 'block_hosts' ), array( $host ) ) );
+		if ( $request['blocked'] ) {
+			$rules[] = $host;
+		}
+		self::apply( array( 'block_hosts' => $rules ) );
+		return array_merge( self::requests(), array( 'block_hosts' => Settings::get( 'block_hosts' ) ) );
+	}
+
+	public static function browser_report( WP_REST_Request $request ) {
+		foreach ( array_slice( (array) $request['hosts'], 0, 20 ) as $host ) {
+			$host = strtolower( (string) $host );
+			if ( '' !== $host && ! Hosts::local( $host ) ) {
+				Log::record( $host, 'refused', array(), 'browser' );
+			}
+		}
+		return array( 'ok' => true );
+	}
+
+	public static function pause( WP_REST_Request $request ) {
+		$paused = (bool) $request['paused'];
+		if ( $paused !== Settings::paused() ) {
+			Settings::update( array( 'paused' => $paused ) );
+			State::event( $paused ? 'paused' : 'resumed' );
+			Purge::later();
+		}
+		return self::overview();
+	}
+
 	public static function mail() {
 		return array(
 			'enabled' => Queue::enabled(),
@@ -515,6 +615,23 @@ final class Rest {
 		$settings = Settings::all();
 		unset( $settings['npm_mirrors'], $settings['wp_mirrors'], $settings['exclude'] );
 		return $settings;
+	}
+
+	public static function network() {
+		return Network::view();
+	}
+
+	public static function save_network( WP_REST_Request $request ) {
+		$settings = $request['settings'];
+		return Network::save( (string) $request['policy'], is_array( $settings ) ? $settings : array() );
+	}
+
+	public static function managed() {
+		return array(
+			'enforced' => Network::enforced(),
+			'keys'     => Network::enforced() ? Network::keys() : array(),
+			'url'      => is_multisite() && self::can_manage_network() ? network_admin_url( 'admin.php?page=' . Page::SLUG ) : '',
+		);
 	}
 
 	private static function route( $path, $methods, $handler, $permission, array $args = array() ) {

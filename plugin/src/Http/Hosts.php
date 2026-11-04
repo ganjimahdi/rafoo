@@ -60,6 +60,32 @@ final class Hosts {
 		return (bool) apply_filters( 'rafoo_allowed_host', false, $host );
 	}
 
+	public static function blocked( $url ) {
+		$rules = Settings::get( 'block_hosts' );
+		if ( ! $rules ) {
+			return false;
+		}
+		$url  = (string) $url;
+		$url  = 0 === strpos( $url, '//' ) ? 'https:' . $url : $url;
+		$host = self::of( $url );
+		if ( '' === $host || self::local( $host ) ) {
+			return false;
+		}
+		$plain = preg_replace( '#^https?://#i', '', strtolower( $url ) );
+		foreach ( $rules as $rule ) {
+			if ( false === strpos( $rule, '/' ) ) {
+				if ( self::matches( $host, $rule ) ) {
+					return true;
+				}
+				continue;
+			}
+			if ( 0 === strpos( $plain, preg_replace( '#^https?://#i', '', strtolower( $rule ) ) ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static function matches( $host, $rule ) {
 		if ( 0 === strpos( $rule, '*.' ) ) {
 			$base = substr( $rule, 2 );
@@ -87,7 +113,7 @@ final class Hosts {
 		return $length > 0 && strlen( $haystack ) >= $length && substr( $haystack, -$length ) === $needle;
 	}
 
-	private static function listed( $host, $group ) {
+	public static function rules( $group ) {
 		if ( null === self::$lists ) {
 			$lists       = Data::get( 'hosts' );
 			self::$lists = array(
@@ -95,7 +121,11 @@ final class Hosts {
 				'foreign'  => (array) apply_filters( 'rafoo_foreign_hosts', isset( $lists['foreign'] ) ? $lists['foreign'] : array() ),
 			);
 		}
-		foreach ( self::$lists[ $group ] as $rule ) {
+		return isset( self::$lists[ $group ] ) ? array_values( array_map( 'strval', self::$lists[ $group ] ) ) : array();
+	}
+
+	private static function listed( $host, $group ) {
+		foreach ( self::rules( $group ) as $rule ) {
 			if ( self::matches( $host, (string) $rule ) ) {
 				return true;
 			}

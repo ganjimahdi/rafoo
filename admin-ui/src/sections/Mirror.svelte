@@ -5,7 +5,7 @@
 	import Card from '../components/Card.svelte';
 	import Notice from '../components/Notice.svelte';
 	import { api } from '../lib/api';
-	import { ago, t } from '../lib/i18n';
+	import { ago, help, t } from '../lib/i18n';
 	import type { UpdatesReport } from '../lib/types';
 
 	let report = $state.raw<UpdatesReport | null>(null);
@@ -28,7 +28,7 @@
 	});
 </script>
 
-<Card title={t('updates_title')} description={t('updates_help')}>
+<Card title={t('updates_title')} help={help('card_updates')} description={t('updates_help')}>
 	{#snippet actions()}
 		<Button onclick={() => load(true)} {busy} disabled={report !== null && !report.available}>{t('updates_refresh')}</Button>
 	{/snippet}

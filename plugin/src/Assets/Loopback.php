@@ -11,6 +11,19 @@ final class Loopback {
 		'css' => array( 'text/css' ),
 	);
 
+	public static function cookies() {
+		if ( ! function_exists( 'is_user_logged_in' ) || ! is_user_logged_in() || empty( $_COOKIE ) ) {
+			return array();
+		}
+		$out = array();
+		foreach ( array( LOGGED_IN_COOKIE, AUTH_COOKIE, SECURE_AUTH_COOKIE ) as $name ) {
+			if ( isset( $_COOKIE[ $name ] ) ) {
+				$out[ $name ] = sanitize_text_field( wp_unslash( $_COOKIE[ $name ] ) );
+			}
+		}
+		return $out;
+	}
+
 	public static function serves( $url, $type ) {
 		$response = wp_remote_get(
 			$url,

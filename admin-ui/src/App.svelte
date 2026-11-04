@@ -20,7 +20,10 @@
 		page: Component;
 	}
 
-	const tabs: Tab[] = [
+	const network = boot.context === 'network';
+	const managed = boot.context === 'site' && boot.managed.enforced;
+
+	const all: Tab[] = [
 		{ id: 'overview', label: t('tab_overview'), page: Overview },
 		{ id: 'files', label: t('tab_files'), page: Files },
 		{ id: 'connection', label: t('tab_connection'), page: Connection },
@@ -30,11 +33,12 @@
 		{ id: 'settings', label: t('tab_settings'), page: Settings },
 		{ id: 'feedback', label: t('tab_feedback'), page: Feedback }
 	];
+	const tabs = network ? all.filter((tab) => tab.id === 'settings') : all;
 
 	function fromHash(): string {
 		const id = location.hash.replace(/^#\/?/, '');
-		if (id === 'setup') return id;
-		return tabs.some((tab) => tab.id === id) ? id : 'overview';
+		if (id === 'setup' && !network && !managed) return id;
+		return tabs.some((tab) => tab.id === id) ? id : tabs[0].id;
 	}
 
 	let current = $state(fromHash());
@@ -68,19 +72,32 @@
 	<div class="rf-head">
 		<div class="rf-brand">
 			<h1>{t('app_title')}</h1>
-			<span class="rf-subtle rf-small">{boot.edition === 'complete' ? t('edition_complete') : t('edition_standard')} · {boot.version}</span>
+			<span class="rf-subtle rf-small">{boot.edition === 'complete' ? t('edition_complete') : t('edition_standard')} · {boot.version}{network ? ' · ' + t('network_admin') : ''}</span>
 		</div>
-		<Badge tone={offline ? 'warning' : 'success'}>{offline ? t('badge_offline') : t('badge_online')}</Badge>
+		{#if store.overview.paused && !network}
+			<Badge>{t('badge_paused')}</Badge>
+		{:else}
+			<Badge tone={offline ? 'warning' : 'success'}>{offline ? t('badge_offline') : t('badge_online')}</Badge>
+		{/if}
 	</div>
+	{#if store.overview.paused && current !== 'setup' && !network}
+		<div class="rf-setup-hint rf-paused-hint" role="status">
+			<span>{t('paused_hint')}</span>
+			<a href="#/overview" onclick={() => select('overview')}>{t('pause_resume')}</a>
+		</div>
+	{/if}
 
 	{#if current === 'setup'}
 		<Setup onfinish={() => { select('overview'); store.refresh().catch(() => {}); }} />
 	{:else}
-	{#if store.settings.setup === ''}
+	{#if store.settings.setup === '' && !network && !managed}
 		<div class="rf-setup-hint">
 			<span>{t('setup_pending')}</span>
 			<a href="#/setup">{t('setup_start')}</a>
 		</div>
+	{/if}
+	{#if network}
+		<p class="rf-subtle">{t('network_intro')}</p>
 	{/if}
 	<div class="rf-tabs" role="tablist" aria-label={t('app_title')}>
 		{#each tabs as tab, index (tab.id)}
@@ -173,6 +190,11 @@
 	.rf-setup-hint a {
 		color: inherit;
 		font-weight: 700;
+	}
+	.rf-paused-hint {
+		border-color: var(--rf-warning-dot);
+		background: var(--rf-warning-bg);
+		color: var(--rf-warning-fg);
 	}
 	.rf-panel:focus {
 		outline: none;
