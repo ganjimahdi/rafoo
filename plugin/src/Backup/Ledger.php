@@ -98,9 +98,30 @@ final class Ledger {
 		return false === $free ? -1 : (int) $free;
 	}
 
-	public static function budget() {
+	public static function budget( $factor = 1.0 ) {
 		$limit = (int) ini_get( 'max_execution_time' );
 		$limit = $limit > 0 ? $limit : 60;
-		return (int) max( 5, min( (int) apply_filters( 'rafoo_backup_step_seconds', 20 ), $limit - 10 ) );
+		$base  = (int) max( 5, min( (int) apply_filters( 'rafoo_backup_step_seconds', 20 ), $limit - 10 ) );
+		return (int) max( 3, round( $base * max( 0.1, min( 1.0, (float) $factor ) ) ) );
+	}
+
+	public static function show( $path ) {
+		$path = wp_normalize_path( (string) $path );
+		$root = untrailingslashit( wp_normalize_path( ABSPATH ) );
+		return 0 === strpos( $path, $root . '/' ) ? substr( $path, strlen( $root ) + 1 ) : basename( $path );
+	}
+
+	public static function memory_limit() {
+		return function_exists( 'wp_convert_hr_to_bytes' ) ? (int) wp_convert_hr_to_bytes( (string) ini_get( 'memory_limit' ) ) : -1;
+	}
+
+	public static function headroom() {
+		$limit = self::memory_limit();
+		return $limit > 0 ? max( 0, $limit - memory_get_usage( true ) ) : PHP_INT_MAX;
+	}
+
+	public static function memory_tight( $share = 0.6 ) {
+		$limit = self::memory_limit();
+		return $limit > 0 && memory_get_usage( true ) > $limit * $share;
 	}
 }

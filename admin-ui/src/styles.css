@@ -153,6 +153,27 @@
 	font-weight: 700;
 }
 
+.rafoo .rf-field-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.rafoo .rf-more {
+	align-self: flex-start;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--rf-l6);
+	font: inherit;
+	font-size: var(--rf-fs-sm);
+	text-align: start;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	cursor: pointer;
+}
+
 .rafoo .rf-input {
 	inline-size: 100%;
 	max-inline-size: 640px;

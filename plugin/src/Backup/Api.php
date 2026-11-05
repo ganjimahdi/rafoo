@@ -33,6 +33,8 @@ final class Api {
 			array( '/backup/step', WP_REST_Server::CREATABLE, 'step', array() ),
 			array( '/backup/cancel', WP_REST_Server::CREATABLE, 'cancel', array() ),
 			array( '/backup/restore', WP_REST_Server::CREATABLE, 'restore', $id + array( 'password' => $text ) ),
+			array( '/backup/check', WP_REST_Server::CREATABLE, 'check', $id + array( 'password' => $text ) ),
+			array( '/backup/log', WP_REST_Server::READABLE, 'log', array() ),
 			array( '/backup/delete', WP_REST_Server::CREATABLE, 'delete', $id ),
 			array( '/backup/password', WP_REST_Server::CREATABLE, 'password', array( 'password' => $text ) ),
 			array(
@@ -117,6 +119,9 @@ final class Api {
 			'password'     => '' !== Maker::password(),
 			'support'      => array(
 				'zip'      => class_exists( 'ZipArchive' ),
+				'gzip'     => Archive\Sink::gzip(),
+				'part'     => Packer::target(),
+				'excluded' => Files::excluded(),
 				'crypt'    => Crypt::available(),
 				'ftp'      => Ftp::available() || Remote::curl(),
 				'implicit' => Remote::curl(),
@@ -154,6 +159,14 @@ final class Api {
 		return self::answer( Restorer::start( $request['id'], (string) $request['password'] ) );
 	}
 
+	public static function check( WP_REST_Request $request ) {
+		return self::answer( Restorer::check( $request['id'], (string) $request['password'] ) );
+	}
+
+	public static function log() {
+		return array( 'log' => Journal::tail() );
+	}
+
 	public static function delete( WP_REST_Request $request ) {
 		$entry = Catalog::get( $request['id'] );
 		if ( ! $entry ) {
@@ -164,16 +177,11 @@ final class Api {
 				return new WP_Error( 'rafoo_needed', __( 'Newer backups are built on this one, so it cannot be deleted on its own.', 'rafoo' ), array( 'status' => 409 ) );
 			}
 		}
-		wp_delete_file( Ledger::path( $entry['file'] ) );
-		wp_delete_file( Ledger::path( $entry['id'] . '.list' ) );
-		foreach ( array_keys( array_filter( (array) $entry['places'] ) ) as $target ) {
-			$remote = Destinations::remote( $target );
-			if ( $remote && $remote->connect() ) {
-				$remote->delete( $entry['file'] );
-				$remote->close();
-			}
+		$job = Job::running();
+		if ( $job && isset( $job['data']['backup'] ) && $job['data']['backup'] === $entry['id'] ) {
+			return new WP_Error( 'rafoo_busy', __( 'Another backup task is running. Wait until it finishes.', 'rafoo' ), array( 'status' => 409 ) );
 		}
-		Catalog::forget( $entry['id'] );
+		Maker::discard( $entry );
 		return self::status();
 	}
 
@@ -245,7 +253,9 @@ final class Api {
 			wp_die( '', '', array( 'response' => 403 ) );
 		}
 		$entry = Catalog::get( sanitize_text_field( wp_unslash( isset( $_GET['id'] ) ? $_GET['id'] : '' ) ) );
-		$file  = $entry ? Ledger::path( $entry['file'] ) : '';
+		$names = $entry ? Catalog::files( $entry ) : array();
+		$index = isset( $_GET['part'] ) ? absint( $_GET['part'] ) : 0;
+		$file  = isset( $names[ $index ] ) ? Ledger::path( $names[ $index ] ) : '';
 		if ( '' === $file || ! is_file( $file ) ) {
 			wp_die( esc_html__( 'This backup is no longer in the list.', 'rafoo' ), '', array( 'response' => 404 ) );
 		}

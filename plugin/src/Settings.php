@@ -14,7 +14,7 @@ final class Settings {
 
 	const PRESETS = array( 'recommended', 'outage', 'maximum' );
 
-	const EDITABLE = array( 'replace', 'html_scan', 'fonts', 'avatars', 'embeds', 'updates', 'telemetry', 'allow_hosts', 'core_assets', 'analytics', 'social_login', 'mail_queue', 'request_log', 'captcha', 'safe_updates', 'translations', 'backup', 'backup_hours', 'backup_hour', 'backup_mode', 'backup_local', 'browser_guard', 'dedupe', 'heartbeat', 'block_hosts', 'scan_as_user' );
+	const EDITABLE = array( 'replace', 'html_scan', 'fonts', 'avatars', 'embeds', 'updates', 'telemetry', 'allow_hosts', 'core_assets', 'analytics', 'social_login', 'mail_queue', 'request_log', 'captcha', 'safe_updates', 'translations', 'backup', 'backup_hours', 'backup_hour', 'backup_mode', 'backup_local', 'backup_exclude', 'backup_part', 'browser_guard', 'dedupe', 'heartbeat', 'block_hosts', 'scan_as_user' );
 
 	private static $cache = null;
 
@@ -45,6 +45,8 @@ final class Settings {
 			'backup_hour'  => 3,
 			'backup_mode'  => 'incremental',
 			'backup_local' => true,
+			'backup_exclude' => array(),
+			'backup_part'  => 256,
 			'browser_guard' => true,
 			'dedupe'       => true,
 			'heartbeat'    => 'smart',
@@ -192,6 +194,9 @@ final class Settings {
 		$out['backup_hours'] = in_array( $hours, array( 6, 12, 24, 48, 168 ), true ) ? $hours : $defaults['backup_hours'];
 		$hour                = isset( $in['backup_hour'] ) ? (int) $in['backup_hour'] : $defaults['backup_hour'];
 		$out['backup_hour']  = $hour >= 0 && $hour <= 23 ? $hour : $defaults['backup_hour'];
+		$part                = isset( $in['backup_part'] ) ? (int) $in['backup_part'] : $defaults['backup_part'];
+		$out['backup_part']  = in_array( $part, array( 128, 256, 512, 1024, 2048 ), true ) ? $part : $defaults['backup_part'];
+		$out['backup_exclude'] = self::paths( isset( $in['backup_exclude'] ) ? $in['backup_exclude'] : array() );
 		$out['consent_at']  = isset( $in['consent_at'] ) ? max( 0, (int) $in['consent_at'] ) : 0;
 		$out['allow_hosts'] = self::hosts( isset( $in['allow_hosts'] ) ? $in['allow_hosts'] : array() );
 		$out['block_hosts'] = self::blocks( isset( $in['block_hosts'] ) ? $in['block_hosts'] : array() );
@@ -253,6 +258,19 @@ final class Settings {
 			$out = array_merge( $out, self::hosts( array( $rule ) ) );
 		}
 		return array_slice( array_values( array_unique( $out ) ), 0, 200 );
+	}
+
+	private static function paths( $value ) {
+		$out = array();
+		foreach ( is_string( $value ) ? preg_split( '/[\r\n]+/', $value ) : (array) $value as $rule ) {
+			$rule = trim( str_replace( '\\', '/', (string) $rule ) );
+			$rule = trim( (string) preg_replace( '#/+#', '/', $rule ), '/' );
+			if ( '' === $rule || strlen( $rule ) > 200 || false !== strpos( $rule, '..' ) || preg_match( '/[\x00-\x1f]/', $rule ) ) {
+				continue;
+			}
+			$out[] = $rule;
+		}
+		return array_slice( array_values( array_unique( $out ) ), 0, 100 );
 	}
 
 	private static function urls( $value ) {

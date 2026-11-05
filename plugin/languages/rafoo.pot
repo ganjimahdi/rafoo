@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.3.0\n"
+"Project-Id-Version: Rafoo 1.4.0\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -11,7 +11,7 @@ msgstr ""
 msgid "Rafoo: paused"
 msgstr ""
 
-#: src/Admin/AdminBar.php:22 src/Admin/Strings.php:576
+#: src/Admin/AdminBar.php:22 src/Admin/Strings.php:691
 msgid "Rafoo is paused and changes nothing on the site."
 msgstr ""
 
@@ -247,7 +247,7 @@ msgstr ""
 msgid "Folder writable"
 msgstr ""
 
-#: src/Admin/SiteHealth.php:145 src/Admin/Strings.php:577
+#: src/Admin/SiteHealth.php:145 src/Admin/Strings.php:692
 msgid "Paused"
 msgstr ""
 
@@ -255,7 +255,7 @@ msgstr ""
 msgid "Use local copies"
 msgstr ""
 
-#: src/Admin/SiteHealth.php:150 src/Admin/Strings.php:554
+#: src/Admin/SiteHealth.php:150 src/Admin/Strings.php:669
 msgid "Browser guard"
 msgstr ""
 
@@ -347,11 +347,11 @@ msgstr ""
 msgid "Check my site every"
 msgstr ""
 
-#: src/Admin/Strings.php:33
+#: src/Admin/Strings.php:33 src/Admin/Strings.php:941
 msgid "1 minute"
 msgstr ""
 
-#: src/Admin/Strings.php:34
+#: src/Admin/Strings.php:34 src/Admin/Strings.php:943
 msgid "5 minutes"
 msgstr ""
 
@@ -421,7 +421,7 @@ msgstr ""
 msgid "%s today"
 msgstr ""
 
-#: src/Admin/Strings.php:54 src/Admin/Strings.php:89
+#: src/Admin/Strings.php:54 src/Admin/Strings.php:89 src/Admin/Strings.php:983
 msgid "Check now"
 msgstr ""
 
@@ -475,7 +475,7 @@ msgstr ""
 msgid "Inside Iran"
 msgstr ""
 
-#: src/Admin/Strings.php:70 src/Admin/Strings.php:163 src/Admin/Strings.php:491
+#: src/Admin/Strings.php:70 src/Admin/Strings.php:163 src/Admin/Strings.php:604
 msgid "Outside Iran"
 msgstr ""
 
@@ -733,7 +733,7 @@ msgstr ""
 msgid "Include"
 msgstr ""
 
-#: src/Admin/Strings.php:150 src/Admin/Strings.php:524
+#: src/Admin/Strings.php:150 src/Admin/Strings.php:637 src/Admin/Strings.php:878
 msgid "Remove"
 msgstr ""
 
@@ -911,7 +911,7 @@ msgstr ""
 msgid "During an outage, YouTube, Vimeo and Google Maps frames are replaced with a short note and a link."
 msgstr ""
 
-#: src/Admin/Strings.php:205 src/Admin/Strings.php:475
+#: src/Admin/Strings.php:205 src/Admin/Strings.php:588
 msgid "Outside requests"
 msgstr ""
 
@@ -1209,11 +1209,11 @@ msgstr ""
 msgid "%1$s was set back to %2$s by hand"
 msgstr ""
 
-#: src/Admin/Strings.php:290 src/Admin/Strings.php:663
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:1153
 msgid "Updates"
 msgstr ""
 
-#: src/Admin/Strings.php:291
+#: src/Admin/Strings.php:291 src/Admin/Strings.php:825
 msgid "Name"
 msgstr ""
 
@@ -1346,1379 +1346,3131 @@ msgid "Preparing the move to an empty host"
 msgstr ""
 
 #: src/Admin/Strings.php:328
-msgid "copying the database"
+msgid "Checking a backup"
 msgstr ""
 
 #: src/Admin/Strings.php:329
-msgid "listing files"
+msgid "copying the database"
 msgstr ""
 
 #: src/Admin/Strings.php:330
-msgid "packing files"
+msgid "listing files"
 msgstr ""
 
 #: src/Admin/Strings.php:331
-msgid "closing the archive"
+msgid "packing files"
 msgstr ""
 
 #: src/Admin/Strings.php:332
+msgid "closing the archive"
+msgstr ""
+
+#: src/Admin/Strings.php:333
 msgid "encrypting"
 msgstr ""
 
-#: src/Admin/Strings.php:333 src/Admin/Strings.php:338
+#: src/Admin/Strings.php:334 src/Admin/Strings.php:339
 msgid "checking the archive"
 msgstr ""
 
-#: src/Admin/Strings.php:334
+#: src/Admin/Strings.php:335
 msgid "sending to the server"
 msgstr ""
 
-#: src/Admin/Strings.php:335
+#: src/Admin/Strings.php:336
 msgid "removing old backups"
 msgstr ""
 
-#: src/Admin/Strings.php:336
+#: src/Admin/Strings.php:337
 msgid "downloading the backup"
 msgstr ""
 
-#: src/Admin/Strings.php:337
+#: src/Admin/Strings.php:338
 msgid "downloading from the other site"
 msgstr ""
 
-#: src/Admin/Strings.php:339
+#: src/Admin/Strings.php:340
 msgid "opening the encrypted archive"
 msgstr ""
 
-#: src/Admin/Strings.php:340
+#: src/Admin/Strings.php:341
 msgid "putting files back"
 msgstr ""
 
-#: src/Admin/Strings.php:341
+#: src/Admin/Strings.php:342
 msgid "reading the database"
 msgstr ""
 
-#: src/Admin/Strings.php:342
+#: src/Admin/Strings.php:343 src/Admin/Strings.php:357
 msgid "restoring the database"
 msgstr ""
 
-#: src/Admin/Strings.php:343
+#: src/Admin/Strings.php:344
 msgid "updating the site address"
 msgstr ""
 
-#: src/Admin/Strings.php:344
+#: src/Admin/Strings.php:345
 msgid "switching to the restored data"
 msgstr ""
 
-#: src/Admin/Strings.php:345
+#: src/Admin/Strings.php:346
 msgid "checking the site"
 msgstr ""
 
-#: src/Admin/Strings.php:346
+#: src/Admin/Strings.php:347
 msgid "making a copy"
 msgstr ""
 
-#: src/Admin/Strings.php:347
+#: src/Admin/Strings.php:348
 msgid "telling the other site"
 msgstr ""
 
-#: src/Admin/Strings.php:348
+#: src/Admin/Strings.php:349
 msgid "waiting for the other site"
 msgstr ""
 
-#: src/Admin/Strings.php:349
+#: src/Admin/Strings.php:350
 msgid "other site:"
 msgstr ""
 
-#. translators: %s: reason
 #: src/Admin/Strings.php:351
+msgid "checking free space"
+msgstr ""
+
+#: src/Admin/Strings.php:352
+msgid "writing the list of parts"
+msgstr ""
+
+#: src/Admin/Strings.php:353
+msgid "getting the next part"
+msgstr ""
+
+#: src/Admin/Strings.php:354
+msgid "unpacking"
+msgstr ""
+
+#: src/Admin/Strings.php:355
+msgid "removing deleted files"
+msgstr ""
+
+#: src/Admin/Strings.php:356
+msgid "preparing the database"
+msgstr ""
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:359
 #, php-format
 msgid "The last task did not finish: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:352
+#: src/Admin/Strings.php:360
 msgid "there is not enough free space on this host"
 msgstr ""
 
-#: src/Admin/Strings.php:353
+#: src/Admin/Strings.php:361
 msgid "the archive is damaged or incomplete"
 msgstr ""
 
-#: src/Admin/Strings.php:354
+#: src/Admin/Strings.php:362
 msgid "the password or key is wrong"
 msgstr ""
 
-#: src/Admin/Strings.php:355
+#: src/Admin/Strings.php:363
 msgid "the server could not be reached"
 msgstr ""
 
-#: src/Admin/Strings.php:356
+#: src/Admin/Strings.php:364
 msgid "the restored site did not load, so the previous database was put back"
 msgstr ""
 
-#: src/Admin/Strings.php:357
+#: src/Admin/Strings.php:365
 msgid "the other site did not finish in time"
 msgstr ""
 
-#: src/Admin/Strings.php:358
+#: src/Admin/Strings.php:366
 msgid "the other site refused the copy"
 msgstr ""
 
-#: src/Admin/Strings.php:359
+#: src/Admin/Strings.php:367
 msgid "PHP stopped three times in the same step, usually because the memory limit is too low; ask your host to raise memory_limit"
 msgstr ""
 
-#: src/Admin/Strings.php:360
+#: src/Admin/Strings.php:368
+msgid "Rafoo could not write to its folder on this host"
+msgstr ""
+
+#: src/Admin/Strings.php:369
+msgid "a database table could not be read"
+msgstr ""
+
+#: src/Admin/Strings.php:370
+msgid "the database rejected the backup data"
+msgstr ""
+
+#: src/Admin/Strings.php:371
+msgid "the database could not switch to the restored tables"
+msgstr ""
+
+#: src/Admin/Strings.php:372
+msgid "sending to the other server failed"
+msgstr ""
+
+#: src/Admin/Strings.php:373
+msgid "PHP ran out of memory"
+msgstr ""
+
+#: src/Admin/Strings.php:374
+msgid "PHP reached its time limit"
+msgstr ""
+
+#: src/Admin/Strings.php:375
+msgid "the host stopped PHP without an error message"
+msgstr ""
+
+#: src/Admin/Strings.php:376
+msgid "a PHP error stopped the task"
+msgstr ""
+
+#: src/Admin/Strings.php:377
+msgid "an unexpected error happened"
+msgstr ""
+
+#: src/Admin/Strings.php:378
+msgid "an older version of Rafoo started it; start it again"
+msgstr ""
+
+#: src/Admin/Strings.php:379
+msgid "Free some space on this host, or add another server and turn off Keep copies on this host. Then each part is sent and removed at once, so far less space is needed."
+msgstr ""
+
+#: src/Admin/Strings.php:380
+msgid "Turn off Keep copies on this host. Then each part is sent to your other servers and removed here at once, so far less space is needed."
+msgstr ""
+
+#: src/Admin/Strings.php:381
+msgid "Ask your host to make wp-content/uploads writable for PHP, then try again."
+msgstr ""
+
+#: src/Admin/Strings.php:382
+msgid "Repair this table, for example in phpMyAdmin, or ask your host. Then try again."
+msgstr ""
+
+#: src/Admin/Strings.php:383
+msgid "The site was not changed. The first database error is shown above and in the log."
+msgstr ""
+
+#: src/Admin/Strings.php:384
+msgid "The site was not changed. Ask your host whether the database user may create, rename and drop tables."
+msgstr ""
+
+#: src/Admin/Strings.php:385
+msgid "Use another backup. If this one is kept on another server, check that all its parts are there."
+msgstr ""
+
+#: src/Admin/Strings.php:386
+msgid "Enter the password that was set when this backup was made."
+msgstr ""
+
+#: src/Admin/Strings.php:387
+msgid "Check under Other servers that the server is online and its login still works, then try again."
+msgstr ""
+
+#: src/Admin/Strings.php:388
+msgid "Test the server under Other servers and check its free space, then try again."
+msgstr ""
+
+#: src/Admin/Strings.php:389
+msgid "The site is as it was before. The backup may need a PHP version or extension this host lacks; the log shows what failed."
+msgstr ""
+
+#: src/Admin/Strings.php:390
+msgid "Rafoo already tried again with smaller steps. Ask your host to raise memory_limit to 256M or more."
+msgstr ""
+
+#: src/Admin/Strings.php:391
+msgid "Rafoo already tried again with shorter steps. Ask your host to raise max_execution_time to 60 seconds or more."
+msgstr ""
+
+#: src/Admin/Strings.php:392
+msgid "Rafoo already tried again with shorter steps. The host may limit how long PHP may run or how much CPU it may use; send the log to your host."
+msgstr ""
+
+#: src/Admin/Strings.php:393
+msgid "Another plugin or the server caused this error. Send the log to your host, or to the Rafoo team under Send a suggestion."
+msgstr ""
+
+#: src/Admin/Strings.php:394
+msgid "Try again. If it happens again, send the log to the Rafoo team under Send a suggestion."
+msgstr ""
+
+#: src/Admin/Strings.php:395
+msgid "Check that the other site is online, then send again."
+msgstr ""
+
+#: src/Admin/Strings.php:396
+msgid "Make a new code on the other site and send again."
+msgstr ""
+
+#. translators: %s: size
+#: src/Admin/Strings.php:398
+#, php-format
+msgid "Free: %s"
+msgstr ""
+
+#. translators: %s: size
+#: src/Admin/Strings.php:400
+#, php-format
+msgid "Needed: about %s"
+msgstr ""
+
+#. translators: %s: server name
+#: src/Admin/Strings.php:402
+#, php-format
+msgid "Server: %s"
+msgstr ""
+
+#. translators: %s: database table name
+#: src/Admin/Strings.php:404
+#, php-format
+msgid "Table: %s"
+msgstr ""
+
+#. translators: %s: file or folder path
+#: src/Admin/Strings.php:406
+#, php-format
+msgid "Path: %s"
+msgstr ""
+
+#. translators: %s: file name
+#: src/Admin/Strings.php:408
+#, php-format
+msgid "File: %s"
+msgstr ""
+
+#. translators: %s: memory limit such as 128M
+#: src/Admin/Strings.php:410
+#, php-format
+msgid "PHP memory_limit: %s"
+msgstr ""
+
+#. translators: %s: number of seconds
+#: src/Admin/Strings.php:412
+#, php-format
+msgid "PHP max_execution_time: %s seconds"
+msgstr ""
+
+#. translators: %s: number of seconds
+#: src/Admin/Strings.php:414
+#, php-format
+msgid "Shortest step tried: %s seconds"
+msgstr ""
+
+#. translators: 1: table name, 2: table number, 3: number of tables
+#: src/Admin/Strings.php:416
+#, php-format
+msgid "Table %1$s (%2$s of %3$s)"
+msgstr ""
+
+#. translators: 1: number of files, 2: total size
+#: src/Admin/Strings.php:418
+#, php-format
+msgid "%1$s files found, %2$s"
+msgstr ""
+
+#. translators: 1: files done, 2: all files, 3: part number
+#: src/Admin/Strings.php:420
+#, php-format
+msgid "%1$s of %2$s files, part %3$s"
+msgstr ""
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:422
+#, php-format
+msgid "%s unchanged"
+msgstr ""
+
+#. translators: 1: server name, 2: part number, 3: number of parts
+#: src/Admin/Strings.php:424
+#, php-format
+msgid "To %1$s, part %2$s of %3$s"
+msgstr ""
+
+#. translators: 1: server name, 2: part number, 3: number of parts
+#: src/Admin/Strings.php:426
+#, php-format
+msgid "From %1$s, part %2$s of %3$s"
+msgstr ""
+
+#. translators: 1: part number, 2: number of parts
+#: src/Admin/Strings.php:428
+#, php-format
+msgid "Part %1$s of %2$s"
+msgstr ""
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:430
+#, php-format
+msgid "%s files written"
+msgstr ""
+
+#. translators: %s: duration
+#: src/Admin/Strings.php:432
+#, php-format
+msgid "About %s left in this step"
+msgstr ""
+
+#: src/Admin/Strings.php:433
+msgid "PHP stopped during a step. Rafoo goes on with smaller steps."
+msgstr ""
+
+#: src/Admin/Strings.php:434
+msgid "Every part of this backup was opened and checked. It can be restored."
+msgstr ""
+
+#: src/Admin/Strings.php:435
+msgid "Notes from the last task"
+msgstr ""
+
+#: src/Admin/Strings.php:436
+msgid "Show notes"
+msgstr ""
+
+#: src/Admin/Strings.php:437
+msgid "Show the task log"
+msgstr ""
+
+#: src/Admin/Strings.php:438
+msgid "The log is empty."
+msgstr ""
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:440
+#, php-format
+msgid "Files deleted while the backup ran, so not included: %s"
+msgstr ""
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:442
+#, php-format
+msgid "Files that could not be read, so not included: %s"
+msgstr ""
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:444
+#, php-format
+msgid "Files that changed while they were copied: %s"
+msgstr ""
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:446
+#, php-format
+msgid "Files with a line break or tab in the name, skipped: %s"
+msgstr ""
+
+#. translators: %s: number of folders
+#: src/Admin/Strings.php:448
+#, php-format
+msgid "Folders that could not be opened, skipped: %s"
+msgstr ""
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:450
+#, php-format
+msgid "Large log files left out: %s"
+msgstr ""
+
+#. translators: %s: number of servers
+#: src/Admin/Strings.php:452
+#, php-format
+msgid "Servers that did not receive this backup: %s"
+msgstr ""
+
+#. translators: %s: number of files
+#: src/Admin/Strings.php:454
+#, php-format
+msgid "Files that could not be written back: %s"
+msgstr ""
+
+#. translators: %s: number of statements
+#: src/Admin/Strings.php:456
+#, php-format
+msgid "Database statements that failed and were skipped: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:457
 msgid "The last task stopped responding. WP-Cron may be off; keep this page open to continue it, or start again."
 msgstr ""
 
-#: src/Admin/Strings.php:361
+#: src/Admin/Strings.php:458
 msgid "The backup was restored and the site works. If you are asked to log in, use the accounts from the backup."
 msgstr ""
 
-#: src/Admin/Strings.php:362
+#: src/Admin/Strings.php:459
 msgid "Saved backups"
 msgstr ""
 
-#: src/Admin/Strings.php:363
+#: src/Admin/Strings.php:460
 msgid "No backup has been made yet."
 msgstr ""
 
-#: src/Admin/Strings.php:364
+#: src/Admin/Strings.php:461
 msgid "Date"
 msgstr ""
 
-#: src/Admin/Strings.php:365
+#: src/Admin/Strings.php:462 src/Admin/Strings.php:969
 msgid "Type"
 msgstr ""
 
-#: src/Admin/Strings.php:366
+#: src/Admin/Strings.php:463
 msgid "Kept on"
 msgstr ""
 
 #. translators: 1: number of files, 2: number of database tables
-#: src/Admin/Strings.php:368
+#: src/Admin/Strings.php:465
 #, php-format
 msgid "%1$s files, %2$s tables"
 msgstr ""
 
-#: src/Admin/Strings.php:369
+#: src/Admin/Strings.php:466
 msgid "Full"
 msgstr ""
 
-#: src/Admin/Strings.php:370
+#: src/Admin/Strings.php:467
 msgid "Changes only"
 msgstr ""
 
-#: src/Admin/Strings.php:371
+#: src/Admin/Strings.php:468
 msgid "Encrypted"
 msgstr ""
 
-#: src/Admin/Strings.php:372
+#: src/Admin/Strings.php:469
 msgid "Not finished"
 msgstr ""
 
-#: src/Admin/Strings.php:373
+#: src/Admin/Strings.php:470
+msgid "Made before 1.4"
+msgstr ""
+
+#. translators: %s: number of parts
+#: src/Admin/Strings.php:472
+#, php-format
+msgid "%s parts"
+msgstr ""
+
+#: src/Admin/Strings.php:473
+msgid "Check"
+msgstr ""
+
+#: src/Admin/Strings.php:474
+msgid "Rafoo opens every part and checks it without changing the site. Enter the password of this backup."
+msgstr ""
+
+#: src/Admin/Strings.php:475
+msgid "Each part is an ordinary .tar.gz archive. Extract all parts into one folder; the database is in rafoo/database.sql.gz."
+msgstr ""
+
+#: src/Admin/Strings.php:476
+msgid "These parts are encrypted and only Rafoo can open them. Keep all of them together."
+msgstr ""
+
+#. translators: %s: part number
+#: src/Admin/Strings.php:478
+#, php-format
+msgid "Part %s"
+msgstr ""
+
+#: src/Admin/Strings.php:479
+msgid "List of parts"
+msgstr ""
+
+#: src/Admin/Strings.php:480 src/Admin/Strings.php:842
 msgid "This host"
 msgstr ""
 
-#: src/Admin/Strings.php:374
+#: src/Admin/Strings.php:481
 msgid "Download"
 msgstr ""
 
-#: src/Admin/Strings.php:375
+#: src/Admin/Strings.php:482
 msgid "Restore"
 msgstr ""
 
 #. translators: %s: date of the backup
-#: src/Admin/Strings.php:377
+#: src/Admin/Strings.php:484
 #, php-format
 msgid "The files and database of this site will be replaced with the copy from %s. Rafoo keeps the current database until the restored site is checked, and puts it back if the site does not load."
 msgstr ""
 
-#: src/Admin/Strings.php:378
+#: src/Admin/Strings.php:485
 msgid "Restore this backup"
 msgstr ""
 
-#: src/Admin/Strings.php:379
+#: src/Admin/Strings.php:486
 msgid "Backup password"
 msgstr ""
 
-#: src/Admin/Strings.php:380
+#: src/Admin/Strings.php:487
 msgid "Schedule"
 msgstr ""
 
-#: src/Admin/Strings.php:381
+#: src/Admin/Strings.php:488
 msgid "Backups run in the background at a quiet hour. Rafoo keeps 7 daily, 4 weekly and 6 monthly copies."
 msgstr ""
 
-#: src/Admin/Strings.php:382
+#: src/Admin/Strings.php:489
 msgid "How often"
 msgstr ""
 
-#: src/Admin/Strings.php:383
+#: src/Admin/Strings.php:490
 msgid "Every 6 hours"
 msgstr ""
 
-#: src/Admin/Strings.php:384
+#: src/Admin/Strings.php:491
 msgid "Every 12 hours"
 msgstr ""
 
-#: src/Admin/Strings.php:385
+#: src/Admin/Strings.php:492
 msgid "Every day"
 msgstr ""
 
-#: src/Admin/Strings.php:386
+#: src/Admin/Strings.php:493
 msgid "Every 2 days"
 msgstr ""
 
-#: src/Admin/Strings.php:387
+#: src/Admin/Strings.php:494
 msgid "Every week"
 msgstr ""
 
-#: src/Admin/Strings.php:388
+#: src/Admin/Strings.php:495
 msgid "At"
 msgstr ""
 
-#: src/Admin/Strings.php:389
+#: src/Admin/Strings.php:496
 msgid "Copy only what changed"
 msgstr ""
 
-#: src/Admin/Strings.php:390
+#: src/Admin/Strings.php:497
 msgid "After a full copy, the next six copy only new and changed files and the whole database. Faster and smaller. A full copy is made every week."
 msgstr ""
 
-#: src/Admin/Strings.php:391
+#: src/Admin/Strings.php:498
 msgid "Keep copies on this host"
 msgstr ""
 
-#: src/Admin/Strings.php:392
+#: src/Admin/Strings.php:499
 msgid "When off, copies are kept only on the servers below, which protects them if this host fails."
 msgstr ""
 
-#: src/Admin/Strings.php:393 src/Admin/Strings.php:512
+#: src/Admin/Strings.php:500
+msgid "Part size"
+msgstr ""
+
+#: src/Admin/Strings.php:501
+msgid "Large sites are saved in several parts of about this size. Choose a smaller size if your servers limit file size."
+msgstr ""
+
+#: src/Admin/Strings.php:502
+msgid "Leave out of backups"
+msgstr ""
+
+#: src/Admin/Strings.php:503
+msgid "One path per line, from the WordPress folder, for example wp-content/uploads/videos or *.mp4."
+msgstr ""
+
+#: src/Admin/Strings.php:504
+msgid "What Rafoo leaves out by itself"
+msgstr ""
+
+#: src/Admin/Strings.php:505
+msgid "These folders and files are never backed up, along with .git and node_modules folders, error_log and debug.log files, and log files larger than 50 MB."
+msgstr ""
+
+#: src/Admin/Strings.php:506 src/Admin/Strings.php:625
 msgid "Encryption"
 msgstr ""
 
-#: src/Admin/Strings.php:394
+#: src/Admin/Strings.php:507
 msgid "With a password, backups are encrypted before they leave this site. Without the password they cannot be restored, so keep it somewhere safe."
 msgstr ""
 
-#: src/Admin/Strings.php:395
+#: src/Admin/Strings.php:508
 msgid "New backups are encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:396
+#: src/Admin/Strings.php:509
 msgid "Backups are not encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:397
+#: src/Admin/Strings.php:510
 msgid "Password saved. The next backup will be encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:398
+#: src/Admin/Strings.php:511
 msgid "Turn off encryption"
 msgstr ""
 
-#: src/Admin/Strings.php:399
+#: src/Admin/Strings.php:512
 msgid "Encryption turned off for new backups."
 msgstr ""
 
-#: src/Admin/Strings.php:400
+#: src/Admin/Strings.php:513
 msgid "This server's PHP has no sodium extension, so backups cannot be encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:401
-msgid "This server has no ZipArchive extension, so backups cannot be made. Ask your host to enable it."
+#: src/Admin/Strings.php:514
+msgid "Backups made before Rafoo 1.4 need the PHP ZipArchive extension to be restored, and this server does not have it. New backups do not need it."
 msgstr ""
 
-#: src/Admin/Strings.php:402 src/Backup/Job.php:33 src/Backup/Maker.php:33
+#: src/Admin/Strings.php:515 src/Backup/Job.php:43 src/Backup/Maker.php:37
 msgid "The uploads folder is not writable, so Rafoo cannot keep backups."
 msgstr ""
 
-#: src/Admin/Strings.php:403
+#: src/Admin/Strings.php:516
 msgid "This shop is in the last step of moving. New orders are paused for a few minutes."
 msgstr ""
 
-#: src/Admin/Strings.php:404
+#: src/Admin/Strings.php:517
 msgid "Other servers"
 msgstr ""
 
-#: src/Admin/Strings.php:405
+#: src/Admin/Strings.php:518
 msgid "Copies are also sent to these servers. Enter the address and login; Rafoo finds the right connection (SFTP, FTPS or FTP) and folder by itself."
 msgstr ""
 
-#: src/Admin/Strings.php:406
+#: src/Admin/Strings.php:519
 msgid "Add a server"
 msgstr ""
 
-#: src/Admin/Strings.php:407 src/Admin/Strings.php:510
+#: src/Admin/Strings.php:520 src/Admin/Strings.php:623
 msgid "Server address"
 msgstr ""
 
-#: src/Admin/Strings.php:408
+#: src/Admin/Strings.php:521
 msgid "More options"
 msgstr ""
 
-#: src/Admin/Strings.php:409
+#: src/Admin/Strings.php:522
 msgid "Folder (optional)"
 msgstr ""
 
-#: src/Admin/Strings.php:410
+#: src/Admin/Strings.php:523
 msgid "Name (optional)"
 msgstr ""
 
-#: src/Admin/Strings.php:411
+#: src/Admin/Strings.php:524
 msgid "SSH private key (optional, instead of a password)"
 msgstr ""
 
-#: src/Admin/Strings.php:412
+#: src/Admin/Strings.php:525
 msgid "Rafoo tries SFTP, then FTPS and plain FTP, creates a folder named rafoo-backups, and checks that it can write, read and delete a test file."
 msgstr ""
 
-#: src/Admin/Strings.php:413
+#: src/Admin/Strings.php:526
 msgid "Connect"
 msgstr ""
 
-#: src/Admin/Strings.php:414
+#: src/Admin/Strings.php:527
 msgid "Finding the connection…"
 msgstr ""
 
 #. translators: 1: connection type, 2: folder, 3: speed per second
-#: src/Admin/Strings.php:416
+#: src/Admin/Strings.php:529
 #, php-format
 msgid "Connected with %1$s. Copies go to %2$s at about %3$s per second."
 msgstr ""
 
-#: src/Admin/Strings.php:417
+#: src/Admin/Strings.php:530
 msgid "Last send failed"
 msgstr ""
 
 #. translators: %s: relative time
-#: src/Admin/Strings.php:419
+#: src/Admin/Strings.php:532
 #, php-format
 msgid "Sent %s"
 msgstr ""
 
-#: src/Admin/Strings.php:420
+#: src/Admin/Strings.php:533
 msgid "Plain FTP is not encrypted. Turn on backup encryption below."
 msgstr ""
 
 #. translators: %s: size per second
-#: src/Admin/Strings.php:422
+#: src/Admin/Strings.php:535
 #, php-format
 msgid "About %s per second"
 msgstr ""
 
 #. translators: %s: size
-#: src/Admin/Strings.php:424
+#: src/Admin/Strings.php:537
 #, php-format
 msgid "%s free"
 msgstr ""
 
-#: src/Admin/Strings.php:425
+#: src/Admin/Strings.php:538
 msgid "Test"
 msgstr ""
 
-#: src/Admin/Strings.php:426
+#: src/Admin/Strings.php:539
 msgid "The server accepted a test file."
 msgstr ""
 
-#: src/Admin/Strings.php:427
+#: src/Admin/Strings.php:540
 msgid "Move or copy the site"
 msgstr ""
 
-#: src/Admin/Strings.php:428
+#: src/Admin/Strings.php:541
 msgid "Copy this whole site to another WordPress site with Rafoo, or to an empty host. The data goes directly between the two servers, encrypted."
 msgstr ""
 
-#: src/Admin/Strings.php:429
+#: src/Admin/Strings.php:542
 msgid "Send this site"
 msgstr ""
 
-#: src/Admin/Strings.php:430
+#: src/Admin/Strings.php:543
 msgid "Receive a site here"
 msgstr ""
 
-#: src/Admin/Strings.php:431
+#: src/Admin/Strings.php:544
 msgid "To an empty host"
 msgstr ""
 
-#: src/Admin/Strings.php:432
+#: src/Admin/Strings.php:545
 msgid "Make a code here and enter it on the site you want to copy. This site will be replaced with that site."
 msgstr ""
 
-#: src/Admin/Strings.php:433
+#: src/Admin/Strings.php:546
 msgid "Make a code"
 msgstr ""
 
-#: src/Admin/Strings.php:434
+#: src/Admin/Strings.php:547
 msgid "Make a new code"
 msgstr ""
 
-#: src/Admin/Strings.php:435
+#: src/Admin/Strings.php:548
 msgid "Stop receiving"
 msgstr ""
 
-#: src/Admin/Strings.php:436
+#: src/Admin/Strings.php:549
 msgid "Short code:"
 msgstr ""
 
-#: src/Admin/Strings.php:437
+#: src/Admin/Strings.php:550
 msgid "Full code (works without rafoo.ir)"
 msgstr ""
 
-#: src/Admin/Strings.php:438
+#: src/Admin/Strings.php:551
 msgid "Copy"
 msgstr ""
 
-#: src/Admin/Strings.php:439
+#: src/Admin/Strings.php:552
 msgid "Copied"
 msgstr ""
 
 #. translators: %s: date and time
-#: src/Admin/Strings.php:441
+#: src/Admin/Strings.php:554
 #, php-format
 msgid "Valid until %s"
 msgstr ""
 
-#: src/Admin/Strings.php:442
+#: src/Admin/Strings.php:555
 msgid "Anyone with this code can replace this site. Share it only with yourself."
 msgstr ""
 
-#: src/Admin/Strings.php:443
+#: src/Admin/Strings.php:556
 msgid "Enter the code made on the receiving site. This site stays as it is."
 msgstr ""
 
-#: src/Admin/Strings.php:444
+#: src/Admin/Strings.php:557
 msgid "Code from the other site"
 msgstr ""
 
-#: src/Admin/Strings.php:445
+#: src/Admin/Strings.php:558
 msgid "Finish with a quick second pass for changes made meanwhile (WooCommerce orders pause for a minute)"
 msgstr ""
 
-#: src/Admin/Strings.php:446
+#: src/Admin/Strings.php:559
 msgid "Start sending"
 msgstr ""
 
-#: src/Admin/Strings.php:447
+#: src/Admin/Strings.php:560
 msgid "Rafoo puts an encrypted copy and a small installer on the new host through one of your servers. Then you open the installer and enter the new database details."
 msgstr ""
 
-#: src/Admin/Strings.php:448
+#: src/Admin/Strings.php:561
 msgid "First add the new host under Other servers, with access to its web folder."
 msgstr ""
 
-#: src/Admin/Strings.php:449
+#: src/Admin/Strings.php:562
 msgid "New host"
 msgstr ""
 
-#: src/Admin/Strings.php:450
+#: src/Admin/Strings.php:563
 msgid "Web folder on that host"
 msgstr ""
 
-#: src/Admin/Strings.php:451
+#: src/Admin/Strings.php:564
 msgid "Address of the site on the new host"
 msgstr ""
 
-#: src/Admin/Strings.php:452
+#: src/Admin/Strings.php:565
 msgid "Prepare the move"
 msgstr ""
 
-#: src/Admin/Strings.php:453
+#: src/Admin/Strings.php:566
 msgid "Everything is on the new host."
 msgstr ""
 
-#: src/Admin/Strings.php:454
+#: src/Admin/Strings.php:567
 msgid "Open this address and follow the steps:"
 msgstr ""
 
-#: src/Admin/Strings.php:455
+#: src/Admin/Strings.php:568
 msgid "Restore key (shown only here)"
 msgstr ""
 
 #. translators: 1: size, 2: backup type
-#: src/Admin/Strings.php:457
+#: src/Admin/Strings.php:570
 #, php-format
 msgid "Backup made (%1$s)"
 msgstr ""
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:459
+#: src/Admin/Strings.php:572
 #, php-format
 msgid "Backup failed: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:460
+#: src/Admin/Strings.php:573
 msgid "Backup task stopped by hand"
 msgstr ""
 
-#: src/Admin/Strings.php:461
+#: src/Admin/Strings.php:574
 msgid "Backup restored"
 msgstr ""
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:463
+#: src/Admin/Strings.php:576
 #, php-format
 msgid "Restore failed: %s"
 msgstr ""
 
 #. translators: %s: site address
-#: src/Admin/Strings.php:465
+#: src/Admin/Strings.php:578
 #, php-format
 msgid "Site received from %s"
 msgstr ""
 
 #. translators: %s: site address or reason
-#: src/Admin/Strings.php:467
+#: src/Admin/Strings.php:580
 #, php-format
 msgid "Site sent to %s"
 msgstr ""
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:469
+#: src/Admin/Strings.php:582
 #, php-format
 msgid "Site transfer failed: %s"
 msgstr ""
 
 #. translators: %s: site address
-#: src/Admin/Strings.php:471
+#: src/Admin/Strings.php:584
 #, php-format
 msgid "Move to %s prepared"
 msgstr ""
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:473
+#: src/Admin/Strings.php:586
 #, php-format
 msgid "Move preparation failed: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:476
+#: src/Admin/Strings.php:589
 msgid "Which plugin, theme or part of WordPress connected to which server from this site, and how it went."
 msgstr ""
 
-#: src/Admin/Strings.php:477
+#: src/Admin/Strings.php:590
 msgid "Logging is turned off in Settings."
 msgstr ""
 
-#: src/Admin/Strings.php:478
+#: src/Admin/Strings.php:591
 msgid "No outside request has been made since logging started."
 msgstr ""
 
-#: src/Admin/Strings.php:479
+#: src/Admin/Strings.php:592
 msgid "Clear the log"
 msgstr ""
 
 #. translators: %s: number of rows
-#: src/Admin/Strings.php:481
+#: src/Admin/Strings.php:594
 #, php-format
 msgid "Show all %s rows"
 msgstr ""
 
-#: src/Admin/Strings.php:482
+#: src/Admin/Strings.php:595
 msgid "Made by"
 msgstr ""
 
-#: src/Admin/Strings.php:483
+#: src/Admin/Strings.php:596
 msgid "Server"
 msgstr ""
 
-#: src/Admin/Strings.php:484
+#: src/Admin/Strings.php:597 src/Admin/Strings.php:1025
 msgid "Requests"
 msgstr ""
 
-#: src/Admin/Strings.php:485
+#: src/Admin/Strings.php:598
 msgid "Skipped"
 msgstr ""
 
-#: src/Admin/Strings.php:486
+#: src/Admin/Strings.php:599
 msgid "Failed"
 msgstr ""
 
-#: src/Admin/Strings.php:487
+#: src/Admin/Strings.php:600 src/Admin/Strings.php:1027
 msgid "Average time"
 msgstr ""
 
-#: src/Admin/Strings.php:488
+#: src/Admin/Strings.php:601
 msgid "Last"
 msgstr ""
 
 #. translators: %s: number of milliseconds
-#: src/Admin/Strings.php:490
+#: src/Admin/Strings.php:603
 #, php-format
 msgid "%s ms"
 msgstr ""
 
-#: src/Admin/Strings.php:493
+#: src/Admin/Strings.php:606
 msgid "Emails waiting to be sent"
 msgstr ""
 
-#: src/Admin/Strings.php:494
+#: src/Admin/Strings.php:607
 msgid "Emails that failed because the mail server could not be reached. They are sent again automatically, and deleted after three days if they still cannot go."
 msgstr ""
 
-#: src/Admin/Strings.php:495
+#: src/Admin/Strings.php:608
 msgid "Keeping unsent emails is turned off in Settings."
 msgstr ""
 
-#: src/Admin/Strings.php:496
+#: src/Admin/Strings.php:609
 msgid "No email is waiting."
 msgstr ""
 
-#: src/Admin/Strings.php:497
+#: src/Admin/Strings.php:610
 msgid "The mail server cannot be reached right now. New emails are kept and sent later."
 msgstr ""
 
-#: src/Admin/Strings.php:498
+#: src/Admin/Strings.php:611
 msgid "Try sending now"
 msgstr ""
 
 #. translators: %s: number of emails
-#: src/Admin/Strings.php:500
+#: src/Admin/Strings.php:613
 #, php-format
 msgid "Emails still waiting: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:501
+#: src/Admin/Strings.php:614
 msgid "All waiting emails were sent."
 msgstr ""
 
-#: src/Admin/Strings.php:502
+#: src/Admin/Strings.php:615
 msgid "To"
 msgstr ""
 
-#: src/Admin/Strings.php:503
+#: src/Admin/Strings.php:616
 msgid "Subject"
 msgstr ""
 
-#: src/Admin/Strings.php:504
+#: src/Admin/Strings.php:617
 msgid "Tries"
 msgstr ""
 
-#: src/Admin/Strings.php:505
+#: src/Admin/Strings.php:618
 msgid "Next try"
 msgstr ""
 
-#: src/Admin/Strings.php:506
+#: src/Admin/Strings.php:619
 msgid "Delete"
 msgstr ""
 
-#: src/Admin/Strings.php:508
+#: src/Admin/Strings.php:621
 msgid "Mail server for outages"
 msgstr ""
 
-#: src/Admin/Strings.php:509
+#: src/Admin/Strings.php:622
 msgid "If the site sends email through a server outside Iran, add a domestic mail server here, for example the one your host gives you. Rafoo uses it only while the international internet is down."
 msgstr ""
 
-#: src/Admin/Strings.php:511
+#: src/Admin/Strings.php:624
 msgid "Port"
 msgstr ""
 
-#: src/Admin/Strings.php:513
+#: src/Admin/Strings.php:626
 msgid "STARTTLS"
 msgstr ""
 
-#: src/Admin/Strings.php:514
+#: src/Admin/Strings.php:627
 msgid "SSL/TLS"
 msgstr ""
 
-#: src/Admin/Strings.php:515
+#: src/Admin/Strings.php:628
 msgid "None"
 msgstr ""
 
-#: src/Admin/Strings.php:516
+#: src/Admin/Strings.php:629
 msgid "Without encryption the password and emails cross the network in plain text. Use it only for a server on the same host."
 msgstr ""
 
-#: src/Admin/Strings.php:517 src/Backup/Installer.php:24
+#: src/Admin/Strings.php:630 src/Admin/Strings.php:935 src/Backup/Installer.php:40
 msgid "Username"
 msgstr ""
 
-#: src/Admin/Strings.php:518 src/Backup/Installer.php:25
+#: src/Admin/Strings.php:631 src/Backup/Installer.php:41
 msgid "Password"
 msgstr ""
 
-#: src/Admin/Strings.php:519
+#: src/Admin/Strings.php:632 src/Admin/Strings.php:925
 msgid "Saved. Leave empty to keep it."
 msgstr ""
 
-#: src/Admin/Strings.php:520
+#: src/Admin/Strings.php:633
 msgid "Sender address (optional)"
 msgstr ""
 
-#: src/Admin/Strings.php:521
+#: src/Admin/Strings.php:634
 msgid "Many servers only accept emails from their own domain. If so, enter an address on that domain."
 msgstr ""
 
-#: src/Admin/Strings.php:522
+#: src/Admin/Strings.php:635
 msgid "Save mail server"
 msgstr ""
 
-#: src/Admin/Strings.php:523
+#: src/Admin/Strings.php:636
 msgid "Mail server saved."
 msgstr ""
 
-#: src/Admin/Strings.php:525
+#: src/Admin/Strings.php:638
 msgid "Mail server removed."
 msgstr ""
 
 #. translators: %s: email address
-#: src/Admin/Strings.php:527
+#: src/Admin/Strings.php:640
 #, php-format
 msgid "Send a test to %s"
 msgstr ""
 
-#: src/Admin/Strings.php:528
+#: src/Admin/Strings.php:641
 msgid "Test email sent. Check the inbox."
 msgstr ""
 
-#: src/Admin/Strings.php:529
+#: src/Admin/Strings.php:642
 msgid "Save changes"
 msgstr ""
 
-#: src/Admin/Strings.php:531
+#: src/Admin/Strings.php:644
 msgid "Send a suggestion"
 msgstr ""
 
-#: src/Admin/Strings.php:532
+#: src/Admin/Strings.php:645
 msgid "Tell the Rafoo team what is missing or what went wrong."
 msgstr ""
 
-#: src/Admin/Strings.php:533
+#: src/Admin/Strings.php:646
 msgid "Message"
 msgstr ""
 
-#: src/Admin/Strings.php:534
+#: src/Admin/Strings.php:647
 msgid "Email or phone (optional)"
 msgstr ""
 
-#: src/Admin/Strings.php:535
+#: src/Admin/Strings.php:648
 msgid "Only if you would like an answer."
 msgstr ""
 
-#: src/Admin/Strings.php:536
+#: src/Admin/Strings.php:649
 msgid "Your message is sent to rafoo.ir with the versions of WordPress, PHP and Rafoo. Nothing is sent until you press Send."
 msgstr ""
 
-#: src/Admin/Strings.php:537
+#: src/Admin/Strings.php:650
 msgid "Please write a little more."
 msgstr ""
 
-#: src/Admin/Strings.php:538
+#: src/Admin/Strings.php:651
 msgid "Thank you. Your message was sent."
 msgstr ""
 
-#: src/Admin/Strings.php:539
+#: src/Admin/Strings.php:652
 msgid "Send"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:542
+#: src/Admin/Strings.php:655
 #, php-format
 msgid "%s min"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:544
+#: src/Admin/Strings.php:657
 #, php-format
 msgid "%s h"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:546
+#: src/Admin/Strings.php:659
 #, php-format
 msgid "%s days"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:548
+#: src/Admin/Strings.php:661
 #, php-format
 msgid "%s B"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:550
+#: src/Admin/Strings.php:663
 #, php-format
 msgid "%s KB"
 msgstr ""
 
 #. translators: %s: number
-#: src/Admin/Strings.php:552
+#: src/Admin/Strings.php:665
 #, php-format
 msgid "%s MB"
 msgstr ""
 
-#: src/Admin/Strings.php:553
+#. translators: %s: number
+#: src/Admin/Strings.php:667
+#, php-format
+msgid "%s GB"
+msgstr ""
+
+#: src/Admin/Strings.php:668
 msgid "Browser and internal requests"
 msgstr ""
 
-#: src/Admin/Strings.php:555
+#: src/Admin/Strings.php:670
 msgid "During an outage, requests that scripts make in the visitor's browser to unreachable servers fail at once instead of hanging. Hosts on the block list are always stopped."
 msgstr ""
 
-#: src/Admin/Strings.php:556
+#: src/Admin/Strings.php:671
 msgid "Merge repeated requests"
 msgstr ""
 
-#: src/Admin/Strings.php:557
+#: src/Admin/Strings.php:672
 msgid "When a page asks the site's own AJAX or REST address for the same thing several times at once, it is sent once and the answer is shared."
 msgstr ""
 
-#: src/Admin/Strings.php:558
+#: src/Admin/Strings.php:673
 msgid "WordPress Heartbeat"
 msgstr ""
 
-#: src/Admin/Strings.php:559
+#: src/Admin/Strings.php:674
 msgid "Smart"
 msgstr ""
 
-#: src/Admin/Strings.php:560
+#: src/Admin/Strings.php:675
 msgid "Every 60 seconds in editors, every 120 seconds elsewhere. Autosave and post locks keep working."
 msgstr ""
 
-#: src/Admin/Strings.php:561
+#: src/Admin/Strings.php:676
 msgid "WordPress default"
 msgstr ""
 
-#: src/Admin/Strings.php:562
+#: src/Admin/Strings.php:677
 msgid "Unchanged, usually every 15 to 60 seconds."
 msgstr ""
 
-#: src/Admin/Strings.php:563
+#: src/Admin/Strings.php:678
 msgid "Block list"
 msgstr ""
 
-#: src/Admin/Strings.php:564
+#: src/Admin/Strings.php:679
 msgid "These servers or addresses are always blocked: on the server, in the page and in the browser. One per line: example.com, *.example.com or the start of a full address."
 msgstr ""
 
-#: src/Admin/Strings.php:565
+#: src/Admin/Strings.php:680
 msgid "Scan as my account too"
 msgstr ""
 
-#: src/Admin/Strings.php:566
+#: src/Admin/Strings.php:681
 msgid "The manual scan also opens the first pages with your login, so files loaded only for signed-in users are found."
 msgstr ""
 
-#: src/Admin/Strings.php:567
+#: src/Admin/Strings.php:682
 msgid "Block"
 msgstr ""
 
-#: src/Admin/Strings.php:568
+#: src/Admin/Strings.php:683
 msgid "Unblock"
 msgstr ""
 
-#: src/Admin/Strings.php:569
+#: src/Admin/Strings.php:684
 msgid "Blocked"
 msgstr ""
 
-#: src/Admin/Strings.php:570
+#: src/Admin/Strings.php:685
 msgid "Pause Rafoo"
 msgstr ""
 
-#: src/Admin/Strings.php:571
+#: src/Admin/Strings.php:686
 msgid "Rafoo is active and makes the changes chosen in the settings."
 msgstr ""
 
-#: src/Admin/Strings.php:572
+#: src/Admin/Strings.php:687
 msgid "Rafoo is paused. The site works as if Rafoo were not installed."
 msgstr ""
 
-#: src/Admin/Strings.php:573
+#: src/Admin/Strings.php:688
 msgid "Pause"
 msgstr ""
 
-#: src/Admin/Strings.php:574
+#: src/Admin/Strings.php:689
 msgid "Resume Rafoo"
 msgstr ""
 
-#: src/Admin/Strings.php:575
+#: src/Admin/Strings.php:690
 msgid "While paused, connection checks, local copies, backups and the monitoring engine keep running."
 msgstr ""
 
-#: src/Admin/Strings.php:578
+#: src/Admin/Strings.php:693
 msgid "Rafoo was paused"
 msgstr ""
 
-#: src/Admin/Strings.php:579
+#: src/Admin/Strings.php:694
 msgid "Rafoo resumed"
 msgstr ""
 
 #. translators: %s: name of the setting or section
-#: src/Admin/Strings.php:581
+#: src/Admin/Strings.php:696
 #, php-format
 msgid "Help: %s"
 msgstr ""
 
-#: src/Admin/Strings.php:582
+#: src/Admin/Strings.php:697
 msgid "Chooses when copies on your server replace CDN files. Always: faster pages every day. Outage only: nothing changes while the internet works."
 msgstr ""
 
-#: src/Admin/Strings.php:583
+#: src/Admin/Strings.php:698
 msgid "Also finds CDN addresses that themes and builders such as Elementor write directly into the page HTML. It adds a little processing to each page."
 msgstr ""
 
-#: src/Admin/Strings.php:584
+#: src/Admin/Strings.php:699
 msgid "Copies Google Fonts to your server. Text keeps its font during an outage and pages do not wait for Google."
 msgstr ""
 
-#: src/Admin/Strings.php:585
+#: src/Admin/Strings.php:700
 msgid "During an outage, turns off WordPress parts that call outside servers: emoji, the font library, remote patterns and the dashboard news."
 msgstr ""
 
-#: src/Admin/Strings.php:586
+#: src/Admin/Strings.php:701
 msgid "The manual scan also opens three pages with your login. Files that appear only for signed-in users, like the admin bar or a page builder, get local copies too."
 msgstr ""
 
-#: src/Admin/Strings.php:587
+#: src/Admin/Strings.php:702
 msgid "A tiny script at the top of each page stops browser requests to unreachable servers during an outage, and to blocked hosts always. Scripts get an instant error instead of waiting."
 msgstr ""
 
-#: src/Admin/Strings.php:588
+#: src/Admin/Strings.php:703
 msgid "Identical requests that a page sends to its own admin-ajax or REST at the same moment go out once. Server load drops; form posts and saves are never merged."
 msgstr ""
 
-#: src/Admin/Strings.php:589
+#: src/Admin/Strings.php:704
 msgid "WordPress sends a background request every few seconds while a page is open. Smart mode slows it down to cut server load, without breaking autosave or post locks."
 msgstr ""
 
-#: src/Admin/Strings.php:590
+#: src/Admin/Strings.php:705
 msgid "For services you never want, like an ad or chat script that slows the site. Everything from these addresses is stopped, with or without internet."
 msgstr ""
 
-#: src/Admin/Strings.php:591
+#: src/Admin/Strings.php:706
 msgid "Replaces Gravatar pictures with simple letter avatars made on your server, so comment lists load without a foreign server."
 msgstr ""
 
-#: src/Admin/Strings.php:592
+#: src/Admin/Strings.php:707
 msgid "Uses Rafoo's own captcha instead of reCAPTCHA, hCaptcha or Turnstile. Login and forms keep working and stay protected when Google or Cloudflare is unreachable."
 msgstr ""
 
-#: src/Admin/Strings.php:593
+#: src/Admin/Strings.php:708
 msgid "Removes Google Analytics, Tag Manager, pixels and similar trackers from pages. Visits are not recorded while they are removed."
 msgstr ""
 
-#: src/Admin/Strings.php:594
+#: src/Admin/Strings.php:709
 msgid "During an outage, YouTube, Vimeo and Google Maps frames become a light box with a link, so the page does not wait for them."
 msgstr ""
 
-#: src/Admin/Strings.php:595
+#: src/Admin/Strings.php:710
 msgid "During an outage, hides Google and Facebook login buttons that cannot work, so users sign in the normal way."
 msgstr ""
 
-#: src/Admin/Strings.php:596
+#: src/Admin/Strings.php:711
 msgid "Emails that fail because the mail server is unreachable are kept and sent again later instead of being lost."
 msgstr ""
 
-#: src/Admin/Strings.php:597
+#: src/Admin/Strings.php:712
 msgid "Keeps a copy before each plugin or theme update and checks the site after it. If the site breaks, that update is undone automatically."
 msgstr ""
 
-#: src/Admin/Strings.php:598
+#: src/Admin/Strings.php:713
 msgid "Makes scheduled backups of files and the database to the destinations you choose. After a serious problem, a backup is the way back."
 msgstr ""
 
-#: src/Admin/Strings.php:599
+#: src/Admin/Strings.php:714
 msgid "After the first full backup, later ones keep only changed files. Faster and smaller."
 msgstr ""
 
-#: src/Admin/Strings.php:600
+#: src/Admin/Strings.php:715
 msgid "Also keeps the latest backup on this host. Good for a quick restore, but it uses disk space."
 msgstr ""
 
-#: src/Admin/Strings.php:601
+#: src/Admin/Strings.php:716
+msgid "Each part is finished and sent on its own, so a very large site never needs one huge file. Smaller parts are safer on weak hosts; larger parts mean fewer files."
+msgstr ""
+
+#: src/Admin/Strings.php:717
+msgid "For large folders you do not need in the backup, such as old videos or another plugin's cache. After a change to this list the next backup is a full one."
+msgstr ""
+
+#: src/Admin/Strings.php:718
 msgid "Records which plugin or theme connects to which outside server, how often and how long it takes. Use it to find what slows the site."
 msgstr ""
 
-#: src/Admin/Strings.php:602
+#: src/Admin/Strings.php:719
 msgid "Servers outside Iran that should still be tried during an outage, such as a payment or SMS service that works for you."
 msgstr ""
 
-#: src/Admin/Strings.php:603
+#: src/Admin/Strings.php:720
 msgid "Sends an anonymous weekly report that helps improve Rafoo and the Iranian mirror. Nothing identifies the site; it is off by default."
 msgstr ""
 
-#: src/Admin/Strings.php:604
+#: src/Admin/Strings.php:721
 msgid "Automatic follows the internet checks. Use a fixed mode to test the site as if in an outage, or when detection is wrong."
 msgstr ""
 
-#: src/Admin/Strings.php:605
+#: src/Admin/Strings.php:722
 msgid "How Rafoo copies CDN files and fonts and serves them from your own server."
 msgstr ""
 
-#: src/Admin/Strings.php:606
+#: src/Admin/Strings.php:723
 msgid "Speed controls inside the visitor's browser and for requests the site sends to itself."
 msgstr ""
 
-#: src/Admin/Strings.php:607
+#: src/Admin/Strings.php:724
 msgid "Replacements for outside services that cannot load during an outage."
 msgstr ""
 
-#: src/Admin/Strings.php:608
+#: src/Admin/Strings.php:725
 msgid "Protection against broken updates and data loss."
 msgstr ""
 
-#: src/Admin/Strings.php:609
+#: src/Admin/Strings.php:726
 msgid "What the site's server sends to outside servers, and which servers stay allowed during an outage."
 msgstr ""
 
-#: src/Admin/Strings.php:610
+#: src/Admin/Strings.php:727
 msgid "What Rafoo may send to rafoo.ir. By default, nothing that identifies the site."
 msgstr ""
 
-#: src/Admin/Strings.php:611
+#: src/Admin/Strings.php:728
 msgid "Turns off every change Rafoo makes to pages and requests in one click, to test or to find a conflict. The same button turns it back on."
 msgstr ""
 
-#: src/Admin/Strings.php:612
+#: src/Admin/Strings.php:729
 msgid "The latest changes of mode and settings and other important actions, newest first."
 msgstr ""
 
-#: src/Admin/Strings.php:613
+#: src/Admin/Strings.php:730
 msgid "CDN files Rafoo found on the site and their local copies. Scanning finds new ones; downloading fetches missing copies."
 msgstr ""
 
-#: src/Admin/Strings.php:614
+#: src/Admin/Strings.php:731
 msgid "Rafoo checks servers inside and outside Iran every minute to know whether the international internet is cut."
 msgstr ""
 
-#: src/Admin/Strings.php:615
+#: src/Admin/Strings.php:732
 msgid "A signed notice from rafoo.ir about the internet state, used together with the site's own checks."
 msgstr ""
 
-#: src/Admin/Strings.php:616
+#: src/Admin/Strings.php:733
 msgid "Servers that did not answer recently are skipped for a few minutes, so pages do not wait for them again."
 msgstr ""
 
-#: src/Admin/Strings.php:617
+#: src/Admin/Strings.php:734
 msgid "Every outside server the site contacted, by plugin or theme. Block stops a host everywhere; the same button opens it again."
 msgstr ""
 
-#: src/Admin/Strings.php:618
+#: src/Admin/Strings.php:735
 msgid "Emails waiting to be sent again after the mail server was unreachable."
 msgstr ""
 
-#: src/Admin/Strings.php:619
+#: src/Admin/Strings.php:736
 msgid "An optional SMTP server inside Iran, used when the normal mail server is unreachable."
 msgstr ""
 
-#: src/Admin/Strings.php:620
+#: src/Admin/Strings.php:737
 msgid "The monitoring engine checks your site from 5 points inside and 5 outside Iran through a network of Rafoo sites. Joining is optional."
 msgstr ""
 
-#: src/Admin/Strings.php:621
+#: src/Admin/Strings.php:738
 msgid "Each point is another Rafoo site that checks yours. Green means your site opened from there."
 msgstr ""
 
-#: src/Admin/Strings.php:622
+#: src/Admin/Strings.php:739
 msgid "How reachable the site was each day, from inside and outside Iran."
 msgstr ""
 
-#: src/Admin/Strings.php:623
+#: src/Admin/Strings.php:740
 msgid "How often your site is checked. Leaving deletes your membership data."
 msgstr ""
 
-#: src/Admin/Strings.php:624
+#: src/Admin/Strings.php:741
 msgid "In return, your site checks a few other members. It uses almost no resources."
 msgstr ""
 
-#: src/Admin/Strings.php:625
+#: src/Admin/Strings.php:742
 msgid "What to check when the results look wrong."
 msgstr ""
 
-#: src/Admin/Strings.php:626
+#: src/Admin/Strings.php:743
 msgid "Updates from the Iranian mirror for what is installed on this site."
 msgstr ""
 
-#: src/Admin/Strings.php:627
+#: src/Admin/Strings.php:744
 msgid "Earlier versions kept by safe updates. Restoring puts one back and checks the site."
 msgstr ""
 
-#: src/Admin/Strings.php:628
+#: src/Admin/Strings.php:745
 msgid "Make a backup now or follow the job that is running."
 msgstr ""
 
-#: src/Admin/Strings.php:629
-msgid "Backups made so far, where each one is stored, and restore or download."
+#: src/Admin/Strings.php:746
+msgid "Backups made so far and where each one is kept. Check one to make sure it can be restored, restore it or download its parts."
 msgstr ""
 
-#: src/Admin/Strings.php:630
+#: src/Admin/Strings.php:747
 msgid "When automatic backups run and what they include."
 msgstr ""
 
-#: src/Admin/Strings.php:631
+#: src/Admin/Strings.php:748
 msgid "Backups are encrypted with this password. Without it they cannot be restored, so keep it somewhere safe."
 msgstr ""
 
-#: src/Admin/Strings.php:632
+#: src/Admin/Strings.php:749
 msgid "Other servers that receive a copy of each backup over SFTP, FTPS or FTP."
 msgstr ""
 
-#: src/Admin/Strings.php:633
+#: src/Admin/Strings.php:750
 msgid "Move the whole site to another host with a short code. Files go directly between the two sites."
 msgstr ""
 
-#: src/Admin/Strings.php:634
+#: src/Admin/Strings.php:751
 msgid "Send a question, an idea or a bug report to the Rafoo team."
 msgstr ""
 
-#: src/Admin/Strings.php:635
+#: src/Admin/Strings.php:752
 msgid "Network"
 msgstr ""
 
-#: src/Admin/Strings.php:636
+#: src/Admin/Strings.php:753
 msgid "These settings apply to the sites of this network. The connection state is shared by all sites; files, logs and backups are managed on each site."
 msgstr ""
 
-#: src/Admin/Strings.php:637
+#: src/Admin/Strings.php:754
 msgid "Network policy"
 msgstr ""
 
 #. translators: %d: number of sites
-#: src/Admin/Strings.php:639
+#: src/Admin/Strings.php:756
 #, php-format
 msgid "Sites in this network: %d"
 msgstr ""
 
-#: src/Admin/Strings.php:640
+#: src/Admin/Strings.php:757
 msgid "How sites use these settings"
 msgstr ""
 
-#: src/Admin/Strings.php:641
+#: src/Admin/Strings.php:758
 msgid "Starting point for new sites"
 msgstr ""
 
-#: src/Admin/Strings.php:642
+#: src/Admin/Strings.php:759
 msgid "Sites that have not saved their own Rafoo settings use these. Site administrators can still change them."
 msgstr ""
 
-#: src/Admin/Strings.php:643
+#: src/Admin/Strings.php:760
 msgid "Apply to every site"
 msgstr ""
 
-#: src/Admin/Strings.php:644
+#: src/Admin/Strings.php:761
 msgid "Every site uses these settings and site administrators can only see them. Privacy and backup settings stay with each site."
 msgstr ""
 
-#: src/Admin/Strings.php:645
+#: src/Admin/Strings.php:762
 msgid "The network administrator manages these settings for every site. Privacy and backup settings are still yours."
 msgstr ""
 
-#: src/Admin/Strings.php:646
+#: src/Admin/Strings.php:763
 msgid "Open network settings"
 msgstr ""
 
-#: src/Admin/Strings.php:647
+#: src/Admin/Strings.php:764
 msgid "Save for the network"
 msgstr ""
 
-#: src/Admin/Strings.php:648
+#: src/Admin/Strings.php:765
 msgid "Network settings changed"
 msgstr ""
 
-#: src/Admin/Strings.php:649
+#: src/Admin/Strings.php:766
 msgid "Settings for every site of the network, managed in one place."
 msgstr ""
 
-#: src/Admin/Strings.php:650
+#: src/Admin/Strings.php:767
 msgid "A starting point only fills in sites that have not chosen their own settings. Applying to every site overrides them and locks the form on each site."
 msgstr ""
 
-#: src/Admin/Strings.php:651
+#: src/Admin/Strings.php:768
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: src/Admin/Strings.php:652
+#: src/Admin/Strings.php:769
 msgid "The site could not be reached. Check your connection and try again."
 msgstr ""
 
-#: src/Admin/Strings.php:659
+#: src/Admin/Strings.php:771
+msgid "Multiple hosts"
+msgstr ""
+
+#: src/Admin/Strings.php:772
+msgid "Multiple hosts with geo DNS"
+msgstr ""
+
+#: src/Admin/Strings.php:773
+msgid "Keep full copies of the site on up to three more hosts in other countries. Every visitor reaches the nearest healthy host, and search engines still see one site at one address."
+msgstr ""
+
+#: src/Admin/Strings.php:774
+msgid "All hosts answer for the same domain. DNS sends each visitor to the nearest host. Copies follow the main host within seconds and send logins, comments and orders to the main host."
+msgstr ""
+
+#: src/Admin/Strings.php:775 src/Geo/Nodes.php:111
+msgid "Hosts in several countries are not available for a WordPress network (Multisite) yet."
+msgstr ""
+
+#: src/Admin/Strings.php:776
+msgid "One address for everyone: every host serves your own domain, so there is no duplicate content for Google."
+msgstr ""
+
+#: src/Admin/Strings.php:777
+msgid "If the international internet is cut, visitors in Iran keep reaching the host inside Iran, and visitors abroad reach the copies."
+msgstr ""
+
+#: src/Admin/Strings.php:778
+msgid "Copies are read-only. Logins, comments, forms and orders are sent to the main host, so nothing is lost or written twice."
+msgstr ""
+
+#: src/Admin/Strings.php:779
+msgid "Rafoo checks every host from the other hosts each minute and takes a broken copy out of DNS by itself."
+msgstr ""
+
+#: src/Admin/Strings.php:780
+msgid "This host is a copy"
+msgstr ""
+
+#: src/Admin/Strings.php:781
+msgid "The copy only receives changes from the main host. Its own changes would be overwritten, so manage the site on the main host."
+msgstr ""
+
+#. translators: %s: site address
+#: src/Admin/Strings.php:783
+#, php-format
+msgid "This host keeps a copy of %s and follows every change of the main host."
+msgstr ""
+
+#: src/Admin/Strings.php:784
+msgid "Receiving the site"
+msgstr ""
+
+#: src/Admin/Strings.php:785
+msgid "Waiting for the main host to send the site. This starts by itself in a moment."
+msgstr ""
+
+#: src/Admin/Strings.php:786 src/Admin/Strings.php:863
+msgid "Main host"
+msgstr ""
+
+#: src/Admin/Strings.php:787
+msgid "Last contact"
+msgstr ""
+
+#: src/Admin/Strings.php:788
+msgid "Last sync"
+msgstr ""
+
+#: src/Admin/Strings.php:789
+msgid "Last sync took"
+msgstr ""
+
+#. translators: %d: number of seconds
+#: src/Admin/Strings.php:791
+#, php-format
+msgid "%d seconds"
+msgstr ""
+
+#: src/Admin/Strings.php:792
+msgid "Syncing now"
+msgstr ""
+
+#. translators: %s: error message
+#: src/Admin/Strings.php:794
+#, php-format
+msgid "Sync problem: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:795
+msgid "Manage the hosts, DNS and settings from the Rafoo dashboard of the main host."
+msgstr ""
+
+#: src/Admin/Strings.php:796
+msgid "Sync now"
+msgstr ""
+
+#: src/Admin/Strings.php:797
+msgid "Leave the group"
+msgstr ""
+
+#: src/Admin/Strings.php:798
+msgid "Ends the group of hosts. The site itself and its content stay as they are."
+msgstr ""
+
+#: src/Admin/Strings.php:799
+msgid "Stop using copies. DNS is pointed back to this host only."
+msgstr ""
+
+#: src/Admin/Strings.php:800
+msgid "Stop being a copy. This host keeps the content it has now but no longer follows the main host."
+msgstr ""
+
+#: src/Admin/Strings.php:801
+msgid "Every copy leaves the group and DNS is set to answer with this host only. Visitors abroad will reach this host again."
+msgstr ""
+
+#: src/Admin/Strings.php:802
+msgid "Remove this host from DNS first on the main host, or visitors may still reach an outdated copy."
+msgstr ""
+
+#: src/Admin/Strings.php:803
+msgid "Yes, leave the group"
+msgstr ""
+
+#: src/Admin/Strings.php:804
+msgid "End the group"
+msgstr ""
+
+#: src/Admin/Strings.php:805
+msgid "Stop being a copy"
+msgstr ""
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:807
+#, php-format
+msgid "Copying the site failed: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:808
+msgid "Start"
+msgstr ""
+
+#: src/Admin/Strings.php:809
+msgid "Set up the main host first. Then prepare each copy on its own host and connect it with a code."
+msgstr ""
+
+#: src/Admin/Strings.php:810
+msgid "Choose the role of this host."
+msgstr ""
+
+#: src/Admin/Strings.php:811
+msgid "Join code of this host"
+msgstr ""
+
+#: src/Admin/Strings.php:812
+msgid "Copy this code"
+msgstr ""
+
+#: src/Admin/Strings.php:813
+msgid "This host is waiting for the main host. The code is shown only once; make a new one if you do not have it."
+msgstr ""
+
+#: src/Admin/Strings.php:814
+msgid "On the main site, open Rafoo, then Multiple hosts, and paste this code under \"Add a copy\". Everything on this site will then be replaced with the main site."
+msgstr ""
+
+#. translators: %s: technical address
+#: src/Admin/Strings.php:816
+#, php-format
+msgid "Technical address of this host: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:817
+msgid "Cancel"
+msgstr ""
+
+#: src/Admin/Strings.php:818
+msgid "Role of this host"
+msgstr ""
+
+#: src/Admin/Strings.php:819
+msgid "This is the main site"
+msgstr ""
+
+#: src/Admin/Strings.php:820
+msgid "The site you manage and edit, usually on a host inside Iran."
+msgstr ""
+
+#: src/Admin/Strings.php:821
+msgid "This host will be a copy"
+msgstr ""
+
+#: src/Admin/Strings.php:822
+msgid "A new WordPress on another host that will receive the whole main site."
+msgstr ""
+
+#: src/Admin/Strings.php:823
+msgid "Technical address of this host"
+msgstr ""
+
+#: src/Admin/Strings.php:824
+msgid "A subdomain that always opens this host, for example https://ir.example.com. Visitors never see it."
+msgstr ""
+
+#: src/Admin/Strings.php:826
+msgid "Only for you, to tell the hosts apart."
+msgstr ""
+
+#: src/Admin/Strings.php:827
+msgid "Iran server"
+msgstr ""
+
+#: src/Admin/Strings.php:828
+msgid "Germany server"
+msgstr ""
+
+#: src/Admin/Strings.php:829
+msgid "Country of the host"
+msgstr ""
+
+#: src/Admin/Strings.php:830
+msgid "Where the server is. Visitors of this country and of nearby countries are sent here."
+msgstr ""
+
+#: src/Admin/Strings.php:831
+msgid "Set up as the main host"
+msgstr ""
+
+#: src/Admin/Strings.php:832
+msgid "Everything on this WordPress (posts, users, plugins, files and settings) will be replaced with the main site. Use a new, empty installation."
+msgstr ""
+
+#: src/Admin/Strings.php:833
+msgid "The subdomain this WordPress was installed on, for example https://de.example.com."
+msgstr ""
+
+#. translators: %s: database table prefix
+#: src/Admin/Strings.php:835
+#, php-format
+msgid "The table prefix here is %s and wp-config.php is not writable. If the main site uses another prefix, make wp-config.php writable first so Rafoo can match it."
+msgstr ""
+
+#: src/Admin/Strings.php:836
+msgid "Make a join code"
+msgstr ""
+
+#: src/Admin/Strings.php:837
+msgid "Copying"
+msgstr ""
+
+#: src/Admin/Strings.php:838
+msgid "Copy failed"
+msgstr ""
+
+#: src/Admin/Strings.php:839
+msgid "Out of DNS"
+msgstr ""
+
+#: src/Admin/Strings.php:840
+msgid "Not answering"
+msgstr ""
+
+#: src/Admin/Strings.php:841
+msgid "Healthy"
+msgstr ""
+
+#: src/Admin/Strings.php:843
+msgid "Not checked yet"
+msgstr ""
+
+#. translators: %d: milliseconds
+#: src/Admin/Strings.php:845
+#, php-format
+msgid "Answers in %d ms"
+msgstr ""
+
+#. translators: 1: number of failed checks, 2: time of last answer
+#: src/Admin/Strings.php:847
+#, php-format
+msgid "No answer %1$d times, last answer %2$s"
+msgstr ""
+
+#. translators: %s: host name
+#: src/Admin/Strings.php:849
+#, php-format
+msgid "%s sees it"
+msgstr ""
+
+#. translators: %s: host name
+#: src/Admin/Strings.php:851
+#, php-format
+msgid "%s cannot reach it"
+msgstr ""
+
+#: src/Admin/Strings.php:852
+msgid "Source of all changes"
+msgstr ""
+
+#. translators: %s: relative time
+#: src/Admin/Strings.php:854
+#, php-format
+msgid "Up to date, %s"
+msgstr ""
+
+#. translators: %s: relative time
+#: src/Admin/Strings.php:856
+#, php-format
+msgid "Catching up, last sync %s"
+msgstr ""
+
+#: src/Admin/Strings.php:857
+msgid "Hosts"
+msgstr ""
+
+#: src/Admin/Strings.php:858
+msgid "Health is checked every minute from each host. A copy that does not answer three times in a row, and that no other host can reach, is taken out of DNS. The main host always stays in DNS."
+msgstr ""
+
+#. translators: %s: site address
+#: src/Admin/Strings.php:860
+#, php-format
+msgid "All hosts answer for %s."
+msgstr ""
+
+#: src/Admin/Strings.php:861
+msgid "The copies were told to sync."
+msgstr ""
+
+#: src/Admin/Strings.php:862
+msgid "Copying the site to the new host"
+msgstr ""
+
+#: src/Admin/Strings.php:864
+msgid "Copy host"
+msgstr ""
+
+#: src/Admin/Strings.php:865
+msgid "You are here"
+msgstr ""
+
+#: src/Admin/Strings.php:866
+msgid "IP address"
+msgstr ""
+
+#: src/Admin/Strings.php:867
+msgid "From this host"
+msgstr ""
+
+#: src/Admin/Strings.php:868
+msgid "Sync"
+msgstr ""
+
+#: src/Admin/Strings.php:869
+msgid "Rafoo version"
+msgstr ""
+
+#: src/Admin/Strings.php:870
+msgid "The international internet is down on this host."
+msgstr ""
+
+#. translators: %s: list of countries and regions
+#: src/Admin/Strings.php:872
+#, php-format
+msgid "Visitors sent here: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:873
+msgid "everyone else"
+msgstr ""
+
+#: src/Admin/Strings.php:874
+msgid "The IP address of this host is not known, so DNS cannot point to it. Edit the host and enter its IP."
+msgstr ""
+
+#. translators: %s: reason
+#: src/Admin/Strings.php:876
+#, php-format
+msgid "The first copy did not finish (%s). Remove this host, make a new code on it and add it again."
+msgstr ""
+
+#: src/Admin/Strings.php:877
+msgid "Edit"
+msgstr ""
+
+#: src/Admin/Strings.php:879
+msgid "Leave the IP empty to use the address the technical subdomain points to. Enter it if the subdomain is behind a CDN."
+msgstr ""
+
+#. translators: %s: host name
+#: src/Admin/Strings.php:881
+#, php-format
+msgid "%s leaves the group, is taken out of DNS and stops syncing. Its content stays on that host."
+msgstr ""
+
+#: src/Admin/Strings.php:882
+msgid "The host was removed."
+msgstr ""
+
+#: src/Admin/Strings.php:883
+msgid "Remove the host"
+msgstr ""
+
+#. translators: 1: number of files, 2: relative time
+#: src/Admin/Strings.php:885
+#, php-format
+msgid "File list: %1$s files, updated %2$s"
+msgstr ""
+
+#: src/Admin/Strings.php:886
+msgid "Add a copy"
+msgstr ""
+
+#: src/Admin/Strings.php:887
+msgid "The whole site is sent to the new host once, directly and encrypted. After that only changes are sent."
+msgstr ""
+
+#. translators: %d: maximum number of copies
+#: src/Admin/Strings.php:889
+#, php-format
+msgid "Up to %d copies on other hosts."
+msgstr ""
+
+#: src/Admin/Strings.php:890
+msgid "This site already has the most copies allowed."
+msgstr ""
+
+#: src/Admin/Strings.php:891
+msgid "Join code from the new host"
+msgstr ""
+
+#: src/Admin/Strings.php:892
+msgid "IP address (optional)"
+msgstr ""
+
+#: src/Admin/Strings.php:893
+msgid "The host was added. The site is being copied to it."
+msgstr ""
+
+#: src/Admin/Strings.php:894
+msgid "Add and copy the site"
+msgstr ""
+
+#: src/Admin/Strings.php:895
+msgid "How visitors reach the nearest host"
+msgstr ""
+
+#: src/Admin/Strings.php:896
+msgid "A DNS service with an API is the most automatic way. The control panel way needs no other service. Manual works with any DNS that has geography rules."
+msgstr ""
+
+#: src/Admin/Strings.php:897
+msgid "Rafoo decides which host is healthy. The DNS only answers by the visitor's location."
+msgstr ""
+
+#: src/Admin/Strings.php:898
+msgid "Routing method"
+msgstr ""
+
+#: src/Admin/Strings.php:899 src/Admin/Strings.php:905
+msgid "DNS service"
+msgstr ""
+
+#: src/Admin/Strings.php:900
+msgid "Rafoo creates and updates the records itself through the API."
+msgstr ""
+
+#: src/Admin/Strings.php:901
+msgid "Host control panels"
+msgstr ""
+
+#: src/Admin/Strings.php:902
+msgid "cPanel or DirectAdmin. Each host's own DNS answers with that host."
+msgstr ""
+
+#: src/Admin/Strings.php:903
+msgid "Manual"
+msgstr ""
+
+#: src/Admin/Strings.php:904
+msgid "You create the records in any DNS. Rafoo shows them and checks them."
+msgstr ""
+
+#: src/Admin/Strings.php:906
+msgid "ArvanCloud"
+msgstr ""
+
+#: src/Admin/Strings.php:907
+msgid "Iranian CDN and DNS with servers inside and outside Iran. Best when most visitors are in Iran."
+msgstr ""
+
+#: src/Admin/Strings.php:908
+msgid "Gcore DNS"
+msgstr ""
+
+#: src/Admin/Strings.php:909
+msgid "Global DNS. Geo balancing is included in the free plan."
+msgstr ""
+
+#: src/Admin/Strings.php:910
+msgid "Cloudflare"
+msgstr ""
+
+#: src/Admin/Strings.php:911
+msgid "Global DNS. Geo steering needs the paid Load Balancing add-on."
+msgstr ""
+
+#: src/Admin/Strings.php:912
+msgid "Amazon Route 53"
+msgstr ""
+
+#: src/Admin/Strings.php:913
+msgid "Amazon DNS with geolocation records. Paid per zone and per query."
+msgstr ""
+
+#: src/Admin/Strings.php:914
+msgid "Bunny DNS"
+msgstr ""
+
+#: src/Admin/Strings.php:915
+msgid "Global DNS with smart geo routing. Billed by usage."
+msgstr ""
+
+#. translators: %s: name of the DNS service
+#: src/Admin/Strings.php:917
+#, php-format
+msgid "How to get the key for %s"
+msgstr ""
+
+#: src/Admin/Strings.php:918
+msgid "The key is kept encrypted on this host and on the copies, so a copy can update DNS when this host cannot be reached. Give it only the access listed."
+msgstr ""
+
+#: src/Admin/Strings.php:919
+msgid "API key"
+msgstr ""
+
+#: src/Admin/Strings.php:920 src/Admin/Strings.php:923 src/Admin/Strings.php:936
+msgid "API token"
+msgstr ""
+
+#: src/Admin/Strings.php:921
+msgid "Access key ID"
+msgstr ""
+
+#: src/Admin/Strings.php:922
+msgid "Secret access key"
+msgstr ""
+
+#: src/Admin/Strings.php:924
+msgid "Account API key"
+msgstr ""
+
+#: src/Admin/Strings.php:926
+msgid "Control panel of the hosts"
+msgstr ""
+
+#: src/Admin/Strings.php:927
+msgid "Rafoo uses a cPanel API token."
+msgstr ""
+
+#: src/Admin/Strings.php:928
+msgid "Rafoo uses a DirectAdmin login key."
+msgstr ""
+
+#: src/Admin/Strings.php:929
+msgid "The domain gets the nameservers of the main host and of the copies together. Each host's DNS answers with that host's own IP. Resolvers mostly ask the nearest nameserver, and when the border is closed each side only reaches its own nameserver."
+msgstr ""
+
+#: src/Admin/Strings.php:930
+msgid "How to make the login for each host"
+msgstr ""
+
+#: src/Admin/Strings.php:931
+msgid "A login is optional. For a host without one, create the records of its zone by hand from the table below."
+msgstr ""
+
+#. translators: %s: user name
+#: src/Admin/Strings.php:933
+#, php-format
+msgid "Login saved for %s"
+msgstr ""
+
+#: src/Admin/Strings.php:934
+msgid "Panel address"
+msgstr ""
+
+#: src/Admin/Strings.php:937
+msgid "Login key"
+msgstr ""
+
+#: src/Admin/Strings.php:938
+msgid "Your DNS must answer by the visitor's country or continent (geo DNS). If it cannot, use the control panel method instead."
+msgstr ""
+
+#: src/Admin/Strings.php:939
+msgid "Record lifetime (TTL)"
+msgstr ""
+
+#: src/Admin/Strings.php:940
+msgid "How long resolvers keep an answer. Shorter means a broken host leaves faster; 2 minutes is a good balance."
+msgstr ""
+
+#: src/Admin/Strings.php:942
+msgid "2 minutes"
+msgstr ""
+
+#: src/Admin/Strings.php:944
+msgid "10 minutes"
+msgstr ""
+
+#: src/Admin/Strings.php:945
+msgid "Test connection"
+msgstr ""
+
+#: src/Admin/Strings.php:946
+msgid "The DNS records were updated."
+msgstr ""
+
+#: src/Admin/Strings.php:947
+msgid "Update DNS now"
+msgstr ""
+
+#: src/Admin/Strings.php:948
+msgid "Save the changes first."
+msgstr ""
+
+#. translators: %s: DNS zone
+#: src/Admin/Strings.php:950
+#, php-format
+msgid "Connected, zone %s"
+msgstr ""
+
+#. translators: %s: list of nameservers
+#: src/Admin/Strings.php:952
+#, php-format
+msgid "nameservers: %s"
+msgstr ""
+
+#. translators: %s: relative time
+#: src/Admin/Strings.php:954
+#, php-format
+msgid "DNS records updated %s"
+msgstr ""
+
+#. translators: %s: host name
+#: src/Admin/Strings.php:956
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#. translators: %s: error message
+#: src/Admin/Strings.php:958
+#, php-format
+msgid "The DNS records could not be updated: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:959
+msgid "The records will be updated in a moment."
+msgstr ""
+
+#: src/Admin/Strings.php:960
+msgid "DNS records"
+msgstr ""
+
+#: src/Admin/Strings.php:961
+msgid "The technical subdomains always point to their own host. The main address answers by the visitor's location."
+msgstr ""
+
+#: src/Admin/Strings.php:962
+msgid "Rafoo creates these records in the DNS service and keeps them up to date."
+msgstr ""
+
+#: src/Admin/Strings.php:963
+msgid "The zone of each host. Rafoo writes them for hosts with a login; create the rest by hand."
+msgstr ""
+
+#: src/Admin/Strings.php:964
+msgid "Create these records in your DNS. Use geography rules for the main address."
+msgstr ""
+
+#: src/Admin/Strings.php:965
+msgid "Choose and save a routing method first."
+msgstr ""
+
+#. translators: %s: host name
+#: src/Admin/Strings.php:967
+#, php-format
+msgid "Zone on %s"
+msgstr ""
+
+#: src/Admin/Strings.php:968
+msgid "Record name"
+msgstr ""
+
+#: src/Admin/Strings.php:970
+msgid "Value"
+msgstr ""
+
+#: src/Admin/Strings.php:971
+msgid "Visitors from"
+msgstr ""
+
+#: src/Admin/Strings.php:972
+msgid "Host"
+msgstr ""
+
+#. translators: %s: site address
+#: src/Admin/Strings.php:974
+#, php-format
+msgid "Answers for %s"
+msgstr ""
+
+#: src/Admin/Strings.php:975
+msgid "Technical subdomains"
+msgstr ""
+
+#: src/Admin/Strings.php:976
+msgid "Nameservers"
+msgstr ""
+
+#: src/Admin/Strings.php:977
+msgid "At the domain registrar, set the nameservers to the ones of the DNS service (\"Test connection\" shows them)."
+msgstr ""
+
+#: src/Admin/Strings.php:978
+msgid "At the domain registrar, list the nameservers of the main host and of every copy together, for example two of the main host and one or two of each copy. Each host must already have the main domain added, so its DNS holds the zone."
+msgstr ""
+
+#: src/Admin/Strings.php:979
+msgid "Keep the nameservers of the DNS you use, and check that it answers by location."
+msgstr ""
+
+#: src/Admin/Strings.php:980
+msgid "Live DNS check"
+msgstr ""
+
+#: src/Admin/Strings.php:981
+msgid "Each host asks the nameservers of the domain directly. Different hosts may get different answers; that is how geo DNS works."
+msgstr ""
+
+#: src/Admin/Strings.php:982
+msgid "What the world sees for your domain, from every host."
+msgstr ""
+
+#: src/Admin/Strings.php:984
+msgid "Not checked yet."
+msgstr ""
+
+#. translators: %s: date and time
+#: src/Admin/Strings.php:986
+#, php-format
+msgid "Checked %s"
+msgstr ""
+
+#. translators: %s: host name
+#: src/Admin/Strings.php:988
+#, php-format
+msgid "Seen from %s"
+msgstr ""
+
+#: src/Admin/Strings.php:989
+msgid "No answer"
+msgstr ""
+
+#. translators: %s: DNS zone
+#: src/Admin/Strings.php:991
+#, php-format
+msgid "Zone %s"
+msgstr ""
+
+#: src/Admin/Strings.php:992
+msgid "The nameservers of the domain could not be found."
+msgstr ""
+
+#: src/Admin/Strings.php:993
+msgid "does not answer"
+msgstr ""
+
+#: src/Admin/Strings.php:994
+msgid "no A record"
+msgstr ""
+
+#: src/Admin/Strings.php:995
+msgid "One of your hosts"
+msgstr ""
+
+#: src/Admin/Strings.php:996
+msgid "Unknown address"
+msgstr ""
+
+#: src/Admin/Strings.php:997
+msgid "Correct"
+msgstr ""
+
+#. translators: %s: IP address
+#: src/Admin/Strings.php:999
+#, php-format
+msgid "Should be %s"
+msgstr ""
+
+#. translators: %s: list of IP addresses
+#: src/Admin/Strings.php:1001
+#, php-format
+msgid "This host's own resolver answers: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:1002
+msgid "Google"
+msgstr ""
+
+#: src/Admin/Strings.php:1003
+msgid "Bing"
+msgstr ""
+
+#: src/Admin/Strings.php:1004
+msgid "Yandex"
+msgstr ""
+
+#: src/Admin/Strings.php:1005
+msgid "Apple"
+msgstr ""
+
+#: src/Admin/Strings.php:1006
+msgid "Other bots"
+msgstr ""
+
+#: src/Admin/Strings.php:1007
+msgid "Search engines"
+msgstr ""
+
+#: src/Admin/Strings.php:1008
+msgid "Every host shows the same pages at the same address. The technical subdomains redirect to the main address and are marked noindex, so search engines see one site."
+msgstr ""
+
+#: src/Admin/Strings.php:1009
+msgid "Checks that every host looks the same to search engines, and how bots crawl each host."
+msgstr ""
+
+#: src/Admin/Strings.php:1010
+msgid "Run the checks"
+msgstr ""
+
+#: src/Admin/Strings.php:1011
+msgid "The checks have not run yet."
+msgstr ""
+
+#: src/Admin/Strings.php:1012
+msgid "Technical address redirects"
+msgstr ""
+
+#: src/Admin/Strings.php:1013
+msgid "Same robots.txt and sitemap"
+msgstr ""
+
+#: src/Admin/Strings.php:1014
+msgid "Canonical address"
+msgstr ""
+
+#: src/Admin/Strings.php:1015
+msgid "Home page indexable"
+msgstr ""
+
+#: src/Admin/Strings.php:1016
+msgid "OK"
+msgstr ""
+
+#: src/Admin/Strings.php:1017
+msgid "Problem"
+msgstr ""
+
+#: src/Admin/Strings.php:1018
+msgid "Different"
+msgstr ""
+
+#: src/Admin/Strings.php:1019
+msgid "Marked noindex"
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: src/Admin/Strings.php:1021
+#, php-format
+msgid "HTTP %d"
+msgstr ""
+
+#: src/Admin/Strings.php:1022
+msgid "Crawling in the last 7 days"
+msgstr ""
+
+#: src/Admin/Strings.php:1023
+msgid "No search engine bot has visited the hosts yet."
+msgstr ""
+
+#: src/Admin/Strings.php:1024
+msgid "Bot"
+msgstr ""
+
+#: src/Admin/Strings.php:1026
+msgid "Answers"
+msgstr ""
+
+#: src/Admin/Strings.php:1028
+msgid "Genuine / fake"
+msgstr ""
+
+#: src/Admin/Strings.php:1029
+msgid "Last visit"
+msgstr ""
+
+#. translators: %d: milliseconds
+#: src/Admin/Strings.php:1031
+#, php-format
+msgid "%d ms"
+msgstr ""
+
+#. translators: 1: number of verified bot addresses, 2: number of fake ones
+#: src/Admin/Strings.php:1033
+#, php-format
+msgid "%1$d / %2$d"
+msgstr ""
+
+#. translators: 1: host name, 2: relative time
+#: src/Admin/Strings.php:1035
+#, php-format
+msgid "A certificate check file was taken from %1$s %2$s."
+msgstr ""
+
+#. translators: %s: technical address
+#: src/Admin/Strings.php:1037
+#, php-format
+msgid "This site became the main host (%s)"
+msgstr ""
+
+#. translators: %s: technical address
+#: src/Admin/Strings.php:1039
+#, php-format
+msgid "A copy was added: %s"
+msgstr ""
+
+#. translators: %s: technical address
+#: src/Admin/Strings.php:1041
+#, php-format
+msgid "The copy is ready: %s"
+msgstr ""
+
+#. translators: %s: technical address
+#: src/Admin/Strings.php:1043
+#, php-format
+msgid "A copy was removed: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:1044
+msgid "The group of hosts ended on this site"
+msgstr ""
+
+#. translators: %s: domain
+#: src/Admin/Strings.php:1046
+#, php-format
+msgid "DNS records updated for %s"
+msgstr ""
+
+#. translators: %s: error message
+#: src/Admin/Strings.php:1048
+#, php-format
+msgid "DNS update failed: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:1049
+msgid "How to make the technical address"
+msgstr ""
+
+#: src/Admin/Strings.php:1050
+msgid "Pick a short subdomain for this host, for example ir.example.com."
+msgstr ""
+
+#: src/Admin/Strings.php:1051
+msgid "In cPanel open Domains, then Create a New Domain, enter the subdomain and keep \"Share document root\" checked. In DirectAdmin open Domain Setup, then Domain Pointers, and add it as an alias of the main domain."
+msgstr ""
+
+#: src/Admin/Strings.php:1052
+msgid "Make sure the DNS has an A record for the subdomain with the IP of this host. cPanel and DirectAdmin usually add it themselves."
+msgstr ""
+
+#: src/Admin/Strings.php:1053
+msgid "Turn on an SSL certificate for the subdomain (AutoSSL in cPanel, Let's Encrypt in DirectAdmin)."
+msgstr ""
+
+#: src/Admin/Strings.php:1054
+msgid "Enter the address below. Rafoo checks that it really opens this same site."
+msgstr ""
+
+#: src/Admin/Strings.php:1055
+msgid "Opening the subdomain in a browser takes you to the main address. That is expected."
+msgstr ""
+
+#: src/Admin/Strings.php:1056
+msgid "How to prepare the copy host"
+msgstr ""
+
+#: src/Admin/Strings.php:1057
+msgid "Add your main domain (example.com) to this host, as the main or an addon domain. The copy must be able to serve it."
+msgstr ""
+
+#: src/Admin/Strings.php:1058
+msgid "Add a technical subdomain such as de.example.com on the same folder, and create its A record with this host's IP in the DNS the domain uses now. Do not change the main domain's records yet."
+msgstr ""
+
+#: src/Admin/Strings.php:1059
+msgid "Turn on SSL for the subdomain, then install WordPress at https://de.example.com with any admin user."
+msgstr ""
+
+#: src/Admin/Strings.php:1060
+msgid "Install and activate Rafoo 1.4 or newer, open Multiple hosts, choose \"This host will be a copy\" and make the code."
+msgstr ""
+
+#: src/Admin/Strings.php:1061
+msgid "Paste the code on the main site. The main site sends itself here; this can take from a few minutes to an hour for large sites."
+msgstr ""
+
+#: src/Admin/Strings.php:1062
+msgid "Steps to add a copy"
+msgstr ""
+
+#: src/Admin/Strings.php:1063
+msgid "Prepare the new host: add your main domain and a technical subdomain such as de.example.com, then install WordPress and Rafoo on the subdomain."
+msgstr ""
+
+#: src/Admin/Strings.php:1064
+msgid "In Rafoo on the new host, open Multiple hosts, choose \"This host will be a copy\" and make a join code."
+msgstr ""
+
+#: src/Admin/Strings.php:1065
+msgid "Paste the code here, choose the country of that host and press \"Add and copy the site\"."
+msgstr ""
+
+#: src/Admin/Strings.php:1066
+msgid "When the copy is healthy, choose the routing method below. Until then visitors keep reaching this host only."
+msgstr ""
+
+#: src/Admin/Strings.php:1067
+msgid "The new host needs enough disk space for the whole site and its database."
+msgstr ""
+
+#: src/Admin/Strings.php:1068
+msgid "Sign in at panel.arvancloud.ir, open CDN, choose \"Add new domain\" and add your domain. Note the two nameservers it shows."
+msgstr ""
+
+#: src/Admin/Strings.php:1069
+msgid "Open Profile, then Settings, then Machine user. Create a machine user, give it access to CDN, and make an API key for it."
+msgstr ""
+
+#: src/Admin/Strings.php:1070
+msgid "Copy the whole key, including the word \"Apikey\", paste it below and save."
+msgstr ""
+
+#: src/Admin/Strings.php:1071
+msgid "Press \"Test connection\", then set the domain's nameservers to ArvanCloud's at the registrar."
+msgstr ""
+
+#: src/Admin/Strings.php:1072
+msgid "Sign up at gcore.com, open DNS and add your domain as a zone. The free plan is enough."
+msgstr ""
+
+#: src/Admin/Strings.php:1073
+msgid "Click the avatar at the top, open Profile, then API tokens, and create a token with a role that can edit DNS zones."
+msgstr ""
+
+#: src/Admin/Strings.php:1074
+msgid "Copy the token (it is shown only once), paste it below and save."
+msgstr ""
+
+#: src/Admin/Strings.php:1075
+msgid "Press \"Test connection\", then set the domain's nameservers to Gcore's at the registrar."
+msgstr ""
+
+#: src/Admin/Strings.php:1076
+msgid "Add the domain to Cloudflare and turn on the Load Balancing add-on (paid)."
+msgstr ""
+
+#: src/Admin/Strings.php:1077
+msgid "Open My Profile, then API Tokens, then Create Token, and choose a custom token with: Zone · Zone · Read, Zone · DNS · Edit, Zone · Load Balancers · Edit, Account · Load Balancing: Monitors and Pools · Edit."
+msgstr ""
+
+#: src/Admin/Strings.php:1078
+msgid "Limit the token to this zone and account, create it, then paste it below and save."
+msgstr ""
+
+#: src/Admin/Strings.php:1079
+msgid "Press \"Test connection\". Rafoo makes the records \"DNS only\", so visitors reach your hosts directly."
+msgstr ""
+
+#: src/Admin/Strings.php:1080
+msgid "In the AWS console open Route 53, then Hosted zones, and create a public hosted zone for your domain. Note its four nameservers."
+msgstr ""
+
+#: src/Admin/Strings.php:1081
+msgid "In IAM create a user without console access and give it only: route53:ListHostedZonesByName, route53:GetHostedZone, route53:ListResourceRecordSets and route53:ChangeResourceRecordSets."
+msgstr ""
+
+#: src/Admin/Strings.php:1082
+msgid "Under Security credentials create an access key for an application outside AWS, and copy both values."
+msgstr ""
+
+#: src/Admin/Strings.php:1083
+msgid "Paste them below, save, press \"Test connection\", then set the four nameservers at the registrar."
+msgstr ""
+
+#: src/Admin/Strings.php:1084
+msgid "Sign in at bunny.net, open DNS and add your domain as a DNS zone."
+msgstr ""
+
+#: src/Admin/Strings.php:1085
+msgid "Open Account settings, then API, and copy the account API key."
+msgstr ""
+
+#: src/Admin/Strings.php:1086
+msgid "Paste it below, save and press \"Test connection\"."
+msgstr ""
+
+#: src/Admin/Strings.php:1087
+msgid "Set the domain's nameservers to Bunny's at the registrar."
+msgstr ""
+
+#: src/Admin/Strings.php:1088
+msgid "Sign in to cPanel on the host and open Security, then Manage API Tokens."
+msgstr ""
+
+#: src/Admin/Strings.php:1089
+msgid "Press Create, give the token a name and create it. Copy it right away; it is shown only once."
+msgstr ""
+
+#: src/Admin/Strings.php:1090
+msgid "Enter the panel address (for example https://example.com:2083), your cPanel username and the token."
+msgstr ""
+
+#: src/Admin/Strings.php:1091 src/Admin/Strings.php:1095
+msgid "Do this for every host, save, and press \"Test connection\"."
+msgstr ""
+
+#: src/Admin/Strings.php:1092
+msgid "Sign in to DirectAdmin on the host and open Advanced Features, then Login Keys."
+msgstr ""
+
+#: src/Admin/Strings.php:1093
+msgid "Create a key that never expires and allow only the command CMD_API_DNS_CONTROL."
+msgstr ""
+
+#: src/Admin/Strings.php:1094
+msgid "Enter the panel address (for example https://example.com:2222), your DirectAdmin username and the key."
+msgstr ""
+
+#: src/Admin/Strings.php:1096
+msgid "How to create an A record in cPanel"
+msgstr ""
+
+#: src/Admin/Strings.php:1097
+msgid "Sign in to cPanel and open Domains, then Zone Editor."
+msgstr ""
+
+#: src/Admin/Strings.php:1098
+msgid "Press Manage next to your domain."
+msgstr ""
+
+#: src/Admin/Strings.php:1099
+msgid "If an A record with the same name exists, press Edit; otherwise press Add Record and choose A."
+msgstr ""
+
+#: src/Admin/Strings.php:1100
+msgid "Enter the name and the IP from the table, set the TTL, and save. Keep only one A record per name."
+msgstr ""
+
+#: src/Admin/Strings.php:1101
+msgid "How to create an A record in DirectAdmin"
+msgstr ""
+
+#: src/Admin/Strings.php:1102
+msgid "Sign in to DirectAdmin and open Account Manager, then DNS Management."
+msgstr ""
+
+#: src/Admin/Strings.php:1103
+msgid "Delete the old A record with the same name, if there is one."
+msgstr ""
+
+#: src/Admin/Strings.php:1104
+msgid "Press Add Record, choose A, and enter the name and the IP from the table."
+msgstr ""
+
+#: src/Admin/Strings.php:1105
+msgid "Save. For the main domain itself, use the domain name followed by a dot (example.com.) or leave the name empty, as your panel shows."
+msgstr ""
+
+#: src/Admin/Strings.php:1106
+msgid "DNS changes can take as long as the old TTL to be seen everywhere."
+msgstr ""
+
+#: src/Admin/Strings.php:1107
+msgid "How to change nameservers at IRNIC (.ir domains)"
+msgstr ""
+
+#: src/Admin/Strings.php:1108
+msgid "Add the domain on the DNS service or on every host first. IRNIC checks that the new nameservers already answer for the domain."
+msgstr ""
+
+#: src/Admin/Strings.php:1109
+msgid "Sign in at nic.ir with your IRNIC handle and password."
+msgstr ""
+
+#: src/Admin/Strings.php:1110
+msgid "Open your domains, choose the domain and open the nameserver (DNS servers) section."
+msgstr ""
+
+#: src/Admin/Strings.php:1111
+msgid "Enter the new nameservers, remove the old ones and submit."
+msgstr ""
+
+#: src/Admin/Strings.php:1112
+msgid "If you bought the domain from a reseller, change the nameservers in the reseller's panel instead. The change usually takes a few hours."
+msgstr ""
+
+#: src/Admin/Strings.php:1113
+msgid "How to change nameservers at other registrars"
+msgstr ""
+
+#: src/Admin/Strings.php:1114
+msgid "Sign in where you bought the domain and open the domain's settings."
+msgstr ""
+
+#: src/Admin/Strings.php:1115
+msgid "Find Nameservers (sometimes called DNS or Custom DNS)."
+msgstr ""
+
+#: src/Admin/Strings.php:1116
+msgid "Choose custom nameservers, enter the new ones and save."
+msgstr ""
+
+#: src/Admin/Strings.php:1117
+msgid "The change can take up to a day. Press \"Check now\" below to see when it is live."
+msgstr ""
+
+#: src/Admin/Strings.php:1118
+msgid "Google Search Console with several hosts"
+msgstr ""
+
+#: src/Admin/Strings.php:1119
+msgid "Add a \"Domain\" property for your domain. It covers every host and every address of the site."
+msgstr ""
+
+#: src/Admin/Strings.php:1120
+msgid "Google asks for a TXT record. Add it in the DNS service, or in the zone of every host when you use the control panel method."
+msgstr ""
+
+#: src/Admin/Strings.php:1121
+msgid "Submit only the sitemap of the main address. Never add the technical subdomains as properties."
+msgstr ""
+
+#: src/Admin/Strings.php:1122
+msgid "Googlebot crawls mostly from the United States, so it usually reaches the copy nearest to it. The crawl table below shows this."
+msgstr ""
+
+#: src/Admin/Strings.php:1123
+msgid "Security plugins and firewalls"
+msgstr ""
+
+#: src/Admin/Strings.php:1124
+msgid "Hosts talk to each other often. A security plugin (such as Wordfence) or a server firewall (such as Imunify360 or ModSecurity) may block them."
+msgstr ""
+
+#: src/Admin/Strings.php:1125
+msgid "Add the IP of every host to the allowlist of each plugin and firewall."
+msgstr ""
+
+#: src/Admin/Strings.php:1126
+msgid "Do not block admin-ajax.php?action=rafoo_geo or ?rafoo-ping. These requests are signed and answer only Rafoo."
+msgstr ""
+
+#: src/Admin/Strings.php:1127
+msgid "If a host blocks foreign or Iranian addresses, ask the host to allow the IPs of your other hosts. The hosts card above shows which host cannot reach which."
+msgstr ""
+
+#: src/Admin/Strings.php:1128
+msgid "SSL certificates on every host"
+msgstr ""
+
+#: src/Admin/Strings.php:1129
+msgid "Every host needs its own certificate for the main domain and its technical subdomain. Turn on AutoSSL or Let's Encrypt on each host."
+msgstr ""
+
+#: src/Admin/Strings.php:1130
+msgid "With geo DNS the certificate authority may reach another host. Rafoo fetches the check file from the other hosts, so issuing still works."
+msgstr ""
+
+#: src/Admin/Strings.php:1131
+msgid "If a host still fails, try again after DNS has spread, or use the certificate of your DNS or CDN service."
+msgstr ""
+
+#: src/Admin/Strings.php:1133
+msgid "Beta"
+msgstr ""
+
+#: src/Admin/Strings.php:1134
+msgid "This part is in beta. It passed every test on test servers, and tests on real hosts and DNS services are still going on. Please report any problem from the Feedback tab."
+msgstr ""
+
+#: src/Admin/Strings.php:1136
+msgid "Africa"
+msgstr ""
+
+#: src/Admin/Strings.php:1137
+msgid "Antarctica"
+msgstr ""
+
+#: src/Admin/Strings.php:1138
+msgid "Asia"
+msgstr ""
+
+#: src/Admin/Strings.php:1139
+msgid "Europe"
+msgstr ""
+
+#: src/Admin/Strings.php:1140
+msgid "North America"
+msgstr ""
+
+#: src/Admin/Strings.php:1141
+msgid "Oceania"
+msgstr ""
+
+#: src/Admin/Strings.php:1142
+msgid "South America"
+msgstr ""
+
+#: src/Admin/Strings.php:1149
 msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
 msgstr ""
 
-#: src/Admin/Strings.php:660
+#: src/Admin/Strings.php:1150
 msgid "Translation updates come from the mirror too, only for the languages installed on the site."
 msgstr ""
 
-#: src/Admin/Strings.php:661
+#: src/Admin/Strings.php:1151
 msgid "Translations from the mirror"
 msgstr ""
 
-#: src/Admin/Strings.php:662
+#: src/Admin/Strings.php:1152
 msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
 msgstr ""
 
-#: src/Admin/Strings.php:664
+#: src/Admin/Strings.php:1154
 msgid "Update from the domestic mirror"
 msgstr ""
 
-#: src/Admin/Strings.php:665
+#: src/Admin/Strings.php:1155
 msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
 msgstr ""
 
-#: src/Admin/Strings.php:666
+#: src/Admin/Strings.php:1156
 msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
 msgstr ""
 
-#: src/Admin/Strings.php:667
+#: src/Admin/Strings.php:1157
 msgid "Mirror coverage"
 msgstr ""
 
-#: src/Admin/Strings.php:668
+#: src/Admin/Strings.php:1158
 msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
 msgstr ""
 
-#: src/Admin/Strings.php:669
+#: src/Admin/Strings.php:1159
 msgid "Check again"
 msgstr ""
 
-#: src/Admin/Strings.php:670
+#: src/Admin/Strings.php:1160
 msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
 msgstr ""
 
-#: src/Admin/Strings.php:671
+#: src/Admin/Strings.php:1161
 msgid "Mirror"
 msgstr ""
 
-#: src/Admin/Strings.php:672
+#: src/Admin/Strings.php:1162
 msgid "Not on the mirror"
 msgstr ""
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:674
+#: src/Admin/Strings.php:1164
 #, php-format
 msgid "Version %s available"
 msgstr ""
 
-#: src/Admin/Strings.php:675
+#: src/Admin/Strings.php:1165
 msgid "Up to date"
 msgstr ""
 
-#: src/Admin/Strings.php:676
+#: src/Admin/Strings.php:1166
 msgid "WordPress"
 msgstr ""
 
-#: src/Backup/Api.php:160 src/Backup/Api.php:250 src/Backup/Restorer.php:18
+#: src/Backup/Api.php:173 src/Backup/Api.php:260 src/Backup/Restorer.php:28
 msgid "This backup is no longer in the list."
 msgstr ""
 
-#: src/Backup/Api.php:164
+#: src/Backup/Api.php:177
 msgid "Newer backups are built on this one, so it cannot be deleted on its own."
 msgstr ""
 
-#: src/Backup/Api.php:183
+#: src/Backup/Api.php:182 src/Backup/Job.php:40 src/Geo/Nodes.php:182
+msgid "Another backup task is running. Wait until it finishes."
+msgstr ""
+
+#: src/Backup/Api.php:191
 msgid "Use at least 8 characters."
 msgstr ""
 
-#: src/Backup/Api.php:194
+#: src/Backup/Api.php:202
 msgid "The server answered but did not accept this username or password."
 msgstr ""
 
-#: src/Backup/Api.php:195
+#: src/Backup/Api.php:203
 msgid "Enter a server address such as backup.example.ir."
 msgstr ""
 
-#: src/Backup/Api.php:195
+#: src/Backup/Api.php:203
 msgid "No SFTP, FTPS or FTP connection could be made to this server. Check the address and that the port is open."
 msgstr ""
 
-#: src/Backup/Api.php:200
+#: src/Backup/Api.php:208
 msgid "Up to five servers can be added."
 msgstr ""
 
-#: src/Backup/Api.php:213 src/Backup/Mover.php:14
+#: src/Backup/Api.php:221 src/Backup/Mover.php:14
 msgid "This server is no longer in the list."
 msgstr ""
 
-#: src/Backup/Api.php:219
+#: src/Backup/Api.php:227
 msgid "The server could not be reached or did not accept a test file."
 msgstr ""
 
-#: src/Backup/Installer.php:19
+#: src/Backup/Installer.php:35
 msgid "Restore the site with Rafoo"
 msgstr ""
 
-#: src/Backup/Installer.php:20
-msgid "This server lacks PHP extensions Rafoo needs (sodium, ZipArchive and mysqli)."
+#: src/Backup/Installer.php:36
+msgid "This server lacks PHP extensions Rafoo needs (zlib, sodium and mysqli)."
 msgstr ""
 
-#: src/Backup/Installer.php:21
+#: src/Backup/Installer.php:37
 msgid "Enter the details of the new database and the key Rafoo showed on the old site. All files and data are restored on this host."
 msgstr ""
 
-#: src/Backup/Installer.php:22
+#: src/Backup/Installer.php:38
 msgid "Database host"
 msgstr ""
 
-#: src/Backup/Installer.php:23
+#: src/Backup/Installer.php:39
 msgid "Database name"
 msgstr ""
 
-#: src/Backup/Installer.php:26
+#: src/Backup/Installer.php:42
 msgid "Restore key"
 msgstr ""
 
-#: src/Backup/Installer.php:27
+#: src/Backup/Installer.php:43
 msgid "Start restore"
 msgstr ""
 
-#: src/Backup/Installer.php:28
+#: src/Backup/Installer.php:44
 msgid "Checking…"
 msgstr ""
 
 #. translators: %s: error code
-#: src/Backup/Installer.php:30
+#: src/Backup/Installer.php:46
 #, php-format
 msgid "Error: %s"
 msgstr ""
 
-#: src/Backup/Installer.php:31
+#: src/Backup/Installer.php:47
 msgid "The key is not correct."
 msgstr ""
 
-#: src/Backup/Installer.php:32
+#: src/Backup/Installer.php:48
 msgid "Too many failed attempts. Send the file again."
 msgstr ""
 
-#: src/Backup/Installer.php:33
+#: src/Backup/Installer.php:49
+msgid "The backup files on this host are missing or incomplete. Prepare the move again on the old site."
+msgstr ""
+
+#: src/Backup/Installer.php:50
+msgid "A backup file on this host is damaged. Prepare the move again on the old site."
+msgstr ""
+
+#: src/Backup/Installer.php:51
 msgid "Restore finished. Go to the dashboard"
 msgstr ""
 
-#: src/Backup/Installer.php:35
-msgid "Opening the backup"
+#: src/Backup/Installer.php:53
+msgid "Checking the backup"
 msgstr ""
 
-#: src/Backup/Installer.php:36
+#: src/Backup/Installer.php:54
 msgid "Restoring files"
 msgstr ""
 
-#: src/Backup/Installer.php:37
+#: src/Backup/Installer.php:55
 msgid "Setting up wp-config.php"
 msgstr ""
 
-#: src/Backup/Installer.php:38
+#: src/Backup/Installer.php:56
 msgid "Restoring the database"
 msgstr ""
 
-#: src/Backup/Installer.php:39
+#: src/Backup/Installer.php:57
 msgid "Updating the site address"
 msgstr ""
 
-#: src/Backup/Installer.php:40
+#: src/Backup/Installer.php:58
 msgid "Cleaning up"
-msgstr ""
-
-#: src/Backup/Job.php:30
-msgid "Another backup task is running. Wait until it finishes."
 msgstr ""
 
 #: src/Backup/Mover.php:18
 msgid "Enter the address the site will have on the new host."
 msgstr ""
 
-#: src/Backup/Restorer.php:23
+#: src/Backup/Restorer.php:33
 msgid "This backup is encrypted. Enter its password."
+msgstr ""
+
+#: src/Backup/Restorer.php:36
+msgid "Backups made before Rafoo 1.4 cannot be checked. They can still be restored."
+msgstr ""
+
+#: src/Backup/Restorer.php:39
+msgid "This backup was made before Rafoo 1.4 and needs the PHP ZipArchive extension to be restored. Ask your host to enable it."
 msgstr ""
 
 #: src/Backup/Sender.php:21
@@ -2730,22 +4482,22 @@ msgid "The other site is busy with another backup task. Try again when it finish
 msgstr ""
 
 #: src/Backup/Sender.php:27
-msgid "The other server has no ZipArchive extension, so it cannot receive the copy."
+msgid "Rafoo on the other site is too old to receive this copy. Update Rafoo there to version 1.4 or newer and make a new code."
 msgstr ""
 
-#: src/Backup/Transfer.php:96 src/Backup/Transfer.php:107
+#: src/Backup/Transfer.php:98 src/Backup/Transfer.php:109
 msgid "This code is not valid. Copy it again from the other site."
 msgstr ""
 
-#: src/Backup/Transfer.php:100
+#: src/Backup/Transfer.php:102
 msgid "rafoo.ir could not be reached or the code has expired. Use the long code shown under the short one."
 msgstr ""
 
-#: src/Backup/Transfer.php:113
+#: src/Backup/Transfer.php:115
 msgid "This code belongs to this same site. Create the code on the site that should receive the copy."
 msgstr ""
 
-#: src/Backup/Transfer.php:360
+#: src/Backup/Transfer.php:476
 msgid "The shop is moving to a new server. Please try again in a few minutes."
 msgstr ""
 
@@ -2767,6 +4519,94 @@ msgstr ""
 
 #: src/Captcha/Captcha.php:211
 msgid "The Rafoo security check was missing or wrong."
+msgstr ""
+
+#: src/Geo/Api.php:255 src/Geo/Api.php:339 src/Geo/Nodes.php:170
+msgid "First set up this site as the main host."
+msgstr ""
+
+#: src/Geo/Api.php:265
+msgid "Choose a DNS service."
+msgstr ""
+
+#: src/Geo/Api.php:268
+msgid "Choose the control panel of your hosts."
+msgstr ""
+
+#: src/Geo/Nodes.php:37
+msgid "A WordPress network (Multisite) cannot be a copy."
+msgstr ""
+
+#: src/Geo/Nodes.php:40 src/Geo/Nodes.php:114
+msgid "This site is already part of a group of hosts. Leave the group first."
+msgstr ""
+
+#: src/Geo/Nodes.php:44
+msgid "Enter the technical address of this host, for example https://de.example.com."
+msgstr ""
+
+#: src/Geo/Nodes.php:95 src/Geo/Nodes.php:101
+msgid "This code is not valid. Copy it again from the other host."
+msgstr ""
+
+#: src/Geo/Nodes.php:118
+msgid "Enter the technical address of this host, for example https://ir.example.com."
+msgstr ""
+
+#: src/Geo/Nodes.php:122
+msgid "The technical address must be a separate subdomain, not the site address itself."
+msgstr ""
+
+#: src/Geo/Nodes.php:159
+msgid "This host could not be reached at its technical address. Check that the subdomain points to this host and opens this same site."
+msgstr ""
+
+#: src/Geo/Nodes.php:179
+msgid "A site can have at most three copies."
+msgstr ""
+
+#: src/Geo/Nodes.php:190
+msgid "This host is already in the group."
+msgstr ""
+
+#: src/Geo/Nodes.php:215
+msgid "The other host did not answer at its technical address. Check that Rafoo is active there and the code is still valid."
+msgstr ""
+
+#: src/Geo/Nodes.php:251
+msgid "The other host runs a WordPress network (Multisite), which cannot be a copy."
+msgstr ""
+
+#: src/Geo/Nodes.php:252
+msgid "The other host is busy with a backup task. Try again when it finishes."
+msgstr ""
+
+#: src/Geo/Nodes.php:253
+msgid "The other host uses a different table prefix and its wp-config.php is not writable, so Rafoo cannot match it. Make wp-config.php writable there, or install WordPress there with the same table prefix."
+msgstr ""
+
+#: src/Geo/Nodes.php:254
+msgid "Rafoo on the other host is too old. Update it to version 1.4 or newer."
+msgstr ""
+
+#: src/Geo/Nodes.php:256
+msgid "The other host refused to join."
+msgstr ""
+
+#: src/Geo/Nodes.php:286 src/Geo/Nodes.php:365
+msgid "This host is no longer in the group."
+msgstr ""
+
+#: src/Geo/Proxy.php:266
+msgid "This part of the site is not available right now"
+msgstr ""
+
+#: src/Geo/Proxy.php:267
+msgid "The main server of this site cannot be reached at the moment. Reading the site still works. Please try again in a few minutes."
+msgstr ""
+
+#: src/Geo/Proxy.php:268
+msgid "Back to the home page"
 msgstr ""
 
 #. translators: %s: host name

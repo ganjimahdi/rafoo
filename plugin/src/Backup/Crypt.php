@@ -105,6 +105,10 @@ final class Crypt {
 		return $job;
 	}
 
+	public static function derive( $secret, $mode, $salt ) {
+		return self::key( $secret, $mode, $salt );
+	}
+
 	public static function encrypted( $file ) {
 		return is_file( $file ) && 0 === strpos( self::head( $file ), self::MAGIC );
 	}

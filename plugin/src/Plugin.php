@@ -63,6 +63,12 @@ final class Plugin {
 		}
 		$this->booted = true;
 
+		add_action( 'plugins_loaded', array( Geo\Edge::class, 'boot' ), PHP_INT_MIN );
+		Geo\Seo::boot();
+		if ( Geo\Store::is_primary() ) {
+			Geo\Changes::start();
+		}
+
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- only checks whether this is a signed reachability ping; Engine::serve validates it.
 		if ( isset( $_GET[ Peers\Engine::QUERY ] ) ) {
 			add_action( 'plugins_loaded', array( Peers\Engine::class, 'serve' ), 0 );
@@ -106,6 +112,15 @@ final class Plugin {
 			array( 'wp_ajax_nopriv_' . Transfer::ACTION, array( Transfer::class, 'endpoint' ), 10, 0 ),
 			array( 'admin_post_' . Api::DOWNLOAD, array( Api::class, 'download' ), 10, 0 ),
 			array( 'rafoo_rest_routes', array( Api::class, 'routes' ) ),
+			array( 'rafoo_rest_routes', array( Geo\Api::class, 'routes' ) ),
+			array( 'cron_request', array( Geo\Edge::class, 'cron_request' ), 99 ),
+			array( 'rafoo_loopback_url', array( Geo\Edge::class, 'loopback' ) ),
+			array( 'wp_ajax_' . Geo\Link::ACTION, array( Geo\Link::class, 'endpoint' ), 10, 0 ),
+			array( 'wp_ajax_nopriv_' . Geo\Link::ACTION, array( Geo\Link::class, 'endpoint' ), 10, 0 ),
+			array( Geo\Health::HOOK, array( Geo\Health::class, 'tick' ), 10, 0 ),
+			array( Geo\Planner::HOOK, array( Geo\Planner::class, 'scheduled' ), 10, 0 ),
+			array( Geo\Lister::HOOK, array( Geo\Lister::class, 'run' ), 10, 0 ),
+			array( Geo\Changes::POKE, array( Geo\Changes::class, 'scheduled_poke' ), 10, 0 ),
 			array( 'rafoo_settings_changed', array( Schedule::class, 'changed' ), 10, 2 ),
 			array( 'woocommerce_checkout_process', array( Transfer::class, 'block_checkout' ), 1, 0 ),
 			array( 'rest_request_before_callbacks', array( Transfer::class, 'block_store' ), 9, 3 ),
@@ -240,6 +255,9 @@ final class Plugin {
 		if ( ! wp_next_scheduled( self::DAILY ) ) {
 			wp_schedule_event( time() + 3600, 'daily', self::DAILY );
 		}
+		if ( Geo\Store::active() && ! wp_next_scheduled( Geo\Health::HOOK ) ) {
+			wp_schedule_event( time() + 60, self::MINUTE, Geo\Health::HOOK );
+		}
 	}
 
 	public static function check() {
@@ -292,7 +310,7 @@ final class Plugin {
 	}
 
 	public static function deactivate() {
-		foreach ( array( 'rafoo_check', 'rafoo_sync', 'rafoo_scan', self::DAILY, Queue::HOOK, Schedule::HOOK, Job::HOOK ) as $hook ) {
+		foreach ( array( 'rafoo_check', 'rafoo_sync', 'rafoo_scan', self::DAILY, Queue::HOOK, Schedule::HOOK, Job::HOOK, Geo\Health::HOOK, Geo\Planner::HOOK, Geo\Lister::HOOK, Geo\Changes::POKE ) as $hook ) {
 			wp_unschedule_hook( $hook );
 		}
 		delete_site_transient( Monitor::LOCK );

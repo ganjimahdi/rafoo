@@ -10,11 +10,21 @@ final class Job {
 
 	const NAME = 'job';
 
+	const FATAL = 'job-fatal';
+
 	const HOOK = 'rafoo_backup_tick';
 
 	const ACTION = 'rafoo_backup_tick';
 
 	const STALE = 900;
+
+	const STRIKES = 4;
+
+	private static $active = false;
+
+	private static $watching = false;
+
+	private static $reserve = null;
 
 	public static function current() {
 		return Ledger::read( self::NAME );
@@ -35,18 +45,30 @@ final class Job {
 		$job = array(
 			'id'       => strtolower( wp_generate_password( 10, false ) ),
 			'kind'     => $kind,
+			'format'   => Maker::FORMAT,
 			'step'     => $step,
 			'status'   => 'running',
 			'error'    => '',
+			'detail'   => array(),
 			'started'  => time(),
 			'updated'  => time(),
 			'token'    => wp_generate_password( 32, false ),
+			'crashes'  => 0,
+			'strikes'  => 0,
+			'tune'     => array(),
 			'progress' => array(
 				'done'  => 0,
 				'total' => 0,
 			),
 			'data'     => $data,
 		);
+		$old = self::current();
+		if ( $old && 'running' === $old['status'] ) {
+			self::handler( $old['kind'] )->cleanup( $old );
+		}
+		Ledger::write( self::FATAL, null );
+		Journal::start( 'Rafoo ' . $kind . ' started' );
+		Maker::sweep();
 		Ledger::write( self::NAME, $job );
 		self::kick( $job );
 		return $job;
@@ -61,13 +83,11 @@ final class Job {
 			Ledger::unlock( self::NAME );
 			return $job;
 		}
-		if ( function_exists( 'set_time_limit' ) ) {
-			@set_time_limit( Ledger::budget() + 30 );
+		$job = self::recover( $job );
+		if ( 'running' === $job['status'] && empty( $job['format'] ) && in_array( $job['kind'], array( 'backup', 'send', 'move' ), true ) ) {
+			$job = self::fail( $job, 'outdated' );
 		}
-		ignore_user_abort( true );
-		$crashes = isset( $job['crashes'] ) ? (int) $job['crashes'] : 0;
-		if ( $crashes >= 3 ) {
-			$job = self::fail( $job, 'crashed' );
+		if ( 'running' !== $job['status'] ) {
 			$job['updated'] = time();
 			Ledger::write( self::NAME, $job );
 			Ledger::unlock( self::NAME );
@@ -75,10 +95,16 @@ final class Job {
 			self::finished( $job );
 			return $job;
 		}
-		$job['crashes'] = $crashes + 1;
+		$budget = Ledger::budget( self::tune( $job, 'budget' ) );
+		if ( function_exists( 'set_time_limit' ) ) {
+			@set_time_limit( $budget + 40 );
+		}
+		ignore_user_abort( true );
+		$job['crashes'] = 1;
+		$job['updated'] = time();
 		Ledger::write( self::NAME, $job );
-		$job['crashes'] = 0;
-		$deadline       = microtime( true ) + ( $seconds > 0 ? $seconds : Ledger::budget() );
+		self::watch();
+		$deadline = microtime( true ) + ( $seconds > 0 ? min( $seconds, $budget ) : $budget );
 		try {
 			while ( 'running' === $job['status'] && microtime( true ) < $deadline ) {
 				$before = $job['step'];
@@ -89,9 +115,12 @@ final class Job {
 				}
 			}
 		} catch ( \Throwable $e ) {
-			$job['status'] = 'failed';
-			$job['error']  = substr( $e->getMessage(), 0, 300 );
+			$problem = Problem::from( $e );
+			$job     = self::fail( $job, $problem->reason(), $problem->detail() );
 		}
+		self::$active   = false;
+		$job['crashes'] = 0;
+		$job['strikes'] = 0;
 		$job['updated'] = time();
 		Ledger::write( self::NAME, $job );
 		Ledger::unlock( self::NAME );
@@ -104,9 +133,20 @@ final class Job {
 		return $job;
 	}
 
-	public static function fail( array $job, $message ) {
+	public static function save( array $job ) {
+		$job['updated'] = time();
+		Ledger::write( self::NAME, $job );
+	}
+
+	public static function tune( array $job, $name ) {
+		return isset( $job['tune'][ $name ] ) ? (float) $job['tune'][ $name ] : 1.0;
+	}
+
+	public static function fail( array $job, $code, array $detail = array() ) {
 		$job['status'] = 'failed';
-		$job['error']  = (string) $message;
+		$job['error']  = (string) $code;
+		$job['detail'] = $detail;
+		Journal::add( 'stopped: ' . $code . ( $detail ? ' ' . wp_json_encode( $detail ) : '' ) );
 		return $job;
 	}
 
@@ -115,6 +155,7 @@ final class Job {
 		if ( $job && 'running' === $job['status'] ) {
 			$job['status'] = 'failed';
 			$job['error']  = 'cancelled';
+			Journal::add( 'stopped by hand' );
 			self::handler( $job['kind'] )->cleanup( $job );
 			Ledger::write( self::NAME, $job );
 			wp_clear_scheduled_hook( self::HOOK );
@@ -134,7 +175,7 @@ final class Job {
 			return;
 		}
 		wp_remote_post(
-			admin_url( 'admin-ajax.php' ),
+			(string) apply_filters( 'rafoo_loopback_url', admin_url( 'admin-ajax.php' ) ),
 			array(
 				'timeout'     => 0.01,
 				'blocking'    => false,
@@ -169,25 +210,108 @@ final class Job {
 		if ( ! $job ) {
 			return null;
 		}
+		$d = isset( $job['data'] ) ? $job['data'] : array();
 		return array(
 			'id'       => $job['id'],
 			'kind'     => $job['kind'],
 			'step'     => $job['step'],
+			'phase'    => isset( $job['phase'] ) ? (string) $job['phase'] : '',
 			'status'   => 'running' === $job['status'] && time() - (int) $job['updated'] >= self::STALE ? 'stalled' : $job['status'],
 			'error'    => $job['error'],
+			'detail'   => isset( $job['detail'] ) ? (array) $job['detail'] : array(),
 			'started'  => (int) $job['started'],
 			'updated'  => (int) $job['updated'],
 			'progress' => $job['progress'],
-			'role'     => isset( $job['data']['role'] ) ? $job['data']['role'] : '',
-			'backup'   => isset( $job['data']['backup'] ) ? $job['data']['backup'] : '',
-			'notice'   => isset( $job['data']['notice'] ) ? $job['data']['notice'] : '',
+			'info'     => isset( $job['info'] ) ? (array) $job['info'] : array(),
+			'warnings' => isset( $d['warnings'] ) ? Warnings::view( $d['warnings'] ) : array(),
+			'retried'  => isset( $job['last_crash'] ) ? $job['last_crash']['kind'] : '',
+			'role'     => isset( $d['role'] ) ? $d['role'] : '',
+			'backup'   => isset( $d['backup'] ) ? $d['backup'] : '',
+			'notice'   => isset( $d['notice'] ) ? $d['notice'] : '',
 		);
+	}
+
+	public static function shutdown() {
+		self::$reserve = null;
+		if ( ! self::$active ) {
+			return;
+		}
+		$error = error_get_last();
+		if ( $error && in_array( (int) $error['type'], array( E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR, E_PARSE ), true ) ) {
+			Ledger::write(
+				self::FATAL,
+				array(
+					'message' => Journal::clean( $error['message'] ),
+					'at'      => time(),
+				)
+			);
+		}
+	}
+
+	public static function classify( $message ) {
+		$message = (string) $message;
+		if ( false !== stripos( $message, 'Allowed memory size' ) || false !== stripos( $message, 'Out of memory' ) ) {
+			return 'php_memory';
+		}
+		if ( false !== stripos( $message, 'Maximum execution time' ) ) {
+			return 'php_time';
+		}
+		return '' === $message ? 'php_killed' : 'php_error';
+	}
+
+	private static function watch() {
+		self::$active  = true;
+		self::$reserve = str_repeat( ' ', 1048576 );
+		if ( ! self::$watching ) {
+			self::$watching = true;
+			register_shutdown_function( array( __CLASS__, 'shutdown' ) );
+		}
+	}
+
+	private static function recover( array $job ) {
+		if ( empty( $job['crashes'] ) ) {
+			return $job;
+		}
+		$fatal = Ledger::read( self::FATAL );
+		Ledger::write( self::FATAL, null );
+		$message = is_array( $fatal ) && isset( $fatal['message'] ) ? (string) $fatal['message'] : '';
+		$kind    = self::classify( $message );
+		$mark    = isset( $job['mark'] ) ? $job['mark'] : null;
+		$same    = array_key_exists( 'crash_mark', $job ) && $job['crash_mark'] === $mark;
+		$strikes = $same ? (int) $job['strikes'] + 1 : 1;
+		$tune    = isset( $job['tune'] ) ? (array) $job['tune'] : array();
+		if ( 'php_memory' === $kind ) {
+			$tune['memory'] = max( 0.125, self::tune( $job, 'memory' ) / 2 );
+		} else {
+			$tune['budget'] = max( 0.15, self::tune( $job, 'budget' ) / 2 );
+		}
+		$job['tune']       = $tune;
+		$job['crashes']    = 0;
+		$job['strikes']    = $strikes;
+		$job['crash_mark'] = $mark;
+		$job['last_crash'] = array(
+			'kind'    => $kind,
+			'message' => $message,
+			'step'    => $job['step'],
+		);
+		Journal::add( 'PHP stopped during "' . $job['step'] . '"' . ( '' !== $message ? ': ' . $message : ' with no error message, so the host ended the request' ) . '. Trying again with smaller steps (' . $strikes . ' of ' . self::STRIKES . ').' );
+		if ( $strikes < self::STRIKES ) {
+			return $job;
+		}
+		$details = array(
+			'php_memory' => array( 'limit' => (string) ini_get( 'memory_limit' ) ),
+			'php_time'   => array( 'limit' => (int) ini_get( 'max_execution_time' ) ),
+			'php_error'  => array( 'message' => $message ),
+			'php_killed' => array( 'seconds' => Ledger::budget( self::tune( $job, 'budget' ) ) ),
+		);
+		return self::fail( $job, $kind, $details[ $kind ] );
 	}
 
 	private static function handler( $kind ) {
 		switch ( $kind ) {
 			case 'restore':
 			case 'receive':
+			case 'check':
 				return new Restorer();
 			case 'send':
 				return new Sender();

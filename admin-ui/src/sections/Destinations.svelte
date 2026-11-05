@@ -132,18 +132,6 @@
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		gap: 16px;
 	}
-	.rf-more {
-		align-self: flex-start;
-		padding: 0;
-		border: 0;
-		background: none;
-		color: var(--rf-l6);
-		font: inherit;
-		font-size: var(--rf-fs-sm);
-		text-decoration: underline;
-		text-underline-offset: 3px;
-		cursor: pointer;
-	}
 	.rf-end {
 		justify-content: flex-end;
 	}

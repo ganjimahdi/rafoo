@@ -198,11 +198,6 @@
 	.rf-link-button:hover {
 		background: var(--rf-l1);
 	}
-	.rf-field-label {
-		display: inline-flex;
-		align-items: center;
-		gap: 4px;
-	}
 	.rf-save {
 		display: flex;
 		flex-wrap: wrap;

@@ -9,6 +9,7 @@
 	import Feedback from './pages/Feedback.svelte';
 	import Monitor from './pages/Monitor.svelte';
 	import Files from './pages/Files.svelte';
+	import Geo from './pages/Geo.svelte';
 	import Overview from './pages/Overview.svelte';
 	import Settings from './pages/Settings.svelte';
 	import Setup from './pages/Setup.svelte';
@@ -30,6 +31,7 @@
 		{ id: 'monitor', label: t('tab_monitor'), page: Monitor },
 		{ id: 'updates', label: t('tab_updates'), page: Updates },
 		{ id: 'backup', label: t('tab_backup'), page: Backup },
+		{ id: 'geo', label: t('tab_geo'), page: Geo },
 		{ id: 'settings', label: t('tab_settings'), page: Settings },
 		{ id: 'feedback', label: t('tab_feedback'), page: Feedback }
 	];

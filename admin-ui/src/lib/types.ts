@@ -89,6 +89,8 @@ export interface Settings {
 	backup_hour: number;
 	backup_mode: 'incremental' | 'full';
 	backup_local: boolean;
+	backup_exclude: string[];
+	backup_part: 128 | 256 | 512 | 1024 | 2048;
 	browser_guard: boolean;
 	dedupe: boolean;
 	heartbeat: 'smart' | 'default';
@@ -189,18 +191,29 @@ export interface HealthReport {
 	reason: string;
 }
 
+export interface BackupWarning {
+	code: string;
+	count: number;
+	samples: string[];
+}
+
 export interface BackupJob {
 	id: string;
-	kind: 'backup' | 'restore' | 'receive' | 'send' | 'move';
+	kind: 'backup' | 'restore' | 'receive' | 'send' | 'move' | 'check';
 	step: string;
+	phase: string;
 	status: 'running' | 'done' | 'failed' | 'stalled';
 	error: string;
+	detail: Record<string, string | number | boolean>;
 	started: number;
 	updated: number;
 	progress: { done: number; total: number };
+	info: Record<string, string | number>;
+	warnings: BackupWarning[];
+	retried: string;
 	role: string;
 	backup: string;
-	notice: '' | 'login_again' | { url: string; key: string };
+	notice: '' | 'login_again' | 'checked' | { url: string; key: string };
 }
 
 export interface BackupEntry {
@@ -215,6 +228,9 @@ export interface BackupEntry {
 	local: boolean;
 	places: string[];
 	wp: string;
+	format: number;
+	parts: number;
+	warnings: BackupWarning[];
 }
 
 export interface Destination {
@@ -239,7 +255,17 @@ export interface BackupStatus {
 	next: number;
 	last: number;
 	password: boolean;
-	support: { zip: boolean; crypt: boolean; ftp: boolean; implicit: boolean; free: number; writable: boolean };
+	support: {
+		zip: boolean;
+		gzip: boolean;
+		part: number;
+		excluded: string[];
+		crypt: boolean;
+		ftp: boolean;
+		implicit: boolean;
+		free: number;
+		writable: boolean;
+	};
 	invite: { expires: number } | null;
 	frozen: boolean;
 	download: string;
@@ -331,4 +357,132 @@ export interface PeerStatus {
 	remote: PeerRemote | null;
 	error: string;
 	now: number;
+}
+
+export type GeoProvider = 'arvan' | 'cloudflare' | 'route53' | 'gcore' | 'bunny';
+export type GeoPanel = 'cpanel' | 'directadmin';
+export type GeoMethodType = '' | 'provider' | 'panel' | 'manual';
+
+export interface GeoProbe {
+	ok: boolean;
+	ms?: number;
+	at: number;
+	last_ok?: number;
+	fails: number;
+	gen?: number;
+	offline?: boolean;
+	version?: string;
+	error?: string;
+}
+
+export interface GeoSync {
+	gen: number;
+	announced: number;
+	ok_at: number;
+	busy: boolean;
+	error: string;
+	lag: number;
+	table: string;
+	files: string;
+	contact: number;
+}
+
+export interface GeoCrawl {
+	hits: number;
+	codes: Record<'2' | '3' | '4' | '5', number>;
+	ms: number;
+	last: number;
+	verified: number;
+	fake: number;
+}
+
+export interface GeoHealth {
+	up: boolean;
+	self: GeoProbe | null;
+	views: Record<string, GeoProbe>;
+	sync: GeoSync | null;
+	crawl: Record<string, GeoCrawl> | null;
+	version: string;
+	offline: boolean;
+	report: number;
+}
+
+export interface GeoPanelLogin {
+	url: string;
+	user: string;
+	token: boolean;
+}
+
+export interface GeoNode {
+	id: string;
+	label: string;
+	url: string;
+	ip: string;
+	country: string;
+	primary: boolean;
+	status: 'ready' | 'seeding' | 'failed' | string;
+	error: string;
+	self: boolean;
+	added: number;
+	health: GeoHealth | null;
+	routes: { countries: string[]; continents: string[]; default: boolean } | null;
+	panel: Record<GeoPanel, GeoPanelLogin>;
+}
+
+export interface GeoMethod {
+	type: GeoMethodType;
+	provider: '' | GeoProvider;
+	panel: '' | GeoPanel;
+	ttl: number;
+}
+
+export interface GeoCheck {
+	redirect: boolean;
+	print: boolean;
+	same: boolean;
+	home: number;
+	canonical: boolean;
+	noindex: boolean;
+}
+
+export interface GeoVerify {
+	zone: string;
+	nameservers: Record<string, { ips: string[] | null; known: boolean }>;
+	local: string[];
+	subs: Record<string, { want: string; got: string }>;
+	at: number;
+}
+
+export interface GeoTestResult {
+	ok: boolean;
+	error?: string;
+	zone?: string;
+	nameservers?: string[];
+}
+
+export interface GeoStatus {
+	role: '' | 'joining' | 'primary' | 'copy';
+	host: string;
+	home: string;
+	nodes: GeoNode[];
+	method: GeoMethod;
+	secrets: Record<GeoProvider, Record<string, boolean>>;
+	dns: { hash?: string; at?: number; ok?: boolean; error?: string; auto?: boolean; by?: string };
+	checks: { at?: number; results?: Record<string, GeoCheck> };
+	verify: { at: number; results: Record<string, GeoVerify | null> } | null;
+	sync: GeoSync | null;
+	gen: number;
+	list: { at: number; files: number; bytes: number } | null;
+	join: { url: string; expires: number } | null;
+	job: BackupJob | null;
+	multisite: boolean;
+	prefix: string;
+	config: boolean;
+	suggest: { primary: string; copy: string };
+	relayed: { path: string; from: string; at: number } | null;
+	max: number;
+	disk: number;
+	countries: string[];
+	code?: string;
+	test?: Record<string, GeoTestResult> | null;
 }

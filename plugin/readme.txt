@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,14 @@ Rafoo fixes this without touching the files of your theme or plugins.
 * Copy the whole site to another WordPress site with Rafoo using a one-time code, directly between the two servers, with a short final pass for WooCommerce orders. A different domain and table prefix are handled.
 * Move to an empty host with a small installer.
 
+**Multiple hosts with geo DNS (beta)**
+
+* Keep full copies of the site on up to three more hosts in other countries. Visitors reach the nearest healthy host, and when the international internet is cut, visitors in Iran keep reaching the host inside Iran while visitors abroad reach the copies.
+* One address for everyone: every host serves your own domain. Technical subdomains redirect to it and are marked noindex, so search engines see one site and no duplicate content.
+* Copies follow the main host within seconds: only the changed tables and files are sent. Copies are read-only; logins, comments, forms, carts and orders are passed to the main host.
+* Rafoo checks every host from the other hosts each minute and updates DNS by itself through ArvanCloud, Gcore, Cloudflare, Amazon Route 53 or Bunny DNS, or through cPanel and DirectAdmin on the hosts. A manual mode lists the exact records for any other DNS.
+* Step-by-step guides for every part, from creating an A record to changing nameservers at IRNIC and setting up Search Console.
+
 **Browser and internal requests**
 
 * A small script at the top of every page makes browser requests to unreachable servers fail at once during an outage, so sliders, chat widgets and page builders do not hang.
@@ -118,6 +126,17 @@ Rafoo talks to the following services. None of them receives anything about your
 
 **Backup servers (only when added).** Backups are sent only to servers an administrator adds under Rafoo › Backup, using the login entered there.
 
+**Multiple hosts (only when used).** Hosts of one group talk only to each other, over signed and encrypted requests to `admin-ajax.php?action=rafoo_geo` and `?rafoo-ping` on their technical addresses; nothing goes through rafoo.ir. When an administrator chooses a DNS service under Rafoo › Multiple hosts and enters its key, Rafoo sends the domain's DNS records (host names and IP addresses of the hosts) to that service only:
+
+* ArvanCloud: `https://napi.arvancloud.ir` ([terms](https://www.arvancloud.ir/en/terms), [privacy](https://www.arvancloud.ir/en/privacy))
+* Gcore: `https://api.gcore.com` ([terms and privacy](https://gcore.com/legal))
+* Cloudflare: `https://api.cloudflare.com` ([terms](https://www.cloudflare.com/website-terms/), [privacy](https://www.cloudflare.com/privacypolicy/))
+* Amazon Route 53: `https://route53.amazonaws.com` ([terms](https://aws.amazon.com/service-terms/), [privacy](https://aws.amazon.com/privacy/))
+* Bunny DNS: `https://api.bunny.net` ([terms](https://bunny.net/tos/), [privacy](https://bunny.net/privacy/))
+* cPanel or DirectAdmin: the panel address of each host, entered by the administrator.
+
+To check that search engine bots are genuine, Rafoo looks up the reverse DNS name of the bot's IP address with the server's own resolver. To check the domain's DNS, it asks the domain's own nameservers directly.
+
 **Suggestions.** When an administrator writes a message under Rafoo › Feedback and presses Send, the message, the optional contact detail and the software versions are sent to `https://rafoo.ir/api/v1/feedback`.
 
 Rafoo's terms and privacy policy: [rafoo.ir/privacy](https://rafoo.ir/privacy).
@@ -162,6 +181,10 @@ Press Pause on the Rafoo overview. The site then works as if Rafoo were not inst
 
 The internet state is shared by the whole network, and each site has its own copies, log and backups. Network administrators can set Rafoo for all sites under Network Admin › Rafoo.
 
+= Will copies on other hosts cause duplicate content? =
+
+No. Every host serves the same pages at your own address, and the technical subdomains of the hosts redirect to it with a noindex header. Search engines see one site. Rafoo › Multiple hosts checks this on every host.
+
 = Can I translate Rafoo? =
 
 Yes. All text is in the `rafoo` text domain and a `rafoo.pot` file is in the `languages` folder.
@@ -187,6 +210,14 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+
+= 1.4.0 =
+* Multiple hosts with geo DNS (beta): up to three full copies of the site on hosts in other countries, one address for search engines, read-only copies that pass logins, comments and orders to the main host, health checks from every host, and automatic DNS through ArvanCloud, Gcore, Cloudflare, Amazon Route 53, Bunny DNS, cPanel or DirectAdmin, with step-by-step guides.
+* New backup format for very large sites: independent .tar.gz parts (128 MB to 2 GB) that open with 7-Zip or tar, written only by appending, with streaming encryption and resume points, so backups no longer need twice the space or fail on large archives.
+* Backups work on hosts with little memory, keep going when a file changes or disappears during the backup, check free space first, and send each finished part to the backup servers at once.
+* A Check button opens a whole backup without writing anything, the task log can be viewed and copied, and every failure explains its cause and fix.
+* Choose the part size and folders or patterns to leave out of backups.
+* Backups made with Rafoo 1.3 can still be restored.
 
 = 1.3.0 =
 * Browser guard: during an outage, requests that scripts make in the browser (fetch, XHR, beacons, WebSocket, and scripts, styles, frames and images added later) to unreachable servers fail at once instead of hanging, and the resulting errors stay quiet.
@@ -217,6 +248,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+
+= 1.4.0 =
+Multiple hosts with geo DNS (beta) and a new backup format for very large sites. Rafoo on the other site must also be 1.4 to move a site.
 
 = 1.3.0 =
 Browser guard, block list, Pause switch, Site Health checks, Multisite network settings and three new languages.

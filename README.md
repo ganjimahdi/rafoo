@@ -10,7 +10,7 @@ Free WordPress plugin that keeps sites fast and working when the international i
 | --- | --- | --- |
 | Main file | `plugin/rafoo.php` | `plugin/rafoo-complete.php` |
 | Where | [rafoo.ir](https://rafoo.ir), wordpress.org (in review) | [rafoo.ir](https://rafoo.ir) |
-| Local copies, outage mode, browser guard, captcha, safe updates, backups, monitoring, Site Health, Multisite | yes | yes |
+| Local copies, outage mode, browser guard, captcha, safe updates, backups, multiple hosts with geo DNS (beta), monitoring, Site Health, Multisite | yes | yes |
 | Updates of WordPress, plugins, themes and translations from the signed Iranian mirror | no | yes |
 | Backup servers | SFTP, FTPS, FTP | also implicit FTPS (port 990), and FTP over cURL on hosts without PHP's FTP extension |
 
@@ -40,7 +40,14 @@ Both editions are free and share the same code. Install only one; activating Raf
 
 **Safety and backups**
 - Safe updates: the previous version is kept, the site is checked after each update and only the update that broke it is rolled back.
-- Full or incremental backups in short steps (shared hosting friendly), optional XChaCha20-Poly1305 encryption, destinations over SFTP, FTPS or FTP with automatic detection, restore with automatic fallback, site-to-site transfer with a one-time code, and moving to an empty host with a small installer.
+- Full or incremental backups in short steps (shared hosting friendly) as independent `.tar.gz` parts of 128 MB to 2 GB that open with 7-Zip or tar, written only by appending, with resume points, a backup check, a task log and low-memory operation. Optional streaming XChaCha20-Poly1305 encryption, destinations over SFTP, FTPS or FTP with automatic detection, restore with automatic fallback, site-to-site transfer with a one-time code, and moving to an empty host with a small installer.
+
+**Multiple hosts with geo DNS (beta)**
+- A main host (usually in Iran) and up to three full copies on hosts in other countries, all serving the same domain. Each host also has a technical subdomain that only Rafoo uses; normal visits to it get a 301 to the main address with `X-Robots-Tag: noindex`, so search engines see one site.
+- The first copy reuses the site transfer. After that the main host records which tables change and copies compare only those, in key ranges with checksums, plus a merge of sorted file lists. Changes reach the copies within seconds.
+- Copies are read-only: POST requests, wp-admin, login, REST writes, WooCommerce cart, checkout and account pages and requests with login or cart cookies are relayed to the main host with a signed header. If the main host cannot be reached, a clear 503 page is shown.
+- Every host checks the others each minute. A copy is taken out of DNS only after three failed checks while no other host still reaches it; the main host always stays in.
+- Routing through ArvanCloud, Gcore, Cloudflare (Load Balancing), Amazon Route 53 or Bunny DNS, through cPanel or DirectAdmin zones on each host (both hosts' nameservers on the domain), or manual records for any other DNS. Live DNS check from every host, search engine checks (redirects, robots.txt, sitemap, canonical) and crawl statistics with reverse-DNS verified bots. Certificate checks are answered by whichever host has the file.
 
 **Monitoring**
 - Opt-in cooperative network of Rafoo sites that check each other from five points inside and five outside Iran.
@@ -53,7 +60,7 @@ Both editions are free and share the same code. Install only one; activating Raf
 
 ## Requirements
 
-WordPress 6.5 or later, PHP 7.4 to 8.4. Apache, LiteSpeed or Nginx. Multisite is supported. Backups need the ZipArchive extension; encryption needs sodium.
+WordPress 6.5 or later, PHP 7.4 to 8.4. Apache, LiteSpeed or Nginx. Multisite is supported (multiple hosts not yet). Backups need zlib; encryption and multiple hosts need sodium. Restoring backups made before 1.4 needs ZipArchive.
 
 ## Installation
 
@@ -103,7 +110,8 @@ Filters:
 | `rafoo_analytics_hosts`, `rafoo_social_login_selectors` | what is removed or hidden |
 | `rafoo_captcha_difficulty`, `rafoo_captcha_scripts`, `rafoo_captcha_verify`, `rafoo_captcha_store_api` | captcha behaviour |
 | `rafoo_health_targets`, `rafoo_rollback_max_bytes` | safe updates |
-| `rafoo_backup_exclude`, `rafoo_backup_step_seconds`, `rafoo_backup_background`, `rafoo_transfer_endpoint` | backups and transfer |
+| `rafoo_backup_exclude`, `rafoo_backup_step_seconds`, `rafoo_backup_background`, `rafoo_transfer_endpoint`, `rafoo_loopback_url` | backups and transfer |
+| `rafoo_geo_api_base`, `rafoo_geo_sslverify`, `rafoo_geo_exclude`, `rafoo_geo_skip_tables`, `rafoo_geo_dynamic`, `rafoo_geo_dynamic_paths`, `rafoo_geo_relay_timeout` | multiple hosts |
 
 REST namespace `rafoo/v1`; every route needs `manage_options`, and mode, pause, backups and network settings need `manage_network_options` on Multisite.
 
@@ -133,6 +141,6 @@ GPL-2.0-or-later. See [LICENSE](LICENSE). The Rafoo and Wbweb names and logos ar
 - **رفو:** نسخه مخزن وردپرس.
 - **رفو کامل:** همه امکانات رفو، به‌اضافه به‌روزرسانی وردپرس، افزونه‌ها، قالب‌ها و ترجمه‌ها از مخزن ایرانی با امضای دیجیتال.
 
-امکانات: نسخه محلی کتابخانه‌ها و فونت‌ها از آینه داخلی، تشخیص خودکار قطعی، نگهبان مرورگر و فهرست سیاه، ادغام درخواست‌های تکراری و Heartbeat هوشمند، کلید توقف، کپچای داخلی، به‌روزرسانی امن، پشتیبان و انتقال سایت، موتور پایش، سلامت سایت، تنظیمات شبکه Multisite و رابط فارسی، انگلیسی، عربی، ترکی و روسی با دکمه راهنما برای هر بخش.
+امکانات: نسخه محلی کتابخانه‌ها و فونت‌ها از آینه داخلی، تشخیص خودکار قطعی، نگهبان مرورگر و فهرست سیاه، ادغام درخواست‌های تکراری و Heartbeat هوشمند، کلید توقف، کپچای داخلی، به‌روزرسانی امن، پشتیبان و انتقال سایت حتی برای سایت‌های بسیار بزرگ، چند هاست با DNS جغرافیایی (بتا) بدون آسیب به سئو، موتور پایش، سلامت سایت، تنظیمات شبکه Multisite و رابط فارسی، انگلیسی، عربی، ترکی و روسی با دکمه راهنما برای هر بخش.
 
 دانلود، راهنما و پایش لحظه‌ای اینترنت ایران در [rafoo.ir](https://rafoo.ir). پرسش و گزارش اشکال را در [Issues](../../issues) یا از [rafoo.ir/contact](https://rafoo.ir/contact) بفرستید.

@@ -78,5 +78,6 @@ export function duration(seconds: number): string {
 export function bytes(value: number): string {
 	if (value < 1024) return t('bytes_b', value);
 	if (value < 1048576) return t('bytes_kb', Math.round(value / 102.4) / 10);
-	return t('bytes_mb', Math.round(value / 104857.6) / 10);
+	if (value < 1073741824) return t('bytes_mb', Math.round(value / 104857.6) / 10);
+	return t('bytes_gb', Math.round(value / 107374182.4) / 10);
 }

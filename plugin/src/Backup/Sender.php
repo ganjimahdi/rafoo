@@ -11,7 +11,7 @@ final class Sender {
 
 	const WAIT_LIMIT = 21600;
 
-	public static function start( $code, $final = true ) {
+	public static function start( $code, $final = true, array $extra = array() ) {
 		$peer = Transfer::resolve( $code );
 		if ( is_wp_error( $peer ) ) {
 			return $peer;
@@ -23,8 +23,8 @@ final class Sender {
 		if ( ! empty( $hello['busy'] ) ) {
 			return new \WP_Error( 'rafoo_peer_busy', __( 'The other site is busy with another backup task. Try again when it finishes.', 'rafoo' ) );
 		}
-		if ( empty( $hello['zip'] ) ) {
-			return new \WP_Error( 'rafoo_peer_zip', __( 'The other server has no ZipArchive extension, so it cannot receive the copy.', 'rafoo' ) );
+		if ( empty( $hello['format'] ) || (int) $hello['format'] < Maker::FORMAT ) {
+			return new \WP_Error( 'rafoo_peer_old', __( 'Rafoo on the other site is too old to receive this copy. Update Rafoo there to version 1.4 or newer and make a new code.', 'rafoo' ) );
 		}
 		update_option(
 			Transfer::OUTGOING,
@@ -46,6 +46,8 @@ final class Sender {
 				'inner'  => null,
 				'lists'  => array(),
 				'notice' => '',
+				'geo'    => isset( $extra['geo'] ) ? (string) $extra['geo'] : '',
+				'gen'    => isset( $extra['gen'] ) ? (int) $extra['gen'] : 0,
 			),
 			'backup'
 		);
@@ -72,7 +74,7 @@ final class Sender {
 						)
 					);
 					if ( is_wp_error( $data ) ) {
-						return Job::fail( $job, $data->get_error_code() );
+						return Job::fail( $job, 'not_writable', array( 'path' => 'uploads' ) );
 					}
 					$d['inner'] = array(
 						'step'     => 'db',
@@ -83,25 +85,41 @@ final class Sender {
 					);
 				}
 				$maker      = new Maker();
-				$d['inner'] = $maker->step( $d['inner'], $deadline );
+				$d['inner'] = $maker->step(
+					$d['inner'],
+					$deadline,
+					static function ( array $inner ) use ( &$job ) {
+						$job['data']['inner'] = $inner;
+						$job['mark']          = isset( $inner['mark'] ) ? $inner['mark'] : null;
+						Job::save( $job );
+					}
+				);
+				$job['mark'] = isset( $d['inner']['mark'] ) ? $d['inner']['mark'] : null;
+				$job['info'] = isset( $d['inner']['info'] ) ? $d['inner']['info'] : array();
 				unset( $d['inner']['yield'] );
 				$job['progress'] = $d['inner']['progress'];
 				$job['phase']    = $d['inner']['step'];
 				if ( 'failed' === $d['inner']['status'] ) {
-					return Job::fail( $job, $d['inner']['error'] );
+					return Job::fail( $job, $d['inner']['error'], isset( $d['inner']['detail'] ) ? (array) $d['inner']['detail'] : array() );
 				}
 				if ( 'done' === $d['inner']['status'] ) {
 					$inner        = $d['inner']['data'];
+					$parts        = array_map(
+						static function ( $part ) {
+							return array_intersect_key( $part, array_flip( array( 'name', 'size', 'sha256' ) ) );
+						},
+						$inner['pack']['parts']
+					);
 					$d['archive'] = array(
-						'name'   => $inner['file'],
-						'size'   => $inner['size'],
-						'sha256' => $inner['sha256'],
-						'id'     => $inner['backup'],
+						'parts'    => $parts,
+						'manifest' => $inner['manifest'],
+						'size'     => $inner['size'],
+						'id'       => $inner['backup'],
 					);
 					$d['lists'][] = $inner['list'];
 					$outgoing     = get_option( Transfer::OUTGOING );
 					if ( is_array( $outgoing ) ) {
-						$outgoing['files'] = array( $inner['file'] );
+						$outgoing['files'] = array_column( $parts, 'name' );
 						update_option( Transfer::OUTGOING, $outgoing, false );
 					}
 					$d['inner']  = null;
@@ -114,15 +132,15 @@ final class Sender {
 					Transfer::outgoing_key(),
 					'start',
 					array(
-						'name'   => $d['archive']['name'],
-						'size'   => $d['archive']['size'],
-						'sha256' => $d['archive']['sha256'],
+						'parts'  => $d['archive']['parts'],
 						'source' => Transfer::endpoint_url(),
 						'pass'   => $d['pass'],
+						'geo'    => ! empty( $d['geo'] ),
+						'gen'    => isset( $d['gen'] ) ? (int) $d['gen'] : 0,
 					)
 				);
 				if ( is_wp_error( $reply ) || empty( $reply['ok'] ) ) {
-					return Job::fail( $job, is_wp_error( $reply ) ? 'unreachable' : ( isset( $reply['error'] ) ? $reply['error'] : 'refused' ) );
+					return Job::fail( $job, is_wp_error( $reply ) ? 'unreachable' : ( isset( $reply['error'] ) && 'disk_full' === $reply['error'] ? 'remote: disk_full' : 'refused' ) );
 				}
 				$d['since']  = time();
 				$job['step'] = 'wait';
@@ -133,6 +151,7 @@ final class Sender {
 				if ( $peer ) {
 					$job['progress'] = $peer['progress'];
 					$job['phase']    = 'remote-' . $peer['step'];
+					$job['info']     = isset( $peer['info'] ) ? (array) $peer['info'] : array();
 				}
 				if ( $peer && 'done' === $peer['status'] && 'receive' === $peer['kind'] ) {
 					$this->forget_archive( $d );
@@ -147,7 +166,7 @@ final class Sender {
 					return $job;
 				}
 				if ( $peer && in_array( $peer['status'], array( 'failed', 'stalled' ), true ) && 'receive' === $peer['kind'] ) {
-					return Job::fail( $job, 'remote: ' . $peer['error'] );
+					return Job::fail( $job, 'remote: ' . $peer['error'], isset( $peer['detail'] ) ? (array) $peer['detail'] : array() );
 				}
 				if ( time() - (int) $d['since'] > self::WAIT_LIMIT ) {
 					return Job::fail( $job, 'timeout' );
@@ -155,7 +174,7 @@ final class Sender {
 				$job['step'] = 'wait';
 				return $job;
 		}
-		return Job::fail( $job, 'unknown step' );
+		return Job::fail( $job, 'internal', array( 'message' => 'unknown step ' . $job['step'] ) );
 	}
 
 	private function peer_url() {
@@ -165,7 +184,10 @@ final class Sender {
 
 	private function forget_archive( array $d ) {
 		if ( ! empty( $d['archive'] ) ) {
-			wp_delete_file( Ledger::path( $d['archive']['name'] ) );
+			foreach ( (array) $d['archive']['parts'] as $part ) {
+				wp_delete_file( Ledger::path( $part['name'] ) );
+			}
+			wp_delete_file( Ledger::path( $d['archive']['manifest'] ) );
 			Catalog::forget( $d['archive']['id'] );
 		}
 	}
@@ -173,8 +195,8 @@ final class Sender {
 	public function cleanup( array $job ) {
 		Transfer::freeze( false );
 		$d = $job['data'];
-		if ( ! empty( $d['inner']['data']['work'] ) ) {
-			Ledger::remove_dir( $d['inner']['data']['work'] );
+		if ( ! empty( $d['inner']['data'] ) ) {
+			( new Maker() )->cleanup( $d['inner'] );
 		}
 		$this->forget_archive( $d );
 		foreach ( (array) $d['lists'] as $list ) {
@@ -185,6 +207,7 @@ final class Sender {
 	public function finished( array $job ) {
 		$this->cleanup( $job );
 		delete_option( Transfer::OUTGOING );
+		\Rafoo\Geo\Nodes::seeded( $job );
 		State::event( 'done' === $job['status'] ? 'transfer_sent' : 'transfer_failed', array( 'name' => 'done' === $job['status'] ? $job['data']['peer'] : $job['error'] ) );
 	}
 }

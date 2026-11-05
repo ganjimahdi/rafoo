@@ -28,9 +28,10 @@ final class Transfer {
 
 	const LIFETIME = 86400;
 
-	public static function invite() {
-		$key    = random_bytes( 32 );
-		$invite = array(
+	public static function invite( $pair = true, $endpoint = '' ) {
+		$endpoint = '' !== $endpoint ? $endpoint : self::endpoint_url();
+		$key      = random_bytes( 32 );
+		$invite   = array(
 			'key'     => Vault::seal( bin2hex( $key ) ),
 			'created' => time(),
 			'expires' => time() + self::LIFETIME,
@@ -39,13 +40,13 @@ final class Transfer {
 		$code  = self::PREFIX . self::encode(
 			wp_json_encode(
 				array(
-					'u' => self::endpoint_url(),
+					'u' => $endpoint,
 					'k' => self::encode( $key ),
 				)
 			)
 		);
 		$short = '';
-		$reply = wp_safe_remote_post(
+		$reply = ! $pair ? null : wp_safe_remote_post(
 			self::PAIR,
 			Client::args(
 				array(
@@ -53,14 +54,15 @@ final class Transfer {
 					'headers' => array( 'Content-Type' => 'application/json' ),
 					'body'    => wp_json_encode(
 						array(
-							'url' => self::endpoint_url(),
+							'url' => $endpoint,
 							'key' => self::encode( $key ),
 						)
 					),
 				)
 			)
 		);
-		if ( ! is_wp_error( $reply ) && 200 === (int) wp_remote_retrieve_response_code( $reply ) ) {
+		$short = '';
+		if ( null !== $reply && ! is_wp_error( $reply ) && 200 === (int) wp_remote_retrieve_response_code( $reply ) ) {
 			$body  = json_decode( wp_remote_retrieve_body( $reply ), true );
 			$short = isset( $body['code'] ) && preg_match( '/^[A-Z0-9]{4}-?[A-Z0-9]{4}$/', (string) $body['code'] ) ? (string) $body['code'] : '';
 		}
@@ -194,8 +196,9 @@ final class Transfer {
 						'wp'   => get_bloginfo( 'version' ),
 						'php'  => PHP_VERSION,
 						'free' => Ledger::free_space(),
-						'busy' => (bool) Job::running(),
-						'zip'  => class_exists( 'ZipArchive' ),
+						'busy'   => (bool) Job::running(),
+						'zip'    => class_exists( 'ZipArchive' ),
+						'format' => Maker::FORMAT,
 					)
 				);
 				break;
@@ -210,6 +213,9 @@ final class Transfer {
 	}
 
 	private static function accept( array $payload, $key ) {
+		if ( isset( $payload['parts'] ) ) {
+			return self::accept_parts( $payload, $key );
+		}
 		$name = isset( $payload['name'] ) ? sanitize_file_name( (string) $payload['name'] ) : '';
 		$size = isset( $payload['size'] ) ? (int) $payload['size'] : 0;
 		$hash = isset( $payload['sha256'] ) ? strtolower( (string) $payload['sha256'] ) : '';
@@ -243,6 +249,109 @@ final class Transfer {
 		wp_delete_file( Ledger::path( 'incoming-' . $name ) );
 		$job = Job::start( 'receive', $data, 'pull' );
 		return is_wp_error( $job ) ? array( 'ok' => false, 'error' => $job->get_error_code() ) : array( 'ok' => true );
+	}
+
+	private static function accept_parts( array $payload, $key ) {
+		$from  = isset( $payload['source'] ) ? esc_url_raw( (string) $payload['source'], array( 'http', 'https' ) ) : '';
+		$parts = array();
+		$total = 0;
+		$large = 0;
+		foreach ( (array) $payload['parts'] as $part ) {
+			$name = isset( $part['name'] ) ? sanitize_file_name( (string) $part['name'] ) : '';
+			$size = isset( $part['size'] ) ? (int) $part['size'] : 0;
+			$hash = isset( $part['sha256'] ) ? strtolower( (string) $part['sha256'] ) : '';
+			if ( '' === $name || ! preg_match( Catalog::PATTERN, $name ) || $size <= 0 || ! preg_match( '/^[a-f0-9]{64}$/', $hash ) ) {
+				return array( 'ok' => false, 'error' => 'bad request' );
+			}
+			$parts[] = array(
+				'name'   => $name,
+				'size'   => $size,
+				'sha256' => $hash,
+			);
+			$total  += $size;
+			$large   = max( $large, $size );
+		}
+		if ( ! $parts || '' === $from || count( $parts ) > 5000 ) {
+			return array( 'ok' => false, 'error' => 'bad request' );
+		}
+		$free = Ledger::free_space();
+		if ( $free >= 0 && $free < 2 * $large + Packer::RESERVE ) {
+			return array( 'ok' => false, 'error' => 'disk_full' );
+		}
+		$data           = Restorer::data(
+			'receive',
+			array(
+				array(
+					'id'     => 'transfer',
+					'format' => Maker::FORMAT,
+					'file'   => '',
+					'parts'  => $parts,
+					'size'   => $total,
+					'sha256' => '',
+					'mode'   => Crypt::KEY,
+					'places' => array(),
+					'kind'   => 'full',
+				),
+			),
+			'',
+			bin2hex( $key )
+		);
+		$data['source'] = untrailingslashit( $from );
+		$data['remote'] = '';
+		$data['pass']   = isset( $payload['pass'] ) ? (int) $payload['pass'] : 1;
+		if ( ! empty( $payload['geo'] ) && \Rafoo\Geo\Store::is_copy() ) {
+			$data['geo']     = true;
+			$data['geo_gen'] = isset( $payload['gen'] ) ? (int) $payload['gen'] : 0;
+		}
+		foreach ( $parts as $part ) {
+			wp_delete_file( Ledger::path( 'incoming-' . $part['name'] ) );
+		}
+		$job = Job::start( 'receive', $data, 'part' );
+		return is_wp_error( $job ) ? array( 'ok' => false, 'error' => $job->get_error_code() ) : array( 'ok' => true );
+	}
+
+	public static function pull_part( array $job, $deadline, array $part, $local ) {
+		$d   = &$job['data'];
+		$key = hex2bin( $d['key'] );
+		while ( microtime( true ) < $deadline ) {
+			clearstatcache( true, $local );
+			$have = is_file( $local ) ? (int) filesize( $local ) : 0;
+			if ( $have >= $part['size'] ) {
+				return $job;
+			}
+			$chunk = self::call(
+				$d['source'],
+				$key,
+				'file',
+				array(
+					'name'   => $part['name'],
+					'offset' => $have,
+					'length' => self::CHUNK,
+				),
+				true,
+				120
+			);
+			if ( is_wp_error( $chunk ) || '' === $chunk ) {
+				$d['retries_pull'] = ( isset( $d['retries_pull'] ) ? $d['retries_pull'] : 0 ) + 1;
+				if ( $d['retries_pull'] > 30 ) {
+					return Job::fail( $job, 'unreachable', array( 'part' => $part['name'] ) );
+				}
+				$job['yield'] = true;
+				return $job;
+			}
+			$d['retries_pull'] = 0;
+			$out               = Ledger::open( $local, 'ab' );
+			if ( ! $out || strlen( $chunk ) !== $out->fwrite( $chunk ) ) {
+				return Job::fail( $job, 'disk_full', array( 'free' => Ledger::free_space() ) );
+			}
+			$out             = null;
+			$job['progress'] = array(
+				'done'  => $d['done'] + $have + strlen( $chunk ),
+				'total' => max( 1, $d['total'] ),
+			);
+			$job['mark']     = 'pull' . $d['part'] . '-' . ( $have + strlen( $chunk ) );
+		}
+		return $job;
 	}
 
 	private static function serve( array $payload, $key ) {
@@ -309,7 +418,14 @@ final class Transfer {
 	}
 
 	public static function received( array $job ) {
-		wp_delete_file( Ledger::path( $job['data']['chain'][0]['file'] ) );
+		$item = $job['data']['chain'][0];
+		if ( '' !== (string) $item['file'] ) {
+			wp_delete_file( Ledger::path( $item['file'] ) );
+		}
+		foreach ( isset( $item['parts'] ) ? (array) $item['parts'] : array() as $part ) {
+			wp_delete_file( Ledger::path( 'incoming-' . $part['name'] ) );
+		}
+		\Rafoo\Geo\Nodes::received( $job );
 		State::event( 'done' === $job['status'] ? 'transfer_received' : 'transfer_failed', array( 'name' => $job['data']['source'] ) );
 	}
 

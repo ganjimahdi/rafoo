@@ -87,6 +87,7 @@
 	.rf-choice input {
 		flex: none;
 		margin: 0;
+		box-shadow: none;
 		margin-block-start: 4px;
 		accent-color: var(--rf-l5);
 	}

@@ -43,10 +43,20 @@
 		pausing = false;
 	}
 
+	const FAILURES = ['backup_failed', 'restore_failed', 'transfer_failed', 'move_failed'];
+
+	function failure(code: string): string {
+		const bare = code.replace(/^remote: /, '');
+		const key = 'backup_error_' + bare;
+		const label = t(key);
+		return label === key ? code : (bare === code ? '' : t('backup_step_remote') + ' ') + label;
+	}
+
 	function eventLabel(type: string, data: Record<string, unknown>): string {
 		const key = 'event_' + type + (type === 'override' && typeof data.mode === 'string' ? '_' + data.mode : '');
 		const text = (name: string) => (typeof data[name] === 'string' || typeof data[name] === 'number' ? String(data[name]) : '');
-		const label = t(key, text('name'), text('to'), text('from'));
+		const name = FAILURES.includes(type) ? failure(text('name')) : typeof data.bytes === 'number' ? bytes(data.bytes) : text('name');
+		const label = t(key, name, text('to'), text('from'));
 		return label === key ? type : label;
 	}
 </script>

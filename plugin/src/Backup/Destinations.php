@@ -67,6 +67,14 @@ final class Destinations {
 		update_option( self::OPTION, $all, false );
 	}
 
+	public static function label( $id ) {
+		$config = self::get( $id );
+		if ( ! $config ) {
+			return (string) $id;
+		}
+		return '' !== (string) $config['label'] ? (string) $config['label'] : (string) $config['host'];
+	}
+
 	public static function remote( $id ) {
 		$config = self::get( $id );
 		return $config ? Remote::make( $config ) : null;

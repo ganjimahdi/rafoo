@@ -4,9 +4,9 @@ namespace Rafoo\Backup;
 
 defined( 'ABSPATH' ) || exit;
 
-final class Dump {
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- A backup must read and write the live tables directly; cached results would copy stale data.
 
-	const BATCH = 500;
+final class Dump {
 
 	const STATEMENT_BYTES = 262144;
 
@@ -14,10 +14,19 @@ final class Dump {
 
 	const OLD = 'rfro_';
 
+	const CHECKPOINT = 8388608;
+
+	const BATCH_BYTES = 4194304;
+
 	public static function tables() {
 		global $wpdb;
 		$like   = $wpdb->esc_like( $wpdb->base_prefix ) . '%';
-		$tables = $wpdb->get_col( $wpdb->prepare( 'SHOW TABLES LIKE %s', $like ) );
+		$tables = array();
+		foreach ( (array) $wpdb->get_results( $wpdb->prepare( 'SHOW FULL TABLES LIKE %s', $like ), ARRAY_N ) as $row ) {
+			if ( ! isset( $row[1] ) || 'VIEW' !== strtoupper( (string) $row[1] ) ) {
+				$tables[] = (string) $row[0];
+			}
+		}
 		$out = array();
 		foreach ( $tables as $table ) {
 			if ( 0 !== strpos( $table, self::TEMP ) && 0 !== strpos( $table, self::OLD ) ) {
@@ -27,47 +36,67 @@ final class Dump {
 		return $out;
 	}
 
-	public static function start( $file ) {
-		$out = Ledger::open( $file, 'wb' );
-		if ( ! $out ) {
-			return null;
+	public static function begin( $file ) {
+		$sink = Archive\Sink::create( $file );
+		$sink->write( "SET NAMES utf8mb4;\nSET foreign_key_checks = 0;\nSET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';\n" );
+		$tables = self::tables();
+		$sizes  = self::sizes();
+		$list   = array();
+		foreach ( $tables as $table ) {
+			$list[] = isset( $sizes[ $table ] ) ? $sizes[ $table ] : 0;
 		}
-		$out->fwrite( "SET NAMES utf8mb4;\nSET foreign_key_checks = 0;\nSET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';\n" );
-		$out = null;
 		return array(
-			'tables' => self::tables(),
+			'sink'   => $sink->checkpoint(),
+			'tables' => $tables,
+			'sizes'  => $list,
 			'table'  => 0,
 			'after'  => null,
 			'offset' => 0,
 			'begun'  => false,
 			'rows'   => 0,
+			'key'    => '',
+			'batch'  => 0,
+			'avg'    => 0,
+			'since'  => 0,
+			'done'   => false,
 		);
 	}
 
-	public static function export( $file, array $job, $deadline ) {
+	public static function dump( array $job, $deadline, $memory, $save ) {
 		global $wpdb;
-		$out = Ledger::open( $file, 'ab' );
-		if ( ! $out ) {
-			return false;
-		}
+		$sink = Archive\Sink::open( $job['sink'] );
 		while ( $job['table'] < count( $job['tables'] ) && microtime( true ) < $deadline ) {
 			$table = $job['tables'][ $job['table'] ];
 			if ( ! $job['begun'] ) {
+				$job['sink']  = $sink->checkpoint();
+				$job['since'] = $sink->raw();
+				call_user_func( $save, $job );
 				$create = $wpdb->get_row( $wpdb->prepare( 'SHOW CREATE TABLE %i', $table ), ARRAY_N );
-				if ( ! $create ) {
+				if ( ! $create || ! isset( $create[1] ) ) {
+					if ( '' !== $wpdb->last_error ) {
+						throw new Problem( 'db_read', array( 'table' => $table, 'error' => Journal::clean( $wpdb->last_error ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error codes and details go to the backup log and the REST reply, never into HTML.
+					}
 					++$job['table'];
 					continue;
 				}
-				$out->fwrite( 'DROP TABLE IF EXISTS `' . $table . "`;\n" . str_replace( array( "\r\n", "\n", "\r" ), ' ', $create[1] ) . ";\n" );
-				$job['begun'] = true;
+				$sink->write( 'DROP TABLE IF EXISTS `' . $table . "`;\n" . str_replace( array( "\r\n", "\n", "\r" ), ' ', $create[1] ) . ";\n" );
+				$status       = $wpdb->get_row( $wpdb->prepare( 'SHOW TABLE STATUS LIKE %s', $table ), ARRAY_A );
+				$job['avg']   = $status && isset( $status['Avg_row_length'] ) ? (int) $status['Avg_row_length'] : 0;
+				$job['batch'] = self::rows_for( $job['avg'], $memory );
 				$job['key']   = self::numeric_key( $table );
+				$job['begun'] = true;
 			}
-			$rows = self::rows( $table, $job );
+			$job['batch'] = min( (int) $job['batch'], self::rows_for( $job['avg'], $memory ) );
+			$rows         = self::batch( $table, $job );
+			if ( '' !== $wpdb->last_error ) {
+				throw new Problem( 'db_read', array( 'table' => $table, 'error' => Journal::clean( $wpdb->last_error ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error codes and details go to the backup log and the REST reply, never into HTML.
+			}
 			if ( ! $rows ) {
 				++$job['table'];
 				$job['begun']  = false;
 				$job['after']  = null;
 				$job['offset'] = 0;
+				$job['rows']   = 0;
 				continue;
 			}
 			$values = array();
@@ -77,13 +106,13 @@ final class Dump {
 				$values[] = $line;
 				$bytes   += strlen( $line );
 				if ( $bytes >= self::STATEMENT_BYTES ) {
-					$out->fwrite( 'INSERT INTO `' . $table . '` VALUES ' . implode( ',', $values ) . ";\n" );
+					$sink->write( 'INSERT INTO `' . $table . '` VALUES ' . implode( ',', $values ) . ";\n" );
 					$values = array();
 					$bytes  = 0;
 				}
 			}
 			if ( $values ) {
-				$out->fwrite( 'INSERT INTO `' . $table . '` VALUES ' . implode( ',', $values ) . ";\n" );
+				$sink->write( 'INSERT INTO `' . $table . '` VALUES ' . implode( ',', $values ) . ";\n" );
 			}
 			$job['rows'] += count( $rows );
 			if ( '' !== $job['key'] ) {
@@ -92,10 +121,124 @@ final class Dump {
 			} else {
 				$job['offset'] += count( $rows );
 			}
+			unset( $rows, $values );
+			if ( Ledger::memory_tight() ) {
+				$job['batch'] = max( 10, (int) ( $job['batch'] / 2 ) );
+			}
+			if ( $sink->raw() - $job['since'] >= self::CHECKPOINT ) {
+				$job['sink']  = $sink->checkpoint();
+				$job['since'] = $sink->raw();
+				call_user_func( $save, $job );
+			}
 		}
-		$out         = null;
-		$job['done'] = $job['table'] >= count( $job['tables'] );
+		if ( $job['table'] >= count( $job['tables'] ) ) {
+			$job['sink'] = $sink->close();
+			$job['done'] = true;
+			return $job;
+		}
+		$job['sink']  = $sink->checkpoint();
+		$job['since'] = $sink->raw();
 		return $job;
+	}
+
+	public static function done_bytes( array $job ) {
+		$done = 0;
+		for ( $i = 0; $i < $job['table'] && $i < count( $job['sizes'] ); $i++ ) {
+			$done += (int) $job['sizes'][ $i ];
+		}
+		if ( isset( $job['sizes'][ $job['table'] ] ) ) {
+			$done += min( (int) $job['sizes'][ $job['table'] ], (int) $job['rows'] * max( 1, (int) $job['avg'] ) );
+		}
+		return $done;
+	}
+
+	public static function load( $file, array $job, $soft, $hard ) {
+		global $wpdb;
+		$lines = new Archive\Lines( empty( $job['source'] ) ? Archive\Source::start( $file ) : $job['source'] );
+		$saved = $job;
+		$wpdb->query( 'SET foreign_key_checks = 0' );
+		$wpdb->query( 'SET unique_checks = 0' );
+		$wpdb->query( 'SET autocommit = 0' );
+		$job['done'] = false;
+		try {
+			while ( true ) {
+				$line = $lines->next();
+				if ( null === $line ) {
+					$wpdb->query( 'COMMIT' );
+					$job['done'] = true;
+					break;
+				}
+				$line = rtrim( $line, "\r" );
+				$sql  = '' === $line ? null : self::rename( $line, $job );
+				if ( null !== $sql ) {
+					// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Statements come from the site's own backup file, written by Dump::dump with escaped values, and run into temporary rfrn_ tables.
+					if ( false === $wpdb->query( $sql ) ) {
+						if ( false !== stripos( $wpdb->last_error, 'Duplicate entry' ) ) {
+							++$job['duplicates'];
+						} else {
+							$job['errors'][] = Journal::clean( $wpdb->last_error );
+							if ( count( $job['errors'] ) > 20 ) {
+								throw new Problem( 'db_import', array( 'error' => $job['errors'][0] ) ); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Error codes and details go to the backup log and the REST reply, never into HTML.
+							}
+						}
+					}
+					if ( preg_match( '/^CREATE TABLE `([^`]+)`/', $sql, $m ) ) {
+						$job['created'][] = $m[1];
+					}
+				}
+				if ( $lines->at_mark() ) {
+					$wpdb->query( 'COMMIT' );
+					$job['source'] = $lines->mark();
+					$job['raw']    = $lines->raw();
+					$saved         = $job;
+					if ( microtime( true ) >= $soft ) {
+						break;
+					}
+				}
+				if ( microtime( true ) >= $hard ) {
+					$wpdb->query( 'ROLLBACK' );
+					$job = $saved;
+					break;
+				}
+			}
+		} catch ( \Throwable $e ) {
+			$wpdb->query( 'ROLLBACK' );
+			$wpdb->query( 'SET autocommit = 1' );
+			throw $e;
+		}
+		$wpdb->query( 'SET autocommit = 1' );
+		$job['created'] = array_values( array_unique( $job['created'] ) );
+		return $job;
+	}
+
+	private static function sizes() {
+		global $wpdb;
+		$out = array();
+		foreach ( (array) $wpdb->get_results( $wpdb->prepare( 'SHOW TABLE STATUS LIKE %s', $wpdb->esc_like( $wpdb->base_prefix ) . '%' ), ARRAY_A ) as $row ) {
+			$out[ (string) $row['Name'] ] = (int) $row['Data_length'];
+		}
+		return $out;
+	}
+
+	private static function rows_for( $avg, $memory ) {
+		$bytes = min( self::BATCH_BYTES, Ledger::headroom() / 16 ) * $memory;
+		return (int) max( 10, min( 2000, floor( $bytes / max( 64, (int) $avg ) ) ) );
+	}
+
+	private static function batch( $table, array $job ) {
+		global $wpdb;
+		$limit = max( 10, (int) $job['batch'] );
+		if ( '' !== $job['key'] ) {
+			$rows = null === $job['after']
+				? $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %i ORDER BY %i LIMIT %d', $table, $job['key'], $limit ), ARRAY_A )
+				: $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %i WHERE %i > %d ORDER BY %i LIMIT %d', $table, $job['key'], $job['after'], $job['key'], $limit ), ARRAY_A );
+		} else {
+			$rows = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %i LIMIT %d OFFSET %d', $table, $limit, $job['offset'] ), ARRAY_A );
+		}
+		$error = $wpdb->last_error;
+		$wpdb->flush();
+		$wpdb->last_error = $error;
+		return $rows;
 	}
 
 	public static function import( $file, array $job, $deadline ) {
@@ -216,16 +359,6 @@ final class Dump {
 		return $wpdb->query( $wpdb->prepare( 'RENAME TABLE %i TO %i, %i TO %i', $pair[0], $pair[1], $pair[2], $pair[0] ) );
 	}
 
-	private static function rows( $table, array $job ) {
-		global $wpdb;
-		if ( '' !== $job['key'] ) {
-			return null === $job['after']
-				? $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %i ORDER BY %i LIMIT %d', $table, $job['key'], self::BATCH ), ARRAY_A )
-				: $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %i WHERE %i > %d ORDER BY %i LIMIT %d', $table, $job['key'], $job['after'], $job['key'], self::BATCH ), ARRAY_A );
-		}
-		return $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM %i LIMIT %d OFFSET %d', $table, self::BATCH, $job['offset'] ), ARRAY_A );
-	}
-
 	private static function numeric_key( $table ) {
 		global $wpdb;
 		$keys = $wpdb->get_results( $wpdb->prepare( 'SHOW KEYS FROM %i WHERE Key_name = %s', $table, 'PRIMARY' ), ARRAY_A );
@@ -237,7 +370,7 @@ final class Dump {
 		return $type && preg_match( '/int/i', $type['Type'] ) ? $column : '';
 	}
 
-	private static function values( array $row ) {
+	public static function values( array $row ) {
 		global $wpdb;
 		$out = array();
 		foreach ( $row as $value ) {

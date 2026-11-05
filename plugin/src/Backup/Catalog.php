@@ -16,6 +16,36 @@ final class Catalog {
 
 	const RECENT = 4;
 
+	const PATTERN = '/^rafoo-.+-\d{8}-\d{6}-[a-z0-9]{4}(\.(zip|rfb|json)|-p\d{3}\.(tar\.gz|tar|rfa))$/';
+
+	public static function format( array $entry ) {
+		return isset( $entry['format'] ) ? (int) $entry['format'] : 1;
+	}
+
+	public static function files( array $entry ) {
+		if ( self::format( $entry ) < 2 ) {
+			return '' !== (string) $entry['file'] ? array( (string) $entry['file'] ) : array();
+		}
+		$names = array_column( isset( $entry['parts'] ) ? (array) $entry['parts'] : array(), 'name' );
+		if ( '' !== (string) $entry['file'] ) {
+			$names[] = (string) $entry['file'];
+		}
+		return $names;
+	}
+
+	public static function local( array $entry ) {
+		if ( self::format( $entry ) < 2 ) {
+			return '' !== (string) $entry['file'] && is_file( Ledger::path( $entry['file'] ) );
+		}
+		$parts = isset( $entry['parts'] ) ? (array) $entry['parts'] : array();
+		foreach ( $parts as $part ) {
+			if ( ! is_file( Ledger::path( $part['name'] ) ) ) {
+				return false;
+			}
+		}
+		return (bool) $parts;
+	}
+
 	public static function all() {
 		wp_cache_delete( self::OPTION, 'options' );
 		wp_cache_delete( 'notoptions', 'options' );
@@ -143,9 +173,12 @@ final class Catalog {
 				'tables'    => (int) $entry['tables'],
 				'encrypted' => ! empty( $entry['encrypted'] ),
 				'complete'  => ! empty( $entry['complete'] ),
-				'local'     => ! empty( $entry['local'] ) && is_file( Ledger::path( $entry['file'] ) ),
+				'local'     => self::local( $entry ),
 				'places'    => array_keys( array_filter( (array) $entry['places'] ) ),
 				'wp'        => (string) $entry['wp'],
+				'format'    => self::format( $entry ),
+				'parts'     => self::format( $entry ) < 2 ? 1 : count( (array) $entry['parts'] ),
+				'warnings'  => isset( $entry['warnings'] ) ? Warnings::view( (array) $entry['warnings'] ) : array(),
 			);
 		}
 		return $out;

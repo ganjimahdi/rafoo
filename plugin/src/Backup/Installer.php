@@ -2,14 +2,30 @@
 
 namespace Rafoo\Backup;
 
+use Rafoo\Assets\Store;
+
 defined( 'ABSPATH' ) || exit;
 
 final class Installer {
 
 	const NAME = 'rafoo-restore.php';
 
+	const CLASSES = array( 'Tar', 'Source', 'Unpack', 'Lines' );
+
 	public static function source() {
-		return str_replace( "'__RAFOO_TEXT__'", "'" . addcslashes( (string) wp_json_encode( self::text(), JSON_UNESCAPED_UNICODE ), "'\\" ) . "'", self::template() );
+		$code = '';
+		foreach ( self::CLASSES as $class ) {
+			$text  = (string) Store::fs()->get_contents( __DIR__ . '/Archive/' . $class . '.php' );
+			$text  = (string) preg_replace( '/^<\?php\s*/', '', $text );
+			$text  = (string) preg_replace( '/^namespace [^;]+;\s*/m', '', $text );
+			$text  = (string) preg_replace( "/^defined\( 'ABSPATH' \) \|\| exit;\s*/m", '', $text );
+			$code .= $text . "\n";
+		}
+		return str_replace(
+			array( '/*__RAFOO_ARCHIVE__*/', "'__RAFOO_TEXT__'" ),
+			array( $code, "'" . addcslashes( (string) wp_json_encode( self::text(), JSON_UNESCAPED_UNICODE ), "'\\" ) . "'" ),
+			self::template()
+		);
 	}
 
 	public static function text() {
@@ -17,7 +33,7 @@ final class Installer {
 			'lang'     => str_replace( '_', '-', determine_locale() ),
 			'dir'      => is_rtl() ? 'rtl' : 'ltr',
 			'title'    => __( 'Restore the site with Rafoo', 'rafoo' ),
-			'missing'  => __( 'This server lacks PHP extensions Rafoo needs (sodium, ZipArchive and mysqli).', 'rafoo' ),
+			'missing'  => __( 'This server lacks PHP extensions Rafoo needs (zlib, sodium and mysqli).', 'rafoo' ),
 			'intro'    => __( 'Enter the details of the new database and the key Rafoo showed on the old site. All files and data are restored on this host.', 'rafoo' ),
 			'host'     => __( 'Database host', 'rafoo' ),
 			'name'     => __( 'Database name', 'rafoo' ),
@@ -30,9 +46,11 @@ final class Installer {
 			'error'    => __( 'Error: %s', 'rafoo' ),
 			'bad_key'  => __( 'The key is not correct.', 'rafoo' ),
 			'locked'   => __( 'Too many failed attempts. Send the file again.', 'rafoo' ),
+			'archive'  => __( 'The backup files on this host are missing or incomplete. Prepare the move again on the old site.', 'rafoo' ),
+			'damaged'  => __( 'A backup file on this host is damaged. Prepare the move again on the old site.', 'rafoo' ),
 			'done'     => __( 'Restore finished. Go to the dashboard', 'rafoo' ),
 			'steps'    => array(
-				'decrypt' => __( 'Opening the backup', 'rafoo' ),
+				'verify'  => __( 'Checking the backup', 'rafoo' ),
 				'files'   => __( 'Restoring files', 'rafoo' ),
 				'config'  => __( 'Setting up wp-config.php', 'rafoo' ),
 				'import'  => __( 'Restoring the database', 'rafoo' ),
@@ -45,40 +63,139 @@ final class Installer {
 	private static function template() {
 		return <<<'PHP'
 <?php
-declare( strict_types = 1 );
+define( 'ABSPATH', __DIR__ . '/' );
 
 $rr_text = (array) json_decode( '__RAFOO_TEXT__', true );
 
-const RAFOO_STATE = __DIR__ . '/rafoo-restore-state.json';
-const RAFOO_CHUNK = 1048576;
+const RAFOO_STATE = __DIR__ . '/rafoo-restore-state.php';
+const RAFOO_GUARD = "<?php exit; ?>\n";
 
 ini_set( 'display_errors', '0' );
 @set_time_limit( 120 );
 
-function rr_state(): array {
-	$state = is_file( RAFOO_STATE ) ? json_decode( (string) file_get_contents( RAFOO_STATE ), true ) : null;
+/*__RAFOO_ARCHIVE__*/
+
+final class RR_Extract {
+	private $root;
+	private $out = null;
+	private $stats = array();
+	public function __construct( $root ) {
+		$this->root = $root;
+	}
+	public function restore( array $state ) {
+		$this->stats = array_merge( array( 'files' => 0, 'meta' => '' ), $state );
+	}
+	public function state() {
+		return $this->stats;
+	}
+	public function open( array $entry ) {
+		$entry['act'] = 'skip';
+		$path         = (string) $entry['path'];
+		if ( 'rafoo/backup.json' === $path ) {
+			$entry['act']        = 'meta';
+			$this->stats['meta'] = '';
+			return $entry;
+		}
+		if ( 'rafoo/database.sql.gz' === $path ) {
+			$target = $this->root . '/rafoo-restore.sql.gz';
+		} elseif ( 0 === strpos( $path, 'files/' ) ) {
+			$relative = substr( $path, 6 );
+			if ( '' === $relative || false !== strpos( $relative, '..' ) || false !== strpos( $relative, "\0" ) || 0 === strpos( $relative, 'rafoo-restore' ) || preg_match( '/^rafoo-.+(-p\d{3}\.rfa|\.json)$/', $relative ) ) {
+				return $entry;
+			}
+			$target = $this->root . '/' . $relative;
+		} else {
+			return $entry;
+		}
+		if ( ! is_dir( dirname( $target ) ) && ! @mkdir( dirname( $target ), 0755, true ) ) {
+			return $entry;
+		}
+		try {
+			$this->out = new SplFileObject( $target . '.rafoo-part', 'wb' );
+		} catch ( Throwable $e ) {
+			return $entry;
+		}
+		$entry['act']     = 'write';
+		$entry['target']  = base64_encode( $target );
+		$entry['written'] = 0;
+		return $entry;
+	}
+	public function write( array $entry, $chunk ) {
+		if ( 'meta' === $entry['act'] ) {
+			$this->stats['meta'] .= $chunk;
+		} elseif ( 'write' === $entry['act'] && null !== $this->out ) {
+			if ( $this->out->fwrite( $chunk ) !== strlen( $chunk ) ) {
+				throw new RuntimeException( 'disk_full' );
+			}
+			$entry['written'] += strlen( $chunk );
+		}
+		return $entry;
+	}
+	public function close( array $entry ) {
+		if ( 'write' !== $entry['act'] ) {
+			return;
+		}
+		if ( null !== $this->out ) {
+			$this->out->fflush();
+		}
+		$this->out = null;
+		$target    = (string) base64_decode( $entry['target'] );
+		if ( @rename( $target . '.rafoo-part', $target ) ) {
+			@touch( $target, (int) $entry['mtime'] );
+			++$this->stats['files'];
+		}
+	}
+	public function resume( array $entry ) {
+		if ( 'write' !== $entry['act'] ) {
+			return $entry;
+		}
+		$target    = (string) base64_decode( $entry['target'] );
+		$this->out = new SplFileObject( $target . '.rafoo-part', 'c+b' );
+		$this->out->ftruncate( (int) $entry['written'] );
+		$this->out->fseek( (int) $entry['written'] );
+		return $entry;
+	}
+	public function sync() {
+		if ( null !== $this->out ) {
+			$this->out->fflush();
+		}
+	}
+	public function abandon() {
+		$this->out = null;
+	}
+}
+
+function rr_state() {
+	$text  = is_file( RAFOO_STATE ) ? (string) file_get_contents( RAFOO_STATE ) : '';
+	$state = json_decode( (string) substr( $text, strlen( RAFOO_GUARD ) ), true );
 	return is_array( $state ) ? $state : array( 'step' => 'new', 'tries' => 0 );
 }
 
-function rr_save( array $state ): void {
-	file_put_contents( RAFOO_STATE, json_encode( $state ) );
+function rr_save( array $state ) {
+	file_put_contents( RAFOO_STATE, RAFOO_GUARD . json_encode( $state ) );
 }
 
-function rr_json( array $data ): void {
+function rr_json( array $data ) {
 	header( 'Content-Type: application/json' );
 	echo json_encode( $data );
 	exit;
 }
 
-function rr_archive(): string {
-	$found = glob( __DIR__ . '/rafoo-*.rfb' );
-	return $found ? $found[0] : '';
+function rr_manifest() {
+	foreach ( (array) glob( __DIR__ . '/rafoo-*.json' ) as $file ) {
+		$data = json_decode( (string) file_get_contents( $file ), true );
+		if ( is_array( $data ) && isset( $data['parts'] ) && 2 <= (int) $data['format'] ) {
+			$data['file'] = basename( $file );
+			return $data;
+		}
+	}
+	throw new RuntimeException( 'archive' );
 }
 
-function rr_db( array $state ): mysqli {
+function rr_db( array $state ) {
 	mysqli_report( MYSQLI_REPORT_OFF );
 	$host = $state['db']['host'];
-	$port = (int) ( ini_get( 'mysqli.default_port' ) ?: 3306 );
+	$port = (int) ( ini_get( 'mysqli.default_port' ) ? ini_get( 'mysqli.default_port' ) : 3306 );
 	if ( preg_match( '/^(.+):(\d+)$/', $host, $m ) ) {
 		$host = $m[1];
 		$port = (int) $m[2];
@@ -91,8 +208,8 @@ function rr_db( array $state ): mysqli {
 	return $db;
 }
 
-function rr_key( string $text, string $salt ): string {
-	$text = strtr( trim( $text ), '-_', '+/' );
+function rr_key( $text, $salt ) {
+	$text = strtr( trim( (string) $text ), '-_', '+/' );
 	$raw  = base64_decode( $text . str_repeat( '=', ( 4 - strlen( $text ) % 4 ) % 4 ), true );
 	if ( false === $raw || 32 !== strlen( $raw ) ) {
 		throw new RuntimeException( 'key' );
@@ -100,28 +217,7 @@ function rr_key( string $text, string $salt ): string {
 	return sodium_crypto_generichash( $raw . $salt, '', SODIUM_CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_KEYBYTES );
 }
 
-function rr_open( string $archive, string $key_text ): array {
-	$in   = fopen( $archive, 'rb' );
-	$head = (string) fread( $in, 8 + 1 + SODIUM_CRYPTO_PWHASH_SALTBYTES + SODIUM_CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_HEADERBYTES );
-	fclose( $in );
-	if ( 0 !== strpos( $head, 'RAFOOBK1K' ) ) {
-		throw new RuntimeException( 'archive' );
-	}
-	$salt   = substr( $head, 9, SODIUM_CRYPTO_PWHASH_SALTBYTES );
-	$header = substr( $head, 9 + SODIUM_CRYPTO_PWHASH_SALTBYTES );
-	$state  = sodium_crypto_secretstream_xchacha20poly1305_init_pull( $header, rr_key( $key_text, $salt ) );
-	$probe  = fopen( $archive, 'rb' );
-	fseek( $probe, strlen( $head ) );
-	$first = sodium_crypto_secretstream_xchacha20poly1305_pull( $state, (string) fread( $probe, RAFOO_CHUNK + SODIUM_CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_ABYTES ) );
-	fclose( $probe );
-	if ( false === $first ) {
-		throw new RuntimeException( 'key' );
-	}
-	$state = sodium_crypto_secretstream_xchacha20poly1305_init_pull( $header, rr_key( $key_text, $salt ) );
-	return array( 'crypt' => bin2hex( $state ), 'offset' => strlen( $head ) );
-}
-
-function rr_serialized( string $value, array $pairs ): string {
+function rr_serialized( $value, array $pairs ) {
 	$out    = '';
 	$length = strlen( $value );
 	$i      = 0;
@@ -156,103 +252,69 @@ function rr_replace( $value, array $pairs ) {
 	return $value;
 }
 
-function rr_pairs( string $from, string $to ): array {
-	$from  = rtrim( $from, '/' );
-	$to    = rtrim( $to, '/' );
+function rr_pairs( $from, $to ) {
+	$from  = rtrim( (string) $from, '/' );
+	$to    = rtrim( (string) $to, '/' );
 	$pairs = array();
 	if ( '' === $from || $from === $to ) {
 		return $pairs;
 	}
-	$pairs[ $from ]                          = $to;
-	$pairs[ str_replace( '/', '\\/', $from ) ] = str_replace( '/', '\\/', $to );
-	$bare_from                               = (string) preg_replace( '#^https?:#', '', $from );
-	$bare_to                                 = (string) preg_replace( '#^https?:#', '', $to );
-	$pairs[ $bare_from ]                     = $bare_to;
+	$pairs[ $from ]                                 = $to;
+	$pairs[ str_replace( '/', '\\/', $from ) ]      = str_replace( '/', '\\/', $to );
+	$bare_from                                      = (string) preg_replace( '#^https?:#', '', $from );
+	$bare_to                                        = (string) preg_replace( '#^https?:#', '', $to );
+	$pairs[ $bare_from ]                            = $bare_to;
 	$pairs[ str_replace( '/', '\\/', $bare_from ) ] = str_replace( '/', '\\/', $bare_to );
 	return $pairs;
 }
 
-function rr_here(): string {
+function rr_here() {
 	$https = ( ! empty( $_SERVER['HTTPS'] ) && 'off' !== $_SERVER['HTTPS'] ) || ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] );
-	$host  = preg_replace( '/[^A-Za-z0-9.\-:\[\]]/', '', (string) ( $_SERVER['HTTP_HOST'] ?? 'localhost' ) );
-	$path  = rtrim( str_replace( '\\', '/', dirname( (string) ( $_SERVER['SCRIPT_NAME'] ?? '/' ) ) ), '/' );
+	$host  = preg_replace( '/[^A-Za-z0-9.\-:\[\]]/', '', (string) ( isset( $_SERVER['HTTP_HOST'] ) ? $_SERVER['HTTP_HOST'] : 'localhost' ) );
+	$path  = rtrim( str_replace( '\\', '/', dirname( (string) ( isset( $_SERVER['SCRIPT_NAME'] ) ? $_SERVER['SCRIPT_NAME'] : '/' ) ) ), '/' );
 	return ( $https ? 'https' : 'http' ) . '://' . $host . $path;
 }
 
-function rr_step( array $state, float $deadline ): array {
-	$archive = rr_archive();
-	$zip     = __DIR__ . '/rafoo-restore-archive.zip';
+function rr_step( array $state, $deadline ) {
+	$parts = $state['manifest']['parts'];
 	switch ( $state['step'] ) {
-		case 'decrypt':
-			$in    = fopen( $archive, 'rb' );
-			$out   = fopen( $zip, $state['offset'] > $state['start'] ? 'ab' : 'wb' );
-			$crypt = hex2bin( $state['crypt'] );
-			$size  = filesize( $archive );
-			fseek( $in, $state['offset'] );
-			while ( $state['offset'] < $size && microtime( true ) < $deadline ) {
-				$cipher = (string) fread( $in, RAFOO_CHUNK + SODIUM_CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_ABYTES );
-				$result = sodium_crypto_secretstream_xchacha20poly1305_pull( $crypt, $cipher );
-				if ( false === $result ) {
-					throw new RuntimeException( 'archive' );
-				}
-				fwrite( $out, $result[0] );
-				$state['offset'] += strlen( $cipher );
-			}
-			fclose( $in );
-			fclose( $out );
-			$state['crypt']    = bin2hex( $crypt );
-			$state['progress'] = array( $state['offset'], $size );
-			if ( $state['offset'] >= $size ) {
-				$state['step']  = 'files';
-				$state['index'] = 0;
-			}
-			return $state;
-		case 'files':
-			$archive_zip = new ZipArchive();
-			if ( true !== $archive_zip->open( $zip ) ) {
+		case 'verify':
+			$part = $parts[ $state['index'] ];
+			$file = __DIR__ . '/' . $part['name'];
+			if ( ! is_file( $file ) || filesize( $file ) !== (int) $part['size'] ) {
 				throw new RuntimeException( 'archive' );
 			}
-			if ( ! isset( $state['meta'] ) ) {
-				$state['meta'] = json_decode( (string) $archive_zip->getFromName( 'rafoo.json' ), true );
+			if ( ! hash_equals( (string) $part['sha256'], (string) hash_file( 'sha256', $file ) ) ) {
+				throw new RuntimeException( 'damaged' );
 			}
-			$total = $archive_zip->numFiles;
-			while ( $state['index'] < $total && microtime( true ) < $deadline ) {
-				$name = (string) $archive_zip->getNameIndex( $state['index'] );
-				++$state['index'];
-				if ( 0 !== strpos( $name, 'files/' ) || '/' === substr( $name, -1 ) || false !== strpos( $name, '..' ) ) {
-					continue;
-				}
-				$relative = substr( $name, 6 );
-				if ( 'rafoo-restore.php' === $relative ) {
-					continue;
-				}
-				$target = __DIR__ . '/' . $relative;
-				if ( ! is_dir( dirname( $target ) ) ) {
-					mkdir( dirname( $target ), 0755, true );
-				}
-				$from = $archive_zip->getStream( $name );
-				$to   = fopen( $target, 'wb' );
-				if ( $from && $to ) {
-					stream_copy_to_stream( $from, $to );
-				}
-				if ( $from ) {
-					fclose( $from );
-				}
-				if ( $to ) {
-					fclose( $to );
-				}
+			$state['unpack']   = Unpack::begin( $file, hex2bin( $state['key'] ) );
+			$state['step']     = 'files';
+			$state['progress'] = array( $state['index'], count( $parts ) );
+			return $state;
+		case 'files':
+			$handler           = new RR_Extract( __DIR__ );
+			$reader            = new Unpack( $state['unpack'], $handler );
+			$result            = $reader->run( $deadline, $deadline + 5 );
+			$state['progress'] = array( $state['index'] + 0.5, count( $parts ) );
+			if ( ! $result['done'] ) {
+				$state['unpack'] = $result['state'];
+				return $state;
 			}
-			$state['progress'] = array( $state['index'], $total );
-			if ( $state['index'] >= $total ) {
-				$sql = fopen( __DIR__ . '/rafoo-restore.sql', 'wb' );
-				$in  = $archive_zip->getStream( 'database.sql' );
-				stream_copy_to_stream( $in, $sql );
-				fclose( $in );
-				fclose( $sql );
-				$state['step']   = 'config';
-				$state['offset'] = 0;
+			$stats = $handler->state();
+			$meta  = json_decode( (string) $stats['meta'], true );
+			if ( is_array( $meta ) ) {
+				$state['meta'] = $meta;
 			}
-			$archive_zip->close();
+			$state['unpack'] = null;
+			++$state['index'];
+			if ( $state['index'] < count( $parts ) ) {
+				$state['step'] = 'verify';
+				return $state;
+			}
+			if ( empty( $state['meta'] ) || ! is_file( __DIR__ . '/rafoo-restore.sql.gz' ) ) {
+				throw new RuntimeException( 'damaged' );
+			}
+			$state['step'] = 'config';
 			return $state;
 		case 'config':
 			$config = __DIR__ . '/wp-config.php';
@@ -282,30 +344,44 @@ function rr_step( array $state, float $deadline ): array {
 			);
 			$code = (string) preg_replace( "/define\(\s*['\"](WP_HOME|WP_SITEURL)['\"]\s*,\s*(['\"]).*?\\2\s*\)\s*;/s", '', $code );
 			file_put_contents( $config, $code );
-			$state['step'] = 'import';
+			$state['step']   = 'import';
+			$state['import'] = null;
 			return $state;
 		case 'import':
 			$db = rr_db( $state );
 			$db->query( 'SET foreign_key_checks = 0' );
-			$in   = fopen( __DIR__ . '/rafoo-restore.sql', 'rb' );
-			$size = filesize( __DIR__ . '/rafoo-restore.sql' );
-			fseek( $in, $state['offset'] );
-			while ( microtime( true ) < $deadline ) {
-				$line = fgets( $in );
-				if ( false === $line ) {
+			$db->query( 'SET unique_checks = 0' );
+			$db->query( "SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO'" );
+			$db->autocommit( false );
+			$lines = new Lines( null === $state['import'] ? Source::start( __DIR__ . '/rafoo-restore.sql.gz' ) : $state['import'] );
+			$total = isset( $state['meta']['sql_bytes'] ) ? (int) $state['meta']['sql_bytes'] : 0;
+			while ( true ) {
+				$line = $lines->next();
+				if ( null === $line ) {
+					$db->commit();
 					$state['step']  = 'replace';
 					$state['table'] = 0;
 					$state['after'] = null;
 					break;
 				}
-				$state['offset'] += strlen( $line );
-				$line             = rtrim( $line, "\r\n" );
-				if ( '' !== $line && ! $db->query( $line ) ) {
+				$line = rtrim( $line, "\r" );
+				if ( '' !== $line && ! $db->query( $line ) && 1062 !== (int) $db->errno ) {
 					$state['errors'][] = substr( $db->error, 0, 160 );
 				}
+				if ( $lines->at_mark() ) {
+					$db->commit();
+					$state['import'] = $lines->mark();
+					if ( microtime( true ) >= $deadline ) {
+						break;
+					}
+				}
+				if ( microtime( true ) >= $deadline + 5 ) {
+					$db->rollback();
+					break;
+				}
 			}
-			fclose( $in );
-			$state['progress'] = array( $state['offset'], $size );
+			$state['progress'] = array( $lines->raw(), max( 1, $total ) );
+			$state['errors']   = array_slice( $state['errors'], 0, 50 );
 			return $state;
 		case 'replace':
 			$db     = rr_db( $state );
@@ -359,7 +435,11 @@ function rr_step( array $state, float $deadline ): array {
 			}
 			return $state;
 		case 'finish':
-			foreach ( array( $zip, __DIR__ . '/rafoo-restore.sql', $archive ) as $file ) {
+			$files = array( __DIR__ . '/rafoo-restore.sql.gz', __DIR__ . '/' . $state['manifest']['file'] );
+			foreach ( $parts as $part ) {
+				$files[] = __DIR__ . '/' . $part['name'];
+			}
+			foreach ( $files as $file ) {
 				if ( is_file( $file ) ) {
 					unlink( $file );
 				}
@@ -371,7 +451,7 @@ function rr_step( array $state, float $deadline ): array {
 }
 
 $state  = rr_state();
-$action = (string) ( $_POST['action'] ?? '' );
+$action = (string) ( isset( $_POST['action'] ) ? $_POST['action'] : '' );
 
 if ( 'done' === $state['step'] && '' === $action ) {
 	@unlink( RAFOO_STATE );
@@ -385,24 +465,39 @@ if ( 'start' === $action ) {
 		rr_json( array( 'ok' => false, 'error' => 'locked' ) );
 	}
 	try {
-		$state['db']  = array(
-			'host' => (string) ( $_POST['host'] ?? 'localhost' ),
-			'name' => (string) ( $_POST['name'] ?? '' ),
-			'user' => (string) ( $_POST['user'] ?? '' ),
-			'pass' => (string) ( $_POST['pass'] ?? '' ),
+		$state['db'] = array(
+			'host' => (string) ( isset( $_POST['host'] ) ? $_POST['host'] : 'localhost' ),
+			'name' => (string) ( isset( $_POST['name'] ) ? $_POST['name'] : '' ),
+			'user' => (string) ( isset( $_POST['user'] ) ? $_POST['user'] : '' ),
+			'pass' => (string) ( isset( $_POST['pass'] ) ? $_POST['pass'] : '' ),
 		);
-		$archive      = rr_archive();
-		if ( '' === $archive ) {
+		$manifest = rr_manifest();
+		foreach ( $manifest['parts'] as $part ) {
+			$file = __DIR__ . '/' . basename( (string) $part['name'] );
+			if ( ! is_file( $file ) || filesize( $file ) !== (int) $part['size'] ) {
+				throw new RuntimeException( 'archive' );
+			}
+		}
+		$first = __DIR__ . '/' . basename( (string) $manifest['parts'][0]['name'] );
+		$head  = Source::head( $first );
+		if ( ! $head['encrypted'] || 'K' !== $head['mode'] ) {
 			throw new RuntimeException( 'archive' );
 		}
-		$open           = rr_open( $archive, (string) ( $_POST['key'] ?? '' ) );
+		$key   = rr_key( (string) ( isset( $_POST['key'] ) ? $_POST['key'] : '' ), $head['salt'] );
+		$probe = new Source( Source::start( $first, $key ) );
+		try {
+			$probe->read();
+		} catch ( RuntimeException $e ) {
+			throw new RuntimeException( 'wrong_password' === $e->getMessage() ? 'key' : 'damaged' );
+		}
 		rr_db( $state )->close();
-		$state['crypt']  = $open['crypt'];
-		$state['offset'] = $open['offset'];
-		$state['start']  = $open['offset'];
-		$state['url']    = rr_here();
-		$state['step']   = 'decrypt';
-		$state['errors'] = array();
+		$state['manifest'] = $manifest;
+		$state['key']      = bin2hex( $key );
+		$state['index']    = 0;
+		$state['unpack']   = null;
+		$state['url']      = rr_here();
+		$state['step']     = 'verify';
+		$state['errors']   = array();
 		rr_save( $state );
 		rr_json( array( 'ok' => true ) );
 	} catch ( Throwable $e ) {
@@ -420,15 +515,15 @@ if ( 'step' === $action ) {
 	try {
 		$state = rr_step( $state, microtime( true ) + 15 );
 		rr_save( $state );
-		rr_json( array( 'ok' => true, 'step' => $state['step'], 'progress' => $state['progress'] ?? array( 0, 0 ), 'url' => $state['url'] ) );
+		rr_json( array( 'ok' => true, 'step' => $state['step'], 'progress' => isset( $state['progress'] ) ? $state['progress'] : array( 0, 0 ), 'url' => $state['url'] ) );
 	} catch ( Throwable $e ) {
 		rr_json( array( 'ok' => false, 'error' => $e->getMessage() ) );
 	}
 }
 
-$ready = function_exists( 'sodium_crypto_secretstream_xchacha20poly1305_init_pull' ) && class_exists( 'ZipArchive' ) && class_exists( 'mysqli' );
-function rr_h( string $text ): string {
-	return htmlspecialchars( $text, ENT_QUOTES, 'UTF-8' );
+$ready = function_exists( 'sodium_crypto_secretstream_xchacha20poly1305_init_pull' ) && function_exists( 'inflate_init' ) && function_exists( 'inflate_get_read_len' ) && class_exists( 'mysqli' );
+function rr_h( $text ) {
+	return htmlspecialchars( (string) $text, ENT_QUOTES, 'UTF-8' );
 }
 ?><!doctype html>
 <html lang="<?php echo rr_h( $rr_text['lang'] ); ?>" dir="<?php echo rr_h( $rr_text['dir'] ); ?>">
@@ -473,7 +568,10 @@ progress{width:100%}
 	var status = document.getElementById('status');
 	var text = <?php echo json_encode( $rr_text, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE ); ?>;
 	var names = text.steps;
-	function failed(code) { return text.error.replace('%s', code); }
+	function failed(code) {
+		if (code === 'archive' || code === 'damaged') { return text[code]; }
+		return text.error.replace('%s', code);
+	}
 	function post(data) {
 		var body = new URLSearchParams(data);
 		return fetch(location.pathname, { method: 'POST', body: body, credentials: 'same-origin' }).then(function (r) { return r.json(); });
