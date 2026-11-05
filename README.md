@@ -2,6 +2,10 @@
 
 Free WordPress plugin that keeps sites fast and working when the international internet is cut off or heavily filtered. Built for sites hosted in Iran, useful anywhere: local copies of CDN files and fonts make every site faster and more private.
 
+> Rafoo is built by a group of Iranian developers for the Iranian web community, and for everyone who keeps a website open when the internet is not. All of its infrastructure is paid for by [Wbweb](https://wbweb.ir), so Rafoo stays free for everyone.
+>
+> رفو را جمعی از توسعه‌دهندگان ایرانی برای جامعه وب ایران ساخته‌اند؛ برای همه کسانی که می‌خواهند سایتشان حتی وقتی اینترنت قطع است باز بماند. همه هزینه‌های زیرساخت آن را [Wbweb](https://wbweb.ir) پرداخت می‌کند تا رفو برای همه رایگان بماند.
+
 **Website:** [rafoo.ir](https://rafoo.ir) · **Guide:** [rafoo.ir/guide](https://rafoo.ir/guide) · **Live Iran internet monitor:** [rafoo.ir/monitor](https://rafoo.ir/monitor) · **Made by** [Wbweb](https://wbweb.ir)
 
 ## Editions
