@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,9 +25,17 @@ Rafoo fixes this without touching the files of your theme or plugins.
 * Google Fonts are copied with `font-display: swap`. During an outage, fonts that were never copied are skipped so pages do not wait for them.
 * A daily check compares every local file with its recorded hash.
 
+**Outage rehearsal**
+
+* See your site exactly as it would work if the international internet went down today, before a real outage. Only your browser sees the outage; visitors, search engines and the page cache keep the normal site.
+* Rafoo opens your home page, latest post, a page, the WooCommerce shop, product, cart, checkout and account pages, the login page, the dashboard, the post editor and any other address you add, once normally and once in outage mode, with a live preview.
+* The report names every library from a foreign CDN, Google Font, Gravatar image, captcha, video, analytics script, social sign-in, unknown address, server request to a foreign service, PHP error and JavaScript error that appears only during an outage, and the plugin or theme behind each one.
+* Most problems are fixed with one button: download a library or font to the Rafoo library, turn on the right protection, or block or allow an address. A score from 0 to 100 and the last ten rehearsals show how ready the site is.
+* Browse yourself for 15 minutes to test forms, the cart and payment by hand, with the same report at the end.
+
 **Automatic outage mode**
 
-* Every minute Rafoo checks a few servers outside and inside Iran in parallel, in the background. Visitors never wait for it.
+* Every minute Rafoo checks a few servers outside and inside Iran in parallel, in the background. Visitors never wait for it. The signed notice from rafoo.ir is fetched every five minutes, or at once when the outside checks fail.
 * Three failed rounds in a row switch on outage mode, three successful rounds switch it off. If even the servers inside Iran are unreachable, the problem is your own server's network and the mode is left alone.
 * You can always fix the mode by hand.
 
@@ -122,11 +130,11 @@ Rafoo talks to the following services. None of them receives anything about your
 
 **Moving a site (only when used).** When an administrator makes a transfer code under Rafoo › Backup, the address of this site's endpoint and a random one-time key are sent to `https://rafoo.ir/api/v1/pair`, which returns a short code that expires within a day. Site data never passes through rafoo.ir; the copy goes directly between the two sites. A long code that works without rafoo.ir is always shown as well.
 
-**Cooperative network (off by default).** Only if an administrator joins the network under Rafoo › Monitoring, the site address, a public signing key, the chosen check interval, the edition and version are sent to `https://rafoo.ir/api/v1/peers/join`. rafoo.ir checks the site once at `?rafoo-ping`, derives the country and network of the server from the request (the IP address is not stored) and sends back a signed list of a few other member sites. The site then requests those members' `?rafoo-ping` address in the background, every one or five minutes, and sends the results (time, whether a signed answer arrived, response time) to `https://rafoo.ir/api/v1/peers/receipts`. Other members request this site's `?rafoo-ping` address the same way. No page, content, user or visitor data is checked or sent. Leaving the network or deactivating Rafoo deletes the membership.
+**Cooperative network (off by default).** Only if an administrator joins the network under Rafoo › Monitoring, the site address, a public signing key, the chosen check interval, the edition and version are sent to `https://rafoo.ir/api/v1/peers/join`. When the Monitoring page is opened, or Recheck is pressed, a signed request to `https://rafoo.ir/api/v1/peers/wake` or `/peers/recheck` asks the watching members to check the site at once; rafoo.ir then calls their `?rafoo-ping` address with a signed task. rafoo.ir checks the site once at `?rafoo-ping`, derives the country and network of the server from the request (the IP address is not stored) and sends back a signed list of a few other member sites. The site then requests those members' `?rafoo-ping` address in the background, every one or five minutes, and sends the results (time, whether a signed answer arrived, response time) to `https://rafoo.ir/api/v1/peers/receipts`. Other members request this site's `?rafoo-ping` address the same way. No page, content, user or visitor data is checked or sent. Leaving the network or deactivating Rafoo deletes the membership.
 
 **Backup servers (only when added).** Backups are sent only to servers an administrator adds under Rafoo › Backup, using the login entered there.
 
-**Multiple hosts (only when used).** Hosts of one group talk only to each other, over signed and encrypted requests to `admin-ajax.php?action=rafoo_geo` and `?rafoo-ping` on their technical addresses; nothing goes through rafoo.ir. When an administrator chooses a DNS service under Rafoo › Multiple hosts and enters its key, Rafoo sends the domain's DNS records (host names and IP addresses of the hosts) to that service only:
+**Multiple hosts (only when used).** Hosts of one group talk only to each other, over signed and encrypted requests to `admin-ajax.php?action=rafoo_geo` and `?rafoo-ping` on their technical addresses; nothing goes through rafoo.ir. When an administrator chooses a DNS service under Rafoo › Geo DNS and enters its key, Rafoo sends the domain's DNS records (host names and IP addresses of the hosts) to that service only:
 
 * ArvanCloud: `https://napi.arvancloud.ir` ([terms](https://www.arvancloud.ir/en/terms), [privacy](https://www.arvancloud.ir/en/privacy))
 * Gcore: `https://api.gcore.com` ([terms and privacy](https://gcore.com/legal))
@@ -183,7 +191,7 @@ The internet state is shared by the whole network, and each site has its own cop
 
 = Will copies on other hosts cause duplicate content? =
 
-No. Every host serves the same pages at your own address, and the technical subdomains of the hosts redirect to it with a noindex header. Search engines see one site. Rafoo › Multiple hosts checks this on every host.
+No. Every host serves the same pages at your own address, and the technical subdomains of the hosts redirect to it with a noindex header. Search engines see one site. Rafoo › Geo DNS checks this on every host.
 
 = Can I translate Rafoo? =
 
@@ -191,7 +199,7 @@ Yes. All text is in the `rafoo` text domain and a `rafoo.pot` file is in the `la
 
 = Where is the source of the admin screen? =
 
-The readable Svelte source is in the `admin-ui` folder of the plugin. Build it with `pnpm install` and `pnpm build`.
+The built files in `assets` come from readable Svelte and JavaScript source. The full source is public at https://github.com/ganjimahdi/rafoo in the `admin-ui` folder, with the same version tag as the plugin. Build it with `pnpm install` and `pnpm build`. It is left out of the plugin zip so the plugin installs faster.
 
 == Screenshots ==
 
@@ -202,6 +210,7 @@ The readable Svelte source is in the `admin-ui` folder of the plugin. Build it w
 5. Backups: schedule, encryption, other servers and moving the site.
 6. The optional cooperative monitoring network.
 7. Network settings on Multisite.
+8. The outage rehearsal report, with one-click fixes.
 
 == Credits ==
 
@@ -210,6 +219,19 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+
+= 1.5.0 =
+* Outage rehearsal: test the whole site in outage mode, only for you, with a live preview, comparison with normal mode, a report that names the plugin or theme behind each problem, one-click fixes through the Rafoo library and settings, a score, history and a 15-minute browse-yourself mode.
+* Monitoring shows results within seconds: opening the page asks the watching members to check the site at once, and a Recheck button checks a failed point again.
+* Every site is checked from three points inside Iran and two abroad, shown as First, Second and Third check without revealing any member's network or location.
+* A site sent to the Iranian filtering page is reported as filtered.
+* rafoo.ir is asked for its outage notice every five minutes instead of every minute, each site waits a little when rafoo.ir is busy, and checks are spread over time.
+* The plugin zip is about a third smaller and installs faster: compiled translations only, and the readable admin source moved to GitHub.
+* The rafoo.ir network is ready for up to a million member sites.
+* Fix: on shared hosting, free space no longer shows the whole server disk; it points to your hosting quota instead.
+* Fix: mirror coverage (Complete) now reads the real list of the Wbweb mirror and shows Up to date, Update ready, Older version in the mirror or Not in the mirror.
+* Paid and other non-wordpress.org plugins and themes, such as Divi, are never taken from the mirror and keep updating from their vendor.
+* The Multiple hosts tab is now called Geo DNS.
 
 = 1.4.0 =
 * Multiple hosts with geo DNS (beta): up to three full copies of the site on hosts in other countries, one address for search engines, read-only copies that pass logins, comments and orders to the main host, health checks from every host, and automatic DNS through ArvanCloud, Gcore, Cloudflare, Amazon Route 53, Bunny DNS, cPanel or DirectAdmin, with step-by-step guides.
@@ -248,6 +270,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+
+= 1.5.0 =
+Outage rehearsal, monitoring results within seconds with Recheck, three checks inside Iran and two abroad, and a smaller plugin zip.
 
 = 1.4.0 =
 Multiple hosts with geo DNS (beta) and a new backup format for very large sites. Rafoo on the other site must also be 1.4 to move a site.

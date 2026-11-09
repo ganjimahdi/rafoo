@@ -8,15 +8,23 @@
 	import { api } from '../lib/api';
 	import { boot } from '../lib/boot';
 	import { ago, date, day, help, num, percent, t } from '../lib/i18n';
-	import type { PeerStatus, PeerWatcher } from '../lib/types';
+	import type { PeerSlot, PeerStatus } from '../lib/types';
 
-	const SLOTS = 5;
+	const IRAN = 3;
+	const ABROAD = 2;
+	const FAST = 3000;
+	const FAST_FOR = 45000;
+	const SLOW = 60000;
 
 	let status = $state.raw<PeerStatus | null>(null);
 	let busy = $state('');
 	let error = $state('');
 	let interval = $state<'60' | '300'>('300');
+	let fastUntil = $state(0);
+	let checking = $state<Record<string, number>>({});
+	let now = $state(Date.now());
 	let timer: ReturnType<typeof setTimeout> | undefined;
+	let alive = true;
 
 	const intervals = [
 		{ value: '300' as const, label: t('peers_every_5') },
@@ -39,11 +47,6 @@
 		}
 	}
 
-	function place(w: PeerWatcher): string {
-		const parts = [region(w.country), w.network].filter(Boolean);
-		return parts.length ? parts.join(' · ') : t('peers_unknown_place');
-	}
-
 	async function run(path: string, method: 'GET' | 'POST' = 'GET', body?: Record<string, unknown>) {
 		busy = path;
 		error = '';
@@ -56,41 +59,119 @@
 		busy = '';
 	}
 
-	function poll() {
+	function fast(ms = FAST_FOR) {
+		fastUntil = Math.max(fastUntil, Date.now() + ms);
+		poll(FAST);
+	}
+
+	function poll(delay?: number) {
 		clearTimeout(timer);
+		if (!alive) return;
+		const wait = delay ?? (Date.now() < fastUntil ? FAST : SLOW);
 		timer = setTimeout(async () => {
-			if (document.visibilityState === 'visible' && !busy) {
+			now = Date.now();
+			if (document.visibilityState === 'visible' && !busy && status?.member) {
 				try {
-					status = await api<PeerStatus>('peers');
+					status = await api<PeerStatus>(Date.now() < fastUntil ? 'peers?fresh=1' : 'peers');
 				} catch {
 					error = '';
 				}
 			}
 			poll();
-		}, 60_000);
+		}, wait);
 	}
 
 	onMount(() => {
-		run('peers');
-		poll();
-		return () => clearTimeout(timer);
+		(async () => {
+			await run('peers');
+			if (status?.member) {
+				await run('peers/wake', 'POST');
+				fast();
+			} else {
+				poll();
+			}
+		})();
+		return () => {
+			alive = false;
+			clearTimeout(timer);
+		};
 	});
+
+	async function join() {
+		await run('peers/join', 'POST', { interval: Number(interval) });
+		if (status?.member) fast(60000);
+	}
+
+	async function recheck(slot: PeerSlot) {
+		checking = { ...checking, [slot.ref]: Date.now() };
+		try {
+			status = await api<PeerStatus>('peers/recheck', 'POST', { ref: slot.ref });
+			error = '';
+		} catch (e) {
+			error = e instanceof Error ? e.message : t('error_generic');
+		}
+		fast(35000);
+		setTimeout(() => {
+			const next = { ...checking };
+			delete next[slot.ref];
+			checking = next;
+		}, 35000);
+	}
 
 	function leave() {
 		if (window.confirm(t('peers_leave_confirm'))) run('peers/leave', 'POST');
 	}
 
 	const remote = $derived(status?.remote ?? null);
-	const watchers = $derived(remote?.watchers ?? []);
-	const inside = $derived(watchers.filter((w) => w.scope === 'ir').slice(0, SLOTS));
-	const outside = $derived(watchers.filter((w) => w.scope === 'intl').slice(0, SLOTS));
 	const outage = $derived(remote?.intl === 'down');
 
-	type Row = { w: PeerWatcher | null };
-	function slots(list: PeerWatcher[]): Row[] {
-		const rows: Row[] = list.map((w) => ({ w }));
-		while (rows.length < SLOTS) rows.push({ w: null });
-		return rows;
+	function legacy(): PeerSlot[] {
+		const list = remote?.watchers ?? [];
+		const pick = (scope: 'ir' | 'intl', need: number, from: number): PeerSlot[] => {
+			const rows = list.filter((w) => w.scope === scope).slice(0, need);
+			return Array.from({ length: need }, (_, i) => {
+				const w = rows[i];
+				return {
+					slot: from + i,
+					scope,
+					ref: '',
+					state: w ? (w.ok ? 'ok' : 'down') : 'waiting',
+					at: w ? Date.parse(w.at) / 1000 : 0,
+					ms: w?.ms ?? 0,
+					code: 0,
+					checks_today: w?.checks_today ?? 0,
+					ok_today: w?.ok_today ?? 0
+				};
+			});
+		};
+		return [...pick('ir', IRAN, 1), ...pick('intl', ABROAD, IRAN + 1)];
+	}
+
+	const slots = $derived<PeerSlot[]>(remote?.slots?.length ? remote.slots : legacy());
+	const inside = $derived(slots.filter((s) => s.scope === 'ir'));
+	const outside = $derived(slots.filter((s) => s.scope === 'intl'));
+	const insideOk = $derived(inside.filter((s) => s.state === 'ok').length);
+	const outsideOk = $derived(outside.filter((s) => s.state === 'ok').length);
+	const filtered = $derived(inside.some((s) => s.state === 'filtered'));
+	const known = $derived(slots.some((s) => s.state !== 'waiting'));
+	function enough(list: PeerSlot[]): boolean | null {
+		const seen = list.filter((s) => s.state !== 'waiting').length;
+		if (seen === 0) return null;
+		return list.filter((s) => s.state === 'ok').length >= Math.min(2, seen);
+	}
+
+	const verdict = $derived.by(() => {
+		if (!known) return 'waiting';
+		const iran = enough(inside);
+		const abroad = enough(outside);
+		if (filtered && !iran) return 'filtered';
+		if (iran === null) return 'waiting';
+		if (!iran) return 'iran';
+		return abroad === false && !outage ? 'abroad' : 'ok';
+	});
+
+	function rate(s: PeerSlot): string {
+		return s.checks_today ? percent(Math.round((1000 * s.ok_today) / s.checks_today) / 10) : '—';
 	}
 
 	const days = $derived.by(() => {
@@ -103,37 +184,44 @@
 		return [...map.entries()].map(([day, v]) => ({ day, ...v }));
 	});
 
-	function rate(w: PeerWatcher): string {
-		return w.checks_today ? percent(Math.round((1000 * w.ok_today) / w.checks_today) / 10) : '—';
-	}
+
 </script>
 
-{#snippet points(title: string, list: PeerWatcher[], scope: 'ir' | 'intl')}
-	{@const reach = list.filter((w) => w.ok).length}
-	<Card {title} help={help('card_peers_points')} description={list.length ? t(scope === 'ir' ? 'peers_inside_sum' : 'peers_outside_sum', reach, list.length) : t('peers_waiting_help')}>
+{#snippet points(title: string, list: PeerSlot[], scope: 'ir' | 'intl')}
+	{@const reach = list.filter((s) => s.state === 'ok').length}
+	<Card {title} help={help(scope === 'ir' ? 'card_peers_inside' : 'card_peers_outside')} description={list.some((s) => s.state !== 'waiting') ? t(scope === 'ir' ? 'peers_inside_sum' : 'peers_outside_sum', reach, list.length) : t('peers_waiting_help')}>
 		<ul class="rf-points">
-			{#each slots(list) as row, i (i)}
+			{#each list as slot, i (slot.slot)}
+				{@const busyCheck = !!checking[slot.ref]}
 				<li>
-					{#if row.w}
-						{@const w = row.w}
-						<div class="rf-point-place">
-							<strong>{place(w)}</strong>
-							<span class="rf-small rf-subtle">{ago(Date.parse(w.at) / 1000)} · {t('peers_today', rate(w))}</span>
-						</div>
-						<div class="rf-point-state">
-							{#if scope === 'intl' && outage && !w.ok}
-								<Badge tone="warning">{t('peers_paused')}</Badge>
-							{:else if w.ok}
-								<Badge tone="success">{t('peers_reachable')}</Badge>
-							{:else}
-								<Badge tone="danger">{t('peers_unreachable')}</Badge>
-							{/if}
-							<span class="rf-small rf-subtle">{w.ok ? t('milliseconds', num(w.ms)) : ''}</span>
-						</div>
-					{:else}
-						<div class="rf-point-place"><span class="rf-subtle">{t('peers_waiting')}</span></div>
-						<div class="rf-point-state"><Badge>—</Badge></div>
-					{/if}
+					<div class="rf-point-place">
+						<strong>{t('peers_slot_' + (i + 1))}</strong>
+						{#if slot.at > 0}
+							<span class="rf-small rf-subtle">{ago(slot.at, now / 1000)} · {t('peers_today', rate(slot))}</span>
+						{:else}
+							<span class="rf-small rf-subtle">{slot.ref ? t('peers_first_soon') : t('peers_waiting')}</span>
+						{/if}
+					</div>
+					<div class="rf-point-state">
+						{#if busyCheck}
+							<Badge tone="info">{t('peers_rechecking')}</Badge>
+						{:else if slot.state === 'ok'}
+							<Badge tone="success">{t('peers_reachable')}</Badge>
+						{:else if slot.state === 'filtered'}
+							<Badge tone="danger">{t('peers_filtered')}</Badge>
+						{:else if slot.state === 'down' && scope === 'intl' && outage}
+							<Badge tone="warning">{t('peers_paused')}</Badge>
+						{:else if slot.state === 'down'}
+							<Badge tone="danger">{t('peers_unreachable')}</Badge>
+						{:else}
+							<Badge>{t('peers_pending_check')}</Badge>
+						{/if}
+						{#if slot.state === 'ok' && !busyCheck}
+							<span class="rf-small rf-subtle">{t('milliseconds', num(slot.ms))}</span>
+						{:else if (slot.state === 'down' || slot.state === 'filtered') && slot.ref && !busyCheck}
+							<Button size="sm" variant="ghost" busy={busy === 'recheck'} onclick={() => recheck(slot)}>{t('peers_recheck')}</Button>
+						{/if}
+					</div>
 				</li>
 			{/each}
 		</ul>
@@ -158,16 +246,18 @@
 					<span class="rf-small">{t('peers_interval')}</span>
 					<Segmented name="rafoo-peer-interval" label={t('peers_interval')} options={intervals} value={interval} onchange={(v) => (interval = v)} />
 				</div>
-				<Button variant="primary" busy={busy === 'peers/join'} disabled={!status.ready} onclick={() => run('peers/join', 'POST', { interval: Number(interval) })}>
+				<Button variant="primary" busy={busy === 'peers/join'} disabled={!status.ready} onclick={join}>
 					{t('peers_join')}
 				</Button>
 			</div>
 		</Card>
 	{:else}
 		<Card title={t('peers_title')} help={help('card_peers')} description={status.joined_at ? t('peers_joined', date(status.joined_at)) : ''}>
-			{#snippet actions()}
-				<Button size="sm" busy={busy === 'peers/check'} onclick={() => run('peers/check', 'POST')}>{t('peers_check_now')}</Button>
-			{/snippet}
+			<div class="rf-verdict" aria-live="polite">
+				<Badge tone={verdict === 'ok' ? 'success' : verdict === 'waiting' ? 'info' : verdict === 'abroad' ? 'warning' : 'danger'}>{t('peers_verdict_' + verdict)}</Badge>
+				<p>{t('peers_verdict_' + verdict + '_desc')}</p>
+			</div>
+			<p class="rf-small rf-subtle">{t('peers_note')}</p>
 			<div class="rf-summary">
 				{#if status.country}
 					<p class="rf-small">
@@ -195,7 +285,7 @@
 				<div class="rf-table-wrap">
 					<table class="rf-table">
 						<thead>
-							<tr><th scope="col"></th><th scope="col">{t('peers_day_inside')}</th><th scope="col">{t('peers_day_outside')}</th></tr>
+							<tr><th scope="col">{t('col_date')}</th><th scope="col">{t('peers_day_inside')}</th><th scope="col">{t('peers_day_outside')}</th></tr>
 						</thead>
 						<tbody>
 							{#each days as d (d.day)}
@@ -230,6 +320,9 @@
 				<div><Button variant="danger" size="sm" busy={busy === 'peers/leave'} onclick={leave}>{t('peers_leave')}</Button></div>
 			</Card>
 			<Card title={t('peers_contribution')} help={help('card_peers_contribution')}>
+				{#snippet actions()}
+					<Button size="sm" busy={busy === 'peers/check'} onclick={() => run('peers/check', 'POST')}>{t('peers_check_now')}</Button>
+				{/snippet}
 				<p>{t('peers_watching', status.watching)}</p>
 				{#if status.checked}<p class="rf-small rf-subtle">{t('last_check', ago(status.checked, status.now))}</p>{/if}
 				{#if status.pending}<p class="rf-small rf-subtle">{t('peers_pending', status.pending)}</p>{/if}
@@ -272,6 +365,12 @@
 		gap: 12px;
 	}
 	.rf-join-interval {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+	}
+	.rf-verdict {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;

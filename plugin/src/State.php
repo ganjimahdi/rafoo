@@ -72,8 +72,10 @@ final class State {
 
 	private static function extras() {
 		return array(
-			'targets' => array(),
-			'hint'    => array(),
+			'targets'     => array(),
+			'hint'        => array(),
+			'signal_at'   => 0,
+			'signal_wait' => 0,
 		);
 	}
 }

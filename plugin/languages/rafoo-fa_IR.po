@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.4.0\n"
+"Project-Id-Version: Rafoo 1.5.0\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,39 +45,39 @@ msgstr "در حال بارگذاری…"
 msgid "The Rafoo dashboard needs JavaScript."
 msgstr "پیشخوان رفو به جاوااسکریپت نیاز دارد."
 
-#: src/Admin/Rest.php:457
+#: src/Admin/Rest.php:471 src/Drill/Api.php:311
 msgid "You are not allowed to change this."
 msgstr "اجازه تغییر این مورد را ندارید."
 
-#: src/Admin/Rest.php:460
+#: src/Admin/Rest.php:474
 msgid "The previous version could not be put back. The files were left as they were."
 msgstr "نسخه قبلی برگردانده نشد. فایل‌ها همان‌طور که بودند ماندند."
 
-#: src/Admin/Rest.php:540
+#: src/Admin/Rest.php:554
 msgid "This message is no longer waiting."
 msgstr "این پیام دیگر در انتظار نیست."
 
-#: src/Admin/Rest.php:548
+#: src/Admin/Rest.php:562
 msgid "Enter a valid mail server address, for example mail.example.ir."
 msgstr "نشانی معتبر سرور ایمیل وارد کنید، مثلاً mail.example.ir."
 
-#: src/Admin/Rest.php:556
+#: src/Admin/Rest.php:570
 msgid "Save a mail server first."
 msgstr "اول یک سرور ایمیل ذخیره کنید."
 
-#: src/Admin/Rest.php:601
+#: src/Admin/Rest.php:629
 msgid "Please write between 5 and 2000 characters."
 msgstr "لطفاً بین ۵ تا ۲۰۰۰ نویسه بنویسید."
 
-#: src/Admin/Rest.php:605
+#: src/Admin/Rest.php:633
 msgid "Please wait a minute before sending another message."
 msgstr "لطفاً یک دقیقه صبر کنید و بعد پیام دیگری بفرستید."
 
-#: src/Admin/Rest.php:608
+#: src/Admin/Rest.php:636
 msgid "rafoo.ir could not be reached. Please try again later."
 msgstr "ارتباط با rafoo.ir برقرار نشد. لطفاً بعداً دوباره تلاش کنید."
 
-#: src/Admin/Rest.php:651
+#: src/Admin/Rest.php:679
 msgid "This file is no longer in the list."
 msgstr "این فایل دیگر در فهرست نیست."
 
@@ -543,7 +543,7 @@ msgstr "وصل از %s"
 msgid "Automatic switches by itself. Choose a fixed mode only to test or when detection is wrong."
 msgstr "حالت خودکار خودش جابه‌جا می‌شود. حالت ثابت را فقط برای آزمایش یا وقتی تشخیص اشتباه است انتخاب کنید."
 
-#: src/Admin/Strings.php:94
+#: src/Admin/Strings.php:94 src/Admin/Strings.php:1154
 msgid "Automatic"
 msgstr "خودکار"
 
@@ -585,7 +585,7 @@ msgstr "فایل‌های محلی"
 msgid "%d not verified yet"
 msgstr "%d مورد هنوز بررسی نشده"
 
-#: src/Admin/Strings.php:106 src/Admin/Strings.php:137
+#: src/Admin/Strings.php:106 src/Admin/Strings.php:137 src/Admin/Strings.php:1191 src/Admin/Strings.php:1415
 msgid "Waiting"
 msgstr "در انتظار"
 
@@ -657,7 +657,7 @@ msgstr "بررسی سایت"
 msgid "Scan finished. New files will be downloaded in the background."
 msgstr "بررسی تمام شد. فایل‌های تازه در پس‌زمینه دانلود می‌شوند."
 
-#: src/Admin/Strings.php:127
+#: src/Admin/Strings.php:127 src/Admin/Strings.php:1369
 msgid "Download now"
 msgstr "دانلود الان"
 
@@ -693,7 +693,7 @@ msgstr "محلی"
 msgid "Local, only during outages"
 msgstr "محلی، فقط در قطعی"
 
-#: src/Admin/Strings.php:139
+#: src/Admin/Strings.php:139 src/Admin/Strings.php:1324
 msgid "Excluded"
 msgstr "کنار گذاشته"
 
@@ -719,7 +719,7 @@ msgstr "از مخزن"
 msgid "%s files"
 msgstr "%s فایل"
 
-#: src/Admin/Strings.php:146
+#: src/Admin/Strings.php:146 src/Admin/Strings.php:1266
 msgid "Google Fonts"
 msgstr "Google Fonts"
 
@@ -877,7 +877,7 @@ msgstr "خواندن HTML صفحه"
 msgid "Also replaces addresses that themes and page builders write directly into the page. Pages without such addresses are not touched."
 msgstr "نشانی‌هایی را هم که قالب‌ها و صفحه‌سازها مستقیم در صفحه می‌نویسند جایگزین می‌کند. به صفحه‌هایی که چنین نشانی‌ای ندارند دست نمی‌زند."
 
-#: src/Admin/Strings.php:192
+#: src/Admin/Strings.php:192 src/Admin/Strings.php:1348
 msgid "Local Google Fonts"
 msgstr "Google Fonts محلی"
 
@@ -1211,7 +1211,7 @@ msgstr "سایت پس از یک به‌روزرسانی مشکل داشت، ول
 msgid "%1$s was set back to %2$s by hand"
 msgstr "%1$s به‌صورت دستی به نسخه %2$s برگردانده شد"
 
-#: src/Admin/Strings.php:290 src/Admin/Strings.php:1153
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:1448
 msgid "Updates"
 msgstr "به‌روزرسانی"
 
@@ -1815,7 +1815,7 @@ msgstr "پشتیبان‌های ذخیره‌شده"
 msgid "No backup has been made yet."
 msgstr "هنوز پشتیبانی ساخته نشده است."
 
-#: src/Admin/Strings.php:461
+#: src/Admin/Strings.php:461 src/Admin/Strings.php:1372
 msgid "Date"
 msgstr "تاریخ"
 
@@ -2311,7 +2311,7 @@ msgstr "نمایش همه %s ردیف"
 msgid "Made by"
 msgstr "درخواست‌دهنده"
 
-#: src/Admin/Strings.php:596
+#: src/Admin/Strings.php:596 src/Admin/Strings.php:1330
 msgid "Server"
 msgstr "سرور"
 
@@ -2627,7 +2627,7 @@ msgstr "رفو متوقف است و سایت مثل وقتی که رفو نصب 
 msgid "Pause"
 msgstr "توقف"
 
-#: src/Admin/Strings.php:689
+#: src/Admin/Strings.php:689 src/Admin/Strings.php:1319
 msgid "Resume Rafoo"
 msgstr "ادامه کار رفو"
 
@@ -2940,8 +2940,8 @@ msgid "The site could not be reached. Check your connection and try again."
 msgstr "ارتباط با سایت برقرار نشد. اتصال خود را بررسی کنید و دوباره تلاش کنید."
 
 #: src/Admin/Strings.php:771
-msgid "Multiple hosts"
-msgstr "چند هاست"
+msgid "Geo DNS"
+msgstr "Geo DNS"
 
 #: src/Admin/Strings.php:772
 msgid "Multiple hosts with geo DNS"
@@ -3104,8 +3104,8 @@ msgid "This host is waiting for the main host. The code is shown only once; make
 msgstr "این هاست منتظر هاست اصلی است. کد فقط یک‌بار نمایش داده می‌شود؛ اگر آن را ندارید کد تازه بسازید."
 
 #: src/Admin/Strings.php:814
-msgid "On the main site, open Rafoo, then Multiple hosts, and paste this code under \"Add a copy\". Everything on this site will then be replaced with the main site."
-msgstr "در سایت اصلی، رفو و بعد «چند هاست» را باز کنید و این کد را در «افزودن کپی» بگذارید. سپس همه چیز این سایت با سایت اصلی جایگزین می‌شود."
+msgid "On the main site, open Rafoo, then Geo DNS, and paste this code under \"Add a copy\". Everything on this site will then be replaced with the main site."
+msgstr "در سایت اصلی، رفو و بعد «Geo DNS» را باز کنید و این کد را در «افزودن کپی» بگذارید. سپس همه چیز این سایت با سایت اصلی جایگزین می‌شود."
 
 #. translators: %s: technical address
 #: src/Admin/Strings.php:816
@@ -3727,7 +3727,7 @@ msgstr "بدون رکورد A"
 msgid "One of your hosts"
 msgstr "یکی از هاست‌های شما"
 
-#: src/Admin/Strings.php:996
+#: src/Admin/Strings.php:996 src/Admin/Strings.php:1274
 msgid "Unknown address"
 msgstr "نشانی ناشناخته"
 
@@ -3952,8 +3952,8 @@ msgid "Turn on SSL for the subdomain, then install WordPress at https://de.examp
 msgstr "SSL ساب‌دامنه را فعال کنید و وردپرس را با هر کاربر مدیری روی https://de.example.com نصب کنید."
 
 #: src/Admin/Strings.php:1060
-msgid "Install and activate Rafoo 1.4 or newer, open Multiple hosts, choose \"This host will be a copy\" and make the code."
-msgstr "رفو ۱.۴ یا جدیدتر را نصب و فعال کنید، «چند هاست» را باز کنید، «این هاست کپی خواهد شد» را انتخاب کنید و کد بسازید."
+msgid "Install and activate Rafoo 1.4 or newer, open Geo DNS, choose \"This host will be a copy\" and make the code."
+msgstr "رفو ۱.۴ یا جدیدتر را نصب و فعال کنید، «Geo DNS» را باز کنید، «این هاست کپی خواهد شد» را انتخاب کنید و کد بسازید."
 
 #: src/Admin/Strings.php:1061
 msgid "Paste the code on the main site. The main site sends itself here; this can take from a few minutes to an hour for large sites."
@@ -3968,8 +3968,8 @@ msgid "Prepare the new host: add your main domain and a technical subdomain such
 msgstr "هاست تازه را آماده کنید: دامنه اصلی و یک ساب‌دامنه فنی مثل de.example.com را اضافه کنید و وردپرس و رفو را روی ساب‌دامنه نصب کنید."
 
 #: src/Admin/Strings.php:1064
-msgid "In Rafoo on the new host, open Multiple hosts, choose \"This host will be a copy\" and make a join code."
-msgstr "در رفو روی هاست تازه، «چند هاست» را باز کنید، «این هاست کپی خواهد شد» را انتخاب کنید و کد اتصال بسازید."
+msgid "In Rafoo on the new host, open Geo DNS, choose \"This host will be a copy\" and make a join code."
+msgstr "در رفو روی هاست تازه، «Geo DNS» را باز کنید، «این هاست کپی خواهد شد» را انتخاب کنید و کد اتصال بسازید."
 
 #: src/Admin/Strings.php:1065
 msgid "Paste the code here, choose the country of that host and press \"Add and copy the site\"."
@@ -4271,109 +4271,1151 @@ msgstr "اقیانوسیه"
 msgid "South America"
 msgstr "آمریکای جنوبی"
 
+#: src/Admin/Strings.php:1144 src/Admin/Strings.php:1145
+msgid "Outage rehearsal"
+msgstr "مانور قطعی"
+
+#: src/Admin/Strings.php:1146
+msgid "See your site exactly as it would work if the international internet went down today, and fix every problem before a real outage."
+msgstr "سایتتان را دقیقاً همان‌طور ببینید که اگر امروز اینترنت بین‌الملل قطع شود کار می‌کند و پیش از قطعی واقعی، همه مشکلات را برطرف کنید."
+
+#: src/Admin/Strings.php:1147
+msgid "Only you see the outage. Visitors, search engines and the page cache keep the normal site."
+msgstr "قطعی فقط برای شما شبیه‌سازی می‌شود. بازدیدکنندگان، موتورهای جستجو و کش صفحه همان سایت عادی را می‌بینند."
+
+#: src/Admin/Strings.php:1148
+msgid "Rafoo opens your important pages, records every outside file, server request and error, and names the plugin or theme behind each one."
+msgstr "رفو صفحه‌های مهم سایت را باز می‌کند، هر فایل خارجی، درخواست سمت سرور و خطا را ثبت می‌کند و افزونه یا قالبِ عامل هرکدام را نام می‌برد."
+
 #: src/Admin/Strings.php:1149
+msgid "Most problems are fixed with one button: download a library or font, turn on a protection, or block a foreign address."
+msgstr "بیشتر مشکلات با یک دکمه حل می‌شوند: دریافت کتابخانه یا فونت، روشن کردن یک محافظت یا مسدود کردن یک نشانی خارجی."
+
+#: src/Admin/Strings.php:1150
+msgid "The international internet is down right now, so the rehearsal shows the real situation."
+msgstr "اینترنت بین‌الملل هم‌اکنون قطع است؛ بنابراین مانور همان وضعیت واقعی را نشان می‌دهد."
+
+#: src/Admin/Strings.php:1151
+msgid "Start a rehearsal"
+msgstr "شروع مانور"
+
+#: src/Admin/Strings.php:1152 src/Drill/Api.php:168
+msgid "Rafoo is paused. Resume it first, then run the rehearsal."
+msgstr "رفو متوقف است. ابتدا آن را از سر بگیرید، سپس مانور را اجرا کنید."
+
+#: src/Admin/Strings.php:1153
+msgid "How to test"
+msgstr "روش آزمایش"
+
+#: src/Admin/Strings.php:1155
+msgid "Rafoo opens the chosen pages one by one here and builds the report. About 5 to 10 seconds per page."
+msgstr "رفو صفحه‌های انتخاب‌شده را یکی‌یکی همین‌جا باز می‌کند و گزارش را می‌سازد. حدود ۵ تا ۱۰ ثانیه برای هر صفحه."
+
+#: src/Admin/Strings.php:1156
+msgid "Browse yourself"
+msgstr "مرور دستی"
+
+#: src/Admin/Strings.php:1157
+msgid "For 15 minutes your browser sees the outage on any page. Try forms, the cart or payment, then finish to get the report."
+msgstr "به مدت ۱۵ دقیقه مرورگر شما در هر صفحه حالت قطعی را می‌بیند. فرم‌ها، سبد خرید یا پرداخت را امتحان کنید و سپس برای گرفتن گزارش، مانور را تمام کنید."
+
+#: src/Admin/Strings.php:1158
+msgid "Pages to test"
+msgstr "صفحه‌های آزمایش"
+
+#: src/Admin/Strings.php:1159
+msgid "Site"
+msgstr "سایت"
+
+#: src/Admin/Strings.php:1160
+msgid "Store"
+msgstr "فروشگاه"
+
+#: src/Admin/Strings.php:1161 src/Admin/Strings.php:1171
+msgid "Dashboard"
+msgstr "پیشخوان"
+
+#: src/Admin/Strings.php:1162
+msgid "Home page"
+msgstr "صفحه اصلی"
+
+#: src/Admin/Strings.php:1163
+msgid "Latest post"
+msgstr "آخرین نوشته"
+
+#: src/Admin/Strings.php:1164
+msgid "A page"
+msgstr "یک برگه"
+
+#: src/Admin/Strings.php:1165
+msgid "Shop"
+msgstr "فروشگاه"
+
+#: src/Admin/Strings.php:1166
+msgid "A product"
+msgstr "یک محصول"
+
+#: src/Admin/Strings.php:1167
+msgid "Cart"
+msgstr "سبد خرید"
+
+#: src/Admin/Strings.php:1168
+msgid "Checkout"
+msgstr "تسویه‌حساب"
+
+#: src/Admin/Strings.php:1169
+msgid "My account"
+msgstr "حساب کاربری"
+
+#: src/Admin/Strings.php:1170
+msgid "Login"
+msgstr "ورود"
+
+#: src/Admin/Strings.php:1172
+msgid "Post editor"
+msgstr "ویرایشگر نوشته"
+
+#: src/Admin/Strings.php:1173
+msgid "Other pages"
+msgstr "صفحه‌های دیگر"
+
+#: src/Admin/Strings.php:1174
+msgid "/contact/"
+msgstr "/contact/"
+
+#: src/Admin/Strings.php:1175
+msgid "Up to 5 addresses on this site, one per line, for example /contact/ or a landing page."
+msgstr "حداکثر ۵ نشانی از همین سایت، هر کدام در یک خط؛ مثلاً /contact/ یا یک صفحه فرود."
+
+#: src/Admin/Strings.php:1176
+msgid "Compare with normal mode"
+msgstr "مقایسه با حالت عادی"
+
+#: src/Admin/Strings.php:1177
+msgid "Each page is opened once normally and once in outage mode, so errors that already exist are not blamed on the outage."
+msgstr "هر صفحه یک بار عادی و یک بار در حالت قطعی باز می‌شود تا خطاهایی که از قبل وجود داشته‌اند به حساب قطعی گذاشته نشوند."
+
+#: src/Admin/Strings.php:1178
+msgid "See pages as a visitor"
+msgstr "دیدن صفحه‌ها مانند بازدیدکننده"
+
+#: src/Admin/Strings.php:1179
+msgid "Public pages are built as for a visitor who is not logged in. Dashboard pages still use your account."
+msgstr "صفحه‌های عمومی مانند بازدیدکننده‌ای که وارد نشده ساخته می‌شوند. صفحه‌های پیشخوان همچنان با حساب شما باز می‌شوند."
+
+#: src/Admin/Strings.php:1180
+msgid "Start the rehearsal"
+msgstr "شروع مانور"
+
+#: src/Admin/Strings.php:1181
+msgid "Start 15 minutes of outage"
+msgstr "شروع ۱۵ دقیقه قطعی"
+
+#: src/Admin/Strings.php:1182
+msgid "Nothing changes for visitors and no setting is changed without your click."
+msgstr "برای بازدیدکنندگان هیچ چیز تغییر نمی‌کند و هیچ تنظیمی بدون کلیک شما عوض نمی‌شود."
+
+#: src/Admin/Strings.php:1183
+msgid "Rehearsal in progress"
+msgstr "مانور در حال اجرا"
+
+#. translators: %1$d: page number, %2$d: total pages, %3$s: page name
+#: src/Admin/Strings.php:1185
+#, php-format
+msgid "Page %1$d of %2$d: %3$s"
+msgstr "صفحه %1$d از %2$d: %3$s"
+
+#: src/Admin/Strings.php:1186
+msgid "Building the report…"
+msgstr "در حال ساخت گزارش…"
+
+#: src/Admin/Strings.php:1187
+msgid "Stop the rehearsal"
+msgstr "توقف مانور"
+
+#: src/Admin/Strings.php:1188
+msgid "Opening the page in normal mode for comparison."
+msgstr "باز کردن صفحه در حالت عادی برای مقایسه."
+
+#: src/Admin/Strings.php:1189
+msgid "Opening the page as if the international internet were down."
+msgstr "باز کردن صفحه چنان‌که گویی اینترنت بین‌الملل قطع است."
+
+#: src/Admin/Strings.php:1190
+msgid "Checking server records, finding the plugins behind each problem and scoring the site."
+msgstr "بررسی ثبت‌های سرور، یافتن افزونه‌های عامل هر مشکل و امتیازدهی به سایت."
+
+#: src/Admin/Strings.php:1192
+msgid "Normal mode…"
+msgstr "حالت عادی…"
+
+#: src/Admin/Strings.php:1193
+msgid "Outage mode…"
+msgstr "حالت قطعی…"
+
+#. translators: %d: number of addresses
+#: src/Admin/Strings.php:1195
+#, php-format
+msgid "%d stopped by Rafoo"
+msgstr "%d مورد توسط رفو متوقف شد"
+
+#: src/Admin/Strings.php:1196
+msgid "Live preview, visible only to you"
+msgstr "پیش‌نمایش زنده، فقط برای شما"
+
+#: src/Admin/Strings.php:1197
+msgid "Opened"
+msgstr "باز شد"
+
+#: src/Admin/Strings.php:1198
+msgid "Not shown in preview"
+msgstr "در پیش‌نمایش باز نشد"
+
+#: src/Admin/Strings.php:1199
+msgid "Took over 30 seconds"
+msgstr "بیش از ۳۰ ثانیه طول کشید"
+
+#: src/Admin/Strings.php:1200
+msgid "Could not open"
+msgstr "باز نشد"
+
+#: src/Admin/Strings.php:1201
+msgid "Not tested"
+msgstr "آزمایش نشد"
+
+#: src/Admin/Strings.php:1202
+msgid "Visited"
+msgstr "بازدید شد"
+
+#: src/Admin/Strings.php:1203
+msgid "Outage is on for your browser"
+msgstr "قطعی برای مرورگر شما فعال است"
+
+#. translators: %d: minutes
+#: src/Admin/Strings.php:1205
+#, php-format
+msgid "%d minutes left. Visitors still see the normal site."
+msgstr "%d دقیقه باقی مانده است. بازدیدکنندگان همچنان سایت عادی را می‌بینند."
+
+#: src/Admin/Strings.php:1206
+msgid "Open the site in a new tab. A small note at the corner shows that the rehearsal is on."
+msgstr "سایت را در یک زبانه جدید باز کنید. یک یادداشت کوچک در گوشه صفحه نشان می‌دهد که مانور فعال است."
+
+#: src/Admin/Strings.php:1207
+msgid "Go through what matters to you: search, forms, the cart, checkout and payment."
+msgstr "هر چیزی را که برایتان مهم است امتحان کنید: جستجو، فرم‌ها، سبد خرید، تسویه‌حساب و پرداخت."
+
+#: src/Admin/Strings.php:1208
+msgid "Come back here and finish the rehearsal to see the report."
+msgstr "به اینجا برگردید و مانور را تمام کنید تا گزارش را ببینید."
+
+#: src/Admin/Strings.php:1209
+msgid "Open the site"
+msgstr "باز کردن سایت"
+
+#: src/Admin/Strings.php:1210
+msgid "Finish and show the report"
+msgstr "پایان و نمایش گزارش"
+
+#: src/Admin/Strings.php:1211
+msgid "The rehearsal was interrupted"
+msgstr "مانور نیمه‌کاره ماند"
+
+#: src/Admin/Strings.php:1212
+msgid "The page was closed or reloaded during the rehearsal. Run it again or stop it."
+msgstr "صفحه در میانه مانور بسته یا بارگذاری مجدد شد. آن را دوباره اجرا کنید یا متوقف کنید."
+
+#: src/Admin/Strings.php:1213
+msgid "Run again"
+msgstr "اجرای دوباره"
+
+#: src/Admin/Strings.php:1214
+msgid "Rehearsal result"
+msgstr "نتیجه مانور"
+
+#. translators: %1$s: date, %2$d: number of pages
+#: src/Admin/Strings.php:1216
+#, php-format
+msgid "%1$s · %2$d pages"
+msgstr "%1$s · %2$d صفحه"
+
+#: src/Admin/Strings.php:1217
+msgid "of 100"
+msgstr "از ۱۰۰"
+
+#: src/Admin/Strings.php:1218
+msgid "Ready for an outage"
+msgstr "آماده قطعی"
+
+#: src/Admin/Strings.php:1219
+msgid "Mostly ready"
+msgstr "تقریباً آماده"
+
+#: src/Admin/Strings.php:1220
+msgid "Needs work"
+msgstr "نیاز به اصلاح"
+
+#: src/Admin/Strings.php:1221
+msgid "Not ready"
+msgstr "آماده نیست"
+
+#: src/Admin/Strings.php:1222
+msgid "Visitors in Iran can use the tested pages during an outage without waiting or broken parts."
+msgstr "بازدیدکنندگان داخل ایران در زمان قطعی می‌توانند بدون انتظار و بخش خراب از صفحه‌های آزمایش‌شده استفاده کنند."
+
+#: src/Admin/Strings.php:1223
+msgid "The site works during an outage, with a few slow or missing parts listed below."
+msgstr "سایت در قطعی کار می‌کند، اما چند بخش کند یا ناقص دارد که در ادامه آمده است."
+
+#: src/Admin/Strings.php:1224
+msgid "Important parts break or keep visitors waiting during an outage. Fix the items below first."
+msgstr "بخش‌های مهمی در قطعی خراب می‌شوند یا بازدیدکننده را منتظر نگه می‌دارند. ابتدا موارد زیر را برطرف کنید."
+
+#: src/Admin/Strings.php:1225
+msgid "During an outage the tested pages would not work for most visitors. Start with the problems that must be fixed."
+msgstr "در زمان قطعی، صفحه‌های آزمایش‌شده برای بیشتر بازدیدکنندگان کار نمی‌کنند. از مشکلاتی که باید برطرف شوند شروع کنید."
+
+#. translators: %1$s: normal load time, %2$s: outage load time
+#: src/Admin/Strings.php:1227
+#, php-format
+msgid "Average load: %1$s normally, %2$s during the outage."
+msgstr "میانگین بارگذاری: %1$s در حالت عادی و %2$s در حالت قطعی."
+
+#: src/Admin/Strings.php:1228
+msgid "Built from the pages you visited during the rehearsal."
+msgstr "بر اساس صفحه‌هایی که در طول مانور بازدید کردید."
+
+#: src/Admin/Strings.php:1229
+msgid "Must fix"
+msgstr "باید برطرف شود"
+
+#: src/Admin/Strings.php:1230
+msgid "Should fix"
+msgstr "بهتر است برطرف شود"
+
+#: src/Admin/Strings.php:1231
+msgid "Handled by Rafoo"
+msgstr "مدیریت‌شده توسط رفو"
+
+#: src/Admin/Strings.php:1232
+msgid "Outside requests stopped at once"
+msgstr "درخواست‌های خارجی که فوراً متوقف شدند"
+
+#: src/Admin/Strings.php:1233
+msgid "Served from your server"
+msgstr "ارائه از سرور شما"
+
+#: src/Admin/Strings.php:1234
+msgid "Libraries and fonts used locally"
+msgstr "کتابخانه‌ها و فونت‌هایی که محلی استفاده شدند"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1236
+#, php-format
+msgid "Must fix (%d)"
+msgstr "باید برطرف شود (%d)"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1238
+#, php-format
+msgid "Should fix (%d)"
+msgstr "بهتر است برطرف شود (%d)"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1240
+#, php-format
+msgid "Good to know (%d)"
+msgstr "برای اطلاع (%d)"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1242
+#, php-format
+msgid "Handled by Rafoo (%d)"
+msgstr "مدیریت‌شده توسط رفو (%d)"
+
+#: src/Admin/Strings.php:1243
+msgid "Important"
+msgstr "مهم"
+
+#: src/Admin/Strings.php:1244
+msgid "Worth fixing"
+msgstr "پیشنهادی"
+
+#: src/Admin/Strings.php:1245
+msgid "Optional"
+msgstr "اختیاری"
+
+#: src/Admin/Strings.php:1246
+msgid "Handled"
+msgstr "مدیریت شد"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1248
+#, php-format
+msgid "Show what Rafoo handled (%d)"
+msgstr "نمایش مواردی که رفو مدیریت کرد (%d)"
+
+#: src/Admin/Strings.php:1249
+msgid "No problem was found on the tested pages."
+msgstr "در صفحه‌های آزمایش‌شده هیچ مشکلی پیدا نشد."
+
+#: src/Admin/Strings.php:1250
+msgid "Blocks the page"
+msgstr "مانع نمایش صفحه"
+
+#: src/Admin/Strings.php:1251
+msgid "Fixed. Run again to confirm"
+msgstr "اصلاح شد؛ برای اطمینان دوباره اجرا کنید"
+
+#. translators: %s: list of pages
+#: src/Admin/Strings.php:1253
+#, php-format
+msgid "On: %s"
+msgstr "در: %s"
+
+#. translators: %s: error message
+#: src/Admin/Strings.php:1255
+#, php-format
+msgid "Last download error: %s"
+msgstr "آخرین خطای دریافت: %s"
+
+#. translators: %s: plugin name
+#: src/Admin/Strings.php:1257
+#, php-format
+msgid "Plugin: %s"
+msgstr "افزونه: %s"
+
+#. translators: %s: theme name
+#: src/Admin/Strings.php:1259
+#, php-format
+msgid "Theme: %s"
+msgstr "قالب: %s"
+
+#: src/Admin/Strings.php:1260
+msgid "WordPress itself"
+msgstr "خود وردپرس"
+
+#. translators: %s: number of seconds
+#: src/Admin/Strings.php:1262
+#, php-format
+msgid "%s s"
+msgstr "%s ثانیه"
+
+#. translators: %d: HTTP status code
+#: src/Admin/Strings.php:1264
+#, php-format
+msgid "Code %d"
+msgstr "کد %d"
+
+#: src/Admin/Strings.php:1265
+msgid "Library from a foreign CDN"
+msgstr "کتابخانه از CDN خارجی"
+
+#: src/Admin/Strings.php:1267
+msgid "Profile pictures from Gravatar"
+msgstr "تصویر پروفایل از Gravatar"
+
+#: src/Admin/Strings.php:1268
+msgid "Foreign captcha"
+msgstr "کپچای خارجی"
+
+#: src/Admin/Strings.php:1269
+msgid "Video or map embed"
+msgstr "ویدیو یا نقشه جاسازی‌شده"
+
+#: src/Admin/Strings.php:1270
+msgid "Analytics or ads script"
+msgstr "اسکریپت آمار یا تبلیغات"
+
+#: src/Admin/Strings.php:1271
+msgid "Social login"
+msgstr "ورود با شبکه اجتماعی"
+
+#: src/Admin/Strings.php:1272
+msgid "WordPress files from abroad"
+msgstr "فایل‌های وردپرس از خارج"
+
+#: src/Admin/Strings.php:1273
+msgid "Foreign service"
+msgstr "سرویس خارجی"
+
+#: src/Admin/Strings.php:1275
+msgid "Server request to a foreign address"
+msgstr "درخواست سرور به نشانی خارجی"
+
+#: src/Admin/Strings.php:1276
+msgid "Server request to an unknown address"
+msgstr "درخواست سرور به نشانی ناشناخته"
+
+#: src/Admin/Strings.php:1277
+msgid "PHP error"
+msgstr "خطای PHP"
+
+#: src/Admin/Strings.php:1278
+msgid "Page error"
+msgstr "خطای صفحه"
+
+#: src/Admin/Strings.php:1279
+msgid "Slow page on the server"
+msgstr "کندی صفحه روی سرور"
+
+#: src/Admin/Strings.php:1280
+msgid "JavaScript error"
+msgstr "خطای جاوااسکریپت"
+
+#: src/Admin/Strings.php:1281
+msgid "Page came from the cache"
+msgstr "صفحه از کش آمد"
+
+#: src/Admin/Strings.php:1282
+msgid "Page not shown in the preview"
+msgstr "صفحه در پیش‌نمایش باز نشد"
+
+#: src/Admin/Strings.php:1283
+msgid "This library loads from a foreign CDN and does not open during an outage. Download it once to the Rafoo library and the local copy takes its place."
+msgstr "این کتابخانه از CDN خارجی بارگذاری می‌شود و در قطعی باز نمی‌شود. یک بار آن را در کتابخانه رفو دریافت کنید تا نسخه محلی جایش را بگیرد."
+
+#: src/Admin/Strings.php:1284
+msgid "This font file still loads from Google. During an outage text waits for it, then falls back to another font."
+msgstr "این فایل فونت همچنان از گوگل بارگذاری می‌شود. در قطعی متن منتظر آن می‌ماند و سپس با فونت دیگری نمایش داده می‌شود."
+
+#: src/Admin/Strings.php:1285
+msgid "Rafoo removed this Google Fonts stylesheet so the page did not wait. Download it to keep the exact look during an outage."
+msgstr "رفو این فونت گوگل را حذف کرد تا صفحه منتظر نماند. آن را دریافت کنید تا ظاهر سایت در قطعی دقیقاً حفظ شود."
+
+#: src/Admin/Strings.php:1286
+msgid "Profile pictures come from Gravatar and do not open during an outage. Rafoo can show simple letter avatars instead."
+msgstr "تصاویر پروفایل از Gravatar می‌آیند و در قطعی باز نمی‌شوند. رفو می‌تواند به‌جای آن‌ها آواتار ساده حرفی نشان دهد."
+
+#: src/Admin/Strings.php:1287
+msgid "Google reCAPTCHA or a similar service does not load during an outage, so login and contact forms stop working. Rafoo can put its own captcha in its place."
+msgstr "reCAPTCHA گوگل یا سرویس مشابه در قطعی بارگذاری نمی‌شود و فرم‌های ورود و تماس از کار می‌افتند. رفو می‌تواند کپچای خودش را جایگزین کند."
+
+#: src/Admin/Strings.php:1288
+msgid "A foreign video or map does not show during an outage. Rafoo can replace it with a simple box and a link."
+msgstr "ویدیو یا نقشه خارجی در قطعی نمایش داده نمی‌شود. رفو می‌تواند به‌جای آن یک کادر ساده با لینک بگذارد."
+
+#: src/Admin/Strings.php:1289
+msgid "This analytics or ads script does nothing during an outage and only makes the page slower."
+msgstr "این اسکریپت آمار یا تبلیغات در قطعی کاری انجام نمی‌دهد و فقط صفحه را کند می‌کند."
+
+#: src/Admin/Strings.php:1290
+msgid "Login with Google or another network does not work during an outage. Rafoo can hide these buttons so visitors use the normal form."
+msgstr "ورود با گوگل یا شبکه‌های دیگر در قطعی کار نمی‌کند. رفو می‌تواند این دکمه‌ها را پنهان کند تا بازدیدکننده از فرم عادی استفاده کند."
+
+#: src/Admin/Strings.php:1291
+msgid "WordPress loads parts such as emoji from WordPress.org servers. Rafoo can turn these off during an outage."
+msgstr "وردپرس بخش‌هایی مثل ایموجی را از سرورهای WordPress.org بارگذاری می‌کند. رفو می‌تواند این‌ها را در قطعی خاموش کند."
+
+#: src/Admin/Strings.php:1292
+msgid "This known foreign service is not reachable during an outage and keeps the page waiting. Block it if the site works without it, or ask the plugin author for an option to turn it off."
+msgstr "این سرویس خارجی شناخته‌شده در قطعی در دسترس نیست و صفحه را منتظر نگه می‌دارد. اگر سایت بدون آن کار می‌کند مسدودش کنید، یا از سازنده افزونه گزینه خاموش کردنش را بخواهید."
+
+#: src/Admin/Strings.php:1293
+msgid "Rafoo does not know this address. If it is abroad, block it. If it is inside Iran, allow it so Rafoo never waits for it."
+msgstr "رفو این نشانی را نمی‌شناسد. اگر خارجی است مسدودش کنید؛ اگر داخل ایران است مجازش کنید تا رفو هرگز منتظرش نماند."
+
+#: src/Admin/Strings.php:1294
+msgid "The site called this foreign address from the server. Rafoo refuses such calls at once during an outage, so the page does not wait."
+msgstr "سایت از سمت سرور این نشانی خارجی را فراخواند. رفو در قطعی این درخواست‌ها را فوراً رد می‌کند تا صفحه منتظر نماند."
+
+#. translators: %s: time
+#: src/Admin/Strings.php:1296
+#, php-format
+msgid "The site called an unknown address from the server (it took %s now). During a real outage each call can wait up to 3 seconds. Block it if it is abroad, or allow it if it is inside Iran."
+msgstr "سایت از سمت سرور یک نشانی ناشناخته را فراخواند (اکنون %s طول کشید). در قطعی واقعی هر درخواست تا ۳ ثانیه منتظر می‌ماند. اگر خارجی است مسدود و اگر داخلی است مجازش کنید."
+
+#: src/Admin/Strings.php:1297
+msgid "The page stopped with a PHP error in outage mode. Usually a plugin does not check for a failed internet request. Send this message to the plugin author."
+msgstr "صفحه در حالت قطعی با خطای PHP متوقف شد. معمولاً افزونه‌ای خطای درخواست اینترنتی را بررسی نمی‌کند. این پیام را برای سازنده افزونه بفرستید."
+
+#. translators: %d: HTTP status code
+#: src/Admin/Strings.php:1299
+#, php-format
+msgid "In outage mode the page answered with code %d."
+msgstr "صفحه در حالت قطعی با کد %d پاسخ داد."
+
+#. translators: %s: time
+#: src/Admin/Strings.php:1301
+#, php-format
+msgid "Building the page on the server took %s, which usually means it waited for outside services."
+msgstr "ساخت صفحه روی سرور %s طول کشید؛ معمولاً یعنی منتظر سرویس‌های خارجی مانده است."
+
+#: src/Admin/Strings.php:1302
+msgid "This error happened only in outage mode. A script probably expects a file or service from abroad."
+msgstr "این خطا فقط در حالت قطعی رخ داد. احتمالاً یک اسکریپت منتظر فایل یا سرویسی از خارج است."
+
+#: src/Admin/Strings.php:1303
+msgid "This error also happens in normal mode, so it is not caused by the outage."
+msgstr "این خطا در حالت عادی هم رخ می‌دهد و به قطعی مربوط نیست."
+
+#: src/Admin/Strings.php:1304
+msgid "This page came from a page cache, so the outage version was not shown. Clear the cache or exclude this page, then run again."
+msgstr "این صفحه از کش صفحه آمد و نسخه حالت قطعی نمایش داده نشد. کش را پاک کنید یا این صفحه را مستثنا کنید و دوباره اجرا کنید."
+
+#: src/Admin/Strings.php:1305
+msgid "A security setting does not let this page open inside another page. The server side was still checked."
+msgstr "یک تنظیم امنیتی اجازه نمی‌دهد این صفحه داخل صفحه دیگری باز شود. بخش سمت سرور با این حال بررسی شد."
+
+#: src/Admin/Strings.php:1306
+msgid "The page did not finish loading within 30 seconds in outage mode."
+msgstr "صفحه در حالت قطعی ظرف ۳۰ ثانیه کامل بارگذاری نشد."
+
+#: src/Admin/Strings.php:1307
+msgid "The page could not be opened in the preview."
+msgstr "صفحه در پیش‌نمایش باز نشد."
+
+#: src/Admin/Strings.php:1308
+msgid "This page was not tested because the rehearsal stopped early."
+msgstr "این صفحه آزمایش نشد چون مانور زودتر متوقف شد."
+
+#: src/Admin/Strings.php:1309
+msgid "Rafoo stopped this at once in outage mode, so the page did not wait for it."
+msgstr "رفو این را در حالت قطعی فوراً متوقف کرد و صفحه منتظرش نماند."
+
+#: src/Admin/Strings.php:1310
+msgid "Download to the library"
+msgstr "دریافت در کتابخانه"
+
+#: src/Admin/Strings.php:1311
+msgid "Use the local copy again"
+msgstr "استفاده دوباره از نسخه محلی"
+
+#. translators: %s: setting name
+#: src/Admin/Strings.php:1313
+#, php-format
+msgid "Turn on: %s"
+msgstr "روشن کردن: %s"
+
+#. translators: %s: host name
+#: src/Admin/Strings.php:1315
+#, php-format
+msgid "Block %s"
+msgstr "مسدود کردن %s"
+
+#: src/Admin/Strings.php:1316
+msgid "It is inside Iran, allow it"
+msgstr "داخلی است، مجاز کن"
+
+#: src/Admin/Strings.php:1317
+msgid "Scan the site again"
+msgstr "اسکن دوباره سایت"
+
+#: src/Admin/Strings.php:1318
+msgid "Download waiting files now"
+msgstr "دریافت فایل‌های در انتظار"
+
+#: src/Admin/Strings.php:1320
+msgid "Done"
+msgstr "انجام شد"
+
+#: src/Admin/Strings.php:1321
+msgid "Downloaded"
+msgstr "دریافت شد"
+
+#: src/Admin/Strings.php:1322
+msgid "Queued for download"
+msgstr "در صف دریافت"
+
+#: src/Admin/Strings.php:1323
+msgid "Another download is running"
+msgstr "دریافت دیگری در جریان است"
+
+#: src/Admin/Strings.php:1325 src/Admin/Strings.php:1374
+msgid "Pages"
+msgstr "صفحه‌ها"
+
+#: src/Admin/Strings.php:1326
+msgid "Page"
+msgstr "صفحه"
+
+#: src/Admin/Strings.php:1327
+msgid "Result"
+msgstr "نتیجه"
+
+#: src/Admin/Strings.php:1328
+msgid "Normal load"
+msgstr "بارگذاری عادی"
+
+#: src/Admin/Strings.php:1329
+msgid "Outage load"
+msgstr "بارگذاری در قطعی"
+
+#: src/Admin/Strings.php:1331
+msgid "Works"
+msgstr "کار می‌کند"
+
+#: src/Admin/Strings.php:1332
+msgid "Works with issues"
+msgstr "با مشکل کار می‌کند"
+
+#: src/Admin/Strings.php:1333
+msgid "Breaks"
+msgstr "خراب می‌شود"
+
+#: src/Admin/Strings.php:1334
+msgid "Not checked"
+msgstr "بررسی نشد"
+
+#: src/Admin/Strings.php:1335
+msgid "Outage readiness"
+msgstr "آمادگی برای قطعی"
+
+#: src/Admin/Strings.php:1336
+msgid "Every Rafoo protection that matters during an outage is on."
+msgstr "همه محافظت‌های رفو که در قطعی اهمیت دارند روشن هستند."
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1338
+#, php-format
+msgid "%d items can make the site better prepared."
+msgstr "%d مورد می‌تواند سایت را آماده‌تر کند."
+
+#: src/Admin/Strings.php:1339
+msgid "Ready"
+msgstr "آماده"
+
+#: src/Admin/Strings.php:1340
+msgid "Rafoo is running"
+msgstr "رفو فعال است"
+
+#: src/Admin/Strings.php:1341
+msgid "Rafoo is paused, so nothing is protected during an outage."
+msgstr "رفو متوقف است و در قطعی هیچ محافظتی انجام نمی‌شود."
+
+#: src/Admin/Strings.php:1342
+msgid "Browser protection"
+msgstr "محافظت در مرورگر"
+
+#: src/Admin/Strings.php:1343
+msgid "Without it, scripts that load foreign files on their own keep pages waiting."
+msgstr "بدون آن، اسکریپت‌هایی که خودشان فایل خارجی بارگذاری می‌کنند صفحه را منتظر نگه می‌دارند."
+
+#: src/Admin/Strings.php:1344
+msgid "Local copies of CDN files"
+msgstr "نسخه محلی فایل‌های CDN"
+
+#: src/Admin/Strings.php:1345
+msgid "Replacing CDN files is off, so downloaded copies are never used."
+msgstr "جایگزینی فایل‌های CDN خاموش است و نسخه‌های دریافت‌شده هرگز استفاده نمی‌شوند."
+
+#: src/Admin/Strings.php:1346
+msgid "Find CDN addresses in page HTML"
+msgstr "یافتن نشانی‌های CDN در HTML صفحه"
+
+#: src/Admin/Strings.php:1347
+msgid "Files that builders write directly into the page are not replaced."
+msgstr "فایل‌هایی که صفحه‌سازها مستقیماً در صفحه می‌نویسند جایگزین نمی‌شوند."
+
+#: src/Admin/Strings.php:1349
+msgid "Text loses its font during an outage."
+msgstr "متن در قطعی فونت خود را از دست می‌دهد."
+
+#: src/Admin/Strings.php:1350
+msgid "Library files are downloaded"
+msgstr "فایل‌های کتابخانه دریافت شده‌اند"
+
+#. translators: %1$d: waiting files, %2$d: failed files
+#: src/Admin/Strings.php:1352
+#, php-format
+msgid "%1$d files are waiting and %2$d failed. They will not work during an outage until downloaded."
+msgstr "%1$d فایل در انتظار و %2$d فایل ناموفق است. تا دریافت نشوند در قطعی کار نمی‌کنند."
+
+#: src/Admin/Strings.php:1353
+msgid "Outage detection is running"
+msgstr "تشخیص قطعی فعال است"
+
+#: src/Admin/Strings.php:1354
+msgid "The connection check has not run recently. Outage mode turns on through WP-Cron, so make sure cron runs on this site."
+msgstr "بررسی اتصال اخیراً اجرا نشده است. حالت قطعی با WP-Cron روشن می‌شود؛ مطمئن شوید کران در این سایت اجرا می‌شود."
+
+#: src/Admin/Strings.php:1355
+msgid "Mail waits during an outage"
+msgstr "صف ایمیل در قطعی"
+
+#: src/Admin/Strings.php:1356
+msgid "Emails sent during an outage may be lost."
+msgstr "ایمیل‌هایی که در قطعی فرستاده می‌شوند ممکن است از دست بروند."
+
+#: src/Admin/Strings.php:1357
+msgid "Updates from the domestic mirror"
+msgstr "به‌روزرسانی از آینه داخلی"
+
+#: src/Admin/Strings.php:1358
+msgid "WordPress, plugins and themes cannot be updated during an outage."
+msgstr "وردپرس، افزونه‌ها و قالب‌ها در قطعی به‌روزرسانی نمی‌شوند."
+
+#: src/Admin/Strings.php:1359
+msgid "The library has local files"
+msgstr "کتابخانه فایل محلی دارد"
+
+#: src/Admin/Strings.php:1360
+msgid "No file has been downloaded yet. Scan the site so Rafoo finds the CDN files it uses."
+msgstr "هنوز هیچ فایلی دریافت نشده است. سایت را اسکن کنید تا رفو فایل‌های CDN مورد استفاده را پیدا کند."
+
+#: src/Admin/Strings.php:1361
+msgid "The international internet is down now"
+msgstr "اینترنت بین‌الملل اکنون قطع است"
+
+#: src/Admin/Strings.php:1362
+msgid "Resume"
+msgstr "ادامه"
+
+#: src/Admin/Strings.php:1363 src/Admin/Strings.php:1364 src/Admin/Strings.php:1365 src/Admin/Strings.php:1366
+msgid "Turn on"
+msgstr "روشن کردن"
+
+#: src/Admin/Strings.php:1370
+msgid "Scan now"
+msgstr "اسکن اکنون"
+
+#: src/Admin/Strings.php:1371
+msgid "Earlier rehearsals"
+msgstr "مانورهای قبلی"
+
+#: src/Admin/Strings.php:1373
+msgid "Score"
+msgstr "امتیاز"
+
+#: src/Admin/Strings.php:1375
+msgid "Found"
+msgstr "یافته‌ها"
+
+#. translators: %1$d: must fix, %2$d: should fix, %3$d: handled
+#: src/Admin/Strings.php:1377
+#, php-format
+msgid "%1$d must fix · %2$d should fix · %3$d handled"
+msgstr "%1$d ضروری · %2$d پیشنهادی · %3$d مدیریت‌شده"
+
+#: src/Admin/Strings.php:1378
+msgid "How the rehearsal works"
+msgstr "مانور چطور کار می‌کند"
+
+#: src/Admin/Strings.php:1379
+msgid "Read the steps"
+msgstr "خواندن مراحل"
+
+#: src/Admin/Strings.php:1380
+msgid "Rafoo gives only your browser a short-lived key. Requests that carry it see outage mode; everyone else sees the normal site."
+msgstr "رفو فقط به مرورگر شما یک کلید کوتاه‌مدت می‌دهد. درخواست‌هایی که این کلید را دارند حالت قطعی را می‌بینند و بقیه سایت عادی را."
+
+#: src/Admin/Strings.php:1381
+msgid "In outage mode Rafoo does exactly what it would do in a real outage: local copies, blocked foreign requests, replaced captcha and embeds."
+msgstr "در حالت قطعی رفو دقیقاً همان کاری را می‌کند که در قطعی واقعی انجام می‌دهد: نسخه‌های محلی، مسدود کردن درخواست‌های خارجی و جایگزینی کپچا و جاسازی‌ها."
+
+#: src/Admin/Strings.php:1382
+msgid "Each page is opened in a hidden preview. Rafoo records outside files the browser still loads, server requests to foreign addresses and every error."
+msgstr "هر صفحه در یک پیش‌نمایش باز می‌شود. رفو فایل‌های خارجی که مرورگر همچنان بارگذاری می‌کند، درخواست‌های سرور به نشانی‌های خارجی و همه خطاها را ثبت می‌کند."
+
+#: src/Admin/Strings.php:1383
+msgid "Anything that would hang in a real outage is listed with the plugin or theme behind it, found from the call stack or by searching their files."
+msgstr "هر چیزی که در قطعی واقعی گیر می‌کند همراه با افزونه یا قالب عامل آن فهرست می‌شود؛ از روی مسیر فراخوانی یا جستجو در فایل‌هایشان."
+
+#: src/Admin/Strings.php:1384
+msgid "Fix buttons use Rafoo's own tools: the library downloads CDN files and fonts, settings turn on protections, and block or allow lists teach Rafoo unknown addresses."
+msgstr "دکمه‌های اصلاح از ابزارهای خود رفو استفاده می‌کنند: کتابخانه فایل‌های CDN و فونت‌ها را دریافت می‌کند، تنظیمات محافظت‌ها را روشن می‌کنند و فهرست مسدود یا مجاز، نشانی‌های ناشناخته را به رفو می‌شناساند."
+
+#: src/Admin/Strings.php:1385
+msgid "After fixing, run the rehearsal again. The score shows how ready the site is, and earlier runs are kept for comparison."
+msgstr "پس از اصلاح، مانور را دوباره اجرا کنید. امتیاز نشان می‌دهد سایت چقدر آماده است و نتیجه‌های قبلی برای مقایسه نگه داشته می‌شوند."
+
+#: src/Admin/Strings.php:1386
+msgid "The rehearsal does not cut your server's internet and does not send anything outside. It ends by itself after 15 minutes."
+msgstr "مانور اینترنت سرور شما را قطع نمی‌کند و چیزی به بیرون نمی‌فرستد. پس از ۱۵ دقیقه خودبه‌خود تمام می‌شود."
+
+#: src/Admin/Strings.php:1387
+msgid "A safe test that shows how the site behaves during an international outage, only for you, with a list of problems and one-click fixes."
+msgstr "یک آزمایش امن که نشان می‌دهد سایت در قطعی اینترنت بین‌الملل چطور رفتار می‌کند؛ فقط برای شما، همراه با فهرست مشکلات و اصلاح با یک کلیک."
+
+#: src/Admin/Strings.php:1388
+msgid "Choose how and what to test. The default pages cover what most visitors open. The settings of the site are not changed by starting a rehearsal."
+msgstr "روش و صفحه‌های آزمایش را انتخاب کنید. صفحه‌های پیش‌فرض همان صفحه‌هایی هستند که بیشتر بازدیدکنندگان باز می‌کنند. شروع مانور هیچ تنظیمی را تغییر نمی‌دهد."
+
+#: src/Admin/Strings.php:1389
+msgid "Automatic opens the chosen pages here and needs no work from you. Browse yourself lets you test steps that need clicks, such as adding to the cart or paying."
+msgstr "خودکار صفحه‌های انتخاب‌شده را همین‌جا باز می‌کند و کاری از شما نمی‌خواهد. مرور دستی امکان آزمایش مراحلی را می‌دهد که به کلیک نیاز دارند، مثل افزودن به سبد یا پرداخت."
+
+#: src/Admin/Strings.php:1390
+msgid "Rafoo finds these pages on your site by itself. Store pages appear when WooCommerce is active. Dashboard pages show what you, as an admin, see during an outage."
+msgstr "رفو این صفحه‌ها را خودش در سایت پیدا می‌کند. صفحه‌های فروشگاه وقتی ووکامرس فعال باشد نمایش داده می‌شوند. صفحه‌های پیشخوان نشان می‌دهند شما به‌عنوان مدیر در قطعی چه می‌بینید."
+
+#: src/Admin/Strings.php:1391
+msgid "Add any other page of this site, for example a landing page or a form. Addresses on other sites and the logout link are ignored."
+msgstr "هر صفحه دیگری از همین سایت را اضافه کنید، مثلاً صفحه فرود یا یک فرم. نشانی‌های سایت‌های دیگر و لینک خروج نادیده گرفته می‌شوند."
+
+#: src/Admin/Strings.php:1392
+msgid "Doubles the time, but separates real outage problems from errors that the site already has."
+msgstr "زمان را دو برابر می‌کند، اما مشکلات واقعی قطعی را از خطاهایی که سایت از قبل دارد جدا می‌کند."
+
+#: src/Admin/Strings.php:1393
+msgid "Visitors are not logged in, so some plugins load different files for them. Keep this on to test what your visitors get."
+msgstr "بازدیدکنندگان وارد حساب نشده‌اند و بعضی افزونه‌ها برایشان فایل‌های دیگری بارگذاری می‌کنند. این را روشن نگه دارید تا همان چیزی را که بازدیدکنندگان می‌بینند آزمایش کنید."
+
+#: src/Admin/Strings.php:1394
+msgid "The preview is only for you. You can leave this tab open and keep working in another tab until the report is ready."
+msgstr "پیش‌نمایش فقط برای شماست. می‌توانید این زبانه را باز بگذارید و تا آماده شدن گزارش در زبانه دیگری کار کنید."
+
+#: src/Admin/Strings.php:1395
+msgid "Only this browser sees the outage. Requests from the server, cron and other visitors are not affected. The rehearsal ends by itself when the time is up."
+msgstr "فقط همین مرورگر قطعی را می‌بیند. درخواست‌های سرور، کران و بازدیدکنندگان دیگر تحت تأثیر نیستند. با پایان زمان، مانور خودبه‌خود تمام می‌شود."
+
+#: src/Admin/Strings.php:1396
+msgid "The score starts at 100. Each problem that must be fixed, each suggested fix and each broken page lowers it. Problems that Rafoo already handled do not lower it."
+msgstr "امتیاز از ۱۰۰ شروع می‌شود. هر مشکل ضروری، هر اصلاح پیشنهادی و هر صفحه خراب آن را کم می‌کند. مواردی که رفو مدیریت کرده امتیاز را کم نمی‌کنند."
+
+#: src/Admin/Strings.php:1397
+msgid "These make a page freeze, break a form or stop the page with an error during an outage."
+msgstr "این موارد در قطعی باعث می‌شوند صفحه بماند، فرمی خراب شود یا صفحه با خطا متوقف شود."
+
+#: src/Admin/Strings.php:1398
+msgid "The page works, but is slower or loses a part such as a font, an image or a widget."
+msgstr "صفحه کار می‌کند، اما کندتر است یا بخشی مثل فونت، تصویر یا ابزارک را از دست می‌دهد."
+
+#: src/Admin/Strings.php:1399
+msgid "Details that do not hurt visitors, shown so you have the full picture."
+msgstr "جزئیاتی که به بازدیدکننده آسیبی نمی‌زنند و فقط برای تصویر کامل نمایش داده می‌شوند."
+
+#: src/Admin/Strings.php:1400
+msgid "Foreign requests that Rafoo stopped at once, and parts it replaced. Nothing to do here."
+msgstr "درخواست‌های خارجی که رفو فوراً متوقف کرد و بخش‌هایی که جایگزین کرد. اینجا کاری لازم نیست."
+
+#: src/Admin/Strings.php:1401
+msgid "Load times are measured in your browser. Server time is how long WordPress took to build the page in outage mode."
+msgstr "زمان‌های بارگذاری در مرورگر شما اندازه‌گیری می‌شوند. زمان سرور یعنی وردپرس چقدر طول کشید تا صفحه را در حالت قطعی بسازد."
+
+#: src/Admin/Strings.php:1402
+msgid "Rafoo protections that matter during an outage. Turning one on here is the same as turning it on in Settings."
+msgstr "محافظت‌های رفو که در قطعی اهمیت دارند. روشن کردن هرکدام در اینجا همانند روشن کردن آن در تنظیمات است."
+
+#: src/Admin/Strings.php:1403
+msgid "The last 10 rehearsals, so you can see whether the site is getting better prepared."
+msgstr "۱۰ مانور آخر، تا ببینید سایت آماده‌تر می‌شود یا نه."
+
+#: src/Admin/Strings.php:1404
+msgid "What happens behind the scenes during a rehearsal."
+msgstr "آنچه در پشت صحنه مانور اتفاق می‌افتد."
+
+#: src/Admin/Strings.php:1405
+msgid "Outage rehearsal started"
+msgstr "مانور قطعی شروع شد"
+
+#: src/Admin/Strings.php:1406
+msgid "Outage rehearsal finished"
+msgstr "مانور قطعی تمام شد"
+
+#: src/Admin/Strings.php:1407
+msgid "Outage rehearsal stopped"
+msgstr "مانور قطعی متوقف شد"
+
+#: src/Admin/Strings.php:1409
+msgid "First check"
+msgstr "بررسی اول"
+
+#: src/Admin/Strings.php:1410
+msgid "Second check"
+msgstr "بررسی دوم"
+
+#: src/Admin/Strings.php:1411
+msgid "Third check"
+msgstr "بررسی سوم"
+
+#: src/Admin/Strings.php:1412
+msgid "First result in a few seconds"
+msgstr "نتیجه اول تا چند ثانیه دیگر"
+
+#: src/Admin/Strings.php:1413 src/Backup/Installer.php:44
+msgid "Checking…"
+msgstr "در حال بررسی…"
+
+#: src/Admin/Strings.php:1414
+msgid "Filtered"
+msgstr "فیلتر شده"
+
+#: src/Admin/Strings.php:1416
+msgid "Recheck"
+msgstr "بررسی مجدد"
+
+#: src/Admin/Strings.php:1417
+msgid "Your site opens for visitors"
+msgstr "سایت شما برای بازدیدکنندگان باز می‌شود"
+
+#: src/Admin/Strings.php:1418
+msgid "The checks from inside and outside Iran reached your site."
+msgstr "بررسی‌های داخل و خارج از ایران به سایت شما رسیدند."
+
+#: src/Admin/Strings.php:1419
+msgid "Opens in Iran, not confirmed abroad"
+msgstr "داخل ایران باز می‌شود، خارج از ایران تأیید نشد"
+
+#: src/Admin/Strings.php:1420
+msgid "Visitors in Iran can open the site. The checks abroad did not reach it; if you have visitors abroad, check your host's firewall."
+msgstr "بازدیدکنندگان داخل ایران سایت را باز می‌کنند. بررسی‌های خارج به سایت نرسیدند؛ اگر بازدیدکننده خارجی دارید، فایروال هاست را بررسی کنید."
+
+#: src/Admin/Strings.php:1421
+msgid "Not confirmed inside Iran"
+msgstr "داخل ایران تأیید نشد"
+
+#: src/Admin/Strings.php:1422
+msgid "Fewer than two checks inside Iran reached the site. Use Check again; if it stays like this, ask your host whether the server is reachable from Iranian networks."
+msgstr "کمتر از دو بررسی داخل ایران به سایت رسیدند. «بررسی مجدد» را بزنید؛ اگر همین بماند، از هاست بپرسید آیا سرور از شبکه‌های ایران در دسترس است."
+
+#: src/Admin/Strings.php:1423
+msgid "The site looks filtered in Iran"
+msgstr "سایت داخل ایران فیلتر به نظر می‌رسد"
+
+#: src/Admin/Strings.php:1424
+msgid "A check inside Iran was sent to the filtering page instead of your site. Visitors in Iran may not be able to open it."
+msgstr "یک بررسی داخل ایران به‌جای سایت شما به صفحه فیلترینگ رسید. ممکن است بازدیدکنندگان داخل ایران نتوانند سایت را باز کنند."
+
+#: src/Admin/Strings.php:1425
+msgid "Checking your site"
+msgstr "در حال بررسی سایت شما"
+
+#: src/Admin/Strings.php:1426
+msgid "The first checks have been requested. Results appear here within a minute."
+msgstr "بررسی‌های اول درخواست شدند. نتیجه تا یک دقیقه دیگر همین‌جا نمایش داده می‌شود."
+
+#: src/Admin/Strings.php:1427
+msgid "Your site is checked from 3 points inside Iran and 2 points abroad in the Rafoo monitoring network. One network may sometimes have trouble; if two checks inside or outside Iran are fine, your site is fully reachable."
+msgstr "سایت شما از ۳ نقطه داخل ایران و ۲ نقطه خارج از ایران در شبکه نظارت رفو بررسی می‌شود. ممکن است گاهی یک شبکه دچار اختلال شود؛ اگر دو بررسی داخلی یا خارجی سالم باشد، سایت شما کاملاً در دسترس است."
+
+#: src/Admin/Strings.php:1428
+msgid "Three member sites on different Iranian networks open your site's signed check address. Which networks they are is not shown, to keep members private."
+msgstr "سه سایت عضو روی شبکه‌های مختلف ایران نشانی بررسی امضاشده سایت شما را باز می‌کنند. برای حفظ حریم اعضا، نام شبکه‌ها نمایش داده نمی‌شود."
+
+#: src/Admin/Strings.php:1429
+msgid "Two member sites outside Iran, in different countries, check your site. During an international outage these checks pause."
+msgstr "دو سایت عضو خارج از ایران، در کشورهای مختلف، سایت شما را بررسی می‌کنند. در قطعی اینترنت بین‌الملل این بررسی‌ها متوقف می‌شوند."
+
+#: src/Admin/Strings.php:1431
+msgid "Updated by its maker"
+msgstr "به‌روزرسانی از سازنده"
+
+#. translators: %s: version number
+#: src/Admin/Strings.php:1433
+#, php-format
+msgid "Older version on the mirror (%s)"
+msgstr "نسخه قدیمی‌تر در مخزن (%s)"
+
+#: src/Admin/Strings.php:1434
+msgid "Your hosting quota"
+msgstr "طبق سهمیه هاست"
+
+#: src/Admin/Strings.php:1435
+msgid "This is a shared host, so the free disk of the whole server says nothing about your own quota. See the disk usage of your account in cPanel or DirectAdmin. If the quota fills up during a backup, Rafoo stops with a clear message and removes the unfinished part."
+msgstr "این هاست اشتراکی است و فضای خالی کل سرور چیزی درباره سهمیه حساب شما نمی‌گوید. فضای مصرفی حسابتان را در cPanel یا DirectAdmin ببینید. اگر سهمیه در میانه پشتیبان پر شود، رفو با پیامی روشن متوقف می‌شود و بخش نیمه‌کاره را پاک می‌کند."
+
+#: src/Admin/Strings.php:1436
+msgid "Free space Rafoo can use for backups on this host. A backup needs roughly the size of the site."
+msgstr "فضای خالی که رفو روی همین هاست برای پشتیبان در اختیار دارد. هر پشتیبان تقریباً به اندازه حجم سایت جا لازم دارد."
+
+#: src/Admin/Strings.php:1437
+msgid "Updates from the Iranian mirror for what is installed on this site. Premium plugins and themes that update from their own server, such as Divi, are never changed."
+msgstr "به‌روزرسانی از مخزن ایرانی برای چیزهایی که روی این سایت نصب است. افزونه‌ها و قالب‌های پولی که از سرور سازنده خود به‌روز می‌شوند، مانند Divi، هرگز تغییر نمی‌کنند."
+
+#: src/Admin/Strings.php:1444
 msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
 msgstr "وردپرس، افزونه‌ها و قالب‌ها را از مخزن ایرانی و با بررسی امضا به‌روز می‌کند تا آپدیت در قطعی هم ممکن باشد."
 
-#: src/Admin/Strings.php:1150
+#: src/Admin/Strings.php:1445
 msgid "Translation updates come from the mirror too, only for the languages installed on the site."
 msgstr "به‌روزرسانی ترجمه‌ها هم از مخزن می‌آید، فقط برای زبان‌هایی که روی سایت نصب است."
 
-#: src/Admin/Strings.php:1151
+#: src/Admin/Strings.php:1446
 msgid "Translations from the mirror"
 msgstr "ترجمه‌ها از مخزن"
 
-#: src/Admin/Strings.php:1152
+#: src/Admin/Strings.php:1447
 msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
 msgstr "در قطعی، ترجمه وردپرس، افزونه‌ها و قالب‌ها فقط برای زبان‌های نصب‌شده این سایت از مخزن به‌روز می‌شوند."
 
-#: src/Admin/Strings.php:1154
+#: src/Admin/Strings.php:1449
 msgid "Update from the domestic mirror"
 msgstr "به‌روزرسانی از مخزن داخلی"
 
-#: src/Admin/Strings.php:1155
+#: src/Admin/Strings.php:1450
 msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
 msgstr "تا وقتی اینترنت بین‌الملل قطع است، وردپرس، افزونه‌ها و قالب‌ها از مخزن به‌روز می‌شوند."
 
-#: src/Admin/Strings.php:1156
+#: src/Admin/Strings.php:1451
 msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
 msgstr "اگر مخزن همان نسخه را داشته باشد، بسته همیشه از مخزن دانلود می‌شود. داخل ایران سریع‌تر است."
 
-#: src/Admin/Strings.php:1157
+#: src/Admin/Strings.php:1452
 msgid "Mirror coverage"
 msgstr "پوشش مخزن"
 
-#: src/Admin/Strings.php:1158
+#: src/Admin/Strings.php:1453
 msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
 msgstr "مخزن داخلی کدام افزونه‌ها، قالب‌ها و نسخه وردپرس نصب‌شده را می‌تواند به‌روز کند."
 
-#: src/Admin/Strings.php:1159
+#: src/Admin/Strings.php:1454
 msgid "Check again"
 msgstr "بررسی دوباره"
 
-#: src/Admin/Strings.php:1160
+#: src/Admin/Strings.php:1455
 msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
 msgstr "نمایه امضاشده مخزن هنوز در دسترس نیست. تا آن زمان به‌روزرسانی‌ها از WordPress.org می‌آیند."
 
-#: src/Admin/Strings.php:1161
+#: src/Admin/Strings.php:1456
 msgid "Mirror"
 msgstr "مخزن"
 
-#: src/Admin/Strings.php:1162
+#: src/Admin/Strings.php:1457
 msgid "Not on the mirror"
 msgstr "در مخزن نیست"
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:1164
+#: src/Admin/Strings.php:1459
 #, php-format
 msgid "Version %s available"
 msgstr "نسخه %s آماده است"
 
-#: src/Admin/Strings.php:1165
+#: src/Admin/Strings.php:1460
 msgid "Up to date"
 msgstr "به‌روز"
 
-#: src/Admin/Strings.php:1166
+#: src/Admin/Strings.php:1461
 msgid "WordPress"
 msgstr "وردپرس"
 
-#: src/Backup/Api.php:173 src/Backup/Api.php:260 src/Backup/Restorer.php:28
+#: src/Backup/Api.php:175 src/Backup/Api.php:262 src/Backup/Restorer.php:28
 msgid "This backup is no longer in the list."
 msgstr "این پشتیبان دیگر در فهرست نیست."
 
-#: src/Backup/Api.php:177
+#: src/Backup/Api.php:179
 msgid "Newer backups are built on this one, so it cannot be deleted on its own."
 msgstr "پشتیبان‌های تازه‌تر بر پایه این یکی ساخته شده‌اند و حذف آن به‌تنهایی ممکن نیست."
 
-#: src/Backup/Api.php:182 src/Backup/Job.php:40 src/Geo/Nodes.php:182
+#: src/Backup/Api.php:184 src/Backup/Job.php:40 src/Geo/Nodes.php:182
 msgid "Another backup task is running. Wait until it finishes."
 msgstr "کار پشتیبان دیگری در جریان است. تا پایان آن صبر کنید."
 
-#: src/Backup/Api.php:191
+#: src/Backup/Api.php:193
 msgid "Use at least 8 characters."
 msgstr "دست‌کم ۸ نویسه وارد کنید."
 
-#: src/Backup/Api.php:202
+#: src/Backup/Api.php:204
 msgid "The server answered but did not accept this username or password."
 msgstr "سرور پاسخ داد ولی این نام کاربری یا رمز را نپذیرفت."
 
-#: src/Backup/Api.php:203
+#: src/Backup/Api.php:205
 msgid "Enter a server address such as backup.example.ir."
 msgstr "نشانی سرور را وارد کنید، مثلاً backup.example.ir."
 
-#: src/Backup/Api.php:203
+#: src/Backup/Api.php:205
 msgid "No SFTP, FTPS or FTP connection could be made to this server. Check the address and that the port is open."
 msgstr "هیچ اتصال SFTP، FTPS یا FTP با این سرور برقرار نشد. نشانی و باز بودن پورت را بررسی کنید."
 
-#: src/Backup/Api.php:208
+#: src/Backup/Api.php:210
 msgid "Up to five servers can be added."
 msgstr "حداکثر پنج سرور می‌توان افزود."
 
-#: src/Backup/Api.php:221 src/Backup/Mover.php:14
+#: src/Backup/Api.php:223 src/Backup/Mover.php:14
 msgid "This server is no longer in the list."
 msgstr "این سرور دیگر در فهرست نیست."
 
-#: src/Backup/Api.php:227
+#: src/Backup/Api.php:229
 msgid "The server could not be reached or did not accept a test file."
 msgstr "سرور در دسترس نبود یا فایل آزمایشی را نپذیرفت."
 
@@ -4404,10 +5446,6 @@ msgstr "کلید بازگردانی"
 #: src/Backup/Installer.php:43
 msgid "Start restore"
 msgstr "شروع بازگردانی"
-
-#: src/Backup/Installer.php:44
-msgid "Checking…"
-msgstr "در حال بررسی…"
 
 #. translators: %s: error code
 #: src/Backup/Installer.php:46
@@ -4523,6 +5561,30 @@ msgstr "بررسی امنیتی کامل نشد. لطفاً چند لحظه صب
 msgid "The Rafoo security check was missing or wrong."
 msgstr "بررسی امنیتی رفو انجام نشده یا نادرست بود."
 
+#: src/Drill/Api.php:175
+msgid "Choose at least one page to test."
+msgstr "دست‌کم یک صفحه برای آزمایش انتخاب کنید."
+
+#: src/Drill/Api.php:193
+msgid "This rehearsal has already ended. Start a new one."
+msgstr "این مانور قبلاً تمام شده است. مانور تازه‌ای شروع کنید."
+
+#: src/Drill/Api.php:507
+msgid "This fix does not apply any more. Run the rehearsal again."
+msgstr "این اصلاح دیگر کاربرد ندارد. مانور را دوباره اجرا کنید."
+
+#: src/Drill/Api.php:511
+msgid "This setting is managed by the network administrator."
+msgstr "این تنظیم توسط مدیر شبکه کنترل می‌شود."
+
+#: src/Drill/Session.php:383
+msgid "Outage rehearsal is on. Only you see the site as it would be during an international outage."
+msgstr "مانور قطعی فعال است. فقط شما سایت را همان‌طور که در قطعی اینترنت بین‌الملل خواهد بود می‌بینید."
+
+#: src/Drill/Session.php:384
+msgid "Finish the rehearsal"
+msgstr "پایان مانور"
+
 #: src/Geo/Api.php:255 src/Geo/Api.php:339 src/Geo/Nodes.php:170
 msgid "First set up this site as the main host."
 msgstr "اول این سایت را به‌عنوان هاست اصلی راه‌اندازی کنید."
@@ -4612,24 +5674,24 @@ msgid "Back to the home page"
 msgstr "بازگشت به صفحه اول"
 
 #. translators: %s: host name
-#: src/Http/Guard.php:88
+#: src/Http/Guard.php:102
 #, php-format
 msgid "Rafoo blocked this request to %s because it is on the block list."
 msgstr "رفو این درخواست به %s را رد کرد، چون در فهرست سیاه است."
 
 #. translators: %s: host name
-#: src/Http/Guard.php:98
+#: src/Http/Guard.php:112
 #, php-format
 msgid "The international internet is unavailable. Rafoo skipped this request to %s."
 msgstr "اینترنت بین‌الملل در دسترس نیست. رفو این درخواست به %s را انجام نداد."
 
 #. translators: %s: host name
-#: src/Http/Guard.php:100
+#: src/Http/Guard.php:114
 #, php-format
 msgid "Rafoo skipped this request because %s did not respond recently."
 msgstr "رفو این درخواست را انجام نداد چون %s اخیراً پاسخ نداده است."
 
-#: src/Http/Log.php:189
+#: src/Http/Log.php:196
 msgid "Browser"
 msgstr "مرورگر"
 
@@ -4650,26 +5712,30 @@ msgid "The message could not be sent."
 msgstr "پیام فرستاده نشد."
 
 #: src/Peers/Api.php:17
+msgid "rafoo.ir asked to wait a little. Rafoo will try again soon."
+msgstr "rafoo.ir درخواست کرد کمی صبر شود. رفو به‌زودی دوباره تلاش می‌کند."
+
+#: src/Peers/Api.php:21
 msgid "The request could not be prepared."
 msgstr "درخواست آماده نشد."
 
-#: src/Peers/Api.php:23
+#: src/Peers/Api.php:27
 msgid "This site has no key for the network. Join again."
 msgstr "این سایت کلید شبکه ندارد. دوباره به شبکه بپیوندید."
 
-#: src/Peers/Api.php:50
+#: src/Peers/Api.php:58
 msgid "rafoo.ir did not accept the request."
 msgstr "rafoo.ir درخواست را نپذیرفت."
 
-#: src/Peers/Engine.php:55
+#: src/Peers/Engine.php:159
 msgid "This server cannot create a signing key (the sodium extension is missing)."
 msgstr "این سرور نمی‌تواند کلید امضا بسازد (افزونه sodium در PHP نصب نیست)."
 
-#: src/Peers/Engine.php:73
+#: src/Peers/Engine.php:177
 msgid "rafoo.ir gave an answer that could not be read."
 msgstr "پاسخ rafoo.ir خوانا نبود."
 
-#: src/Peers/Engine.php:129
+#: src/Peers/Engine.php:236
 msgid "The task list from rafoo.ir could not be verified."
 msgstr "امضای فهرست وظیفه‌های rafoo.ir تأیید نشد."
 
@@ -4699,11 +5765,11 @@ msgstr "رفو هیچ اطلاعاتی درباره بازدیدکنندگان �
 msgid "Rafoo put back the previous version of %s because the update broke the site. Details are on the Rafoo page."
 msgstr "رفو نسخه قبلی %s را برگرداند، چون به‌روزرسانی سایت را از کار انداخته بود. جزئیات در صفحه رفو است."
 
-#: src/Services/Embeds.php:68
+#: src/Services/Embeds.php:70
 msgid "This content is not available while the international internet is down."
 msgstr "این محتوا تا وقتی اینترنت بین‌الملل قطع است در دسترس نیست."
 
-#: src/Services/Embeds.php:70
+#: src/Services/Embeds.php:72
 msgid "Open the original link"
 msgstr "باز کردن پیوند اصلی"
 

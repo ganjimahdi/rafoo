@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>نقطه پایش رفو</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23fd602c' d='M16 3.4a12.6 12.6 0 1 0 0 25.2 12.6 12.6 0 0 0 0-25.2Zm0 2.8a9.8 9.8 0 1 1 0 19.6 9.8 9.8 0 0 1 0-19.6Z'/%3E%3Cpath fill='%23333' d='M8.2 14.6h3.6v2.8H8.2zm6 0h3.6v2.8h-3.6zm6 0h3.6v2.8h-3.6z'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('fonts/Vazirmatn-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('fonts/Vazirmatn-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+:root {
+	--l0: #ffffff;
+	--l1: #f8f9fa;
+	--l2: #e4e4e7;
+	--l3: #a1a1aa;
+	--l4: #52525b;
+	--l5: #27272a;
+	--l6: #09090b;
+	--brand: #fd602c;
+	--ok-bg: #e7f1ec;
+	--ok-fg: #2e6a4f;
+	--ok-dot: #4f9a76;
+	--wait-bg: #f8efdd;
+	--wait-fg: #855b14;
+	--wait-dot: #c08a2e;
+	--r-control: 8px;
+	--r-card: 12px;
+	--r-pill: 999px;
+	--fs-xs: 11.5px;
+	--fs-sm: 12.5px;
+	--fs-base: 13.5px;
+	--fs-md: 15px;
+	--fs-xl: 20px;
+	--fs-display: 32px;
+	--dur-2: 200ms;
+	--dur-4: 360ms;
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+	--pulse-period: 2.4s;
+	--shift-2: 8px;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--l0: #0a0a0b;
+		--l1: #18181b;
+		--l2: #27272a;
+		--l3: #52525b;
+		--l4: #a1a1aa;
+		--l5: #e4e4e7;
+		--l6: #fafafa;
+		--ok-bg: #13241c;
+		--ok-fg: #8cc7a8;
+		--ok-dot: #5faf86;
+		--wait-bg: #2a2112;
+		--wait-fg: #e2b66a;
+		--wait-dot: #c9953b;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--dur-2: 0ms;
+		--dur-4: 0ms;
+		--shift-2: 0px;
+	}
+}
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+html {
+	background: var(--l1);
+}
+body {
+	margin: 0;
+	min-block-size: 100vh;
+	display: grid;
+	place-items: center;
+	padding: 24px 16px;
+	color: var(--l6);
+	font: var(--fs-base)/1.8 'Vazirmatn', Tahoma, sans-serif;
+}
+main {
+	inline-size: 100%;
+	max-inline-size: 560px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	animation: rise var(--dur-4) var(--ease-out) both;
+}
+@keyframes rise {
+	from {
+		opacity: 0;
+		translate: 0 var(--shift-2);
+	}
+}
+.card {
+	padding: 28px;
+	border: 1px solid var(--l2);
+	border-radius: var(--r-card);
+	background: var(--l0);
+}
+.head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 14px;
+}
+.titles {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+}
+.logo {
+	flex: none;
+	inline-size: 52px;
+	block-size: 52px;
+	display: grid;
+	place-items: center;
+	border: 1px solid var(--l2);
+	border-radius: 14px;
+	background: var(--l1);
+}
+.logo .ring {
+	fill: var(--brand);
+}
+.logo .stitch {
+	fill: var(--l5);
+}
+h1 {
+	margin: 0;
+	font-size: var(--fs-xl);
+	line-height: 1.4;
+}
+.sub {
+	margin: 0;
+	color: var(--l4);
+	font-size: var(--fs-sm);
+}
+.state {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 4px 12px;
+	white-space: nowrap;
+	border-radius: var(--r-pill);
+	font-size: var(--fs-sm);
+}
+.state.ok {
+	background: var(--ok-bg);
+	color: var(--ok-fg);
+}
+.state.wait {
+	background: var(--wait-bg);
+	color: var(--wait-fg);
+}
+.dot {
+	position: relative;
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: var(--r-pill);
+	background: currentColor;
+}
+.ok .dot {
+	background: var(--ok-dot);
+}
+.wait .dot {
+	background: var(--wait-dot);
+}
+.ok .dot::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: var(--ok-dot);
+	animation: pulse var(--pulse-period) ease-out infinite;
+}
+@keyframes pulse {
+	from {
+		opacity: 0.6;
+		scale: 1;
+	}
+	to {
+		opacity: 0;
+		scale: 2.6;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.ok .dot::after {
+		animation: none;
+	}
+}
+.lead {
+	margin: 20px 0 0;
+	font-size: var(--fs-md);
+	line-height: 2;
+}
+.facts {
+	display: grid;
+	gap: 0;
+	margin: 20px 0 0;
+	padding: 0;
+	list-style: none;
+	border: 1px solid var(--l2);
+	border-radius: var(--r-control);
+}
+.facts li {
+	display: grid;
+	grid-template-columns: 22px 1fr;
+	gap: 10px;
+	padding: 12px 14px;
+	border-block-end: 1px solid var(--l2);
+}
+.facts li:last-child {
+	border-block-end: 0;
+}
+.facts svg {
+	margin-block-start: 3px;
+	stroke: var(--l5);
+}
+.facts strong {
+	display: block;
+	font-size: var(--fs-base);
+}
+.facts span {
+	color: var(--l4);
+	font-size: var(--fs-sm);
+}
+.foot {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 8px;
+	color: var(--l4);
+	font-size: var(--fs-xs);
+	padding-inline: 4px;
+}
+a {
+	color: var(--l6);
+	text-underline-offset: 3px;
+	transition: color var(--dur-2) var(--ease-out);
+}
+a:hover {
+	color: var(--brand);
+}
+a:focus-visible {
+	outline: 2px solid var(--l6);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+.en {
+	direction: ltr;
+	text-align: left;
+	margin: 16px 0 0;
+	padding-block-start: 16px;
+	border-block-start: 1px solid var(--l2);
+	color: var(--l4);
+	font-size: var(--fs-sm);
+	line-height: 1.7;
+}
+</style>
+</head>
+<body>
+<main>
+	<section class="card">
+		<div class="head">
+			<div class="logo" aria-hidden="true">
+				<svg width="32" height="32" viewBox="0 0 32 32"><path class="ring" d="M16 3.4a12.6 12.6 0 1 0 0 25.2 12.6 12.6 0 0 0 0-25.2Zm0 2.8a9.8 9.8 0 1 1 0 19.6 9.8 9.8 0 0 1 0-19.6Z"/><path class="stitch" d="M8.2 14.6h3.6v2.8H8.2zm6 0h3.6v2.8h-3.6zm6 0h3.6v2.8h-3.6z"/></svg>
+			</div>
+			<div class="titles">
+				<h1>نقطه پایش رفو</h1>
+				<p class="sub">شبکه هم‌یاری رفو</p>
+			</div>
+			<span class="state {{state_class}}" role="status"><span class="dot" aria-hidden="true"></span>{{state}}</span>
+		</div>
+
+		<p class="lead">این هاست یکی از نقطه‌های شبکه هم‌یاری رفو است؛ شبکه‌ای که سایت‌های ایرانی برای هم ساخته‌اند تا هر صاحب سایت بداند سایتش از داخل و خارج ایران باز می‌شود، حتی در روزهای قطعی اینترنت.</p>
+
+		<ul class="facts">
+			<li>
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+				<div><strong>سبک و بی‌صدا</strong><span>دقیقه‌ای یک درخواست کوچک و امضاشده به هر سایت عضو؛ با مصرفی ناچیز از منابع هاست.</span></div>
+			</li>
+			<li>
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+				<div><strong>امانت‌دار</strong><span>نه صفحه‌ای می‌خواند، نه داده‌ای از بازدیدکنندگان نگه می‌دارد؛ فقط می‌پرسد «در دسترسی؟»</span></div>
+			</li>
+			<li>
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+				<div><strong>هدیه‌ای به وب ایران</strong><span>رایگان و متن‌باز، از جمعی از توسعه‌دهندگان ایرانی برای همه سایت‌های ایرانی.</span></div>
+			</li>
+		</ul>
+
+		<p class="en">A monitoring point of the Rafoo cooperative network, built by Iranian websites for each other. Once a minute it sends a tiny signed request to member sites to check they can be reached. No content or visitor data is read or stored.</p>
+	</section>
+
+	<div class="foot">
+		<span>نسخه {{version}}</span>
+		<a href="https://rafoo.ir" rel="noopener">rafoo.ir</a>
+	</div>
+</main>
+</body>
+</html>

@@ -109,7 +109,7 @@ final class Updates {
 
 	public static function refresh() {
 		foreach ( self::installed() as $item ) {
-			Index::forget( 'wp_mirrors', 'core' === $item['type'] ? 'core.json' : $item['type'] . 's/' . $item['slug'] . '.json' );
+			Index::forget( $item['type'], array( 'slug' => $item['slug'] ) );
 		}
 		return self::report();
 	}
@@ -124,7 +124,11 @@ final class Updates {
 		}
 		$items = array();
 		foreach ( self::installed() as $item ) {
-			if ( 'core' === $item['type'] ) {
+			$state  = 'missing';
+			$latest = '';
+			if ( ! empty( $item['own'] ) ) {
+				$state = 'own';
+			} elseif ( 'core' === $item['type'] ) {
 				$index  = Index::core();
 				$offer  = $index ? Source::core_offer( $index, get_locale(), $item['installed'] ) : null;
 				$latest = $offer ? $offer['version'] : '';
@@ -132,12 +136,22 @@ final class Updates {
 				$index  = 'plugin' === $item['type'] ? Index::plugin( $item['slug'] ) : Index::theme( $item['slug'] );
 				$best   = $index ? Source::best( $index, '' ) : null;
 				$latest = $best ? $best['v'] : '';
+				if ( $index && ! Source::same( $item['name'], $index ) ) {
+					$state  = 'own';
+					$latest = '';
+				}
 			}
+			if ( '' !== $latest ) {
+				$compare = version_compare( $latest, $item['installed'] );
+				$state   = $compare > 0 ? 'update' : ( $compare < 0 ? 'older' : 'current' );
+			}
+			unset( $item['own'] );
 			$items[] = array_merge(
 				$item,
 				array(
 					'latest'    => $latest,
 					'in_mirror' => '' !== $latest,
+					'state'     => $state,
 				)
 			);
 		}
@@ -163,7 +177,7 @@ final class Updates {
 		);
 		foreach ( get_plugins() as $file => $data ) {
 			$slug = Source::plugin_slug( $file );
-			if ( '' === $slug || ( ! empty( $data['UpdateURI'] ) && false === strpos( $data['UpdateURI'], 'wordpress.org' ) && false === strpos( $data['UpdateURI'], 'w.org' ) ) ) {
+			if ( '' === $slug ) {
 				continue;
 			}
 			$items[] = array(
@@ -171,14 +185,17 @@ final class Updates {
 				'slug'      => $slug,
 				'name'      => wp_strip_all_tags( $data['Name'] ),
 				'installed' => (string) $data['Version'],
+				'own'       => Source::ours( $slug ) || ( ! empty( $data['UpdateURI'] ) && ! Source::wporg_uri( $data['UpdateURI'] ) ),
 			);
 		}
 		foreach ( wp_get_themes() as $slug => $theme ) {
+			$uri     = (string) $theme->get( 'UpdateURI' );
 			$items[] = array(
 				'type'      => 'theme',
 				'slug'      => (string) $slug,
 				'name'      => wp_strip_all_tags( $theme->get( 'Name' ) ),
 				'installed' => (string) $theme->get( 'Version' ),
+				'own'       => Source::ours( (string) $slug ) || ( '' !== $uri && ! Source::wporg_uri( $uri ) ) || ! preg_match( Source::SLUG, (string) $slug ),
 			);
 		}
 		return $items;

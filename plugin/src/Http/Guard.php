@@ -2,6 +2,7 @@
 
 namespace Rafoo\Http;
 
+use Rafoo\Drill\Session;
 use Rafoo\State;
 
 defined( 'ABSPATH' ) || exit;
@@ -56,6 +57,12 @@ final class Guard {
 		if ( '' === $host || Hosts::local( $host ) ) {
 			return;
 		}
+		if ( Session::active() ) {
+			if ( ! self::refused( $response ) ) {
+				Session::request( $host, is_wp_error( $response ) ? 'failed' : 'ok', $args );
+			}
+			return;
+		}
 		Log::record( $host, is_wp_error( $response ) ? 'failed' : 'ok', $args );
 		$offline = State::offline() && ! Hosts::allowed( $host );
 		if ( Breaker::transient_failure( $response ) ) {
@@ -63,6 +70,13 @@ final class Guard {
 		} elseif ( ! is_wp_error( $response ) ) {
 			Breaker::succeeded( $host, $offline );
 		}
+	}
+
+	private static function refused( $response ) {
+		if ( is_wp_error( $response ) ) {
+			return in_array( $response->get_error_code(), array( 'rafoo_offline', 'rafoo_blocked', 'rafoo_unreachable' ), true );
+		}
+		return is_array( $response ) && ! empty( $response['headers']['x-rafoo'] );
 	}
 
 	private static function refuse( $host, $code ) {

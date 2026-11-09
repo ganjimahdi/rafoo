@@ -92,10 +92,69 @@ final class Ledger {
 		}
 	}
 
+	private static $quota = null;
+
+	private static $quota_at = 0;
+
 	public static function free_space() {
-		$dir  = self::dir();
-		$free = '' !== $dir && function_exists( 'disk_free_space' ) ? @disk_free_space( $dir ) : false;
-		return false === $free ? -1 : (int) $free;
+		return self::space()['free'];
+	}
+
+	public static function space() {
+		$dir   = self::dir();
+		$disk  = '' !== $dir && function_exists( 'disk_free_space' ) ? @disk_free_space( $dir ) : false; // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- open_basedir or a missing function only means the value is unknown.
+		$quota = self::quota();
+		if ( $quota ) {
+			$free = max( 0, $quota['limit'] - $quota['used'] );
+			if ( false !== $disk ) {
+				$free = min( $free, (int) $disk );
+			}
+			return array(
+				'free'   => (int) $free,
+				'source' => 'quota',
+				'limit'  => (int) $quota['limit'],
+			);
+		}
+		if ( false === $disk ) {
+			return array(
+				'free'   => -1,
+				'source' => 'unknown',
+				'limit'  => 0,
+			);
+		}
+		$shared = self::shared_host();
+		return array(
+			'free'   => $shared ? -1 : (int) $disk,
+			'source' => $shared ? 'shared' : 'disk',
+			'limit'  => 0,
+		);
+	}
+
+	public static function quota() {
+		if ( null === self::$quota || time() - self::$quota_at > 10 ) {
+			self::$quota    = array( self::read_quota() );
+			self::$quota_at = time();
+		}
+		return self::$quota[0];
+	}
+
+	private static function read_quota() {
+		$value = apply_filters( 'rafoo_backup_quota', null );
+		if ( is_array( $value ) && isset( $value['limit'], $value['used'] ) && (int) $value['limit'] > 0 ) {
+			return array(
+				'limit' => (int) $value['limit'],
+				'used'  => (int) $value['used'],
+			);
+		}
+		return null;
+	}
+
+	public static function shared_host( $path = '' ) {
+		$path = wp_normalize_path( '' !== $path ? $path : ABSPATH );
+		if ( ! preg_match( '#^(/home\d*/[^/]+)/#', $path, $m ) ) {
+			return false;
+		}
+		return @is_dir( $m[1] . '/.cpanel' ) || @is_dir( $m[1] . '/domains' ) || @is_dir( $m[1] . '/public_html' ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- open_basedir may hide these folders.
 	}
 
 	public static function budget( $factor = 1.0 ) {

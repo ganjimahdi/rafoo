@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.4.0\n"
+"Project-Id-Version: Rafoo 1.5.0\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,39 +45,39 @@ msgstr "Yükleniyor…"
 msgid "The Rafoo dashboard needs JavaScript."
 msgstr "Rafoo paneli JavaScript gerektirir."
 
-#: src/Admin/Rest.php:457
+#: src/Admin/Rest.php:471 src/Drill/Api.php:311
 msgid "You are not allowed to change this."
 msgstr "Bunu değiştirme izniniz yok."
 
-#: src/Admin/Rest.php:460
+#: src/Admin/Rest.php:474
 msgid "The previous version could not be put back. The files were left as they were."
 msgstr "Önceki sürüm geri konulamadı. Dosyalar olduğu gibi bırakıldı."
 
-#: src/Admin/Rest.php:540
+#: src/Admin/Rest.php:554
 msgid "This message is no longer waiting."
 msgstr "Bu mesaj artık beklemiyor."
 
-#: src/Admin/Rest.php:548
+#: src/Admin/Rest.php:562
 msgid "Enter a valid mail server address, for example mail.example.ir."
 msgstr "Geçerli bir posta sunucusu adresi girin, örneğin mail.example.ir."
 
-#: src/Admin/Rest.php:556
+#: src/Admin/Rest.php:570
 msgid "Save a mail server first."
 msgstr "Önce bir posta sunucusu kaydedin."
 
-#: src/Admin/Rest.php:601
+#: src/Admin/Rest.php:629
 msgid "Please write between 5 and 2000 characters."
 msgstr "Lütfen 5 ile 2000 karakter arasında yazın."
 
-#: src/Admin/Rest.php:605
+#: src/Admin/Rest.php:633
 msgid "Please wait a minute before sending another message."
 msgstr "Başka bir mesaj göndermeden önce lütfen bir dakika bekleyin."
 
-#: src/Admin/Rest.php:608
+#: src/Admin/Rest.php:636
 msgid "rafoo.ir could not be reached. Please try again later."
 msgstr "rafoo.ir adresine ulaşılamadı. Lütfen daha sonra tekrar deneyin."
 
-#: src/Admin/Rest.php:651
+#: src/Admin/Rest.php:679
 msgid "This file is no longer in the list."
 msgstr "Bu dosya artık listede değil."
 
@@ -543,7 +543,7 @@ msgstr "%s tarihinden beri erişilebilir"
 msgid "Automatic switches by itself. Choose a fixed mode only to test or when detection is wrong."
 msgstr "Otomatik mod kendiliğinden geçiş yapar. Sabit bir modu yalnızca test için veya algılama yanlış olduğunda seçin."
 
-#: src/Admin/Strings.php:94
+#: src/Admin/Strings.php:94 src/Admin/Strings.php:1154
 msgid "Automatic"
 msgstr "Otomatik"
 
@@ -585,7 +585,7 @@ msgstr "Yerel dosyalar"
 msgid "%d not verified yet"
 msgstr "%d henüz doğrulanmadı"
 
-#: src/Admin/Strings.php:106 src/Admin/Strings.php:137
+#: src/Admin/Strings.php:106 src/Admin/Strings.php:137 src/Admin/Strings.php:1191 src/Admin/Strings.php:1415
 msgid "Waiting"
 msgstr "Bekliyor"
 
@@ -657,7 +657,7 @@ msgstr "Siteyi tara"
 msgid "Scan finished. New files will be downloaded in the background."
 msgstr "Tarama bitti. Yeni dosyalar arka planda indirilecek."
 
-#: src/Admin/Strings.php:127
+#: src/Admin/Strings.php:127 src/Admin/Strings.php:1369
 msgid "Download now"
 msgstr "Şimdi indir"
 
@@ -693,7 +693,7 @@ msgstr "Yerel"
 msgid "Local, only during outages"
 msgstr "Yerel, yalnızca kesintilerde"
 
-#: src/Admin/Strings.php:139
+#: src/Admin/Strings.php:139 src/Admin/Strings.php:1324
 msgid "Excluded"
 msgstr "Hariç tutuldu"
 
@@ -719,7 +719,7 @@ msgstr "yansıdan"
 msgid "%s files"
 msgstr "%s dosya"
 
-#: src/Admin/Strings.php:146
+#: src/Admin/Strings.php:146 src/Admin/Strings.php:1266
 msgid "Google Fonts"
 msgstr "Google Fonts"
 
@@ -877,7 +877,7 @@ msgstr "Sayfa HTML'sini de oku"
 msgid "Also replaces addresses that themes and page builders write directly into the page. Pages without such addresses are not touched."
 msgstr "Temaların ve sayfa oluşturucuların doğrudan sayfaya yazdığı adresleri de değiştirir. Böyle adres içermeyen sayfalara dokunulmaz."
 
-#: src/Admin/Strings.php:192
+#: src/Admin/Strings.php:192 src/Admin/Strings.php:1348
 msgid "Local Google Fonts"
 msgstr "Yerel Google Fonts"
 
@@ -1211,7 +1211,7 @@ msgstr "Bir güncellemeden sonra sitede sorun oluştu ama geri dönmek sorunu ç
 msgid "%1$s was set back to %2$s by hand"
 msgstr "%1$s elle %2$s sürümüne geri alındı"
 
-#: src/Admin/Strings.php:290 src/Admin/Strings.php:1153
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:1448
 msgid "Updates"
 msgstr "Güncellemeler"
 
@@ -1815,7 +1815,7 @@ msgstr "Kaydedilen yedekler"
 msgid "No backup has been made yet."
 msgstr "Henüz yedek alınmadı."
 
-#: src/Admin/Strings.php:461
+#: src/Admin/Strings.php:461 src/Admin/Strings.php:1372
 msgid "Date"
 msgstr "Tarih"
 
@@ -2311,7 +2311,7 @@ msgstr "%s satırın tümünü göster"
 msgid "Made by"
 msgstr "Yapan"
 
-#: src/Admin/Strings.php:596
+#: src/Admin/Strings.php:596 src/Admin/Strings.php:1330
 msgid "Server"
 msgstr "Sunucu"
 
@@ -2627,7 +2627,7 @@ msgstr "Rafoo duraklatıldı. Site, Rafoo yüklü değilmiş gibi çalışıyor.
 msgid "Pause"
 msgstr "Duraklat"
 
-#: src/Admin/Strings.php:689
+#: src/Admin/Strings.php:689 src/Admin/Strings.php:1319
 msgid "Resume Rafoo"
 msgstr "Rafoo'yu sürdür"
 
@@ -2940,8 +2940,8 @@ msgid "The site could not be reached. Check your connection and try again."
 msgstr "Siteye ulaşılamadı. Bağlantınızı kontrol edip tekrar deneyin."
 
 #: src/Admin/Strings.php:771
-msgid "Multiple hosts"
-msgstr "Çoklu sunucu"
+msgid "Geo DNS"
+msgstr "Geo DNS"
 
 #: src/Admin/Strings.php:772
 msgid "Multiple hosts with geo DNS"
@@ -3104,8 +3104,8 @@ msgid "This host is waiting for the main host. The code is shown only once; make
 msgstr "Bu sunucu ana sunucuyu bekliyor. Kod yalnızca bir kez gösterilir; elinizde yoksa yenisini oluşturun."
 
 #: src/Admin/Strings.php:814
-msgid "On the main site, open Rafoo, then Multiple hosts, and paste this code under \"Add a copy\". Everything on this site will then be replaced with the main site."
-msgstr "Ana sitede Rafoo'yu, ardından Çoklu sunucu'yu açın ve bu kodu \"Kopya ekle\" bölümüne yapıştırın. Bu sitedeki her şey ana siteyle değiştirilecek."
+msgid "On the main site, open Rafoo, then Geo DNS, and paste this code under \"Add a copy\". Everything on this site will then be replaced with the main site."
+msgstr "Ana sitede Rafoo'yu, ardından Geo DNS'i açın ve bu kodu \"Kopya ekle\" bölümüne yapıştırın. Bu sitedeki her şey ana siteyle değiştirilecek."
 
 #. translators: %s: technical address
 #: src/Admin/Strings.php:816
@@ -3727,7 +3727,7 @@ msgstr "A kaydı yok"
 msgid "One of your hosts"
 msgstr "Sunucularınızdan biri"
 
-#: src/Admin/Strings.php:996
+#: src/Admin/Strings.php:996 src/Admin/Strings.php:1274
 msgid "Unknown address"
 msgstr "Bilinmeyen adres"
 
@@ -3952,8 +3952,8 @@ msgid "Turn on SSL for the subdomain, then install WordPress at https://de.examp
 msgstr "Alt alan adı için SSL'i açın, sonra herhangi bir yönetici kullanıcıyla WordPress'i https://de.example.com adresine kurun."
 
 #: src/Admin/Strings.php:1060
-msgid "Install and activate Rafoo 1.4 or newer, open Multiple hosts, choose \"This host will be a copy\" and make the code."
-msgstr "Rafoo 1.4 veya daha yenisini kurup etkinleştirin, Çoklu sunucu'yu açın, \"Bu sunucu bir kopya olacak\"ı seçin ve kodu oluşturun."
+msgid "Install and activate Rafoo 1.4 or newer, open Geo DNS, choose \"This host will be a copy\" and make the code."
+msgstr "Rafoo 1.4 veya daha yenisini kurup etkinleştirin, Geo DNS'i açın, \"Bu sunucu bir kopya olacak\"ı seçin ve kodu oluşturun."
 
 #: src/Admin/Strings.php:1061
 msgid "Paste the code on the main site. The main site sends itself here; this can take from a few minutes to an hour for large sites."
@@ -3968,8 +3968,8 @@ msgid "Prepare the new host: add your main domain and a technical subdomain such
 msgstr "Yeni sunucuyu hazırlayın: ana alan adınızı ve de.example.com gibi bir teknik alt alan adı ekleyin, sonra WordPress ve Rafoo'yu alt alan adına kurun."
 
 #: src/Admin/Strings.php:1064
-msgid "In Rafoo on the new host, open Multiple hosts, choose \"This host will be a copy\" and make a join code."
-msgstr "Yeni sunucudaki Rafoo'da Çoklu sunucu'yu açın, \"Bu sunucu bir kopya olacak\"ı seçin ve bir katılım kodu oluşturun."
+msgid "In Rafoo on the new host, open Geo DNS, choose \"This host will be a copy\" and make a join code."
+msgstr "Yeni sunucudaki Rafoo'da Geo DNS'i açın, \"Bu sunucu bir kopya olacak\"ı seçin ve bir katılım kodu oluşturun."
 
 #: src/Admin/Strings.php:1065
 msgid "Paste the code here, choose the country of that host and press \"Add and copy the site\"."
@@ -4271,109 +4271,1151 @@ msgstr "Okyanusya"
 msgid "South America"
 msgstr "Güney Amerika"
 
+#: src/Admin/Strings.php:1144 src/Admin/Strings.php:1145
+msgid "Outage rehearsal"
+msgstr "Kesinti provası"
+
+#: src/Admin/Strings.php:1146
+msgid "See your site exactly as it would work if the international internet went down today, and fix every problem before a real outage."
+msgstr "Uluslararası internet bugün kesilseydi sitenizin nasıl çalışacağını tam olarak görün ve gerçek bir kesintiden önce her sorunu düzeltin."
+
+#: src/Admin/Strings.php:1147
+msgid "Only you see the outage. Visitors, search engines and the page cache keep the normal site."
+msgstr "Kesinti yalnızca sizin için canlandırılır. Ziyaretçiler, arama motorları ve sayfa önbelleği normal siteyi görür."
+
+#: src/Admin/Strings.php:1148
+msgid "Rafoo opens your important pages, records every outside file, server request and error, and names the plugin or theme behind each one."
+msgstr "Rafoo önemli sayfalarınızı açar, her dış dosyayı, sunucu isteğini ve hatayı kaydeder ve her birinin arkasındaki eklentiyi veya temayı gösterir."
+
 #: src/Admin/Strings.php:1149
+msgid "Most problems are fixed with one button: download a library or font, turn on a protection, or block a foreign address."
+msgstr "Çoğu sorun tek düğmeyle çözülür: bir kütüphane veya yazı tipi indirin, bir korumayı açın ya da yabancı bir adresi engelleyin."
+
+#: src/Admin/Strings.php:1150
+msgid "The international internet is down right now, so the rehearsal shows the real situation."
+msgstr "Uluslararası internet şu anda kesik; bu yüzden prova gerçek durumu gösterir."
+
+#: src/Admin/Strings.php:1151
+msgid "Start a rehearsal"
+msgstr "Provayı başlat"
+
+#: src/Admin/Strings.php:1152 src/Drill/Api.php:168
+msgid "Rafoo is paused. Resume it first, then run the rehearsal."
+msgstr "Rafoo duraklatıldı. Önce sürdürün, ardından provayı çalıştırın."
+
+#: src/Admin/Strings.php:1153
+msgid "How to test"
+msgstr "Nasıl test edilsin"
+
+#: src/Admin/Strings.php:1155
+msgid "Rafoo opens the chosen pages one by one here and builds the report. About 5 to 10 seconds per page."
+msgstr "Rafoo seçilen sayfaları burada tek tek açar ve raporu oluşturur. Sayfa başına yaklaşık 5-10 saniye."
+
+#: src/Admin/Strings.php:1156
+msgid "Browse yourself"
+msgstr "Kendiniz gezin"
+
+#: src/Admin/Strings.php:1157
+msgid "For 15 minutes your browser sees the outage on any page. Try forms, the cart or payment, then finish to get the report."
+msgstr "15 dakika boyunca tarayıcınız her sayfada kesintiyi görür. Formları, sepeti veya ödemeyi deneyin, ardından rapor için provayı bitirin."
+
+#: src/Admin/Strings.php:1158
+msgid "Pages to test"
+msgstr "Test edilecek sayfalar"
+
+#: src/Admin/Strings.php:1159
+msgid "Site"
+msgstr "Site"
+
+#: src/Admin/Strings.php:1160
+msgid "Store"
+msgstr "Mağaza"
+
+#: src/Admin/Strings.php:1161 src/Admin/Strings.php:1171
+msgid "Dashboard"
+msgstr "Yönetim paneli"
+
+#: src/Admin/Strings.php:1162
+msgid "Home page"
+msgstr "Ana sayfa"
+
+#: src/Admin/Strings.php:1163
+msgid "Latest post"
+msgstr "Son yazı"
+
+#: src/Admin/Strings.php:1164
+msgid "A page"
+msgstr "Bir sayfa"
+
+#: src/Admin/Strings.php:1165
+msgid "Shop"
+msgstr "Mağaza"
+
+#: src/Admin/Strings.php:1166
+msgid "A product"
+msgstr "Bir ürün"
+
+#: src/Admin/Strings.php:1167
+msgid "Cart"
+msgstr "Sepet"
+
+#: src/Admin/Strings.php:1168
+msgid "Checkout"
+msgstr "Ödeme"
+
+#: src/Admin/Strings.php:1169
+msgid "My account"
+msgstr "Hesabım"
+
+#: src/Admin/Strings.php:1170
+msgid "Login"
+msgstr "Giriş"
+
+#: src/Admin/Strings.php:1172
+msgid "Post editor"
+msgstr "Yazı düzenleyici"
+
+#: src/Admin/Strings.php:1173
+msgid "Other pages"
+msgstr "Diğer sayfalar"
+
+#: src/Admin/Strings.php:1174
+msgid "/contact/"
+msgstr "/contact/"
+
+#: src/Admin/Strings.php:1175
+msgid "Up to 5 addresses on this site, one per line, for example /contact/ or a landing page."
+msgstr "Bu siteden en fazla 5 adres, her satıra bir tane; örneğin /contact/ veya bir açılış sayfası."
+
+#: src/Admin/Strings.php:1176
+msgid "Compare with normal mode"
+msgstr "Normal modla karşılaştır"
+
+#: src/Admin/Strings.php:1177
+msgid "Each page is opened once normally and once in outage mode, so errors that already exist are not blamed on the outage."
+msgstr "Her sayfa bir kez normal, bir kez kesinti modunda açılır; böylece zaten var olan hatalar kesintiye yüklenmez."
+
+#: src/Admin/Strings.php:1178
+msgid "See pages as a visitor"
+msgstr "Sayfaları ziyaretçi gibi gör"
+
+#: src/Admin/Strings.php:1179
+msgid "Public pages are built as for a visitor who is not logged in. Dashboard pages still use your account."
+msgstr "Herkese açık sayfalar giriş yapmamış bir ziyaretçi için oluşturulur. Yönetim sayfaları yine hesabınızla açılır."
+
+#: src/Admin/Strings.php:1180
+msgid "Start the rehearsal"
+msgstr "Provayı başlat"
+
+#: src/Admin/Strings.php:1181
+msgid "Start 15 minutes of outage"
+msgstr "15 dakikalık kesintiyi başlat"
+
+#: src/Admin/Strings.php:1182
+msgid "Nothing changes for visitors and no setting is changed without your click."
+msgstr "Ziyaretçiler için hiçbir şey değişmez ve tıklamanız olmadan hiçbir ayar değiştirilmez."
+
+#: src/Admin/Strings.php:1183
+msgid "Rehearsal in progress"
+msgstr "Prova sürüyor"
+
+#. translators: %1$d: page number, %2$d: total pages, %3$s: page name
+#: src/Admin/Strings.php:1185
+#, php-format
+msgid "Page %1$d of %2$d: %3$s"
+msgstr "Sayfa %1$d / %2$d: %3$s"
+
+#: src/Admin/Strings.php:1186
+msgid "Building the report…"
+msgstr "Rapor hazırlanıyor…"
+
+#: src/Admin/Strings.php:1187
+msgid "Stop the rehearsal"
+msgstr "Provayı durdur"
+
+#: src/Admin/Strings.php:1188
+msgid "Opening the page in normal mode for comparison."
+msgstr "Karşılaştırma için sayfa normal modda açılıyor."
+
+#: src/Admin/Strings.php:1189
+msgid "Opening the page as if the international internet were down."
+msgstr "Sayfa uluslararası internet kesikmiş gibi açılıyor."
+
+#: src/Admin/Strings.php:1190
+msgid "Checking server records, finding the plugins behind each problem and scoring the site."
+msgstr "Sunucu kayıtları inceleniyor, her sorunun arkasındaki eklentiler bulunuyor ve site puanlanıyor."
+
+#: src/Admin/Strings.php:1192
+msgid "Normal mode…"
+msgstr "Normal mod…"
+
+#: src/Admin/Strings.php:1193
+msgid "Outage mode…"
+msgstr "Kesinti modu…"
+
+#. translators: %d: number of addresses
+#: src/Admin/Strings.php:1195
+#, php-format
+msgid "%d stopped by Rafoo"
+msgstr "Rafoo %d isteği durdurdu"
+
+#: src/Admin/Strings.php:1196
+msgid "Live preview, visible only to you"
+msgstr "Canlı önizleme, yalnızca size görünür"
+
+#: src/Admin/Strings.php:1197
+msgid "Opened"
+msgstr "Açıldı"
+
+#: src/Admin/Strings.php:1198
+msgid "Not shown in preview"
+msgstr "Önizlemede açılmadı"
+
+#: src/Admin/Strings.php:1199
+msgid "Took over 30 seconds"
+msgstr "30 saniyeden uzun sürdü"
+
+#: src/Admin/Strings.php:1200
+msgid "Could not open"
+msgstr "Açılamadı"
+
+#: src/Admin/Strings.php:1201
+msgid "Not tested"
+msgstr "Test edilmedi"
+
+#: src/Admin/Strings.php:1202
+msgid "Visited"
+msgstr "Ziyaret edildi"
+
+#: src/Admin/Strings.php:1203
+msgid "Outage is on for your browser"
+msgstr "Tarayıcınız için kesinti açık"
+
+#. translators: %d: minutes
+#: src/Admin/Strings.php:1205
+#, php-format
+msgid "%d minutes left. Visitors still see the normal site."
+msgstr "%d dakika kaldı. Ziyaretçiler hâlâ normal siteyi görüyor."
+
+#: src/Admin/Strings.php:1206
+msgid "Open the site in a new tab. A small note at the corner shows that the rehearsal is on."
+msgstr "Siteyi yeni sekmede açın. Köşedeki küçük not provanın açık olduğunu gösterir."
+
+#: src/Admin/Strings.php:1207
+msgid "Go through what matters to you: search, forms, the cart, checkout and payment."
+msgstr "Sizin için önemli olanları deneyin: arama, formlar, sepet, ödeme adımı ve ödeme."
+
+#: src/Admin/Strings.php:1208
+msgid "Come back here and finish the rehearsal to see the report."
+msgstr "Buraya dönün ve raporu görmek için provayı bitirin."
+
+#: src/Admin/Strings.php:1209
+msgid "Open the site"
+msgstr "Siteyi aç"
+
+#: src/Admin/Strings.php:1210
+msgid "Finish and show the report"
+msgstr "Bitir ve raporu göster"
+
+#: src/Admin/Strings.php:1211
+msgid "The rehearsal was interrupted"
+msgstr "Prova yarıda kaldı"
+
+#: src/Admin/Strings.php:1212
+msgid "The page was closed or reloaded during the rehearsal. Run it again or stop it."
+msgstr "Prova sırasında sayfa kapatıldı veya yenilendi. Yeniden çalıştırın ya da durdurun."
+
+#: src/Admin/Strings.php:1213
+msgid "Run again"
+msgstr "Yeniden çalıştır"
+
+#: src/Admin/Strings.php:1214
+msgid "Rehearsal result"
+msgstr "Prova sonucu"
+
+#. translators: %1$s: date, %2$d: number of pages
+#: src/Admin/Strings.php:1216
+#, php-format
+msgid "%1$s · %2$d pages"
+msgstr "%1$s · %2$d sayfa"
+
+#: src/Admin/Strings.php:1217
+msgid "of 100"
+msgstr "/ 100"
+
+#: src/Admin/Strings.php:1218
+msgid "Ready for an outage"
+msgstr "Kesintiye hazır"
+
+#: src/Admin/Strings.php:1219
+msgid "Mostly ready"
+msgstr "Büyük ölçüde hazır"
+
+#: src/Admin/Strings.php:1220
+msgid "Needs work"
+msgstr "İyileştirme gerekli"
+
+#: src/Admin/Strings.php:1221
+msgid "Not ready"
+msgstr "Hazır değil"
+
+#: src/Admin/Strings.php:1222
+msgid "Visitors in Iran can use the tested pages during an outage without waiting or broken parts."
+msgstr "İran içindeki ziyaretçiler kesinti sırasında test edilen sayfaları beklemeden ve bozuk parça olmadan kullanabilir."
+
+#: src/Admin/Strings.php:1223
+msgid "The site works during an outage, with a few slow or missing parts listed below."
+msgstr "Site kesinti sırasında çalışır; aşağıda birkaç yavaş veya eksik parça listelenmiştir."
+
+#: src/Admin/Strings.php:1224
+msgid "Important parts break or keep visitors waiting during an outage. Fix the items below first."
+msgstr "Kesinti sırasında önemli parçalar bozuluyor veya ziyaretçiyi bekletiyor. Önce aşağıdakileri düzeltin."
+
+#: src/Admin/Strings.php:1225
+msgid "During an outage the tested pages would not work for most visitors. Start with the problems that must be fixed."
+msgstr "Kesinti sırasında test edilen sayfalar çoğu ziyaretçi için çalışmaz. Düzeltilmesi gereken sorunlarla başlayın."
+
+#. translators: %1$s: normal load time, %2$s: outage load time
+#: src/Admin/Strings.php:1227
+#, php-format
+msgid "Average load: %1$s normally, %2$s during the outage."
+msgstr "Ortalama yükleme: normalde %1$s, kesintide %2$s."
+
+#: src/Admin/Strings.php:1228
+msgid "Built from the pages you visited during the rehearsal."
+msgstr "Prova sırasında ziyaret ettiğiniz sayfalardan oluşturuldu."
+
+#: src/Admin/Strings.php:1229
+msgid "Must fix"
+msgstr "Düzeltilmeli"
+
+#: src/Admin/Strings.php:1230
+msgid "Should fix"
+msgstr "Düzeltilmesi iyi olur"
+
+#: src/Admin/Strings.php:1231
+msgid "Handled by Rafoo"
+msgstr "Rafoo halletti"
+
+#: src/Admin/Strings.php:1232
+msgid "Outside requests stopped at once"
+msgstr "Hemen durdurulan dış istekler"
+
+#: src/Admin/Strings.php:1233
+msgid "Served from your server"
+msgstr "Sunucunuzdan sunuldu"
+
+#: src/Admin/Strings.php:1234
+msgid "Libraries and fonts used locally"
+msgstr "Yerel kullanılan kütüphane ve yazı tipleri"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1236
+#, php-format
+msgid "Must fix (%d)"
+msgstr "Düzeltilmeli (%d)"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1238
+#, php-format
+msgid "Should fix (%d)"
+msgstr "Düzeltilmesi iyi olur (%d)"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1240
+#, php-format
+msgid "Good to know (%d)"
+msgstr "Bilginize (%d)"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1242
+#, php-format
+msgid "Handled by Rafoo (%d)"
+msgstr "Rafoo halletti (%d)"
+
+#: src/Admin/Strings.php:1243
+msgid "Important"
+msgstr "Önemli"
+
+#: src/Admin/Strings.php:1244
+msgid "Worth fixing"
+msgstr "Önerilir"
+
+#: src/Admin/Strings.php:1245
+msgid "Optional"
+msgstr "İsteğe bağlı"
+
+#: src/Admin/Strings.php:1246
+msgid "Handled"
+msgstr "Halledildi"
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1248
+#, php-format
+msgid "Show what Rafoo handled (%d)"
+msgstr "Rafoo'nun hallettiklerini göster (%d)"
+
+#: src/Admin/Strings.php:1249
+msgid "No problem was found on the tested pages."
+msgstr "Test edilen sayfalarda sorun bulunmadı."
+
+#: src/Admin/Strings.php:1250
+msgid "Blocks the page"
+msgstr "Sayfayı bekletir"
+
+#: src/Admin/Strings.php:1251
+msgid "Fixed. Run again to confirm"
+msgstr "Düzeltildi. Doğrulamak için yeniden çalıştırın"
+
+#. translators: %s: list of pages
+#: src/Admin/Strings.php:1253
+#, php-format
+msgid "On: %s"
+msgstr "Sayfalar: %s"
+
+#. translators: %s: error message
+#: src/Admin/Strings.php:1255
+#, php-format
+msgid "Last download error: %s"
+msgstr "Son indirme hatası: %s"
+
+#. translators: %s: plugin name
+#: src/Admin/Strings.php:1257
+#, php-format
+msgid "Plugin: %s"
+msgstr "Eklenti: %s"
+
+#. translators: %s: theme name
+#: src/Admin/Strings.php:1259
+#, php-format
+msgid "Theme: %s"
+msgstr "Tema: %s"
+
+#: src/Admin/Strings.php:1260
+msgid "WordPress itself"
+msgstr "WordPress'in kendisi"
+
+#. translators: %s: number of seconds
+#: src/Admin/Strings.php:1262
+#, php-format
+msgid "%s s"
+msgstr "%s sn"
+
+#. translators: %d: HTTP status code
+#: src/Admin/Strings.php:1264
+#, php-format
+msgid "Code %d"
+msgstr "Kod %d"
+
+#: src/Admin/Strings.php:1265
+msgid "Library from a foreign CDN"
+msgstr "Yabancı CDN'den kütüphane"
+
+#: src/Admin/Strings.php:1267
+msgid "Profile pictures from Gravatar"
+msgstr "Gravatar profil resimleri"
+
+#: src/Admin/Strings.php:1268
+msgid "Foreign captcha"
+msgstr "Yabancı captcha"
+
+#: src/Admin/Strings.php:1269
+msgid "Video or map embed"
+msgstr "Gömülü video veya harita"
+
+#: src/Admin/Strings.php:1270
+msgid "Analytics or ads script"
+msgstr "Analiz veya reklam betiği"
+
+#: src/Admin/Strings.php:1271
+msgid "Social login"
+msgstr "Sosyal giriş"
+
+#: src/Admin/Strings.php:1272
+msgid "WordPress files from abroad"
+msgstr "Yurt dışından WordPress dosyaları"
+
+#: src/Admin/Strings.php:1273
+msgid "Foreign service"
+msgstr "Yabancı hizmet"
+
+#: src/Admin/Strings.php:1275
+msgid "Server request to a foreign address"
+msgstr "Yabancı adrese sunucu isteği"
+
+#: src/Admin/Strings.php:1276
+msgid "Server request to an unknown address"
+msgstr "Bilinmeyen adrese sunucu isteği"
+
+#: src/Admin/Strings.php:1277
+msgid "PHP error"
+msgstr "PHP hatası"
+
+#: src/Admin/Strings.php:1278
+msgid "Page error"
+msgstr "Sayfa hatası"
+
+#: src/Admin/Strings.php:1279
+msgid "Slow page on the server"
+msgstr "Sunucuda yavaş sayfa"
+
+#: src/Admin/Strings.php:1280
+msgid "JavaScript error"
+msgstr "JavaScript hatası"
+
+#: src/Admin/Strings.php:1281
+msgid "Page came from the cache"
+msgstr "Sayfa önbellekten geldi"
+
+#: src/Admin/Strings.php:1282
+msgid "Page not shown in the preview"
+msgstr "Sayfa önizlemede görünmedi"
+
+#: src/Admin/Strings.php:1283
+msgid "This library loads from a foreign CDN and does not open during an outage. Download it once to the Rafoo library and the local copy takes its place."
+msgstr "Bu kütüphane yabancı bir CDN'den yüklenir ve kesintide açılmaz. Rafoo kütüphanesine bir kez indirin, yerel kopya onun yerini alır."
+
+#: src/Admin/Strings.php:1284
+msgid "This font file still loads from Google. During an outage text waits for it, then falls back to another font."
+msgstr "Bu yazı tipi dosyası hâlâ Google'dan yükleniyor. Kesintide metin onu bekler, sonra başka bir yazı tipine geçer."
+
+#: src/Admin/Strings.php:1285
+msgid "Rafoo removed this Google Fonts stylesheet so the page did not wait. Download it to keep the exact look during an outage."
+msgstr "Rafoo bu Google Fonts stil dosyasını kaldırdı, sayfa beklemedi. Kesintide aynı görünüm için indirin."
+
+#: src/Admin/Strings.php:1286
+msgid "Profile pictures come from Gravatar and do not open during an outage. Rafoo can show simple letter avatars instead."
+msgstr "Profil resimleri Gravatar'dan gelir ve kesintide açılmaz. Rafoo yerine basit harf avatarları gösterebilir."
+
+#: src/Admin/Strings.php:1287
+msgid "Google reCAPTCHA or a similar service does not load during an outage, so login and contact forms stop working. Rafoo can put its own captcha in its place."
+msgstr "Google reCAPTCHA veya benzeri kesintide yüklenmez; giriş ve iletişim formları çalışmaz. Rafoo yerine kendi captcha'sını koyabilir."
+
+#: src/Admin/Strings.php:1288
+msgid "A foreign video or map does not show during an outage. Rafoo can replace it with a simple box and a link."
+msgstr "Yabancı video veya harita kesintide görünmez. Rafoo onu basit bir kutu ve bağlantıyla değiştirebilir."
+
+#: src/Admin/Strings.php:1289
+msgid "This analytics or ads script does nothing during an outage and only makes the page slower."
+msgstr "Bu analiz veya reklam betiği kesintide hiçbir şey yapmaz, yalnızca sayfayı yavaşlatır."
+
+#: src/Admin/Strings.php:1290
+msgid "Login with Google or another network does not work during an outage. Rafoo can hide these buttons so visitors use the normal form."
+msgstr "Google veya başka bir ağla giriş kesintide çalışmaz. Rafoo bu düğmeleri gizleyebilir, ziyaretçi normal formu kullanır."
+
+#: src/Admin/Strings.php:1291
+msgid "WordPress loads parts such as emoji from WordPress.org servers. Rafoo can turn these off during an outage."
+msgstr "WordPress emoji gibi parçaları WordPress.org sunucularından yükler. Rafoo bunları kesintide kapatabilir."
+
+#: src/Admin/Strings.php:1292
+msgid "This known foreign service is not reachable during an outage and keeps the page waiting. Block it if the site works without it, or ask the plugin author for an option to turn it off."
+msgstr "Bu bilinen yabancı hizmet kesintide erişilemez ve sayfayı bekletir. Site onsuz çalışıyorsa engelleyin ya da eklenti yazarından kapatma seçeneği isteyin."
+
+#: src/Admin/Strings.php:1293
+msgid "Rafoo does not know this address. If it is abroad, block it. If it is inside Iran, allow it so Rafoo never waits for it."
+msgstr "Rafoo bu adresi tanımıyor. Yurt dışındaysa engelleyin; İran içindeyse Rafoo hiç beklemesin diye izin verin."
+
+#: src/Admin/Strings.php:1294
+msgid "The site called this foreign address from the server. Rafoo refuses such calls at once during an outage, so the page does not wait."
+msgstr "Site bu yabancı adresi sunucudan çağırdı. Rafoo kesintide bu çağrıları hemen reddeder, sayfa beklemez."
+
+#. translators: %s: time
+#: src/Admin/Strings.php:1296
+#, php-format
+msgid "The site called an unknown address from the server (it took %s now). During a real outage each call can wait up to 3 seconds. Block it if it is abroad, or allow it if it is inside Iran."
+msgstr "Site sunucudan bilinmeyen bir adresi çağırdı (şimdi %s sürdü). Gerçek kesintide her çağrı 3 saniyeye kadar bekleyebilir. Yurt dışındaysa engelleyin, İran içindeyse izin verin."
+
+#: src/Admin/Strings.php:1297
+msgid "The page stopped with a PHP error in outage mode. Usually a plugin does not check for a failed internet request. Send this message to the plugin author."
+msgstr "Sayfa kesinti modunda bir PHP hatasıyla durdu. Genellikle bir eklenti başarısız internet isteğini kontrol etmez. Bu mesajı eklenti yazarına gönderin."
+
+#. translators: %d: HTTP status code
+#: src/Admin/Strings.php:1299
+#, php-format
+msgid "In outage mode the page answered with code %d."
+msgstr "Kesinti modunda sayfa %d koduyla yanıt verdi."
+
+#. translators: %s: time
+#: src/Admin/Strings.php:1301
+#, php-format
+msgid "Building the page on the server took %s, which usually means it waited for outside services."
+msgstr "Sayfanın sunucuda oluşturulması %s sürdü; bu genellikle dış hizmetleri beklediği anlamına gelir."
+
+#: src/Admin/Strings.php:1302
+msgid "This error happened only in outage mode. A script probably expects a file or service from abroad."
+msgstr "Bu hata yalnızca kesinti modunda oluştu. Muhtemelen bir betik yurt dışından bir dosya veya hizmet bekliyor."
+
+#: src/Admin/Strings.php:1303
+msgid "This error also happens in normal mode, so it is not caused by the outage."
+msgstr "Bu hata normal modda da oluşuyor; kesintiden kaynaklanmıyor."
+
+#: src/Admin/Strings.php:1304
+msgid "This page came from a page cache, so the outage version was not shown. Clear the cache or exclude this page, then run again."
+msgstr "Bu sayfa sayfa önbelleğinden geldi; kesinti sürümü gösterilmedi. Önbelleği temizleyin veya sayfayı hariç tutun, sonra yeniden çalıştırın."
+
+#: src/Admin/Strings.php:1305
+msgid "A security setting does not let this page open inside another page. The server side was still checked."
+msgstr "Bir güvenlik ayarı bu sayfanın başka bir sayfa içinde açılmasına izin vermiyor. Sunucu tarafı yine de kontrol edildi."
+
+#: src/Admin/Strings.php:1306
+msgid "The page did not finish loading within 30 seconds in outage mode."
+msgstr "Sayfa kesinti modunda 30 saniye içinde yüklenmeyi bitirmedi."
+
+#: src/Admin/Strings.php:1307
+msgid "The page could not be opened in the preview."
+msgstr "Sayfa önizlemede açılamadı."
+
+#: src/Admin/Strings.php:1308
+msgid "This page was not tested because the rehearsal stopped early."
+msgstr "Prova erken durduğu için bu sayfa test edilmedi."
+
+#: src/Admin/Strings.php:1309
+msgid "Rafoo stopped this at once in outage mode, so the page did not wait for it."
+msgstr "Rafoo bunu kesinti modunda hemen durdurdu, sayfa beklemedi."
+
+#: src/Admin/Strings.php:1310
+msgid "Download to the library"
+msgstr "Kütüphaneye indir"
+
+#: src/Admin/Strings.php:1311
+msgid "Use the local copy again"
+msgstr "Yerel kopyayı yeniden kullan"
+
+#. translators: %s: setting name
+#: src/Admin/Strings.php:1313
+#, php-format
+msgid "Turn on: %s"
+msgstr "Aç: %s"
+
+#. translators: %s: host name
+#: src/Admin/Strings.php:1315
+#, php-format
+msgid "Block %s"
+msgstr "%s adresini engelle"
+
+#: src/Admin/Strings.php:1316
+msgid "It is inside Iran, allow it"
+msgstr "İran içinde, izin ver"
+
+#: src/Admin/Strings.php:1317
+msgid "Scan the site again"
+msgstr "Siteyi yeniden tara"
+
+#: src/Admin/Strings.php:1318
+msgid "Download waiting files now"
+msgstr "Bekleyen dosyaları şimdi indir"
+
+#: src/Admin/Strings.php:1320
+msgid "Done"
+msgstr "Tamam"
+
+#: src/Admin/Strings.php:1321
+msgid "Downloaded"
+msgstr "İndirildi"
+
+#: src/Admin/Strings.php:1322
+msgid "Queued for download"
+msgstr "İndirme sırasında"
+
+#: src/Admin/Strings.php:1323
+msgid "Another download is running"
+msgstr "Başka bir indirme sürüyor"
+
+#: src/Admin/Strings.php:1325 src/Admin/Strings.php:1374
+msgid "Pages"
+msgstr "Sayfalar"
+
+#: src/Admin/Strings.php:1326
+msgid "Page"
+msgstr "Sayfa"
+
+#: src/Admin/Strings.php:1327
+msgid "Result"
+msgstr "Sonuç"
+
+#: src/Admin/Strings.php:1328
+msgid "Normal load"
+msgstr "Normal yükleme"
+
+#: src/Admin/Strings.php:1329
+msgid "Outage load"
+msgstr "Kesintide yükleme"
+
+#: src/Admin/Strings.php:1331
+msgid "Works"
+msgstr "Çalışıyor"
+
+#: src/Admin/Strings.php:1332
+msgid "Works with issues"
+msgstr "Sorunlarla çalışıyor"
+
+#: src/Admin/Strings.php:1333
+msgid "Breaks"
+msgstr "Bozuluyor"
+
+#: src/Admin/Strings.php:1334
+msgid "Not checked"
+msgstr "Kontrol edilmedi"
+
+#: src/Admin/Strings.php:1335
+msgid "Outage readiness"
+msgstr "Kesinti hazırlığı"
+
+#: src/Admin/Strings.php:1336
+msgid "Every Rafoo protection that matters during an outage is on."
+msgstr "Kesintide önemli olan tüm Rafoo korumaları açık."
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1338
+#, php-format
+msgid "%d items can make the site better prepared."
+msgstr "%d madde siteyi daha hazır hale getirebilir."
+
+#: src/Admin/Strings.php:1339
+msgid "Ready"
+msgstr "Hazır"
+
+#: src/Admin/Strings.php:1340
+msgid "Rafoo is running"
+msgstr "Rafoo çalışıyor"
+
+#: src/Admin/Strings.php:1341
+msgid "Rafoo is paused, so nothing is protected during an outage."
+msgstr "Rafoo duraklatıldı; kesintide hiçbir şey korunmuyor."
+
+#: src/Admin/Strings.php:1342
+msgid "Browser protection"
+msgstr "Tarayıcı koruması"
+
+#: src/Admin/Strings.php:1343
+msgid "Without it, scripts that load foreign files on their own keep pages waiting."
+msgstr "Onsuz, kendi başına yabancı dosya yükleyen betikler sayfaları bekletir."
+
+#: src/Admin/Strings.php:1344
+msgid "Local copies of CDN files"
+msgstr "CDN dosyalarının yerel kopyaları"
+
+#: src/Admin/Strings.php:1345
+msgid "Replacing CDN files is off, so downloaded copies are never used."
+msgstr "CDN dosyalarını değiştirme kapalı; indirilen kopyalar hiç kullanılmıyor."
+
+#: src/Admin/Strings.php:1346
+msgid "Find CDN addresses in page HTML"
+msgstr "Sayfa HTML'inde CDN adreslerini bul"
+
+#: src/Admin/Strings.php:1347
+msgid "Files that builders write directly into the page are not replaced."
+msgstr "Sayfa oluşturucuların doğrudan sayfaya yazdığı dosyalar değiştirilmez."
+
+#: src/Admin/Strings.php:1349
+msgid "Text loses its font during an outage."
+msgstr "Metin kesintide yazı tipini kaybeder."
+
+#: src/Admin/Strings.php:1350
+msgid "Library files are downloaded"
+msgstr "Kütüphane dosyaları indirildi"
+
+#. translators: %1$d: waiting files, %2$d: failed files
+#: src/Admin/Strings.php:1352
+#, php-format
+msgid "%1$d files are waiting and %2$d failed. They will not work during an outage until downloaded."
+msgstr "%1$d dosya bekliyor, %2$d başarısız. İndirilene kadar kesintide çalışmazlar."
+
+#: src/Admin/Strings.php:1353
+msgid "Outage detection is running"
+msgstr "Kesinti algılama çalışıyor"
+
+#: src/Admin/Strings.php:1354
+msgid "The connection check has not run recently. Outage mode turns on through WP-Cron, so make sure cron runs on this site."
+msgstr "Bağlantı denetimi son zamanlarda çalışmadı. Kesinti modu WP-Cron ile açılır; bu sitede cron'un çalıştığından emin olun."
+
+#: src/Admin/Strings.php:1355
+msgid "Mail waits during an outage"
+msgstr "Kesintide e-posta bekler"
+
+#: src/Admin/Strings.php:1356
+msgid "Emails sent during an outage may be lost."
+msgstr "Kesinti sırasında gönderilen e-postalar kaybolabilir."
+
+#: src/Admin/Strings.php:1357
+msgid "Updates from the domestic mirror"
+msgstr "Yurt içi aynadan güncelleme"
+
+#: src/Admin/Strings.php:1358
+msgid "WordPress, plugins and themes cannot be updated during an outage."
+msgstr "Kesintide WordPress, eklentiler ve temalar güncellenemez."
+
+#: src/Admin/Strings.php:1359
+msgid "The library has local files"
+msgstr "Kütüphanede yerel dosyalar var"
+
+#: src/Admin/Strings.php:1360
+msgid "No file has been downloaded yet. Scan the site so Rafoo finds the CDN files it uses."
+msgstr "Henüz hiçbir dosya indirilmedi. Rafoo'nun kullanılan CDN dosyalarını bulması için siteyi tarayın."
+
+#: src/Admin/Strings.php:1361
+msgid "The international internet is down now"
+msgstr "Uluslararası internet şu an kesik"
+
+#: src/Admin/Strings.php:1362
+msgid "Resume"
+msgstr "Sürdür"
+
+#: src/Admin/Strings.php:1363 src/Admin/Strings.php:1364 src/Admin/Strings.php:1365 src/Admin/Strings.php:1366
+msgid "Turn on"
+msgstr "Aç"
+
+#: src/Admin/Strings.php:1370
+msgid "Scan now"
+msgstr "Şimdi tara"
+
+#: src/Admin/Strings.php:1371
+msgid "Earlier rehearsals"
+msgstr "Önceki provalar"
+
+#: src/Admin/Strings.php:1373
+msgid "Score"
+msgstr "Puan"
+
+#: src/Admin/Strings.php:1375
+msgid "Found"
+msgstr "Bulunanlar"
+
+#. translators: %1$d: must fix, %2$d: should fix, %3$d: handled
+#: src/Admin/Strings.php:1377
+#, php-format
+msgid "%1$d must fix · %2$d should fix · %3$d handled"
+msgstr "%1$d gerekli · %2$d önerilen · %3$d halledildi"
+
+#: src/Admin/Strings.php:1378
+msgid "How the rehearsal works"
+msgstr "Prova nasıl çalışır"
+
+#: src/Admin/Strings.php:1379
+msgid "Read the steps"
+msgstr "Adımları oku"
+
+#: src/Admin/Strings.php:1380
+msgid "Rafoo gives only your browser a short-lived key. Requests that carry it see outage mode; everyone else sees the normal site."
+msgstr "Rafoo yalnızca tarayıcınıza kısa ömürlü bir anahtar verir. Bu anahtarı taşıyan istekler kesinti modunu görür, diğer herkes normal siteyi."
+
+#: src/Admin/Strings.php:1381
+msgid "In outage mode Rafoo does exactly what it would do in a real outage: local copies, blocked foreign requests, replaced captcha and embeds."
+msgstr "Kesinti modunda Rafoo gerçek kesintide yapacağının aynısını yapar: yerel kopyalar, engellenen yabancı istekler, değiştirilen captcha ve gömülü içerikler."
+
+#: src/Admin/Strings.php:1382
+msgid "Each page is opened in a hidden preview. Rafoo records outside files the browser still loads, server requests to foreign addresses and every error."
+msgstr "Her sayfa bir önizlemede açılır. Rafoo tarayıcının hâlâ yüklediği dış dosyaları, yabancı adreslere sunucu isteklerini ve her hatayı kaydeder."
+
+#: src/Admin/Strings.php:1383
+msgid "Anything that would hang in a real outage is listed with the plugin or theme behind it, found from the call stack or by searching their files."
+msgstr "Gerçek kesintide takılacak her şey, çağrı yığınından veya dosyalarında arayarak bulunan eklenti ya da temasıyla listelenir."
+
+#: src/Admin/Strings.php:1384
+msgid "Fix buttons use Rafoo's own tools: the library downloads CDN files and fonts, settings turn on protections, and block or allow lists teach Rafoo unknown addresses."
+msgstr "Düzeltme düğmeleri Rafoo'nun kendi araçlarını kullanır: kütüphane CDN dosyalarını ve yazı tiplerini indirir, ayarlar korumaları açar, engelleme veya izin listeleri bilinmeyen adresleri Rafoo'ya tanıtır."
+
+#: src/Admin/Strings.php:1385
+msgid "After fixing, run the rehearsal again. The score shows how ready the site is, and earlier runs are kept for comparison."
+msgstr "Düzelttikten sonra provayı yeniden çalıştırın. Puan sitenin ne kadar hazır olduğunu gösterir; önceki çalıştırmalar karşılaştırma için saklanır."
+
+#: src/Admin/Strings.php:1386
+msgid "The rehearsal does not cut your server's internet and does not send anything outside. It ends by itself after 15 minutes."
+msgstr "Prova sunucunuzun internetini kesmez ve dışarıya hiçbir şey göndermez. 15 dakika sonra kendiliğinden biter."
+
+#: src/Admin/Strings.php:1387
+msgid "A safe test that shows how the site behaves during an international outage, only for you, with a list of problems and one-click fixes."
+msgstr "Sitenin uluslararası kesintide nasıl davrandığını yalnızca size gösteren güvenli bir test; sorun listesi ve tek tıkla düzeltmelerle."
+
+#: src/Admin/Strings.php:1388
+msgid "Choose how and what to test. The default pages cover what most visitors open. The settings of the site are not changed by starting a rehearsal."
+msgstr "Nasıl ve neyin test edileceğini seçin. Varsayılan sayfalar çoğu ziyaretçinin açtıklarını kapsar. Provayı başlatmak site ayarlarını değiştirmez."
+
+#: src/Admin/Strings.php:1389
+msgid "Automatic opens the chosen pages here and needs no work from you. Browse yourself lets you test steps that need clicks, such as adding to the cart or paying."
+msgstr "Otomatik, seçilen sayfaları burada açar ve sizden iş istemez. Kendiniz gezin, sepete ekleme veya ödeme gibi tıklama gerektiren adımları test etmenizi sağlar."
+
+#: src/Admin/Strings.php:1390
+msgid "Rafoo finds these pages on your site by itself. Store pages appear when WooCommerce is active. Dashboard pages show what you, as an admin, see during an outage."
+msgstr "Rafoo bu sayfaları sitenizde kendisi bulur. Mağaza sayfaları WooCommerce etkinken görünür. Yönetim sayfaları, yönetici olarak kesintide ne gördüğünüzü gösterir."
+
+#: src/Admin/Strings.php:1391
+msgid "Add any other page of this site, for example a landing page or a form. Addresses on other sites and the logout link are ignored."
+msgstr "Bu sitenin başka bir sayfasını ekleyin, örneğin bir açılış sayfası veya form. Başka sitelerin adresleri ve çıkış bağlantısı yok sayılır."
+
+#: src/Admin/Strings.php:1392
+msgid "Doubles the time, but separates real outage problems from errors that the site already has."
+msgstr "Süreyi ikiye katlar, ancak gerçek kesinti sorunlarını sitede zaten var olan hatalardan ayırır."
+
+#: src/Admin/Strings.php:1393
+msgid "Visitors are not logged in, so some plugins load different files for them. Keep this on to test what your visitors get."
+msgstr "Ziyaretçiler giriş yapmamıştır ve bazı eklentiler onlar için farklı dosyalar yükler. Ziyaretçilerin gördüğünü test etmek için bunu açık tutun."
+
+#: src/Admin/Strings.php:1394
+msgid "The preview is only for you. You can leave this tab open and keep working in another tab until the report is ready."
+msgstr "Önizleme yalnızca sizin içindir. Rapor hazır olana kadar bu sekmeyi açık bırakıp başka bir sekmede çalışabilirsiniz."
+
+#: src/Admin/Strings.php:1395
+msgid "Only this browser sees the outage. Requests from the server, cron and other visitors are not affected. The rehearsal ends by itself when the time is up."
+msgstr "Kesintiyi yalnızca bu tarayıcı görür. Sunucu istekleri, cron ve diğer ziyaretçiler etkilenmez. Süre dolunca prova kendiliğinden biter."
+
+#: src/Admin/Strings.php:1396
+msgid "The score starts at 100. Each problem that must be fixed, each suggested fix and each broken page lowers it. Problems that Rafoo already handled do not lower it."
+msgstr "Puan 100'den başlar. Düzeltilmesi gereken her sorun, her öneri ve her bozuk sayfa puanı düşürür. Rafoo'nun hallettikleri düşürmez."
+
+#: src/Admin/Strings.php:1397
+msgid "These make a page freeze, break a form or stop the page with an error during an outage."
+msgstr "Bunlar kesintide sayfayı dondurur, bir formu bozar veya sayfayı hatayla durdurur."
+
+#: src/Admin/Strings.php:1398
+msgid "The page works, but is slower or loses a part such as a font, an image or a widget."
+msgstr "Sayfa çalışır ama daha yavaştır ya da yazı tipi, resim veya bileşen gibi bir parçayı kaybeder."
+
+#: src/Admin/Strings.php:1399
+msgid "Details that do not hurt visitors, shown so you have the full picture."
+msgstr "Ziyaretçiye zarar vermeyen, tam resmi görmeniz için gösterilen ayrıntılar."
+
+#: src/Admin/Strings.php:1400
+msgid "Foreign requests that Rafoo stopped at once, and parts it replaced. Nothing to do here."
+msgstr "Rafoo'nun hemen durdurduğu yabancı istekler ve değiştirdiği parçalar. Burada yapılacak bir şey yok."
+
+#: src/Admin/Strings.php:1401
+msgid "Load times are measured in your browser. Server time is how long WordPress took to build the page in outage mode."
+msgstr "Yükleme süreleri tarayıcınızda ölçülür. Sunucu süresi, WordPress'in sayfayı kesinti modunda oluşturma süresidir."
+
+#: src/Admin/Strings.php:1402
+msgid "Rafoo protections that matter during an outage. Turning one on here is the same as turning it on in Settings."
+msgstr "Kesintide önemli olan Rafoo korumaları. Birini burada açmak Ayarlar'da açmakla aynıdır."
+
+#: src/Admin/Strings.php:1403
+msgid "The last 10 rehearsals, so you can see whether the site is getting better prepared."
+msgstr "Sitenin daha hazır hale gelip gelmediğini görmeniz için son 10 prova."
+
+#: src/Admin/Strings.php:1404
+msgid "What happens behind the scenes during a rehearsal."
+msgstr "Prova sırasında perde arkasında olanlar."
+
+#: src/Admin/Strings.php:1405
+msgid "Outage rehearsal started"
+msgstr "Kesinti provası başladı"
+
+#: src/Admin/Strings.php:1406
+msgid "Outage rehearsal finished"
+msgstr "Kesinti provası bitti"
+
+#: src/Admin/Strings.php:1407
+msgid "Outage rehearsal stopped"
+msgstr "Kesinti provası durduruldu"
+
+#: src/Admin/Strings.php:1409
+msgid "First check"
+msgstr "Birinci kontrol"
+
+#: src/Admin/Strings.php:1410
+msgid "Second check"
+msgstr "İkinci kontrol"
+
+#: src/Admin/Strings.php:1411
+msgid "Third check"
+msgstr "Üçüncü kontrol"
+
+#: src/Admin/Strings.php:1412
+msgid "First result in a few seconds"
+msgstr "İlk sonuç birkaç saniye içinde"
+
+#: src/Admin/Strings.php:1413 src/Backup/Installer.php:44
+msgid "Checking…"
+msgstr "Kontrol ediliyor…"
+
+#: src/Admin/Strings.php:1414
+msgid "Filtered"
+msgstr "Engellenmiş"
+
+#: src/Admin/Strings.php:1416
+msgid "Recheck"
+msgstr "Yeniden kontrol et"
+
+#: src/Admin/Strings.php:1417
+msgid "Your site opens for visitors"
+msgstr "Siteniz ziyaretçiler için açılıyor"
+
+#: src/Admin/Strings.php:1418
+msgid "The checks from inside and outside Iran reached your site."
+msgstr "İran içinden ve dışından yapılan kontroller sitenize ulaştı."
+
+#: src/Admin/Strings.php:1419
+msgid "Opens in Iran, not confirmed abroad"
+msgstr "İran içinde açılıyor, yurt dışından doğrulanmadı"
+
+#: src/Admin/Strings.php:1420
+msgid "Visitors in Iran can open the site. The checks abroad did not reach it; if you have visitors abroad, check your host's firewall."
+msgstr "İran içindeki ziyaretçiler siteyi açabiliyor. Yurt dışı kontrolleri ulaşamadı; yurt dışından ziyaretçiniz varsa barındırma güvenlik duvarını kontrol edin."
+
+#: src/Admin/Strings.php:1421
+msgid "Not confirmed inside Iran"
+msgstr "İran içinde doğrulanmadı"
+
+#: src/Admin/Strings.php:1422
+msgid "Fewer than two checks inside Iran reached the site. Use Check again; if it stays like this, ask your host whether the server is reachable from Iranian networks."
+msgstr "İran içinden ikiden az kontrol siteye ulaştı. Yeniden kontrol edin; böyle kalırsa barındırma firmanıza sunucunun İran ağlarından erişilebilir olup olmadığını sorun."
+
+#: src/Admin/Strings.php:1423
+msgid "The site looks filtered in Iran"
+msgstr "Site İran'da engellenmiş görünüyor"
+
+#: src/Admin/Strings.php:1424
+msgid "A check inside Iran was sent to the filtering page instead of your site. Visitors in Iran may not be able to open it."
+msgstr "İran içindeki bir kontrol siteniz yerine engelleme sayfasına yönlendirildi. İran'daki ziyaretçiler siteyi açamayabilir."
+
+#: src/Admin/Strings.php:1425
+msgid "Checking your site"
+msgstr "Siteniz kontrol ediliyor"
+
+#: src/Admin/Strings.php:1426
+msgid "The first checks have been requested. Results appear here within a minute."
+msgstr "İlk kontroller istendi. Sonuçlar bir dakika içinde burada görünür."
+
+#: src/Admin/Strings.php:1427
+msgid "Your site is checked from 3 points inside Iran and 2 points abroad in the Rafoo monitoring network. One network may sometimes have trouble; if two checks inside or outside Iran are fine, your site is fully reachable."
+msgstr "Siteniz Rafoo izleme ağında İran içinden 3, yurt dışından 2 noktadan kontrol edilir. Bazen bir ağda sorun olabilir; içeriden veya dışarıdan iki kontrol sağlamsa siteniz tamamen erişilebilirdir."
+
+#: src/Admin/Strings.php:1428
+msgid "Three member sites on different Iranian networks open your site's signed check address. Which networks they are is not shown, to keep members private."
+msgstr "Farklı İran ağlarındaki üç üye site, sitenizin imzalı kontrol adresini açar. Üyelerin gizliliği için ağların adı gösterilmez."
+
+#: src/Admin/Strings.php:1429
+msgid "Two member sites outside Iran, in different countries, check your site. During an international outage these checks pause."
+msgstr "İran dışında, farklı ülkelerdeki iki üye site sitenizi kontrol eder. Uluslararası kesintide bu kontroller durur."
+
+#: src/Admin/Strings.php:1431
+msgid "Updated by its maker"
+msgstr "Kendi geliştiricisinden güncellenir"
+
+#. translators: %s: version number
+#: src/Admin/Strings.php:1433
+#, php-format
+msgid "Older version on the mirror (%s)"
+msgstr "Aynada daha eski sürüm (%s)"
+
+#: src/Admin/Strings.php:1434
+msgid "Your hosting quota"
+msgstr "Barındırma kotanıza göre"
+
+#: src/Admin/Strings.php:1435
+msgid "This is a shared host, so the free disk of the whole server says nothing about your own quota. See the disk usage of your account in cPanel or DirectAdmin. If the quota fills up during a backup, Rafoo stops with a clear message and removes the unfinished part."
+msgstr "Bu paylaşımlı bir barındırma; tüm sunucunun boş diski hesabınızın kotası hakkında bilgi vermez. Hesabınızın disk kullanımını cPanel veya DirectAdmin'de görün. Yedek sırasında kota dolarsa Rafoo açık bir mesajla durur ve yarım kalan parçayı siler."
+
+#: src/Admin/Strings.php:1436
+msgid "Free space Rafoo can use for backups on this host. A backup needs roughly the size of the site."
+msgstr "Rafoo'nun bu barındırmada yedekler için kullanabileceği boş alan. Bir yedek kabaca sitenin boyutu kadar yer ister."
+
+#: src/Admin/Strings.php:1437
+msgid "Updates from the Iranian mirror for what is installed on this site. Premium plugins and themes that update from their own server, such as Divi, are never changed."
+msgstr "Bu sitede kurulu olanlar için İran aynasından güncellemeler. Divi gibi kendi sunucusundan güncellenen ücretli eklenti ve temalara hiç dokunulmaz."
+
+#: src/Admin/Strings.php:1444
 msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
 msgstr "WordPress'i, eklentileri ve temaları imza kontrolüyle İran yansısından günceller; güncellemeler kesinti sırasında da çalışır."
 
-#: src/Admin/Strings.php:1150
+#: src/Admin/Strings.php:1445
 msgid "Translation updates come from the mirror too, only for the languages installed on the site."
 msgstr "Çeviri güncellemeleri de yansıdan gelir; yalnızca sitede yüklü diller için."
 
-#: src/Admin/Strings.php:1151
+#: src/Admin/Strings.php:1446
 msgid "Translations from the mirror"
 msgstr "Yansıdan çeviriler"
 
-#: src/Admin/Strings.php:1152
+#: src/Admin/Strings.php:1447
 msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
 msgstr "Kesinti sırasında WordPress, eklenti ve tema çevirileri yansıdan güncellenir; yalnızca bu sitede yüklü diller için."
 
-#: src/Admin/Strings.php:1154
+#: src/Admin/Strings.php:1449
 msgid "Update from the domestic mirror"
 msgstr "Yerel yansıdan güncelle"
 
-#: src/Admin/Strings.php:1155
+#: src/Admin/Strings.php:1450
 msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
 msgstr "Uluslararası internet kesikken WordPress, eklentiler ve temalar yansıdan güncellenir."
 
-#: src/Admin/Strings.php:1156
+#: src/Admin/Strings.php:1451
 msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
 msgstr "Yansıda aynı sürüm varsa paketler her zaman yansıdan indirilir. İran içinde daha hızlı."
 
-#: src/Admin/Strings.php:1157
+#: src/Admin/Strings.php:1452
 msgid "Mirror coverage"
 msgstr "Yansı kapsamı"
 
-#: src/Admin/Strings.php:1158
+#: src/Admin/Strings.php:1453
 msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
 msgstr "Yüklü eklentilerinizden, temalarınızdan ve WordPress sürümünüzden hangilerini yerel yansının güncelleyebileceği."
 
-#: src/Admin/Strings.php:1159
+#: src/Admin/Strings.php:1454
 msgid "Check again"
 msgstr "Yeniden kontrol et"
 
-#: src/Admin/Strings.php:1160
+#: src/Admin/Strings.php:1455
 msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
 msgstr "İmzalı yansı dizini henüz kullanılamıyor. O zamana kadar güncellemeler WordPress.org'dan gelmeye devam eder."
 
-#: src/Admin/Strings.php:1161
+#: src/Admin/Strings.php:1456
 msgid "Mirror"
 msgstr "Yansı"
 
-#: src/Admin/Strings.php:1162
+#: src/Admin/Strings.php:1457
 msgid "Not on the mirror"
 msgstr "Yansıda yok"
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:1164
+#: src/Admin/Strings.php:1459
 #, php-format
 msgid "Version %s available"
 msgstr "%s sürümü mevcut"
 
-#: src/Admin/Strings.php:1165
+#: src/Admin/Strings.php:1460
 msgid "Up to date"
 msgstr "Güncel"
 
-#: src/Admin/Strings.php:1166
+#: src/Admin/Strings.php:1461
 msgid "WordPress"
 msgstr "WordPress"
 
-#: src/Backup/Api.php:173 src/Backup/Api.php:260 src/Backup/Restorer.php:28
+#: src/Backup/Api.php:175 src/Backup/Api.php:262 src/Backup/Restorer.php:28
 msgid "This backup is no longer in the list."
 msgstr "Bu yedek artık listede değil."
 
-#: src/Backup/Api.php:177
+#: src/Backup/Api.php:179
 msgid "Newer backups are built on this one, so it cannot be deleted on its own."
 msgstr "Daha yeni yedekler bunun üzerine kurulu, bu yüzden tek başına silinemez."
 
-#: src/Backup/Api.php:182 src/Backup/Job.php:40 src/Geo/Nodes.php:182
+#: src/Backup/Api.php:184 src/Backup/Job.php:40 src/Geo/Nodes.php:182
 msgid "Another backup task is running. Wait until it finishes."
 msgstr "Başka bir yedekleme görevi çalışıyor. Bitmesini bekleyin."
 
-#: src/Backup/Api.php:191
+#: src/Backup/Api.php:193
 msgid "Use at least 8 characters."
 msgstr "En az 8 karakter kullanın."
 
-#: src/Backup/Api.php:202
+#: src/Backup/Api.php:204
 msgid "The server answered but did not accept this username or password."
 msgstr "Sunucu yanıt verdi ama bu kullanıcı adını veya parolayı kabul etmedi."
 
-#: src/Backup/Api.php:203
+#: src/Backup/Api.php:205
 msgid "Enter a server address such as backup.example.ir."
 msgstr "backup.example.ir gibi bir sunucu adresi girin."
 
-#: src/Backup/Api.php:203
+#: src/Backup/Api.php:205
 msgid "No SFTP, FTPS or FTP connection could be made to this server. Check the address and that the port is open."
 msgstr "Bu sunucuya SFTP, FTPS veya FTP bağlantısı kurulamadı. Adresi ve bağlantı noktasının açık olduğunu kontrol edin."
 
-#: src/Backup/Api.php:208
+#: src/Backup/Api.php:210
 msgid "Up to five servers can be added."
 msgstr "En fazla beş sunucu eklenebilir."
 
-#: src/Backup/Api.php:221 src/Backup/Mover.php:14
+#: src/Backup/Api.php:223 src/Backup/Mover.php:14
 msgid "This server is no longer in the list."
 msgstr "Bu sunucu artık listede değil."
 
-#: src/Backup/Api.php:227
+#: src/Backup/Api.php:229
 msgid "The server could not be reached or did not accept a test file."
 msgstr "Sunucuya ulaşılamadı veya bir test dosyasını kabul etmedi."
 
@@ -4404,10 +5446,6 @@ msgstr "Geri yükleme anahtarı"
 #: src/Backup/Installer.php:43
 msgid "Start restore"
 msgstr "Geri yüklemeyi başlat"
-
-#: src/Backup/Installer.php:44
-msgid "Checking…"
-msgstr "Kontrol ediliyor…"
 
 #. translators: %s: error code
 #: src/Backup/Installer.php:46
@@ -4523,6 +5561,30 @@ msgstr "Güvenlik kontrolü bitmedi. Lütfen biraz bekleyip formu yeniden gönde
 msgid "The Rafoo security check was missing or wrong."
 msgstr "Rafoo güvenlik kontrolü eksik veya hatalıydı."
 
+#: src/Drill/Api.php:175
+msgid "Choose at least one page to test."
+msgstr "Test için en az bir sayfa seçin."
+
+#: src/Drill/Api.php:193
+msgid "This rehearsal has already ended. Start a new one."
+msgstr "Bu prova zaten bitti. Yeni bir tane başlatın."
+
+#: src/Drill/Api.php:507
+msgid "This fix does not apply any more. Run the rehearsal again."
+msgstr "Bu düzeltme artık geçerli değil. Provayı yeniden çalıştırın."
+
+#: src/Drill/Api.php:511
+msgid "This setting is managed by the network administrator."
+msgstr "Bu ayar ağ yöneticisi tarafından yönetiliyor."
+
+#: src/Drill/Session.php:383
+msgid "Outage rehearsal is on. Only you see the site as it would be during an international outage."
+msgstr "Kesinti provası açık. Siteyi uluslararası kesintide olacağı gibi yalnızca siz görüyorsunuz."
+
+#: src/Drill/Session.php:384
+msgid "Finish the rehearsal"
+msgstr "Provayı bitir"
+
 #: src/Geo/Api.php:255 src/Geo/Api.php:339 src/Geo/Nodes.php:170
 msgid "First set up this site as the main host."
 msgstr "Önce bu siteyi ana sunucu olarak kurun."
@@ -4612,24 +5674,24 @@ msgid "Back to the home page"
 msgstr "Ana sayfaya dön"
 
 #. translators: %s: host name
-#: src/Http/Guard.php:88
+#: src/Http/Guard.php:102
 #, php-format
 msgid "Rafoo blocked this request to %s because it is on the block list."
 msgstr "Rafoo, %s adresine giden bu isteği engel listesinde olduğu için engelledi."
 
 #. translators: %s: host name
-#: src/Http/Guard.php:98
+#: src/Http/Guard.php:112
 #, php-format
 msgid "The international internet is unavailable. Rafoo skipped this request to %s."
 msgstr "Uluslararası internet kullanılamıyor. Rafoo %s adresine giden bu isteği atladı."
 
 #. translators: %s: host name
-#: src/Http/Guard.php:100
+#: src/Http/Guard.php:114
 #, php-format
 msgid "Rafoo skipped this request because %s did not respond recently."
 msgstr "%s son zamanlarda yanıt vermediği için Rafoo bu isteği atladı."
 
-#: src/Http/Log.php:189
+#: src/Http/Log.php:196
 msgid "Browser"
 msgstr "Tarayıcı"
 
@@ -4650,26 +5712,30 @@ msgid "The message could not be sent."
 msgstr "Mesaj gönderilemedi."
 
 #: src/Peers/Api.php:17
+msgid "rafoo.ir asked to wait a little. Rafoo will try again soon."
+msgstr "rafoo.ir biraz beklenmesini istedi. Rafoo yakında yeniden deneyecek."
+
+#: src/Peers/Api.php:21
 msgid "The request could not be prepared."
 msgstr "İstek hazırlanamadı."
 
-#: src/Peers/Api.php:23
+#: src/Peers/Api.php:27
 msgid "This site has no key for the network. Join again."
 msgstr "Bu sitenin ağ için anahtarı yok. Yeniden katılın."
 
-#: src/Peers/Api.php:50
+#: src/Peers/Api.php:58
 msgid "rafoo.ir did not accept the request."
 msgstr "rafoo.ir isteği kabul etmedi."
 
-#: src/Peers/Engine.php:55
+#: src/Peers/Engine.php:159
 msgid "This server cannot create a signing key (the sodium extension is missing)."
 msgstr "Bu sunucu imzalama anahtarı oluşturamıyor (sodium eklentisi eksik)."
 
-#: src/Peers/Engine.php:73
+#: src/Peers/Engine.php:177
 msgid "rafoo.ir gave an answer that could not be read."
 msgstr "rafoo.ir okunamayan bir yanıt verdi."
 
-#: src/Peers/Engine.php:129
+#: src/Peers/Engine.php:236
 msgid "The task list from rafoo.ir could not be verified."
 msgstr "rafoo.ir'den gelen görev listesi doğrulanamadı."
 
@@ -4699,11 +5765,11 @@ msgstr "Rafoo ziyaretçiler hakkında hiçbir bilgi toplamaz veya göndermez. Si
 msgid "Rafoo put back the previous version of %s because the update broke the site. Details are on the Rafoo page."
 msgstr "Güncelleme siteyi bozduğu için Rafoo %s öğesinin önceki sürümünü geri koydu. Ayrıntılar Rafoo sayfasında."
 
-#: src/Services/Embeds.php:68
+#: src/Services/Embeds.php:70
 msgid "This content is not available while the international internet is down."
 msgstr "Uluslararası internet kesikken bu içerik kullanılamaz."
 
-#: src/Services/Embeds.php:70
+#: src/Services/Embeds.php:72
 msgid "Open the original link"
 msgstr "Özgün bağlantıyı aç"
 

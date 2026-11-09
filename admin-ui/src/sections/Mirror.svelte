@@ -28,7 +28,7 @@
 	});
 </script>
 
-<Card title={t('updates_title')} help={help('card_updates')} description={t('updates_help')}>
+<Card title={t('updates_title')} help={help('card_updates_mirror')} description={t('updates_help')}>
 	{#snippet actions()}
 		<Button onclick={() => load(true)} {busy} disabled={report !== null && !report.available}>{t('updates_refresh')}</Button>
 	{/snippet}
@@ -60,12 +60,16 @@
 							</td>
 							<td class="rf-mono">{item.installed}</td>
 							<td>
-								{#if !item.in_mirror}
-									<Badge>{t('not_in_mirror')}</Badge>
-								{:else if item.latest && item.latest !== item.installed}
+								{#if item.state === 'own'}
+									<Badge>{t('mirror_own')}</Badge>
+								{:else if item.state === 'update'}
 									<Badge tone="info">{t('update_available', item.latest)}</Badge>
-								{:else}
+								{:else if item.state === 'older'}
+									<Badge tone="warning">{t('mirror_older', item.latest)}</Badge>
+								{:else if item.state === 'current' || (item.in_mirror && item.latest === item.installed)}
 									<Badge tone="success">{t('up_to_date')}</Badge>
+								{:else}
+									<Badge>{t('not_in_mirror')}</Badge>
 								{/if}
 							</td>
 						</tr>

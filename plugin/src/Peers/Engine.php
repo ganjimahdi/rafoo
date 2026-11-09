@@ -2,6 +2,7 @@
 
 namespace Rafoo\Peers;
 
+use Rafoo\Connectivity\Monitor;
 use Rafoo\Signature;
 use Rafoo\State;
 
@@ -12,6 +13,10 @@ final class Engine {
 	const LOCK   = 'rafoo_peer_lock';
 	const STATUS = 'rafoo_peer_status';
 	const QUERY  = 'rafoo-ping';
+	const WAKE   = 'rafoo-wake';
+	const WAKES  = 'rafoo_peer_wakes';
+
+	const WAKE_EVERY = 120;
 
 	public static function serve() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public, signed reachability answer; the nonce is the caller's challenge, not a WordPress form.
@@ -37,17 +42,116 @@ final class Engine {
 				's' => $sig,
 			)
 		);
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- the wake request is a signed envelope from rafoo.ir, checked in woken().
+		$wake     = isset( $_GET[ self::WAKE ] ) ? sanitize_text_field( wp_unslash( $_GET[ self::WAKE ] ) ) : '';
+		$wake     = preg_match( '/^[A-Za-z0-9_-]{40,8000}$/', $wake ) ? $wake : '';
 		$detached = false;
 		if ( function_exists( 'fastcgi_finish_request' ) ) {
 			$detached = fastcgi_finish_request();
 		} elseif ( function_exists( 'litespeed_finish_request' ) ) {
 			$detached = litespeed_finish_request();
 		}
-		if ( $detached && Keys::member() ) {
+		if ( Keys::member() && ( $detached || '' !== $wake ) ) {
 			ignore_user_abort( true );
-			self::tick();
+			if ( ! $detached ) {
+				while ( ob_get_level() > 0 ) {
+					ob_end_flush();
+				}
+				flush();
+			}
+			if ( '' !== $wake ) {
+				self::woken( $wake );
+			} else {
+				self::tick();
+			}
 		}
 		exit;
+	}
+
+	public static function woken( $raw ) {
+		$state = Keys::data();
+		$json  = base64_decode( strtr( $raw, '-_', '+/' ) . str_repeat( '=', ( 4 - strlen( $raw ) % 4 ) % 4 ), true );
+		$data  = false === $json ? null : Signature::open( $json );
+		$now   = time();
+		if ( ! is_array( $data ) || 'rafoo-peer-wake' !== ( isset( $data['kind'] ) ? $data['kind'] : '' ) || (int) $data['watcher'] !== (int) $state['member'] ) {
+			return false;
+		}
+		if ( (int) $data['valid_until'] < $now || (int) $data['issued_at'] > $now + 60 || empty( $data['target'] ) || ! is_array( $data['target'] ) ) {
+			return false;
+		}
+		$target = self::target( $data['target'] );
+		if ( ! $target || ! self::fresh_wake( hash( 'sha256', $raw ), $target['id'], $now ) ) {
+			return false;
+		}
+		if ( ! empty( $data['refresh'] ) && $now - ( isset( $state['tasks_try'] ) ? (int) $state['tasks_try'] : 0 ) >= 60 ) {
+			self::refresh( true );
+		}
+		$results = Checker::run( array( $target ) );
+		if ( ! isset( $results[ $target['id'] ] ) ) {
+			return false;
+		}
+		$r   = $results[ $target['id'] ];
+		$log = Book::load();
+		$log = Book::record( $log, $target, isset( $data['epoch'] ) ? (int) $data['epoch'] : 0, $now, $r['ok'], $r['ms'], $r['code'] );
+		$log = self::flush( $log, $now );
+		Book::store( $log );
+		Keys::update( array( 'checked' => $now ) );
+		return true;
+	}
+
+	private static function fresh_wake( $hash, $target, $now ) {
+		$seen = get_transient( self::WAKES );
+		$seen = is_array( $seen ) ? $seen : array();
+		foreach ( $seen as $key => $at ) {
+			if ( $now - (int) $at > 300 ) {
+				unset( $seen[ $key ] );
+			}
+		}
+		if ( isset( $seen[ $hash ] ) || ( isset( $seen[ 't' . $target ] ) && $now - (int) $seen[ 't' . $target ] < 20 ) ) {
+			return false;
+		}
+		$seen[ $hash ]          = $now;
+		$seen[ 't' . $target ] = $now;
+		set_transient( self::WAKES, array_slice( $seen, -100, null, true ), 600 );
+		return true;
+	}
+
+	public static function target( array $t ) {
+		if ( ! isset( $t['id'], $t['url'], $t['key'], $t['grant'] ) || ( ! wp_http_validate_url( $t['url'] ) && ! apply_filters( 'rafoo_peers_allow_local', false ) ) ) {
+			return null;
+		}
+		return array(
+			'id'       => (int) $t['id'],
+			'url'      => esc_url_raw( $t['url'] ),
+			'key'      => (string) $t['key'],
+			'interval' => isset( $t['interval'] ) && 60 === (int) $t['interval'] ? 60 : 300,
+			'scope'    => isset( $t['scope'] ) && 'intl' === $t['scope'] ? 'intl' : 'ir',
+			'grant'    => (string) $t['grant'],
+		);
+	}
+
+	public static function wake( $force = false ) {
+		if ( ! Keys::member() ) {
+			return false;
+		}
+		$state = Keys::data();
+		if ( ! $force && time() - ( isset( $state['woke_at'] ) ? (int) $state['woke_at'] : 0 ) < self::WAKE_EVERY ) {
+			return false;
+		}
+		Keys::update( array( 'woke_at' => time() ) );
+		$result = Api::call( 'wake', array(), 8 );
+		delete_transient( self::STATUS );
+		return ! is_wp_error( $result );
+	}
+
+	public static function recheck( $ref ) {
+		$result = Api::call( 'recheck', array( 'ref' => (string) $ref ), 8 );
+		delete_transient( self::STATUS );
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
+		$data = json_decode( $result['body'], true );
+		return is_array( $data ) ? $data : array();
 	}
 
 	public static function join( $interval ) {
@@ -88,6 +192,7 @@ final class Engine {
 		delete_transient( self::STATUS );
 		State::event( 'peers_joined', array( 'interval' => $interval ) );
 		self::refresh();
+		self::wake( true );
 		return true;
 	}
 
@@ -107,14 +212,16 @@ final class Engine {
 		return self::refresh();
 	}
 
-	public static function refresh() {
+	public static function refresh( $background = false ) {
 		$state  = Keys::data();
 		$result = Api::call(
 			'tasks',
 			array(
 				'interval' => isset( $state['interval'] ) ? (int) $state['interval'] : 300,
 				'version'  => RAFOO_VERSION,
-			)
+			),
+			8,
+			$background
 		);
 		if ( is_wp_error( $result ) ) {
 			if ( 'rafoo_peer_not_member' === $result->get_error_code() ) {
@@ -130,17 +237,11 @@ final class Engine {
 		}
 		$targets = array();
 		foreach ( isset( $tasks['targets'] ) && is_array( $tasks['targets'] ) ? $tasks['targets'] : array() as $t ) {
-			if ( ! isset( $t['id'], $t['url'], $t['key'], $t['grant'] ) || ! wp_http_validate_url( $t['url'] ) && ! apply_filters( 'rafoo_peers_allow_local', false ) ) {
+			$target = is_array( $t ) ? self::target( $t ) : null;
+			if ( ! $target ) {
 				continue;
 			}
-			$targets[] = array(
-				'id'       => (int) $t['id'],
-				'url'      => esc_url_raw( $t['url'] ),
-				'key'      => (string) $t['key'],
-				'interval' => isset( $t['interval'] ) && 60 === (int) $t['interval'] ? 60 : 300,
-				'scope'    => isset( $t['scope'] ) && 'intl' === $t['scope'] ? 'intl' : 'ir',
-				'grant'    => (string) $t['grant'],
-			);
+			$targets[] = $target;
 			if ( count( $targets ) >= 20 ) {
 				break;
 			}
@@ -178,7 +279,7 @@ final class Engine {
 		$tried   = isset( $state['tasks_try'] ) ? (int) $state['tasks_try'] : 0;
 		$stale   = empty( $state['issued_at'] ) || $now - (int) $state['issued_at'] >= $refresh;
 		if ( ( $stale && $now - $tried >= 300 ) || ( $force && $now - $tried >= 60 ) ) {
-			self::refresh();
+			self::refresh( ! $force );
 			$state = Keys::data();
 		}
 		$targets = isset( $state['tasks'] ) && is_array( $state['tasks'] ) ? $state['tasks'] : array();
@@ -208,7 +309,7 @@ final class Engine {
 		Book::store( $log );
 		Keys::update(
 			array(
-				'next'     => Book::next( $targets, $log, $now, $offline, $scope ),
+				'next'     => Book::next( $targets, $log, $now, $offline, $scope ) + Monitor::jitter( 20 ),
 				'ticked'   => $now,
 				'checked'  => $results ? $now : ( isset( $state['checked'] ) ? (int) $state['checked'] : 0 ),
 			)
@@ -221,7 +322,7 @@ final class Engine {
 		if ( ! $items ) {
 			return $log;
 		}
-		$result = Api::call( 'receipts', array( 'items' => $items ), 10 );
+		$result = Api::call( 'receipts', array( 'items' => $items ), 10, true );
 		if ( is_wp_error( $result ) ) {
 			if ( 'rafoo_peer_not_member' === $result->get_error_code() ) {
 				Keys::update( array( 'member' => 0 ) );

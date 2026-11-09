@@ -110,6 +110,7 @@ final class Api {
 
 	public static function status() {
 		$latest = Catalog::latest();
+		$space  = Ledger::space();
 		return array(
 			'job'          => Job::view(),
 			'backups'      => Catalog::view(),
@@ -125,7 +126,8 @@ final class Api {
 				'crypt'    => Crypt::available(),
 				'ftp'      => Ftp::available() || Remote::curl(),
 				'implicit' => Remote::curl(),
-				'free'     => Ledger::free_space(),
+				'free'     => $space['free'],
+				'space'    => $space['source'],
 				'writable' => '' !== Ledger::dir(),
 			),
 			'invite'       => Transfer::invite_view(),

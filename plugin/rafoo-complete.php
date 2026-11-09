@@ -3,7 +3,7 @@
  * Plugin Name:       Rafoo Complete
  * Plugin URI:        https://rafoo.ir
  * Description:       Keeps WordPress fast and working when the international internet is cut off, and updates WordPress, plugins and themes from the domestic mirror.
- * Version:           1.4.0
+ * Version:           1.5.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Wbweb
@@ -30,7 +30,7 @@ if ( defined( 'RAFOO_FILE' ) ) {
 }
 
 define( 'RAFOO_FILE', __FILE__ );
-define( 'RAFOO_VERSION', '1.4.0' );
+define( 'RAFOO_VERSION', '1.5.0' );
 define( 'RAFOO_EDITION', 'complete' );
 
 require_once __DIR__ . '/src/autoload.php';

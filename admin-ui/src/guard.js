@@ -11,6 +11,103 @@
 	var allow = c.a || [];
 	var rules = !!(c.o || block.length);
 	var seen = {};
+	var drill = c.x;
+	var sendBeacon = w.navigator && w.navigator.sendBeacon;
+
+	if (drill) {
+		c.urls = [];
+		c.errors = [];
+		c.broken = [];
+		w.addEventListener(
+			'error',
+			function (event) {
+				var target = event.target;
+				if (target && target !== w && target.tagName) {
+					var src = target.currentSrc || target.src || target.href;
+					if (src && c.broken.length < 30) {
+						c.broken.push(String(src));
+					}
+					return;
+				}
+				if (c.errors.length < 20) {
+					c.errors.push({ m: String(event.message || ''), f: String(event.filename || ''), l: event.lineno || 0 });
+				}
+			},
+			true
+		);
+		w.addEventListener('unhandledrejection', function (event) {
+			var reason = event.reason;
+			if (reason && reason.rafoo) {
+				return;
+			}
+			if (c.errors.length < 20) {
+				c.errors.push({ m: String((reason && reason.message) || reason || 'Unhandled rejection'), f: String((reason && reason.fileName) || ''), l: 0 });
+			}
+		});
+		c.collect = function () {
+			var perf = w.performance;
+			var out = { u: loc.href, s: 0, l: 0, r: [], x: c.urls.slice(0, 60), e: c.errors.slice(0, 20), g: c.broken.slice(0, 30) };
+			try {
+				var nav = perf.getEntriesByType('navigation')[0];
+				if (nav) {
+					out.s = nav.responseStatus || 0;
+					out.l = Math.round((nav.loadEventEnd || perf.now()) - nav.startTime);
+				}
+				var list = perf.getEntriesByType('resource');
+				for (var i = 0; i < list.length && out.r.length < 150; i++) {
+					var entry = list[i];
+					var u = parse(entry.name);
+					if (!u || !/^https?:$/.test(u.protocol) || u.hostname === loc.hostname) {
+						continue;
+					}
+					out.r.push({ u: String(entry.name).slice(0, 600), b: entry.renderBlockingStatus === 'blocking' ? 1 : 0, i: entry.initiatorType, d: Math.round(entry.duration) });
+				}
+			} catch (e) {}
+			return out;
+		};
+		if (drill.b && sendBeacon) {
+			var posted = 0;
+			var post = function () {
+				if (posted) {
+					return;
+				}
+				posted = 1;
+				try {
+					sendBeacon.call(w.navigator, drill.b, new Blob([JSON.stringify(c.collect())], { type: 'application/json' }));
+				} catch (e) {}
+			};
+			w.addEventListener('load', function () {
+				w.setTimeout(post, 2500);
+			});
+			w.addEventListener('pagehide', post);
+		}
+		if (w.top === w.self && drill.m && !drill.n) {
+			var banner = function () {
+				if (!d.body || d.getElementById('rafoo-drill-banner')) {
+					return;
+				}
+				var box = d.createElement('div');
+				box.id = 'rafoo-drill-banner';
+				box.setAttribute('role', 'status');
+				box.setAttribute('dir', 'auto');
+				box.style.cssText = 'position:fixed;inset-block-end:12px;inset-inline-start:12px;z-index:2147483647;display:flex;flex-wrap:wrap;align-items:center;gap:8px;max-inline-size:min(520px,calc(100vw - 24px));padding:8px 12px;border:1px solid CanvasText;border-radius:8px;background:Canvas;color:CanvasText;font:13px/1.6 system-ui,Tahoma,sans-serif';
+				var text = d.createElement('span');
+				text.textContent = drill.m;
+				var link = d.createElement('a');
+				link.href = drill.u;
+				link.textContent = drill.e;
+				link.style.cssText = 'color:inherit;font-weight:700;text-decoration:underline';
+				box.appendChild(text);
+				box.appendChild(link);
+				d.body.appendChild(box);
+			};
+			if (d.readyState === 'loading') {
+				d.addEventListener('DOMContentLoaded', banner);
+			} else {
+				banner();
+			}
+		}
+	}
 
 	function parse(raw) {
 		try {
@@ -37,10 +134,16 @@
 		return false;
 	}
 
-	function note(host) {
+	function note(host, raw) {
 		if (!seen[host]) {
 			seen[host] = 1;
 			c.blocked.push(host);
+		}
+		if (drill && c.urls.length < 60) {
+			var href = String(raw).slice(0, 600);
+			if (c.urls.indexOf(href) < 0) {
+				c.urls.push(href);
+			}
 		}
 		return 1;
 	}
@@ -58,13 +161,13 @@
 		for (var i = 0; i < block.length; i++) {
 			var rule = block[i];
 			if (rule.indexOf('/') < 0 ? match(host, rule) : path.indexOf(rule) === 0) {
-				return note(host);
+				return note(host, u.href);
 			}
 		}
 		if (!c.o || host === 'ir' || /\.ir$/.test(host) || listed(host, allow)) {
 			return 0;
 		}
-		return listed(host, foreign) ? note(host) : 2;
+		return listed(host, foreign) ? note(host, u.href) : 2;
 	}
 
 	function failure() {

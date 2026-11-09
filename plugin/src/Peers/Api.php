@@ -11,7 +11,11 @@ final class Api {
 	const ENDPOINT = 'https://rafoo.ir/api/v1/peers/';
 	const PATH     = '/api/v1/peers/';
 
-	public static function call( $action, array $body = array(), $timeout = 8 ) {
+	public static function call( $action, array $body = array(), $timeout = 8, $background = false ) {
+		$state = Keys::data();
+		if ( $background && ! empty( $state['backoff'] ) && time() < (int) $state['backoff'] ) {
+			return new \WP_Error( 'rafoo_peer_backoff', __( 'rafoo.ir asked to wait a little. Rafoo will try again soon.', 'rafoo' ) );
+		}
 		$raw = wp_json_encode( $body ? $body : new \stdClass() );
 		if ( false === $raw ) {
 			return new \WP_Error( 'rafoo_peer_json', __( 'The request could not be prepared.', 'rafoo' ) );
@@ -45,6 +49,10 @@ final class Api {
 		}
 		$code = (int) wp_remote_retrieve_response_code( $response );
 		$text = (string) wp_remote_retrieve_body( $response );
+		if ( 429 === $code || 503 === $code ) {
+			$wait = (int) wp_remote_retrieve_header( $response, 'retry-after' );
+			Keys::update( array( 'backoff' => time() + min( 3600, max( 60, $wait ) ) + wp_rand( 0, 30 ) ) );
+		}
 		if ( $code < 200 || $code >= 300 ) {
 			$data    = json_decode( $text, true );
 			$message = is_array( $data ) && ! empty( $data['message'] ) ? (string) $data['message'] : __( 'rafoo.ir did not accept the request.', 'rafoo' );

@@ -74,6 +74,10 @@ final class Plugin {
 			add_action( 'plugins_loaded', array( Peers\Engine::class, 'serve' ), 0 );
 		}
 
+		if ( ! Settings::paused() ) {
+			Drill\Session::boot();
+		}
+
 		$hooks = Settings::paused() ? self::hooks() : array_merge( self::hooks(), self::changes() );
 		foreach ( $hooks as $hook ) {
 			add_filter( $hook[0], $hook[1], isset( $hook[2] ) ? $hook[2] : 10, isset( $hook[3] ) ? $hook[3] : 1 );
@@ -113,6 +117,7 @@ final class Plugin {
 			array( 'admin_post_' . Api::DOWNLOAD, array( Api::class, 'download' ), 10, 0 ),
 			array( 'rafoo_rest_routes', array( Api::class, 'routes' ) ),
 			array( 'rafoo_rest_routes', array( Geo\Api::class, 'routes' ) ),
+			array( 'rafoo_rest_routes', array( Drill\Api::class, 'routes' ) ),
 			array( 'cron_request', array( Geo\Edge::class, 'cron_request' ), 99 ),
 			array( 'rafoo_loopback_url', array( Geo\Edge::class, 'loopback' ) ),
 			array( 'wp_ajax_' . Geo\Link::ACTION, array( Geo\Link::class, 'endpoint' ), 10, 0 ),

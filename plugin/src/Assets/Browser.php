@@ -3,6 +3,7 @@
 namespace Rafoo\Assets;
 
 use Rafoo\Data;
+use Rafoo\Drill\Session;
 use Rafoo\Http\Breaker;
 use Rafoo\Http\Hosts;
 use Rafoo\Settings;
@@ -25,6 +26,9 @@ final class Browser {
 	public static function active() {
 		if ( Settings::paused() ) {
 			return false;
+		}
+		if ( Session::watching() ) {
+			return true;
 		}
 		$rules = Settings::get( 'browser_guard' ) && ( State::offline() || Settings::get( 'block_hosts' ) );
 		return $rules || (bool) Settings::get( 'dedupe' );
@@ -66,7 +70,9 @@ final class Browser {
 			}
 			$config['a'] = self::unique( array_merge( Hosts::own(), Hosts::SERVICE, $mirrors, Hosts::rules( 'domestic' ), Settings::get( 'allow_hosts' ), Breaker::reachable_hosts() ) );
 		}
-		if ( is_user_logged_in() && current_user_can( 'manage_options' ) && ( $offline || $block ) ) {
+		if ( Session::watching() ) {
+			$config['x'] = Session::guard();
+		} elseif ( is_user_logged_in() && current_user_can( 'manage_options' ) && ( $offline || $block ) ) {
 			$config['r'] = add_query_arg( '_wpnonce', wp_create_nonce( 'wp_rest' ), rest_url( 'rafoo/v1/requests/browser' ) );
 		}
 		return (array) apply_filters( 'rafoo_browser_guard', $config );

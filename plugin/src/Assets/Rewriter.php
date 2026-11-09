@@ -3,6 +3,7 @@
 namespace Rafoo\Assets;
 
 use Rafoo\Captcha\Captcha;
+use Rafoo\Drill\Session;
 use Rafoo\Http\Hosts;
 use Rafoo\Services\Analytics;
 use Rafoo\Services\Embeds;
@@ -49,6 +50,7 @@ final class Rewriter {
 			return $tag;
 		}
 		if ( false !== strpos( $href, Fonts::HOST ) && Fonts::enabled() && State::offline() ) {
+			Session::asset( 'dropped', $href, 'font' );
 			return '';
 		}
 		self::learn_integrity( $tag, $href );
@@ -65,8 +67,10 @@ final class Rewriter {
 		}
 		$local = Library::local_url( $asset['key'] );
 		if ( '' !== $local ) {
+			Session::asset( 'local', $asset['key'] );
 			return $local;
 		}
+		Session::asset( 'missing', $src );
 		if ( 'off' !== Settings::get( 'replace' ) ) {
 			Library::note( $asset );
 		}
@@ -83,6 +87,7 @@ final class Rewriter {
 		}
 		$local = Fonts::local_url( $font['key'] );
 		if ( '' !== $local ) {
+			Session::asset( 'local', $font['key'], 'font' );
 			return $local;
 		}
 		Library::note( $font, '', 'font' );
@@ -224,10 +229,15 @@ final class Rewriter {
 			if ( $local !== $url ) {
 				return self::replace_at( $tag, $found[2][1], $url, $local );
 			}
-			return State::offline() ? '' : $tag;
+			if ( State::offline() ) {
+				Session::asset( 'dropped', $url, 'font' );
+				return '';
+			}
+			return $tag;
 		}
 
 		if ( false !== strpos( $url, Fonts::FILES ) && 'link' === $name && State::offline() ) {
+			Session::asset( 'dropped', $url, 'font' );
 			return '';
 		}
 
@@ -237,8 +247,10 @@ final class Rewriter {
 		}
 		$local = Library::local_url( $asset['key'] );
 		if ( '' !== $local ) {
+			Session::asset( 'local', $asset['key'] );
 			return self::replace_at( $tag, $found[2][1], $url, $local );
 		}
+		Session::asset( 'missing', $url );
 		if ( 'off' !== Settings::get( 'replace' ) ) {
 			Library::note( $asset, self::integrity( $tag ) );
 		}
@@ -256,7 +268,11 @@ final class Rewriter {
 				if ( $local !== $m[2] ) {
 					return '@import url("' . esc_url( $local ) . '");';
 				}
-				return State::offline() ? '' : $m[0];
+				if ( State::offline() ) {
+					Session::asset( 'dropped', $m[2], 'font' );
+					return '';
+				}
+				return $m[0];
 			},
 			$html
 		);

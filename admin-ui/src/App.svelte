@@ -8,6 +8,7 @@
 	import Connection from './pages/Connection.svelte';
 	import Feedback from './pages/Feedback.svelte';
 	import Monitor from './pages/Monitor.svelte';
+	import Drill from './pages/Drill.svelte';
 	import Files from './pages/Files.svelte';
 	import Geo from './pages/Geo.svelte';
 	import Overview from './pages/Overview.svelte';
@@ -26,6 +27,7 @@
 
 	const all: Tab[] = [
 		{ id: 'overview', label: t('tab_overview'), page: Overview },
+		{ id: 'drill', label: t('tab_drill'), page: Drill },
 		{ id: 'files', label: t('tab_files'), page: Files },
 		{ id: 'connection', label: t('tab_connection'), page: Connection },
 		{ id: 'monitor', label: t('tab_monitor'), page: Monitor },

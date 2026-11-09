@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.4.0\n"
+"Project-Id-Version: Rafoo 1.5.0\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,39 +43,39 @@ msgstr ""
 msgid "The Rafoo dashboard needs JavaScript."
 msgstr ""
 
-#: src/Admin/Rest.php:457
+#: src/Admin/Rest.php:471 src/Drill/Api.php:311
 msgid "You are not allowed to change this."
 msgstr ""
 
-#: src/Admin/Rest.php:460
+#: src/Admin/Rest.php:474
 msgid "The previous version could not be put back. The files were left as they were."
 msgstr ""
 
-#: src/Admin/Rest.php:540
+#: src/Admin/Rest.php:554
 msgid "This message is no longer waiting."
 msgstr ""
 
-#: src/Admin/Rest.php:548
+#: src/Admin/Rest.php:562
 msgid "Enter a valid mail server address, for example mail.example.ir."
 msgstr ""
 
-#: src/Admin/Rest.php:556
+#: src/Admin/Rest.php:570
 msgid "Save a mail server first."
 msgstr ""
 
-#: src/Admin/Rest.php:601
+#: src/Admin/Rest.php:629
 msgid "Please write between 5 and 2000 characters."
 msgstr ""
 
-#: src/Admin/Rest.php:605
+#: src/Admin/Rest.php:633
 msgid "Please wait a minute before sending another message."
 msgstr ""
 
-#: src/Admin/Rest.php:608
+#: src/Admin/Rest.php:636
 msgid "rafoo.ir could not be reached. Please try again later."
 msgstr ""
 
-#: src/Admin/Rest.php:651
+#: src/Admin/Rest.php:679
 msgid "This file is no longer in the list."
 msgstr ""
 
@@ -541,7 +541,7 @@ msgstr ""
 msgid "Automatic switches by itself. Choose a fixed mode only to test or when detection is wrong."
 msgstr ""
 
-#: src/Admin/Strings.php:94
+#: src/Admin/Strings.php:94 src/Admin/Strings.php:1154
 msgid "Automatic"
 msgstr ""
 
@@ -583,7 +583,7 @@ msgstr ""
 msgid "%d not verified yet"
 msgstr ""
 
-#: src/Admin/Strings.php:106 src/Admin/Strings.php:137
+#: src/Admin/Strings.php:106 src/Admin/Strings.php:137 src/Admin/Strings.php:1191 src/Admin/Strings.php:1415
 msgid "Waiting"
 msgstr ""
 
@@ -655,7 +655,7 @@ msgstr ""
 msgid "Scan finished. New files will be downloaded in the background."
 msgstr ""
 
-#: src/Admin/Strings.php:127
+#: src/Admin/Strings.php:127 src/Admin/Strings.php:1369
 msgid "Download now"
 msgstr ""
 
@@ -691,7 +691,7 @@ msgstr ""
 msgid "Local, only during outages"
 msgstr ""
 
-#: src/Admin/Strings.php:139
+#: src/Admin/Strings.php:139 src/Admin/Strings.php:1324
 msgid "Excluded"
 msgstr ""
 
@@ -717,7 +717,7 @@ msgstr ""
 msgid "%s files"
 msgstr ""
 
-#: src/Admin/Strings.php:146
+#: src/Admin/Strings.php:146 src/Admin/Strings.php:1266
 msgid "Google Fonts"
 msgstr ""
 
@@ -875,7 +875,7 @@ msgstr ""
 msgid "Also replaces addresses that themes and page builders write directly into the page. Pages without such addresses are not touched."
 msgstr ""
 
-#: src/Admin/Strings.php:192
+#: src/Admin/Strings.php:192 src/Admin/Strings.php:1348
 msgid "Local Google Fonts"
 msgstr ""
 
@@ -1209,7 +1209,7 @@ msgstr ""
 msgid "%1$s was set back to %2$s by hand"
 msgstr ""
 
-#: src/Admin/Strings.php:290 src/Admin/Strings.php:1153
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:1448
 msgid "Updates"
 msgstr ""
 
@@ -1813,7 +1813,7 @@ msgstr ""
 msgid "No backup has been made yet."
 msgstr ""
 
-#: src/Admin/Strings.php:461
+#: src/Admin/Strings.php:461 src/Admin/Strings.php:1372
 msgid "Date"
 msgstr ""
 
@@ -2309,7 +2309,7 @@ msgstr ""
 msgid "Made by"
 msgstr ""
 
-#: src/Admin/Strings.php:596
+#: src/Admin/Strings.php:596 src/Admin/Strings.php:1330
 msgid "Server"
 msgstr ""
 
@@ -2625,7 +2625,7 @@ msgstr ""
 msgid "Pause"
 msgstr ""
 
-#: src/Admin/Strings.php:689
+#: src/Admin/Strings.php:689 src/Admin/Strings.php:1319
 msgid "Resume Rafoo"
 msgstr ""
 
@@ -2938,7 +2938,7 @@ msgid "The site could not be reached. Check your connection and try again."
 msgstr ""
 
 #: src/Admin/Strings.php:771
-msgid "Multiple hosts"
+msgid "Geo DNS"
 msgstr ""
 
 #: src/Admin/Strings.php:772
@@ -3102,7 +3102,7 @@ msgid "This host is waiting for the main host. The code is shown only once; make
 msgstr ""
 
 #: src/Admin/Strings.php:814
-msgid "On the main site, open Rafoo, then Multiple hosts, and paste this code under \"Add a copy\". Everything on this site will then be replaced with the main site."
+msgid "On the main site, open Rafoo, then Geo DNS, and paste this code under \"Add a copy\". Everything on this site will then be replaced with the main site."
 msgstr ""
 
 #. translators: %s: technical address
@@ -3725,7 +3725,7 @@ msgstr ""
 msgid "One of your hosts"
 msgstr ""
 
-#: src/Admin/Strings.php:996
+#: src/Admin/Strings.php:996 src/Admin/Strings.php:1274
 msgid "Unknown address"
 msgstr ""
 
@@ -3950,7 +3950,7 @@ msgid "Turn on SSL for the subdomain, then install WordPress at https://de.examp
 msgstr ""
 
 #: src/Admin/Strings.php:1060
-msgid "Install and activate Rafoo 1.4 or newer, open Multiple hosts, choose \"This host will be a copy\" and make the code."
+msgid "Install and activate Rafoo 1.4 or newer, open Geo DNS, choose \"This host will be a copy\" and make the code."
 msgstr ""
 
 #: src/Admin/Strings.php:1061
@@ -3966,7 +3966,7 @@ msgid "Prepare the new host: add your main domain and a technical subdomain such
 msgstr ""
 
 #: src/Admin/Strings.php:1064
-msgid "In Rafoo on the new host, open Multiple hosts, choose \"This host will be a copy\" and make a join code."
+msgid "In Rafoo on the new host, open Geo DNS, choose \"This host will be a copy\" and make a join code."
 msgstr ""
 
 #: src/Admin/Strings.php:1065
@@ -4269,109 +4269,1151 @@ msgstr ""
 msgid "South America"
 msgstr ""
 
+#: src/Admin/Strings.php:1144 src/Admin/Strings.php:1145
+msgid "Outage rehearsal"
+msgstr ""
+
+#: src/Admin/Strings.php:1146
+msgid "See your site exactly as it would work if the international internet went down today, and fix every problem before a real outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1147
+msgid "Only you see the outage. Visitors, search engines and the page cache keep the normal site."
+msgstr ""
+
+#: src/Admin/Strings.php:1148
+msgid "Rafoo opens your important pages, records every outside file, server request and error, and names the plugin or theme behind each one."
+msgstr ""
+
 #: src/Admin/Strings.php:1149
-msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
+msgid "Most problems are fixed with one button: download a library or font, turn on a protection, or block a foreign address."
 msgstr ""
 
 #: src/Admin/Strings.php:1150
-msgid "Translation updates come from the mirror too, only for the languages installed on the site."
+msgid "The international internet is down right now, so the rehearsal shows the real situation."
 msgstr ""
 
 #: src/Admin/Strings.php:1151
-msgid "Translations from the mirror"
+msgid "Start a rehearsal"
 msgstr ""
 
-#: src/Admin/Strings.php:1152
-msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
+#: src/Admin/Strings.php:1152 src/Drill/Api.php:168
+msgid "Rafoo is paused. Resume it first, then run the rehearsal."
 msgstr ""
 
-#: src/Admin/Strings.php:1154
-msgid "Update from the domestic mirror"
+#: src/Admin/Strings.php:1153
+msgid "How to test"
 msgstr ""
 
 #: src/Admin/Strings.php:1155
-msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
+msgid "Rafoo opens the chosen pages one by one here and builds the report. About 5 to 10 seconds per page."
 msgstr ""
 
 #: src/Admin/Strings.php:1156
-msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
+msgid "Browse yourself"
 msgstr ""
 
 #: src/Admin/Strings.php:1157
-msgid "Mirror coverage"
+msgid "For 15 minutes your browser sees the outage on any page. Try forms, the cart or payment, then finish to get the report."
 msgstr ""
 
 #: src/Admin/Strings.php:1158
-msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
+msgid "Pages to test"
 msgstr ""
 
 #: src/Admin/Strings.php:1159
-msgid "Check again"
+msgid "Site"
 msgstr ""
 
 #: src/Admin/Strings.php:1160
-msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
+msgid "Store"
 msgstr ""
 
-#: src/Admin/Strings.php:1161
-msgid "Mirror"
+#: src/Admin/Strings.php:1161 src/Admin/Strings.php:1171
+msgid "Dashboard"
 msgstr ""
 
 #: src/Admin/Strings.php:1162
+msgid "Home page"
+msgstr ""
+
+#: src/Admin/Strings.php:1163
+msgid "Latest post"
+msgstr ""
+
+#: src/Admin/Strings.php:1164
+msgid "A page"
+msgstr ""
+
+#: src/Admin/Strings.php:1165
+msgid "Shop"
+msgstr ""
+
+#: src/Admin/Strings.php:1166
+msgid "A product"
+msgstr ""
+
+#: src/Admin/Strings.php:1167
+msgid "Cart"
+msgstr ""
+
+#: src/Admin/Strings.php:1168
+msgid "Checkout"
+msgstr ""
+
+#: src/Admin/Strings.php:1169
+msgid "My account"
+msgstr ""
+
+#: src/Admin/Strings.php:1170
+msgid "Login"
+msgstr ""
+
+#: src/Admin/Strings.php:1172
+msgid "Post editor"
+msgstr ""
+
+#: src/Admin/Strings.php:1173
+msgid "Other pages"
+msgstr ""
+
+#: src/Admin/Strings.php:1174
+msgid "/contact/"
+msgstr ""
+
+#: src/Admin/Strings.php:1175
+msgid "Up to 5 addresses on this site, one per line, for example /contact/ or a landing page."
+msgstr ""
+
+#: src/Admin/Strings.php:1176
+msgid "Compare with normal mode"
+msgstr ""
+
+#: src/Admin/Strings.php:1177
+msgid "Each page is opened once normally and once in outage mode, so errors that already exist are not blamed on the outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1178
+msgid "See pages as a visitor"
+msgstr ""
+
+#: src/Admin/Strings.php:1179
+msgid "Public pages are built as for a visitor who is not logged in. Dashboard pages still use your account."
+msgstr ""
+
+#: src/Admin/Strings.php:1180
+msgid "Start the rehearsal"
+msgstr ""
+
+#: src/Admin/Strings.php:1181
+msgid "Start 15 minutes of outage"
+msgstr ""
+
+#: src/Admin/Strings.php:1182
+msgid "Nothing changes for visitors and no setting is changed without your click."
+msgstr ""
+
+#: src/Admin/Strings.php:1183
+msgid "Rehearsal in progress"
+msgstr ""
+
+#. translators: %1$d: page number, %2$d: total pages, %3$s: page name
+#: src/Admin/Strings.php:1185
+#, php-format
+msgid "Page %1$d of %2$d: %3$s"
+msgstr ""
+
+#: src/Admin/Strings.php:1186
+msgid "Building the report…"
+msgstr ""
+
+#: src/Admin/Strings.php:1187
+msgid "Stop the rehearsal"
+msgstr ""
+
+#: src/Admin/Strings.php:1188
+msgid "Opening the page in normal mode for comparison."
+msgstr ""
+
+#: src/Admin/Strings.php:1189
+msgid "Opening the page as if the international internet were down."
+msgstr ""
+
+#: src/Admin/Strings.php:1190
+msgid "Checking server records, finding the plugins behind each problem and scoring the site."
+msgstr ""
+
+#: src/Admin/Strings.php:1192
+msgid "Normal mode…"
+msgstr ""
+
+#: src/Admin/Strings.php:1193
+msgid "Outage mode…"
+msgstr ""
+
+#. translators: %d: number of addresses
+#: src/Admin/Strings.php:1195
+#, php-format
+msgid "%d stopped by Rafoo"
+msgstr ""
+
+#: src/Admin/Strings.php:1196
+msgid "Live preview, visible only to you"
+msgstr ""
+
+#: src/Admin/Strings.php:1197
+msgid "Opened"
+msgstr ""
+
+#: src/Admin/Strings.php:1198
+msgid "Not shown in preview"
+msgstr ""
+
+#: src/Admin/Strings.php:1199
+msgid "Took over 30 seconds"
+msgstr ""
+
+#: src/Admin/Strings.php:1200
+msgid "Could not open"
+msgstr ""
+
+#: src/Admin/Strings.php:1201
+msgid "Not tested"
+msgstr ""
+
+#: src/Admin/Strings.php:1202
+msgid "Visited"
+msgstr ""
+
+#: src/Admin/Strings.php:1203
+msgid "Outage is on for your browser"
+msgstr ""
+
+#. translators: %d: minutes
+#: src/Admin/Strings.php:1205
+#, php-format
+msgid "%d minutes left. Visitors still see the normal site."
+msgstr ""
+
+#: src/Admin/Strings.php:1206
+msgid "Open the site in a new tab. A small note at the corner shows that the rehearsal is on."
+msgstr ""
+
+#: src/Admin/Strings.php:1207
+msgid "Go through what matters to you: search, forms, the cart, checkout and payment."
+msgstr ""
+
+#: src/Admin/Strings.php:1208
+msgid "Come back here and finish the rehearsal to see the report."
+msgstr ""
+
+#: src/Admin/Strings.php:1209
+msgid "Open the site"
+msgstr ""
+
+#: src/Admin/Strings.php:1210
+msgid "Finish and show the report"
+msgstr ""
+
+#: src/Admin/Strings.php:1211
+msgid "The rehearsal was interrupted"
+msgstr ""
+
+#: src/Admin/Strings.php:1212
+msgid "The page was closed or reloaded during the rehearsal. Run it again or stop it."
+msgstr ""
+
+#: src/Admin/Strings.php:1213
+msgid "Run again"
+msgstr ""
+
+#: src/Admin/Strings.php:1214
+msgid "Rehearsal result"
+msgstr ""
+
+#. translators: %1$s: date, %2$d: number of pages
+#: src/Admin/Strings.php:1216
+#, php-format
+msgid "%1$s · %2$d pages"
+msgstr ""
+
+#: src/Admin/Strings.php:1217
+msgid "of 100"
+msgstr ""
+
+#: src/Admin/Strings.php:1218
+msgid "Ready for an outage"
+msgstr ""
+
+#: src/Admin/Strings.php:1219
+msgid "Mostly ready"
+msgstr ""
+
+#: src/Admin/Strings.php:1220
+msgid "Needs work"
+msgstr ""
+
+#: src/Admin/Strings.php:1221
+msgid "Not ready"
+msgstr ""
+
+#: src/Admin/Strings.php:1222
+msgid "Visitors in Iran can use the tested pages during an outage without waiting or broken parts."
+msgstr ""
+
+#: src/Admin/Strings.php:1223
+msgid "The site works during an outage, with a few slow or missing parts listed below."
+msgstr ""
+
+#: src/Admin/Strings.php:1224
+msgid "Important parts break or keep visitors waiting during an outage. Fix the items below first."
+msgstr ""
+
+#: src/Admin/Strings.php:1225
+msgid "During an outage the tested pages would not work for most visitors. Start with the problems that must be fixed."
+msgstr ""
+
+#. translators: %1$s: normal load time, %2$s: outage load time
+#: src/Admin/Strings.php:1227
+#, php-format
+msgid "Average load: %1$s normally, %2$s during the outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1228
+msgid "Built from the pages you visited during the rehearsal."
+msgstr ""
+
+#: src/Admin/Strings.php:1229
+msgid "Must fix"
+msgstr ""
+
+#: src/Admin/Strings.php:1230
+msgid "Should fix"
+msgstr ""
+
+#: src/Admin/Strings.php:1231
+msgid "Handled by Rafoo"
+msgstr ""
+
+#: src/Admin/Strings.php:1232
+msgid "Outside requests stopped at once"
+msgstr ""
+
+#: src/Admin/Strings.php:1233
+msgid "Served from your server"
+msgstr ""
+
+#: src/Admin/Strings.php:1234
+msgid "Libraries and fonts used locally"
+msgstr ""
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1236
+#, php-format
+msgid "Must fix (%d)"
+msgstr ""
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1238
+#, php-format
+msgid "Should fix (%d)"
+msgstr ""
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1240
+#, php-format
+msgid "Good to know (%d)"
+msgstr ""
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1242
+#, php-format
+msgid "Handled by Rafoo (%d)"
+msgstr ""
+
+#: src/Admin/Strings.php:1243
+msgid "Important"
+msgstr ""
+
+#: src/Admin/Strings.php:1244
+msgid "Worth fixing"
+msgstr ""
+
+#: src/Admin/Strings.php:1245
+msgid "Optional"
+msgstr ""
+
+#: src/Admin/Strings.php:1246
+msgid "Handled"
+msgstr ""
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1248
+#, php-format
+msgid "Show what Rafoo handled (%d)"
+msgstr ""
+
+#: src/Admin/Strings.php:1249
+msgid "No problem was found on the tested pages."
+msgstr ""
+
+#: src/Admin/Strings.php:1250
+msgid "Blocks the page"
+msgstr ""
+
+#: src/Admin/Strings.php:1251
+msgid "Fixed. Run again to confirm"
+msgstr ""
+
+#. translators: %s: list of pages
+#: src/Admin/Strings.php:1253
+#, php-format
+msgid "On: %s"
+msgstr ""
+
+#. translators: %s: error message
+#: src/Admin/Strings.php:1255
+#, php-format
+msgid "Last download error: %s"
+msgstr ""
+
+#. translators: %s: plugin name
+#: src/Admin/Strings.php:1257
+#, php-format
+msgid "Plugin: %s"
+msgstr ""
+
+#. translators: %s: theme name
+#: src/Admin/Strings.php:1259
+#, php-format
+msgid "Theme: %s"
+msgstr ""
+
+#: src/Admin/Strings.php:1260
+msgid "WordPress itself"
+msgstr ""
+
+#. translators: %s: number of seconds
+#: src/Admin/Strings.php:1262
+#, php-format
+msgid "%s s"
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: src/Admin/Strings.php:1264
+#, php-format
+msgid "Code %d"
+msgstr ""
+
+#: src/Admin/Strings.php:1265
+msgid "Library from a foreign CDN"
+msgstr ""
+
+#: src/Admin/Strings.php:1267
+msgid "Profile pictures from Gravatar"
+msgstr ""
+
+#: src/Admin/Strings.php:1268
+msgid "Foreign captcha"
+msgstr ""
+
+#: src/Admin/Strings.php:1269
+msgid "Video or map embed"
+msgstr ""
+
+#: src/Admin/Strings.php:1270
+msgid "Analytics or ads script"
+msgstr ""
+
+#: src/Admin/Strings.php:1271
+msgid "Social login"
+msgstr ""
+
+#: src/Admin/Strings.php:1272
+msgid "WordPress files from abroad"
+msgstr ""
+
+#: src/Admin/Strings.php:1273
+msgid "Foreign service"
+msgstr ""
+
+#: src/Admin/Strings.php:1275
+msgid "Server request to a foreign address"
+msgstr ""
+
+#: src/Admin/Strings.php:1276
+msgid "Server request to an unknown address"
+msgstr ""
+
+#: src/Admin/Strings.php:1277
+msgid "PHP error"
+msgstr ""
+
+#: src/Admin/Strings.php:1278
+msgid "Page error"
+msgstr ""
+
+#: src/Admin/Strings.php:1279
+msgid "Slow page on the server"
+msgstr ""
+
+#: src/Admin/Strings.php:1280
+msgid "JavaScript error"
+msgstr ""
+
+#: src/Admin/Strings.php:1281
+msgid "Page came from the cache"
+msgstr ""
+
+#: src/Admin/Strings.php:1282
+msgid "Page not shown in the preview"
+msgstr ""
+
+#: src/Admin/Strings.php:1283
+msgid "This library loads from a foreign CDN and does not open during an outage. Download it once to the Rafoo library and the local copy takes its place."
+msgstr ""
+
+#: src/Admin/Strings.php:1284
+msgid "This font file still loads from Google. During an outage text waits for it, then falls back to another font."
+msgstr ""
+
+#: src/Admin/Strings.php:1285
+msgid "Rafoo removed this Google Fonts stylesheet so the page did not wait. Download it to keep the exact look during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1286
+msgid "Profile pictures come from Gravatar and do not open during an outage. Rafoo can show simple letter avatars instead."
+msgstr ""
+
+#: src/Admin/Strings.php:1287
+msgid "Google reCAPTCHA or a similar service does not load during an outage, so login and contact forms stop working. Rafoo can put its own captcha in its place."
+msgstr ""
+
+#: src/Admin/Strings.php:1288
+msgid "A foreign video or map does not show during an outage. Rafoo can replace it with a simple box and a link."
+msgstr ""
+
+#: src/Admin/Strings.php:1289
+msgid "This analytics or ads script does nothing during an outage and only makes the page slower."
+msgstr ""
+
+#: src/Admin/Strings.php:1290
+msgid "Login with Google or another network does not work during an outage. Rafoo can hide these buttons so visitors use the normal form."
+msgstr ""
+
+#: src/Admin/Strings.php:1291
+msgid "WordPress loads parts such as emoji from WordPress.org servers. Rafoo can turn these off during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1292
+msgid "This known foreign service is not reachable during an outage and keeps the page waiting. Block it if the site works without it, or ask the plugin author for an option to turn it off."
+msgstr ""
+
+#: src/Admin/Strings.php:1293
+msgid "Rafoo does not know this address. If it is abroad, block it. If it is inside Iran, allow it so Rafoo never waits for it."
+msgstr ""
+
+#: src/Admin/Strings.php:1294
+msgid "The site called this foreign address from the server. Rafoo refuses such calls at once during an outage, so the page does not wait."
+msgstr ""
+
+#. translators: %s: time
+#: src/Admin/Strings.php:1296
+#, php-format
+msgid "The site called an unknown address from the server (it took %s now). During a real outage each call can wait up to 3 seconds. Block it if it is abroad, or allow it if it is inside Iran."
+msgstr ""
+
+#: src/Admin/Strings.php:1297
+msgid "The page stopped with a PHP error in outage mode. Usually a plugin does not check for a failed internet request. Send this message to the plugin author."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: src/Admin/Strings.php:1299
+#, php-format
+msgid "In outage mode the page answered with code %d."
+msgstr ""
+
+#. translators: %s: time
+#: src/Admin/Strings.php:1301
+#, php-format
+msgid "Building the page on the server took %s, which usually means it waited for outside services."
+msgstr ""
+
+#: src/Admin/Strings.php:1302
+msgid "This error happened only in outage mode. A script probably expects a file or service from abroad."
+msgstr ""
+
+#: src/Admin/Strings.php:1303
+msgid "This error also happens in normal mode, so it is not caused by the outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1304
+msgid "This page came from a page cache, so the outage version was not shown. Clear the cache or exclude this page, then run again."
+msgstr ""
+
+#: src/Admin/Strings.php:1305
+msgid "A security setting does not let this page open inside another page. The server side was still checked."
+msgstr ""
+
+#: src/Admin/Strings.php:1306
+msgid "The page did not finish loading within 30 seconds in outage mode."
+msgstr ""
+
+#: src/Admin/Strings.php:1307
+msgid "The page could not be opened in the preview."
+msgstr ""
+
+#: src/Admin/Strings.php:1308
+msgid "This page was not tested because the rehearsal stopped early."
+msgstr ""
+
+#: src/Admin/Strings.php:1309
+msgid "Rafoo stopped this at once in outage mode, so the page did not wait for it."
+msgstr ""
+
+#: src/Admin/Strings.php:1310
+msgid "Download to the library"
+msgstr ""
+
+#: src/Admin/Strings.php:1311
+msgid "Use the local copy again"
+msgstr ""
+
+#. translators: %s: setting name
+#: src/Admin/Strings.php:1313
+#, php-format
+msgid "Turn on: %s"
+msgstr ""
+
+#. translators: %s: host name
+#: src/Admin/Strings.php:1315
+#, php-format
+msgid "Block %s"
+msgstr ""
+
+#: src/Admin/Strings.php:1316
+msgid "It is inside Iran, allow it"
+msgstr ""
+
+#: src/Admin/Strings.php:1317
+msgid "Scan the site again"
+msgstr ""
+
+#: src/Admin/Strings.php:1318
+msgid "Download waiting files now"
+msgstr ""
+
+#: src/Admin/Strings.php:1320
+msgid "Done"
+msgstr ""
+
+#: src/Admin/Strings.php:1321
+msgid "Downloaded"
+msgstr ""
+
+#: src/Admin/Strings.php:1322
+msgid "Queued for download"
+msgstr ""
+
+#: src/Admin/Strings.php:1323
+msgid "Another download is running"
+msgstr ""
+
+#: src/Admin/Strings.php:1325 src/Admin/Strings.php:1374
+msgid "Pages"
+msgstr ""
+
+#: src/Admin/Strings.php:1326
+msgid "Page"
+msgstr ""
+
+#: src/Admin/Strings.php:1327
+msgid "Result"
+msgstr ""
+
+#: src/Admin/Strings.php:1328
+msgid "Normal load"
+msgstr ""
+
+#: src/Admin/Strings.php:1329
+msgid "Outage load"
+msgstr ""
+
+#: src/Admin/Strings.php:1331
+msgid "Works"
+msgstr ""
+
+#: src/Admin/Strings.php:1332
+msgid "Works with issues"
+msgstr ""
+
+#: src/Admin/Strings.php:1333
+msgid "Breaks"
+msgstr ""
+
+#: src/Admin/Strings.php:1334
+msgid "Not checked"
+msgstr ""
+
+#: src/Admin/Strings.php:1335
+msgid "Outage readiness"
+msgstr ""
+
+#: src/Admin/Strings.php:1336
+msgid "Every Rafoo protection that matters during an outage is on."
+msgstr ""
+
+#. translators: %d: number of items
+#: src/Admin/Strings.php:1338
+#, php-format
+msgid "%d items can make the site better prepared."
+msgstr ""
+
+#: src/Admin/Strings.php:1339
+msgid "Ready"
+msgstr ""
+
+#: src/Admin/Strings.php:1340
+msgid "Rafoo is running"
+msgstr ""
+
+#: src/Admin/Strings.php:1341
+msgid "Rafoo is paused, so nothing is protected during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1342
+msgid "Browser protection"
+msgstr ""
+
+#: src/Admin/Strings.php:1343
+msgid "Without it, scripts that load foreign files on their own keep pages waiting."
+msgstr ""
+
+#: src/Admin/Strings.php:1344
+msgid "Local copies of CDN files"
+msgstr ""
+
+#: src/Admin/Strings.php:1345
+msgid "Replacing CDN files is off, so downloaded copies are never used."
+msgstr ""
+
+#: src/Admin/Strings.php:1346
+msgid "Find CDN addresses in page HTML"
+msgstr ""
+
+#: src/Admin/Strings.php:1347
+msgid "Files that builders write directly into the page are not replaced."
+msgstr ""
+
+#: src/Admin/Strings.php:1349
+msgid "Text loses its font during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1350
+msgid "Library files are downloaded"
+msgstr ""
+
+#. translators: %1$d: waiting files, %2$d: failed files
+#: src/Admin/Strings.php:1352
+#, php-format
+msgid "%1$d files are waiting and %2$d failed. They will not work during an outage until downloaded."
+msgstr ""
+
+#: src/Admin/Strings.php:1353
+msgid "Outage detection is running"
+msgstr ""
+
+#: src/Admin/Strings.php:1354
+msgid "The connection check has not run recently. Outage mode turns on through WP-Cron, so make sure cron runs on this site."
+msgstr ""
+
+#: src/Admin/Strings.php:1355
+msgid "Mail waits during an outage"
+msgstr ""
+
+#: src/Admin/Strings.php:1356
+msgid "Emails sent during an outage may be lost."
+msgstr ""
+
+#: src/Admin/Strings.php:1357
+msgid "Updates from the domestic mirror"
+msgstr ""
+
+#: src/Admin/Strings.php:1358
+msgid "WordPress, plugins and themes cannot be updated during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1359
+msgid "The library has local files"
+msgstr ""
+
+#: src/Admin/Strings.php:1360
+msgid "No file has been downloaded yet. Scan the site so Rafoo finds the CDN files it uses."
+msgstr ""
+
+#: src/Admin/Strings.php:1361
+msgid "The international internet is down now"
+msgstr ""
+
+#: src/Admin/Strings.php:1362
+msgid "Resume"
+msgstr ""
+
+#: src/Admin/Strings.php:1363 src/Admin/Strings.php:1364 src/Admin/Strings.php:1365 src/Admin/Strings.php:1366
+msgid "Turn on"
+msgstr ""
+
+#: src/Admin/Strings.php:1370
+msgid "Scan now"
+msgstr ""
+
+#: src/Admin/Strings.php:1371
+msgid "Earlier rehearsals"
+msgstr ""
+
+#: src/Admin/Strings.php:1373
+msgid "Score"
+msgstr ""
+
+#: src/Admin/Strings.php:1375
+msgid "Found"
+msgstr ""
+
+#. translators: %1$d: must fix, %2$d: should fix, %3$d: handled
+#: src/Admin/Strings.php:1377
+#, php-format
+msgid "%1$d must fix · %2$d should fix · %3$d handled"
+msgstr ""
+
+#: src/Admin/Strings.php:1378
+msgid "How the rehearsal works"
+msgstr ""
+
+#: src/Admin/Strings.php:1379
+msgid "Read the steps"
+msgstr ""
+
+#: src/Admin/Strings.php:1380
+msgid "Rafoo gives only your browser a short-lived key. Requests that carry it see outage mode; everyone else sees the normal site."
+msgstr ""
+
+#: src/Admin/Strings.php:1381
+msgid "In outage mode Rafoo does exactly what it would do in a real outage: local copies, blocked foreign requests, replaced captcha and embeds."
+msgstr ""
+
+#: src/Admin/Strings.php:1382
+msgid "Each page is opened in a hidden preview. Rafoo records outside files the browser still loads, server requests to foreign addresses and every error."
+msgstr ""
+
+#: src/Admin/Strings.php:1383
+msgid "Anything that would hang in a real outage is listed with the plugin or theme behind it, found from the call stack or by searching their files."
+msgstr ""
+
+#: src/Admin/Strings.php:1384
+msgid "Fix buttons use Rafoo's own tools: the library downloads CDN files and fonts, settings turn on protections, and block or allow lists teach Rafoo unknown addresses."
+msgstr ""
+
+#: src/Admin/Strings.php:1385
+msgid "After fixing, run the rehearsal again. The score shows how ready the site is, and earlier runs are kept for comparison."
+msgstr ""
+
+#: src/Admin/Strings.php:1386
+msgid "The rehearsal does not cut your server's internet and does not send anything outside. It ends by itself after 15 minutes."
+msgstr ""
+
+#: src/Admin/Strings.php:1387
+msgid "A safe test that shows how the site behaves during an international outage, only for you, with a list of problems and one-click fixes."
+msgstr ""
+
+#: src/Admin/Strings.php:1388
+msgid "Choose how and what to test. The default pages cover what most visitors open. The settings of the site are not changed by starting a rehearsal."
+msgstr ""
+
+#: src/Admin/Strings.php:1389
+msgid "Automatic opens the chosen pages here and needs no work from you. Browse yourself lets you test steps that need clicks, such as adding to the cart or paying."
+msgstr ""
+
+#: src/Admin/Strings.php:1390
+msgid "Rafoo finds these pages on your site by itself. Store pages appear when WooCommerce is active. Dashboard pages show what you, as an admin, see during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1391
+msgid "Add any other page of this site, for example a landing page or a form. Addresses on other sites and the logout link are ignored."
+msgstr ""
+
+#: src/Admin/Strings.php:1392
+msgid "Doubles the time, but separates real outage problems from errors that the site already has."
+msgstr ""
+
+#: src/Admin/Strings.php:1393
+msgid "Visitors are not logged in, so some plugins load different files for them. Keep this on to test what your visitors get."
+msgstr ""
+
+#: src/Admin/Strings.php:1394
+msgid "The preview is only for you. You can leave this tab open and keep working in another tab until the report is ready."
+msgstr ""
+
+#: src/Admin/Strings.php:1395
+msgid "Only this browser sees the outage. Requests from the server, cron and other visitors are not affected. The rehearsal ends by itself when the time is up."
+msgstr ""
+
+#: src/Admin/Strings.php:1396
+msgid "The score starts at 100. Each problem that must be fixed, each suggested fix and each broken page lowers it. Problems that Rafoo already handled do not lower it."
+msgstr ""
+
+#: src/Admin/Strings.php:1397
+msgid "These make a page freeze, break a form or stop the page with an error during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1398
+msgid "The page works, but is slower or loses a part such as a font, an image or a widget."
+msgstr ""
+
+#: src/Admin/Strings.php:1399
+msgid "Details that do not hurt visitors, shown so you have the full picture."
+msgstr ""
+
+#: src/Admin/Strings.php:1400
+msgid "Foreign requests that Rafoo stopped at once, and parts it replaced. Nothing to do here."
+msgstr ""
+
+#: src/Admin/Strings.php:1401
+msgid "Load times are measured in your browser. Server time is how long WordPress took to build the page in outage mode."
+msgstr ""
+
+#: src/Admin/Strings.php:1402
+msgid "Rafoo protections that matter during an outage. Turning one on here is the same as turning it on in Settings."
+msgstr ""
+
+#: src/Admin/Strings.php:1403
+msgid "The last 10 rehearsals, so you can see whether the site is getting better prepared."
+msgstr ""
+
+#: src/Admin/Strings.php:1404
+msgid "What happens behind the scenes during a rehearsal."
+msgstr ""
+
+#: src/Admin/Strings.php:1405
+msgid "Outage rehearsal started"
+msgstr ""
+
+#: src/Admin/Strings.php:1406
+msgid "Outage rehearsal finished"
+msgstr ""
+
+#: src/Admin/Strings.php:1407
+msgid "Outage rehearsal stopped"
+msgstr ""
+
+#: src/Admin/Strings.php:1409
+msgid "First check"
+msgstr ""
+
+#: src/Admin/Strings.php:1410
+msgid "Second check"
+msgstr ""
+
+#: src/Admin/Strings.php:1411
+msgid "Third check"
+msgstr ""
+
+#: src/Admin/Strings.php:1412
+msgid "First result in a few seconds"
+msgstr ""
+
+#: src/Admin/Strings.php:1413 src/Backup/Installer.php:44
+msgid "Checking…"
+msgstr ""
+
+#: src/Admin/Strings.php:1414
+msgid "Filtered"
+msgstr ""
+
+#: src/Admin/Strings.php:1416
+msgid "Recheck"
+msgstr ""
+
+#: src/Admin/Strings.php:1417
+msgid "Your site opens for visitors"
+msgstr ""
+
+#: src/Admin/Strings.php:1418
+msgid "The checks from inside and outside Iran reached your site."
+msgstr ""
+
+#: src/Admin/Strings.php:1419
+msgid "Opens in Iran, not confirmed abroad"
+msgstr ""
+
+#: src/Admin/Strings.php:1420
+msgid "Visitors in Iran can open the site. The checks abroad did not reach it; if you have visitors abroad, check your host's firewall."
+msgstr ""
+
+#: src/Admin/Strings.php:1421
+msgid "Not confirmed inside Iran"
+msgstr ""
+
+#: src/Admin/Strings.php:1422
+msgid "Fewer than two checks inside Iran reached the site. Use Check again; if it stays like this, ask your host whether the server is reachable from Iranian networks."
+msgstr ""
+
+#: src/Admin/Strings.php:1423
+msgid "The site looks filtered in Iran"
+msgstr ""
+
+#: src/Admin/Strings.php:1424
+msgid "A check inside Iran was sent to the filtering page instead of your site. Visitors in Iran may not be able to open it."
+msgstr ""
+
+#: src/Admin/Strings.php:1425
+msgid "Checking your site"
+msgstr ""
+
+#: src/Admin/Strings.php:1426
+msgid "The first checks have been requested. Results appear here within a minute."
+msgstr ""
+
+#: src/Admin/Strings.php:1427
+msgid "Your site is checked from 3 points inside Iran and 2 points abroad in the Rafoo monitoring network. One network may sometimes have trouble; if two checks inside or outside Iran are fine, your site is fully reachable."
+msgstr ""
+
+#: src/Admin/Strings.php:1428
+msgid "Three member sites on different Iranian networks open your site's signed check address. Which networks they are is not shown, to keep members private."
+msgstr ""
+
+#: src/Admin/Strings.php:1429
+msgid "Two member sites outside Iran, in different countries, check your site. During an international outage these checks pause."
+msgstr ""
+
+#: src/Admin/Strings.php:1431
+msgid "Updated by its maker"
+msgstr ""
+
+#. translators: %s: version number
+#: src/Admin/Strings.php:1433
+#, php-format
+msgid "Older version on the mirror (%s)"
+msgstr ""
+
+#: src/Admin/Strings.php:1434
+msgid "Your hosting quota"
+msgstr ""
+
+#: src/Admin/Strings.php:1435
+msgid "This is a shared host, so the free disk of the whole server says nothing about your own quota. See the disk usage of your account in cPanel or DirectAdmin. If the quota fills up during a backup, Rafoo stops with a clear message and removes the unfinished part."
+msgstr ""
+
+#: src/Admin/Strings.php:1436
+msgid "Free space Rafoo can use for backups on this host. A backup needs roughly the size of the site."
+msgstr ""
+
+#: src/Admin/Strings.php:1437
+msgid "Updates from the Iranian mirror for what is installed on this site. Premium plugins and themes that update from their own server, such as Divi, are never changed."
+msgstr ""
+
+#: src/Admin/Strings.php:1444
+msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
+msgstr ""
+
+#: src/Admin/Strings.php:1445
+msgid "Translation updates come from the mirror too, only for the languages installed on the site."
+msgstr ""
+
+#: src/Admin/Strings.php:1446
+msgid "Translations from the mirror"
+msgstr ""
+
+#: src/Admin/Strings.php:1447
+msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
+msgstr ""
+
+#: src/Admin/Strings.php:1449
+msgid "Update from the domestic mirror"
+msgstr ""
+
+#: src/Admin/Strings.php:1450
+msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
+msgstr ""
+
+#: src/Admin/Strings.php:1451
+msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
+msgstr ""
+
+#: src/Admin/Strings.php:1452
+msgid "Mirror coverage"
+msgstr ""
+
+#: src/Admin/Strings.php:1453
+msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
+msgstr ""
+
+#: src/Admin/Strings.php:1454
+msgid "Check again"
+msgstr ""
+
+#: src/Admin/Strings.php:1455
+msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
+msgstr ""
+
+#: src/Admin/Strings.php:1456
+msgid "Mirror"
+msgstr ""
+
+#: src/Admin/Strings.php:1457
 msgid "Not on the mirror"
 msgstr ""
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:1164
+#: src/Admin/Strings.php:1459
 #, php-format
 msgid "Version %s available"
 msgstr ""
 
-#: src/Admin/Strings.php:1165
+#: src/Admin/Strings.php:1460
 msgid "Up to date"
 msgstr ""
 
-#: src/Admin/Strings.php:1166
+#: src/Admin/Strings.php:1461
 msgid "WordPress"
 msgstr ""
 
-#: src/Backup/Api.php:173 src/Backup/Api.php:260 src/Backup/Restorer.php:28
+#: src/Backup/Api.php:175 src/Backup/Api.php:262 src/Backup/Restorer.php:28
 msgid "This backup is no longer in the list."
 msgstr ""
 
-#: src/Backup/Api.php:177
+#: src/Backup/Api.php:179
 msgid "Newer backups are built on this one, so it cannot be deleted on its own."
 msgstr ""
 
-#: src/Backup/Api.php:182 src/Backup/Job.php:40 src/Geo/Nodes.php:182
+#: src/Backup/Api.php:184 src/Backup/Job.php:40 src/Geo/Nodes.php:182
 msgid "Another backup task is running. Wait until it finishes."
 msgstr ""
 
-#: src/Backup/Api.php:191
+#: src/Backup/Api.php:193
 msgid "Use at least 8 characters."
 msgstr ""
 
-#: src/Backup/Api.php:202
+#: src/Backup/Api.php:204
 msgid "The server answered but did not accept this username or password."
 msgstr ""
 
-#: src/Backup/Api.php:203
+#: src/Backup/Api.php:205
 msgid "Enter a server address such as backup.example.ir."
 msgstr ""
 
-#: src/Backup/Api.php:203
+#: src/Backup/Api.php:205
 msgid "No SFTP, FTPS or FTP connection could be made to this server. Check the address and that the port is open."
 msgstr ""
 
-#: src/Backup/Api.php:208
+#: src/Backup/Api.php:210
 msgid "Up to five servers can be added."
 msgstr ""
 
-#: src/Backup/Api.php:221 src/Backup/Mover.php:14
+#: src/Backup/Api.php:223 src/Backup/Mover.php:14
 msgid "This server is no longer in the list."
 msgstr ""
 
-#: src/Backup/Api.php:227
+#: src/Backup/Api.php:229
 msgid "The server could not be reached or did not accept a test file."
 msgstr ""
 
@@ -4401,10 +5443,6 @@ msgstr ""
 
 #: src/Backup/Installer.php:43
 msgid "Start restore"
-msgstr ""
-
-#: src/Backup/Installer.php:44
-msgid "Checking…"
 msgstr ""
 
 #. translators: %s: error code
@@ -4521,6 +5559,30 @@ msgstr ""
 msgid "The Rafoo security check was missing or wrong."
 msgstr ""
 
+#: src/Drill/Api.php:175
+msgid "Choose at least one page to test."
+msgstr ""
+
+#: src/Drill/Api.php:193
+msgid "This rehearsal has already ended. Start a new one."
+msgstr ""
+
+#: src/Drill/Api.php:507
+msgid "This fix does not apply any more. Run the rehearsal again."
+msgstr ""
+
+#: src/Drill/Api.php:511
+msgid "This setting is managed by the network administrator."
+msgstr ""
+
+#: src/Drill/Session.php:383
+msgid "Outage rehearsal is on. Only you see the site as it would be during an international outage."
+msgstr ""
+
+#: src/Drill/Session.php:384
+msgid "Finish the rehearsal"
+msgstr ""
+
 #: src/Geo/Api.php:255 src/Geo/Api.php:339 src/Geo/Nodes.php:170
 msgid "First set up this site as the main host."
 msgstr ""
@@ -4610,24 +5672,24 @@ msgid "Back to the home page"
 msgstr ""
 
 #. translators: %s: host name
-#: src/Http/Guard.php:88
+#: src/Http/Guard.php:102
 #, php-format
 msgid "Rafoo blocked this request to %s because it is on the block list."
 msgstr ""
 
 #. translators: %s: host name
-#: src/Http/Guard.php:98
+#: src/Http/Guard.php:112
 #, php-format
 msgid "The international internet is unavailable. Rafoo skipped this request to %s."
 msgstr ""
 
 #. translators: %s: host name
-#: src/Http/Guard.php:100
+#: src/Http/Guard.php:114
 #, php-format
 msgid "Rafoo skipped this request because %s did not respond recently."
 msgstr ""
 
-#: src/Http/Log.php:189
+#: src/Http/Log.php:196
 msgid "Browser"
 msgstr ""
 
@@ -4648,26 +5710,30 @@ msgid "The message could not be sent."
 msgstr ""
 
 #: src/Peers/Api.php:17
+msgid "rafoo.ir asked to wait a little. Rafoo will try again soon."
+msgstr ""
+
+#: src/Peers/Api.php:21
 msgid "The request could not be prepared."
 msgstr ""
 
-#: src/Peers/Api.php:23
+#: src/Peers/Api.php:27
 msgid "This site has no key for the network. Join again."
 msgstr ""
 
-#: src/Peers/Api.php:50
+#: src/Peers/Api.php:58
 msgid "rafoo.ir did not accept the request."
 msgstr ""
 
-#: src/Peers/Engine.php:55
+#: src/Peers/Engine.php:159
 msgid "This server cannot create a signing key (the sodium extension is missing)."
 msgstr ""
 
-#: src/Peers/Engine.php:73
+#: src/Peers/Engine.php:177
 msgid "rafoo.ir gave an answer that could not be read."
 msgstr ""
 
-#: src/Peers/Engine.php:129
+#: src/Peers/Engine.php:236
 msgid "The task list from rafoo.ir could not be verified."
 msgstr ""
 
@@ -4697,11 +5763,11 @@ msgstr ""
 msgid "Rafoo put back the previous version of %s because the update broke the site. Details are on the Rafoo page."
 msgstr ""
 
-#: src/Services/Embeds.php:68
+#: src/Services/Embeds.php:70
 msgid "This content is not available while the international internet is down."
 msgstr ""
 
-#: src/Services/Embeds.php:70
+#: src/Services/Embeds.php:72
 msgid "Open the original link"
 msgstr ""
 

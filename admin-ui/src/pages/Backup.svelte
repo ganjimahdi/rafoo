@@ -308,7 +308,10 @@
 			<div class="rf-facts">
 				<div><span class="rf-subtle rf-small">{t('backup_last')}</span><strong>{status.last ? ago(status.last) : t('never')}</strong></div>
 				<div><span class="rf-subtle rf-small">{t('backup_next')}</span><strong>{status.next ? date(status.next) : t('backup_off')}</strong></div>
-				<div><span class="rf-subtle rf-small">{t('backup_free')}</span><strong>{status.support.free >= 0 ? bytes(status.support.free) : '—'}</strong></div>
+				<div>
+					<span class="rf-field-label rf-subtle rf-small">{t('backup_free')}<Help text={status.support.space === 'shared' ? t('backup_free_shared') : help('backup_free')} label={t('backup_free')} /></span>
+					<strong>{status.support.free >= 0 ? bytes(status.support.free) : status.support.space === 'shared' ? t('backup_free_quota') : '—'}</strong>
+				</div>
 			</div>
 
 			{#if job && job.status === 'running'}

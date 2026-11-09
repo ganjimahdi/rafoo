@@ -110,6 +110,7 @@ export interface UpdateItem {
 	installed: string;
 	latest: string;
 	in_mirror: boolean;
+	state?: 'update' | 'current' | 'older' | 'missing' | 'own';
 }
 
 export interface UpdatesReport {
@@ -264,6 +265,7 @@ export interface BackupStatus {
 		ftp: boolean;
 		implicit: boolean;
 		free: number;
+		space?: 'quota' | 'disk' | 'shared' | 'unknown';
 		writable: boolean;
 	};
 	invite: { expires: number } | null;
@@ -317,6 +319,18 @@ export interface PeerWatcher {
 	ok_today: number;
 }
 
+export interface PeerSlot {
+	slot: number;
+	scope: 'ir' | 'intl';
+	ref: string;
+	state: 'ok' | 'down' | 'filtered' | 'waiting';
+	at: number;
+	ms: number;
+	code: number;
+	checks_today: number;
+	ok_today: number;
+}
+
 export interface PeerDay {
 	day: string;
 	scope: 'ir' | 'intl';
@@ -333,6 +347,8 @@ export interface PeerRemote {
 	interval: number;
 	intl: 'up' | 'down';
 	watchers: PeerWatcher[] | null;
+	slots?: PeerSlot[] | null;
+	wake_in?: number;
 	days: PeerDay[] | null;
 	assigned: number;
 	watching: number;
@@ -485,4 +501,129 @@ export interface GeoStatus {
 	countries: string[];
 	code?: string;
 	test?: Record<string, GeoTestResult> | null;
+}
+
+export type DrillKind = 'home' | 'post' | 'page' | 'shop' | 'product' | 'cart' | 'checkout' | 'account' | 'login' | 'dashboard' | 'editor' | 'custom' | 'visit';
+export type DrillSeverity = 'blocker' | 'warning' | 'info' | 'handled';
+export type DrillFrame = 'ok' | 'blocked' | 'timeout' | 'error' | 'skipped' | 'manual';
+export type DrillAction = 'download' | 'include' | 'setting' | 'block' | 'allow' | 'scan' | 'sync' | 'resume';
+
+export interface DrillCandidate {
+	kind: DrillKind;
+	url: string;
+	admin: boolean;
+	title: string;
+}
+
+export interface DrillPagePlan {
+	id: number;
+	kind: DrillKind;
+	url: string;
+	base: string;
+	plain: string;
+	admin: boolean;
+	title: string;
+}
+
+export interface DrillSession {
+	run: string;
+	manual: boolean;
+	guest: boolean;
+	started: number;
+	expires: number;
+	pages: DrillPagePlan[];
+	home: string;
+}
+
+export interface DrillReadiness {
+	key: string;
+	ok: boolean;
+	sev: DrillSeverity;
+	fix: string;
+	meta: Record<string, number | boolean>;
+}
+
+export interface DrillFix {
+	a: DrillAction;
+	t: string;
+}
+
+export interface DrillIssue {
+	id: string;
+	cat: string;
+	sev: DrillSeverity;
+	subject: string;
+	pages: number[];
+	count: number;
+	meta: Record<string, string | number | boolean>;
+	fix: DrillFix[];
+	origins: string[];
+}
+
+export interface DrillPageResult {
+	id: number;
+	kind: DrillKind;
+	url: string;
+	title: string;
+	admin: boolean;
+	code: number;
+	server: number;
+	load: number;
+	normal: number;
+	frame: DrillFrame;
+	fatal: boolean;
+	status: 'ok' | 'warning' | 'broken' | 'unknown';
+	counts: Record<DrillSeverity, number>;
+}
+
+export interface DrillReport {
+	run: string;
+	at: number;
+	started: number;
+	mode: 'frame' | 'manual';
+	guest: boolean;
+	score: number;
+	grade: 'ready' | 'good' | 'weak' | 'poor';
+	pages: DrillPageResult[];
+	issues: DrillIssue[];
+	stats: { local: number; handled: number; refused: number; embeds: number; requests: number; foreign: number };
+	readiness: DrillReadiness[];
+	names: Record<string, string>;
+	fixed: string[];
+}
+
+export interface DrillHistory {
+	run: string;
+	at: number;
+	score: number;
+	grade: DrillReport['grade'];
+	mode: DrillReport['mode'];
+	pages: number;
+	counts: Record<DrillSeverity, number>;
+}
+
+export interface DrillView {
+	active: DrillSession | null;
+	candidates: DrillCandidate[];
+	prefs: { kinds: DrillKind[]; custom: string[]; guest: boolean; compare: boolean };
+	readiness: DrillReadiness[];
+	report: DrillReport | null;
+	history: DrillHistory[];
+	paused: boolean;
+	network: boolean;
+	offline: boolean;
+	edition: 'standard' | 'complete';
+	ttl: number;
+	now: number;
+	done?: { state: string; error?: string; key?: string };
+}
+
+export interface DrillClient {
+	u: string;
+	s: number;
+	l: number;
+	r: { u: string; b: number; i: string; d: number }[];
+	x: string[];
+	e: { m: string; f: string; l: number }[];
+	g: string[];
 }

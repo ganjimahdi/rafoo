@@ -12,6 +12,22 @@
 	const id = 'rf-help-' + uid;
 	let open = $state(false);
 	let root: HTMLSpanElement | undefined = $state();
+	let note: HTMLSpanElement | undefined = $state();
+	let shift = $state(0);
+
+	$effect(() => {
+		if (!open || !note) {
+			shift = 0;
+			return;
+		}
+		const gap = 8;
+		const width = document.documentElement.clientWidth;
+		const rect = note.getBoundingClientRect();
+		const rtl = getComputedStyle(note).direction === 'rtl';
+		const over = rtl ? gap - rect.left : rect.right - (width - gap);
+		const room = rtl ? width - gap - rect.right : rect.left - gap;
+		shift = over > 0 ? -Math.max(0, Math.min(over, room)) : 0;
+	});
 
 	function outside(event: PointerEvent) {
 		if (open && root && !root.contains(event.target as Node)) open = false;
@@ -39,7 +55,7 @@
 		<CircleQuestionMark size={16} strokeWidth={1.75} aria-hidden="true" />
 	</button>
 	{#if open}
-		<span {id} class="rf-help-text" role="note">{text}</span>
+		<span {id} class="rf-help-text" role="note" bind:this={note} style:margin-inline-start="{shift}px">{text}</span>
 	{/if}
 </span>
 

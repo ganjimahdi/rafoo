@@ -230,6 +230,20 @@ final class Rest {
 		self::route( '/peers/interval', WP_REST_Server::CREATABLE, 'peers_interval', $site, $interval );
 		self::route( '/peers/leave', WP_REST_Server::CREATABLE, 'peers_leave', $site );
 		self::route( '/peers/check', WP_REST_Server::CREATABLE, 'peers_check', $site );
+		self::route( '/peers/wake', WP_REST_Server::CREATABLE, 'peers_wake', $site );
+		self::route(
+			'/peers/recheck',
+			WP_REST_Server::CREATABLE,
+			'peers_recheck',
+			$site,
+			array(
+				'ref' => array(
+					'type'     => 'string',
+					'required' => true,
+					'pattern'  => '^[A-Za-z0-9_-]{4,40}$',
+				),
+			)
+		);
 		if ( is_multisite() ) {
 			self::route( '/network', WP_REST_Server::READABLE, 'network', $network );
 			self::route(
@@ -420,7 +434,7 @@ final class Rest {
 		return $result;
 	}
 
-	private static function apply( array $changes ) {
+	public static function apply( array $changes ) {
 		$before  = Settings::all();
 		$after   = Settings::update( $changes );
 
@@ -592,6 +606,20 @@ final class Rest {
 	public static function peers_check() {
 		PeerEngine::tick( true );
 		return PeerEngine::status( true );
+	}
+
+	public static function peers_wake() {
+		$woken = PeerEngine::wake();
+		return array_merge( PeerEngine::status( true ), array( 'woken' => $woken ) );
+	}
+
+	public static function peers_recheck( WP_REST_Request $request ) {
+		$result = PeerEngine::recheck( $request['ref'] );
+		if ( is_wp_error( $result ) ) {
+			$result->add_data( array( 'status' => 502 ) );
+			return $result;
+		}
+		return array_merge( PeerEngine::status( true ), array( 'recheck' => $result ) );
 	}
 
 	public static function feedback( WP_REST_Request $request ) {

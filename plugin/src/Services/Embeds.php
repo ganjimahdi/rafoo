@@ -2,6 +2,7 @@
 
 namespace Rafoo\Services;
 
+use Rafoo\Drill\Session;
 use Rafoo\Settings;
 use Rafoo\State;
 
@@ -54,6 +55,7 @@ final class Embeds {
 		if ( '' === $link ) {
 			return $m[0];
 		}
+		Session::asset( 'embed', $link );
 
 		$width  = preg_match( '#\bwidth\s*=\s*["\']?(\d{2,4})#i', $attributes, $w ) ? (int) $w[1] : 0;
 		$height = preg_match( '#\bheight\s*=\s*["\']?(\d{2,4})#i', $attributes, $h ) ? (int) $h[1] : 0;

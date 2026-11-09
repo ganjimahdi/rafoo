@@ -60,7 +60,35 @@ final class Checker {
 				);
 			}
 		}
+		return self::filtering( $targets, $out );
+	}
+
+	public static function filtering( array $targets, array $out ) {
+		foreach ( $targets as $t ) {
+			$id = (int) $t['id'];
+			if ( ! isset( $out[ $id ] ) || $out[ $id ]['ok'] || -2 === $out[ $id ]['code'] ) {
+				continue;
+			}
+			$host = wp_parse_url( $t['url'], PHP_URL_HOST );
+			if ( is_string( $host ) && '' !== $host && ! filter_var( $host, FILTER_VALIDATE_IP ) && self::filtered_ips( (array) gethostbynamel( $host ) ) ) {
+				$out[ $id ]['code'] = -2;
+			}
+		}
 		return $out;
+	}
+
+	public static function filtered_ips( array $ips ) {
+		foreach ( $ips as $ip ) {
+			if ( 0 === strpos( (string) $ip, '10.10.34.' ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static function filter_page( $body ) {
+		$body = strtolower( substr( (string) $body, 0, 4096 ) );
+		return false !== strpos( $body, '10.10.34.3' ) || false !== strpos( $body, 'peyvandha.ir' ) || false !== strpos( $body, 'internet.ir/403' );
 	}
 
 	public static function judge( array $target, $nonce, $code, $body, $ms ) {
@@ -69,6 +97,10 @@ final class Checker {
 			'ms'   => (int) $ms,
 			'code' => (int) $code,
 		);
+		if ( self::filter_page( $body ) ) {
+			$fail['code'] = -2;
+			return $fail;
+		}
 		if ( 200 !== (int) $code ) {
 			return $fail;
 		}
@@ -119,6 +151,6 @@ final class Checker {
 			}
 			$out[ $id ] = self::judge( $t, $nonces[ $id ], (int) wp_remote_retrieve_response_code( $resp ), (string) wp_remote_retrieve_body( $resp ), $ms );
 		}
-		return $out;
+		return self::filtering( $targets, $out );
 	}
 }

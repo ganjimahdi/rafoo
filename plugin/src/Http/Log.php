@@ -2,6 +2,7 @@
 
 namespace Rafoo\Http;
 
+use Rafoo\Drill\Session;
 use Rafoo\Settings;
 
 defined( 'ABSPATH' ) || exit;
@@ -32,6 +33,12 @@ final class Log {
 	}
 
 	public static function record( $host, $outcome, $args = array(), $origin = '' ) {
+		if ( Session::active() ) {
+			if ( 'refused' === $outcome && 'browser' !== $origin ) {
+				Session::request( $host, $outcome, $args, $origin );
+			}
+			return;
+		}
 		if ( '' === $host || ! self::enabled() || ! in_array( $outcome, array( 'ok', 'failed', 'refused' ), true ) ) {
 			return;
 		}
@@ -160,7 +167,7 @@ final class Log {
 			$root = trailingslashit( $root );
 			if ( 0 === strpos( $file, $root ) ) {
 				$slug = strtok( substr( $file, strlen( $root ) ), '/' );
-				if ( 'mu' === $type ) {
+				if ( 'theme' !== $type ) {
 					$slug = preg_replace( '/\.php$/', '', $slug );
 				}
 				return $type . ':' . sanitize_key( $slug );
@@ -183,7 +190,7 @@ final class Log {
 		);
 	}
 
-	private static function names() {
+	public static function names() {
 		$names = array(
 			'core'    => 'WordPress',
 			'browser' => __( 'Browser', 'rafoo' ),

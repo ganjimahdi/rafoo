@@ -21,11 +21,12 @@ final class Source {
 		$packs   = array();
 		foreach ( $plugins as $file => $headers ) {
 			$slug = self::plugin_slug( $file );
-			if ( '' === $slug || ( ! empty( $headers['UpdateURI'] ) && ! self::wporg_uri( $headers['UpdateURI'] ) ) ) {
+			if ( '' === $slug || self::ours( $slug ) || ( ! empty( $headers['UpdateURI'] ) && ! self::wporg_uri( $headers['UpdateURI'] ) ) ) {
 				continue;
 			}
 			$installed = isset( $headers['Version'] ) ? (string) $headers['Version'] : '';
 			$index     = Index::plugin( $slug );
+			$index     = $index && self::same( isset( $headers['Name'] ) ? $headers['Name'] : '', $index ) ? $index : null;
 			$best      = $index ? self::best( $index, $installed ) : null;
 			$packs     = $index ? array_merge( $packs, Translations::pick( $index, 'plugin', $slug, $installed, $locales, $have ) ) : $packs;
 			if ( ! $best ) {
@@ -71,11 +72,13 @@ final class Source {
 		$packs   = array();
 		foreach ( $themes as $slug => $headers ) {
 			$slug = (string) $slug;
-			if ( ! preg_match( self::SLUG, $slug ) || ( ! empty( $headers['UpdateURI'] ) && ! self::wporg_uri( $headers['UpdateURI'] ) ) ) {
+			if ( ! preg_match( self::SLUG, $slug ) || self::ours( $slug ) || ( ! empty( $headers['UpdateURI'] ) && ! self::wporg_uri( $headers['UpdateURI'] ) ) ) {
 				continue;
 			}
 			$installed = isset( $headers['Version'] ) ? (string) $headers['Version'] : '';
 			$index     = Index::theme( $slug );
+			$name      = isset( $headers['Name'] ) ? $headers['Name'] : ( isset( $headers['Title'] ) ? $headers['Title'] : '' );
+			$index     = $index && self::same( $name, $index ) ? $index : null;
 			$best      = $index ? self::best( $index, $installed ) : null;
 			$packs     = $index ? array_merge( $packs, Translations::pick( $index, 'theme', $slug, $installed, $locales, $have ) ) : $packs;
 			if ( ! $best ) {
@@ -129,6 +132,9 @@ final class Source {
 		}
 		$offers = array();
 		foreach ( $picks as $pick ) {
+			if ( '' !== (string) $installed && version_compare( $pick['v'], $installed, '<' ) ) {
+				continue;
+			}
 			$offers[] = self::offer( $pick, $installed );
 		}
 		return $offers;
@@ -208,8 +214,15 @@ final class Source {
 		return Downloader::package_url( $bases[0], $entry['file'], strtolower( $entry['sha256'] ), isset( $entry['size'] ) ? (int) $entry['size'] : 0 );
 	}
 
+	public static function ours( $slug ) {
+		return in_array( (string) $slug, array( 'rafoo', 'rafoo-complete', 'rafoo-point' ), true );
+	}
+
 	public static function plugin_slug( $file ) {
 		$file = (string) $file;
+		if ( 'hello.php' === $file ) {
+			return 'hello-dolly';
+		}
 		$slug = false !== strpos( $file, '/' ) ? dirname( $file ) : basename( $file, '.php' );
 		return preg_match( self::SLUG, $slug ) ? $slug : '';
 	}
@@ -233,7 +246,37 @@ final class Source {
 		return true;
 	}
 
-	private static function wporg_uri( $uri ) {
+	public static function same( $installed, array $index ) {
+		$want = self::words( isset( $index['name'] ) ? $index['name'] : '' );
+		$have = self::words( $installed );
+		if ( ! $want || ! $have ) {
+			return true;
+		}
+		$short = count( $want ) <= count( $have ) ? $want : $have;
+		$long  = count( $want ) <= count( $have ) ? $have : $want;
+		if ( ! array_diff( $short, $long ) || self::lead( $want, $have ) || self::lead( $have, $want ) ) {
+			return true;
+		}
+		similar_text( implode( '', $want ), implode( '', $have ), $percent );
+		return $percent >= 85;
+	}
+
+	private static function lead( array $words, array $other ) {
+		$first = $words[0];
+		return strlen( $first ) >= 4 && ! in_array( $first, array( 'premium', 'free', 'lite', 'plus', 'theme', 'plugin', 'wordpress', 'simple', 'easy', 'advanced', 'ultimate' ), true ) && in_array( $first, $other, true );
+	}
+
+	public static function plain( $name ) {
+		return implode( '', self::words( $name ) );
+	}
+
+	private static function words( $name ) {
+		$name  = strtolower( wp_strip_all_tags( html_entity_decode( (string) $name, ENT_QUOTES, 'UTF-8' ) ) );
+		$parts = preg_split( '/[^\p{L}\p{N}]+/u', $name, -1, PREG_SPLIT_NO_EMPTY );
+		return is_array( $parts ) ? $parts : array();
+	}
+
+	public static function wporg_uri( $uri ) {
 		$host = wp_parse_url( (string) $uri, PHP_URL_HOST );
 		return in_array( $host, array( 'w.org', 'wordpress.org' ), true );
 	}
