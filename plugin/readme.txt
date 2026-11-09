@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,7 +121,7 @@ Rafoo talks to the following services. None of them receives anything about your
 * Cloudflare: `https://www.cloudflare.com/cdn-cgi/trace` ([terms](https://www.cloudflare.com/website-terms/), [privacy](https://www.cloudflare.com/privacypolicy/))
 * Apple: `https://captive.apple.com/hotspot-detect.html` ([terms](https://www.apple.com/legal/internet-services/terms/site.html), [privacy](https://www.apple.com/legal/privacy/))
 * jsDelivr: `https://cdn.jsdelivr.net/` ([terms and privacy](https://www.jsdelivr.com/terms))
-* Rafoo: `https://rafoo.ir/api/v1/status`, which may also return a signed outage notice ([terms and privacy](https://rafoo.ir/privacy))
+* Rafoo: `https://rafoo.ir/api/v1/status`, which may also return a signed outage notice and the number of the latest Rafoo version ([terms and privacy](https://rafoo.ir/privacy))
 * Wbweb mirrors: `https://mirror.wbweb.ir` and `https://wordpress.wbweb.ir` ([terms and privacy](https://wbweb.ir/privacy))
 
 **Copying files.** When your site uses a library or font from a public CDN, Rafoo downloads that same file once from the Wbweb mirror (`https://mirror.wbweb.ir`) and, while the internet works, from the original CDN, to compare and store it. Google Fonts stylesheets and font files are downloaded from `fonts.googleapis.com` and `fonts.gstatic.com` ([Google privacy](https://policies.google.com/privacy)). Only the file address is sent.
@@ -130,7 +130,9 @@ Rafoo talks to the following services. None of them receives anything about your
 
 **Moving a site (only when used).** When an administrator makes a transfer code under Rafoo › Backup, the address of this site's endpoint and a random one-time key are sent to `https://rafoo.ir/api/v1/pair`, which returns a short code that expires within a day. Site data never passes through rafoo.ir; the copy goes directly between the two sites. A long code that works without rafoo.ir is always shown as well.
 
-**Cooperative network (off by default).** Only if an administrator joins the network under Rafoo › Monitoring, the site address, a public signing key, the chosen check interval, the edition and version are sent to `https://rafoo.ir/api/v1/peers/join`. When the Monitoring page is opened, or Recheck is pressed, a signed request to `https://rafoo.ir/api/v1/peers/wake` or `/peers/recheck` asks the watching members to check the site at once; rafoo.ir then calls their `?rafoo-ping` address with a signed task. rafoo.ir checks the site once at `?rafoo-ping`, derives the country and network of the server from the request (the IP address is not stored) and sends back a signed list of a few other member sites. The site then requests those members' `?rafoo-ping` address in the background, every one or five minutes, and sends the results (time, whether a signed answer arrived, response time) to `https://rafoo.ir/api/v1/peers/receipts`. Other members request this site's `?rafoo-ping` address the same way. No page, content, user or visitor data is checked or sent. Leaving the network or deactivating Rafoo deletes the membership.
+**Cooperative network (off by default).** Only if an administrator joins the network under Rafoo › Monitoring, the site address, a public signing key, the chosen check interval, the edition and version are sent to `https://rafoo.ir/api/v1/peers/join`. When the Monitoring page is opened, or Recheck is pressed, a signed request to `https://rafoo.ir/api/v1/peers/wake` or `/peers/recheck` asks the watching members to check the site at once; rafoo.ir then calls their `?rafoo-ping` address with a signed task. rafoo.ir checks the site once at `?rafoo-ping`, derives the country and network of the server from the request (the IP address is not stored) and sends back a signed list of a few other member sites. The site then requests those members' `?rafoo-ping` address in the background, every one or five minutes, and sends the results (time, whether a signed answer arrived, response time) to `https://rafoo.ir/api/v1/peers/receipts`. Other members request this site's `?rafoo-ping` address the same way. No page, content, user or visitor data is checked or sent. Leaving the network or deactivating Rafoo deletes the membership. When a member stops contacting rafoo.ir, rafoo.ir checks its `?rafoo-ping` address and removes it once it no longer answers as Rafoo; if Rafoo is still active there, it joins again by itself, unless the rafoo.ir administrator removed and blocked it.
+
+**Rafoo updates (copies from rafoo.ir or GitHub).** A copy of Rafoo downloaded from rafoo.ir or GitHub asks `https://rafoo.ir/api/v1/releases/rafoo.json` (Rafoo Complete: `rafoo-complete.json`) for the latest version at most every six hours, or at once when the status answer names a newer version, and downloads updates from `https://rafoo.ir/downloads/`, checking each file against its signed SHA-256 hash. Nothing about the site is sent. The copy from wordpress.org updates only through wordpress.org.
 
 **Backup servers (only when added).** Backups are sent only to servers an administrator adds under Rafoo › Backup, using the login entered there.
 
@@ -219,6 +221,9 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.5.1 =
+* Fix: copies of Rafoo from rafoo.ir did not offer new versions. Both Rafoo and Rafoo Complete now show updates from rafoo.ir in WordPress updates, a few minutes after each release, and install them with their signed hash checked. Updates keep working while Rafoo is paused.
+* The cooperative network checks members that went quiet and removes those that no longer answer as Rafoo, so removed plugins and deleted points no longer count as downtime. A site that is still active joins again by itself.
 
 = 1.5.0 =
 * Outage rehearsal: test the whole site in outage mode, only for you, with a live preview, comparison with normal mode, a report that names the plugin or theme behind each problem, one-click fixes through the Rafoo library and settings, a score, history and a 15-minute browse-yourself mode.
@@ -270,6 +275,8 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.5.1 =
+Fixes updates from rafoo.ir: after this version, new versions of Rafoo appear in WordPress updates by themselves.
 
 = 1.5.0 =
 Outage rehearsal, monitoring results within seconds with Recheck, three checks inside Iran and two abroad, and a smaller plugin zip.

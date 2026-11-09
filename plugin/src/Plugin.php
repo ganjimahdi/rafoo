@@ -57,6 +57,10 @@ final class Plugin {
 		return 'complete' === RAFOO_EDITION && is_readable( __DIR__ . '/Updates/Updates.php' );
 	}
 
+	public static function self_updates() {
+		return is_readable( __DIR__ . '/SelfUpdate/Release.php' );
+	}
+
 	public function boot() {
 		if ( $this->booted ) {
 			return;
@@ -96,6 +100,9 @@ final class Plugin {
 		}
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			Command::register();
+		}
+		if ( self::self_updates() ) {
+			SelfUpdate\Release::register();
 		}
 		if ( self::complete() && ! Settings::paused() ) {
 			Updates\Updates::register();

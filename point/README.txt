@@ -1,4 +1,4 @@
-نقطه پایش رفو (Rafoo Point) — نسخه 2.0.0
+نقطه پایش رفو (Rafoo Point) — نسخه 2.1.0
 
 این پوشه یک نقطه شبکه هم‌یاری رفو می‌سازد، بدون وردپرس. نقطه دقیقاً مثل افزونه رفو کار می‌کند:
 به درخواست امضاشده ?rafoo-ping پاسخ می‌دهد، هر دقیقه سایت‌هایی را که rafoo.ir به آن می‌سپارد می‌سنجد
@@ -21,6 +21,9 @@
    php /home/USER/public_html/index.php
 5. تمام. آمار در زبانه «موتور پایش» سایت‌های عضو کم‌کم پر می‌شود.
 
+تازه‌های 2.1
+- اگر مدیر rafoo.ir نقطه را از شبکه حذف و مسدود کند، نقطه به‌جای تلاش هر ده دقیقه، یک روز صبر می‌کند و بعد دوباره می‌پرسد.
+
 تازه‌های 2.0
 - بررسی فوری: وقتی مدیر یک سایت عضو صفحه پایش را باز می‌کند یا «بررسی مجدد» را می‌زند، rafoo.ir نقطه را بیدار می‌کند و نقطه همان لحظه آن سایت را می‌سنجد.
 - تشخیص فیلترینگ: اگر پاسخ سایت صفحه فیلترینگ باشد، نتیجه «فیلتر شده» ثبت می‌شود.
@@ -34,12 +37,12 @@
 - هر هاست فقط یک نقطه. نقطه‌ها روی شرکت‌های میزبانی و شهرهای مختلف، نتیجه دقیق‌تری می‌دهند.
 - اگر فایروال یا افزونه امنیتی دارید، درخواست‌های ?rafoo-ping را مجاز کنید.
 - نقطه روی هاست‌های دیگر و سایت‌های همان سرور اثری ندارد: فقط همین پوشه را می‌نویسد و هر دقیقه چند درخواست کوچک می‌فرستد.
-- برای حذف، پوشه را پاک کنید. rafoo.ir نقطه بی‌پاسخ را پس از ۳ روز کنار می‌گذارد.
+- برای حذف، پوشه را پاک کنید. rafoo.ir نقطه‌ای را که دیگر پاسخ رفو نمی‌دهد پس از دو بررسی با فاصله یک ساعت از شبکه حذف می‌کند.
 - sodium_compat از Paragon Initiative Enterprises با مجوز ISC است (sodium_compat/LICENSE).
 
 ---
 
-Rafoo Point 2.0.0 — a cooperative monitoring point without WordPress.
+Rafoo Point 2.1.0 — a cooperative monitoring point without WordPress.
 Upload the files to an empty host, open https://your-host/?rafoo-status once, and add a cron job every
 minute with the command shown on that page. The home page only shows a short public introduction.
 Needs PHP 7.2+ with curl and a writable folder. The sodium extension is optional: the bundled
@@ -47,4 +50,5 @@ sodium_compat (ISC license) is used when it is missing.
 New in 2.0: instant checks when rafoo.ir wakes the point, filtering detection, signed automatic
 updates (turn off with 'auto_update' => false in config.php; check by hand with php index.php --update)
 and lighter batches with back-off.
+New in 2.1: a point removed and blocked by the rafoo.ir administrator waits a day before asking to join again.
 Never copy the data folder to another host: it holds this point's signing key.

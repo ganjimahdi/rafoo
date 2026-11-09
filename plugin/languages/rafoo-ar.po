@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.5.0\n"
+"Project-Id-Version: Rafoo 1.5.1\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5727,15 +5727,15 @@ msgstr "لا يملك هذا الموقع مفتاحًا للشبكة. انضم 
 msgid "rafoo.ir did not accept the request."
 msgstr "لم يقبل rafoo.ir الطلب."
 
-#: src/Peers/Engine.php:159
+#: src/Peers/Engine.php:161
 msgid "This server cannot create a signing key (the sodium extension is missing)."
 msgstr "لا يستطيع هذا الخادم إنشاء مفتاح توقيع (امتداد sodium مفقود)."
 
-#: src/Peers/Engine.php:177
+#: src/Peers/Engine.php:179
 msgid "rafoo.ir gave an answer that could not be read."
 msgstr "أعاد rafoo.ir إجابة تعذّرت قراءتها."
 
-#: src/Peers/Engine.php:236
+#: src/Peers/Engine.php:238
 msgid "The task list from rafoo.ir could not be verified."
 msgstr "تعذّر التحقق من قائمة المهام الواردة من rafoo.ir."
 
@@ -5765,6 +5765,18 @@ msgstr "لا يجمع Rafoo أي معلومات عن الزوار ولا يرس�
 msgid "Rafoo put back the previous version of %s because the update broke the site. Details are on the Rafoo page."
 msgstr "أعاد Rafoo الإصدار السابق من %s لأن التحديث أفسد الموقع. التفاصيل في صفحة Rafoo."
 
+#: src/SelfUpdate/Downloader.php:49
+msgid "The package could not be downloaded from the domestic mirror."
+msgstr "تعذّر تنزيل الحزمة من المرآة المحلية."
+
+#: src/SelfUpdate/Downloader.php:82
+msgid "The downloaded package has the wrong size and was not installed."
+msgstr "حجم الحزمة المنزّلة غير صحيح فلم تُثبَّت."
+
+#: src/SelfUpdate/Downloader.php:86
+msgid "The downloaded package did not match its signed hash and was not installed."
+msgstr "لم تطابق الحزمة المنزّلة بصمتها الموقّعة فلم تُثبَّت."
+
 #: src/Services/Embeds.php:70
 msgid "This content is not available while the international internet is down."
 msgstr "هذا المحتوى غير متاح ما دام الإنترنت الدولي مقطوعًا."
@@ -5772,18 +5784,6 @@ msgstr "هذا المحتوى غير متاح ما دام الإنترنت ال�
 #: src/Services/Embeds.php:72
 msgid "Open the original link"
 msgstr "افتح الرابط الأصلي"
-
-#: src/Updates/Downloader.php:49
-msgid "The package could not be downloaded from the domestic mirror."
-msgstr "تعذّر تنزيل الحزمة من المرآة المحلية."
-
-#: src/Updates/Downloader.php:82
-msgid "The downloaded package has the wrong size and was not installed."
-msgstr "حجم الحزمة المنزّلة غير صحيح فلم تُثبَّت."
-
-#: src/Updates/Downloader.php:86
-msgid "The downloaded package did not match its signed hash and was not installed."
-msgstr "لم تطابق الحزمة المنزّلة بصمتها الموقّعة فلم تُثبَّت."
 
 #: plugin header
 msgid "Rafoo – Offline-Ready Assets & Updates"

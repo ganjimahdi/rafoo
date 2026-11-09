@@ -1,6 +1,6 @@
 <?php
 
-const RP_VERSION    = '2.0.0';
+const RP_VERSION    = '2.1.0';
 const RP_ENDPOINT   = 'https://rafoo.ir/api/v1/peers/';
 const RP_PATH       = '/api/v1/peers/';
 const RP_SIGNAL     = 'https://rafoo.ir/api/v1/status';
@@ -16,6 +16,7 @@ const RP_MAX_BATCH  = 600;
 const RP_MAX_TARGET = 20;
 const RP_SIGNAL_TTL = 600;
 const RP_REJOIN     = 600;
+const RP_BLOCKED    = 86400;
 const RP_GUARD      = "<?php exit; ?>\n";
 const RP_WAKE       = 'rafoo-wake';
 const RP_UPDATE     = 'https://rafoo.ir/api/v1/point/latest';
@@ -342,6 +343,9 @@ function rp_fail( $message, array $extra = array() ) {
 	);
 }
 
+function rp_blocked( array $state, $now ) {
+	return isset( $state['blocked_until'] ) && (int) $state['blocked_until'] > $now;
+}
 function rp_join( $url ) {
 	$state = rp_keys();
 	if ( empty( $state['pk'] ) ) {
@@ -366,6 +370,9 @@ function rp_join( $url ) {
 		25
 	);
 	if ( isset( $reply['error'] ) ) {
+		if ( isset( $reply['kind'] ) && 'blocked' === $reply['kind'] ) {
+			rp_update( array( 'blocked_until' => time() + RP_BLOCKED ) );
+		}
 		rp_fail( $reply['error'] );
 		return false;
 	}
@@ -387,8 +394,9 @@ function rp_join( $url ) {
 			'tasks'     => array(),
 			'issued_at' => 0,
 			'tasks_try' => 0,
-			'next'      => 0,
-			'error'     => '',
+			'next'          => 0,
+			'error'         => '',
+			'blocked_until' => 0,
 		)
 	);
 	rp_write( 'log', array() );
@@ -817,7 +825,7 @@ function rp_tick( $force = false ) {
 	$url   = '' !== rp_config()['url'] ? rp_site( rp_config()['url'] ) : ( isset( $state['url'] ) ? (string) $state['url'] : '' );
 	if ( empty( $state['member'] ) ) {
 		$tried = isset( $state['join_try'] ) ? (int) $state['join_try'] : 0;
-		if ( '' !== $url && ( $force || $now - $tried >= RP_REJOIN ) ) {
+		if ( '' !== $url && ( $force || ( $now - $tried >= RP_REJOIN && ! rp_blocked( $state, $now ) ) ) ) {
 			rp_join( $url );
 		}
 		flock( $lock, LOCK_UN );
@@ -1109,7 +1117,7 @@ function rp_ago( $at ) {
 function rp_visit() {
 	$state = rp_keys();
 	$url   = '' !== rp_config()['url'] ? rp_site( rp_config()['url'] ) : rp_request_url();
-	if ( empty( $state['member'] ) && '' !== $url && rp_ready() ) {
+	if ( empty( $state['member'] ) && '' !== $url && rp_ready() && ! rp_blocked( $state, time() ) ) {
 		$tried = isset( $state['join_try'] ) ? (int) $state['join_try'] : 0;
 		if ( time() - $tried >= 60 ) {
 			rp_join( $url );

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rafoo\Updates;
+namespace Rafoo\SelfUpdate;
 
 use Rafoo\Http\Client;
 use Rafoo\Http\Hosts;

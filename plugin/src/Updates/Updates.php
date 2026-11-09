@@ -4,6 +4,7 @@ namespace Rafoo\Updates;
 
 use Rafoo\Admin\Rest;
 use Rafoo\Mirror\Index;
+use Rafoo\SelfUpdate\Downloader;
 use Rafoo\Settings;
 use Rafoo\State;
 use WP_REST_Server;
@@ -22,7 +23,6 @@ final class Updates {
 		add_filter( 'pre_http_request', array( __CLASS__, 'intercept' ), 1, 3 );
 		add_filter( 'upgrader_pre_download', array( __CLASS__, 'download' ), 10, 2 );
 		add_action( 'rafoo_rest_routes', array( __CLASS__, 'routes' ) );
-		Release::register();
 	}
 
 	public static function active() {

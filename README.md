@@ -16,6 +16,7 @@ Free WordPress plugin that keeps sites fast and working when the international i
 | Where | [rafoo.ir](https://rafoo.ir), wordpress.org (in review) | [rafoo.ir](https://rafoo.ir) |
 | Local copies, outage mode, outage rehearsal, browser guard, captcha, safe updates, backups, multiple hosts with geo DNS (beta), monitoring, Site Health, Multisite | yes | yes |
 | Updates of WordPress, plugins, themes and translations from the signed Iranian mirror | no | yes |
+| Updates of Rafoo itself | from rafoo.ir (zips from rafoo.ir and GitHub); from wordpress.org (`-wporg.zip`) | from rafoo.ir |
 | Backup servers | SFTP, FTPS, FTP | also implicit FTPS (port 990), and FTP over cURL on hosts without PHP's FTP extension |
 
 Both editions are free and share the same code. Install only one; activating Rafoo Complete deactivates Rafoo. Ready-to-install zips of every version are on the [Releases](../../releases) page and on [rafoo.ir](https://rafoo.ir/#download), with the same SHA-256 hashes. What changed in each version: [CHANGELOG.md](CHANGELOG.md).
@@ -63,8 +64,9 @@ Both editions are free and share the same code. Install only one; activating Raf
 **Monitoring**
 - Opt-in cooperative network of Rafoo sites that check each other from three points inside and two outside Iran, shown as First, Second and Third check without revealing any member's network or location.
 - Opening the Monitoring page wakes the watching members through a signed task from rafoo.ir, so results arrive in seconds; Recheck repeats one failed check. Answers from the Iranian filtering page (or DNS answers in 10.10.34.0/24) are reported as filtered.
+- Members that stop contacting rafoo.ir are verified, not dropped on a timer: rafoo.ir asks their `?rafoo-ping` address for a signed answer. A quiet member that still answers stays monitored but stops watching others; one that opens without a Rafoo answer is taken out of the checks at once and removed after a second answer an hour later; one that cannot be reached is taken out after a week and removed after two weeks. Checks are put off when most of them fail together or, for members abroad, while the international internet is down. A watcher reporting a missing Rafoo answer brings the check forward. The rafoo.ir administrator can also check, remove and block members by hand. A site removed while Rafoo is still active there joins again by itself.
 - The rafoo.ir side is built for a million members: a dense in-memory assignment plan (about 1 s and 45 MB for 1M sites), in-memory replay protection, receipts merged every 5 s with `COPY`, monthly partitions for daily totals and cached statistics.
-- **Rafoo Point** (`point/`): a standalone PHP script that turns an empty host into a monitoring point without WordPress. Version 2.0 bundles sodium_compat, answers wake requests, detects filtering, checks in batches, backs off when rafoo.ir is busy and updates itself from a signed release.
+- **Rafoo Point** (`point/`): a standalone PHP script that turns an empty host into a monitoring point without WordPress. It bundles sodium_compat, answers wake requests, detects filtering, checks in batches, backs off when rafoo.ir is busy and updates itself from a signed release; since 2.1 a point blocked by the administrator waits a day before asking again.
 
 **Site Health, Multisite and languages**
 - Four Site Health checks (connection state, checks on time, local copies, pause) and a Rafoo section in Site Health › Info.
@@ -81,6 +83,7 @@ WordPress 6.5 or later, PHP 7.4 to 8.4. Apache, LiteSpeed or Nginx. Multisite is
 1. Install the zip from Plugins › Add New › Upload, or from wordpress.org once it is listed.
 2. Activate it. A short setup offers three ready-made setups or a step-by-step choice.
 3. On low-traffic sites add a real cron job that requests `wp-cron.php` every minute, so outages are noticed on time. Site Health tells you if checks are late.
+4. New versions appear under Dashboard › Updates. The signed status answer from rafoo.ir names the latest version, so a release shows up within minutes; every package is checked against its signed SHA-256 hash before WordPress installs it. Sites on the standard edition 1.5.0 or older need one manual update to 1.5.1.
 
 ## Settings
 

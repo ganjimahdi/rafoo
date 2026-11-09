@@ -18,6 +18,8 @@ final class Engine {
 
 	const WAKE_EVERY = 120;
 
+	const REJOIN = 3600;
+
 	public static function serve() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public, signed reachability answer; the nonce is the caller's challenge, not a WordPress form.
 		$nonce = isset( $_GET[ self::QUERY ] ) ? sanitize_text_field( wp_unslash( $_GET[ self::QUERY ] ) ) : '';
@@ -225,7 +227,7 @@ final class Engine {
 		);
 		if ( is_wp_error( $result ) ) {
 			if ( 'rafoo_peer_not_member' === $result->get_error_code() ) {
-				Keys::update( array( 'member' => 0 ) );
+				self::dropped();
 			}
 			Keys::update( array( 'tasks_try' => time() ) );
 			return $result;
@@ -262,8 +264,39 @@ final class Engine {
 		return true;
 	}
 
+	public static function dropped() {
+		Keys::update(
+			array(
+				'member'     => 0,
+				'rejoin'     => 1,
+				'rejoin_try' => 0,
+				'tasks'      => array(),
+			)
+		);
+		delete_transient( self::STATUS );
+	}
+
+	public static function rejoin( $now = null ) {
+		$now   = null === $now ? time() : (int) $now;
+		$state = Keys::data();
+		if ( Keys::member() || empty( $state['rejoin'] ) || '' === Keys::public_key() || $now - ( isset( $state['rejoin_try'] ) ? (int) $state['rejoin_try'] : 0 ) < self::REJOIN ) {
+			return false;
+		}
+		Keys::update( array( 'rejoin_try' => $now ) );
+		$result = self::join( isset( $state['interval'] ) ? (int) $state['interval'] : 300 );
+		if ( is_wp_error( $result ) ) {
+			if ( 'rafoo_peer_blocked' === $result->get_error_code() ) {
+				Keys::update( array( 'rejoin' => 0 ) );
+			}
+			return false;
+		}
+		Keys::update( array( 'rejoin' => 0 ) );
+		return true;
+	}
+
 	public static function tick( $force = false ) {
 		if ( ! Keys::member() ) {
+			self::rejoin();
 			return;
 		}
 		$now   = time();
@@ -325,7 +358,7 @@ final class Engine {
 		$result = Api::call( 'receipts', array( 'items' => $items ), 10, true );
 		if ( is_wp_error( $result ) ) {
 			if ( 'rafoo_peer_not_member' === $result->get_error_code() ) {
-				Keys::update( array( 'member' => 0 ) );
+				self::dropped();
 			}
 			$log['flush_at'] = $now;
 			return $log;
@@ -378,7 +411,7 @@ final class Engine {
 			if ( is_wp_error( $result ) ) {
 				$local['error'] = $result->get_error_message();
 				if ( 'rafoo_peer_not_member' === $result->get_error_code() ) {
-					Keys::update( array( 'member' => 0 ) );
+					self::dropped();
 					$local['member'] = false;
 				}
 				return $local;

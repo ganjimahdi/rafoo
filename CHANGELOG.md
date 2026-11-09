@@ -4,6 +4,30 @@ All notable changes to Rafoo. Both editions share one version number: **Rafoo** 
 
 Downloads: [GitHub Releases](https://github.com/ganjimahdi/rafoo/releases) and [rafoo.ir](https://rafoo.ir).
 
+## [1.5.1] - 2026-11-09
+
+### Fixed
+- **Update system.** Copies of Rafoo installed from rafoo.ir did not offer new versions in WordPress updates. The standard edition had no update check at all, and Rafoo Complete only saw a new version after up to a day of caches. Both editions now check `rafoo.ir` for their own release, and the update shows in WordPress updates a few minutes after each release. Every package is downloaded from `rafoo.ir/downloads/` and installed only when its signed SHA-256 hash and size match.
+- Updates of Rafoo itself keep working while Rafoo is paused.
+- The rafoo.ir admin page of the network no longer fails when the network has a single member.
+
+### Added
+- **Update pulse.** The signed status answer from rafoo.ir, which Rafoo already reads every few minutes, now carries the number of the latest version. When it names a newer one, Rafoo fetches the signed release and adds it to WordPress updates at once.
+- **Member verification in the cooperative network.** rafoo.ir checks every member that stops contacting it. Each check asks the member's `?rafoo-ping` address for a signed answer:
+  - A member that still answers stays as a monitored site but no longer watches others.
+  - A member whose site opens without a Rafoo answer (plugin removed, point deleted, key changed, domain gone) is taken out of the checks at once and removed after a second answer an hour later.
+  - A member that cannot be reached at all stays monitored for a week, then is taken out, and is removed after two weeks.
+  - A watcher seeing no Rafoo answer brings the check forward.
+  - Checks are put off while the international internet is down for members abroad, or when most checks fail at once, so a network problem on rafoo.ir's side removes nobody.
+- **Manual removal.** The rafoo.ir administrator can check any member on demand, remove it from the network, and optionally block it from joining again. Removed members are listed with the reason, and blocks can be lifted.
+- A site that was removed while Rafoo is still active there joins again by itself, at most once an hour, unless it was blocked.
+
+### Changed
+- The copy submitted to wordpress.org (`rafoo-1.5.1-wporg.zip`) has no update code and updates only through wordpress.org. The copies on rafoo.ir and GitHub carry the `Update URI: https://rafoo.ir/rafoo` header.
+
+### Note
+- Sites running the standard edition 1.5.0 or older need one manual update to 1.5.1. After that, updates arrive by themselves. Rafoo Complete 1.4.0 and 1.5.0 find 1.5.1 on their own within a day.
+
 ## [1.5.0] - 2026-11-09
 
 ### Added
@@ -107,6 +131,10 @@ First release.
 
 A standalone PHP script (`point/`) that turns an empty host into a monitoring point of the cooperative network, without WordPress.
 
+### [Point 2.1.0] - 2026-11-09
+- After the rafoo.ir administrator removes and blocks a point, it waits a day before asking to join again instead of every ten minutes.
+- Points on 2.0 update to 2.1 by themselves.
+
 ### [Point 2.0.0] - 2026-11-09
 - Bundles sodium_compat, so the sodium PHP extension is no longer needed.
 - Answers wake requests from rafoo.ir and checks a site at once.
@@ -126,20 +154,24 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 
 ## خلاصه فارسی
 
+- **۱٫۵٫۱:** سیستم به‌روزرسانی فیکس شد: هر دو نسخه رفو، معمولی و کامل، نسخه تازه rafoo.ir را چند دقیقه بعد از انتشار در بخش به‌روزرسانی‌های وردپرس نشان می‌دهند و با هش امضاشده نصب می‌کنند. شبکه هم‌یاری عضوی را که دیگر تماس نمی‌گیرد بررسی می‌کند و اگر واقعاً رفو آنجا نباشد حذفش می‌کند. مدیر rafoo.ir هم می‌تواند عضوی را دستی حذف و مسدود کند. سایت‌هایی که نسخه معمولی ۱٫۵٫۰ یا قدیمی‌تر دارند، باید یک‌بار دستی به ۱٫۵٫۱ به‌روز شوند.
 - **۱٫۵٫۰:** مانور قطعی، نتیجه پایش در چند ثانیه و دکمه «بررسی مجدد»، ۳ بررسی داخل و ۲ بررسی خارج ایران، تشخیص فیلترینگ، zip کوچک‌تر، آمادگی شبکه برای یک میلیون سایت. رفع ایراد: فضای خالی روی هاست اشتراکی، پوشش مخزن از فهرست واقعی مخزن Wbweb، و دست نزدن به افزونه و قالب تجاری مثل Divi. زبانه «چند هاست» حالا «Geo DNS» نام دارد.
 - **۱٫۴٫۰:** چند هاست با DNS جغرافیایی (بتا) و قالب تازه پشتیبان برای سایت‌های بسیار بزرگ.
 - **۱٫۳٫۰:** نگهبان مرورگر، فهرست سیاه، Heartbeat هوشمند، کلید توقف، دکمه راهنما، سلامت سایت، تنظیمات شبکه Multisite و زبان‌های عربی، ترکی و روسی.
 - **۱٫۲٫۰:** موتور پایش و شبکه هم‌یاری رفو.
 - **۱٫۱٫۰:** راه‌اندازی بعد از فعال‌سازی، کپچای داخلی، آپدیت امن با برگشت خودکار، پشتیبان و انتقال سایت، و کمک در قطعی برای ایمیل، تحلیل و ورود اجتماعی.
 - **۱٫۰٫۰:** نخستین نسخه: نسخه محلی فایل‌های CDN و Google Fonts، حالت قطعی خودکار و رد فوری درخواست‌های خارجی در قطعی.
+- **نقطه پایش ۲٫۱٫۰:** بعد از حذف و مسدود شدن به‌دست مدیر rafoo.ir، یک روز صبر می‌کند و بعد دوباره درخواست پیوستن می‌دهد. نقطه‌های ۲٫۰ خودشان به‌روز می‌شوند.
 - **نقطه پایش ۲٫۰٫۰:** بی‌نیاز از افزونه sodium، بررسی فوری، تشخیص فیلترینگ و به‌روزرسانی خودکار امضاشده.
 
+[1.5.1]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.1
 [1.5.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.0
 [1.4.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.4.0
 [1.3.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.3.0
 [1.2.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.2.0
 [1.1.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.1.0
 [1.0.0]: https://rafoo.ir
+[Point 2.1.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.1
 [Point 2.0.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.0
 [Point theme 1.0.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.0
 [Point 1.0.0]: https://github.com/ganjimahdi/rafoo/tree/main/point

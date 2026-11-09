@@ -2,6 +2,7 @@
 
 namespace Rafoo\Updates;
 
+use Rafoo\SelfUpdate\Downloader;
 use Rafoo\Settings;
 
 defined( 'ABSPATH' ) || exit;
