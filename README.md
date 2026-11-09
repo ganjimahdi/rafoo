@@ -18,7 +18,7 @@ Free WordPress plugin that keeps sites fast and working when the international i
 | Updates of WordPress, plugins, themes and translations from the signed Iranian mirror | no | yes |
 | Backup servers | SFTP, FTPS, FTP | also implicit FTPS (port 990), and FTP over cURL on hosts without PHP's FTP extension |
 
-Both editions are free and share the same code. Install only one; activating Rafoo Complete deactivates Rafoo. Ready-to-install zips of every version are on the [Releases](../../releases) page and on [rafoo.ir](https://rafoo.ir/#download), with the same SHA-256 hashes.
+Both editions are free and share the same code. Install only one; activating Rafoo Complete deactivates Rafoo. Ready-to-install zips of every version are on the [Releases](../../releases) page and on [rafoo.ir](https://rafoo.ir/#download), with the same SHA-256 hashes. What changed in each version: [CHANGELOG.md](CHANGELOG.md).
 
 ## Features
 
@@ -161,4 +161,4 @@ GPL-2.0-or-later. See [LICENSE](LICENSE). The Rafoo and Wbweb names and logos ar
 
 امکانات: نسخه محلی کتابخانه‌ها و فونت‌ها از آینه داخلی، تشخیص خودکار قطعی، مانور قطعی با اصلاح یک‌کلیکی، نگهبان مرورگر و فهرست سیاه، ادغام درخواست‌های تکراری و Heartbeat هوشمند، کلید توقف، کپچای داخلی، به‌روزرسانی امن، پشتیبان و انتقال سایت حتی برای سایت‌های بسیار بزرگ، چند هاست با DNS جغرافیایی (بتا) بدون آسیب به سئو، موتور پایش، سلامت سایت، تنظیمات شبکه Multisite و رابط فارسی، انگلیسی، عربی، ترکی و روسی با دکمه راهنما برای هر بخش.
 
-دانلود، راهنما و پایش لحظه‌ای اینترنت ایران در [rafoo.ir](https://rafoo.ir). پرسش و گزارش اشکال را در [Issues](../../issues) یا از [rafoo.ir/contact](https://rafoo.ir/contact) بفرستید.
+دانلود، راهنما و پایش لحظه‌ای اینترنت ایران در [rafoo.ir](https://rafoo.ir). تغییرات هر نسخه در [CHANGELOG.md](CHANGELOG.md). پرسش و گزارش اشکال را در [Issues](../../issues) یا از [rafoo.ir/contact](https://rafoo.ir/contact) بفرستید.
