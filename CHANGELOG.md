@@ -4,6 +4,24 @@ All notable changes to Rafoo. Both editions share one version number: **Rafoo** 
 
 Downloads: [GitHub Releases](https://github.com/ganjimahdi/rafoo/releases) and [rafoo.ir](https://rafoo.ir).
 
+## [1.6.0] - 2026-11-11
+### Added
+- **Rafoo Shield**, a web application firewall in both editions, on in Smart mode by default.
+  - Runs when Rafoo is included, with Rafoo moved to the front of the plugin list, or before WordPress with one click through `auto_prepend_file`. The setting is written to `.htaccess` or `.user.ini` depending on the server and is removed on deactivation.
+  - Stops SQL injection, cross-site scripting, file reading, command execution, PHP object injection, dangerous uploads (PHP files, scripts in SVG), SSRF, XML entity attacks, vulnerability scanners and probes for configuration files, backups and version control folders. Inputs are decoded up to three times before matching.
+  - Locks sign-in after repeated failures (WordPress login, WooCommerce, XML-RPC, application passwords), limits request floods and 404 bursts, closes XML-RPC multicall and hides the user list from visitors.
+  - Three modes: **Smart**, **Strict** and **Fortress**. Fortress asks each new visitor for a few-second browser check, built in and without outside services. Payment returns from Iranian gateways, Rafoo's signed endpoints and verified search engine bots always pass.
+  - Editors and administrators keep using page builders freely: their posted content skips the content rules, while uploads, object injection and virtual patches are still checked.
+  - Reads the real visitor address behind Cloudflare, ArvanCloud, Geo DNS copies and your own proxies, without trusting forged headers.
+  - Stop pages in the site language with a reference code, and matching JSON answers for REST and AJAX.
+- **Community defense** (off by default). Member sites report the addresses they stopped every ten minutes, signed with the site key. rafoo.ir lists an address only when at least three members on two networks report it, with new members counting half. Addresses abroad are blocked; Iranian addresses get a browser check because mobile networks share addresses. Listings last 6 hours, then 24 hours, 3 days and 7 days on repeat. Members download a signed list, and the status pulse announces new lists.
+- **Virtual patches** from rafoo.ir, applied only on sites with the vulnerable version of the named plugin.
+- **CDN edge blocking**: long blocks are sent to ArvanCloud firewall rules or Cloudflare IP access rules, at most 200, and removed when they expire. The Geo DNS key can be reused.
+- Shield tab with attack types, busiest addresses and paths, events with Allow and Block buttons, lists and settings; a Security card in Settings, a card in the overview and a dashboard widget with a one-click switch to fortress mode.
+- rafoo.ir admin page for community defense: members, reports, listed addresses with release, trending targeted plugins and a virtual patch editor that tests every pattern before saving.
+### Changed
+- The suggested privacy policy text describes the shield and its cookies.
+
 ## [1.5.1] - 2026-11-09
 
 ### Fixed

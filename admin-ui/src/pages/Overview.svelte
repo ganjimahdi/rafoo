@@ -7,7 +7,8 @@
 	import Stat from '../components/Stat.svelte';
 	import { ago, bytes, date, duration, help, num, t } from '../lib/i18n';
 	import { store } from '../lib/store.svelte';
-	import type { Override } from '../lib/types';
+	import { api } from '../lib/api';
+	import type { Override, ShieldMode } from '../lib/types';
 
 	let checking = $state(false);
 	let error = $state('');
@@ -36,6 +37,17 @@
 	}
 
 	let pausing = $state(false);
+	let fortifying = $state(false);
+
+	async function fortress(mode: ShieldMode) {
+		fortifying = true;
+		await run(async () => {
+			await api('shield/mode', 'POST', { mode });
+			store.settings = { ...store.settings, shield: mode };
+			await store.refresh();
+		});
+		fortifying = false;
+	}
 
 	async function togglePause() {
 		pausing = true;
@@ -117,6 +129,23 @@
 		<Stat label={t('stat_outage_total')} value={overview.outage_total > 0 ? duration(overview.outage_total) : '—'} />
 	</div>
 
+	{#if overview.shield}
+		<Card title={t('shield_card_title')} description={t('shield_status_' + overview.shield.mode)} help={help('card_shield')}>
+			{#snippet actions()}
+				{#if overview.shield.mode !== 'off' && overview.shield.setting !== 'fortress'}
+					<Button busy={fortifying} onclick={() => fortress('fortress')}>{t('shield_to_fortress')}</Button>
+				{:else if overview.shield.setting === 'fortress'}
+					<Button busy={fortifying} onclick={() => fortress('smart')}>{t('shield_to_smart')}</Button>
+				{/if}
+				<a class="rf-card-link" href="#/shield">{t('shield_open')}</a>
+			{/snippet}
+			<div class="rf-shield-nums">
+				<Stat label={t('shield_stat_today')} value={num(overview.shield.today)} />
+				<Stat label={t('shield_stat_week')} value={num(overview.shield.week)} />
+			</div>
+		</Card>
+	{/if}
+
 	<Card title={t('pause_title')} description={overview.paused ? t('pause_on_text') : t('pause_off_text')} help={help('card_pause')}>
 		{#snippet actions()}
 			<Button variant={overview.paused ? 'primary' : 'secondary'} busy={pausing} disabled={!overview.network} onclick={togglePause}>
@@ -193,6 +222,19 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 		gap: 12px;
+	}
+	.rf-shield-nums {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+		gap: 12px;
+	}
+	.rf-card-link {
+		display: inline-flex;
+		align-items: center;
+		min-block-size: var(--rf-control-sm);
+		padding-inline: 8px;
+		color: var(--rf-l6);
+		font-size: var(--rf-fs-sm);
 	}
 	.rf-events {
 		display: flex;

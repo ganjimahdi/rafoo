@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.5.1\n"
+"Project-Id-Version: Rafoo 1.6.0\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,41 +45,567 @@ msgstr "Загрузка…"
 msgid "The Rafoo dashboard needs JavaScript."
 msgstr "Для панели Rafoo нужен JavaScript."
 
-#: src/Admin/Rest.php:471 src/Drill/Api.php:311
+#: src/Admin/Rest.php:472 src/Drill/Api.php:311 src/Shield/Widget.php:57
 msgid "You are not allowed to change this."
 msgstr "Вам не разрешено это менять."
 
-#: src/Admin/Rest.php:474
+#: src/Admin/Rest.php:475
 msgid "The previous version could not be put back. The files were left as they were."
 msgstr "Не удалось вернуть предыдущую версию. Файлы оставлены как были."
 
-#: src/Admin/Rest.php:554
+#: src/Admin/Rest.php:555
 msgid "This message is no longer waiting."
 msgstr "Это письмо больше не в очереди."
 
-#: src/Admin/Rest.php:562
+#: src/Admin/Rest.php:563
 msgid "Enter a valid mail server address, for example mail.example.ir."
 msgstr "Введите правильный адрес почтового сервера, например mail.example.ir."
 
-#: src/Admin/Rest.php:570
+#: src/Admin/Rest.php:571
 msgid "Save a mail server first."
 msgstr "Сначала сохраните почтовый сервер."
 
-#: src/Admin/Rest.php:629
+#: src/Admin/Rest.php:630
 msgid "Please write between 5 and 2000 characters."
 msgstr "Напишите от 5 до 2000 символов."
 
-#: src/Admin/Rest.php:633
+#: src/Admin/Rest.php:634
 msgid "Please wait a minute before sending another message."
 msgstr "Подождите минуту перед отправкой следующего сообщения."
 
-#: src/Admin/Rest.php:636
+#: src/Admin/Rest.php:637
 msgid "rafoo.ir could not be reached. Please try again later."
 msgstr "Не удалось связаться с rafoo.ir. Попробуйте позже."
 
-#: src/Admin/Rest.php:679
+#: src/Admin/Rest.php:680
 msgid "This file is no longer in the list."
 msgstr "Этого файла больше нет в списке."
+
+#: src/Admin/ShieldStrings.php:15
+msgid "Shield"
+msgstr "Щит"
+
+#: src/Admin/ShieldStrings.php:16
+msgid "Security"
+msgstr "Безопасность"
+
+#: src/Admin/ShieldStrings.php:17 src/Shield/Widget.php:18
+msgid "Rafoo Shield"
+msgstr "Щит Rafoo"
+
+#: src/Admin/ShieldStrings.php:18 src/Shield/Widget.php:40
+msgid "Open the shield"
+msgstr "Открыть щит"
+
+#: src/Admin/ShieldStrings.php:19 src/Shield/Widget.php:47
+msgid "Switch to fortress mode"
+msgstr "Включить режим крепости"
+
+#: src/Admin/ShieldStrings.php:20 src/Shield/Widget.php:47
+msgid "Back to smart mode"
+msgstr "Вернуться к умному режиму"
+
+#: src/Admin/ShieldStrings.php:21
+msgid "Shield mode"
+msgstr "Режим щита"
+
+#: src/Admin/ShieldStrings.php:22
+msgid "Smart suits almost every site. Use fortress only during a heavy attack."
+msgstr "Умный режим подходит почти любому сайту. Крепость включайте только при сильной атаке."
+
+#: src/Admin/ShieldStrings.php:23 src/Admin/ShieldStrings.php:52 src/Admin/Strings.php:188 src/Admin/Strings.php:201
+msgid "Off"
+msgstr "Выключено"
+
+#: src/Admin/ShieldStrings.php:24 src/Admin/Strings.php:674 src/Shield/Widget.php:24
+msgid "Smart"
+msgstr "Умный"
+
+#: src/Admin/ShieldStrings.php:25 src/Shield/Widget.php:25
+msgid "Strict"
+msgstr "Строгий"
+
+#: src/Admin/ShieldStrings.php:26 src/Shield/Widget.php:26
+msgid "Fortress"
+msgstr "Крепость"
+
+#: src/Admin/ShieldStrings.php:27
+msgid "No request is checked. Attacks reach WordPress and your other plugins."
+msgstr "Запросы не проверяются. Атаки доходят до WordPress и других плагинов."
+
+#: src/Admin/ShieldStrings.php:28
+msgid "Stops clear attacks, scanners and brute force, and checks a browser only when it sends too many requests. Visitors notice nothing."
+msgstr "Останавливает явные атаки, сканеры и подбор паролей и проверяет браузер, только если он шлёт слишком много запросов. Посетители ничего не замечают."
+
+#: src/Admin/ShieldStrings.php:29
+msgid "Lower thresholds, closed sign-in through XML-RPC and stricter limits. For sites that are attacked often."
+msgstr "Более низкие пороги, закрытый вход через XML-RPC и жёсткие лимиты. Для часто атакуемых сайтов."
+
+#: src/Admin/ShieldStrings.php:30
+msgid "Every new visitor passes a short browser check once, and attackers are banned for longer. For the hours of a heavy attack."
+msgstr "Каждый новый посетитель один раз проходит короткую проверку браузера, а атакующие блокируются дольше. Для часов сильной атаки."
+
+#: src/Admin/ShieldStrings.php:31
+msgid "The shield is off"
+msgstr "Щит выключен"
+
+#: src/Admin/ShieldStrings.php:32
+msgid "The shield is guarding the site"
+msgstr "Щит защищает сайт"
+
+#: src/Admin/ShieldStrings.php:33
+msgid "The shield is on strict guard"
+msgstr "Щит в строгом режиме"
+
+#: src/Admin/ShieldStrings.php:34
+msgid "Fortress mode is on"
+msgstr "Режим крепости включён"
+
+#: src/Admin/ShieldStrings.php:35
+msgid "Requests are checked before WordPress loads."
+msgstr "Запросы проверяются до загрузки WordPress."
+
+#: src/Admin/ShieldStrings.php:36
+msgid "Requests are checked as soon as plugins load, before any other plugin."
+msgstr "Запросы проверяются сразу при загрузке плагинов, раньше любого другого плагина."
+
+#: src/Admin/ShieldStrings.php:37
+msgid "Requests are checked while plugins load. Rafoo moves itself to the front of the plugin list."
+msgstr "Запросы проверяются во время загрузки плагинов. Rafoo переносит себя в начало списка плагинов."
+
+#: src/Admin/ShieldStrings.php:38
+msgid "Rafoo is paused, so the shield is not checking requests."
+msgstr "Rafoo приостановлен, поэтому щит не проверяет запросы."
+
+#: src/Admin/ShieldStrings.php:39 src/Shield/Widget.php:41
+msgid "Attacks stopped today"
+msgstr "Остановлено атак сегодня"
+
+#: src/Admin/ShieldStrings.php:40 src/Shield/Widget.php:42
+msgid "In the last 7 days"
+msgstr "За последние 7 дней"
+
+#: src/Admin/ShieldStrings.php:41
+msgid "Browser checks in 7 days"
+msgstr "Проверок браузера за 7 дней"
+
+#: src/Admin/ShieldStrings.php:42
+msgid "Sign-in locks in 7 days"
+msgstr "Блокировок входа за 7 дней"
+
+#: src/Admin/ShieldStrings.php:43
+msgid "Protection before WordPress"
+msgstr "Защита до WordPress"
+
+#: src/Admin/ShieldStrings.php:44
+msgid "Runs the shield before WordPress and every plugin, so attacks never reach their code. Rafoo adds one line to the site’s .htaccess or .user.ini and removes it when turned off."
+msgstr "Запускает щит раньше WordPress и всех плагинов, и атаки не доходят до их кода. Rafoo добавляет одну строку в .htaccess или .user.ini сайта и удаляет её при выключении."
+
+#: src/Admin/ShieldStrings.php:45 src/Admin/Strings.php:1363 src/Admin/Strings.php:1364 src/Admin/Strings.php:1365
+msgid "Turn on"
+msgstr "Включить"
+
+#: src/Admin/ShieldStrings.php:46
+msgid "Turn off"
+msgstr "Выключить"
+
+#: src/Admin/ShieldStrings.php:47
+msgid "Active before WordPress"
+msgstr "Работает до WordPress"
+
+#: src/Admin/ShieldStrings.php:48
+msgid "Set up, but the shield file did not run"
+msgstr "Настроено, но файл щита не запустился"
+
+#: src/Admin/ShieldStrings.php:49
+msgid "Another tool runs first"
+msgstr "Первым работает другой инструмент"
+
+#: src/Admin/ShieldStrings.php:50
+msgid "Waiting for the server"
+msgstr "Ожидание сервера"
+
+#: src/Admin/ShieldStrings.php:51
+msgid "Not available on this server"
+msgstr "Недоступно на этом сервере"
+
+#. translators: %d: minutes
+#: src/Admin/ShieldStrings.php:54
+#, php-format
+msgid "PHP reads the new setting within about %d minutes. Nothing else is needed."
+msgstr "PHP прочитает новую настройку примерно через %d мин. Больше ничего не нужно."
+
+#. translators: %s: file name
+#: src/Admin/ShieldStrings.php:56
+#, php-format
+msgid "The file %s already runs before WordPress. Rafoo keeps working as the first plugin so both work together."
+msgstr "Файл %s уже запускается до WordPress. Rafoo продолжает работать первым плагином, чтобы оба работали вместе."
+
+#: src/Admin/ShieldStrings.php:57
+msgid "This server does not let a site set this up. The shield still runs as the first plugin."
+msgstr "Этот сервер не позволяет сайту это настроить. Щит по-прежнему работает первым плагином."
+
+#: src/Admin/ShieldStrings.php:58
+msgid "Counters are kept in memory (APCu), the fastest option."
+msgstr "Счётчики хранятся в памяти (APCu) — это самый быстрый вариант."
+
+#: src/Admin/ShieldStrings.php:59
+msgid "Counters are kept in small files in a protected folder. With APCu on the server they would be kept in memory."
+msgstr "Счётчики хранятся в небольших файлах в защищённой папке. С APCu на сервере они хранились бы в памяти."
+
+#: src/Admin/ShieldStrings.php:60
+msgid "The shield stops attacks that reach the site. A flood that fills the server’s network line before reaching PHP can only be stopped at the edge: connect ArvanCloud or Cloudflare below."
+msgstr "Щит останавливает атаки, дошедшие до сайта. Флуд, который забивает сетевой канал сервера ещё до PHP, останавливается только на границе: подключите ArvanCloud или Cloudflare ниже."
+
+#: src/Admin/ShieldStrings.php:66
+msgid "Attack types"
+msgstr "Типы атак"
+
+#: src/Admin/ShieldStrings.php:67
+msgid "Most active addresses"
+msgstr "Самые активные адреса"
+
+#: src/Admin/ShieldStrings.php:68
+msgid "Most targeted paths"
+msgstr "Самые атакуемые пути"
+
+#: src/Admin/ShieldStrings.php:69
+msgid "Nothing in the last 7 days."
+msgstr "За последние 7 дней ничего."
+
+#: src/Admin/ShieldStrings.php:70 src/Admin/Strings.php:111
+msgid "Recent events"
+msgstr "Последние события"
+
+#: src/Admin/ShieldStrings.php:71
+msgid "If a real visitor was stopped, allow their address. The reference code is the one shown on the stop page."
+msgstr "Если остановили реального посетителя, разрешите его адрес. Код — тот, что показан на странице остановки."
+
+#: src/Admin/ShieldStrings.php:72
+msgid "No attack has been stopped yet."
+msgstr "Пока ни одна атака не остановлена."
+
+#: src/Admin/ShieldStrings.php:73
+msgid "Ref."
+msgstr "Код"
+
+#: src/Admin/ShieldStrings.php:74
+msgid "Allow"
+msgstr "Разрешить"
+
+#: src/Admin/ShieldStrings.php:75
+msgid "Allowed"
+msgstr "Разрешён"
+
+#: src/Admin/ShieldStrings.php:76 src/Admin/Strings.php:682
+msgid "Block"
+msgstr "Заблокировать"
+
+#: src/Admin/ShieldStrings.php:77 src/Admin/Strings.php:683
+msgid "Unblock"
+msgstr "Разблокировать"
+
+#: src/Admin/ShieldStrings.php:78
+msgid "Stopped"
+msgstr "Остановлено"
+
+#: src/Admin/ShieldStrings.php:79 src/Shield/Config.php:106
+msgid "Too many requests"
+msgstr "Слишком много запросов"
+
+#: src/Admin/ShieldStrings.php:80
+msgid "Sign-in locked"
+msgstr "Вход заблокирован"
+
+#: src/Admin/ShieldStrings.php:81
+msgid "Sign-in lock started"
+msgstr "Начата блокировка входа"
+
+#: src/Admin/ShieldStrings.php:82 src/Admin/ShieldStrings.php:101
+msgid "Browser check"
+msgstr "Проверка браузера"
+
+#: src/Admin/ShieldStrings.php:83
+msgid "SQL injection"
+msgstr "SQL-инъекция"
+
+#: src/Admin/ShieldStrings.php:84
+msgid "Cross-site scripting"
+msgstr "Межсайтовый скриптинг (XSS)"
+
+#: src/Admin/ShieldStrings.php:85
+msgid "File reading"
+msgstr "Чтение файлов"
+
+#: src/Admin/ShieldStrings.php:86
+msgid "Command execution"
+msgstr "Выполнение команд"
+
+#: src/Admin/ShieldStrings.php:87
+msgid "Object injection"
+msgstr "Внедрение объектов"
+
+#: src/Admin/ShieldStrings.php:88
+msgid "Dangerous upload"
+msgstr "Опасная загрузка"
+
+#: src/Admin/ShieldStrings.php:89
+msgid "Server-side request forgery"
+msgstr "Подделка запроса на сервере (SSRF)"
+
+#: src/Admin/ShieldStrings.php:90
+msgid "XML entity attack"
+msgstr "Атака через сущности XML"
+
+#: src/Admin/ShieldStrings.php:91
+msgid "Vulnerability scanner"
+msgstr "Сканер уязвимостей"
+
+#: src/Admin/ShieldStrings.php:92
+msgid "Sensitive file"
+msgstr "Конфиденциальный файл"
+
+#: src/Admin/ShieldStrings.php:93
+msgid "Malformed request"
+msgstr "Некорректный запрос"
+
+#: src/Admin/ShieldStrings.php:94
+msgid "WordPress probing"
+msgstr "Зондирование WordPress"
+
+#: src/Admin/ShieldStrings.php:95
+msgid "Virtual patch"
+msgstr "Виртуальный патч"
+
+#: src/Admin/ShieldStrings.php:96
+msgid "Sign-in attempts"
+msgstr "Попытки входа"
+
+#: src/Admin/ShieldStrings.php:97
+msgid "Request flood"
+msgstr "Флуд запросами"
+
+#: src/Admin/ShieldStrings.php:98
+msgid "Repeat attacker"
+msgstr "Повторный атакующий"
+
+#: src/Admin/ShieldStrings.php:99
+msgid "Community list"
+msgstr "Общий список"
+
+#: src/Admin/ShieldStrings.php:100
+msgid "Your block list"
+msgstr "Ваш список блокировки"
+
+#: src/Admin/ShieldStrings.php:102
+msgid "Addresses"
+msgstr "Адреса"
+
+#. translators: %s: the visitor's own IP address
+#: src/Admin/ShieldStrings.php:104
+#, php-format
+msgid "One IP address or range per line, for example 203.0.113.5 or 203.0.113.0/24. Your address now: %s"
+msgstr "По одному IP-адресу или диапазону в строке, например 203.0.113.5 или 203.0.113.0/24. Ваш адрес сейчас: %s"
+
+#: src/Admin/ShieldStrings.php:105
+msgid "Always allow"
+msgstr "Всегда разрешать"
+
+#: src/Admin/ShieldStrings.php:106
+msgid "Always block"
+msgstr "Всегда блокировать"
+
+#: src/Admin/ShieldStrings.php:107
+msgid "Your own proxies"
+msgstr "Ваши прокси"
+
+#: src/Admin/ShieldStrings.php:108 src/Admin/ShieldStrings.php:110
+msgid "Community defense"
+msgstr "Коллективная защита"
+
+#: src/Admin/ShieldStrings.php:109
+msgid "When several independent sites see the same attacker, rafoo.ir sends a signed list to every member, so the attacker is stopped here before trying."
+msgstr "Когда несколько независимых сайтов видят одного атакующего, rafoo.ir рассылает всем участникам подписанный список, и атакующий останавливается здесь ещё до попытки."
+
+#: src/Admin/ShieldStrings.php:111
+msgid "Shares the addresses this site stopped, with the attack type. Visitors who were not stopped, signed-in users and private addresses are never sent."
+msgstr "Передаёт адреса, остановленные этим сайтом, вместе с типом атаки. Не остановленные посетители, вошедшие пользователи и частные адреса никогда не отправляются."
+
+#: src/Admin/ShieldStrings.php:112
+msgid "Member"
+msgstr "Участник"
+
+#. translators: 1: listed addresses, 2: addresses this site reported
+#: src/Admin/ShieldStrings.php:114
+#, php-format
+msgid "%1$d addresses on the list, %2$d reported by this site"
+msgstr "В списке адресов: %1$d, сообщено этим сайтом: %2$d"
+
+#: src/Admin/ShieldStrings.php:115
+msgid "Joining rafoo.ir. This takes a few minutes."
+msgstr "Подключение к rafoo.ir. Это займёт несколько минут."
+
+#: src/Admin/ShieldStrings.php:116
+msgid "Update now"
+msgstr "Обновить сейчас"
+
+#: src/Admin/ShieldStrings.php:117
+msgid "Virtual patches active on this site"
+msgstr "Виртуальные патчи, активные на этом сайте"
+
+#: src/Admin/ShieldStrings.php:118
+msgid "No installed plugin needs a virtual patch right now."
+msgstr "Сейчас ни одному установленному плагину не нужен виртуальный патч."
+
+#: src/Admin/ShieldStrings.php:119
+msgid "Blocking at the CDN edge"
+msgstr "Блокировка на границе CDN"
+
+#: src/Admin/ShieldStrings.php:120
+msgid "Sends long blocks to your CDN so attackers are stopped before they reach your server. At most 200 addresses; they are removed when they expire."
+msgstr "Отправляет долгие блокировки в ваш CDN, чтобы атакующие останавливались до вашего сервера. Не более 200 адресов; они удаляются по истечении срока."
+
+#: src/Admin/ShieldStrings.php:121
+msgid "CDN"
+msgstr "CDN"
+
+#: src/Admin/ShieldStrings.php:122 src/Admin/Strings.php:906
+msgid "ArvanCloud"
+msgstr "ArvanCloud"
+
+#: src/Admin/ShieldStrings.php:123 src/Admin/Strings.php:910
+msgid "Cloudflare"
+msgstr "Cloudflare"
+
+#: src/Admin/ShieldStrings.php:124
+msgid "Domain in the CDN panel"
+msgstr "Домен в панели CDN"
+
+#: src/Admin/ShieldStrings.php:125
+msgid "Use the key saved for Geo DNS"
+msgstr "Использовать ключ, сохранённый для Geo DNS"
+
+#: src/Admin/ShieldStrings.php:126
+msgid "The key needs permission to change firewall rules too."
+msgstr "Ключу также нужно право менять правила файрвола."
+
+#: src/Admin/ShieldStrings.php:127
+msgid "ArvanCloud API key"
+msgstr "Ключ API ArvanCloud"
+
+#: src/Admin/ShieldStrings.php:128
+msgid "From the ArvanCloud panel, Profile, API keys. It needs access to CDN firewall rules."
+msgstr "В панели ArvanCloud: Профиль, Ключи API. Нужен доступ к правилам файрвола CDN."
+
+#: src/Admin/ShieldStrings.php:129
+msgid "Cloudflare API token"
+msgstr "Токен API Cloudflare"
+
+#: src/Admin/ShieldStrings.php:130
+msgid "Create a token with Zone read and Firewall Services edit permission for this domain."
+msgstr "Создайте токен с правами Zone read и Firewall Services edit для этого домена."
+
+#: src/Admin/ShieldStrings.php:131 src/Admin/Strings.php:526
+msgid "Connect"
+msgstr "Подключить"
+
+#: src/Admin/ShieldStrings.php:132
+msgid "Disconnect"
+msgstr "Отключить"
+
+#: src/Admin/ShieldStrings.php:133
+msgid "Send now"
+msgstr "Отправить сейчас"
+
+#. translators: %d: number of IP addresses
+#: src/Admin/ShieldStrings.php:135
+#, php-format
+msgid "%d addresses at the edge"
+msgstr "Адресов на границе: %d"
+
+#: src/Admin/ShieldStrings.php:136
+msgid "Shield mode changed"
+msgstr "Режим щита изменён"
+
+#: src/Admin/ShieldStrings.php:137
+msgid "Shield protection before WordPress turned on"
+msgstr "Защита щита до WordPress включена"
+
+#: src/Admin/ShieldStrings.php:138
+msgid "Shield protection before WordPress turned off"
+msgstr "Защита щита до WordPress выключена"
+
+#: src/Admin/ShieldStrings.php:139
+msgid "Joined community defense"
+msgstr "Подключена коллективная защита"
+
+#: src/Admin/ShieldStrings.php:140
+msgid "CDN edge blocking connected"
+msgstr "Блокировка на границе CDN подключена"
+
+#: src/Admin/ShieldStrings.php:141
+msgid "CDN edge blocking disconnected"
+msgstr "Блокировка на границе CDN отключена"
+
+#: src/Admin/ShieldStrings.php:147
+msgid "The Rafoo Shield firewall. The full view, lists and events are in the Shield tab."
+msgstr "Файрвол Щит Rafoo. Полный вид, списки и события — на вкладке «Щит»."
+
+#: src/Admin/ShieldStrings.php:148
+msgid "How many attacks the shield stopped. Fortress mode is for the hours of a heavy attack."
+msgstr "Сколько атак остановил щит. Режим крепости — для часов сильной атаки."
+
+#: src/Admin/ShieldStrings.php:149
+msgid "Smart is tuned so real visitors are never stopped. Strict lowers every threshold. Fortress asks each new visitor for a few-second browser check once every hour."
+msgstr "Умный режим настроен так, что реальные посетители не останавливаются. Строгий снижает все пороги. Крепость раз в час просит каждого нового посетителя пройти проверку браузера в несколько секунд."
+
+#: src/Admin/ShieldStrings.php:150
+msgid "Without this, the shield runs when Rafoo loads, which is already before every other plugin. Before WordPress also protects WordPress core files and saves server work under attack."
+msgstr "Без этого щит запускается при загрузке Rafoo, то есть уже раньше всех плагинов. Запуск до WordPress защищает и файлы ядра и снижает нагрузку на сервер при атаке."
+
+#: src/Admin/ShieldStrings.php:151
+msgid "What the stopped requests tried to do."
+msgstr "Что пытались сделать остановленные запросы."
+
+#: src/Admin/ShieldStrings.php:152
+msgid "Addresses with the most stopped requests in 7 days."
+msgstr "Адреса с наибольшим числом остановленных запросов за 7 дней."
+
+#: src/Admin/ShieldStrings.php:153
+msgid "Addresses on your site that attackers targeted most."
+msgstr "Пути вашего сайта, которые атаковали чаще всего."
+
+#: src/Admin/ShieldStrings.php:154
+msgid "Stops, locks and browser checks. Repeated stops from one address are counted but listed once a minute."
+msgstr "Остановки, блокировки и проверки браузера. Повторные остановки одного адреса считаются, но в списке появляются раз в минуту."
+
+#: src/Admin/ShieldStrings.php:155
+msgid "Your own exceptions. They apply before every rule and to every mode."
+msgstr "Ваши исключения. Применяются раньше любых правил и во всех режимах."
+
+#: src/Admin/ShieldStrings.php:156
+msgid "These addresses are never checked, for example your office or a payment service."
+msgstr "Эти адреса никогда не проверяются, например ваш офис или платёжный сервис."
+
+#: src/Admin/ShieldStrings.php:157
+msgid "These addresses are always stopped. Your own address cannot be added."
+msgstr "Эти адреса всегда останавливаются. Свой адрес добавить нельзя."
+
+#: src/Admin/ShieldStrings.php:158
+msgid "If the site sits behind your own proxy or load balancer, add its address so the visitor’s real address is read. ArvanCloud and Cloudflare are recognized automatically."
+msgstr "Если сайт стоит за вашим прокси или балансировщиком, добавьте его адрес, чтобы читался реальный адрес посетителя. ArvanCloud и Cloudflare распознаются автоматически."
+
+#: src/Admin/ShieldStrings.php:159
+msgid "An address is listed only when at least three sites on two different networks report it. Iranian addresses get a browser check instead of a block, because many visitors share one address on mobile networks."
+msgstr "Адрес попадает в список, только если о нём сообщили минимум три сайта из двух разных сетей. Иранские адреса получают проверку браузера вместо блокировки, потому что в мобильных сетях многие посетители делят один адрес."
+
+#: src/Admin/ShieldStrings.php:160
+msgid "Uses the same signing key as the cooperative network. Turning it off deletes the list and stops reports."
+msgstr "Использует тот же ключ подписи, что и сеть взаимопомощи. Выключение удаляет список и прекращает отчёты."
+
+#: src/Admin/ShieldStrings.php:161
+msgid "The key is stored encrypted. Only blocks of an hour or more are sent."
+msgstr "Ключ хранится в зашифрованном виде. Отправляются только блокировки на час и дольше."
 
 #: src/Admin/SiteHealth.php:21
 msgid "Rafoo connection state"
@@ -601,10 +1127,6 @@ msgstr "Место на диске"
 msgid "Time in outage mode"
 msgstr "Время в режиме отключения"
 
-#: src/Admin/Strings.php:111
-msgid "Recent events"
-msgstr "Последние события"
-
 #: src/Admin/Strings.php:112
 msgid "Nothing has happened yet."
 msgstr "Пока ничего не произошло."
@@ -860,10 +1382,6 @@ msgstr "Только при отключениях"
 #: src/Admin/Strings.php:187
 msgid "Pages use the original addresses until the international internet goes down."
 msgstr "Страницы используют исходные адреса, пока не пропадёт международный интернет."
-
-#: src/Admin/Strings.php:188 src/Admin/Strings.php:201
-msgid "Off"
-msgstr "Выключено"
 
 #: src/Admin/Strings.php:189
 msgid "Nothing is copied or replaced."
@@ -1211,7 +1729,7 @@ msgstr "После обновления у сайта возникла проб�
 msgid "%1$s was set back to %2$s by hand"
 msgstr "%1$s вручную возвращён к %2$s"
 
-#: src/Admin/Strings.php:290 src/Admin/Strings.php:1448
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:1449
 msgid "Updates"
 msgstr "Обновления"
 
@@ -2067,10 +2585,6 @@ msgstr "Закрытый ключ SSH (необязательно, вместо 
 msgid "Rafoo tries SFTP, then FTPS and plain FTP, creates a folder named rafoo-backups, and checks that it can write, read and delete a test file."
 msgstr "Rafoo пробует SFTP, затем FTPS и обычный FTP, создаёт папку rafoo-backups и проверяет, что может записать, прочитать и удалить тестовый файл."
 
-#: src/Admin/Strings.php:526
-msgid "Connect"
-msgstr "Подключить"
-
 #: src/Admin/Strings.php:527
 msgid "Finding the connection…"
 msgstr "Поиск соединения…"
@@ -2567,10 +3081,6 @@ msgstr "Когда страница одновременно несколько 
 msgid "WordPress Heartbeat"
 msgstr "WordPress Heartbeat"
 
-#: src/Admin/Strings.php:674
-msgid "Smart"
-msgstr "Умный"
-
 #: src/Admin/Strings.php:675
 msgid "Every 60 seconds in editors, every 120 seconds elsewhere. Autosave and post locks keep working."
 msgstr "Раз в 60 секунд в редакторах, раз в 120 секунд в остальных местах. Автосохранение и блокировки записей продолжают работать."
@@ -2598,14 +3108,6 @@ msgstr "Сканировать и под моей учётной записью"
 #: src/Admin/Strings.php:681
 msgid "The manual scan also opens the first pages with your login, so files loaded only for signed-in users are found."
 msgstr "Ручное сканирование также открывает первые страницы под вашим входом, поэтому находятся файлы, которые загружаются только для вошедших пользователей."
-
-#: src/Admin/Strings.php:682
-msgid "Block"
-msgstr "Заблокировать"
-
-#: src/Admin/Strings.php:683
-msgid "Unblock"
-msgstr "Разблокировать"
 
 #: src/Admin/Strings.php:684
 msgid "Blocked"
@@ -3423,10 +3925,6 @@ msgstr "Вручную"
 msgid "You create the records in any DNS. Rafoo shows them and checks them."
 msgstr "Вы создаёте записи в любом DNS. Rafoo показывает и проверяет их."
 
-#: src/Admin/Strings.php:906
-msgid "ArvanCloud"
-msgstr "ArvanCloud"
-
 #: src/Admin/Strings.php:907
 msgid "Iranian CDN and DNS with servers inside and outside Iran. Best when most visitors are in Iran."
 msgstr "Иранский CDN и DNS с серверами в Иране и за его пределами. Лучший выбор, если большинство посетителей в Иране."
@@ -3438,10 +3936,6 @@ msgstr "Gcore DNS"
 #: src/Admin/Strings.php:909
 msgid "Global DNS. Geo balancing is included in the free plan."
 msgstr "Глобальный DNS. Гео-балансировка есть в бесплатном тарифе."
-
-#: src/Admin/Strings.php:910
-msgid "Cloudflare"
-msgstr "Cloudflare"
 
 #: src/Admin/Strings.php:911
 msgid "Global DNS. Geo steering needs the paid Load Balancing add-on."
@@ -5061,10 +5555,6 @@ msgstr "Международный интернет сейчас отключё�
 msgid "Resume"
 msgstr "Возобновить"
 
-#: src/Admin/Strings.php:1363 src/Admin/Strings.php:1364 src/Admin/Strings.php:1365 src/Admin/Strings.php:1366
-msgid "Turn on"
-msgstr "Включить"
-
 #: src/Admin/Strings.php:1370
 msgid "Scan now"
 msgstr "Сканировать сейчас"
@@ -5313,69 +5803,69 @@ msgstr "Свободное место на этом хостинге, котор
 msgid "Updates from the Iranian mirror for what is installed on this site. Premium plugins and themes that update from their own server, such as Divi, are never changed."
 msgstr "Обновления с иранского зеркала для того, что установлено на сайте. Платные плагины и темы, которые обновляются со своего сервера, например Divi, никогда не затрагиваются."
 
-#: src/Admin/Strings.php:1444
+#: src/Admin/Strings.php:1445
 msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
 msgstr "Обновляет WordPress, плагины и темы с иранского зеркала с проверкой подписи, поэтому обновления работают и во время отключения."
 
-#: src/Admin/Strings.php:1445
+#: src/Admin/Strings.php:1446
 msgid "Translation updates come from the mirror too, only for the languages installed on the site."
 msgstr "Обновления переводов тоже приходят с зеркала, только для языков, установленных на сайте."
 
-#: src/Admin/Strings.php:1446
+#: src/Admin/Strings.php:1447
 msgid "Translations from the mirror"
 msgstr "Переводы с зеркала"
 
-#: src/Admin/Strings.php:1447
+#: src/Admin/Strings.php:1448
 msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
 msgstr "Во время отключения переводы WordPress, плагинов и тем обновляются с зеркала, только для языков, установленных на этом сайте."
 
-#: src/Admin/Strings.php:1449
+#: src/Admin/Strings.php:1450
 msgid "Update from the domestic mirror"
 msgstr "Обновлять с местного зеркала"
 
-#: src/Admin/Strings.php:1450
+#: src/Admin/Strings.php:1451
 msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
 msgstr "WordPress, плагины и темы обновляются с зеркала, пока международный интернет недоступен."
 
-#: src/Admin/Strings.php:1451
+#: src/Admin/Strings.php:1452
 msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
 msgstr "Пакеты всегда скачиваются с зеркала, если на нём есть та же версия. Быстрее внутри Ирана."
 
-#: src/Admin/Strings.php:1452
+#: src/Admin/Strings.php:1453
 msgid "Mirror coverage"
 msgstr "Охват зеркала"
 
-#: src/Admin/Strings.php:1453
+#: src/Admin/Strings.php:1454
 msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
 msgstr "Какие из установленных плагинов, тем и версия WordPress могут обновляться с местного зеркала."
 
-#: src/Admin/Strings.php:1454
+#: src/Admin/Strings.php:1455
 msgid "Check again"
 msgstr "Проверить снова"
 
-#: src/Admin/Strings.php:1455
+#: src/Admin/Strings.php:1456
 msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
 msgstr "Подписанный индекс зеркала пока недоступен. До тех пор обновления приходят с WordPress.org."
 
-#: src/Admin/Strings.php:1456
+#: src/Admin/Strings.php:1457
 msgid "Mirror"
 msgstr "Зеркало"
 
-#: src/Admin/Strings.php:1457
+#: src/Admin/Strings.php:1458
 msgid "Not on the mirror"
 msgstr "Нет на зеркале"
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:1459
+#: src/Admin/Strings.php:1460
 #, php-format
 msgid "Version %s available"
 msgstr "Доступна версия %s"
 
-#: src/Admin/Strings.php:1460
+#: src/Admin/Strings.php:1461
 msgid "Up to date"
 msgstr "Актуально"
 
-#: src/Admin/Strings.php:1461
+#: src/Admin/Strings.php:1462
 msgid "WordPress"
 msgstr "WordPress"
 
@@ -5669,7 +6159,7 @@ msgstr "Этот раздел сайта сейчас недоступен"
 msgid "The main server of this site cannot be reached at the moment. Reading the site still works. Please try again in a few minutes."
 msgstr "Основной сервер сайта сейчас недоступен. Читать сайт по-прежнему можно. Попробуйте снова через несколько минут."
 
-#: src/Geo/Proxy.php:268
+#: src/Geo/Proxy.php:268 src/Shield/Config.php:115
 msgid "Back to the home page"
 msgstr "Вернуться на главную"
 
@@ -5711,27 +6201,27 @@ msgstr "Это сообщение отправлено через почтовы
 msgid "The message could not be sent."
 msgstr "Не удалось отправить сообщение."
 
-#: src/Peers/Api.php:17
+#: src/Peers/Api.php:19
 msgid "rafoo.ir asked to wait a little. Rafoo will try again soon."
 msgstr "rafoo.ir попросил немного подождать. Rafoo скоро попробует снова."
 
-#: src/Peers/Api.php:21
+#: src/Peers/Api.php:23
 msgid "The request could not be prepared."
 msgstr "Не удалось подготовить запрос."
 
-#: src/Peers/Api.php:27
+#: src/Peers/Api.php:29
 msgid "This site has no key for the network. Join again."
 msgstr "У этого сайта нет ключа для сети. Присоединитесь снова."
 
-#: src/Peers/Api.php:58
+#: src/Peers/Api.php:60
 msgid "rafoo.ir did not accept the request."
 msgstr "rafoo.ir не принял запрос."
 
-#: src/Peers/Engine.php:161
+#: src/Peers/Engine.php:161 src/Shield/Intel.php:37
 msgid "This server cannot create a signing key (the sodium extension is missing)."
 msgstr "Этот сервер не может создать ключ подписи (нет расширения sodium)."
 
-#: src/Peers/Engine.php:179
+#: src/Peers/Engine.php:179 src/Shield/Intel.php:57
 msgid "rafoo.ir gave an answer that could not be read."
 msgstr "rafoo.ir вернул ответ, который не удалось прочитать."
 
@@ -5756,8 +6246,16 @@ msgid "If an email from this site cannot be sent because the mail server is unre
 msgstr "Если письмо с этого сайта нельзя отправить, потому что почтовый сервер недоступен, Rafoo сохраняет копию сообщения, включая получателей и вложения, на этом сервере и отправляет её, когда связь восстановится. Копии удаляются сразу после отправки и не позднее чем через три дня."
 
 #: src/Privacy.php:18
-msgid "Rafoo does not collect or send any information about visitors. If the site administrator turns on anonymous usage reports, a weekly report is sent to rafoo.ir with a random site identifier, software versions and the names of installed plugins and themes. It never includes the site address or any personal data."
-msgstr "Rafoo не собирает и не отправляет никаких сведений о посетителях. Если администратор сайта включит анонимные отчёты об использовании, раз в неделю на rafoo.ir отправляется отчёт со случайным идентификатором сайта, версиями программ и названиями установленных плагинов и тем. Он никогда не содержит адрес сайта или личные данные."
+msgid "Rafoo Shield protects this site from attacks. For each request it counts requests per IP address for a short time, and for stopped requests it keeps the IP address, the time, the address requested and the browser name for up to 30 days. During a heavy attack a visitor may be asked to wait while the browser solves a short check; a cookie named rafoo_shield_pass then remembers the check for up to six hours. Signed-in editors and administrators receive a cookie named rafoo_shield_trust for up to twelve hours."
+msgstr "Щит Rafoo защищает этот сайт от атак. Он недолго считает запросы с каждого IP-адреса, а для остановленных запросов хранит IP-адрес, время, запрошенный адрес и название браузера не дольше 30 дней. Во время сильной атаки посетителя могут попросить подождать, пока браузер пройдёт короткую проверку; затем cookie rafoo_shield_pass запоминает проверку на срок до шести часов. Вошедшие редакторы и администраторы получают cookie rafoo_shield_trust на срок до двенадцати часов."
+
+#: src/Privacy.php:19
+msgid "If the site administrator turns on community defense, the IP addresses of stopped attacks are sent to rafoo.ir with the type of attack, and a list of addresses reported by other sites is received. Addresses of visitors who were not stopped and of signed-in users are never sent."
+msgstr "Если администратор сайта включит коллективную защиту, IP-адреса остановленных атак отправляются на rafoo.ir вместе с типом атаки, и принимается список адресов, о которых сообщили другие сайты. Адреса не остановленных посетителей и вошедших пользователей никогда не отправляются."
+
+#: src/Privacy.php:20
+msgid "Apart from the above, Rafoo does not collect or send any information about visitors. If the site administrator turns on anonymous usage reports, a weekly report is sent to rafoo.ir with a random site identifier, software versions and the names of installed plugins and themes. It never includes the site address or any personal data."
+msgstr "Помимо этого, Rafoo не собирает и не отправляет никаких сведений о посетителях. Если администратор сайта включит анонимные отчёты об использовании, раз в неделю на rafoo.ir отправляется отчёт со случайным идентификатором сайта, версиями программ и названиями установленных плагинов и тем. Он никогда не содержит адрес сайта или личные данные."
 
 #. translators: %s: list of plugin or theme names
 #: src/Safety/Rollback.php:289
@@ -5784,6 +6282,112 @@ msgstr "Этот материал недоступен, пока междуна�
 #: src/Services/Embeds.php:72
 msgid "Open the original link"
 msgstr "Открыть исходную ссылку"
+
+#: src/Shield/Api.php:171 src/Shield/Api.php:209
+msgid "This list includes your own address. Remove it so you do not lock yourself out."
+msgstr "В списке есть ваш адрес. Удалите его, чтобы не заблокировать себя."
+
+#: src/Shield/Api.php:246
+msgid "Turn on community defense first."
+msgstr "Сначала включите коллективную защиту."
+
+#: src/Shield/Api.php:277
+msgid "Enter a valid IP address or range, for example 203.0.113.5 or 203.0.113.0/24."
+msgstr "Введите корректный IP-адрес или диапазон, например 203.0.113.5 или 203.0.113.0/24."
+
+#: src/Shield/Config.php:104
+msgid "This request was stopped"
+msgstr "Запрос остановлен"
+
+#: src/Shield/Config.php:105
+msgid "The site’s security shield stopped this request because it looked like an attack. If you think this is a mistake, send the reference code below to the site administrator."
+msgstr "Защитный щит сайта остановил этот запрос, потому что он был похож на атаку. Если это ошибка, отправьте код ниже администратору сайта."
+
+#: src/Shield/Config.php:107
+msgid "Requests from your connection arrived too quickly. Please wait a minute and try again."
+msgstr "Запросы с вашего подключения приходили слишком быстро. Подождите минуту и попробуйте снова."
+
+#: src/Shield/Config.php:108
+msgid "Signing in is paused"
+msgstr "Вход временно приостановлен"
+
+#: src/Shield/Config.php:109 src/Shield/Shield.php:99
+msgid "There were too many failed sign-in attempts from your connection. Please try again later."
+msgstr "С вашего подключения было слишком много неудачных попыток входа. Попробуйте позже."
+
+#: src/Shield/Config.php:110
+msgid "Checking your browser"
+msgstr "Проверка вашего браузера"
+
+#: src/Shield/Config.php:111
+msgid "The site is under heavy load. Your browser is solving a short check; the page opens by itself in a few seconds."
+msgstr "Сайт под высокой нагрузкой. Ваш браузер проходит короткую проверку; страница откроется сама через несколько секунд."
+
+#: src/Shield/Config.php:112
+msgid "The check could not be completed. Reload the page to try again."
+msgstr "Проверку не удалось завершить. Перезагрузите страницу."
+
+#: src/Shield/Config.php:113
+msgid "Turn on JavaScript to continue."
+msgstr "Чтобы продолжить, включите JavaScript."
+
+#: src/Shield/Config.php:114
+msgid "Reference"
+msgstr "Код"
+
+#: src/Shield/Edge.php:67
+msgid "Choose a provider and enter the domain as it appears in its panel."
+msgstr "Выберите провайдера и введите домен так, как он указан в его панели."
+
+#: src/Shield/Edge.php:75
+msgid "Enter the API key from the provider’s panel."
+msgstr "Введите ключ API из панели провайдера."
+
+#: src/Shield/Edge.php:90
+msgid "Cloudflare did not find this domain with this token."
+msgstr "Cloudflare не нашёл этот домен с этим токеном."
+
+#: src/Shield/Edge.php:96
+msgid "ArvanCloud did not accept this key for this domain."
+msgstr "ArvanCloud не принял этот ключ для этого домена."
+
+#: src/Shield/Intel.php:195
+msgid "The list from rafoo.ir could not be verified."
+msgstr "Не удалось проверить список с rafoo.ir."
+
+#: src/Shield/Prepend.php:57
+msgid "This server does not let a site set up protection before WordPress. Protection still runs as the first plugin."
+msgstr "Этот сервер не позволяет сайту настроить защиту до WordPress. Защита по-прежнему работает первым плагином."
+
+#: src/Shield/Prepend.php:60
+msgid "Another security tool already runs before WordPress on this site. Rafoo keeps running as the first plugin so both work together."
+msgstr "На этом сайте до WordPress уже работает другой инструмент безопасности. Rafoo продолжает работать первым плагином, чтобы оба работали вместе."
+
+#: src/Shield/Prepend.php:63 src/Shield/Prepend.php:68
+msgid "Rafoo could not write to the site’s main folder. Check the folder permissions and try again."
+msgstr "Rafoo не смог записать в главную папку сайта. Проверьте права на папку и попробуйте снова."
+
+#: src/Shield/Shield.php:191
+msgid "Sorry, you are not allowed to list users."
+msgstr "Извините, вам нельзя просматривать список пользователей."
+
+#. translators: %s: shield mode name, for example "Smart"
+#: src/Shield/Widget.php:39
+#, php-format
+msgid "Mode: %s"
+msgstr "Режим: %s"
+
+#: src/Shield/Widget.php:44
+msgid "The shield is off. Turn it on to stop attacks before they reach WordPress."
+msgstr "Щит выключен. Включите его, чтобы останавливать атаки до WordPress."
+
+#: src/Shield/Widget.php:50
+msgid "Fortress mode asks every new visitor to pass a short browser check. Go back when the attack is over."
+msgstr "Режим крепости просит каждого нового посетителя пройти короткую проверку браузера. Вернитесь, когда атака закончится."
+
+#: src/Shield/Widget.php:50
+msgid "Under a heavy attack, fortress mode asks every new visitor to pass a short browser check."
+msgstr "При сильной атаке режим крепости просит каждого нового посетителя пройти короткую проверку браузера."
 
 #: plugin header
 msgid "Rafoo – Offline-Ready Assets & Updates"

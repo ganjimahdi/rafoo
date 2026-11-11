@@ -190,6 +190,6 @@ final class Store {
 	}
 
 	public static function local_options() {
-		return array( self::OPTION, self::SECRETS, self::STATE, Changes::OPTION, 'rafoo_private', 'rafoo_backups', 'rafoo_backup_destinations', 'rafoo_backup_secret', 'rafoo_transfer_invite', 'rafoo_transfer_outgoing', 'rafoo_state', 'rafoo_events', 'rafoo_peers', 'cron', 'recently_activated', 'auto_updater.lock', 'core_updater.lock' );
+		return array( self::OPTION, self::SECRETS, self::STATE, Changes::OPTION, 'rafoo_private', 'rafoo_backups', 'rafoo_backup_destinations', 'rafoo_backup_secret', 'rafoo_transfer_invite', 'rafoo_transfer_outgoing', 'rafoo_state', 'rafoo_events', 'rafoo_peers', 'rafoo_shield_boot', 'rafoo_shield_stats', 'rafoo_shield_events', 'rafoo_shield_network', 'rafoo_shield_outbox', 'rafoo_shield_edge', 'rafoo_shield_day', 'cron', 'recently_activated', 'auto_updater.lock', 'core_updater.lock' );
 	}
 }

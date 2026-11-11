@@ -35,6 +35,16 @@ Both editions are free and share the same code. Install only one; activating Raf
 - Collects resource timing with render-blocking status, browser-guard blocks, JavaScript errors and broken media in the browser, and refused or unknown outbound requests, PHP fatals, server time and local-copy decisions on the server. Issues are classified (CDN library, Google Fonts, Gravatar, captcha, embeds, analytics, social sign-in, WordPress core files, known foreign or unknown hosts, server requests, PHP and JavaScript errors) and traced to the plugin or theme from the call stack, the script URL or a bounded search of plugin and theme files.
 - One-click fixes reuse Rafoo itself: download into the asset library, re-include an excluded file, turn on the matching setting, block or allow a host, scan, sync or resume. Score 0–100, readiness checks, the last ten runs, and a 15-minute manual browse mode with a beacon.
 
+**Rafoo Shield**
+- A web application firewall that runs while Rafoo is included, with Rafoo moved first in `active_plugins`, or before WordPress through `auto_prepend_file` (written to `.htaccess` or `.user.ini` by SAPI, removed on deactivation, safe when the plugin is gone). The engine has no WordPress dependency and reads a compiled PHP config from a private folder; a normal request costs about 0.15 ms.
+- Anomaly scoring over 65 rules in protocol, scanner, sensitive file, LFI/RFI, RCE, SQLi, XSS, PHP object injection, upload, SSRF, XXE and WordPress groups. Inputs are decoded up to three times, null bytes, entities, JS escapes and SQL comments removed, and body rules are weaker than URL rules. Tested against an attack corpus and a benign corpus of Persian text, WooCommerce checkout, page builders and comments with code, with zero false positives in Smart and Strict.
+- Real client IP behind Cloudflare and ArvanCloud only when the connection comes from their ranges, behind Geo DNS copies through the signed relay header, and behind your own proxies.
+- Per-IP reputation with hourly decay, temporary bans, flood limits, 404 bursts, sign-in lockout (`wp_login_failed`, XML-RPC, application passwords), XML-RPC multicall, `?author=` and the anonymous `/wp/v2/users` route. Counters live in APCu or small files.
+- Modes: Smart (default), Strict and Fortress. Fortress, and busy clients in the other modes, get a standalone SHA-256 proof-of-work page (Web Crypto with a pure-JS fallback), bound to the /24 and expiring in five minutes; a solved check sets an HMAC pass cookie bound to the browser. Payment returns (`wc-api`, Shaparak and Iranian gateways), signed Rafoo endpoints and reverse-DNS verified search bots pass.
+- Editors and administrators get a signed `rafoo_shield_trust` cookie: their POST bodies skip content rules so page builders keep working, while object injection, uploads and virtual patches are still checked.
+- Community defense (opt-in): signed reports every ten minutes; rafoo.ir lists an address only with a weighted quorum of three reporters (members under 72 hours count half) from two networks, as a block abroad or a challenge for Iranian addresses (mobile CGNAT), for 6 h, 24 h, 3 d and 7 d on repeat. Members download a signed delta feed into a sorted binary file with O(log n) lookups, and the status pulse announces new revisions. Virtual patches from rafoo.ir apply only when the vulnerable plugin version is installed.
+- Edge blocking through ArvanCloud firewall rules or Cloudflare IP access rules (at most 200 long blocks, removed when they expire), a Shield tab, a Security card in Settings, an overview card and a dashboard widget with a fortress switch. Volumetric network floods need the CDN edge; the dashboard says so.
+
 **Outage mode**
 - Checks servers outside and inside Iran every minute, in the background. The signed rafoo.ir notice is fetched every five minutes, or at once when outside checks fail, with per-site jitter and back-off on 429 or 503. Three failed rounds switch outage mode on, three good rounds switch it off. If even domestic servers fail, the problem is the server's own network and the mode is left alone. A signed notice from rafoo.ir can speed up the switch; your own checks always decide.
 - During an outage, server requests to foreign hosts fail at once instead of waiting for a timeout, and a host that fails twice in two minutes is skipped for three minutes.
@@ -89,6 +99,7 @@ WordPress 6.5 or later, PHP 7.4 to 8.4. Apache, LiteSpeed or Nginx. Multisite is
 
 | Section | Settings |
 | --- | --- |
+| Security | shield mode (Smart, Strict, Fortress, off) · community defense; allow and block lists, protection before WordPress and CDN edge in the Shield tab |
 | Files | serve local copies (always, only during outages, off) · read page HTML · local Google Fonts · WordPress's own outside files · scan with my account |
 | Browser and internal requests | browser guard · merge repeated requests · Heartbeat (smart, default) · block list |
 | Outside services | local avatars · built-in captcha · analytics scripts (each: off, during outages, always) · video and map placeholders · hide social sign-in · keep unsent emails |
@@ -147,7 +158,7 @@ Build with `pnpm install` and `pnpm build` in `admin-ui/`. Translations are in `
 
 ## Privacy
 
-Nothing about visitors is sent anywhere. Usage reports and the monitoring network are off unless an administrator turns them on. Every outside service is listed in [`plugin/readme.txt`](plugin/readme.txt) under External services. Details: [rafoo.ir/privacy](https://rafoo.ir/privacy).
+The shield keeps the IP address, time, path and browser of stopped requests on the site for up to 30 days. Only community defense sends anything about visitors: the IP addresses of stopped attacks, never those of other visitors or signed-in users. Usage reports, the monitoring network and community defense are off unless an administrator turns them on. Every outside service is listed in [`plugin/readme.txt`](plugin/readme.txt) under External services. Details: [rafoo.ir/privacy](https://rafoo.ir/privacy).
 
 ## License
 
@@ -162,6 +173,6 @@ GPL-2.0-or-later. See [LICENSE](LICENSE). The Rafoo and Wbweb names and logos ar
 - **رفو:** نسخه مخزن وردپرس.
 - **رفو کامل:** همه امکانات رفو، به‌اضافه به‌روزرسانی وردپرس، افزونه‌ها، قالب‌ها و ترجمه‌ها از مخزن ایرانی با امضای دیجیتال.
 
-امکانات: نسخه محلی کتابخانه‌ها و فونت‌ها از آینه داخلی، تشخیص خودکار قطعی، مانور قطعی با اصلاح یک‌کلیکی، نگهبان مرورگر و فهرست سیاه، ادغام درخواست‌های تکراری و Heartbeat هوشمند، کلید توقف، کپچای داخلی، به‌روزرسانی امن، پشتیبان و انتقال سایت حتی برای سایت‌های بسیار بزرگ، چند هاست با DNS جغرافیایی (بتا) بدون آسیب به سئو، موتور پایش، سلامت سایت، تنظیمات شبکه Multisite و رابط فارسی، انگلیسی، عربی، ترکی و روسی با دکمه راهنما برای هر بخش.
+امکانات: سپر رفو (فایروال پیش از وردپرس با سه حالت هوشمند، سخت‌گیر و سنگر، ایمنی جمعی با فهرست امضاشده و وصله مجازی، مسدودسازی در لبه ابرآروان و کلادفلر)، نسخه محلی کتابخانه‌ها و فونت‌ها از آینه داخلی، تشخیص خودکار قطعی، مانور قطعی با اصلاح یک‌کلیکی، نگهبان مرورگر و فهرست سیاه، ادغام درخواست‌های تکراری و Heartbeat هوشمند، کلید توقف، کپچای داخلی، به‌روزرسانی امن، پشتیبان و انتقال سایت حتی برای سایت‌های بسیار بزرگ، چند هاست با DNS جغرافیایی (بتا) بدون آسیب به سئو، موتور پایش، سلامت سایت، تنظیمات شبکه Multisite و رابط فارسی، انگلیسی، عربی، ترکی و روسی با دکمه راهنما برای هر بخش.
 
 دانلود، راهنما و پایش لحظه‌ای اینترنت ایران در [rafoo.ir](https://rafoo.ir). تغییرات هر نسخه در [CHANGELOG.md](CHANGELOG.md). پرسش و گزارش اشکال را در [Issues](../../issues) یا از [rafoo.ir/contact](https://rafoo.ir/contact) بفرستید.

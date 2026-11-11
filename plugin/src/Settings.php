@@ -14,7 +14,7 @@ final class Settings {
 
 	const PRESETS = array( 'recommended', 'outage', 'maximum' );
 
-	const EDITABLE = array( 'replace', 'html_scan', 'fonts', 'avatars', 'embeds', 'updates', 'telemetry', 'allow_hosts', 'core_assets', 'analytics', 'social_login', 'mail_queue', 'request_log', 'captcha', 'safe_updates', 'translations', 'backup', 'backup_hours', 'backup_hour', 'backup_mode', 'backup_local', 'backup_exclude', 'backup_part', 'browser_guard', 'dedupe', 'heartbeat', 'block_hosts', 'scan_as_user' );
+	const EDITABLE = array( 'replace', 'html_scan', 'fonts', 'avatars', 'embeds', 'updates', 'telemetry', 'allow_hosts', 'core_assets', 'analytics', 'social_login', 'mail_queue', 'request_log', 'captcha', 'safe_updates', 'translations', 'backup', 'backup_hours', 'backup_hour', 'backup_mode', 'backup_local', 'backup_exclude', 'backup_part', 'browser_guard', 'dedupe', 'heartbeat', 'block_hosts', 'scan_as_user', 'shield', 'shield_network' );
 
 	private static $cache = null;
 
@@ -52,6 +52,8 @@ final class Settings {
 			'heartbeat'    => 'smart',
 			'block_hosts'  => array(),
 			'scan_as_user' => true,
+			'shield'       => 'smart',
+			'shield_network' => false,
 			'paused'       => false,
 			'setup'        => '',
 			'preset'       => '',
@@ -80,6 +82,7 @@ final class Settings {
 				'dedupe'       => true,
 				'heartbeat'    => 'smart',
 				'scan_as_user' => true,
+				'shield'       => 'smart',
 			),
 			'outage'      => array(
 				'replace'      => 'outage',
@@ -101,6 +104,7 @@ final class Settings {
 				'dedupe'       => false,
 				'heartbeat'    => 'default',
 				'scan_as_user' => true,
+				'shield'       => 'smart',
 			),
 			'maximum'     => array(
 				'replace'      => 'always',
@@ -122,6 +126,7 @@ final class Settings {
 				'dedupe'       => true,
 				'heartbeat'    => 'smart',
 				'scan_as_user' => true,
+				'shield'       => 'strict',
 			),
 		);
 		return isset( $presets[ $name ] ) ? $presets[ $name ] : array();
@@ -181,13 +186,14 @@ final class Settings {
 			'captcha'  => array( 'off', 'outage', 'always' ),
 			'backup_mode' => array( 'incremental', 'full' ),
 			'heartbeat' => array( 'smart', 'default' ),
+			'shield'    => array( 'off', 'smart', 'strict', 'fortress' ),
 			'setup'    => array( '', 'done', 'skipped' ),
 			'preset'   => array( '', 'recommended', 'outage', 'maximum', 'custom' ),
 		);
 		foreach ( $choices as $key => $allowed ) {
 			$out[ $key ] = self::choice( $in, $key, $allowed, $defaults[ $key ] );
 		}
-		foreach ( array( 'html_scan', 'fonts', 'embeds', 'telemetry', 'core_assets', 'social_login', 'mail_queue', 'request_log', 'safe_updates', 'translations', 'backup', 'backup_local', 'browser_guard', 'dedupe', 'scan_as_user', 'paused' ) as $key ) {
+		foreach ( array( 'html_scan', 'fonts', 'embeds', 'telemetry', 'core_assets', 'social_login', 'mail_queue', 'request_log', 'safe_updates', 'translations', 'backup', 'backup_local', 'browser_guard', 'dedupe', 'scan_as_user', 'shield_network', 'paused' ) as $key ) {
 			$out[ $key ] = self::flag( $in, $key, $defaults[ $key ] );
 		}
 		$hours               = isset( $in['backup_hours'] ) ? (int) $in['backup_hours'] : $defaults['backup_hours'];

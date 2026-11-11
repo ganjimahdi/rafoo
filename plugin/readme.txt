@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,16 @@ Rafoo fixes this without touching the files of your theme or plugins.
 * The report names every library from a foreign CDN, Google Font, Gravatar image, captcha, video, analytics script, social sign-in, unknown address, server request to a foreign service, PHP error and JavaScript error that appears only during an outage, and the plugin or theme behind each one.
 * Most problems are fixed with one button: download a library or font to the Rafoo library, turn on the right protection, or block or allow an address. A score from 0 to 100 and the last ten rehearsals show how ready the site is.
 * Browse yourself for 15 minutes to test forms, the cart and payment by hand, with the same report at the end.
+
+**Rafoo Shield**
+
+* A firewall that checks every request before other plugins load, or before WordPress itself with one click. A normal page costs about 0.2 ms.
+* Stops SQL injection, cross-site scripting, file reading, command execution, object injection, dangerous uploads, server-side request forgery, XML entity attacks, vulnerability scanners and probes for sensitive files, after decoding the input the way PHP reads it.
+* Locks sign-in after repeated failures, limits request floods, closes XML-RPC multicall and hides the user list from visitors.
+* Three modes: Smart, tuned so real visitors are never stopped; Strict, for sites that are attacked often; and Fortress, for the hours of a heavy attack, where each new visitor passes a few-second browser check once. Payment returns from Iranian gateways and verified search engine bots are never challenged.
+* Editors and administrators can save page builder content freely, while visitors cannot post scripts.
+* Community defense (off by default): when at least three member sites on different networks report the same attacker, rafoo.ir sends a signed list to every member, along with virtual patches for vulnerable plugin versions that are installed on the site.
+* Optional blocking at the ArvanCloud or Cloudflare edge, and a dashboard card with a one-click switch to fortress mode.
 
 **Automatic outage mode**
 
@@ -132,6 +142,10 @@ Rafoo talks to the following services. None of them receives anything about your
 
 **Cooperative network (off by default).** Only if an administrator joins the network under Rafoo › Monitoring, the site address, a public signing key, the chosen check interval, the edition and version are sent to `https://rafoo.ir/api/v1/peers/join`. When the Monitoring page is opened, or Recheck is pressed, a signed request to `https://rafoo.ir/api/v1/peers/wake` or `/peers/recheck` asks the watching members to check the site at once; rafoo.ir then calls their `?rafoo-ping` address with a signed task. rafoo.ir checks the site once at `?rafoo-ping`, derives the country and network of the server from the request (the IP address is not stored) and sends back a signed list of a few other member sites. The site then requests those members' `?rafoo-ping` address in the background, every one or five minutes, and sends the results (time, whether a signed answer arrived, response time) to `https://rafoo.ir/api/v1/peers/receipts`. Other members request this site's `?rafoo-ping` address the same way. No page, content, user or visitor data is checked or sent. Leaving the network or deactivating Rafoo deletes the membership. When a member stops contacting rafoo.ir, rafoo.ir checks its `?rafoo-ping` address and removes it once it no longer answers as Rafoo; if Rafoo is still active there, it joins again by itself, unless the rafoo.ir administrator removed and blocked it.
 
+**Community defense (off by default).** Only if an administrator turns on community defense under Rafoo › Shield, the site address, a public signing key, the edition, version and shield mode are sent to `https://rafoo.ir/api/v1/shield/join`, and rafoo.ir checks the site once at `?rafoo-ping`. Every ten minutes, a signed request to `https://rafoo.ir/api/v1/shield/report` sends the IP addresses the shield stopped in that time, with the attack type, the number of stopped requests, the time and the slug of a targeted plugin, at most 500 addresses. Signed-in users, addresses on the allow list, private addresses and visitors who were not stopped are never sent. Every fifteen minutes, or when the status answer names a newer list, a signed request to `https://rafoo.ir/api/v1/shield/feed` downloads the signed list of addresses reported by several sites and the virtual patches. Turning it off, or deactivating Rafoo, calls `https://rafoo.ir/api/v1/shield/leave` and deletes the membership and the list.
+
+**CDN edge blocking (only when connected).** When an administrator connects ArvanCloud or Cloudflare under Rafoo › Shield, the IP addresses blocked for an hour or more (at most 200) are sent to that service as a firewall rule, with the key entered there: ArvanCloud `https://napi.arvancloud.ir` or Cloudflare `https://api.cloudflare.com` (terms and privacy linked above). Disconnecting removes the rule.
+
 **Rafoo updates (copies from rafoo.ir or GitHub).** A copy of Rafoo downloaded from rafoo.ir or GitHub asks `https://rafoo.ir/api/v1/releases/rafoo.json` (Rafoo Complete: `rafoo-complete.json`) for the latest version at most every six hours, or at once when the status answer names a newer version, and downloads updates from `https://rafoo.ir/downloads/`, checking each file against its signed SHA-256 hash. Nothing about the site is sent. The copy from wordpress.org updates only through wordpress.org.
 
 **Backup servers (only when added).** Backups are sent only to servers an administrator adds under Rafoo › Backup, using the login entered there.
@@ -145,7 +159,7 @@ Rafoo talks to the following services. None of them receives anything about your
 * Bunny DNS: `https://api.bunny.net` ([terms](https://bunny.net/tos/), [privacy](https://bunny.net/privacy/))
 * cPanel or DirectAdmin: the panel address of each host, entered by the administrator.
 
-To check that search engine bots are genuine, Rafoo looks up the reverse DNS name of the bot's IP address with the server's own resolver. To check the domain's DNS, it asks the domain's own nameservers directly.
+To check that search engine bots are genuine (for Geo DNS and for the shield), Rafoo looks up the reverse DNS name of the bot's IP address with the server's own resolver, once a day per address. To check the domain's DNS, it asks the domain's own nameservers directly.
 
 **Suggestions.** When an administrator writes a message under Rafoo › Feedback and presses Send, the message, the optional contact detail and the software versions are sent to `https://rafoo.ir/api/v1/feedback`.
 
@@ -221,6 +235,13 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.6.0 =
+* Rafoo Shield: a firewall that stops attacks before other plugins load, or before WordPress with one click, in three modes: Smart (on by default), Strict and Fortress.
+* Stops SQL injection, cross-site scripting, file reading, command execution, object injection, dangerous uploads, SSRF, XML entity attacks, scanners and sensitive file probes; locks sign-in after repeated failures; limits floods; closes XML-RPC multicall and the public user list.
+* Fortress mode asks each new visitor for a few-second browser check, without any outside service. Payment returns and verified search engine bots pass.
+* Community defense (off by default): addresses reported by several independent sites are sent to every member as a signed list, with virtual patches for vulnerable plugin versions.
+* Blocking at the ArvanCloud or Cloudflare edge, a Shield tab, a Security card in Settings, a card in the overview and a dashboard widget with a switch to fortress mode.
+
 = 1.5.1 =
 * Fix: copies of Rafoo from rafoo.ir did not offer new versions. Both Rafoo and Rafoo Complete now show updates from rafoo.ir in WordPress updates, a few minutes after each release, and install them with their signed hash checked. Updates keep working while Rafoo is paused.
 * The cooperative network checks members that went quiet and removes those that no longer answer as Rafoo, so removed plugins and deleted points no longer count as downtime. A site that is still active joins again by itself.
@@ -275,6 +296,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.6.0 =
+Adds Rafoo Shield, a firewall that is on in Smart mode after the update. Real visitors are not stopped; the Shield tab shows every stopped request with a button to allow it.
+
 = 1.5.1 =
 Fixes updates from rafoo.ir: after this version, new versions of Rafoo appear in WordPress updates by themselves.
 

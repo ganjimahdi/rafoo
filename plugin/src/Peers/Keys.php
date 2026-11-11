@@ -104,8 +104,17 @@ final class Keys {
 	}
 
 	public static function forget() {
-		self::$cache = array();
-		delete_option( self::OPTION );
+		$data = self::data();
+		$keep = ! empty( $data['pk'] ) && ! empty( $data['sk'] ) && (bool) apply_filters( 'rafoo_peer_key_needed', false );
+		self::$cache = $keep ? array(
+			'pk' => $data['pk'],
+			'sk' => $data['sk'],
+		) : array();
+		if ( $keep ) {
+			update_option( self::OPTION, self::$cache, false );
+		} else {
+			delete_option( self::OPTION );
+		}
 		delete_option( Book::OPTION );
 		delete_transient( Engine::STATUS );
 		delete_transient( Engine::LOCK );

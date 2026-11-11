@@ -297,6 +297,7 @@ final class Rest {
 			'assets'       => Library::summary(),
 			'breaker'      => Breaker::snapshot(),
 			'events'       => State::events( 10 ),
+			'shield'       => \Rafoo\Shield\Api::card(),
 			'edition'      => RAFOO_EDITION,
 			'version'      => RAFOO_VERSION,
 			'paused'       => Settings::paused(),

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.5.1\n"
+"Project-Id-Version: Rafoo 1.6.0\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,41 +45,567 @@ msgstr "Yükleniyor…"
 msgid "The Rafoo dashboard needs JavaScript."
 msgstr "Rafoo paneli JavaScript gerektirir."
 
-#: src/Admin/Rest.php:471 src/Drill/Api.php:311
+#: src/Admin/Rest.php:472 src/Drill/Api.php:311 src/Shield/Widget.php:57
 msgid "You are not allowed to change this."
 msgstr "Bunu değiştirme izniniz yok."
 
-#: src/Admin/Rest.php:474
+#: src/Admin/Rest.php:475
 msgid "The previous version could not be put back. The files were left as they were."
 msgstr "Önceki sürüm geri konulamadı. Dosyalar olduğu gibi bırakıldı."
 
-#: src/Admin/Rest.php:554
+#: src/Admin/Rest.php:555
 msgid "This message is no longer waiting."
 msgstr "Bu mesaj artık beklemiyor."
 
-#: src/Admin/Rest.php:562
+#: src/Admin/Rest.php:563
 msgid "Enter a valid mail server address, for example mail.example.ir."
 msgstr "Geçerli bir posta sunucusu adresi girin, örneğin mail.example.ir."
 
-#: src/Admin/Rest.php:570
+#: src/Admin/Rest.php:571
 msgid "Save a mail server first."
 msgstr "Önce bir posta sunucusu kaydedin."
 
-#: src/Admin/Rest.php:629
+#: src/Admin/Rest.php:630
 msgid "Please write between 5 and 2000 characters."
 msgstr "Lütfen 5 ile 2000 karakter arasında yazın."
 
-#: src/Admin/Rest.php:633
+#: src/Admin/Rest.php:634
 msgid "Please wait a minute before sending another message."
 msgstr "Başka bir mesaj göndermeden önce lütfen bir dakika bekleyin."
 
-#: src/Admin/Rest.php:636
+#: src/Admin/Rest.php:637
 msgid "rafoo.ir could not be reached. Please try again later."
 msgstr "rafoo.ir adresine ulaşılamadı. Lütfen daha sonra tekrar deneyin."
 
-#: src/Admin/Rest.php:679
+#: src/Admin/Rest.php:680
 msgid "This file is no longer in the list."
 msgstr "Bu dosya artık listede değil."
+
+#: src/Admin/ShieldStrings.php:15
+msgid "Shield"
+msgstr "Kalkan"
+
+#: src/Admin/ShieldStrings.php:16
+msgid "Security"
+msgstr "Güvenlik"
+
+#: src/Admin/ShieldStrings.php:17 src/Shield/Widget.php:18
+msgid "Rafoo Shield"
+msgstr "Rafoo Kalkanı"
+
+#: src/Admin/ShieldStrings.php:18 src/Shield/Widget.php:40
+msgid "Open the shield"
+msgstr "Kalkanı aç"
+
+#: src/Admin/ShieldStrings.php:19 src/Shield/Widget.php:47
+msgid "Switch to fortress mode"
+msgstr "Kale moduna geç"
+
+#: src/Admin/ShieldStrings.php:20 src/Shield/Widget.php:47
+msgid "Back to smart mode"
+msgstr "Akıllı moda dön"
+
+#: src/Admin/ShieldStrings.php:21
+msgid "Shield mode"
+msgstr "Kalkan modu"
+
+#: src/Admin/ShieldStrings.php:22
+msgid "Smart suits almost every site. Use fortress only during a heavy attack."
+msgstr "Akıllı mod neredeyse her siteye uygundur. Kale modunu yalnızca yoğun bir saldırıda kullanın."
+
+#: src/Admin/ShieldStrings.php:23 src/Admin/ShieldStrings.php:52 src/Admin/Strings.php:188 src/Admin/Strings.php:201
+msgid "Off"
+msgstr "Kapalı"
+
+#: src/Admin/ShieldStrings.php:24 src/Admin/Strings.php:674 src/Shield/Widget.php:24
+msgid "Smart"
+msgstr "Akıllı"
+
+#: src/Admin/ShieldStrings.php:25 src/Shield/Widget.php:25
+msgid "Strict"
+msgstr "Sıkı"
+
+#: src/Admin/ShieldStrings.php:26 src/Shield/Widget.php:26
+msgid "Fortress"
+msgstr "Kale"
+
+#: src/Admin/ShieldStrings.php:27
+msgid "No request is checked. Attacks reach WordPress and your other plugins."
+msgstr "Hiçbir istek denetlenmez. Saldırılar WordPress’e ve diğer eklentilere ulaşır."
+
+#: src/Admin/ShieldStrings.php:28
+msgid "Stops clear attacks, scanners and brute force, and checks a browser only when it sends too many requests. Visitors notice nothing."
+msgstr "Açık saldırıları, tarayıcı araçlarını ve kaba kuvveti durdurur; bir tarayıcıyı yalnızca çok fazla istek gönderdiğinde denetler. Ziyaretçiler hiçbir şey fark etmez."
+
+#: src/Admin/ShieldStrings.php:29
+msgid "Lower thresholds, closed sign-in through XML-RPC and stricter limits. For sites that are attacked often."
+msgstr "Daha düşük eşikler, XML-RPC ile girişin kapatılması ve daha sıkı sınırlar. Sık saldırı alan siteler için."
+
+#: src/Admin/ShieldStrings.php:30
+msgid "Every new visitor passes a short browser check once, and attackers are banned for longer. For the hours of a heavy attack."
+msgstr "Her yeni ziyaretçi bir kez kısa bir tarayıcı denetiminden geçer ve saldırganlar daha uzun süre engellenir. Yoğun saldırı saatleri için."
+
+#: src/Admin/ShieldStrings.php:31
+msgid "The shield is off"
+msgstr "Kalkan kapalı"
+
+#: src/Admin/ShieldStrings.php:32
+msgid "The shield is guarding the site"
+msgstr "Kalkan siteyi koruyor"
+
+#: src/Admin/ShieldStrings.php:33
+msgid "The shield is on strict guard"
+msgstr "Kalkan sıkı korumada"
+
+#: src/Admin/ShieldStrings.php:34
+msgid "Fortress mode is on"
+msgstr "Kale modu açık"
+
+#: src/Admin/ShieldStrings.php:35
+msgid "Requests are checked before WordPress loads."
+msgstr "İstekler WordPress yüklenmeden önce denetlenir."
+
+#: src/Admin/ShieldStrings.php:36
+msgid "Requests are checked as soon as plugins load, before any other plugin."
+msgstr "İstekler eklentiler yüklenir yüklenmez, diğer tüm eklentilerden önce denetlenir."
+
+#: src/Admin/ShieldStrings.php:37
+msgid "Requests are checked while plugins load. Rafoo moves itself to the front of the plugin list."
+msgstr "İstekler eklentiler yüklenirken denetlenir. Rafoo kendini eklenti listesinin başına taşır."
+
+#: src/Admin/ShieldStrings.php:38
+msgid "Rafoo is paused, so the shield is not checking requests."
+msgstr "Rafoo duraklatıldı, bu yüzden kalkan istekleri denetlemiyor."
+
+#: src/Admin/ShieldStrings.php:39 src/Shield/Widget.php:41
+msgid "Attacks stopped today"
+msgstr "Bugün durdurulan saldırılar"
+
+#: src/Admin/ShieldStrings.php:40 src/Shield/Widget.php:42
+msgid "In the last 7 days"
+msgstr "Son 7 günde"
+
+#: src/Admin/ShieldStrings.php:41
+msgid "Browser checks in 7 days"
+msgstr "7 günde tarayıcı denetimi"
+
+#: src/Admin/ShieldStrings.php:42
+msgid "Sign-in locks in 7 days"
+msgstr "7 günde giriş kilidi"
+
+#: src/Admin/ShieldStrings.php:43
+msgid "Protection before WordPress"
+msgstr "WordPress’ten önce koruma"
+
+#: src/Admin/ShieldStrings.php:44
+msgid "Runs the shield before WordPress and every plugin, so attacks never reach their code. Rafoo adds one line to the site’s .htaccess or .user.ini and removes it when turned off."
+msgstr "Kalkanı WordPress’ten ve tüm eklentilerden önce çalıştırır; saldırılar onların koduna hiç ulaşmaz. Rafoo sitenin .htaccess veya .user.ini dosyasına bir satır ekler ve kapatıldığında kaldırır."
+
+#: src/Admin/ShieldStrings.php:45 src/Admin/Strings.php:1363 src/Admin/Strings.php:1364 src/Admin/Strings.php:1365
+msgid "Turn on"
+msgstr "Aç"
+
+#: src/Admin/ShieldStrings.php:46
+msgid "Turn off"
+msgstr "Kapat"
+
+#: src/Admin/ShieldStrings.php:47
+msgid "Active before WordPress"
+msgstr "WordPress’ten önce etkin"
+
+#: src/Admin/ShieldStrings.php:48
+msgid "Set up, but the shield file did not run"
+msgstr "Kuruldu ama kalkan dosyası çalışmadı"
+
+#: src/Admin/ShieldStrings.php:49
+msgid "Another tool runs first"
+msgstr "Önce başka bir araç çalışıyor"
+
+#: src/Admin/ShieldStrings.php:50
+msgid "Waiting for the server"
+msgstr "Sunucu bekleniyor"
+
+#: src/Admin/ShieldStrings.php:51
+msgid "Not available on this server"
+msgstr "Bu sunucuda kullanılamıyor"
+
+#. translators: %d: minutes
+#: src/Admin/ShieldStrings.php:54
+#, php-format
+msgid "PHP reads the new setting within about %d minutes. Nothing else is needed."
+msgstr "PHP yeni ayarı yaklaşık %d dakika içinde okur. Başka bir şey gerekmez."
+
+#. translators: %s: file name
+#: src/Admin/ShieldStrings.php:56
+#, php-format
+msgid "The file %s already runs before WordPress. Rafoo keeps working as the first plugin so both work together."
+msgstr "%s dosyası zaten WordPress’ten önce çalışıyor. Rafoo ikisinin birlikte çalışması için ilk eklenti olarak çalışmaya devam eder."
+
+#: src/Admin/ShieldStrings.php:57
+msgid "This server does not let a site set this up. The shield still runs as the first plugin."
+msgstr "Bu sunucu sitenin bunu kurmasına izin vermiyor. Kalkan yine ilk eklenti olarak çalışır."
+
+#: src/Admin/ShieldStrings.php:58
+msgid "Counters are kept in memory (APCu), the fastest option."
+msgstr "Sayaçlar bellekte (APCu) tutulur; en hızlı seçenek."
+
+#: src/Admin/ShieldStrings.php:59
+msgid "Counters are kept in small files in a protected folder. With APCu on the server they would be kept in memory."
+msgstr "Sayaçlar korumalı bir klasörde küçük dosyalarda tutulur. Sunucuda APCu olsaydı bellekte tutulurdu."
+
+#: src/Admin/ShieldStrings.php:60
+msgid "The shield stops attacks that reach the site. A flood that fills the server’s network line before reaching PHP can only be stopped at the edge: connect ArvanCloud or Cloudflare below."
+msgstr "Kalkan siteye ulaşan saldırıları durdurur. PHP’ye ulaşmadan sunucunun ağ hattını dolduran bir sel ancak uçta durdurulabilir: aşağıdan ArvanCloud veya Cloudflare bağlayın."
+
+#: src/Admin/ShieldStrings.php:66
+msgid "Attack types"
+msgstr "Saldırı türleri"
+
+#: src/Admin/ShieldStrings.php:67
+msgid "Most active addresses"
+msgstr "En etkin adresler"
+
+#: src/Admin/ShieldStrings.php:68
+msgid "Most targeted paths"
+msgstr "En çok hedeflenen yollar"
+
+#: src/Admin/ShieldStrings.php:69
+msgid "Nothing in the last 7 days."
+msgstr "Son 7 günde hiçbir şey yok."
+
+#: src/Admin/ShieldStrings.php:70 src/Admin/Strings.php:111
+msgid "Recent events"
+msgstr "Son olaylar"
+
+#: src/Admin/ShieldStrings.php:71
+msgid "If a real visitor was stopped, allow their address. The reference code is the one shown on the stop page."
+msgstr "Gerçek bir ziyaretçi durdurulduysa adresine izin verin. Referans kodu, durdurma sayfasında gösterilen koddur."
+
+#: src/Admin/ShieldStrings.php:72
+msgid "No attack has been stopped yet."
+msgstr "Henüz durdurulan saldırı yok."
+
+#: src/Admin/ShieldStrings.php:73
+msgid "Ref."
+msgstr "Ref."
+
+#: src/Admin/ShieldStrings.php:74
+msgid "Allow"
+msgstr "İzin ver"
+
+#: src/Admin/ShieldStrings.php:75
+msgid "Allowed"
+msgstr "İzinli"
+
+#: src/Admin/ShieldStrings.php:76 src/Admin/Strings.php:682
+msgid "Block"
+msgstr "Engelle"
+
+#: src/Admin/ShieldStrings.php:77 src/Admin/Strings.php:683
+msgid "Unblock"
+msgstr "Engeli kaldır"
+
+#: src/Admin/ShieldStrings.php:78
+msgid "Stopped"
+msgstr "Durduruldu"
+
+#: src/Admin/ShieldStrings.php:79 src/Shield/Config.php:106
+msgid "Too many requests"
+msgstr "Çok fazla istek"
+
+#: src/Admin/ShieldStrings.php:80
+msgid "Sign-in locked"
+msgstr "Giriş kilitli"
+
+#: src/Admin/ShieldStrings.php:81
+msgid "Sign-in lock started"
+msgstr "Giriş kilidi başladı"
+
+#: src/Admin/ShieldStrings.php:82 src/Admin/ShieldStrings.php:101
+msgid "Browser check"
+msgstr "Tarayıcı denetimi"
+
+#: src/Admin/ShieldStrings.php:83
+msgid "SQL injection"
+msgstr "SQL enjeksiyonu"
+
+#: src/Admin/ShieldStrings.php:84
+msgid "Cross-site scripting"
+msgstr "Siteler arası betik (XSS)"
+
+#: src/Admin/ShieldStrings.php:85
+msgid "File reading"
+msgstr "Dosya okuma"
+
+#: src/Admin/ShieldStrings.php:86
+msgid "Command execution"
+msgstr "Komut çalıştırma"
+
+#: src/Admin/ShieldStrings.php:87
+msgid "Object injection"
+msgstr "Nesne enjeksiyonu"
+
+#: src/Admin/ShieldStrings.php:88
+msgid "Dangerous upload"
+msgstr "Tehlikeli yükleme"
+
+#: src/Admin/ShieldStrings.php:89
+msgid "Server-side request forgery"
+msgstr "Sunucu taraflı istek sahteciliği (SSRF)"
+
+#: src/Admin/ShieldStrings.php:90
+msgid "XML entity attack"
+msgstr "XML varlık saldırısı"
+
+#: src/Admin/ShieldStrings.php:91
+msgid "Vulnerability scanner"
+msgstr "Güvenlik açığı tarayıcısı"
+
+#: src/Admin/ShieldStrings.php:92
+msgid "Sensitive file"
+msgstr "Hassas dosya"
+
+#: src/Admin/ShieldStrings.php:93
+msgid "Malformed request"
+msgstr "Bozuk istek"
+
+#: src/Admin/ShieldStrings.php:94
+msgid "WordPress probing"
+msgstr "WordPress yoklaması"
+
+#: src/Admin/ShieldStrings.php:95
+msgid "Virtual patch"
+msgstr "Sanal yama"
+
+#: src/Admin/ShieldStrings.php:96
+msgid "Sign-in attempts"
+msgstr "Giriş denemeleri"
+
+#: src/Admin/ShieldStrings.php:97
+msgid "Request flood"
+msgstr "İstek seli"
+
+#: src/Admin/ShieldStrings.php:98
+msgid "Repeat attacker"
+msgstr "Tekrarlayan saldırgan"
+
+#: src/Admin/ShieldStrings.php:99
+msgid "Community list"
+msgstr "Topluluk listesi"
+
+#: src/Admin/ShieldStrings.php:100
+msgid "Your block list"
+msgstr "Engelleme listeniz"
+
+#: src/Admin/ShieldStrings.php:102
+msgid "Addresses"
+msgstr "Adresler"
+
+#. translators: %s: the visitor's own IP address
+#: src/Admin/ShieldStrings.php:104
+#, php-format
+msgid "One IP address or range per line, for example 203.0.113.5 or 203.0.113.0/24. Your address now: %s"
+msgstr "Her satıra bir IP adresi veya aralık, örneğin 203.0.113.5 ya da 203.0.113.0/24. Şu anki adresiniz: %s"
+
+#: src/Admin/ShieldStrings.php:105
+msgid "Always allow"
+msgstr "Her zaman izin ver"
+
+#: src/Admin/ShieldStrings.php:106
+msgid "Always block"
+msgstr "Her zaman engelle"
+
+#: src/Admin/ShieldStrings.php:107
+msgid "Your own proxies"
+msgstr "Kendi proxy’leriniz"
+
+#: src/Admin/ShieldStrings.php:108 src/Admin/ShieldStrings.php:110
+msgid "Community defense"
+msgstr "Topluluk savunması"
+
+#: src/Admin/ShieldStrings.php:109
+msgid "When several independent sites see the same attacker, rafoo.ir sends a signed list to every member, so the attacker is stopped here before trying."
+msgstr "Birkaç bağımsız site aynı saldırganı gördüğünde rafoo.ir tüm üyelere imzalı bir liste gönderir; saldırgan burada denemeden durdurulur."
+
+#: src/Admin/ShieldStrings.php:111
+msgid "Shares the addresses this site stopped, with the attack type. Visitors who were not stopped, signed-in users and private addresses are never sent."
+msgstr "Bu sitenin durdurduğu adresleri saldırı türüyle paylaşır. Durdurulmayan ziyaretçiler, giriş yapmış kullanıcılar ve özel adresler asla gönderilmez."
+
+#: src/Admin/ShieldStrings.php:112
+msgid "Member"
+msgstr "Üye"
+
+#. translators: 1: listed addresses, 2: addresses this site reported
+#: src/Admin/ShieldStrings.php:114
+#, php-format
+msgid "%1$d addresses on the list, %2$d reported by this site"
+msgstr "Listede %1$d adres, bu siteden %2$d bildirim"
+
+#: src/Admin/ShieldStrings.php:115
+msgid "Joining rafoo.ir. This takes a few minutes."
+msgstr "rafoo.ir’ye katılınıyor. Birkaç dakika sürer."
+
+#: src/Admin/ShieldStrings.php:116
+msgid "Update now"
+msgstr "Şimdi güncelle"
+
+#: src/Admin/ShieldStrings.php:117
+msgid "Virtual patches active on this site"
+msgstr "Bu sitede etkin sanal yamalar"
+
+#: src/Admin/ShieldStrings.php:118
+msgid "No installed plugin needs a virtual patch right now."
+msgstr "Şu anda hiçbir kurulu eklentinin sanal yamaya ihtiyacı yok."
+
+#: src/Admin/ShieldStrings.php:119
+msgid "Blocking at the CDN edge"
+msgstr "CDN ucunda engelleme"
+
+#: src/Admin/ShieldStrings.php:120
+msgid "Sends long blocks to your CDN so attackers are stopped before they reach your server. At most 200 addresses; they are removed when they expire."
+msgstr "Uzun engellemeleri CDN’inize gönderir; saldırganlar sunucunuza ulaşmadan durdurulur. En fazla 200 adres; süreleri dolunca kaldırılır."
+
+#: src/Admin/ShieldStrings.php:121
+msgid "CDN"
+msgstr "CDN"
+
+#: src/Admin/ShieldStrings.php:122 src/Admin/Strings.php:906
+msgid "ArvanCloud"
+msgstr "ArvanCloud"
+
+#: src/Admin/ShieldStrings.php:123 src/Admin/Strings.php:910
+msgid "Cloudflare"
+msgstr "Cloudflare"
+
+#: src/Admin/ShieldStrings.php:124
+msgid "Domain in the CDN panel"
+msgstr "CDN panelindeki alan adı"
+
+#: src/Admin/ShieldStrings.php:125
+msgid "Use the key saved for Geo DNS"
+msgstr "Geo DNS için kayıtlı anahtarı kullan"
+
+#: src/Admin/ShieldStrings.php:126
+msgid "The key needs permission to change firewall rules too."
+msgstr "Anahtarın güvenlik duvarı kurallarını değiştirme izni de olmalı."
+
+#: src/Admin/ShieldStrings.php:127
+msgid "ArvanCloud API key"
+msgstr "ArvanCloud API anahtarı"
+
+#: src/Admin/ShieldStrings.php:128
+msgid "From the ArvanCloud panel, Profile, API keys. It needs access to CDN firewall rules."
+msgstr "ArvanCloud panelinden Profil, API anahtarları. CDN güvenlik duvarı kurallarına erişimi olmalı."
+
+#: src/Admin/ShieldStrings.php:129
+msgid "Cloudflare API token"
+msgstr "Cloudflare API belirteci"
+
+#: src/Admin/ShieldStrings.php:130
+msgid "Create a token with Zone read and Firewall Services edit permission for this domain."
+msgstr "Bu alan adı için Zone okuma ve Firewall Services düzenleme izni olan bir belirteç oluşturun."
+
+#: src/Admin/ShieldStrings.php:131 src/Admin/Strings.php:526
+msgid "Connect"
+msgstr "Bağlan"
+
+#: src/Admin/ShieldStrings.php:132
+msgid "Disconnect"
+msgstr "Bağlantıyı kes"
+
+#: src/Admin/ShieldStrings.php:133
+msgid "Send now"
+msgstr "Şimdi gönder"
+
+#. translators: %d: number of IP addresses
+#: src/Admin/ShieldStrings.php:135
+#, php-format
+msgid "%d addresses at the edge"
+msgstr "Uçta %d adres"
+
+#: src/Admin/ShieldStrings.php:136
+msgid "Shield mode changed"
+msgstr "Kalkan modu değişti"
+
+#: src/Admin/ShieldStrings.php:137
+msgid "Shield protection before WordPress turned on"
+msgstr "WordPress’ten önce kalkan koruması açıldı"
+
+#: src/Admin/ShieldStrings.php:138
+msgid "Shield protection before WordPress turned off"
+msgstr "WordPress’ten önce kalkan koruması kapatıldı"
+
+#: src/Admin/ShieldStrings.php:139
+msgid "Joined community defense"
+msgstr "Topluluk savunmasına katıldı"
+
+#: src/Admin/ShieldStrings.php:140
+msgid "CDN edge blocking connected"
+msgstr "CDN ucunda engelleme bağlandı"
+
+#: src/Admin/ShieldStrings.php:141
+msgid "CDN edge blocking disconnected"
+msgstr "CDN ucunda engelleme kesildi"
+
+#: src/Admin/ShieldStrings.php:147
+msgid "The Rafoo Shield firewall. The full view, lists and events are in the Shield tab."
+msgstr "Rafoo Kalkanı güvenlik duvarı. Tam görünüm, listeler ve olaylar Kalkan sekmesinde."
+
+#: src/Admin/ShieldStrings.php:148
+msgid "How many attacks the shield stopped. Fortress mode is for the hours of a heavy attack."
+msgstr "Kalkanın durdurduğu saldırı sayısı. Kale modu yoğun saldırı saatleri içindir."
+
+#: src/Admin/ShieldStrings.php:149
+msgid "Smart is tuned so real visitors are never stopped. Strict lowers every threshold. Fortress asks each new visitor for a few-second browser check once every hour."
+msgstr "Akıllı mod gerçek ziyaretçiler asla durdurulmayacak şekilde ayarlıdır. Sıkı mod tüm eşikleri düşürür. Kale modu her yeni ziyaretçiden saatte bir birkaç saniyelik tarayıcı denetimi ister."
+
+#: src/Admin/ShieldStrings.php:150
+msgid "Without this, the shield runs when Rafoo loads, which is already before every other plugin. Before WordPress also protects WordPress core files and saves server work under attack."
+msgstr "Bu olmadan kalkan Rafoo yüklendiğinde çalışır; bu zaten diğer tüm eklentilerden öncedir. WordPress’ten önce çalışmak çekirdek dosyalarını da korur ve saldırı altında sunucu yükünü azaltır."
+
+#: src/Admin/ShieldStrings.php:151
+msgid "What the stopped requests tried to do."
+msgstr "Durdurulan isteklerin ne yapmaya çalıştığı."
+
+#: src/Admin/ShieldStrings.php:152
+msgid "Addresses with the most stopped requests in 7 days."
+msgstr "7 günde en çok durdurulan isteğe sahip adresler."
+
+#: src/Admin/ShieldStrings.php:153
+msgid "Addresses on your site that attackers targeted most."
+msgstr "Sitenizde saldırganların en çok hedeflediği yollar."
+
+#: src/Admin/ShieldStrings.php:154
+msgid "Stops, locks and browser checks. Repeated stops from one address are counted but listed once a minute."
+msgstr "Durdurmalar, kilitler ve tarayıcı denetimleri. Bir adresten tekrarlanan durdurmalar sayılır ama dakikada bir listelenir."
+
+#: src/Admin/ShieldStrings.php:155
+msgid "Your own exceptions. They apply before every rule and to every mode."
+msgstr "Kendi istisnalarınız. Her kuraldan önce ve her modda uygulanır."
+
+#: src/Admin/ShieldStrings.php:156
+msgid "These addresses are never checked, for example your office or a payment service."
+msgstr "Bu adresler asla denetlenmez, örneğin ofisiniz veya bir ödeme hizmeti."
+
+#: src/Admin/ShieldStrings.php:157
+msgid "These addresses are always stopped. Your own address cannot be added."
+msgstr "Bu adresler her zaman durdurulur. Kendi adresiniz eklenemez."
+
+#: src/Admin/ShieldStrings.php:158
+msgid "If the site sits behind your own proxy or load balancer, add its address so the visitor’s real address is read. ArvanCloud and Cloudflare are recognized automatically."
+msgstr "Site kendi proxy’nizin veya yük dengeleyicinizin arkasındaysa, ziyaretçinin gerçek adresinin okunması için adresini ekleyin. ArvanCloud ve Cloudflare otomatik tanınır."
+
+#: src/Admin/ShieldStrings.php:159
+msgid "An address is listed only when at least three sites on two different networks report it. Iranian addresses get a browser check instead of a block, because many visitors share one address on mobile networks."
+msgstr "Bir adres yalnızca iki farklı ağdaki en az üç site bildirdiğinde listelenir. İran adresleri engelleme yerine tarayıcı denetimi alır, çünkü mobil ağlarda birçok ziyaretçi tek bir adresi paylaşır."
+
+#: src/Admin/ShieldStrings.php:160
+msgid "Uses the same signing key as the cooperative network. Turning it off deletes the list and stops reports."
+msgstr "İşbirliği ağıyla aynı imza anahtarını kullanır. Kapatmak listeyi siler ve bildirimleri durdurur."
+
+#: src/Admin/ShieldStrings.php:161
+msgid "The key is stored encrypted. Only blocks of an hour or more are sent."
+msgstr "Anahtar şifreli saklanır. Yalnızca bir saat veya daha uzun engellemeler gönderilir."
 
 #: src/Admin/SiteHealth.php:21
 msgid "Rafoo connection state"
@@ -601,10 +1127,6 @@ msgstr "Disk alanı"
 msgid "Time in outage mode"
 msgstr "Kesinti modunda geçen süre"
 
-#: src/Admin/Strings.php:111
-msgid "Recent events"
-msgstr "Son olaylar"
-
 #: src/Admin/Strings.php:112
 msgid "Nothing has happened yet."
 msgstr "Henüz bir şey olmadı."
@@ -860,10 +1382,6 @@ msgstr "Yalnızca kesintilerde"
 #: src/Admin/Strings.php:187
 msgid "Pages use the original addresses until the international internet goes down."
 msgstr "Sayfalar, uluslararası internet kesilene kadar özgün adresleri kullanır."
-
-#: src/Admin/Strings.php:188 src/Admin/Strings.php:201
-msgid "Off"
-msgstr "Kapalı"
 
 #: src/Admin/Strings.php:189
 msgid "Nothing is copied or replaced."
@@ -1211,7 +1729,7 @@ msgstr "Bir güncellemeden sonra sitede sorun oluştu ama geri dönmek sorunu ç
 msgid "%1$s was set back to %2$s by hand"
 msgstr "%1$s elle %2$s sürümüne geri alındı"
 
-#: src/Admin/Strings.php:290 src/Admin/Strings.php:1448
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:1449
 msgid "Updates"
 msgstr "Güncellemeler"
 
@@ -2067,10 +2585,6 @@ msgstr "SSH özel anahtarı (isteğe bağlı, parola yerine)"
 msgid "Rafoo tries SFTP, then FTPS and plain FTP, creates a folder named rafoo-backups, and checks that it can write, read and delete a test file."
 msgstr "Rafoo önce SFTP'yi, sonra FTPS'yi ve düz FTP'yi dener, rafoo-backups adlı bir klasör oluşturur ve bir test dosyasını yazıp okuyabildiğini ve silebildiğini kontrol eder."
 
-#: src/Admin/Strings.php:526
-msgid "Connect"
-msgstr "Bağlan"
-
 #: src/Admin/Strings.php:527
 msgid "Finding the connection…"
 msgstr "Bağlantı aranıyor…"
@@ -2567,10 +3081,6 @@ msgstr "Bir sayfa sitenin kendi AJAX veya REST adresinden aynı şeyi aynı anda
 msgid "WordPress Heartbeat"
 msgstr "WordPress Heartbeat"
 
-#: src/Admin/Strings.php:674
-msgid "Smart"
-msgstr "Akıllı"
-
 #: src/Admin/Strings.php:675
 msgid "Every 60 seconds in editors, every 120 seconds elsewhere. Autosave and post locks keep working."
 msgstr "Düzenleyicilerde 60 saniyede, diğer yerlerde 120 saniyede bir. Otomatik kaydetme ve yazı kilitleri çalışmaya devam eder."
@@ -2598,14 +3108,6 @@ msgstr "Benim hesabımla da tara"
 #: src/Admin/Strings.php:681
 msgid "The manual scan also opens the first pages with your login, so files loaded only for signed-in users are found."
 msgstr "Elle tarama ilk sayfaları sizin girişinizle de açar; böylece yalnızca giriş yapmış kullanıcılara yüklenen dosyalar bulunur."
-
-#: src/Admin/Strings.php:682
-msgid "Block"
-msgstr "Engelle"
-
-#: src/Admin/Strings.php:683
-msgid "Unblock"
-msgstr "Engeli kaldır"
 
 #: src/Admin/Strings.php:684
 msgid "Blocked"
@@ -3423,10 +3925,6 @@ msgstr "Elle"
 msgid "You create the records in any DNS. Rafoo shows them and checks them."
 msgstr "Kayıtları herhangi bir DNS'te siz oluşturursunuz. Rafoo bunları gösterir ve denetler."
 
-#: src/Admin/Strings.php:906
-msgid "ArvanCloud"
-msgstr "ArvanCloud"
-
 #: src/Admin/Strings.php:907
 msgid "Iranian CDN and DNS with servers inside and outside Iran. Best when most visitors are in Iran."
 msgstr "İran içinde ve dışında sunucuları olan İranlı CDN ve DNS. Ziyaretçilerin çoğu İran'daysa en iyisi."
@@ -3438,10 +3936,6 @@ msgstr "Gcore DNS"
 #: src/Admin/Strings.php:909
 msgid "Global DNS. Geo balancing is included in the free plan."
 msgstr "Küresel DNS. Coğrafi dengeleme ücretsiz plana dahil."
-
-#: src/Admin/Strings.php:910
-msgid "Cloudflare"
-msgstr "Cloudflare"
 
 #: src/Admin/Strings.php:911
 msgid "Global DNS. Geo steering needs the paid Load Balancing add-on."
@@ -5061,10 +5555,6 @@ msgstr "Uluslararası internet şu an kesik"
 msgid "Resume"
 msgstr "Sürdür"
 
-#: src/Admin/Strings.php:1363 src/Admin/Strings.php:1364 src/Admin/Strings.php:1365 src/Admin/Strings.php:1366
-msgid "Turn on"
-msgstr "Aç"
-
 #: src/Admin/Strings.php:1370
 msgid "Scan now"
 msgstr "Şimdi tara"
@@ -5313,69 +5803,69 @@ msgstr "Rafoo'nun bu barındırmada yedekler için kullanabileceği boş alan. B
 msgid "Updates from the Iranian mirror for what is installed on this site. Premium plugins and themes that update from their own server, such as Divi, are never changed."
 msgstr "Bu sitede kurulu olanlar için İran aynasından güncellemeler. Divi gibi kendi sunucusundan güncellenen ücretli eklenti ve temalara hiç dokunulmaz."
 
-#: src/Admin/Strings.php:1444
+#: src/Admin/Strings.php:1445
 msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
 msgstr "WordPress'i, eklentileri ve temaları imza kontrolüyle İran yansısından günceller; güncellemeler kesinti sırasında da çalışır."
 
-#: src/Admin/Strings.php:1445
+#: src/Admin/Strings.php:1446
 msgid "Translation updates come from the mirror too, only for the languages installed on the site."
 msgstr "Çeviri güncellemeleri de yansıdan gelir; yalnızca sitede yüklü diller için."
 
-#: src/Admin/Strings.php:1446
+#: src/Admin/Strings.php:1447
 msgid "Translations from the mirror"
 msgstr "Yansıdan çeviriler"
 
-#: src/Admin/Strings.php:1447
+#: src/Admin/Strings.php:1448
 msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
 msgstr "Kesinti sırasında WordPress, eklenti ve tema çevirileri yansıdan güncellenir; yalnızca bu sitede yüklü diller için."
 
-#: src/Admin/Strings.php:1449
+#: src/Admin/Strings.php:1450
 msgid "Update from the domestic mirror"
 msgstr "Yerel yansıdan güncelle"
 
-#: src/Admin/Strings.php:1450
+#: src/Admin/Strings.php:1451
 msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
 msgstr "Uluslararası internet kesikken WordPress, eklentiler ve temalar yansıdan güncellenir."
 
-#: src/Admin/Strings.php:1451
+#: src/Admin/Strings.php:1452
 msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
 msgstr "Yansıda aynı sürüm varsa paketler her zaman yansıdan indirilir. İran içinde daha hızlı."
 
-#: src/Admin/Strings.php:1452
+#: src/Admin/Strings.php:1453
 msgid "Mirror coverage"
 msgstr "Yansı kapsamı"
 
-#: src/Admin/Strings.php:1453
+#: src/Admin/Strings.php:1454
 msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
 msgstr "Yüklü eklentilerinizden, temalarınızdan ve WordPress sürümünüzden hangilerini yerel yansının güncelleyebileceği."
 
-#: src/Admin/Strings.php:1454
+#: src/Admin/Strings.php:1455
 msgid "Check again"
 msgstr "Yeniden kontrol et"
 
-#: src/Admin/Strings.php:1455
+#: src/Admin/Strings.php:1456
 msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
 msgstr "İmzalı yansı dizini henüz kullanılamıyor. O zamana kadar güncellemeler WordPress.org'dan gelmeye devam eder."
 
-#: src/Admin/Strings.php:1456
+#: src/Admin/Strings.php:1457
 msgid "Mirror"
 msgstr "Yansı"
 
-#: src/Admin/Strings.php:1457
+#: src/Admin/Strings.php:1458
 msgid "Not on the mirror"
 msgstr "Yansıda yok"
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:1459
+#: src/Admin/Strings.php:1460
 #, php-format
 msgid "Version %s available"
 msgstr "%s sürümü mevcut"
 
-#: src/Admin/Strings.php:1460
+#: src/Admin/Strings.php:1461
 msgid "Up to date"
 msgstr "Güncel"
 
-#: src/Admin/Strings.php:1461
+#: src/Admin/Strings.php:1462
 msgid "WordPress"
 msgstr "WordPress"
 
@@ -5669,7 +6159,7 @@ msgstr "Sitenin bu bölümü şu anda kullanılamıyor"
 msgid "The main server of this site cannot be reached at the moment. Reading the site still works. Please try again in a few minutes."
 msgstr "Bu sitenin ana sunucusuna şu anda ulaşılamıyor. Siteyi okumak hâlâ mümkün. Lütfen birkaç dakika sonra yeniden deneyin."
 
-#: src/Geo/Proxy.php:268
+#: src/Geo/Proxy.php:268 src/Shield/Config.php:115
 msgid "Back to the home page"
 msgstr "Ana sayfaya dön"
 
@@ -5711,27 +6201,27 @@ msgstr "Bu mesaj, Rafoo'da kesintiler için ayarladığınız posta sunucusu üz
 msgid "The message could not be sent."
 msgstr "Mesaj gönderilemedi."
 
-#: src/Peers/Api.php:17
+#: src/Peers/Api.php:19
 msgid "rafoo.ir asked to wait a little. Rafoo will try again soon."
 msgstr "rafoo.ir biraz beklenmesini istedi. Rafoo yakında yeniden deneyecek."
 
-#: src/Peers/Api.php:21
+#: src/Peers/Api.php:23
 msgid "The request could not be prepared."
 msgstr "İstek hazırlanamadı."
 
-#: src/Peers/Api.php:27
+#: src/Peers/Api.php:29
 msgid "This site has no key for the network. Join again."
 msgstr "Bu sitenin ağ için anahtarı yok. Yeniden katılın."
 
-#: src/Peers/Api.php:58
+#: src/Peers/Api.php:60
 msgid "rafoo.ir did not accept the request."
 msgstr "rafoo.ir isteği kabul etmedi."
 
-#: src/Peers/Engine.php:161
+#: src/Peers/Engine.php:161 src/Shield/Intel.php:37
 msgid "This server cannot create a signing key (the sodium extension is missing)."
 msgstr "Bu sunucu imzalama anahtarı oluşturamıyor (sodium eklentisi eksik)."
 
-#: src/Peers/Engine.php:179
+#: src/Peers/Engine.php:179 src/Shield/Intel.php:57
 msgid "rafoo.ir gave an answer that could not be read."
 msgstr "rafoo.ir okunamayan bir yanıt verdi."
 
@@ -5756,8 +6246,16 @@ msgid "If an email from this site cannot be sent because the mail server is unre
 msgstr "Bu siteden bir e-posta, posta sunucusuna ulaşılamadığı için gönderilemezse Rafoo mesajın alıcıları ve ekleri dahil bir kopyasını bu sunucuda saklar ve bağlantı geri geldiğinde gönderir. Kopyalar mesaj gönderilir gönderilmez ve en geç üç gün sonra silinir."
 
 #: src/Privacy.php:18
-msgid "Rafoo does not collect or send any information about visitors. If the site administrator turns on anonymous usage reports, a weekly report is sent to rafoo.ir with a random site identifier, software versions and the names of installed plugins and themes. It never includes the site address or any personal data."
-msgstr "Rafoo ziyaretçiler hakkında hiçbir bilgi toplamaz veya göndermez. Site yöneticisi anonim kullanım raporlarını açarsa rafoo.ir'ye rastgele bir site kimliği, yazılım sürümleri ve yüklü eklenti ve temaların adlarını içeren haftalık bir rapor gönderilir. Site adresini veya kişisel verileri asla içermez."
+msgid "Rafoo Shield protects this site from attacks. For each request it counts requests per IP address for a short time, and for stopped requests it keeps the IP address, the time, the address requested and the browser name for up to 30 days. During a heavy attack a visitor may be asked to wait while the browser solves a short check; a cookie named rafoo_shield_pass then remembers the check for up to six hours. Signed-in editors and administrators receive a cookie named rafoo_shield_trust for up to twelve hours."
+msgstr "Rafoo Kalkanı bu siteyi saldırılara karşı korur. Her istek için IP adresi başına istekleri kısa bir süre sayar; durdurulan istekler için IP adresini, zamanı, istenen adresi ve tarayıcı adını en fazla 30 gün saklar. Yoğun bir saldırı sırasında ziyaretçiden tarayıcı kısa bir denetimi çözerken beklemesi istenebilir; ardından rafoo_shield_pass adlı çerez bu denetimi en fazla altı saat hatırlar. Giriş yapmış editörler ve yöneticiler en fazla on iki saat için rafoo_shield_trust adlı bir çerez alır."
+
+#: src/Privacy.php:19
+msgid "If the site administrator turns on community defense, the IP addresses of stopped attacks are sent to rafoo.ir with the type of attack, and a list of addresses reported by other sites is received. Addresses of visitors who were not stopped and of signed-in users are never sent."
+msgstr "Site yöneticisi topluluk savunmasını açarsa, durdurulan saldırıların IP adresleri saldırı türüyle birlikte rafoo.ir’ye gönderilir ve diğer sitelerin bildirdiği adreslerin listesi alınır. Durdurulmayan ziyaretçilerin ve giriş yapmış kullanıcıların adresleri asla gönderilmez."
+
+#: src/Privacy.php:20
+msgid "Apart from the above, Rafoo does not collect or send any information about visitors. If the site administrator turns on anonymous usage reports, a weekly report is sent to rafoo.ir with a random site identifier, software versions and the names of installed plugins and themes. It never includes the site address or any personal data."
+msgstr "Yukarıdakiler dışında, Rafoo ziyaretçiler hakkında hiçbir bilgi toplamaz veya göndermez. Site yöneticisi anonim kullanım raporlarını açarsa rafoo.ir'ye rastgele bir site kimliği, yazılım sürümleri ve yüklü eklenti ve temaların adlarını içeren haftalık bir rapor gönderilir. Site adresini veya kişisel verileri asla içermez."
 
 #. translators: %s: list of plugin or theme names
 #: src/Safety/Rollback.php:289
@@ -5784,6 +6282,112 @@ msgstr "Uluslararası internet kesikken bu içerik kullanılamaz."
 #: src/Services/Embeds.php:72
 msgid "Open the original link"
 msgstr "Özgün bağlantıyı aç"
+
+#: src/Shield/Api.php:171 src/Shield/Api.php:209
+msgid "This list includes your own address. Remove it so you do not lock yourself out."
+msgstr "Bu liste kendi adresinizi içeriyor. Kendinizi dışarıda bırakmamak için kaldırın."
+
+#: src/Shield/Api.php:246
+msgid "Turn on community defense first."
+msgstr "Önce topluluk savunmasını açın."
+
+#: src/Shield/Api.php:277
+msgid "Enter a valid IP address or range, for example 203.0.113.5 or 203.0.113.0/24."
+msgstr "Geçerli bir IP adresi veya aralık girin, örneğin 203.0.113.5 ya da 203.0.113.0/24."
+
+#: src/Shield/Config.php:104
+msgid "This request was stopped"
+msgstr "Bu istek durduruldu"
+
+#: src/Shield/Config.php:105
+msgid "The site’s security shield stopped this request because it looked like an attack. If you think this is a mistake, send the reference code below to the site administrator."
+msgstr "Sitenin güvenlik kalkanı bu isteği bir saldırıya benzediği için durdurdu. Bunun bir hata olduğunu düşünüyorsanız aşağıdaki referans kodunu site yöneticisine gönderin."
+
+#: src/Shield/Config.php:107
+msgid "Requests from your connection arrived too quickly. Please wait a minute and try again."
+msgstr "Bağlantınızdan gelen istekler çok hızlı geldi. Lütfen bir dakika bekleyip tekrar deneyin."
+
+#: src/Shield/Config.php:108
+msgid "Signing in is paused"
+msgstr "Giriş duraklatıldı"
+
+#: src/Shield/Config.php:109 src/Shield/Shield.php:99
+msgid "There were too many failed sign-in attempts from your connection. Please try again later."
+msgstr "Bağlantınızdan çok fazla başarısız giriş denemesi oldu. Lütfen daha sonra tekrar deneyin."
+
+#: src/Shield/Config.php:110
+msgid "Checking your browser"
+msgstr "Tarayıcınız denetleniyor"
+
+#: src/Shield/Config.php:111
+msgid "The site is under heavy load. Your browser is solving a short check; the page opens by itself in a few seconds."
+msgstr "Site yoğun yük altında. Tarayıcınız kısa bir denetimi çözüyor; sayfa birkaç saniye içinde kendiliğinden açılır."
+
+#: src/Shield/Config.php:112
+msgid "The check could not be completed. Reload the page to try again."
+msgstr "Denetim tamamlanamadı. Tekrar denemek için sayfayı yenileyin."
+
+#: src/Shield/Config.php:113
+msgid "Turn on JavaScript to continue."
+msgstr "Devam etmek için JavaScript’i açın."
+
+#: src/Shield/Config.php:114
+msgid "Reference"
+msgstr "Referans"
+
+#: src/Shield/Edge.php:67
+msgid "Choose a provider and enter the domain as it appears in its panel."
+msgstr "Bir sağlayıcı seçin ve alan adını panelinde göründüğü gibi girin."
+
+#: src/Shield/Edge.php:75
+msgid "Enter the API key from the provider’s panel."
+msgstr "Sağlayıcının panelindeki API anahtarını girin."
+
+#: src/Shield/Edge.php:90
+msgid "Cloudflare did not find this domain with this token."
+msgstr "Cloudflare bu belirteçle bu alan adını bulamadı."
+
+#: src/Shield/Edge.php:96
+msgid "ArvanCloud did not accept this key for this domain."
+msgstr "ArvanCloud bu alan adı için bu anahtarı kabul etmedi."
+
+#: src/Shield/Intel.php:195
+msgid "The list from rafoo.ir could not be verified."
+msgstr "rafoo.ir listesi doğrulanamadı."
+
+#: src/Shield/Prepend.php:57
+msgid "This server does not let a site set up protection before WordPress. Protection still runs as the first plugin."
+msgstr "Bu sunucu sitenin WordPress’ten önce koruma kurmasına izin vermiyor. Koruma yine ilk eklenti olarak çalışır."
+
+#: src/Shield/Prepend.php:60
+msgid "Another security tool already runs before WordPress on this site. Rafoo keeps running as the first plugin so both work together."
+msgstr "Bu sitede başka bir güvenlik aracı zaten WordPress’ten önce çalışıyor. Rafoo ikisinin birlikte çalışması için ilk eklenti olarak çalışmaya devam eder."
+
+#: src/Shield/Prepend.php:63 src/Shield/Prepend.php:68
+msgid "Rafoo could not write to the site’s main folder. Check the folder permissions and try again."
+msgstr "Rafoo sitenin ana klasörüne yazamadı. Klasör izinlerini kontrol edip tekrar deneyin."
+
+#: src/Shield/Shield.php:191
+msgid "Sorry, you are not allowed to list users."
+msgstr "Üzgünüz, kullanıcıları listeleme izniniz yok."
+
+#. translators: %s: shield mode name, for example "Smart"
+#: src/Shield/Widget.php:39
+#, php-format
+msgid "Mode: %s"
+msgstr "Mod: %s"
+
+#: src/Shield/Widget.php:44
+msgid "The shield is off. Turn it on to stop attacks before they reach WordPress."
+msgstr "Kalkan kapalı. Saldırıları WordPress’e ulaşmadan durdurmak için açın."
+
+#: src/Shield/Widget.php:50
+msgid "Fortress mode asks every new visitor to pass a short browser check. Go back when the attack is over."
+msgstr "Kale modu her yeni ziyaretçiden kısa bir tarayıcı denetiminden geçmesini ister. Saldırı bitince geri dönün."
+
+#: src/Shield/Widget.php:50
+msgid "Under a heavy attack, fortress mode asks every new visitor to pass a short browser check."
+msgstr "Yoğun bir saldırı altında kale modu her yeni ziyaretçiden kısa bir tarayıcı denetiminden geçmesini ister."
 
 #: plugin header
 msgid "Rafoo – Offline-Ready Assets & Updates"

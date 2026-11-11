@@ -90,6 +90,23 @@
 		</div>
 	{/if}
 
+	<Card title={t('settings_security_title')} help={help('card_settings_security')}>
+		<Choices
+			name="rafoo-shield"
+			legend={t('shield_mode_label')}
+			help={help('shield_mode')}
+			bind:value={form.shield}
+			disabled={locked('shield')}
+			options={[
+				{ value: 'smart', label: t('shield_mode_smart'), description: t('shield_mode_smart_help') },
+				{ value: 'strict', label: t('shield_mode_strict'), description: t('shield_mode_strict_help') },
+				{ value: 'fortress', label: t('shield_mode_fortress'), description: t('shield_mode_fortress_help') },
+				{ value: 'off', label: t('shield_mode_off'), description: t('shield_mode_off_help') }
+			]}
+		/>
+		<Toggle label={t('shield_network_label')} description={t('shield_network_help')} help={help('shield_network_toggle')} bind:checked={form.shield_network} disabled={locked('shield_network')} />
+	</Card>
+
 	<Card title={t('settings_files_title')} help={help('card_settings_files')}>
 		<Choices
 			name="rafoo-replace"

@@ -1436,6 +1436,7 @@ final class Strings {
 			'help_backup_free' => __( 'Free space Rafoo can use for backups on this host. A backup needs roughly the size of the site.', 'rafoo' ),
 			'help_card_updates_mirror' => __( 'Updates from the Iranian mirror for what is installed on this site. Premium plugins and themes that update from their own server, such as Divi, are never changed.', 'rafoo' ),
 		);
+		$strings = array_merge( $strings, ShieldStrings::all() );
 		return Plugin::complete() ? array_merge( $strings, self::updates() ) : $strings;
 	}
 

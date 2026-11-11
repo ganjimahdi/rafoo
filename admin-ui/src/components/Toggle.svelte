@@ -7,9 +7,10 @@
 		help?: string;
 		checked: boolean;
 		disabled?: boolean;
+		onchange?: (checked: boolean) => void;
 	}
 
-	let { label, description, help, checked = $bindable(), disabled = false }: Props = $props();
+	let { label, description, help, checked = $bindable(), disabled = false, onchange }: Props = $props();
 	const uid = $props.id();
 	const id = 'rf-toggle-' + uid;
 </script>
@@ -21,6 +22,7 @@
 			type="checkbox"
 			role="switch"
 			bind:checked
+			onchange={onchange ? () => onchange(checked) : undefined}
 			{disabled}
 			aria-describedby={description ? id + '-desc' : undefined}
 		/>

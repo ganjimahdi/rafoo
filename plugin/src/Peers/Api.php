@@ -11,7 +11,9 @@ final class Api {
 	const ENDPOINT = 'https://rafoo.ir/api/v1/peers/';
 	const PATH     = '/api/v1/peers/';
 
-	public static function call( $action, array $body = array(), $timeout = 8, $background = false ) {
+	public static function call( $action, array $body = array(), $timeout = 8, $background = false, $scope = 'peers' ) {
+		$scope = 'shield' === $scope ? 'shield' : 'peers';
+		$path  = '/api/v1/' . $scope . '/';
 		$state = Keys::data();
 		if ( $background && ! empty( $state['backoff'] ) && time() < (int) $state['backoff'] ) {
 			return new \WP_Error( 'rafoo_peer_backoff', __( 'rafoo.ir asked to wait a little. Rafoo will try again soon.', 'rafoo' ) );
@@ -22,12 +24,12 @@ final class Api {
 		}
 		$time  = (string) time();
 		$nonce = Keys::nonce();
-		$sig   = Keys::sign( 'rafoo-peer|' . self::PATH . $action . '|' . $time . '|' . $nonce . '|' . hash( 'sha256', $raw ) );
+		$sig   = Keys::sign( 'rafoo-peer|' . $path . $action . '|' . $time . '|' . $nonce . '|' . hash( 'sha256', $raw ) );
 		if ( '' === $sig ) {
 			return new \WP_Error( 'rafoo_peer_key', __( 'This site has no key for the network. Join again.', 'rafoo' ) );
 		}
 		$response = wp_remote_post(
-			apply_filters( 'rafoo_peers_endpoint', self::ENDPOINT ) . $action,
+			str_replace( self::PATH, $path, (string) apply_filters( 'rafoo_peers_endpoint', self::ENDPOINT ) ) . $action,
 			Client::args(
 				array(
 					'timeout'     => $timeout,

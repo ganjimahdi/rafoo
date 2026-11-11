@@ -36,6 +36,7 @@ export interface Overview {
 	assets: Summary;
 	breaker: { host: string; until: number }[];
 	events: RafooEvent[];
+	shield: ShieldCard;
 	edition: 'standard' | 'complete';
 	version: string;
 	paused: boolean;
@@ -96,6 +97,8 @@ export interface Settings {
 	heartbeat: 'smart' | 'default';
 	block_hosts: string[];
 	scan_as_user: boolean;
+	shield: ShieldMode;
+	shield_network: boolean;
 	paused: boolean;
 	setup: '' | 'done' | 'skipped';
 	preset: '' | Preset | 'custom';
@@ -626,4 +629,77 @@ export interface DrillClient {
 	x: string[];
 	e: { m: string; f: string; l: number }[];
 	g: string[];
+}
+
+export type ShieldMode = 'off' | 'smart' | 'strict' | 'fortress';
+
+export interface ShieldCard {
+	mode: ShieldMode;
+	setting: ShieldMode;
+	today: number;
+	week: number;
+	network: boolean;
+	early: boolean;
+}
+
+export interface ShieldCount {
+	name: string;
+	count: number;
+}
+
+export interface ShieldEvent {
+	t: number;
+	r: string;
+	i: string;
+	a: 'block' | 'limit' | 'locked' | 'lock' | 'challenge';
+	g: string;
+	u: string;
+	w: string;
+	m: string;
+	p: string;
+	b: string;
+	x: string;
+}
+
+export interface ShieldView {
+	card: ShieldCard;
+	stats: {
+		today: Record<string, number>;
+		week: Record<string, number>;
+		groups: ShieldCount[];
+		ips: ShieldCount[];
+		paths: ShieldCount[];
+		series: { day: string; stopped: number }[];
+		stopped_today: number;
+		stopped_week: number;
+	};
+	events: ShieldEvent[];
+	allow: string[];
+	deny: string[];
+	proxies: string[];
+	prepend: { status: 'active' | 'broken' | 'conflict' | 'pending' | 'unsupported' | 'off'; method: string; enabled: boolean; other: string; cache: number };
+	first: boolean;
+	running: boolean;
+	apcu: boolean;
+	you: string;
+	network: {
+		enabled: boolean;
+		joined: number;
+		count: number;
+		sent: number;
+		checked: number;
+		rev: number;
+		error: string;
+		patches: { id: string; plugin: string; title: string }[];
+	};
+	edge: {
+		provider: '' | 'arvan' | 'cloudflare';
+		domain: string;
+		count: number;
+		error: string;
+		at: number;
+		geo: { arvan: boolean; cloudflare: boolean };
+		host: string;
+	};
+	now: number;
 }

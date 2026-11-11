@@ -105,6 +105,7 @@ final class Monitor {
 			if ( 'd:rafoo' === $id && 200 === $code ) {
 				$hint = Signal::parse( $responses[ $id ]['body'] );
 				Signal::announce( $responses[ $id ]['body'] );
+				\Rafoo\Shield\Intel::signal( $responses[ $id ]['body'] );
 			}
 		}
 		$timing = array();

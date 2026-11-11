@@ -67,6 +67,8 @@ final class Plugin {
 		}
 		$this->booted = true;
 
+		require_once __DIR__ . '/Shield/early.php';
+
 		add_action( 'plugins_loaded', array( Geo\Edge::class, 'boot' ), PHP_INT_MIN );
 		Geo\Seo::boot();
 		if ( Geo\Store::is_primary() ) {
@@ -82,7 +84,7 @@ final class Plugin {
 			Drill\Session::boot();
 		}
 
-		$hooks = Settings::paused() ? self::hooks() : array_merge( self::hooks(), self::changes() );
+		$hooks = array_merge( self::hooks(), Shield\Shield::hooks(), Settings::paused() ? array() : self::changes() );
 		foreach ( $hooks as $hook ) {
 			add_filter( $hook[0], $hook[1], isset( $hook[2] ) ? $hook[2] : 10, isset( $hook[3] ) ? $hook[3] : 1 );
 		}
@@ -122,6 +124,8 @@ final class Plugin {
 			array( 'wp_ajax_' . Transfer::ACTION, array( Transfer::class, 'endpoint' ), 10, 0 ),
 			array( 'wp_ajax_nopriv_' . Transfer::ACTION, array( Transfer::class, 'endpoint' ), 10, 0 ),
 			array( 'admin_post_' . Api::DOWNLOAD, array( Api::class, 'download' ), 10, 0 ),
+			array( 'admin_post_' . Shield\Widget::ACTION, array( Shield\Widget::class, 'submit' ), 10, 0 ),
+			array( 'rafoo_peer_key_needed', array( Shield\Intel::class, 'needs_key' ) ),
 			array( 'rafoo_rest_routes', array( Api::class, 'routes' ) ),
 			array( 'rafoo_rest_routes', array( Geo\Api::class, 'routes' ) ),
 			array( 'rafoo_rest_routes', array( Drill\Api::class, 'routes' ) ),
@@ -270,6 +274,10 @@ final class Plugin {
 		if ( Geo\Store::active() && ! wp_next_scheduled( Geo\Health::HOOK ) ) {
 			wp_schedule_event( time() + 60, self::MINUTE, Geo\Health::HOOK );
 		}
+		Shield\Shield::schedule();
+		if ( ! get_option( Shield\Local::BOOT ) && Shield\Shield::active() ) {
+			Shield\Shield::recompile();
+		}
 	}
 
 	public static function check() {
@@ -316,15 +324,18 @@ final class Plugin {
 			set_transient( 'rafoo_setup_redirect', get_current_user_id(), 60 );
 		}
 		Telemetry::ping( 'activate' );
+		Shield\Shield::recompile();
 		if ( 'complete' === RAFOO_EDITION ) {
 			self::retire_standard();
 		}
 	}
 
 	public static function deactivate() {
-		foreach ( array( 'rafoo_check', 'rafoo_sync', 'rafoo_scan', self::DAILY, Queue::HOOK, Schedule::HOOK, Job::HOOK, Geo\Health::HOOK, Geo\Planner::HOOK, Geo\Lister::HOOK, Geo\Changes::POKE ) as $hook ) {
+		foreach ( array( 'rafoo_check', 'rafoo_sync', 'rafoo_scan', self::DAILY, Queue::HOOK, Schedule::HOOK, Job::HOOK, Geo\Health::HOOK, Geo\Planner::HOOK, Geo\Lister::HOOK, Geo\Changes::POKE, Shield\Shield::HOOK ) as $hook ) {
 			wp_unschedule_hook( $hook );
 		}
+		Shield\Prepend::disable();
+		delete_option( Shield\Local::BOOT );
 		delete_site_transient( Monitor::LOCK );
 		Telemetry::ping( 'deactivate' );
 		if ( Peers\Keys::member() ) {

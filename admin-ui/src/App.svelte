@@ -14,6 +14,7 @@
 	import Overview from './pages/Overview.svelte';
 	import Settings from './pages/Settings.svelte';
 	import Setup from './pages/Setup.svelte';
+	import Shield from './pages/Shield.svelte';
 	import Updates from './pages/Updates.svelte';
 
 	interface Tab {
@@ -27,6 +28,7 @@
 
 	const all: Tab[] = [
 		{ id: 'overview', label: t('tab_overview'), page: Overview },
+		{ id: 'shield', label: t('tab_shield'), page: Shield },
 		{ id: 'drill', label: t('tab_drill'), page: Drill },
 		{ id: 'files', label: t('tab_files'), page: Files },
 		{ id: 'connection', label: t('tab_connection'), page: Connection },
