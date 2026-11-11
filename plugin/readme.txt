@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,11 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.6.2 =
+* All Persian text was rewritten in shorter sentences, everyday words and the terms Iranian users already know, following one glossary across the plugin, rafoo.ir and the monitoring point.
+* In the Persian Shield screens, “temporary security patch” and “community defense” are explained where they first appear.
+* No change to English or other languages, settings or behavior.
+
 = 1.6.1 =
 * The Rafoo icon appears in Dashboard › Updates and in the plugin details window of copies from rafoo.ir.
 * View details and View version details show the Rafoo introduction, a banner and the changes of each version from rafoo.ir, with an update button, instead of “Plugin not found”.
@@ -301,6 +306,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.6.2 =
+Clearer Persian text everywhere. No change to settings or behavior.
+
 = 1.6.1 =
 Shows the Rafoo icon in updates and the details of each new version from rafoo.ir.
 

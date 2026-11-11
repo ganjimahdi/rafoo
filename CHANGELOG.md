@@ -4,6 +4,13 @@ All notable changes to Rafoo. Both editions share one version number: **Rafoo** 
 
 Downloads: [GitHub Releases](https://github.com/ganjimahdi/rafoo/releases) and [rafoo.ir](https://rafoo.ir).
 
+## [1.6.2] - 2026-11-12
+### Changed
+- **Persian text.** Every Persian string of the plugin (1,525), the rafoo.ir site and panel, the monitoring point and the GitHub README was rewritten in shorter sentences and everyday words. One glossary (`docs/WRITING-FA.md`) now fixes one term per concept, for example آدرس instead of نشانی, مسدود کردن for block, and پچ امنیتی موقت instead of the literal وصله مجازی for a virtual patch.
+- In the Persian Shield screens, the temporary security patch and community defense are explained where they first appear.
+- English and the other languages, settings and behavior are unchanged.
+- **Admin panel.** The rafoo.ir Shield page uses the same layout as the other panel pages.
+
 ## [1.6.1] - 2026-11-12
 ### Fixed
 - **Plugin icon.** Copies of Rafoo from rafoo.ir and GitHub showed the grey plug in Dashboard › Updates. The Rafoo icon (SVG, 128 and 256 px) now ships with the plugin and is used in the update list and the details window, also during an outage.
@@ -157,6 +164,10 @@ First release.
 
 A standalone PHP script (`point/`) that turns an empty host into a monitoring point of the cooperative network, without WordPress.
 
+### [Point 2.1.1] - 2026-11-12
+- Clearer Persian text on the status page, the home page and in `README.txt`, with Persian digits for counts and times.
+- Points on 2.x update to 2.1.1 by themselves.
+
 ### [Point 2.1.0] - 2026-11-09
 - After the rafoo.ir administrator removes and blocks a point, it waits a day before asking to join again instead of every ten minutes.
 - Points on 2.0 update to 2.1 by themselves.
@@ -180,16 +191,23 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 
 ## خلاصه فارسی
 
-- **۱٫۵٫۱:** سیستم به‌روزرسانی فیکس شد: هر دو نسخه رفو، معمولی و کامل، نسخه تازه rafoo.ir را چند دقیقه بعد از انتشار در بخش به‌روزرسانی‌های وردپرس نشان می‌دهند و با هش امضاشده نصب می‌کنند. شبکه هم‌یاری عضوی را که دیگر تماس نمی‌گیرد بررسی می‌کند و اگر واقعاً رفو آنجا نباشد حذفش می‌کند. مدیر rafoo.ir هم می‌تواند عضوی را دستی حذف و مسدود کند. سایت‌هایی که نسخه معمولی ۱٫۵٫۰ یا قدیمی‌تر دارند، باید یک‌بار دستی به ۱٫۵٫۱ به‌روز شوند.
-- **۱٫۵٫۰:** مانور قطعی، نتیجه پایش در چند ثانیه و دکمه «بررسی مجدد»، ۳ بررسی داخل و ۲ بررسی خارج ایران، تشخیص فیلترینگ، zip کوچک‌تر، آمادگی شبکه برای یک میلیون سایت. رفع ایراد: فضای خالی روی هاست اشتراکی، پوشش مخزن از فهرست واقعی مخزن Wbweb، و دست نزدن به افزونه و قالب تجاری مثل Divi. زبانه «چند هاست» حالا «Geo DNS» نام دارد.
-- **۱٫۴٫۰:** چند هاست با DNS جغرافیایی (بتا) و قالب تازه پشتیبان برای سایت‌های بسیار بزرگ.
-- **۱٫۳٫۰:** نگهبان مرورگر، فهرست سیاه، Heartbeat هوشمند، کلید توقف، دکمه راهنما، سلامت سایت، تنظیمات شبکه Multisite و زبان‌های عربی، ترکی و روسی.
+- **۱٫۶٫۲:** همه متن‌های فارسی افزونه، سایت و پنل rafoo.ir، نقطه پایش و GitHub با جمله‌های کوتاه‌تر و اصطلاح‌های آشنا بازنویسی شد؛ مثلاً «پچ امنیتی موقت» به‌جای «وصله مجازی». در سپر رفو، «پچ امنیتی موقت» و «ایمنی جمعی» همان‌جا که اولین بار دیده می‌شوند توضیح دارند. تنظیمات و رفتار افزونه تغییری نکرد.
+- **۱٫۶٫۱:** لوگوی رفو در به‌روزرسانی‌های وردپرس، و پنجره «مشاهده جزئیات» با معرفی، تصویر و تغییرات هر نسخه از rafoo.ir.
+- **۱٫۶٫۰:** سپر رفو: فایروالی که پیش از وردپرس اجرا می‌شود، با سه حالت هوشمند، سخت‌گیر و سنگر؛ ایمنی جمعی و پچ امنیتی موقت؛ مسدود کردن IP مهاجم در CDN ابرآروان و کلادفلر.
+- **۱٫۵٫۱:** مشکل سیستم به‌روزرسانی برطرف شد: هر دو نسخه رفو، معمولی و کامل، نسخه تازه rafoo.ir را چند دقیقه بعد از انتشار در به‌روزرسانی‌های وردپرس نشان می‌دهند و فقط بعد از بررسی امضای دیجیتال نصب می‌کنند. شبکه هم‌یاری عضوی را که دیگر تماس نمی‌گیرد بررسی می‌کند و اگر رفو واقعاً آنجا نصب نباشد، حذفش می‌کند. مدیر rafoo.ir هم می‌تواند یک عضو را دستی حذف و مسدود کند. سایت‌هایی که نسخه معمولی ۱٫۵٫۰ یا قدیمی‌تر دارند، باید یک بار دستی به ۱٫۵٫۱ به‌روزرسانی شوند.
+- **۱٫۵٫۰:** مانور قطعی، نتیجه پایش در چند ثانیه و دکمه «بررسی دوباره»، ۳ بررسی داخل و ۲ بررسی خارج ایران، تشخیص فیلترینگ، فایل zip کوچک‌تر و آمادگی شبکه برای یک میلیون سایت. رفع مشکل: فضای خالی روی هاست اشتراکی، پوشش مخزن از فهرست واقعی مخزن Wbweb، و دست نزدن به افزونه و قالب تجاری مثل Divi. زبانه «چند هاست» حالا «Geo DNS» نام دارد.
+- **۱٫۴٫۰:** چند هاست با Geo DNS (بتا) و قالب تازه پشتیبان برای سایت‌های خیلی بزرگ.
+- **۱٫۳٫۰:** نگهبان مرورگر، فهرست سیاه، Heartbeat هوشمند، دکمه توقف، دکمه راهنما، سلامت سایت، تنظیمات شبکه Multisite و زبان‌های عربی، ترکی و روسی.
 - **۱٫۲٫۰:** موتور پایش و شبکه هم‌یاری رفو.
-- **۱٫۱٫۰:** راه‌اندازی بعد از فعال‌سازی، کپچای داخلی، آپدیت امن با برگشت خودکار، پشتیبان و انتقال سایت، و کمک در قطعی برای ایمیل، تحلیل و ورود اجتماعی.
-- **۱٫۰٫۰:** نخستین نسخه: نسخه محلی فایل‌های CDN و Google Fonts، حالت قطعی خودکار و رد فوری درخواست‌های خارجی در قطعی.
-- **نقطه پایش ۲٫۱٫۰:** بعد از حذف و مسدود شدن به‌دست مدیر rafoo.ir، یک روز صبر می‌کند و بعد دوباره درخواست پیوستن می‌دهد. نقطه‌های ۲٫۰ خودشان به‌روز می‌شوند.
-- **نقطه پایش ۲٫۰٫۰:** بی‌نیاز از افزونه sodium، بررسی فوری، تشخیص فیلترینگ و به‌روزرسانی خودکار امضاشده.
+- **۱٫۱٫۰:** راه‌اندازی بعد از فعال‌سازی، کپچای داخلی، به‌روزرسانی امن با برگشت خودکار، پشتیبان‌گیری و انتقال سایت، و کمک هنگام قطعی برای ایمیل، ابزارهای آمار و ورود با شبکه‌های اجتماعی.
+- **۱٫۰٫۰:** اولین نسخه: کپی محلی فایل‌های CDN و Google Fonts، حالت قطعی خودکار و لغو فوری درخواست‌های خارجی هنگام قطعی.
+- **نقطه پایش ۲٫۱٫۱:** متن ساده‌تر در صفحه وضعیت و عددهای فارسی. نقطه‌های ۲٫x خودشان به‌روزرسانی می‌شوند.
+- **نقطه پایش ۲٫۱٫۰:** بعد از اینکه مدیر rafoo.ir نقطه را حذف و مسدود کند، یک روز صبر می‌کند و بعد دوباره درخواست عضویت می‌دهد. نقطه‌های ۲٫۰ خودشان به‌روزرسانی می‌شوند.
+- **نقطه پایش ۲٫۰٫۰:** بدون نیاز به افزونه sodium، بررسی فوری، تشخیص فیلترینگ و به‌روزرسانی خودکار با امضای دیجیتال.
 
+[1.6.2]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.2
+[1.6.1]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.1
+[1.6.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.0
 [1.5.1]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.1
 [1.5.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.0
 [1.4.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.4.0
@@ -197,6 +215,7 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 [1.2.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.2.0
 [1.1.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.1.0
 [1.0.0]: https://rafoo.ir
+[Point 2.1.1]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.2
 [Point 2.1.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.1
 [Point 2.0.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.0
 [Point theme 1.0.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.5.0

@@ -1,6 +1,6 @@
 <?php
 
-const RP_VERSION    = '2.1.0';
+const RP_VERSION    = '2.1.1';
 const RP_ENDPOINT   = 'https://rafoo.ir/api/v1/peers/';
 const RP_PATH       = '/api/v1/peers/';
 const RP_SIGNAL     = 'https://rafoo.ir/api/v1/status';
@@ -1106,12 +1106,20 @@ function rp_ago( $at ) {
 	}
 	$d = time() - (int) $at;
 	if ( $d < 60 ) {
-		return $d . ' ثانیه پیش';
+		return rp_fa( $d ) . ' ثانیه پیش';
 	}
 	if ( $d < 3600 ) {
-		return (int) floor( $d / 60 ) . ' دقیقه پیش';
+		return rp_fa( (int) floor( $d / 60 ) ) . ' دقیقه پیش';
 	}
-	return (int) floor( $d / 3600 ) . ' ساعت پیش';
+	return rp_fa( (int) floor( $d / 3600 ) ) . ' ساعت پیش';
+}
+
+function rp_ver( $v ) {
+	return rp_fa( str_replace( '.', '٫', (string) $v ) );
+}
+
+function rp_fa( $n ) {
+	return strtr( (string) $n, array( '0' => '۰', '1' => '۱', '2' => '۲', '3' => '۳', '4' => '۴', '5' => '۵', '6' => '۶', '7' => '۷', '8' => '۸', '9' => '۹' ) );
 }
 
 function rp_visit() {
@@ -1137,7 +1145,7 @@ function rp_home() {
 		array(
 			'{{state}}'       => $active ? 'فعال و در حال پایش' : 'در حال آماده شدن',
 			'{{state_class}}' => $active ? 'ok' : 'wait',
-			'{{version}}'     => htmlspecialchars( RP_VERSION ),
+			'{{version}}'     => htmlspecialchars( rp_ver( RP_VERSION ) ),
 		)
 	);
 	header( 'Content-Type: text/html; charset=utf-8' );
@@ -1166,17 +1174,17 @@ function rp_page() {
 	$log    = rp_shape( rp_read( 'log' ) );
 	$cron   = 'curl -s -o /dev/null ' . ( '' !== $url ? $url : 'https://YOUR-HOST/' ) . '?rafoo-tick=1';
 	$rows   = array(
-		'نشانی نقطه'            => isset( $state['url'] ) ? $state['url'] : $url,
+		'آدرس نقطه پایش'        => isset( $state['url'] ) ? $state['url'] : $url,
 		'شناسه عضو'             => $member ? '#' . (int) $state['member'] : 'هنوز عضو نیست',
-		'کشور و شبکه'           => $member ? trim( ( isset( $state['country'] ) ? $state['country'] : '' ) . ' · ' . ( isset( $state['network'] ) ? $state['network'] : '' ), ' ·' ) : '—',
-		'دامنه بررسی'           => $member ? ( 'intl' === ( isset( $state['scope'] ) ? $state['scope'] : 'ir' ) ? 'خارج از ایران' : 'داخل ایران' ) : '—',
-		'سایت‌هایی که می‌سنجد'  => isset( $state['tasks'] ) && is_array( $state['tasks'] ) ? count( $state['tasks'] ) : 0,
-		'آخرین دور بررسی'       => rp_ago( isset( $state['checked'] ) ? (int) $state['checked'] : 0 ) . ( $round[0] ? ' · ' . (int) $round[1] . ' از ' . (int) $round[0] . ' در دسترس' : '' ),
+		'کشور و اینترنت'        => $member ? trim( ( isset( $state['country'] ) ? $state['country'] : '' ) . ' · ' . ( isset( $state['network'] ) ? $state['network'] : '' ), ' ·' ) : '—',
+		'محدوده بررسی'          => $member ? ( 'intl' === ( isset( $state['scope'] ) ? $state['scope'] : 'ir' ) ? 'خارج از ایران' : 'داخل ایران' ) : '—',
+		'سایت‌هایی که بررسی می‌کند' => rp_fa( isset( $state['tasks'] ) && is_array( $state['tasks'] ) ? count( $state['tasks'] ) : 0 ),
+		'آخرین دور بررسی'       => rp_ago( isset( $state['checked'] ) ? (int) $state['checked'] : 0 ) . ( $round[0] ? ' · ' . rp_fa( (int) $round[1] ) . ' از ' . rp_fa( (int) $round[0] ) . ' در دسترس' : '' ),
 		'آخرین ارسال نتیجه'     => rp_ago( isset( $state['sent_at'] ) ? (int) $state['sent_at'] : 0 ),
-		'نتیجه‌های در صف'       => count( $log['b'] ),
+		'نتیجه‌های منتظر ارسال' => rp_fa( count( $log['b'] ) ),
 		'اینترنت بین‌الملل'     => rp_offline( $state, time() ) ? 'قطع' : 'وصل',
-		'امضا'                  => 'native' === rp_sodium() ? 'افزونه sodium هاست' : ( rp_ready() ? 'sodium_compat همراه نقطه' : 'در دسترس نیست' ),
-		'آخرین نسخه'            => ( ! empty( $state['latest'] ) ? (string) $state['latest'] : RP_VERSION ) . ( ! empty( $state['updated_at'] ) ? ' · به‌روز شده ' . rp_ago( (int) $state['updated_at'] ) : '' ),
+		'امضای دیجیتال'         => 'native' === rp_sodium() ? 'افزونه sodium در PHP هاست' : ( rp_ready() ? 'sodium_compat (همراه اسکریپت نقطه)' : 'در دسترس نیست' ),
+		'آخرین نسخه'            => rp_ver( ! empty( $state['latest'] ) ? (string) $state['latest'] : RP_VERSION ) . ( ! empty( $state['updated_at'] ) ? ' · به‌روزرسانی ' . rp_ago( (int) $state['updated_at'] ) : '' ),
 	);
 	rp_no_cache();
 	header( 'Content-Type: text/html; charset=utf-8' );
@@ -1186,7 +1194,7 @@ function rp_page() {
 		. 'section{background:#fff;border:1px solid #e4e4e7;border-radius:12px;padding:20px;margin-bottom:16px}h1{font-size:18px;margin:0 0 4px}p{margin:0;color:#52525b}'
 		. 'dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:12px 0 0}dt{color:#52525b}dd{margin:0;overflow-wrap:anywhere}'
 		. '.ok{color:#2e6a4f}.bad{color:#8f3434}code{direction:ltr;unicode-bidi:isolate;display:block;padding:8px 10px;background:#f8f9fa;border:1px solid #e4e4e7;border-radius:8px;overflow-wrap:anywhere;font-size:12.5px}'
-		. '</style></head><body><main><section><h1>نقطه پایش رفو</h1><p>این هاست یک نقطه شبکه هم‌یاری رفو است و هر دقیقه سایت‌های عضو را می‌سنجد. نسخه ' . htmlspecialchars( RP_VERSION ) . '</p><dl>';
+		. '</style></head><body><main><section><h1>نقطه پایش رفو</h1><p>این هاست یک نقطه پایش در شبکه هم‌یاری رفو است و هر دقیقه سایت‌های عضو را بررسی می‌کند. نسخه ' . htmlspecialchars( rp_ver( RP_VERSION ) ) . '</p><dl>';
 	foreach ( $rows as $label => $value ) {
 		echo '<dt>' . htmlspecialchars( $label ) . '</dt><dd>' . htmlspecialchars( (string) $value ) . '</dd>';
 	}
@@ -1196,9 +1204,9 @@ function rp_page() {
 	}
 	echo '</section><section><h1>پیش‌نیازها</h1><dl>';
 	foreach ( $checks as $label => $ok ) {
-		echo '<dt>' . htmlspecialchars( $label ) . '</dt><dd class="' . ( $ok ? 'ok' : 'bad' ) . '">' . ( $ok ? 'درست' : ( 'background' === $label ? 'نیست؛ cron لازم است' : 'نیست' ) ) . '</dd>';
+		echo '<dt>' . htmlspecialchars( $label ) . '</dt><dd class="' . ( $ok ? 'ok' : 'bad' ) . '">' . ( $ok ? 'آماده' : ( 'background' === $label ? 'ندارد؛ کرون لازم است' : 'ندارد' ) ) . '</dd>';
 	}
-	echo '</dl></section><section><h1>cron هر دقیقه</h1><p>برای اطمینان، در کنترل پنل هاست یک cron job با زمان‌بندی <b>* * * * *</b> و این دستور بسازید:</p><code>' . htmlspecialchars( $cron ) . '</code></section></main></body></html>';
+	echo '</dl></section><section><h1>کرون هر دقیقه</h1><p>برای اینکه نقطه همیشه کار کند، در کنترل پنل هاست یک کرون (Cron Job) با زمان‌بندی <b dir="ltr">* * * * *</b> و این دستور بسازید:</p><code>' . htmlspecialchars( $cron ) . '</code></section></main></body></html>';
 	if ( rp_detach() ) {
 		ignore_user_abort( true );
 		rp_tick();
