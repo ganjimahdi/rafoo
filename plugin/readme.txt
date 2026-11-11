@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -146,7 +146,7 @@ Rafoo talks to the following services. None of them receives anything about your
 
 **CDN edge blocking (only when connected).** When an administrator connects ArvanCloud or Cloudflare under Rafoo › Shield, the IP addresses blocked for an hour or more (at most 200) are sent to that service as a firewall rule, with the key entered there: ArvanCloud `https://napi.arvancloud.ir` or Cloudflare `https://api.cloudflare.com` (terms and privacy linked above). Disconnecting removes the rule.
 
-**Rafoo updates (copies from rafoo.ir or GitHub).** A copy of Rafoo downloaded from rafoo.ir or GitHub asks `https://rafoo.ir/api/v1/releases/rafoo.json` (Rafoo Complete: `rafoo-complete.json`) for the latest version at most every six hours, or at once when the status answer names a newer version, and downloads updates from `https://rafoo.ir/downloads/`, checking each file against its signed SHA-256 hash. Nothing about the site is sent. The copy from wordpress.org updates only through wordpress.org.
+**Rafoo updates (copies from rafoo.ir or GitHub).** A copy of Rafoo downloaded from rafoo.ir or GitHub asks `https://rafoo.ir/api/v1/releases/rafoo.json` (Rafoo Complete: `rafoo-complete.json`) for the latest version at most every six hours, and `https://rafoo.ir/api/v1/releases/rafoo/info` (or `rafoo-complete/info`) for the list of changes when an administrator opens the details window, sending only the language (Persian or English), or at once when the status answer names a newer version, and downloads updates from `https://rafoo.ir/downloads/`, checking each file against its signed SHA-256 hash. Nothing about the site is sent. The copy from wordpress.org updates only through wordpress.org.
 
 **Backup servers (only when added).** Backups are sent only to servers an administrator adds under Rafoo › Backup, using the login entered there.
 
@@ -235,6 +235,11 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.6.1 =
+* The Rafoo icon appears in Dashboard › Updates and in the plugin details window of copies from rafoo.ir.
+* View details and View version details show the Rafoo introduction, a banner and the changes of each version from rafoo.ir, with an update button, instead of “Plugin not found”.
+* Rafoo Complete reports the WordPress version it was tested with.
+
 = 1.6.0 =
 * Rafoo Shield: a firewall that stops attacks before other plugins load, or before WordPress with one click, in three modes: Smart (on by default), Strict and Fortress.
 * Stops SQL injection, cross-site scripting, file reading, command execution, object injection, dangerous uploads, SSRF, XML entity attacks, scanners and sensitive file probes; locks sign-in after repeated failures; limits floods; closes XML-RPC multicall and the public user list.
@@ -296,6 +301,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.6.1 =
+Shows the Rafoo icon in updates and the details of each new version from rafoo.ir.
+
 = 1.6.0 =
 Adds Rafoo Shield, a firewall that is on in Smart mode after the update. Real visitors are not stopped; the Shield tab shows every stopped request with a button to allow it.
 

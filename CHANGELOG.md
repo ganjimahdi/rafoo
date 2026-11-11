@@ -4,6 +4,14 @@ All notable changes to Rafoo. Both editions share one version number: **Rafoo** 
 
 Downloads: [GitHub Releases](https://github.com/ganjimahdi/rafoo/releases) and [rafoo.ir](https://rafoo.ir).
 
+## [1.6.1] - 2026-11-12
+### Fixed
+- **Plugin icon.** Copies of Rafoo from rafoo.ir and GitHub showed the grey plug in Dashboard › Updates. The Rafoo icon (SVG, 128 and 256 px) now ships with the plugin and is used in the update list and the details window, also during an outage.
+- **Version details.** “View details” and “View version details” opened a window with “Plugin not found” or a WordPress.org error, because Rafoo is not served from WordPress.org. Rafoo now answers the details window itself: an introduction, a banner (right-to-left for Persian and Arabic screens), requirements, the WordPress version it was tested with, and the changes of each version, read in Persian or English from a signed answer of `rafoo.ir/api/v1/releases/{edition}/info`. The Update Now button in the window installs the signed package. Without rafoo.ir the window still opens and links to the guide.
+- Rafoo Complete now carries a `Tested up to` header, so WordPress no longer reports it as untested.
+### Note
+- The icon and the details window come from the installed Rafoo, so sites on 1.6.0 or older still see the old window once while updating to 1.6.1.
+
 ## [1.6.0] - 2026-11-11
 ### Added
 - **Rafoo Shield**, a web application firewall in both editions, on in Smart mode by default.

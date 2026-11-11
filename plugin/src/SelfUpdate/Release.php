@@ -22,6 +22,7 @@ final class Release {
 	public static function register() {
 		add_filter( 'update_plugins_rafoo.ir', array( __CLASS__, 'check' ), 10, 3 );
 		add_filter( 'upgrader_pre_download', array( __CLASS__, 'download' ), 9, 2 );
+		Details::register();
 	}
 
 	public static function slug() {
@@ -49,11 +50,21 @@ final class Release {
 			'package'      => Downloader::package_url( self::BASE, $release['file'], $release['sha256'], $release['size'] ),
 			'requires'     => $release['requires'],
 			'requires_php' => $release['requires_php'],
-			'tested'       => $release['tested'],
-			'icons'        => array(),
-			'banners'      => array(),
+			'tested'       => self::tested( $release['tested'] ),
+			'icons'        => Details::images()['icons'],
+			'banners'      => Details::images()['banners'],
 			'banners_rtl'  => array(),
 		);
+	}
+
+	public static function tested( $tested, $current = null ) {
+		$tested  = (string) $tested;
+		$current = (string) strtok( null === $current ? (string) get_bloginfo( 'version' ) : (string) $current, '-' );
+		if ( ! preg_match( '/^\d+\.\d+$/', $tested ) || ! preg_match( '/^\d+\.\d+(\.\d+)?$/', $current ) ) {
+			return $tested;
+		}
+		$branch = implode( '.', array_slice( explode( '.', $current ), 0, 2 ) );
+		return $branch === $tested ? $current : $tested;
 	}
 
 	public static function download( $reply, $package ) {
@@ -100,6 +111,7 @@ final class Release {
 		}
 		update_site_option( self::SEEN, $version );
 		delete_site_transient( self::CACHE );
+		Details::forget();
 		$release = self::latest();
 		if ( ! $release || version_compare( $release['version'], RAFOO_VERSION, '<=' ) ) {
 			return false;

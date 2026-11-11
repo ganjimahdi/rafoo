@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.6.0\n"
+"Project-Id-Version: Rafoo 1.6.1\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -823,7 +823,7 @@ msgstr "Rafoo'yu aç"
 msgid "Offline-ready assets"
 msgstr "Kesintiye hazır dosyalar"
 
-#: src/Admin/Strings.php:15
+#: src/Admin/Strings.php:15 src/SelfUpdate/Details.php:82
 msgid "Rafoo Complete"
 msgstr "Rafoo Complete"
 
@@ -6262,6 +6262,48 @@ msgstr "Yukarıdakiler dışında, Rafoo ziyaretçiler hakkında hiçbir bilgi t
 #, php-format
 msgid "Rafoo put back the previous version of %s because the update broke the site. Details are on the Rafoo page."
 msgstr "Güncelleme siteyi bozduğu için Rafoo %s öğesinin önceki sürümünü geri koydu. Ayrıntılar Rafoo sayfasında."
+
+#: src/SelfUpdate/Details.php:114
+msgid "Rafoo Shield: a firewall that stops attacks before they reach WordPress, with Smart, Strict and Fortress modes and optional community defense."
+msgstr "Rafoo Kalkanı: saldırıları WordPress’e ulaşmadan durduran bir güvenlik duvarı; Akıllı, Sıkı ve Kale modları ile isteğe bağlı topluluk savunması."
+
+#: src/SelfUpdate/Details.php:115
+msgid "Libraries and fonts from foreign CDNs are served from your own site, and unreachable outside requests fail at once during an outage."
+msgstr "Yabancı CDN’lerdeki kütüphaneler ve yazı tipleri kendi sitenizden sunulur; kesinti sırasında ulaşılamayan dış istekler hemen başarısız olur."
+
+#: src/SelfUpdate/Details.php:116
+msgid "Outage rehearsal, automatic outage mode, a built-in captcha, safe updates, backups and site transfer."
+msgstr "Kesinti provası, otomatik kesinti modu, yerleşik captcha, güvenli güncellemeler, yedekleme ve site taşıma."
+
+#: src/SelfUpdate/Details.php:117
+msgid "Monitoring from inside and outside Iran, and full copies on several hosts with Geo DNS."
+msgstr "İran içinden ve dışından izleme, Geo DNS ile birden çok sunucuda tam kopyalar."
+
+#: src/SelfUpdate/Details.php:120
+msgid "Updates for WordPress, plugins, themes and translations from the signed Iranian mirror."
+msgstr "WordPress, eklentiler, temalar ve çeviriler için imzalı İran yansısından güncellemeler."
+
+#: src/SelfUpdate/Details.php:122
+msgid "Rafoo keeps WordPress sites in Iran fast and working when the international internet is cut off, and protects them from attacks."
+msgstr "Rafoo, uluslararası internet kesildiğinde İran’daki WordPress sitelerini hızlı ve çalışır tutar ve onları saldırılara karşı korur."
+
+#. translators: %s: link to the Rafoo guide
+#: src/SelfUpdate/Details.php:128
+#, php-format
+msgid "Guide, downloads and support: %s"
+msgstr "Kılavuz, indirme ve destek: %s"
+
+#. translators: %s: link to the list of changes on rafoo.ir
+#: src/SelfUpdate/Details.php:159
+#, php-format
+msgid "The list of changes could not be loaded from rafoo.ir right now. You can read it at %s."
+msgstr "Değişiklik listesi şu anda rafoo.ir’den yüklenemedi. %s adresinden okuyabilirsiniz."
+
+#. translators: %s: link to the list of changes on rafoo.ir
+#: src/SelfUpdate/Details.php:162
+#, php-format
+msgid "Changes of older versions: %s"
+msgstr "Eski sürümlerin değişiklikleri: %s"
 
 #: src/SelfUpdate/Downloader.php:49
 msgid "The package could not be downloaded from the domestic mirror."
