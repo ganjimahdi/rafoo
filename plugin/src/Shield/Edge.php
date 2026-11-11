@@ -140,14 +140,14 @@ final class Edge {
 		}
 		if ( 'fortress' === Config::mode() ) {
 			foreach ( Stats::events( 200 ) as $event ) {
-				if ( 'block' === $event['a'] && $now - (int) $event['t'] < HOUR_IN_SECONDS && Ip::valid( $event['i'] ) && ! isset( $want[ $event['i'] ] ) && count( $want ) < self::MAX ) {
+				if ( 'block' === $event['a'] && empty( $event['k'] ) && $now - (int) $event['t'] < HOUR_IN_SECONDS && Ip::valid( $event['i'] ) && ! isset( $want[ $event['i'] ] ) && count( $want ) < self::MAX ) {
 					$want[ $event['i'] ] = $now + 6 * HOUR_IN_SECONDS;
 				}
 			}
 		}
 		$admins = (array) Local::get( 'admins' );
 		foreach ( array_keys( $want ) as $ip ) {
-			if ( isset( $admins[ $ip ] ) || Ip::local( $ip ) ) {
+			if ( isset( $admins[ $ip ] ) || Ip::local( $ip ) || '' !== Crawler::range( $ip ) ) {
 				unset( $want[ $ip ] );
 			}
 		}

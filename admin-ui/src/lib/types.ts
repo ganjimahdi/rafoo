@@ -659,6 +659,7 @@ export interface ShieldEvent {
 	p: string;
 	b: string;
 	x: string;
+	k?: number;
 }
 
 export interface ShieldView {

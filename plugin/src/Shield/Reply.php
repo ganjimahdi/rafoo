@@ -16,7 +16,7 @@ final class Reply {
 		'locked_title'     => 'Signing in is paused',
 		'locked_text'      => 'There were too many failed sign-in attempts from your connection. Please try again later.',
 		'challenge_title'  => 'Checking your browser',
-		'challenge_text'   => 'The site is under heavy load. Your browser is solving a short check; the page opens by itself in a few seconds.',
+		'challenge_text'   => 'Your browser is completing a short security check. The page opens by itself in a few seconds.',
 		'challenge_failed' => 'The check could not be completed. Reload the page to try again.',
 		'noscript'         => 'Turn on JavaScript to continue.',
 		'reference'        => 'Reference',
@@ -70,7 +70,10 @@ final class Reply {
 	}
 
 	public static function challenge( array $config, Request $r, array $pow ) {
-		self::headers( 403, 'text/html' );
+		if ( ! headers_sent() ) {
+			header( 'Retry-After: 30' );
+		}
+		self::headers( 503, 'text/html' );
 		$title  = self::text( $config, 'challenge_title' );
 		$action = $r->uri;
 		$body   = '<h1>' . self::e( $title ) . '</h1><p>' . self::e( self::text( $config, 'challenge_text' ) ) . '</p>'

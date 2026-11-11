@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,10 +35,12 @@ Rafoo fixes this without touching the files of your theme or plugins.
 
 **Rafoo Shield**
 
-* A firewall that checks every request before other plugins load, or before WordPress itself with one click. A normal page costs about 0.2 ms.
+* A firewall that checks every request before other plugins load, or before WordPress itself with one click. A normal page costs about 0.15 ms.
 * Stops SQL injection, cross-site scripting, file reading, command execution, object injection, dangerous uploads, server-side request forgery, XML entity attacks, vulnerability scanners and probes for sensitive files, after decoding the input the way PHP reads it.
 * Locks sign-in after repeated failures, limits request floods, closes XML-RPC multicall and hides the user list from visitors.
 * Three modes: Smart, tuned so real visitors are never stopped; Strict, for sites that are attacked often; and Fortress, for the hours of a heavy attack, where each new visitor passes a few-second browser check once. Payment returns from Iranian gateways and verified search engine bots are never challenged.
+* Safe for SEO: crawlers of Google, Bing, Apple and DuckDuckGo are recognized by their official IP ranges, without a DNS lookup during the visit, and are never banned, rate limited, challenged or reported. Only a single request that looks like an attack is refused. Browser checks answer 503 with Retry-After, which search engines treat as temporary.
+* Responds in steps: a browser that looks suspicious first gets a browser check, and is banned only if it keeps going. Passing the check halves its score.
 * Editors and administrators can save page builder content freely, while visitors cannot post scripts.
 * Community defense (off by default): when at least three member sites on different networks report the same attacker, rafoo.ir sends a signed list to every member, along with virtual patches for vulnerable plugin versions that are installed on the site.
 * Optional blocking at the ArvanCloud or Cloudflare edge, and a dashboard card with a one-click switch to fortress mode.
@@ -159,7 +161,7 @@ Rafoo talks to the following services. None of them receives anything about your
 * Bunny DNS: `https://api.bunny.net` ([terms](https://bunny.net/tos/), [privacy](https://bunny.net/privacy/))
 * cPanel or DirectAdmin: the panel address of each host, entered by the administrator.
 
-To check that search engine bots are genuine (for Geo DNS and for the shield), Rafoo looks up the reverse DNS name of the bot's IP address with the server's own resolver, once a day per address. To check the domain's DNS, it asks the domain's own nameservers directly.
+To check that search engine bots are genuine (for Geo DNS and for the shield), Rafoo first compares the address with the official IP ranges shipped in the plugin. Only for a bot outside those ranges, it looks up the reverse DNS name of the bot's IP address with the server's own resolver, in the background and at most once a week per address. To check the domain's DNS, it asks the domain's own nameservers directly.
 
 **Suggestions.** When an administrator writes a message under Rafoo › Feedback and presses Send, the message, the optional contact detail and the software versions are sent to `https://rafoo.ir/api/v1/feedback`.
 
@@ -235,6 +237,12 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.6.3 =
+* Search engines: real crawlers of Google, Bing, Apple and DuckDuckGo are recognized by their official IP ranges, with no DNS lookup during the visit. They are never banned, rate limited, challenged, reported to rafoo.ir or blocked at the CDN; only a single attack-like request is refused. Other crawlers are confirmed by DNS in the background, and fake crawlers are treated as suspicious.
+* The browser check answers 503 with Retry-After, which search engines treat as temporary.
+* Smarter responses: a suspicious browser first gets a browser check and is banned only if it keeps going; passing the check halves its score. In Smart mode, foreign addresses on the community list get a browser check instead of a block, but cannot sign in or send forms without passing it.
+* Faster pages: on hosts without APCu, the shield does about four times fewer counter writes for normal visitors (0.07 ms instead of 0.12 ms per request in our test); the script Rafoo adds to every page is 0.7 KB instead of 6.8 KB when no outage or block list needs the full guard.
+
 = 1.6.2 =
 * All Persian text was rewritten in shorter sentences, everyday words and the terms Iranian users already know, following one glossary across the plugin, rafoo.ir and the monitoring point.
 * In the Persian Shield screens, “temporary security patch” and “community defense” are explained where they first appear.
@@ -306,6 +314,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.6.3 =
+Search engine crawlers are never blocked by the shield, and pages load a smaller script.
+
 = 1.6.2 =
 Clearer Persian text everywhere. No change to settings or behavior.
 

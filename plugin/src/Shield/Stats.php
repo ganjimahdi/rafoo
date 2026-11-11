@@ -168,6 +168,7 @@ final class Stats {
 			'p' => isset( $row['p'] ) ? (string) $row['p'] : '',
 			'b' => isset( $row['b'] ) ? (string) $row['b'] : '',
 			'x' => isset( $row['x'] ) ? (string) $row['x'] : '',
+			'k' => empty( $row['k'] ) ? 0 : 1,
 		);
 	}
 

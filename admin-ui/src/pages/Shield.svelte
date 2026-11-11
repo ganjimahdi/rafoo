@@ -106,6 +106,7 @@
 					<p class="rf-subtle">{t('shield_mode_' + view.card.mode + '_help')}</p>
 					{#if view.card.mode !== 'off'}
 						<p class="rf-subtle rf-small">{t('shield_where_' + protection)}</p>
+						<p class="rf-subtle rf-small">{t('shield_seo')}</p>
 					{/if}
 				</div>
 			</div>
@@ -181,6 +182,7 @@
 						<li>
 							<div class="rf-event-main">
 								<Badge tone={tone(e)}>{action(e)}</Badge>
+								{#if e.k}<Badge tone="neutral">{t('shield_crawler')}</Badge>{/if}
 								<span>{group(e.g)}</span>
 								<bdi class="rf-mono">{e.i}</bdi>
 								<span class="rf-subtle rf-small"><bdi class="rf-mono rf-cut">{e.m} {e.p}</bdi></span>

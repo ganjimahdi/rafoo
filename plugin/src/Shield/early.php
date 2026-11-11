@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 
 if ( ! defined( 'RAFOO_SHIELD_RAN' ) ) {
 	define( 'RAFOO_SHIELD_RAN', true );
-	foreach ( array( 'Ip', 'Request', 'Rules', 'Store', 'Feed', 'Challenge', 'Reply', 'Log', 'Modes', 'Trust', 'Patches', 'Gate' ) as $rafoo_shield_class ) {
+	foreach ( array( 'Ip', 'Request', 'Rules', 'Store', 'Feed', 'Challenge', 'Reply', 'Log', 'Modes', 'Trust', 'Patches', 'Crawler', 'Gate' ) as $rafoo_shield_class ) {
 		if ( ! class_exists( 'Rafoo\\Shield\\' . $rafoo_shield_class, false ) ) {
 			require_once __DIR__ . '/' . $rafoo_shield_class . '.php';
 		}

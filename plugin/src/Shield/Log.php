@@ -38,6 +38,9 @@ final class Log {
 			'b' => substr( $r->agent, 0, 160 ),
 			'x' => isset( $verdict['plugin'] ) ? (string) $verdict['plugin'] : '',
 		);
+		if ( ! empty( $verdict['crawler'] ) ) {
+			$line['k'] = 1;
+		}
 		$json = json_encode( $line, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE );
 		return false !== $json && false !== @file_put_contents( $file, $json . "\n", FILE_APPEND | LOCK_EX );
 	}

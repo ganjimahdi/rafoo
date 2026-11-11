@@ -4,14 +4,26 @@ All notable changes to Rafoo. Both editions share one version number: **Rafoo** 
 
 Downloads: [GitHub Releases](https://github.com/ganjimahdi/rafoo/releases) and [rafoo.ir](https://rafoo.ir).
 
-## [1.6.2] - 2026-11-12
+## [1.6.3] - 2026-11-11
+### Fixed
+- **Search engine crawlers could be banned.** A verified Googlebot that crawled a few spam links with attack-like parameters could reach the reputation limit and be banned on the whole site, and its address could be reported to community defense and listed for every member. Verified crawlers are now never banned, rate limited, challenged, reported to rafoo.ir or blocked at the CDN. Only the single attack-like request gets 403.
+- **DNS lookups during visits.** Checking a crawler used a reverse and forward DNS lookup inside the visitor's request, which could hold the page for seconds. Crawlers of Google, Bing, Apple and DuckDuckGo are now recognized from their official IP ranges shipped with the plugin (`dev/crawlers`, built by `tools/crawlers.py`). Other crawlers, such as Yandex, are queued and confirmed by DNS in the background every minute; until then they are treated as normal visitors. A crawler name from an address that fails the check counts as suspicious (group `fakebot`, never reported).
+### Changed
+- **Status codes.** The browser check answers `503` with `Retry-After: 30`, so a search engine that ever meets it retries later instead of dropping the page. Blocks stay `403`, limits `429` with `Retry-After`.
+- **Responses in steps.** When a browser's score reaches the ban limit, it first gets a browser check; it is banned only when the score keeps rising to twice the limit. Scripts that are not browsers are banned at the limit as before. Passing the check halves the score and doubles the limit for as long as the pass lasts.
+- **Community list in Smart mode.** Foreign addresses on the list now get a browser check instead of a block. Without passing it they cannot sign in, use XML-RPC or send POST requests, but they can still load files and pages from a page cache. Strict and Fortress still block them. Iranian addresses keep the browser check only.
+- **Fewer writes.** On hosts without APCu, requests from an address below a quarter of the first threshold are counted by sampling (one in four, counted as four), so about four times fewer counter files are written while floods are still caught near the limit. Requests from verified crawlers write nothing.
+- **Smaller page script.** When no outage, block list or rehearsal needs the full browser guard, Rafoo adds only the 0.7 KB request merger (`assets/dedupe.js`) instead of the 6.8 KB guard.
+- **rafoo.ir** drops reports for crawler addresses and never lists them.
+
+## [1.6.2] - 2026-11-11
 ### Changed
 - **Persian text.** Every Persian string of the plugin (1,525), the rafoo.ir site and panel, the monitoring point and the GitHub README was rewritten in shorter sentences and everyday words. One glossary (`docs/WRITING-FA.md`) now fixes one term per concept, for example آدرس instead of نشانی, مسدود کردن for block, and پچ امنیتی موقت instead of the literal وصله مجازی for a virtual patch.
 - In the Persian Shield screens, the temporary security patch and community defense are explained where they first appear.
 - English and the other languages, settings and behavior are unchanged.
 - **Admin panel.** The rafoo.ir Shield page uses the same layout as the other panel pages.
 
-## [1.6.1] - 2026-11-12
+## [1.6.1] - 2026-11-11
 ### Fixed
 - **Plugin icon.** Copies of Rafoo from rafoo.ir and GitHub showed the grey plug in Dashboard › Updates. The Rafoo icon (SVG, 128 and 256 px) now ships with the plugin and is used in the update list and the details window, also during an outage.
 - **Version details.** “View details” and “View version details” opened a window with “Plugin not found” or a WordPress.org error, because Rafoo is not served from WordPress.org. Rafoo now answers the details window itself: an introduction, a banner (right-to-left for Persian and Arabic screens), requirements, the WordPress version it was tested with, and the changes of each version, read in Persian or English from a signed answer of `rafoo.ir/api/v1/releases/{edition}/info`. The Update Now button in the window installs the signed package. Without rafoo.ir the window still opens and links to the guide.
@@ -164,7 +176,7 @@ First release.
 
 A standalone PHP script (`point/`) that turns an empty host into a monitoring point of the cooperative network, without WordPress.
 
-### [Point 2.1.1] - 2026-11-12
+### [Point 2.1.1] - 2026-11-11
 - Clearer Persian text on the status page, the home page and in `README.txt`, with Persian digits for counts and times.
 - Points on 2.x update to 2.1.1 by themselves.
 
@@ -191,6 +203,7 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 
 ## خلاصه فارسی
 
+- **۱٫۶٫۳:** سپر رفو دیگر هیچ‌وقت ربات واقعی گوگل، بینگ، اپل و داک‌داک‌گو را مسدود، محدود یا گزارش نمی‌کند و از آن بررسی مرورگر نمی‌خواهد؛ فقط همان یک درخواست حمله‌مانند ۴۰۳ می‌گیرد. ربات‌ها از روی IPهای رسمی شناخته می‌شوند و وسط بازدید هیچ جست‌وجوی DNS انجام نمی‌شود. بررسی مرورگر با کد ۵۰۳ پاسخ می‌دهد تا موتورهای جست‌وجو آن را موقت بدانند. پاسخ پله‌ای: مرورگر مشکوک اول بررسی مرورگر می‌گیرد و فقط اگر ادامه دهد مسدود می‌شود. در حالت هوشمند، IP خارجی فهرست جمعی بررسی مرورگر می‌گیرد. روی هاست بدون APCu حدود چهار برابر کمتر فایل نوشته می‌شود و اسکریپت هر صفحه از ۶٫۸ به ۰٫۷ کیلوبایت رسید.
 - **۱٫۶٫۲:** همه متن‌های فارسی افزونه، سایت و پنل rafoo.ir، نقطه پایش و GitHub با جمله‌های کوتاه‌تر و اصطلاح‌های آشنا بازنویسی شد؛ مثلاً «پچ امنیتی موقت» به‌جای «وصله مجازی». در سپر رفو، «پچ امنیتی موقت» و «ایمنی جمعی» همان‌جا که اولین بار دیده می‌شوند توضیح دارند. تنظیمات و رفتار افزونه تغییری نکرد.
 - **۱٫۶٫۱:** لوگوی رفو در به‌روزرسانی‌های وردپرس، و پنجره «مشاهده جزئیات» با معرفی، تصویر و تغییرات هر نسخه از rafoo.ir.
 - **۱٫۶٫۰:** سپر رفو: فایروالی که پیش از وردپرس اجرا می‌شود، با سه حالت هوشمند، سخت‌گیر و سنگر؛ ایمنی جمعی و پچ امنیتی موقت؛ مسدود کردن IP مهاجم در CDN ابرآروان و کلادفلر.
@@ -205,6 +218,7 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 - **نقطه پایش ۲٫۱٫۰:** بعد از اینکه مدیر rafoo.ir نقطه را حذف و مسدود کند، یک روز صبر می‌کند و بعد دوباره درخواست عضویت می‌دهد. نقطه‌های ۲٫۰ خودشان به‌روزرسانی می‌شوند.
 - **نقطه پایش ۲٫۰٫۰:** بدون نیاز به افزونه sodium، بررسی فوری، تشخیص فیلترینگ و به‌روزرسانی خودکار با امضای دیجیتال.
 
+[1.6.3]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.3
 [1.6.2]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.2
 [1.6.1]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.1
 [1.6.0]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.0

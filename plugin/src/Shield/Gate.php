@@ -6,15 +6,7 @@ defined( 'ABSPATH' ) || exit;
 
 final class Gate {
 
-	const BOTS = '/(Googlebot|AdsBot-Google|Google-InspectionTool|Storebot-Google|GoogleOther|bingbot|YandexBot|Applebot|DuckDuckBot)/i';
-
-	const BOT_DOMAINS = array(
-		'google' => array( '.googlebot.com', '.google.com', '.googleusercontent.com' ), // phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent -- Host names for checking that a crawler is really Google, nothing is loaded from them.
-		'bing'   => array( '.search.msn.com' ),
-		'yandex' => array( '.yandex.ru', '.yandex.net', '.yandex.com' ),
-		'apple'  => array( '.applebot.apple.com' ),
-		'duck'   => array( '.duckduckgo.com' ),
-	);
+	const SAMPLE = 4;
 
 	const GATEWAYS = '/(^|\.)(shaparak\.ir|zarinpal\.com|idpay\.ir|payping\.ir|mydigipay\.com|digipay\.ir|zibal\.ir|nextpay\.org|vandar\.io|sizpay\.ir|pec\.ir|sep\.ir|irankish\.com|asanpardakht\.ir|sadadpsp\.ir|pay\.ir|jibit\.ir|paystar\.ir|aqayepardakht\.ir)$/';
 
@@ -25,6 +17,12 @@ final class Gate {
 	private static $config = array();
 
 	private static $trust = -1;
+
+	private static $crawler = '';
+
+	public static function crawler() {
+		return self::$crawler;
+	}
 
 	public static function request() {
 		return self::$request;
@@ -87,18 +85,25 @@ final class Gate {
 		if ( self::listed( $r->ip, isset( $config['allow'] ) ? (array) $config['allow'] : array() ) || self::own( $r, $server ) ) {
 			return array( 'do' => 'allow' );
 		}
-		self::$trust = Trust::read( $secret, $r->cookie( Trust::COOKIE ) );
-		$trust       = self::$trust;
-		$admin       = $trust >= Trust::ADMIN || isset( $config['admins'][ $r->ip ] );
-		$now         = time();
-		$key         = 'ip:' . $r->key;
-		$rec         = self::decay( Store::get( $key ), $now );
+		self::$trust   = Trust::read( $secret, $r->cookie( Trust::COOKIE ) );
+		$trust         = self::$trust;
+		$admin         = $trust >= Trust::ADMIN || isset( $config['admins'][ $r->ip ] );
+		$now           = time();
+		$key           = 'ip:' . $r->key;
+		$dir           = isset( $config['dir'] ) ? (string) $config['dir'] : '';
+		$stored        = Store::get( $key );
+		$rec           = self::decay( $stored, $now );
+		$dirty         = $rec !== $stored;
+		self::$crawler = $admin || $trust >= Trust::USER ? '' : Crawler::check( $r, $dir );
 
 		if ( 'POST' === $r->method && isset( $post[ Challenge::FIELD ] ) && is_string( $post[ Challenge::FIELD ] ) ) {
 			$solved = Challenge::verify( $secret, $r->ip, $post[ Challenge::FIELD ], $now );
 			if ( '' !== $solved && empty( Store::get( 'pow:' . $solved ) ) ) {
 				Store::put( 'pow:' . $solved, array( 1 ), Challenge::LIFETIME + 60 );
-				$hours = (int) $mode['pass'];
+				$hours     = (int) $mode['pass'];
+				$rec['r']  = isset( $rec['r'] ) ? intdiv( (int) $rec['r'], 2 ) : 0;
+				$rec['cn'] = 0;
+				Store::put( $key, $rec, 86400 );
 				return array(
 					'do'     => 'pass',
 					'cookie' => Challenge::pass( $secret, $r->ip, $r->agent, $hours, $now ),
@@ -112,6 +117,9 @@ final class Gate {
 		if ( ! $admin && self::listed( $r->ip, isset( $config['deny'] ) ? (array) $config['deny'] : array() ) ) {
 			return self::stop( $r, 'block', Rules::verdict( array( Rules::hit( 'l_deny', 'list', 100, 'ip' ) ) ), $rec, $key, $now, false );
 		}
+		if ( Crawler::YES === self::$crawler ) {
+			return self::crawling( $config, $r, $mode, $get, $post, $trust, $dir );
+		}
 		if ( ! $admin && ! empty( $rec['b'] ) && (int) $rec['b'] > $now ) {
 			$verdict = Rules::verdict( array( Rules::hit( isset( $rec['br'] ) ? (string) $rec['br'] : 'l_ban', 'reputation', 100, 'ip' ) ) );
 			return self::stop( $r, 'limit' === ( isset( $rec['bk'] ) ? $rec['bk'] : '' ) ? 'limit' : 'block', $verdict, $rec, $key, $now, false, (int) $rec['b'] - $now );
@@ -119,52 +127,64 @@ final class Gate {
 		if ( ! empty( $rec['l'] ) && (int) $rec['l'] > $now && self::signing_in( $r, $post ) ) {
 			return self::stop( $r, 'locked', Rules::verdict( array( Rules::hit( 'w_lock', 'login', 100, 'login' ) ) ), $rec, $key, $now, false, (int) $rec['l'] - $now );
 		}
+		$passed = $trust >= Trust::USER || Challenge::passed( $secret, $r->ip, $r->agent, $r->cookie( Challenge::PASS ), $now );
 		$listed = $admin || $trust >= Trust::USER ? null : self::feed( $config, $r->ip, $now );
-		if ( $listed && ( Feed::BLOCK === $listed[0] || 'block' === $mode['feed'] ) ) {
-			return self::stop( $r, 'block', Rules::verdict( array( Rules::hit( 'n_feed', 'network', 100, 'ip' ) ) ), $rec, $key, $now, false );
+		if ( $listed ) {
+			$soft = 'mixed' === $mode['feed'];
+			if ( ! $soft || ( Feed::BLOCK === $listed[0] && ! $passed && ! self::reading( $r ) ) ) {
+				return self::stop( $r, 'block', Rules::verdict( array( Rules::hit( 'n_feed', 'network', 100, 'ip' ) ) ), $rec, $key, $now, false );
+			}
 		}
 
-		$signed  = self::signed( $r, $get, $post, $server );
-		$extra   = self::wordpress( $config, $r, $mode, $get, $trust );
-		$patch   = empty( $config['patches'] ) ? null : Patches::check( (array) $config['patches'], $r, $get, $post );
+		$signed = self::signed( $r, $get, $post, $server );
+		$extra  = self::wordpress( $config, $r, $mode, $get, $trust );
+		$patch  = empty( $config['patches'] ) ? null : Patches::check( (array) $config['patches'], $r, $get, $post );
 		if ( $patch ) {
 			$extra[] = $patch;
+		}
+		if ( Crawler::FAKE === self::$crawler ) {
+			$extra[] = Rules::hit( 'b_fake', 'fakebot', (int) $mode['suspect'], 'agent' );
 		}
 		if ( isset( $extra['redirect'] ) ) {
 			return array( 'do' => 'redirect' );
 		}
 		$verdict = $signed ? Rules::verdict( $extra ) : Rules::scan( $r, max( 0, $trust ), $extra );
+		$limit   = (int) $mode['reputation'] * ( $passed ? 2 : 1 );
 		if ( $verdict['score'] >= $mode['block'] ) {
 			if ( ! $admin ) {
 				$rec['r']  = ( isset( $rec['r'] ) ? (int) $rec['r'] : 0 ) + min( 50, (int) $verdict['score'] );
 				$rec['rt'] = $now;
 			}
-			return self::stop( $r, 'block', $verdict, $rec, $key, $now, ! $admin, 0, $mode );
+			return self::stop( $r, 'block', $verdict, $rec, $key, $now, ! $admin, 0, $mode, $limit );
 		}
 		if ( $verdict['score'] >= $mode['suspect'] && ! $admin ) {
 			$rec['r']  = ( isset( $rec['r'] ) ? (int) $rec['r'] : 0 ) + (int) $verdict['score'];
 			$rec['rt'] = $now;
-			if ( $rec['r'] >= $mode['reputation'] ) {
-				return self::stop( $r, 'block', $verdict, $rec, $key, $now, true, 0, $mode );
+			$dirty     = true;
+			if ( $rec['r'] >= $limit ) {
+				if ( ! $passed && $rec['r'] < 2 * $limit && self::browsing( $r ) ) {
+					return self::challenge( $config, $r, $mode, $rec, $key, $now, 'c_suspect' );
+				}
+				return self::stop( $r, 'block', $verdict, $rec, $key, $now, true, 0, $mode, $limit );
 			}
-			Log::write( isset( $config['dir'] ) ? $config['dir'] : '', $r, 'watch', $verdict, '' );
+			Log::write( $dir, $r, 'watch', $verdict, '' );
 		}
 
 		$free = $trust >= Trust::EDITOR || $signed || self::pinged( $r, $get ) || self::paying( $r, $get );
-		$rate = self::count( $rec, $now );
-		if ( ! $free && $rate > $mode['limit'] && ! self::bot( $r ) ) {
+		$rate = self::count( $rec, $now, $mode, $dirty );
+		if ( ! $free && $rate > $mode['limit'] ) {
 			$rec['bk'] = 'limit';
 			$rec['br'] = 'l_rate';
 			$rec['b']  = $now + min( 3600, max( 300, (int) $mode['ban'] / 6 ) );
 			return self::stop( $r, 'limit', Rules::verdict( array( Rules::hit( 'l_rate', 'flood', 100, (string) $rate ) ) ), $rec, $key, $now, false, (int) $rec['b'] - $now );
 		}
 		$needs = ! $free && ( $listed || $mode['everyone'] || ( $mode['challenge'] > 0 && $rate > $mode['challenge'] ) );
-		if ( $needs && $trust < Trust::USER && ! Challenge::passed( $secret, $r->ip, $r->agent, $r->cookie( Challenge::PASS ), $now ) && ! self::bot( $r ) ) {
-			if ( $r->navigation && 'front' === $r->script() || $r->navigation && 'wp-login' === $r->script() ) {
-				return self::challenge( $config, $r, $mode, $rec, $key, $now, $listed ? 'n_feed' : ( $mode['everyone'] ? 'c_fortress' : 'c_rate' ) );
-			}
+		if ( $needs && ! $passed && self::browsing( $r ) ) {
+			return self::challenge( $config, $r, $mode, $rec, $key, $now, $listed ? 'n_feed' : ( $mode['everyone'] ? 'c_fortress' : 'c_rate' ) );
 		}
-		Store::put( $key, $rec, 86400 );
+		if ( $dirty ) {
+			Store::put( $key, $rec, 86400 );
+		}
 		return array(
 			'do'      => 'allow',
 			'score'   => $verdict['score'],
@@ -172,9 +192,47 @@ final class Gate {
 		);
 	}
 
-	private static function stop( Request $r, $kind, array $verdict, array $rec, $key, $now, $learn, $retry = 0, $mode = null ) {
+	private static function crawling( array $config, Request $r, array $mode, array $get, array $post, $trust, $dir ) {
+		$extra = self::wordpress( $config, $r, $mode, $get, $trust );
+		$patch = empty( $config['patches'] ) ? null : Patches::check( (array) $config['patches'], $r, $get, $post );
+		if ( $patch ) {
+			$extra[] = $patch;
+		}
+		if ( isset( $extra['redirect'] ) ) {
+			return array( 'do' => 'redirect' );
+		}
+		$verdict = Rules::scan( $r, 0, $extra );
+		if ( $verdict['score'] >= $mode['block'] ) {
+			$verdict['crawler'] = 1;
+			$reference          = Log::reference();
+			Log::write( $dir, $r, 'block', $verdict, $reference );
+			return array(
+				'do'      => 'block',
+				'ref'     => $reference,
+				'retry'   => 0,
+				'verdict' => $verdict,
+			);
+		}
+		return array(
+			'do'      => 'allow',
+			'score'   => $verdict['score'],
+			'trusted' => $trust,
+			'crawler' => 1,
+		);
+	}
+
+	private static function browsing( Request $r ) {
+		return $r->navigation && ( 'front' === $r->script() || 'wp-login' === $r->script() );
+	}
+
+	private static function reading( Request $r ) {
+		return in_array( $r->method, array( 'GET', 'HEAD' ), true ) && ! in_array( $r->script(), array( 'wp-login', 'xmlrpc' ), true );
+	}
+
+	private static function stop( Request $r, $kind, array $verdict, array $rec, $key, $now, $learn, $retry = 0, $mode = null, $limit = 0 ) {
 		$reference = Log::reference();
-		if ( $learn && $mode && isset( $rec['r'] ) && (int) $rec['r'] >= (int) $mode['reputation'] && ( empty( $rec['b'] ) || (int) $rec['b'] < $now ) ) {
+		$limit     = $limit > 0 ? (int) $limit : ( $mode ? (int) $mode['reputation'] : 0 );
+		if ( $learn && $mode && isset( $rec['r'] ) && (int) $rec['r'] >= $limit && ( empty( $rec['b'] ) || (int) $rec['b'] < $now ) ) {
 			$rec['b']  = $now + (int) $mode['ban'];
 			$rec['br'] = $verdict['rule'];
 			$rec['bk'] = 'block';
@@ -221,13 +279,22 @@ final class Gate {
 		return $rec;
 	}
 
-	private static function count( array &$rec, $now ) {
+	private static function count( array &$rec, $now, array $mode, &$dirty ) {
 		$minute = intdiv( $now, 60 );
-		if ( ! isset( $rec['m'] ) || (int) $rec['m'] !== $minute ) {
-			$rec['m'] = $minute;
-			$rec['n'] = 0;
+		$count  = isset( $rec['m'], $rec['n'] ) && (int) $rec['m'] === $minute ? (int) $rec['n'] : 0;
+		$step   = 1;
+		if ( ! Store::apcu() && empty( self::$config['exact'] ) ) {
+			$first = (int) ( $mode['challenge'] > 0 ? min( $mode['challenge'], $mode['limit'] ) : $mode['limit'] );
+			if ( $count < intdiv( $first, 4 ) ) {
+				if ( 0 !== random_int( 0, self::SAMPLE - 1 ) ) {
+					return $count + 1;
+				}
+				$step = self::SAMPLE;
+			}
 		}
-		$rec['n'] = (int) $rec['n'] + 1;
+		$rec['m'] = $minute;
+		$rec['n'] = $count + $step;
+		$dirty    = true;
 		return $rec['n'];
 	}
 
@@ -289,46 +356,6 @@ final class Gate {
 		}
 		$host = '' !== $r->referer ? strtolower( (string) parse_url( $r->referer, PHP_URL_HOST ) ) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.parse_url_parse_url -- runs before WordPress loads, where wp_parse_url does not exist.
 		return '' !== $host && (bool) preg_match( self::GATEWAYS, $host );
-	}
-
-	public static function bot( Request $r ) {
-		if ( '' === $r->agent || ! preg_match( self::BOTS, $r->agent, $match ) ) {
-			return false;
-		}
-		$name   = strtolower( $match[1] );
-		$family = false !== strpos( $name, 'google' ) || 0 === strpos( $name, 'adsbot' ) || 0 === strpos( $name, 'storebot' ) ? 'google' : ( 'bingbot' === $name ? 'bing' : ( 'yandexbot' === $name ? 'yandex' : ( 'applebot' === $name ? 'apple' : 'duck' ) ) );
-		$key    = 'bot:' . $r->ip;
-		$known  = Store::get( $key );
-		if ( isset( $known['v'] ) ) {
-			return 1 === (int) $known['v'];
-		}
-		$ok = self::genuine( $r->ip, $family );
-		Store::put( $key, array( 'v' => $ok ? 1 : 0 ), 86400 );
-		return $ok;
-	}
-
-	public static function genuine( $ip, $family ) {
-		$host = (string) @gethostbyaddr( $ip );
-		if ( '' === $host || $host === $ip ) {
-			return false;
-		}
-		$host = strtolower( $host );
-		$ok   = false;
-		foreach ( isset( self::BOT_DOMAINS[ $family ] ) ? self::BOT_DOMAINS[ $family ] : array() as $suffix ) {
-			$ok = $ok || substr( $host, -strlen( $suffix ) ) === $suffix;
-		}
-		if ( ! $ok ) {
-			return false;
-		}
-		if ( false !== strpos( $ip, ':' ) ) {
-			foreach ( (array) @dns_get_record( $host, DNS_AAAA ) as $record ) {
-				if ( isset( $record['ipv6'] ) && @inet_pton( $record['ipv6'] ) === @inet_pton( $ip ) ) {
-					return true;
-				}
-			}
-			return false;
-		}
-		return in_array( $ip, (array) @gethostbynamel( $host ), true );
 	}
 
 	private static function wordpress( array $config, Request $r, array $mode, array $get, $trust ) {

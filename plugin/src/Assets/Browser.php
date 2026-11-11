@@ -21,7 +21,7 @@ final class Browser {
 
 	private static $printed = false;
 
-	private static $source = null;
+	private static $source = array();
 
 	public static function active() {
 		if ( Settings::paused() ) {
@@ -78,12 +78,18 @@ final class Browser {
 		return (array) apply_filters( 'rafoo_browser_guard', $config );
 	}
 
+	public static function light( array $config ) {
+		return ! empty( $config['d'] ) && empty( $config['o'] ) && empty( $config['b'] ) && empty( $config['x'] ) && empty( $config['r'] );
+	}
+
 	public static function tag() {
-		$source = self::source();
+		$config = self::config();
+		$light  = self::light( $config );
+		$source = self::source( $light );
 		if ( '' === $source ) {
 			return '';
 		}
-		$script = 'window.rafooGuard=' . wp_json_encode( self::config() ) . ';' . $source;
+		$script = 'window.rafooGuard=' . wp_json_encode( $light ? array( 'd' => true ) : $config ) . ';' . $source;
 		return wp_get_inline_script_tag(
 			$script,
 			array(
@@ -125,13 +131,14 @@ final class Browser {
 		echo self::tag(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_get_inline_script_tag builds the tag; the config is JSON from sanitized settings.
 	}
 
-	public static function source() {
-		if ( null === self::$source ) {
-			$file         = dirname( __DIR__, 2 ) . '/assets/guard.js';
-			$source       = is_readable( $file ) ? (string) file_get_contents( $file ) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- a local file shipped with the plugin.
-			self::$source = trim( $source );
+	public static function source( $light = false ) {
+		$name = $light ? 'dedupe' : 'guard';
+		if ( ! isset( self::$source[ $name ] ) ) {
+			$file                  = dirname( __DIR__, 2 ) . '/assets/' . $name . '.js';
+			$source                = is_readable( $file ) ? (string) file_get_contents( $file ) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- a local file shipped with the plugin.
+			self::$source[ $name ] = trim( $source );
 		}
-		return self::$source;
+		return self::$source[ $name ];
 	}
 
 	private static function hosts_of( array $needles ) {

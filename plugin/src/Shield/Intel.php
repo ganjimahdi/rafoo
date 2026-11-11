@@ -129,7 +129,7 @@ final class Intel {
 			if ( ! Ip::valid( $ip ) || Ip::local( $ip ) || isset( $admins[ $ip ] ) || Ip::any( $ip, $allow ) ) {
 				continue;
 			}
-			if ( in_array( $group, array( 'network', 'list', 'reputation', 'challenge', '' ), true ) || ! in_array( $row['a'], array( 'block', 'limit', 'lock' ), true ) ) {
+			if ( ! empty( $row['k'] ) || in_array( $group, array( 'network', 'list', 'reputation', 'challenge', 'fakebot', '' ), true ) || ! in_array( $row['a'], array( 'block', 'limit', 'lock' ), true ) ) {
 				continue;
 			}
 			if ( ! isset( $box[ $ip ] ) && count( $box ) >= self::MAX_REPORT ) {

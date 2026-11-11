@@ -108,7 +108,7 @@ final class Config {
 			'locked_title'     => __( 'Signing in is paused', 'rafoo' ),
 			'locked_text'      => __( 'There were too many failed sign-in attempts from your connection. Please try again later.', 'rafoo' ),
 			'challenge_title'  => __( 'Checking your browser', 'rafoo' ),
-			'challenge_text'   => __( 'The site is under heavy load. Your browser is solving a short check; the page opens by itself in a few seconds.', 'rafoo' ),
+			'challenge_text'   => __( 'Your browser is completing a short security check. The page opens by itself in a few seconds.', 'rafoo' ),
 			'challenge_failed' => __( 'The check could not be completed. Reload the page to try again.', 'rafoo' ),
 			'noscript'         => __( 'Turn on JavaScript to continue.', 'rafoo' ),
 			'reference'        => __( 'Reference', 'rafoo' ),

@@ -202,7 +202,7 @@ final class Shield {
 			return;
 		}
 		$r = Gate::request();
-		if ( $r && Gate::bot( $r ) ) {
+		if ( $r && Crawler::YES === Gate::crawler() ) {
 			return;
 		}
 		self::store();
@@ -294,6 +294,10 @@ final class Shield {
 			Intel::tick();
 		}
 		Edge::tick();
+		if ( self::active() && ! \Rafoo\State::offline() ) {
+			self::store();
+			Crawler::verify( Config::dir() );
+		}
 		if ( 0 === wp_rand( 0, 59 ) ) {
 			self::store();
 			Store::sweep();
