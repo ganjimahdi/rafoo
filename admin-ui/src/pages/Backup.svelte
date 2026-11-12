@@ -12,6 +12,7 @@
 	import type { BackupEntry, BackupJob, BackupStatus, BackupWarning, Settings } from '../lib/types';
 	import Destinations from '../sections/Destinations.svelte';
 	import Move from '../sections/Move.svelte';
+	import Storage from '../sections/Storage.svelte';
 
 	const PARTS = [128, 256, 512, 1024, 2048] as const;
 
@@ -38,13 +39,12 @@
 		backup_hours: store.settings.backup_hours,
 		backup_hour: store.settings.backup_hour,
 		backup_mode: store.settings.backup_mode,
-		backup_local: store.settings.backup_local,
 		backup_part: store.settings.backup_part ?? 256
 	});
 
 	const job = $derived(status?.job ?? null);
 	const running = $derived(job?.status === 'running');
-	const names = $derived(Object.fromEntries((status?.destinations ?? []).map((d) => [d.id, d.label])));
+	const names = $derived(Object.fromEntries([...(status?.destinations ?? []).map((d) => [d.id, d.label]), ...(status?.files ? [[status.files.id, 'Files.ir']] : [])]));
 	const oldZip = $derived(!!status && !status.support.zip && status.backups.some((entry) => entry.format < 2));
 
 	function update(next: BackupStatus) {
@@ -292,6 +292,11 @@
 	{#if status && !status.support.writable}<Notice tone="danger">{t('backup_not_writable')}</Notice>{/if}
 	{#if status?.frozen}<Notice tone="warning">{t('backup_frozen')}</Notice>{/if}
 
+	{#if status}
+		<Storage {status} onupdate={update} />
+		{#if store.settings.backup_remote !== false}<Destinations {status} onupdate={update} />{/if}
+	{/if}
+
 	<Card title={t('backup_title')} help={help('card_backup')} description={t('backup_intro')}>
 		{#snippet actions()}
 			<Button variant="primary" onclick={() => act('run', () => api<BackupStatus>('backup/run', 'POST', {}))} busy={busy === 'run'} disabled={busy !== '' || running || !status?.support.writable}>
@@ -537,7 +542,6 @@
 				</div>
 			</div>
 			<Toggle label={t('backup_mode_label')} help={help('backup_mode')} description={t('backup_mode_help')} bind:checked={incremental} />
-			<Toggle label={t('backup_local_label')} help={help('backup_local')} description={t('backup_local_help')} bind:checked={schedule.backup_local} />
 			<div class="rf-field">
 				<span class="rf-field-label"><label for="rafoo-backup-part">{t('backup_part_label')}</label><Help text={help('backup_part')} label={t('backup_part_label')} /></span>
 				<p id="rafoo-backup-part-help" class="rf-subtle rf-small">{t('backup_part_help')}</p>
@@ -565,8 +569,6 @@
 				<Button variant="primary" onclick={saveSchedule} busy={busy === 'schedule'}>{t('save')}</Button>
 			</div>
 		</Card>
-
-		<Destinations {status} onupdate={update} />
 
 		<Card title={t('backup_password_title')} help={help('card_backup_password')} description={t('backup_password_help')}>
 			{#if !status.support.crypt}

@@ -90,6 +90,7 @@ export interface Settings {
 	backup_hour: number;
 	backup_mode: 'incremental' | 'full';
 	backup_local: boolean;
+	backup_remote: boolean;
 	backup_exclude: string[];
 	backup_part: 128 | 256 | 512 | 1024 | 2048;
 	browser_guard: boolean;
@@ -252,10 +253,25 @@ export interface Destination {
 	last_error: string;
 }
 
+export interface FilesDestination {
+	id: string;
+	enabled: boolean;
+	hint: string;
+	space: string;
+	path: string;
+	speed: number;
+	free: number;
+	used: number;
+	checked_at: number;
+	last_ok: number;
+	last_error: string;
+}
+
 export interface BackupStatus {
 	job: BackupJob | null;
 	backups: BackupEntry[];
 	destinations: Destination[];
+	files: FilesDestination | null;
 	next: number;
 	last: number;
 	password: boolean;
@@ -270,6 +286,7 @@ export interface BackupStatus {
 		free: number;
 		space?: 'quota' | 'disk' | 'shared' | 'unknown';
 		writable: boolean;
+		stream: boolean;
 	};
 	invite: { expires: number } | null;
 	frozen: boolean;

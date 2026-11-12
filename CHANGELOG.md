@@ -4,6 +4,17 @@ All notable changes to Rafoo. Both editions share one version number: **Rafoo** 
 
 Downloads: [GitHub Releases](https://github.com/ganjimahdi/rafoo/releases) and [rafoo.ir](https://rafoo.ir).
 
+## [1.6.4] - 2026-11-12
+### Added
+- **Files.ir backup destination**, in both editions, off by default. Files.ir is a storage service inside Iran that gives up to 5 GB free. Scheduled and manual backups are sent there in the same parts as to the other places, old backups are deleted there by the same keeping rules, and a check or restore downloads from Files.ir when the local copy is gone.
+  - Connect with an API key from the Files.ir account. Rafoo checks the key, picks the personal drive (or the first workspace the key may use), creates the folder `Rafoo/<site host>`, and uploads, reads back and deletes a test file before saving it.
+  - The key is stored encrypted with the site's own key (libsodium secretbox), only its last four characters are shown, and it is sent only to the Files.ir API host, never to the storage addresses Files.ir hands out for uploads and downloads. It cannot be hashed, because Files.ir needs the key itself on every request.
+  - Uploads follow the Files.ir API: direct upload, S3 single and multipart upload, and resumable tus upload, whichever Files.ir chooses. Large parts go in pieces within Rafoo's short backup steps and continue after an interruption; a part with the same name is replaced. With the PHP cURL extension, parts are streamed from disk; without it, pieces of up to 64 MB are sent from memory.
+  - The card shows the folder, used and free space, speed, the last send and a Test button. Turning Files.ir off keeps the key; Remove the key deletes it.
+  - The Rafoo team has no business relationship with Files.ir; the Files.ir team gave permission for this connection.
+- **Where backups are kept.** A new card at the top of the Backup page with three places: this host, other servers (SFTP, FTPS or FTP) and Files.ir. The new `backup_remote` setting (on by default, so nothing changes after the update) stops sending to the servers without deleting them. With every place off, copies stay on this host so no backup is lost.
+- The privacy policy text and the readme's External services section describe Files.ir.
+
 ## [1.6.3] - 2026-11-11
 ### Fixed
 - **Search engine crawlers could be banned.** A verified Googlebot that crawled a few spam links with attack-like parameters could reach the reputation limit and be banned on the whole site, and its address could be reported to community defense and listed for every member. Verified crawlers are now never banned, rate limited, challenged, reported to rafoo.ir or blocked at the CDN. Only the single attack-like request gets 403.
@@ -203,6 +214,7 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 
 ## خلاصه فارسی
 
+- **۱٫۶٫۴:** پشتیبان‌گیری در Files.ir (فایلز)، در هر دو نسخه رفو و به‌طور پیش‌فرض خاموش. Files.ir یک سرویس ذخیره‌سازی داخل ایران است و تا ۵ گیگابایت فضای رایگان می‌دهد. اتصال با کلید API انجام می‌شود. کلید رمزگذاری‌شده ذخیره می‌شود و فقط به API سرویس Files.ir فرستاده می‌شود. پشتیبان‌های زمان‌بندی‌شده و دستی تکه‌تکه ارسال می‌شوند و اگر ارسال قطع شود، از همان‌جا ادامه پیدا می‌کند. کارت تازه «محل نگهداری پشتیبان‌ها» بالای صفحه پشتیبان آمده است: همین هاست، سرورهای دیگر (SFTP، FTPS یا FTP) و Files.ir، هر کدام با کلید روشن و خاموش. تیم رفو با Files.ir همکاری تجاری ندارد.
 - **۱٫۶٫۳:** سپر رفو دیگر هیچ‌وقت ربات واقعی گوگل، بینگ، اپل و داک‌داک‌گو را مسدود، محدود یا گزارش نمی‌کند و از آن بررسی مرورگر نمی‌خواهد؛ فقط همان یک درخواست حمله‌مانند ۴۰۳ می‌گیرد. ربات‌ها از روی IPهای رسمی شناخته می‌شوند و وسط بازدید هیچ جست‌وجوی DNS انجام نمی‌شود. بررسی مرورگر با کد ۵۰۳ پاسخ می‌دهد تا موتورهای جست‌وجو آن را موقت بدانند. پاسخ پله‌ای: مرورگر مشکوک اول بررسی مرورگر می‌گیرد و فقط اگر ادامه دهد مسدود می‌شود. در حالت هوشمند، IP خارجی فهرست جمعی بررسی مرورگر می‌گیرد. روی هاست بدون APCu حدود چهار برابر کمتر فایل نوشته می‌شود و اسکریپت هر صفحه از ۶٫۸ به ۰٫۷ کیلوبایت رسید.
 - **۱٫۶٫۲:** همه متن‌های فارسی افزونه، سایت و پنل rafoo.ir، نقطه پایش و GitHub با جمله‌های کوتاه‌تر و اصطلاح‌های آشنا بازنویسی شد؛ مثلاً «پچ امنیتی موقت» به‌جای «وصله مجازی». در سپر رفو، «پچ امنیتی موقت» و «ایمنی جمعی» همان‌جا که اولین بار دیده می‌شوند توضیح دارند. تنظیمات و رفتار افزونه تغییری نکرد.
 - **۱٫۶٫۱:** لوگوی رفو در به‌روزرسانی‌های وردپرس، و پنجره «مشاهده جزئیات» با معرفی، تصویر و تغییرات هر نسخه از rafoo.ir.
@@ -218,6 +230,7 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 - **نقطه پایش ۲٫۱٫۰:** بعد از اینکه مدیر rafoo.ir نقطه را حذف و مسدود کند، یک روز صبر می‌کند و بعد دوباره درخواست عضویت می‌دهد. نقطه‌های ۲٫۰ خودشان به‌روزرسانی می‌شوند.
 - **نقطه پایش ۲٫۰٫۰:** بدون نیاز به افزونه sodium، بررسی فوری، تشخیص فیلترینگ و به‌روزرسانی خودکار با امضای دیجیتال.
 
+[1.6.4]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.4
 [1.6.3]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.3
 [1.6.2]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.2
 [1.6.1]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.1

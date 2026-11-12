@@ -22,6 +22,8 @@ abstract class Remote {
 		switch ( isset( $config['type'] ) ? $config['type'] : '' ) {
 			case 'sftp':
 				return new Sftp( $config );
+			case FilesIr::TYPE:
+				return new FilesIr( $config );
 			case 'ftps-implicit':
 				return self::curl() ? new Curl( $config ) : null;
 			case 'ftp':

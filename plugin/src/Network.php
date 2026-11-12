@@ -15,7 +15,7 @@ final class Network {
 
 	const POLICIES = array( 'defaults', 'enforced' );
 
-	const LOCAL = array( 'telemetry', 'backup', 'backup_hours', 'backup_hour', 'backup_mode', 'backup_local', 'backup_exclude', 'backup_part' );
+	const LOCAL = array( 'telemetry', 'backup', 'backup_hours', 'backup_hour', 'backup_mode', 'backup_local', 'backup_remote', 'backup_exclude', 'backup_part' );
 
 	private static $cache = null;
 

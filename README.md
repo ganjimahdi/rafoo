@@ -63,7 +63,7 @@ Both editions are free and share the same code. Install only one; activating Raf
 **Safety and backups**
 - Safe updates: the previous version is kept, the site is checked after each update and only the update that broke it is rolled back.
 - Updates from the mirror (Complete): rafoo.ir signs a per-item index built from the Wbweb mirror's own list, and every package is checked against its sha256. Only items from wordpress.org are swapped, after a name check; paid and vendor-updated plugins and themes such as Divi are never touched.
-- Full or incremental backups in short steps (shared hosting friendly) as independent `.tar.gz` parts of 128 MB to 2 GB that open with 7-Zip or tar, written only by appending, with resume points, a backup check, a task log and low-memory operation. Optional streaming XChaCha20-Poly1305 encryption, destinations over SFTP, FTPS or FTP with automatic detection, restore with automatic fallback, site-to-site transfer with a one-time code, and moving to an empty host with a small installer. On shared hosting the free-space card points to the hosting quota, since the server disk says nothing about it; hosts can pass the real quota with the `rafoo_backup_quota` filter.
+- Full or incremental backups in short steps (shared hosting friendly) as independent `.tar.gz` parts of 128 MB to 2 GB that open with 7-Zip or tar, written only by appending, with resume points, a backup check, a task log and low-memory operation. Optional streaming XChaCha20-Poly1305 encryption, destinations over SFTP, FTPS or FTP with automatic detection, an optional Files.ir destination (storage inside Iran with up to 5 GB free; the API key is stored encrypted and large parts upload in resumable pieces), restore with automatic fallback, site-to-site transfer with a one-time code, and moving to an empty host with a small installer. On shared hosting the free-space card points to the hosting quota, since the server disk says nothing about it; hosts can pass the real quota with the `rafoo_backup_quota` filter.
 
 **Geo DNS: copies on multiple hosts (beta)**
 - A main host (usually in Iran) and up to three full copies on hosts in other countries, all serving the same domain. Each host also has a technical subdomain that only Rafoo uses; normal visits to it get a 301 to the main address with `X-Robots-Tag: noindex`, so search engines see one site.
@@ -140,7 +140,7 @@ Filters:
 | `rafoo_captcha_difficulty`, `rafoo_captcha_scripts`, `rafoo_captcha_verify`, `rafoo_captcha_store_api` | captcha behaviour |
 | `rafoo_health_targets`, `rafoo_rollback_max_bytes` | safe updates |
 | `rafoo_mirror_index` | address of the signed mirror index (Complete) |
-| `rafoo_backup_exclude`, `rafoo_backup_step_seconds`, `rafoo_backup_background`, `rafoo_transfer_endpoint`, `rafoo_loopback_url`, `rafoo_backup_quota` | backups and transfer |
+| `rafoo_backup_exclude`, `rafoo_backup_step_seconds`, `rafoo_backup_background`, `rafoo_transfer_endpoint`, `rafoo_loopback_url`, `rafoo_backup_quota`, `rafoo_files_ir_base` | backups and transfer |
 | `rafoo_geo_api_base`, `rafoo_geo_sslverify`, `rafoo_geo_exclude`, `rafoo_geo_skip_tables`, `rafoo_geo_dynamic`, `rafoo_geo_dynamic_paths`, `rafoo_geo_relay_timeout` | Geo DNS |
 
 REST namespace `rafoo/v1`; every route needs `manage_options`, and mode, pause, backups and network settings need `manage_network_options` on Multisite.
@@ -179,7 +179,7 @@ GPL-2.0-or-later. See [LICENSE](LICENSE). The Rafoo and Wbweb names and logos ar
 - **سپر رفو:** فایروالی که پیش از وردپرس اجرا می‌شود، با سه حالت هوشمند، سخت‌گیر و سنگر. با ایمنی جمعی، IP مهاجم‌هایی که چند سایت عضو دیده‌اند، در سایت شما هم مسدود می‌شود. پچ امنیتی موقت هم حفره شناخته‌شده یک افزونه را تا نصب نسخه اصلاح‌شده می‌بندد. IP مهاجم‌ها را می‌توانید در CDN ابرآروان یا کلادفلر هم مسدود کنید. ربات‌های واقعی گوگل، بینگ، اپل و داک‌داک‌گو هیچ‌وقت مسدود نمی‌شوند و به سئو آسیبی نمی‌رسد.
 - **کار سایت هنگام قطعی:** کتابخانه‌ها و فونت‌های CDN روی هاست خودتان کپی می‌شوند، قطعی خودکار تشخیص داده می‌شود و درخواست‌های خارجی فوراً لغو می‌شوند. کپچای داخلی جای reCAPTCHA را می‌گیرد.
 - **مانور قطعی:** سایت را همان‌طور ببینید که هنگام قطعی کار می‌کند و بیشتر مشکل‌ها را با یک کلیک برطرف کنید.
-- **به‌روزرسانی امن، پشتیبان‌گیری و انتقال سایت،** حتی برای سایت‌های خیلی بزرگ.
+- **به‌روزرسانی امن، پشتیبان‌گیری و انتقال سایت،** حتی برای سایت‌های خیلی بزرگ. پشتیبان روی همین هاست، سرورهای SFTP، FTPS یا FTP و Files.ir (سرویس ذخیره‌سازی داخل ایران با ۵ گیگابایت فضای رایگان) نگه داشته می‌شود.
 - **چند هاست با Geo DNS (بتا):** کپی سایت روی هاست‌های کشورهای دیگر. در گوگل همچنان یک سایت دیده می‌شود و به سئو آسیبی نمی‌رسد.
 - **موتور پایش:** بررسی سایت از داخل و خارج ایران.
 - سلامت سایت وردپرس، تنظیمات شبکه Multisite و رابط فارسی، انگلیسی، عربی، ترکی و روسی، با دکمه راهنما برای هر بخش.

@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,7 @@ Rafoo fixes this without touching the files of your theme or plugins.
 
 * Full or changes-only backups of files and database on a schedule, made in short steps so they work on shared hosting.
 * Copies on this host and on other servers over SFTP, FTPS or FTP. Rafoo finds the right connection and folder by itself.
+* Optional Files.ir destination, a storage service inside Iran with up to 5 GB free: connect it with an API key, which is stored encrypted. Large parts go in pieces and resume after an interruption.
 * Optional encryption with a password (XChaCha20-Poly1305).
 * Restore checks the site afterwards and puts the previous database back if the restored site does not load.
 * Copy the whole site to another WordPress site with Rafoo using a one-time code, directly between the two servers, with a short final pass for WooCommerce orders. A different domain and table prefix are handled.
@@ -151,6 +152,8 @@ Rafoo talks to the following services. None of them receives anything about your
 **Rafoo updates (copies from rafoo.ir or GitHub).** A copy of Rafoo downloaded from rafoo.ir or GitHub asks `https://rafoo.ir/api/v1/releases/rafoo.json` (Rafoo Complete: `rafoo-complete.json`) for the latest version at most every six hours, and `https://rafoo.ir/api/v1/releases/rafoo/info` (or `rafoo-complete/info`) for the list of changes when an administrator opens the details window, sending only the language (Persian or English), or at once when the status answer names a newer version, and downloads updates from `https://rafoo.ir/downloads/`, checking each file against its signed SHA-256 hash. Nothing about the site is sent. The copy from wordpress.org updates only through wordpress.org.
 
 **Backup servers (only when added).** Backups are sent only to servers an administrator adds under Rafoo › Backup, using the login entered there.
+
+**Files.ir (off by default).** Only if an administrator turns on Files.ir under Rafoo › Backup and enters an API key, Rafoo calls `https://my.files.ir/api/v1` with that key: once to check it and create a folder named `Rafoo/<site host>`, and then, for each backup, to upload the backup parts and their description, list and delete old backups by the keeping rules, show the used and free space, and download parts for a check or a restore. Backups contain the site's files and database. The Rafoo team has no business relationship with Files.ir. ([terms](https://my.files.ir/pages/terms-of-service), [privacy](https://my.files.ir/pages/privacy-policy))
 
 **Multiple hosts (only when used).** Hosts of one group talk only to each other, over signed and encrypted requests to `admin-ajax.php?action=rafoo_geo` and `?rafoo-ping` on their technical addresses; nothing goes through rafoo.ir. When an administrator chooses a DNS service under Rafoo › Geo DNS and enters its key, Rafoo sends the domain's DNS records (host names and IP addresses of the hosts) to that service only:
 
@@ -237,6 +240,10 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.6.4 =
+* Backup: a new "Where backups are kept" card at the top of the Backup page, with a switch for this host, a switch for SFTP, FTPS and FTP servers (they stay saved when off) and Files.ir.
+* Files.ir (off by default): send scheduled and manual backups to a Files.ir account, a storage service inside Iran with up to 5 GB free. The API key is stored encrypted and never shown again. Uploads follow the Files.ir API (direct, S3 and resumable tus uploads); large parts go in pieces and continue after an interruption. Old backups are deleted there by the same keeping rules, and a check or restore downloads from Files.ir.
+
 = 1.6.3 =
 * Search engines: real crawlers of Google, Bing, Apple and DuckDuckGo are recognized by their official IP ranges, with no DNS lookup during the visit. They are never banned, rate limited, challenged, reported to rafoo.ir or blocked at the CDN; only a single attack-like request is refused. Other crawlers are confirmed by DNS in the background, and fake crawlers are treated as suspicious.
 * The browser check answers 503 with Retry-After, which search engines treat as temporary.
@@ -314,6 +321,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.6.4 =
+Adds Files.ir as an optional backup destination (off by default) and a card to choose where backups are kept. Existing backup settings and servers do not change.
+
 = 1.6.3 =
 Search engine crawlers are never blocked by the shield, and pages load a smaller script.
 

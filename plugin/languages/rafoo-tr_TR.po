@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.6.3\n"
+"Project-Id-Version: Rafoo 1.6.4\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,7 +13,7 @@ msgstr ""
 msgid "Rafoo: paused"
 msgstr "Rafoo: duraklatıldı"
 
-#: src/Admin/AdminBar.php:22 src/Admin/Strings.php:691
+#: src/Admin/AdminBar.php:22 src/Admin/Strings.php:720
 msgid "Rafoo is paused and changes nothing on the site."
 msgstr "Rafoo duraklatıldı ve sitede hiçbir şeyi değiştirmiyor."
 
@@ -117,7 +117,7 @@ msgstr "Akıllı mod neredeyse her siteye uygundur. Kale modunu yalnızca yoğun
 msgid "Off"
 msgstr "Kapalı"
 
-#: src/Admin/ShieldStrings.php:24 src/Admin/Strings.php:674 src/Shield/Widget.php:24
+#: src/Admin/ShieldStrings.php:24 src/Admin/Strings.php:703 src/Shield/Widget.php:24
 msgid "Smart"
 msgstr "Akıllı"
 
@@ -205,7 +205,7 @@ msgstr "WordPress’ten önce koruma"
 msgid "Runs the shield before WordPress and every plugin, so attacks never reach their code. Rafoo adds one line to the site’s .htaccess or .user.ini and removes it when turned off."
 msgstr "Kalkanı WordPress’ten ve tüm eklentilerden önce çalıştırır; saldırılar onların koduna hiç ulaşmaz. Rafoo sitenin .htaccess veya .user.ini dosyasına bir satır ekler ve kapatıldığında kaldırır."
 
-#: src/Admin/ShieldStrings.php:46 src/Admin/Strings.php:1363 src/Admin/Strings.php:1364 src/Admin/Strings.php:1365
+#: src/Admin/ShieldStrings.php:46 src/Admin/Strings.php:1395 src/Admin/Strings.php:1396 src/Admin/Strings.php:1397
 msgid "Turn on"
 msgstr "Aç"
 
@@ -301,11 +301,11 @@ msgstr "İzin ver"
 msgid "Allowed"
 msgstr "İzinli"
 
-#: src/Admin/ShieldStrings.php:77 src/Admin/Strings.php:682
+#: src/Admin/ShieldStrings.php:77 src/Admin/Strings.php:711
 msgid "Block"
 msgstr "Engelle"
 
-#: src/Admin/ShieldStrings.php:78 src/Admin/Strings.php:683
+#: src/Admin/ShieldStrings.php:78 src/Admin/Strings.php:712
 msgid "Unblock"
 msgstr "Engeli kaldır"
 
@@ -481,11 +481,11 @@ msgstr "Uzun engellemeleri CDN’inize gönderir; saldırganlar sunucunuza ulaş
 msgid "CDN"
 msgstr "CDN"
 
-#: src/Admin/ShieldStrings.php:125 src/Admin/Strings.php:906
+#: src/Admin/ShieldStrings.php:125 src/Admin/Strings.php:938
 msgid "ArvanCloud"
 msgstr "ArvanCloud"
 
-#: src/Admin/ShieldStrings.php:126 src/Admin/Strings.php:910
+#: src/Admin/ShieldStrings.php:126 src/Admin/Strings.php:942
 msgid "Cloudflare"
 msgstr "Cloudflare"
 
@@ -517,7 +517,7 @@ msgstr "Cloudflare API belirteci"
 msgid "Create a token with Zone read and Firewall Services edit permission for this domain."
 msgstr "Bu alan adı için Zone okuma ve Firewall Services düzenleme izni olan bir belirteç oluşturun."
 
-#: src/Admin/ShieldStrings.php:134 src/Admin/Strings.php:526
+#: src/Admin/ShieldStrings.php:134 src/Admin/Strings.php:532 src/Admin/Strings.php:555
 msgid "Connect"
 msgstr "Bağlan"
 
@@ -540,82 +540,86 @@ msgid "Shield mode changed"
 msgstr "Kalkan modu değişti"
 
 #: src/Admin/ShieldStrings.php:140
+msgid "Files.ir connected for backups"
+msgstr "Yedekler için Files.ir bağlandı"
+
+#: src/Admin/ShieldStrings.php:141
 msgid "Shield protection before WordPress turned on"
 msgstr "WordPress’ten önce kalkan koruması açıldı"
 
-#: src/Admin/ShieldStrings.php:141
+#: src/Admin/ShieldStrings.php:142
 msgid "Shield protection before WordPress turned off"
 msgstr "WordPress’ten önce kalkan koruması kapatıldı"
 
-#: src/Admin/ShieldStrings.php:142
+#: src/Admin/ShieldStrings.php:143
 msgid "Joined community defense"
 msgstr "Topluluk savunmasına katıldı"
 
-#: src/Admin/ShieldStrings.php:143
+#: src/Admin/ShieldStrings.php:144
 msgid "CDN edge blocking connected"
 msgstr "CDN ucunda engelleme bağlandı"
 
-#: src/Admin/ShieldStrings.php:144
+#: src/Admin/ShieldStrings.php:145
 msgid "CDN edge blocking disconnected"
 msgstr "CDN ucunda engelleme kesildi"
 
-#: src/Admin/ShieldStrings.php:150
+#: src/Admin/ShieldStrings.php:151
 msgid "The Rafoo Shield firewall. The full view, lists and events are in the Shield tab."
 msgstr "Rafoo Kalkanı güvenlik duvarı. Tam görünüm, listeler ve olaylar Kalkan sekmesinde."
 
-#: src/Admin/ShieldStrings.php:151
+#: src/Admin/ShieldStrings.php:152
 msgid "How many attacks the shield stopped. Fortress mode is for the hours of a heavy attack."
 msgstr "Kalkanın durdurduğu saldırı sayısı. Kale modu yoğun saldırı saatleri içindir."
 
-#: src/Admin/ShieldStrings.php:152
+#: src/Admin/ShieldStrings.php:153
 msgid "Smart is tuned so real visitors are never stopped. Strict lowers every threshold. Fortress asks each new visitor for a few-second browser check once every hour."
 msgstr "Akıllı mod gerçek ziyaretçiler asla durdurulmayacak şekilde ayarlıdır. Sıkı mod tüm eşikleri düşürür. Kale modu her yeni ziyaretçiden saatte bir birkaç saniyelik tarayıcı denetimi ister."
 
-#: src/Admin/ShieldStrings.php:153
+#: src/Admin/ShieldStrings.php:154
 msgid "Without this, the shield runs when Rafoo loads, which is already before every other plugin. Before WordPress also protects WordPress core files and saves server work under attack."
 msgstr "Bu olmadan kalkan Rafoo yüklendiğinde çalışır; bu zaten diğer tüm eklentilerden öncedir. WordPress’ten önce çalışmak çekirdek dosyalarını da korur ve saldırı altında sunucu yükünü azaltır."
 
-#: src/Admin/ShieldStrings.php:154
+#: src/Admin/ShieldStrings.php:155
 msgid "What the stopped requests tried to do."
 msgstr "Durdurulan isteklerin ne yapmaya çalıştığı."
 
-#: src/Admin/ShieldStrings.php:155
+#: src/Admin/ShieldStrings.php:156
 msgid "Addresses with the most stopped requests in 7 days."
 msgstr "7 günde en çok durdurulan isteğe sahip adresler."
 
-#: src/Admin/ShieldStrings.php:156
+#: src/Admin/ShieldStrings.php:157
 msgid "Addresses on your site that attackers targeted most."
 msgstr "Sitenizde saldırganların en çok hedeflediği yollar."
 
-#: src/Admin/ShieldStrings.php:157
+#: src/Admin/ShieldStrings.php:158
 msgid "Stops, locks and browser checks. Repeated stops from one address are counted but listed once a minute."
 msgstr "Durdurmalar, kilitler ve tarayıcı denetimleri. Bir adresten tekrarlanan durdurmalar sayılır ama dakikada bir listelenir."
 
-#: src/Admin/ShieldStrings.php:158
+#: src/Admin/ShieldStrings.php:159
 msgid "Your own exceptions. They apply before every rule and to every mode."
 msgstr "Kendi istisnalarınız. Her kuraldan önce ve her modda uygulanır."
 
-#: src/Admin/ShieldStrings.php:159
+#: src/Admin/ShieldStrings.php:160
 msgid "These addresses are never checked, for example your office or a payment service."
 msgstr "Bu adresler asla denetlenmez, örneğin ofisiniz veya bir ödeme hizmeti."
 
-#: src/Admin/ShieldStrings.php:160
+#: src/Admin/ShieldStrings.php:161
 msgid "These addresses are always stopped. Your own address cannot be added."
 msgstr "Bu adresler her zaman durdurulur. Kendi adresiniz eklenemez."
 
-#: src/Admin/ShieldStrings.php:161
+#: src/Admin/ShieldStrings.php:162
 msgid "If the site sits behind your own proxy or load balancer, add its address so the visitor’s real address is read. ArvanCloud and Cloudflare are recognized automatically."
 msgstr "Site kendi proxy’nizin veya yük dengeleyicinizin arkasındaysa, ziyaretçinin gerçek adresinin okunması için adresini ekleyin. ArvanCloud ve Cloudflare otomatik tanınır."
 
-#: src/Admin/ShieldStrings.php:162
+#: src/Admin/ShieldStrings.php:163
 msgid "An address is listed only when at least three sites on two different networks report it. Iranian addresses get a browser check instead of a block, because many visitors share one address on mobile networks."
 msgstr "Bir adres yalnızca iki farklı ağdaki en az üç site bildirdiğinde listelenir. İran adresleri engelleme yerine tarayıcı denetimi alır, çünkü mobil ağlarda birçok ziyaretçi tek bir adresi paylaşır."
 
-#: src/Admin/ShieldStrings.php:163
+#: src/Admin/ShieldStrings.php:164
 msgid "Uses the same signing key as the cooperative network. Turning it off deletes the list and stops reports."
 msgstr "İşbirliği ağıyla aynı imza anahtarını kullanır. Kapatmak listeyi siler ve bildirimleri durdurur."
 
-#: src/Admin/ShieldStrings.php:164
+#: src/Admin/ShieldStrings.php:165
 msgid "The key is stored encrypted. Only blocks of an hour or more are sent."
 msgstr "Anahtar şifreli saklanır. Yalnızca bir saat veya daha uzun engellemeler gönderilir."
 
@@ -787,7 +791,7 @@ msgstr "Kullanılan disk alanı"
 msgid "Folder writable"
 msgstr "Klasör yazılabilir"
 
-#: src/Admin/SiteHealth.php:145 src/Admin/Strings.php:692
+#: src/Admin/SiteHealth.php:145 src/Admin/Strings.php:721
 msgid "Paused"
 msgstr "Duraklatıldı"
 
@@ -795,7 +799,7 @@ msgstr "Duraklatıldı"
 msgid "Use local copies"
 msgstr "Yerel kopyaları kullan"
 
-#: src/Admin/SiteHealth.php:150 src/Admin/Strings.php:669
+#: src/Admin/SiteHealth.php:150 src/Admin/Strings.php:698
 msgid "Browser guard"
 msgstr "Tarayıcı koruması"
 
@@ -887,11 +891,11 @@ msgstr "rafoo.ir sitenizin adresini, ülkesini ve ağını ve kontrol sonuçlar�
 msgid "Check my site every"
 msgstr "Sitemi şu sıklıkla kontrol et"
 
-#: src/Admin/Strings.php:33 src/Admin/Strings.php:941
+#: src/Admin/Strings.php:33 src/Admin/Strings.php:973
 msgid "1 minute"
 msgstr "1 dakika"
 
-#: src/Admin/Strings.php:34 src/Admin/Strings.php:943
+#: src/Admin/Strings.php:34 src/Admin/Strings.php:975
 msgid "5 minutes"
 msgstr "5 dakika"
 
@@ -961,7 +965,7 @@ msgstr "Noktalar üyeler katıldıkça atanır. İlk sonuçlar birkaç dakika i�
 msgid "%s today"
 msgstr "Bugün %s"
 
-#: src/Admin/Strings.php:54 src/Admin/Strings.php:89 src/Admin/Strings.php:983
+#: src/Admin/Strings.php:54 src/Admin/Strings.php:89 src/Admin/Strings.php:1015
 msgid "Check now"
 msgstr "Şimdi kontrol et"
 
@@ -1015,7 +1019,7 @@ msgstr "Son 14 gün"
 msgid "Inside Iran"
 msgstr "İran içi"
 
-#: src/Admin/Strings.php:70 src/Admin/Strings.php:163 src/Admin/Strings.php:604
+#: src/Admin/Strings.php:70 src/Admin/Strings.php:163 src/Admin/Strings.php:633
 msgid "Outside Iran"
 msgstr "İran dışı"
 
@@ -1081,7 +1085,7 @@ msgstr "%s tarihinden beri erişilebilir"
 msgid "Automatic switches by itself. Choose a fixed mode only to test or when detection is wrong."
 msgstr "Otomatik mod kendiliğinden geçiş yapar. Sabit bir modu yalnızca test için veya algılama yanlış olduğunda seçin."
 
-#: src/Admin/Strings.php:94 src/Admin/Strings.php:1154
+#: src/Admin/Strings.php:94 src/Admin/Strings.php:1186
 msgid "Automatic"
 msgstr "Otomatik"
 
@@ -1123,7 +1127,7 @@ msgstr "Yerel dosyalar"
 msgid "%d not verified yet"
 msgstr "%d henüz doğrulanmadı"
 
-#: src/Admin/Strings.php:106 src/Admin/Strings.php:137 src/Admin/Strings.php:1191 src/Admin/Strings.php:1415
+#: src/Admin/Strings.php:106 src/Admin/Strings.php:137 src/Admin/Strings.php:1223 src/Admin/Strings.php:1447
 msgid "Waiting"
 msgstr "Bekliyor"
 
@@ -1191,7 +1195,7 @@ msgstr "Siteyi tara"
 msgid "Scan finished. New files will be downloaded in the background."
 msgstr "Tarama bitti. Yeni dosyalar arka planda indirilecek."
 
-#: src/Admin/Strings.php:127 src/Admin/Strings.php:1369
+#: src/Admin/Strings.php:127 src/Admin/Strings.php:1401
 msgid "Download now"
 msgstr "Şimdi indir"
 
@@ -1227,7 +1231,7 @@ msgstr "Yerel"
 msgid "Local, only during outages"
 msgstr "Yerel, yalnızca kesintilerde"
 
-#: src/Admin/Strings.php:139 src/Admin/Strings.php:1324
+#: src/Admin/Strings.php:139 src/Admin/Strings.php:1356
 msgid "Excluded"
 msgstr "Hariç tutuldu"
 
@@ -1253,7 +1257,7 @@ msgstr "yansıdan"
 msgid "%s files"
 msgstr "%s dosya"
 
-#: src/Admin/Strings.php:146 src/Admin/Strings.php:1266
+#: src/Admin/Strings.php:146 src/Admin/Strings.php:1298
 msgid "Google Fonts"
 msgstr "Google Fonts"
 
@@ -1269,7 +1273,7 @@ msgstr "Hariç tut"
 msgid "Include"
 msgstr "Dahil et"
 
-#: src/Admin/Strings.php:150 src/Admin/Strings.php:637 src/Admin/Strings.php:878
+#: src/Admin/Strings.php:150 src/Admin/Strings.php:666 src/Admin/Strings.php:910
 msgid "Remove"
 msgstr "Kaldır"
 
@@ -1407,7 +1411,7 @@ msgstr "Sayfa HTML'sini de oku"
 msgid "Also replaces addresses that themes and page builders write directly into the page. Pages without such addresses are not touched."
 msgstr "Temaların ve sayfa oluşturucuların doğrudan sayfaya yazdığı adresleri de değiştirir. Böyle adres içermeyen sayfalara dokunulmaz."
 
-#: src/Admin/Strings.php:192 src/Admin/Strings.php:1348
+#: src/Admin/Strings.php:192 src/Admin/Strings.php:1380
 msgid "Local Google Fonts"
 msgstr "Yerel Google Fonts"
 
@@ -1443,7 +1447,7 @@ msgstr "Videolar ve haritalar için yer tutucular"
 msgid "During an outage, YouTube, Vimeo and Google Maps frames are replaced with a short note and a link."
 msgstr "Kesinti sırasında YouTube, Vimeo ve Google Haritalar çerçeveleri kısa bir not ve bir bağlantıyla değiştirilir."
 
-#: src/Admin/Strings.php:205 src/Admin/Strings.php:588
+#: src/Admin/Strings.php:205 src/Admin/Strings.php:617
 msgid "Outside requests"
 msgstr "Dış istekler"
 
@@ -1741,11 +1745,11 @@ msgstr "Bir güncellemeden sonra sitede sorun oluştu ama geri dönmek sorunu ç
 msgid "%1$s was set back to %2$s by hand"
 msgstr "%1$s elle %2$s sürümüne geri alındı"
 
-#: src/Admin/Strings.php:290 src/Admin/Strings.php:1449
+#: src/Admin/Strings.php:290 src/Admin/Strings.php:1481
 msgid "Updates"
 msgstr "Güncellemeler"
 
-#: src/Admin/Strings.php:291 src/Admin/Strings.php:825
+#: src/Admin/Strings.php:291 src/Admin/Strings.php:857
 msgid "Name"
 msgstr "Ad"
 
@@ -2345,11 +2349,11 @@ msgstr "Kaydedilen yedekler"
 msgid "No backup has been made yet."
 msgstr "Henüz yedek alınmadı."
 
-#: src/Admin/Strings.php:461 src/Admin/Strings.php:1372
+#: src/Admin/Strings.php:461 src/Admin/Strings.php:1404
 msgid "Date"
 msgstr "Tarih"
 
-#: src/Admin/Strings.php:462 src/Admin/Strings.php:969
+#: src/Admin/Strings.php:462 src/Admin/Strings.php:1001
 msgid "Type"
 msgstr "Tür"
 
@@ -2415,7 +2419,7 @@ msgstr "Parça %s"
 msgid "List of parts"
 msgstr "Parça listesi"
 
-#: src/Admin/Strings.php:480 src/Admin/Strings.php:842
+#: src/Admin/Strings.php:480 src/Admin/Strings.php:874
 msgid "This host"
 msgstr "Bu barındırma"
 
@@ -2490,3436 +2494,3578 @@ msgid "Keep copies on this host"
 msgstr "Kopyaları bu barındırmada sakla"
 
 #: src/Admin/Strings.php:499
-msgid "When off, copies are kept only on the servers below, which protects them if this host fails."
-msgstr "Kapalıyken kopyalar yalnızca aşağıdaki sunucularda tutulur; bu barındırma çökerse onları korur."
-
-#: src/Admin/Strings.php:500
 msgid "Part size"
 msgstr "Parça boyutu"
 
-#: src/Admin/Strings.php:501
+#: src/Admin/Strings.php:500
 msgid "Large sites are saved in several parts of about this size. Choose a smaller size if your servers limit file size."
 msgstr "Büyük siteler yaklaşık bu boyutta birkaç parça halinde kaydedilir. Sunucularınız dosya boyutunu sınırlıyorsa daha küçük bir boyut seçin."
 
-#: src/Admin/Strings.php:502
+#: src/Admin/Strings.php:501
 msgid "Leave out of backups"
 msgstr "Yedeklere dahil etme"
 
-#: src/Admin/Strings.php:503
+#: src/Admin/Strings.php:502
 msgid "One path per line, from the WordPress folder, for example wp-content/uploads/videos or *.mp4."
 msgstr "Her satıra bir yol, WordPress klasörüne göre; örneğin wp-content/uploads/videos veya *.mp4."
 
-#: src/Admin/Strings.php:504
+#: src/Admin/Strings.php:503
 msgid "What Rafoo leaves out by itself"
 msgstr "Rafoo'nun kendiliğinden dışarıda bıraktıkları"
 
-#: src/Admin/Strings.php:505
+#: src/Admin/Strings.php:504
 msgid "These folders and files are never backed up, along with .git and node_modules folders, error_log and debug.log files, and log files larger than 50 MB."
 msgstr "Bu klasör ve dosyalar hiçbir zaman yedeklenmez; .git ve node_modules klasörleri, error_log ve debug.log dosyaları ve 50 MB'tan büyük günlük dosyaları da öyle."
 
-#: src/Admin/Strings.php:506 src/Admin/Strings.php:625
+#: src/Admin/Strings.php:505 src/Admin/Strings.php:654
 msgid "Encryption"
 msgstr "Şifreleme"
 
-#: src/Admin/Strings.php:507
+#: src/Admin/Strings.php:506
 msgid "With a password, backups are encrypted before they leave this site. Without the password they cannot be restored, so keep it somewhere safe."
 msgstr "Parolayla, yedekler bu siteden ayrılmadan önce şifrelenir. Parola olmadan geri yüklenemezler, bu yüzden onu güvenli bir yerde saklayın."
 
-#: src/Admin/Strings.php:508
+#: src/Admin/Strings.php:507
 msgid "New backups are encrypted."
 msgstr "Yeni yedekler şifreleniyor."
 
-#: src/Admin/Strings.php:509
+#: src/Admin/Strings.php:508
 msgid "Backups are not encrypted."
 msgstr "Yedekler şifrelenmiyor."
 
-#: src/Admin/Strings.php:510
+#: src/Admin/Strings.php:509
 msgid "Password saved. The next backup will be encrypted."
 msgstr "Parola kaydedildi. Sonraki yedek şifrelenecek."
 
-#: src/Admin/Strings.php:511
+#: src/Admin/Strings.php:510
 msgid "Turn off encryption"
 msgstr "Şifrelemeyi kapat"
 
-#: src/Admin/Strings.php:512
+#: src/Admin/Strings.php:511
 msgid "Encryption turned off for new backups."
 msgstr "Yeni yedekler için şifreleme kapatıldı."
 
-#: src/Admin/Strings.php:513
+#: src/Admin/Strings.php:512
 msgid "This server's PHP has no sodium extension, so backups cannot be encrypted."
 msgstr "Bu sunucunun PHP'sinde sodium eklentisi yok, bu yüzden yedekler şifrelenemiyor."
 
-#: src/Admin/Strings.php:514
+#: src/Admin/Strings.php:513
 msgid "Backups made before Rafoo 1.4 need the PHP ZipArchive extension to be restored, and this server does not have it. New backups do not need it."
 msgstr "Rafoo 1.4 öncesinde alınan yedeklerin geri yüklenmesi için PHP ZipArchive eklentisi gerekir ve bu sunucuda yok. Yeni yedeklerin buna ihtiyacı yoktur."
 
-#: src/Admin/Strings.php:515 src/Backup/Job.php:43 src/Backup/Maker.php:37
+#: src/Admin/Strings.php:514 src/Backup/Job.php:43 src/Backup/Maker.php:37
 msgid "The uploads folder is not writable, so Rafoo cannot keep backups."
 msgstr "uploads klasörü yazılabilir değil, bu yüzden Rafoo yedekleri saklayamıyor."
 
-#: src/Admin/Strings.php:516
+#: src/Admin/Strings.php:515
 msgid "This shop is in the last step of moving. New orders are paused for a few minutes."
 msgstr "Bu mağaza taşımanın son adımında. Yeni siparişler birkaç dakikalığına duraklatıldı."
 
+#: src/Admin/Strings.php:516
+msgid "Where backups are kept"
+msgstr "Yedeklerin saklandığı yerler"
+
 #: src/Admin/Strings.php:517
+msgid "Turn on one or more places. Each backup part is finished and sent to every place that is on."
+msgstr "Bir veya daha fazla yeri açın. Her yedek parçası tamamlanınca açık olan her yere gönderilir."
+
+#: src/Admin/Strings.php:518
+msgid "Copies stay on this host for a quick restore. They use this host’s disk space."
+msgstr "Kopyalar hızlı geri yükleme için bu barındırmada kalır ve bu barındırmanın disk alanını kullanır."
+
+#: src/Admin/Strings.php:519
+msgid "Send to other servers (SFTP, FTPS or FTP)"
+msgstr "Diğer sunuculara gönder (SFTP, FTPS veya FTP)"
+
+#: src/Admin/Strings.php:520
+msgid "Copies are sent to the servers you add below. When off, the servers stay saved but receive nothing."
+msgstr "Kopyalar aşağıda eklediğiniz sunuculara gönderilir. Kapalıyken sunucular kayıtlı kalır ama hiçbir şey almaz."
+
+#: src/Admin/Strings.php:521
+msgid "With every place off, copies are still kept on this host so that no backup is lost."
+msgstr "Tüm yerler kapalıyken de hiçbir yedek kaybolmasın diye kopyalar bu barındırmada tutulur."
+
+#: src/Admin/Strings.php:522
+msgid "Files.ir"
+msgstr "Files.ir"
+
+#: src/Admin/Strings.php:523
+msgid "Send to Files.ir"
+msgstr "Files.ir’a gönder"
+
+#: src/Admin/Strings.php:524
+msgid "Copies are sent to your Files.ir account, a storage service inside Iran, on the same schedule and in the same parts as the other places."
+msgstr "Kopyalar, İran içindeki bir depolama hizmeti olan Files.ir hesabınıza, diğer yerlerle aynı zamanlamada ve aynı parçalarla gönderilir."
+
+#: src/Admin/Strings.php:525
+msgid "5 GB free"
+msgstr "5 GB ücretsiz"
+
+#: src/Admin/Strings.php:526
+msgid "The Rafoo team has no business relationship with Files.ir. The Files.ir team only gave permission for this connection, so that users can keep backups on a storage service inside Iran."
+msgstr "Rafoo ekibinin Files.ir ile ticari bir ilişkisi yoktur. Files.ir ekibi yalnızca bu bağlantıya izin verdi; böylece kullanıcılar yedeklerini İran içindeki bir depolama hizmetinde tutabilir."
+
+#: src/Admin/Strings.php:527
+msgid "Sign up at Files.ir and make an API key in your account. Files.ir gives up to 5 GB of free space."
+msgstr "Files.ir’a kaydolun ve hesabınızda bir API anahtarı oluşturun. Files.ir 5 GB’a kadar ücretsiz alan verir."
+
+#: src/Admin/Strings.php:528
+msgid "Sign up at Files.ir"
+msgstr "Files.ir’a kaydol"
+
+#: src/Admin/Strings.php:529
+msgid "Files.ir terms of service"
+msgstr "Files.ir kullanım koşulları"
+
+#: src/Admin/Strings.php:530
+msgid "Files.ir API key"
+msgstr "Files.ir API anahtarı"
+
+#: src/Admin/Strings.php:531
+msgid "The key is stored encrypted on this site. It is never shown again and is sent only to Files.ir."
+msgstr "Anahtar bu sitede şifreli olarak saklanır. Bir daha gösterilmez ve yalnızca Files.ir’a gönderilir."
+
+#: src/Admin/Strings.php:533
+msgid "Checking the key…"
+msgstr "Anahtar kontrol ediliyor…"
+
+#. translators: %s: upload speed, such as 2 MB
+#: src/Admin/Strings.php:535
+#, php-format
+msgid "Connected. A test file was uploaded and read back at %s per second."
+msgstr "Bağlandı. Bir test dosyası saniyede %s hızla yüklendi ve geri okundu."
+
+#. translators: %s: last four characters of the API key
+#: src/Admin/Strings.php:537
+#, php-format
+msgid "Key ending in %s"
+msgstr "%s ile biten anahtar"
+
+#. translators: %s: folder path in Files.ir
+#: src/Admin/Strings.php:539
+#, php-format
+msgid "Folder: %s"
+msgstr "Klasör: %s"
+
+#. translators: %s: workspace name
+#: src/Admin/Strings.php:541
+#, php-format
+msgid "Workspace: %s"
+msgstr "Çalışma alanı: %s"
+
+#. translators: 1: used space, 2: free space
+#: src/Admin/Strings.php:543
+#, php-format
+msgid "%1$s used, %2$s free"
+msgstr "%1$s kullanılıyor, %2$s boş"
+
+#: src/Admin/Strings.php:544
+msgid "Remove the key"
+msgstr "Anahtarı kaldır"
+
+#: src/Admin/Strings.php:545
+msgid "The PHP cURL extension is off on this server, so large parts may not reach Files.ir. If sending fails, ask your host support to turn on cURL."
+msgstr "Bu sunucuda PHP cURL eklentisi kapalı; bu yüzden büyük parçalar Files.ir’a ulaşmayabilir. Gönderim başarısız olursa barındırma desteğinden cURL’ü açmasını isteyin."
+
+#: src/Admin/Strings.php:546
 msgid "Other servers"
 msgstr "Diğer sunucular"
 
-#: src/Admin/Strings.php:518
+#: src/Admin/Strings.php:547
 msgid "Copies are also sent to these servers. Enter the address and login; Rafoo finds the right connection (SFTP, FTPS or FTP) and folder by itself."
 msgstr "Kopyalar bu sunuculara da gönderilir. Adresi ve giriş bilgilerini girin; Rafoo doğru bağlantıyı (SFTP, FTPS veya FTP) ve klasörü kendisi bulur."
 
-#: src/Admin/Strings.php:519
+#: src/Admin/Strings.php:548
 msgid "Add a server"
 msgstr "Sunucu ekle"
 
-#: src/Admin/Strings.php:520 src/Admin/Strings.php:623
+#: src/Admin/Strings.php:549 src/Admin/Strings.php:652
 msgid "Server address"
 msgstr "Sunucu adresi"
 
-#: src/Admin/Strings.php:521
+#: src/Admin/Strings.php:550
 msgid "More options"
 msgstr "Daha fazla seçenek"
 
-#: src/Admin/Strings.php:522
+#: src/Admin/Strings.php:551
 msgid "Folder (optional)"
 msgstr "Klasör (isteğe bağlı)"
 
-#: src/Admin/Strings.php:523
+#: src/Admin/Strings.php:552
 msgid "Name (optional)"
 msgstr "Ad (isteğe bağlı)"
 
-#: src/Admin/Strings.php:524
+#: src/Admin/Strings.php:553
 msgid "SSH private key (optional, instead of a password)"
 msgstr "SSH özel anahtarı (isteğe bağlı, parola yerine)"
 
-#: src/Admin/Strings.php:525
+#: src/Admin/Strings.php:554
 msgid "Rafoo tries SFTP, then FTPS and plain FTP, creates a folder named rafoo-backups, and checks that it can write, read and delete a test file."
 msgstr "Rafoo önce SFTP'yi, sonra FTPS'yi ve düz FTP'yi dener, rafoo-backups adlı bir klasör oluşturur ve bir test dosyasını yazıp okuyabildiğini ve silebildiğini kontrol eder."
 
-#: src/Admin/Strings.php:527
+#: src/Admin/Strings.php:556
 msgid "Finding the connection…"
 msgstr "Bağlantı aranıyor…"
 
 #. translators: 1: connection type, 2: folder, 3: speed per second
-#: src/Admin/Strings.php:529
+#: src/Admin/Strings.php:558
 #, php-format
 msgid "Connected with %1$s. Copies go to %2$s at about %3$s per second."
 msgstr "%1$s ile bağlanıldı. Kopyalar saniyede yaklaşık %3$s hızla %2$s konumuna gider."
 
-#: src/Admin/Strings.php:530
+#: src/Admin/Strings.php:559
 msgid "Last send failed"
 msgstr "Son gönderim başarısız oldu"
 
 #. translators: %s: relative time
-#: src/Admin/Strings.php:532
+#: src/Admin/Strings.php:561
 #, php-format
 msgid "Sent %s"
 msgstr "%s gönderildi"
 
-#: src/Admin/Strings.php:533
+#: src/Admin/Strings.php:562
 msgid "Plain FTP is not encrypted. Turn on backup encryption below."
 msgstr "Düz FTP şifrelenmez. Aşağıdan yedek şifrelemesini açın."
 
 #. translators: %s: size per second
-#: src/Admin/Strings.php:535
+#: src/Admin/Strings.php:564
 #, php-format
 msgid "About %s per second"
 msgstr "Saniyede yaklaşık %s"
 
 #. translators: %s: size
-#: src/Admin/Strings.php:537
+#: src/Admin/Strings.php:566
 #, php-format
 msgid "%s free"
 msgstr "%s boş"
 
-#: src/Admin/Strings.php:538
+#: src/Admin/Strings.php:567
 msgid "Test"
 msgstr "Test et"
 
-#: src/Admin/Strings.php:539
+#: src/Admin/Strings.php:568
 msgid "The server accepted a test file."
 msgstr "Sunucu bir test dosyasını kabul etti."
 
-#: src/Admin/Strings.php:540
+#: src/Admin/Strings.php:569
 msgid "Move or copy the site"
 msgstr "Siteyi taşı veya kopyala"
 
-#: src/Admin/Strings.php:541
+#: src/Admin/Strings.php:570
 msgid "Copy this whole site to another WordPress site with Rafoo, or to an empty host. The data goes directly between the two servers, encrypted."
 msgstr "Bu sitenin tamamını Rafoo yüklü başka bir WordPress sitesine veya boş bir barındırmaya kopyalayın. Veriler iki sunucu arasında doğrudan ve şifreli olarak gider."
 
-#: src/Admin/Strings.php:542
+#: src/Admin/Strings.php:571
 msgid "Send this site"
 msgstr "Bu siteyi gönder"
 
-#: src/Admin/Strings.php:543
+#: src/Admin/Strings.php:572
 msgid "Receive a site here"
 msgstr "Buraya bir site al"
 
-#: src/Admin/Strings.php:544
+#: src/Admin/Strings.php:573
 msgid "To an empty host"
 msgstr "Boş bir barındırmaya"
 
-#: src/Admin/Strings.php:545
+#: src/Admin/Strings.php:574
 msgid "Make a code here and enter it on the site you want to copy. This site will be replaced with that site."
 msgstr "Burada bir kod oluşturun ve kopyalamak istediğiniz sitede girin. Bu site o siteyle değiştirilecek."
 
-#: src/Admin/Strings.php:546
+#: src/Admin/Strings.php:575
 msgid "Make a code"
 msgstr "Kod oluştur"
 
-#: src/Admin/Strings.php:547
+#: src/Admin/Strings.php:576
 msgid "Make a new code"
 msgstr "Yeni kod oluştur"
 
-#: src/Admin/Strings.php:548
+#: src/Admin/Strings.php:577
 msgid "Stop receiving"
 msgstr "Almayı durdur"
 
-#: src/Admin/Strings.php:549
+#: src/Admin/Strings.php:578
 msgid "Short code:"
 msgstr "Kısa kod:"
 
-#: src/Admin/Strings.php:550
+#: src/Admin/Strings.php:579
 msgid "Full code (works without rafoo.ir)"
 msgstr "Tam kod (rafoo.ir olmadan çalışır)"
 
-#: src/Admin/Strings.php:551
+#: src/Admin/Strings.php:580
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/Admin/Strings.php:552
+#: src/Admin/Strings.php:581
 msgid "Copied"
 msgstr "Kopyalandı"
 
 #. translators: %s: date and time
-#: src/Admin/Strings.php:554
+#: src/Admin/Strings.php:583
 #, php-format
 msgid "Valid until %s"
 msgstr "%s tarihine kadar geçerli"
 
-#: src/Admin/Strings.php:555
+#: src/Admin/Strings.php:584
 msgid "Anyone with this code can replace this site. Share it only with yourself."
 msgstr "Bu koda sahip herkes bu siteyi değiştirebilir. Yalnızca kendinizle paylaşın."
 
-#: src/Admin/Strings.php:556
+#: src/Admin/Strings.php:585
 msgid "Enter the code made on the receiving site. This site stays as it is."
 msgstr "Alıcı sitede oluşturulan kodu girin. Bu site olduğu gibi kalır."
 
-#: src/Admin/Strings.php:557
+#: src/Admin/Strings.php:586
 msgid "Code from the other site"
 msgstr "Diğer siteden gelen kod"
 
-#: src/Admin/Strings.php:558
+#: src/Admin/Strings.php:587
 msgid "Finish with a quick second pass for changes made meanwhile (WooCommerce orders pause for a minute)"
 msgstr "Bu arada yapılan değişiklikler için hızlı bir ikinci geçişle bitir (WooCommerce siparişleri bir dakika duraklar)"
 
-#: src/Admin/Strings.php:559
+#: src/Admin/Strings.php:588
 msgid "Start sending"
 msgstr "Göndermeyi başlat"
 
-#: src/Admin/Strings.php:560
+#: src/Admin/Strings.php:589
 msgid "Rafoo puts an encrypted copy and a small installer on the new host through one of your servers. Then you open the installer and enter the new database details."
 msgstr "Rafoo, sunucularınızdan biri üzerinden yeni barındırmaya şifreli bir kopya ve küçük bir yükleyici koyar. Ardından yükleyiciyi açar ve yeni veritabanı bilgilerini girersiniz."
 
-#: src/Admin/Strings.php:561
+#: src/Admin/Strings.php:590
 msgid "First add the new host under Other servers, with access to its web folder."
 msgstr "Önce yeni barındırmayı, web klasörüne erişimle birlikte Diğer sunucular altına ekleyin."
 
-#: src/Admin/Strings.php:562
+#: src/Admin/Strings.php:591
 msgid "New host"
 msgstr "Yeni barındırma"
 
-#: src/Admin/Strings.php:563
+#: src/Admin/Strings.php:592
 msgid "Web folder on that host"
 msgstr "O barındırmadaki web klasörü"
 
-#: src/Admin/Strings.php:564
+#: src/Admin/Strings.php:593
 msgid "Address of the site on the new host"
 msgstr "Sitenin yeni barındırmadaki adresi"
 
-#: src/Admin/Strings.php:565
+#: src/Admin/Strings.php:594
 msgid "Prepare the move"
 msgstr "Taşımayı hazırla"
 
-#: src/Admin/Strings.php:566
+#: src/Admin/Strings.php:595
 msgid "Everything is on the new host."
 msgstr "Her şey yeni barındırmada."
 
-#: src/Admin/Strings.php:567
+#: src/Admin/Strings.php:596
 msgid "Open this address and follow the steps:"
 msgstr "Bu adresi açın ve adımları izleyin:"
 
-#: src/Admin/Strings.php:568
+#: src/Admin/Strings.php:597
 msgid "Restore key (shown only here)"
 msgstr "Geri yükleme anahtarı (yalnızca burada gösterilir)"
 
 #. translators: 1: size, 2: backup type
-#: src/Admin/Strings.php:570
+#: src/Admin/Strings.php:599
 #, php-format
 msgid "Backup made (%1$s)"
 msgstr "Yedek alındı (%1$s)"
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:572
+#: src/Admin/Strings.php:601
 #, php-format
 msgid "Backup failed: %s"
 msgstr "Yedekleme başarısız oldu: %s"
 
-#: src/Admin/Strings.php:573
+#: src/Admin/Strings.php:602
 msgid "Backup task stopped by hand"
 msgstr "Yedekleme görevi elle durduruldu"
 
-#: src/Admin/Strings.php:574
+#: src/Admin/Strings.php:603
 msgid "Backup restored"
 msgstr "Yedek geri yüklendi"
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:576
+#: src/Admin/Strings.php:605
 #, php-format
 msgid "Restore failed: %s"
 msgstr "Geri yükleme başarısız oldu: %s"
 
 #. translators: %s: site address
-#: src/Admin/Strings.php:578
+#: src/Admin/Strings.php:607
 #, php-format
 msgid "Site received from %s"
 msgstr "Site %s adresinden alındı"
 
 #. translators: %s: site address or reason
-#: src/Admin/Strings.php:580
+#: src/Admin/Strings.php:609
 #, php-format
 msgid "Site sent to %s"
 msgstr "Site %s adresine gönderildi"
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:582
+#: src/Admin/Strings.php:611
 #, php-format
 msgid "Site transfer failed: %s"
 msgstr "Site aktarımı başarısız oldu: %s"
 
 #. translators: %s: site address
-#: src/Admin/Strings.php:584
+#: src/Admin/Strings.php:613
 #, php-format
 msgid "Move to %s prepared"
 msgstr "%s adresine taşıma hazırlandı"
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:586
+#: src/Admin/Strings.php:615
 #, php-format
 msgid "Move preparation failed: %s"
 msgstr "Taşıma hazırlığı başarısız oldu: %s"
 
-#: src/Admin/Strings.php:589
+#: src/Admin/Strings.php:618
 msgid "Which plugin, theme or part of WordPress connected to which server from this site, and how it went."
 msgstr "Bu siteden hangi eklentinin, temanın veya WordPress bölümünün hangi sunucuya bağlandığı ve sonucun ne olduğu."
 
-#: src/Admin/Strings.php:590
+#: src/Admin/Strings.php:619
 msgid "Logging is turned off in Settings."
 msgstr "Kayıt, Ayarlar'da kapalı."
 
-#: src/Admin/Strings.php:591
+#: src/Admin/Strings.php:620
 msgid "No outside request has been made since logging started."
 msgstr "Kayıt başladığından beri dış istek yapılmadı."
 
-#: src/Admin/Strings.php:592
+#: src/Admin/Strings.php:621
 msgid "Clear the log"
 msgstr "Kaydı temizle"
 
 #. translators: %s: number of rows
-#: src/Admin/Strings.php:594
+#: src/Admin/Strings.php:623
 #, php-format
 msgid "Show all %s rows"
 msgstr "%s satırın tümünü göster"
 
-#: src/Admin/Strings.php:595
+#: src/Admin/Strings.php:624
 msgid "Made by"
 msgstr "Yapan"
 
-#: src/Admin/Strings.php:596 src/Admin/Strings.php:1330
+#: src/Admin/Strings.php:625 src/Admin/Strings.php:1362
 msgid "Server"
 msgstr "Sunucu"
 
-#: src/Admin/Strings.php:597 src/Admin/Strings.php:1025
+#: src/Admin/Strings.php:626 src/Admin/Strings.php:1057
 msgid "Requests"
 msgstr "İstekler"
 
-#: src/Admin/Strings.php:598
+#: src/Admin/Strings.php:627
 msgid "Skipped"
 msgstr "Atlanan"
 
-#: src/Admin/Strings.php:599
+#: src/Admin/Strings.php:628
 msgid "Failed"
 msgstr "Başarısız"
 
-#: src/Admin/Strings.php:600 src/Admin/Strings.php:1027
+#: src/Admin/Strings.php:629 src/Admin/Strings.php:1059
 msgid "Average time"
 msgstr "Ortalama süre"
 
-#: src/Admin/Strings.php:601
+#: src/Admin/Strings.php:630
 msgid "Last"
 msgstr "Son"
 
 #. translators: %s: number of milliseconds
-#: src/Admin/Strings.php:603
+#: src/Admin/Strings.php:632
 #, php-format
 msgid "%s ms"
 msgstr "%s ms"
 
-#: src/Admin/Strings.php:606
+#: src/Admin/Strings.php:635
 msgid "Emails waiting to be sent"
 msgstr "Gönderilmeyi bekleyen e-postalar"
 
-#: src/Admin/Strings.php:607
+#: src/Admin/Strings.php:636
 msgid "Emails that failed because the mail server could not be reached. They are sent again automatically, and deleted after three days if they still cannot go."
 msgstr "Posta sunucusuna ulaşılamadığı için başarısız olan e-postalar. Otomatik olarak yeniden gönderilir ve üç gün sonra hâlâ gidemiyorlarsa silinir."
 
-#: src/Admin/Strings.php:608
+#: src/Admin/Strings.php:637
 msgid "Keeping unsent emails is turned off in Settings."
 msgstr "Gönderilmeyen e-postaları saklama Ayarlar'da kapalı."
 
-#: src/Admin/Strings.php:609
+#: src/Admin/Strings.php:638
 msgid "No email is waiting."
 msgstr "Bekleyen e-posta yok."
 
-#: src/Admin/Strings.php:610
+#: src/Admin/Strings.php:639
 msgid "The mail server cannot be reached right now. New emails are kept and sent later."
 msgstr "Posta sunucusuna şu anda ulaşılamıyor. Yeni e-postalar saklanır ve daha sonra gönderilir."
 
-#: src/Admin/Strings.php:611
+#: src/Admin/Strings.php:640
 msgid "Try sending now"
 msgstr "Şimdi göndermeyi dene"
 
 #. translators: %s: number of emails
-#: src/Admin/Strings.php:613
+#: src/Admin/Strings.php:642
 #, php-format
 msgid "Emails still waiting: %s"
 msgstr "Hâlâ bekleyen e-postalar: %s"
 
-#: src/Admin/Strings.php:614
+#: src/Admin/Strings.php:643
 msgid "All waiting emails were sent."
 msgstr "Bekleyen tüm e-postalar gönderildi."
 
-#: src/Admin/Strings.php:615
+#: src/Admin/Strings.php:644
 msgid "To"
 msgstr "Alıcı"
 
-#: src/Admin/Strings.php:616
+#: src/Admin/Strings.php:645
 msgid "Subject"
 msgstr "Konu"
 
-#: src/Admin/Strings.php:617
+#: src/Admin/Strings.php:646
 msgid "Tries"
 msgstr "Deneme"
 
-#: src/Admin/Strings.php:618
+#: src/Admin/Strings.php:647
 msgid "Next try"
 msgstr "Sonraki deneme"
 
-#: src/Admin/Strings.php:619
+#: src/Admin/Strings.php:648
 msgid "Delete"
 msgstr "Sil"
 
-#: src/Admin/Strings.php:621
+#: src/Admin/Strings.php:650
 msgid "Mail server for outages"
 msgstr "Kesintiler için posta sunucusu"
 
-#: src/Admin/Strings.php:622
+#: src/Admin/Strings.php:651
 msgid "If the site sends email through a server outside Iran, add a domestic mail server here, for example the one your host gives you. Rafoo uses it only while the international internet is down."
 msgstr "Site e-postayı İran dışındaki bir sunucu üzerinden gönderiyorsa buraya yerel bir posta sunucusu ekleyin, örneğin barındırma firmanızın verdiği. Rafoo onu yalnızca uluslararası internet kesikken kullanır."
 
-#: src/Admin/Strings.php:624
+#: src/Admin/Strings.php:653
 msgid "Port"
 msgstr "Bağlantı noktası"
 
-#: src/Admin/Strings.php:626
+#: src/Admin/Strings.php:655
 msgid "STARTTLS"
 msgstr "STARTTLS"
 
-#: src/Admin/Strings.php:627
+#: src/Admin/Strings.php:656
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
 
-#: src/Admin/Strings.php:628
+#: src/Admin/Strings.php:657
 msgid "None"
 msgstr "Yok"
 
-#: src/Admin/Strings.php:629
+#: src/Admin/Strings.php:658
 msgid "Without encryption the password and emails cross the network in plain text. Use it only for a server on the same host."
 msgstr "Şifreleme olmadan parola ve e-postalar ağda düz metin olarak geçer. Yalnızca aynı barındırmadaki bir sunucu için kullanın."
 
-#: src/Admin/Strings.php:630 src/Admin/Strings.php:935 src/Backup/Installer.php:40
+#: src/Admin/Strings.php:659 src/Admin/Strings.php:967 src/Backup/Installer.php:40
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: src/Admin/Strings.php:631 src/Backup/Installer.php:41
+#: src/Admin/Strings.php:660 src/Backup/Installer.php:41
 msgid "Password"
 msgstr "Parola"
 
-#: src/Admin/Strings.php:632 src/Admin/Strings.php:925
+#: src/Admin/Strings.php:661 src/Admin/Strings.php:957
 msgid "Saved. Leave empty to keep it."
 msgstr "Kaydedildi. Korumak için boş bırakın."
 
-#: src/Admin/Strings.php:633
+#: src/Admin/Strings.php:662
 msgid "Sender address (optional)"
 msgstr "Gönderen adresi (isteğe bağlı)"
 
-#: src/Admin/Strings.php:634
+#: src/Admin/Strings.php:663
 msgid "Many servers only accept emails from their own domain. If so, enter an address on that domain."
 msgstr "Birçok sunucu yalnızca kendi alan adından gelen e-postaları kabul eder. Öyleyse o alan adında bir adres girin."
 
-#: src/Admin/Strings.php:635
+#: src/Admin/Strings.php:664
 msgid "Save mail server"
 msgstr "Posta sunucusunu kaydet"
 
-#: src/Admin/Strings.php:636
+#: src/Admin/Strings.php:665
 msgid "Mail server saved."
 msgstr "Posta sunucusu kaydedildi."
 
-#: src/Admin/Strings.php:638
+#: src/Admin/Strings.php:667
 msgid "Mail server removed."
 msgstr "Posta sunucusu kaldırıldı."
 
 #. translators: %s: email address
-#: src/Admin/Strings.php:640
+#: src/Admin/Strings.php:669
 #, php-format
 msgid "Send a test to %s"
 msgstr "%s adresine test gönder"
 
-#: src/Admin/Strings.php:641
+#: src/Admin/Strings.php:670
 msgid "Test email sent. Check the inbox."
 msgstr "Test e-postası gönderildi. Gelen kutusunu kontrol edin."
 
-#: src/Admin/Strings.php:642
+#: src/Admin/Strings.php:671
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
 
-#: src/Admin/Strings.php:644
+#: src/Admin/Strings.php:673
 msgid "Send a suggestion"
 msgstr "Öneri gönder"
 
-#: src/Admin/Strings.php:645
+#: src/Admin/Strings.php:674
 msgid "Tell the Rafoo team what is missing or what went wrong."
 msgstr "Rafoo ekibine neyin eksik olduğunu veya neyin ters gittiğini anlatın."
 
-#: src/Admin/Strings.php:646
+#: src/Admin/Strings.php:675
 msgid "Message"
 msgstr "Mesaj"
 
-#: src/Admin/Strings.php:647
+#: src/Admin/Strings.php:676
 msgid "Email or phone (optional)"
 msgstr "E-posta veya telefon (isteğe bağlı)"
 
-#: src/Admin/Strings.php:648
+#: src/Admin/Strings.php:677
 msgid "Only if you would like an answer."
 msgstr "Yalnızca yanıt almak isterseniz."
 
-#: src/Admin/Strings.php:649
+#: src/Admin/Strings.php:678
 msgid "Your message is sent to rafoo.ir with the versions of WordPress, PHP and Rafoo. Nothing is sent until you press Send."
 msgstr "Mesajınız WordPress, PHP ve Rafoo sürümleriyle birlikte rafoo.ir'ye gönderilir. Gönder'e basana kadar hiçbir şey gönderilmez."
 
-#: src/Admin/Strings.php:650
+#: src/Admin/Strings.php:679
 msgid "Please write a little more."
 msgstr "Lütfen biraz daha yazın."
 
-#: src/Admin/Strings.php:651
+#: src/Admin/Strings.php:680
 msgid "Thank you. Your message was sent."
 msgstr "Teşekkürler. Mesajınız gönderildi."
 
-#: src/Admin/Strings.php:652
+#: src/Admin/Strings.php:681
 msgid "Send"
 msgstr "Gönder"
 
 #. translators: %s: number
-#: src/Admin/Strings.php:655
+#: src/Admin/Strings.php:684
 #, php-format
 msgid "%s min"
 msgstr "%s dk"
 
 #. translators: %s: number
-#: src/Admin/Strings.php:657
+#: src/Admin/Strings.php:686
 #, php-format
 msgid "%s h"
 msgstr "%s sa"
 
 #. translators: %s: number
-#: src/Admin/Strings.php:659
+#: src/Admin/Strings.php:688
 #, php-format
 msgid "%s days"
 msgstr "%s gün"
 
 #. translators: %s: number
-#: src/Admin/Strings.php:661
+#: src/Admin/Strings.php:690
 #, php-format
 msgid "%s B"
 msgstr "%s B"
 
 #. translators: %s: number
-#: src/Admin/Strings.php:663
+#: src/Admin/Strings.php:692
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
 
 #. translators: %s: number
-#: src/Admin/Strings.php:665
+#: src/Admin/Strings.php:694
 #, php-format
 msgid "%s MB"
 msgstr "%s MB"
 
 #. translators: %s: number
-#: src/Admin/Strings.php:667
+#: src/Admin/Strings.php:696
 #, php-format
 msgid "%s GB"
 msgstr "%s GB"
 
-#: src/Admin/Strings.php:668
+#: src/Admin/Strings.php:697
 msgid "Browser and internal requests"
 msgstr "Tarayıcı ve iç istekler"
 
-#: src/Admin/Strings.php:670
+#: src/Admin/Strings.php:699
 msgid "During an outage, requests that scripts make in the visitor's browser to unreachable servers fail at once instead of hanging. Hosts on the block list are always stopped."
 msgstr "Kesinti sırasında betiklerin ziyaretçinin tarayıcısında erişilemeyen sunuculara yaptığı istekler takılıp kalmak yerine anında başarısız olur. Engel listesindeki sunucular her zaman durdurulur."
 
-#: src/Admin/Strings.php:671
+#: src/Admin/Strings.php:700
 msgid "Merge repeated requests"
 msgstr "Tekrarlanan istekleri birleştir"
 
-#: src/Admin/Strings.php:672
+#: src/Admin/Strings.php:701
 msgid "When a page asks the site's own AJAX or REST address for the same thing several times at once, it is sent once and the answer is shared."
 msgstr "Bir sayfa sitenin kendi AJAX veya REST adresinden aynı şeyi aynı anda birkaç kez istediğinde istek bir kez gönderilir ve yanıt paylaşılır."
 
-#: src/Admin/Strings.php:673
+#: src/Admin/Strings.php:702
 msgid "WordPress Heartbeat"
 msgstr "WordPress Heartbeat"
 
-#: src/Admin/Strings.php:675
+#: src/Admin/Strings.php:704
 msgid "Every 60 seconds in editors, every 120 seconds elsewhere. Autosave and post locks keep working."
 msgstr "Düzenleyicilerde 60 saniyede, diğer yerlerde 120 saniyede bir. Otomatik kaydetme ve yazı kilitleri çalışmaya devam eder."
 
-#: src/Admin/Strings.php:676
+#: src/Admin/Strings.php:705
 msgid "WordPress default"
 msgstr "WordPress varsayılanı"
 
-#: src/Admin/Strings.php:677
+#: src/Admin/Strings.php:706
 msgid "Unchanged, usually every 15 to 60 seconds."
 msgstr "Değişmez, genellikle 15 ile 60 saniye arasında."
 
-#: src/Admin/Strings.php:678
+#: src/Admin/Strings.php:707
 msgid "Block list"
 msgstr "Engel listesi"
 
-#: src/Admin/Strings.php:679
+#: src/Admin/Strings.php:708
 msgid "These servers or addresses are always blocked: on the server, in the page and in the browser. One per line: example.com, *.example.com or the start of a full address."
 msgstr "Bu sunucular veya adresler her zaman engellenir: sunucuda, sayfada ve tarayıcıda. Her satıra bir tane: example.com, *.example.com veya tam bir adresin başı."
 
-#: src/Admin/Strings.php:680
+#: src/Admin/Strings.php:709
 msgid "Scan as my account too"
 msgstr "Benim hesabımla da tara"
 
-#: src/Admin/Strings.php:681
+#: src/Admin/Strings.php:710
 msgid "The manual scan also opens the first pages with your login, so files loaded only for signed-in users are found."
 msgstr "Elle tarama ilk sayfaları sizin girişinizle de açar; böylece yalnızca giriş yapmış kullanıcılara yüklenen dosyalar bulunur."
 
-#: src/Admin/Strings.php:684
+#: src/Admin/Strings.php:713
 msgid "Blocked"
 msgstr "Engellendi"
 
-#: src/Admin/Strings.php:685
+#: src/Admin/Strings.php:714
 msgid "Pause Rafoo"
 msgstr "Rafoo'yu duraklat"
 
-#: src/Admin/Strings.php:686
+#: src/Admin/Strings.php:715
 msgid "Rafoo is active and makes the changes chosen in the settings."
 msgstr "Rafoo etkin ve ayarlarda seçilen değişiklikleri yapıyor."
 
-#: src/Admin/Strings.php:687
+#: src/Admin/Strings.php:716
 msgid "Rafoo is paused. The site works as if Rafoo were not installed."
 msgstr "Rafoo duraklatıldı. Site, Rafoo yüklü değilmiş gibi çalışıyor."
 
-#: src/Admin/Strings.php:688
+#: src/Admin/Strings.php:717
 msgid "Pause"
 msgstr "Duraklat"
 
-#: src/Admin/Strings.php:689 src/Admin/Strings.php:1319
+#: src/Admin/Strings.php:718 src/Admin/Strings.php:1351
 msgid "Resume Rafoo"
 msgstr "Rafoo'yu sürdür"
 
-#: src/Admin/Strings.php:690
+#: src/Admin/Strings.php:719
 msgid "While paused, connection checks, local copies, backups and the monitoring engine keep running."
 msgstr "Duraklatılmışken bağlantı kontrolleri, yerel kopyalar, yedekler ve izleme motoru çalışmaya devam eder."
 
-#: src/Admin/Strings.php:693
+#: src/Admin/Strings.php:722
 msgid "Rafoo was paused"
 msgstr "Rafoo duraklatıldı"
 
-#: src/Admin/Strings.php:694
+#: src/Admin/Strings.php:723
 msgid "Rafoo resumed"
 msgstr "Rafoo sürdürüldü"
 
 #. translators: %s: name of the setting or section
-#: src/Admin/Strings.php:696
+#: src/Admin/Strings.php:725
 #, php-format
 msgid "Help: %s"
 msgstr "Yardım: %s"
 
-#: src/Admin/Strings.php:697
+#: src/Admin/Strings.php:726
 msgid "Chooses when copies on your server replace CDN files. Always: faster pages every day. Outage only: nothing changes while the internet works."
 msgstr "Sunucunuzdaki kopyaların CDN dosyalarının yerini ne zaman alacağını seçer. Her zaman: her gün daha hızlı sayfalar. Yalnızca kesintide: internet çalışırken hiçbir şey değişmez."
 
-#: src/Admin/Strings.php:698
+#: src/Admin/Strings.php:727
 msgid "Also finds CDN addresses that themes and builders such as Elementor write directly into the page HTML. It adds a little processing to each page."
 msgstr "Temaların ve Elementor gibi oluşturucuların doğrudan sayfa HTML'sine yazdığı CDN adreslerini de bulur. Her sayfaya biraz işlem ekler."
 
-#: src/Admin/Strings.php:699
+#: src/Admin/Strings.php:728
 msgid "Copies Google Fonts to your server. Text keeps its font during an outage and pages do not wait for Google."
 msgstr "Google Fonts'u sunucunuza kopyalar. Metin kesinti sırasında yazı tipini korur ve sayfalar Google'ı beklemez."
 
-#: src/Admin/Strings.php:700
+#: src/Admin/Strings.php:729
 msgid "During an outage, turns off WordPress parts that call outside servers: emoji, the font library, remote patterns and the dashboard news."
 msgstr "Kesinti sırasında WordPress'in dış sunucuları çağıran bölümlerini kapatır: emoji, yazı tipi kütüphanesi, uzak desenler ve panel haberleri."
 
-#: src/Admin/Strings.php:701
+#: src/Admin/Strings.php:730
 msgid "The manual scan also opens three pages with your login. Files that appear only for signed-in users, like the admin bar or a page builder, get local copies too."
 msgstr "Elle tarama üç sayfayı sizin girişinizle de açar. Yönetici çubuğu veya sayfa oluşturucu gibi yalnızca giriş yapmış kullanıcılara görünen dosyalar da yerel kopya alır."
 
-#: src/Admin/Strings.php:702
+#: src/Admin/Strings.php:731
 msgid "A tiny script at the top of each page stops browser requests to unreachable servers during an outage, and to blocked hosts always. Scripts get an instant error instead of waiting."
 msgstr "Her sayfanın en üstündeki küçük bir betik, kesinti sırasında erişilemeyen sunuculara ve her zaman engellenen sunuculara giden tarayıcı isteklerini durdurur. Betikler beklemek yerine anında hata alır."
 
-#: src/Admin/Strings.php:703
+#: src/Admin/Strings.php:732
 msgid "Identical requests that a page sends to its own admin-ajax or REST at the same moment go out once. Server load drops; form posts and saves are never merged."
 msgstr "Bir sayfanın aynı anda kendi admin-ajax veya REST adresine gönderdiği aynı istekler bir kez gider. Sunucu yükü düşer; form gönderimleri ve kayıtlar asla birleştirilmez."
 
-#: src/Admin/Strings.php:704
+#: src/Admin/Strings.php:733
 msgid "WordPress sends a background request every few seconds while a page is open. Smart mode slows it down to cut server load, without breaking autosave or post locks."
 msgstr "Bir sayfa açıkken WordPress birkaç saniyede bir arka plan isteği gönderir. Akıllı mod, otomatik kaydetmeyi veya yazı kilitlerini bozmadan sunucu yükünü azaltmak için onu yavaşlatır."
 
-#: src/Admin/Strings.php:705
+#: src/Admin/Strings.php:734
 msgid "For services you never want, like an ad or chat script that slows the site. Everything from these addresses is stopped, with or without internet."
 msgstr "Siteyi yavaşlatan bir reklam veya sohbet betiği gibi hiç istemediğiniz hizmetler için. Bu adreslerden gelen her şey, internet olsa da olmasa da durdurulur."
 
-#: src/Admin/Strings.php:706
+#: src/Admin/Strings.php:735
 msgid "Replaces Gravatar pictures with simple letter avatars made on your server, so comment lists load without a foreign server."
 msgstr "Gravatar resimlerini sunucunuzda oluşturulan basit harf avatarlarıyla değiştirir; yorum listeleri yabancı bir sunucu olmadan yüklenir."
 
-#: src/Admin/Strings.php:707
+#: src/Admin/Strings.php:736
 msgid "Uses Rafoo's own captcha instead of reCAPTCHA, hCaptcha or Turnstile. Login and forms keep working and stay protected when Google or Cloudflare is unreachable."
 msgstr "reCAPTCHA, hCaptcha veya Turnstile yerine Rafoo'nun kendi captcha'sını kullanır. Google veya Cloudflare erişilemezken giriş ve formlar çalışmaya ve korunmaya devam eder."
 
-#: src/Admin/Strings.php:708
+#: src/Admin/Strings.php:737
 msgid "Removes Google Analytics, Tag Manager, pixels and similar trackers from pages. Visits are not recorded while they are removed."
 msgstr "Google Analytics, Tag Manager, pikseller ve benzeri izleyicileri sayfalardan kaldırır. Kaldırılmışken ziyaretler kaydedilmez."
 
-#: src/Admin/Strings.php:709
+#: src/Admin/Strings.php:738
 msgid "During an outage, YouTube, Vimeo and Google Maps frames become a light box with a link, so the page does not wait for them."
 msgstr "Kesinti sırasında YouTube, Vimeo ve Google Haritalar çerçeveleri bağlantı içeren hafif bir kutuya dönüşür; sayfa onları beklemez."
 
-#: src/Admin/Strings.php:710
+#: src/Admin/Strings.php:739
 msgid "During an outage, hides Google and Facebook login buttons that cannot work, so users sign in the normal way."
 msgstr "Kesinti sırasında çalışamayan Google ve Facebook giriş düğmelerini gizler; kullanıcılar normal yoldan giriş yapar."
 
-#: src/Admin/Strings.php:711
+#: src/Admin/Strings.php:740
 msgid "Emails that fail because the mail server is unreachable are kept and sent again later instead of being lost."
 msgstr "Posta sunucusuna ulaşılamadığı için başarısız olan e-postalar kaybolmak yerine saklanır ve daha sonra yeniden gönderilir."
 
-#: src/Admin/Strings.php:712
+#: src/Admin/Strings.php:741
 msgid "Keeps a copy before each plugin or theme update and checks the site after it. If the site breaks, that update is undone automatically."
 msgstr "Her eklenti veya tema güncellemesinden önce bir kopya saklar ve sonra siteyi kontrol eder. Site bozulursa o güncelleme otomatik olarak geri alınır."
 
-#: src/Admin/Strings.php:713
+#: src/Admin/Strings.php:742
 msgid "Makes scheduled backups of files and the database to the destinations you choose. After a serious problem, a backup is the way back."
 msgstr "Dosyaların ve veritabanının zamanlanmış yedeklerini seçtiğiniz hedeflere alır. Ciddi bir sorundan sonra geri dönüş yolu yedektir."
 
-#: src/Admin/Strings.php:714
+#: src/Admin/Strings.php:743
 msgid "After the first full backup, later ones keep only changed files. Faster and smaller."
 msgstr "İlk tam yedekten sonra sonrakiler yalnızca değişen dosyaları tutar. Daha hızlı ve daha küçük."
 
-#: src/Admin/Strings.php:715
+#: src/Admin/Strings.php:744
 msgid "Also keeps the latest backup on this host. Good for a quick restore, but it uses disk space."
 msgstr "En son yedeği bu barındırmada da tutar. Hızlı geri yükleme için iyidir ama disk alanı kullanır."
 
-#: src/Admin/Strings.php:716
+#: src/Admin/Strings.php:745
 msgid "Each part is finished and sent on its own, so a very large site never needs one huge file. Smaller parts are safer on weak hosts; larger parts mean fewer files."
 msgstr "Her parça ayrı tamamlanıp gönderilir, böylece çok büyük bir site bile tek dev bir dosyaya ihtiyaç duymaz. Küçük parçalar zayıf barındırmalarda daha güvenlidir; büyük parçalar daha az dosya demektir."
 
-#: src/Admin/Strings.php:717
+#: src/Admin/Strings.php:746
 msgid "For large folders you do not need in the backup, such as old videos or another plugin's cache. After a change to this list the next backup is a full one."
 msgstr "Yedekte ihtiyaç duymadığınız büyük klasörler için; eski videolar veya başka bir eklentinin önbelleği gibi. Bu liste değişince sonraki yedek tam alınır."
 
-#: src/Admin/Strings.php:718
+#: src/Admin/Strings.php:747
 msgid "Records which plugin or theme connects to which outside server, how often and how long it takes. Use it to find what slows the site."
 msgstr "Hangi eklentinin veya temanın hangi dış sunucuya, ne sıklıkla ve ne kadar sürede bağlandığını kaydeder. Siteyi neyin yavaşlattığını bulmak için kullanın."
 
-#: src/Admin/Strings.php:719
+#: src/Admin/Strings.php:748
 msgid "Servers outside Iran that should still be tried during an outage, such as a payment or SMS service that works for you."
 msgstr "Kesinti sırasında da denenmesi gereken İran dışındaki sunucular; örneğin sizin için çalışan bir ödeme veya SMS hizmeti."
 
-#: src/Admin/Strings.php:720
+#: src/Admin/Strings.php:749
 msgid "Sends an anonymous weekly report that helps improve Rafoo and the Iranian mirror. Nothing identifies the site; it is off by default."
 msgstr "Rafoo'yu ve İran yansısını geliştirmeye yardımcı olan anonim haftalık bir rapor gönderir. Siteyi tanımlayan hiçbir şey yoktur; varsayılan olarak kapalıdır."
 
-#: src/Admin/Strings.php:721
+#: src/Admin/Strings.php:750
 msgid "Automatic follows the internet checks. Use a fixed mode to test the site as if in an outage, or when detection is wrong."
 msgstr "Otomatik mod internet kontrollerini izler. Siteyi kesintideymiş gibi test etmek veya algılama yanlış olduğunda sabit bir mod kullanın."
 
-#: src/Admin/Strings.php:722
+#: src/Admin/Strings.php:751
 msgid "How Rafoo copies CDN files and fonts and serves them from your own server."
 msgstr "Rafoo'nun CDN dosyalarını ve yazı tiplerini nasıl kopyalayıp kendi sunucunuzdan sunduğu."
 
-#: src/Admin/Strings.php:723
+#: src/Admin/Strings.php:752
 msgid "Speed controls inside the visitor's browser and for requests the site sends to itself."
 msgstr "Ziyaretçinin tarayıcısında ve sitenin kendine gönderdiği istekler için hız denetimleri."
 
-#: src/Admin/Strings.php:724
+#: src/Admin/Strings.php:753
 msgid "Replacements for outside services that cannot load during an outage."
 msgstr "Kesinti sırasında yüklenemeyen dış hizmetlerin yerine geçenler."
 
-#: src/Admin/Strings.php:725
+#: src/Admin/Strings.php:754
 msgid "Protection against broken updates and data loss."
 msgstr "Bozuk güncellemelere ve veri kaybına karşı koruma."
 
-#: src/Admin/Strings.php:726
+#: src/Admin/Strings.php:755
 msgid "What the site's server sends to outside servers, and which servers stay allowed during an outage."
 msgstr "Sitenin sunucusunun dış sunuculara ne gönderdiği ve kesinti sırasında hangi sunuculara izin verilmeye devam edildiği."
 
-#: src/Admin/Strings.php:727
+#: src/Admin/Strings.php:756
 msgid "What Rafoo may send to rafoo.ir. By default, nothing that identifies the site."
 msgstr "Rafoo'nun rafoo.ir'ye neler gönderebileceği. Varsayılan olarak siteyi tanımlayan hiçbir şey."
 
-#: src/Admin/Strings.php:728
+#: src/Admin/Strings.php:757
 msgid "Turns off every change Rafoo makes to pages and requests in one click, to test or to find a conflict. The same button turns it back on."
 msgstr "Rafoo'nun sayfalarda ve isteklerde yaptığı her değişikliği tek tıkla kapatır; test etmek veya bir çakışmayı bulmak için. Aynı düğme yeniden açar."
 
-#: src/Admin/Strings.php:729
+#: src/Admin/Strings.php:758
 msgid "The latest changes of mode and settings and other important actions, newest first."
 msgstr "Mod ve ayarlardaki son değişiklikler ve diğer önemli işlemler, en yenisi önce."
 
-#: src/Admin/Strings.php:730
+#: src/Admin/Strings.php:759
 msgid "CDN files Rafoo found on the site and their local copies. Scanning finds new ones; downloading fetches missing copies."
 msgstr "Rafoo'nun sitede bulduğu CDN dosyaları ve yerel kopyaları. Tarama yenilerini bulur; indirme eksik kopyaları getirir."
 
-#: src/Admin/Strings.php:731
+#: src/Admin/Strings.php:760
 msgid "Rafoo checks servers inside and outside Iran every minute to know whether the international internet is cut."
 msgstr "Rafoo, uluslararası internetin kesik olup olmadığını anlamak için her dakika İran içinde ve dışında sunucuları kontrol eder."
 
-#: src/Admin/Strings.php:732
+#: src/Admin/Strings.php:761
 msgid "A signed notice from rafoo.ir about the internet state, used together with the site's own checks."
 msgstr "rafoo.ir'den internet durumu hakkında imzalı bir bildirim; sitenin kendi kontrolleriyle birlikte kullanılır."
 
-#: src/Admin/Strings.php:733
+#: src/Admin/Strings.php:762
 msgid "Servers that did not answer recently are skipped for a few minutes, so pages do not wait for them again."
 msgstr "Son zamanlarda yanıt vermeyen sunucular birkaç dakika atlanır; sayfalar onları yeniden beklemez."
 
-#: src/Admin/Strings.php:734
+#: src/Admin/Strings.php:763
 msgid "Every outside server the site contacted, by plugin or theme. Block stops a host everywhere; the same button opens it again."
 msgstr "Sitenin bağlandığı her dış sunucu, eklenti veya temaya göre. Engelle bir sunucuyu her yerde durdurur; aynı düğme yeniden açar."
 
-#: src/Admin/Strings.php:735
+#: src/Admin/Strings.php:764
 msgid "Emails waiting to be sent again after the mail server was unreachable."
 msgstr "Posta sunucusuna ulaşılamadıktan sonra yeniden gönderilmeyi bekleyen e-postalar."
 
-#: src/Admin/Strings.php:736
+#: src/Admin/Strings.php:765
 msgid "An optional SMTP server inside Iran, used when the normal mail server is unreachable."
 msgstr "Normal posta sunucusuna ulaşılamadığında kullanılan, İran içinde isteğe bağlı bir SMTP sunucusu."
 
-#: src/Admin/Strings.php:737
+#: src/Admin/Strings.php:766
 msgid "The monitoring engine checks your site from 5 points inside and 5 outside Iran through a network of Rafoo sites. Joining is optional."
 msgstr "İzleme motoru, Rafoo sitelerinden oluşan bir ağ üzerinden sitenizi İran içindeki 5 ve dışındaki 5 noktadan kontrol eder. Katılım isteğe bağlıdır."
 
-#: src/Admin/Strings.php:738
+#: src/Admin/Strings.php:767
 msgid "Each point is another Rafoo site that checks yours. Green means your site opened from there."
 msgstr "Her nokta sitenizi kontrol eden başka bir Rafoo sitesidir. Yeşil, sitenizin oradan açıldığı anlamına gelir."
 
-#: src/Admin/Strings.php:739
+#: src/Admin/Strings.php:768
 msgid "How reachable the site was each day, from inside and outside Iran."
 msgstr "Sitenin her gün İran içinden ve dışından ne kadar erişilebilir olduğu."
 
-#: src/Admin/Strings.php:740
+#: src/Admin/Strings.php:769
 msgid "How often your site is checked. Leaving deletes your membership data."
 msgstr "Sitenizin ne sıklıkla kontrol edildiği. Ayrılmak üyelik verilerinizi siler."
 
-#: src/Admin/Strings.php:741
+#: src/Admin/Strings.php:770
 msgid "In return, your site checks a few other members. It uses almost no resources."
 msgstr "Karşılığında siteniz birkaç başka üyeyi kontrol eder. Neredeyse hiç kaynak kullanmaz."
 
-#: src/Admin/Strings.php:742
+#: src/Admin/Strings.php:771
 msgid "What to check when the results look wrong."
 msgstr "Sonuçlar yanlış göründüğünde neyin kontrol edileceği."
 
-#: src/Admin/Strings.php:743
+#: src/Admin/Strings.php:772
 msgid "Updates from the Iranian mirror for what is installed on this site."
 msgstr "Bu sitede yüklü olanlar için İran yansısından güncellemeler."
 
-#: src/Admin/Strings.php:744
+#: src/Admin/Strings.php:773
 msgid "Earlier versions kept by safe updates. Restoring puts one back and checks the site."
 msgstr "Güvenli güncellemelerin sakladığı eski sürümler. Geri yükleme birini geri koyar ve siteyi kontrol eder."
 
-#: src/Admin/Strings.php:745
+#: src/Admin/Strings.php:774
 msgid "Make a backup now or follow the job that is running."
 msgstr "Şimdi yedek alın veya çalışan görevi izleyin."
 
-#: src/Admin/Strings.php:746
+#: src/Admin/Strings.php:775
 msgid "Backups made so far and where each one is kept. Check one to make sure it can be restored, restore it or download its parts."
 msgstr "Şimdiye kadar alınan yedekler ve her birinin saklandığı yer. Geri yüklenebildiğinden emin olmak için birini kontrol edin, geri yükleyin veya parçalarını indirin."
 
-#: src/Admin/Strings.php:747
+#: src/Admin/Strings.php:776
 msgid "When automatic backups run and what they include."
 msgstr "Otomatik yedeklerin ne zaman çalıştığı ve neleri içerdiği."
 
-#: src/Admin/Strings.php:748
+#: src/Admin/Strings.php:777
 msgid "Backups are encrypted with this password. Without it they cannot be restored, so keep it somewhere safe."
 msgstr "Yedekler bu parolayla şifrelenir. Parola olmadan geri yüklenemezler, bu yüzden onu güvenli bir yerde saklayın."
 
-#: src/Admin/Strings.php:749
+#: src/Admin/Strings.php:778
 msgid "Other servers that receive a copy of each backup over SFTP, FTPS or FTP."
 msgstr "Her yedeğin bir kopyasını SFTP, FTPS veya FTP üzerinden alan diğer sunucular."
 
-#: src/Admin/Strings.php:750
+#: src/Admin/Strings.php:779
+msgid "This host, other servers and Files.ir. Each place that is on gets every part of every backup, and a restore uses whichever place still has it."
+msgstr "Bu barındırma, diğer sunucular ve Files.ir. Açık olan her yer her yedeğin tüm parçalarını alır; geri yükleme, yedeğin hâlâ bulunduğu yerden yapılır."
+
+#: src/Admin/Strings.php:780
+msgid "Turn off to stop sending to your SFTP, FTPS and FTP servers without deleting them."
+msgstr "SFTP, FTPS ve FTP sunucularınıza gönderimi, onları silmeden durdurmak için kapatın."
+
+#: src/Admin/Strings.php:781
+msgid "Uploads use the Files.ir API with your key: large parts go in pieces and resume after an interruption. Old backups are deleted there by the same keeping rules as on this host."
+msgstr "Yüklemeler anahtarınızla Files.ir API’si üzerinden yapılır: büyük parçalar bölümler halinde gönderilir ve kesintiden sonra kaldığı yerden devam eder. Eski yedekler orada da bu barındırmadaki saklama kurallarıyla silinir."
+
+#: src/Admin/Strings.php:782
 msgid "Move the whole site to another host with a short code. Files go directly between the two sites."
 msgstr "Sitenin tamamını kısa bir kodla başka bir barındırmaya taşıyın. Dosyalar iki site arasında doğrudan gider."
 
-#: src/Admin/Strings.php:751
+#: src/Admin/Strings.php:783
 msgid "Send a question, an idea or a bug report to the Rafoo team."
 msgstr "Rafoo ekibine bir soru, fikir veya hata bildirimi gönderin."
 
-#: src/Admin/Strings.php:752
+#: src/Admin/Strings.php:784
 msgid "Network"
 msgstr "Ağ"
 
-#: src/Admin/Strings.php:753
+#: src/Admin/Strings.php:785
 msgid "These settings apply to the sites of this network. The connection state is shared by all sites; files, logs and backups are managed on each site."
 msgstr "Bu ayarlar bu ağın sitelerine uygulanır. Bağlantı durumu tüm sitelerce paylaşılır; dosyalar, kayıtlar ve yedekler her sitede ayrı yönetilir."
 
-#: src/Admin/Strings.php:754
+#: src/Admin/Strings.php:786
 msgid "Network policy"
 msgstr "Ağ politikası"
 
 #. translators: %d: number of sites
-#: src/Admin/Strings.php:756
+#: src/Admin/Strings.php:788
 #, php-format
 msgid "Sites in this network: %d"
 msgstr "Bu ağdaki siteler: %d"
 
-#: src/Admin/Strings.php:757
+#: src/Admin/Strings.php:789
 msgid "How sites use these settings"
 msgstr "Siteler bu ayarları nasıl kullansın"
 
-#: src/Admin/Strings.php:758
+#: src/Admin/Strings.php:790
 msgid "Starting point for new sites"
 msgstr "Yeni siteler için başlangıç noktası"
 
-#: src/Admin/Strings.php:759
+#: src/Admin/Strings.php:791
 msgid "Sites that have not saved their own Rafoo settings use these. Site administrators can still change them."
 msgstr "Kendi Rafoo ayarlarını kaydetmemiş siteler bunları kullanır. Site yöneticileri yine de değiştirebilir."
 
-#: src/Admin/Strings.php:760
+#: src/Admin/Strings.php:792
 msgid "Apply to every site"
 msgstr "Her siteye uygula"
 
-#: src/Admin/Strings.php:761
+#: src/Admin/Strings.php:793
 msgid "Every site uses these settings and site administrators can only see them. Privacy and backup settings stay with each site."
 msgstr "Her site bu ayarları kullanır ve site yöneticileri yalnızca görebilir. Gizlilik ve yedekleme ayarları her sitede kalır."
 
-#: src/Admin/Strings.php:762
+#: src/Admin/Strings.php:794
 msgid "The network administrator manages these settings for every site. Privacy and backup settings are still yours."
 msgstr "Ağ yöneticisi bu ayarları her site için yönetiyor. Gizlilik ve yedekleme ayarları hâlâ sizin."
 
-#: src/Admin/Strings.php:763
+#: src/Admin/Strings.php:795
 msgid "Open network settings"
 msgstr "Ağ ayarlarını aç"
 
-#: src/Admin/Strings.php:764
+#: src/Admin/Strings.php:796
 msgid "Save for the network"
 msgstr "Ağ için kaydet"
 
-#: src/Admin/Strings.php:765
+#: src/Admin/Strings.php:797
 msgid "Network settings changed"
 msgstr "Ağ ayarları değişti"
 
-#: src/Admin/Strings.php:766
+#: src/Admin/Strings.php:798
 msgid "Settings for every site of the network, managed in one place."
 msgstr "Ağdaki tüm sitelerin ayarları, tek bir yerde."
 
-#: src/Admin/Strings.php:767
+#: src/Admin/Strings.php:799
 msgid "A starting point only fills in sites that have not chosen their own settings. Applying to every site overrides them and locks the form on each site."
 msgstr "Başlangıç noktası yalnızca kendi ayarlarını seçmemiş siteleri doldurur. Her siteye uygulamak onların ayarlarını geçersiz kılar ve her sitedeki formu kilitler."
 
-#: src/Admin/Strings.php:768
+#: src/Admin/Strings.php:800
 msgid "Something went wrong. Please try again."
 msgstr "Bir şeyler ters gitti. Lütfen tekrar deneyin."
 
-#: src/Admin/Strings.php:769
+#: src/Admin/Strings.php:801
 msgid "The site could not be reached. Check your connection and try again."
 msgstr "Siteye ulaşılamadı. Bağlantınızı kontrol edip tekrar deneyin."
 
-#: src/Admin/Strings.php:771
+#: src/Admin/Strings.php:803
 msgid "Geo DNS"
 msgstr "Geo DNS"
 
-#: src/Admin/Strings.php:772
+#: src/Admin/Strings.php:804
 msgid "Multiple hosts with geo DNS"
 msgstr "Coğrafi DNS ile çoklu sunucu"
 
-#: src/Admin/Strings.php:773
+#: src/Admin/Strings.php:805
 msgid "Keep full copies of the site on up to three more hosts in other countries. Every visitor reaches the nearest healthy host, and search engines still see one site at one address."
 msgstr "Sitenin tam kopyalarını başka ülkelerdeki en fazla üç sunucuda daha tutun. Her ziyaretçi en yakın sağlıklı sunucuya ulaşır ve arama motorları yine tek adreste tek bir site görür."
 
-#: src/Admin/Strings.php:774
+#: src/Admin/Strings.php:806
 msgid "All hosts answer for the same domain. DNS sends each visitor to the nearest host. Copies follow the main host within seconds and send logins, comments and orders to the main host."
 msgstr "Tüm sunucular aynı alan adına yanıt verir. DNS her ziyaretçiyi en yakın sunucuya gönderir. Kopyalar ana sunucuyu saniyeler içinde takip eder; girişleri, yorumları ve siparişleri ana sunucuya iletir."
 
-#: src/Admin/Strings.php:775 src/Geo/Nodes.php:111
+#: src/Admin/Strings.php:807 src/Geo/Nodes.php:111
 msgid "Hosts in several countries are not available for a WordPress network (Multisite) yet."
 msgstr "Birden çok ülkedeki sunucular henüz WordPress ağı (Multisite) için kullanılamıyor."
 
-#: src/Admin/Strings.php:776
+#: src/Admin/Strings.php:808
 msgid "One address for everyone: every host serves your own domain, so there is no duplicate content for Google."
 msgstr "Herkes için tek adres: her sunucu sizin alan adınızı sunar, bu yüzden Google için yinelenen içerik oluşmaz."
 
-#: src/Admin/Strings.php:777
+#: src/Admin/Strings.php:809
 msgid "If the international internet is cut, visitors in Iran keep reaching the host inside Iran, and visitors abroad reach the copies."
 msgstr "Uluslararası internet kesilirse İran'daki ziyaretçiler İran'daki sunucuya, yurt dışındakiler kopyalara ulaşmaya devam eder."
 
-#: src/Admin/Strings.php:778
+#: src/Admin/Strings.php:810
 msgid "Copies are read-only. Logins, comments, forms and orders are sent to the main host, so nothing is lost or written twice."
 msgstr "Kopyalar salt okunurdur. Girişler, yorumlar, formlar ve siparişler ana sunucuya gönderilir; hiçbir şey kaybolmaz veya iki kez yazılmaz."
 
-#: src/Admin/Strings.php:779
+#: src/Admin/Strings.php:811
 msgid "Rafoo checks every host from the other hosts each minute and takes a broken copy out of DNS by itself."
 msgstr "Rafoo her dakika her sunucuyu diğer sunuculardan denetler ve bozulan kopyayı DNS'ten kendisi çıkarır."
 
-#: src/Admin/Strings.php:780
+#: src/Admin/Strings.php:812
 msgid "This host is a copy"
 msgstr "Bu sunucu bir kopya"
 
-#: src/Admin/Strings.php:781
+#: src/Admin/Strings.php:813
 msgid "The copy only receives changes from the main host. Its own changes would be overwritten, so manage the site on the main host."
 msgstr "Kopya yalnızca ana sunucudan değişiklik alır. Kendi değişikliklerinin üzerine yazılır; siteyi ana sunucuda yönetin."
 
 #. translators: %s: site address
-#: src/Admin/Strings.php:783
+#: src/Admin/Strings.php:815
 #, php-format
 msgid "This host keeps a copy of %s and follows every change of the main host."
 msgstr "Bu sunucu %s sitesinin bir kopyasını tutar ve ana sunucudaki her değişikliği izler."
 
-#: src/Admin/Strings.php:784
+#: src/Admin/Strings.php:816
 msgid "Receiving the site"
 msgstr "Site alınıyor"
 
-#: src/Admin/Strings.php:785
+#: src/Admin/Strings.php:817
 msgid "Waiting for the main host to send the site. This starts by itself in a moment."
 msgstr "Ana sunucunun siteyi göndermesi bekleniyor. Birazdan kendiliğinden başlar."
 
-#: src/Admin/Strings.php:786 src/Admin/Strings.php:863
+#: src/Admin/Strings.php:818 src/Admin/Strings.php:895
 msgid "Main host"
 msgstr "Ana sunucu"
 
-#: src/Admin/Strings.php:787
+#: src/Admin/Strings.php:819
 msgid "Last contact"
 msgstr "Son iletişim"
 
-#: src/Admin/Strings.php:788
+#: src/Admin/Strings.php:820
 msgid "Last sync"
 msgstr "Son eşitleme"
 
-#: src/Admin/Strings.php:789
+#: src/Admin/Strings.php:821
 msgid "Last sync took"
 msgstr "Son eşitleme süresi"
 
 #. translators: %d: number of seconds
-#: src/Admin/Strings.php:791
+#: src/Admin/Strings.php:823
 #, php-format
 msgid "%d seconds"
 msgstr "%d saniye"
 
-#: src/Admin/Strings.php:792
+#: src/Admin/Strings.php:824
 msgid "Syncing now"
 msgstr "Şimdi eşitleniyor"
 
 #. translators: %s: error message
-#: src/Admin/Strings.php:794
+#: src/Admin/Strings.php:826
 #, php-format
 msgid "Sync problem: %s"
 msgstr "Eşitleme sorunu: %s"
 
-#: src/Admin/Strings.php:795
+#: src/Admin/Strings.php:827
 msgid "Manage the hosts, DNS and settings from the Rafoo dashboard of the main host."
 msgstr "Sunucuları, DNS'i ve ayarları ana sunucudaki Rafoo panelinden yönetin."
 
-#: src/Admin/Strings.php:796
+#: src/Admin/Strings.php:828
 msgid "Sync now"
 msgstr "Şimdi eşitle"
 
-#: src/Admin/Strings.php:797
+#: src/Admin/Strings.php:829
 msgid "Leave the group"
 msgstr "Gruptan ayrıl"
 
-#: src/Admin/Strings.php:798
+#: src/Admin/Strings.php:830
 msgid "Ends the group of hosts. The site itself and its content stay as they are."
 msgstr "Sunucu grubunu sonlandırır. Sitenin kendisi ve içeriği olduğu gibi kalır."
 
-#: src/Admin/Strings.php:799
+#: src/Admin/Strings.php:831
 msgid "Stop using copies. DNS is pointed back to this host only."
 msgstr "Kopyaları kullanmayı bırakın. DNS yalnızca bu sunucuya geri yönlendirilir."
 
-#: src/Admin/Strings.php:800
+#: src/Admin/Strings.php:832
 msgid "Stop being a copy. This host keeps the content it has now but no longer follows the main host."
 msgstr "Kopya olmayı bırakın. Bu sunucu şimdiki içeriği korur ama artık ana sunucuyu izlemez."
 
-#: src/Admin/Strings.php:801
+#: src/Admin/Strings.php:833
 msgid "Every copy leaves the group and DNS is set to answer with this host only. Visitors abroad will reach this host again."
 msgstr "Tüm kopyalar gruptan ayrılır ve DNS yalnızca bu sunucuyla yanıt verir. Yurt dışındaki ziyaretçiler yeniden bu sunucuya gelir."
 
-#: src/Admin/Strings.php:802
+#: src/Admin/Strings.php:834
 msgid "Remove this host from DNS first on the main host, or visitors may still reach an outdated copy."
 msgstr "Önce ana sunucuda bu sunucuyu DNS'ten çıkarın, yoksa ziyaretçiler eski bir kopyaya ulaşabilir."
 
-#: src/Admin/Strings.php:803
+#: src/Admin/Strings.php:835
 msgid "Yes, leave the group"
 msgstr "Evet, gruptan ayrıl"
 
-#: src/Admin/Strings.php:804
+#: src/Admin/Strings.php:836
 msgid "End the group"
 msgstr "Grubu sonlandır"
 
-#: src/Admin/Strings.php:805
+#: src/Admin/Strings.php:837
 msgid "Stop being a copy"
 msgstr "Kopya olmayı bırak"
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:807
+#: src/Admin/Strings.php:839
 #, php-format
 msgid "Copying the site failed: %s"
 msgstr "Site kopyalanamadı: %s"
 
-#: src/Admin/Strings.php:808
+#: src/Admin/Strings.php:840
 msgid "Start"
 msgstr "Başlangıç"
 
-#: src/Admin/Strings.php:809
+#: src/Admin/Strings.php:841
 msgid "Set up the main host first. Then prepare each copy on its own host and connect it with a code."
 msgstr "Önce ana sunucuyu kurun. Sonra her kopyayı kendi sunucusunda hazırlayıp bir kodla bağlayın."
 
-#: src/Admin/Strings.php:810
+#: src/Admin/Strings.php:842
 msgid "Choose the role of this host."
 msgstr "Bu sunucunun rolünü seçin."
 
-#: src/Admin/Strings.php:811
+#: src/Admin/Strings.php:843
 msgid "Join code of this host"
 msgstr "Bu sunucunun katılım kodu"
 
-#: src/Admin/Strings.php:812
+#: src/Admin/Strings.php:844
 msgid "Copy this code"
 msgstr "Bu kodu kopyalayın"
 
-#: src/Admin/Strings.php:813
+#: src/Admin/Strings.php:845
 msgid "This host is waiting for the main host. The code is shown only once; make a new one if you do not have it."
 msgstr "Bu sunucu ana sunucuyu bekliyor. Kod yalnızca bir kez gösterilir; elinizde yoksa yenisini oluşturun."
 
-#: src/Admin/Strings.php:814
+#: src/Admin/Strings.php:846
 msgid "On the main site, open Rafoo, then Geo DNS, and paste this code under \"Add a copy\". Everything on this site will then be replaced with the main site."
 msgstr "Ana sitede Rafoo'yu, ardından Geo DNS'i açın ve bu kodu \"Kopya ekle\" bölümüne yapıştırın. Bu sitedeki her şey ana siteyle değiştirilecek."
 
 #. translators: %s: technical address
-#: src/Admin/Strings.php:816
+#: src/Admin/Strings.php:848
 #, php-format
 msgid "Technical address of this host: %s"
 msgstr "Bu sunucunun teknik adresi: %s"
 
-#: src/Admin/Strings.php:817
+#: src/Admin/Strings.php:849
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/Admin/Strings.php:818
+#: src/Admin/Strings.php:850
 msgid "Role of this host"
 msgstr "Bu sunucunun rolü"
 
-#: src/Admin/Strings.php:819
+#: src/Admin/Strings.php:851
 msgid "This is the main site"
 msgstr "Bu ana site"
 
-#: src/Admin/Strings.php:820
+#: src/Admin/Strings.php:852
 msgid "The site you manage and edit, usually on a host inside Iran."
 msgstr "Yönettiğiniz ve düzenlediğiniz site; genellikle İran içindeki bir sunucuda."
 
-#: src/Admin/Strings.php:821
+#: src/Admin/Strings.php:853
 msgid "This host will be a copy"
 msgstr "Bu sunucu bir kopya olacak"
 
-#: src/Admin/Strings.php:822
+#: src/Admin/Strings.php:854
 msgid "A new WordPress on another host that will receive the whole main site."
 msgstr "Başka bir sunucuda, ana sitenin tamamını alacak yeni bir WordPress."
 
-#: src/Admin/Strings.php:823
+#: src/Admin/Strings.php:855
 msgid "Technical address of this host"
 msgstr "Bu sunucunun teknik adresi"
 
-#: src/Admin/Strings.php:824
+#: src/Admin/Strings.php:856
 msgid "A subdomain that always opens this host, for example https://ir.example.com. Visitors never see it."
 msgstr "Her zaman bu sunucuyu açan bir alt alan adı, örneğin https://ir.example.com. Ziyaretçiler bunu hiç görmez."
 
-#: src/Admin/Strings.php:826
+#: src/Admin/Strings.php:858
 msgid "Only for you, to tell the hosts apart."
 msgstr "Yalnızca sizin için, sunucuları ayırt etmeye yarar."
 
-#: src/Admin/Strings.php:827
+#: src/Admin/Strings.php:859
 msgid "Iran server"
 msgstr "İran sunucusu"
 
-#: src/Admin/Strings.php:828
+#: src/Admin/Strings.php:860
 msgid "Germany server"
 msgstr "Almanya sunucusu"
 
-#: src/Admin/Strings.php:829
+#: src/Admin/Strings.php:861
 msgid "Country of the host"
 msgstr "Sunucunun ülkesi"
 
-#: src/Admin/Strings.php:830
+#: src/Admin/Strings.php:862
 msgid "Where the server is. Visitors of this country and of nearby countries are sent here."
 msgstr "Sunucunun bulunduğu yer. Bu ülkenin ve yakın ülkelerin ziyaretçileri buraya gönderilir."
 
-#: src/Admin/Strings.php:831
+#: src/Admin/Strings.php:863
 msgid "Set up as the main host"
 msgstr "Ana sunucu olarak kur"
 
-#: src/Admin/Strings.php:832
+#: src/Admin/Strings.php:864
 msgid "Everything on this WordPress (posts, users, plugins, files and settings) will be replaced with the main site. Use a new, empty installation."
 msgstr "Bu WordPress'teki her şey (yazılar, kullanıcılar, eklentiler, dosyalar ve ayarlar) ana siteyle değiştirilecek. Yeni ve boş bir kurulum kullanın."
 
-#: src/Admin/Strings.php:833
+#: src/Admin/Strings.php:865
 msgid "The subdomain this WordPress was installed on, for example https://de.example.com."
 msgstr "Bu WordPress'in kurulduğu alt alan adı, örneğin https://de.example.com."
 
 #. translators: %s: database table prefix
-#: src/Admin/Strings.php:835
+#: src/Admin/Strings.php:867
 #, php-format
 msgid "The table prefix here is %s and wp-config.php is not writable. If the main site uses another prefix, make wp-config.php writable first so Rafoo can match it."
 msgstr "Buradaki tablo öneki %s ve wp-config.php yazılabilir değil. Ana site başka bir önek kullanıyorsa, Rafoo'nun eşleyebilmesi için önce wp-config.php'yi yazılabilir yapın."
 
-#: src/Admin/Strings.php:836
+#: src/Admin/Strings.php:868
 msgid "Make a join code"
 msgstr "Katılım kodu oluştur"
 
-#: src/Admin/Strings.php:837
+#: src/Admin/Strings.php:869
 msgid "Copying"
 msgstr "Kopyalanıyor"
 
-#: src/Admin/Strings.php:838
+#: src/Admin/Strings.php:870
 msgid "Copy failed"
 msgstr "Kopyalama başarısız"
 
-#: src/Admin/Strings.php:839
+#: src/Admin/Strings.php:871
 msgid "Out of DNS"
 msgstr "DNS dışında"
 
-#: src/Admin/Strings.php:840
+#: src/Admin/Strings.php:872
 msgid "Not answering"
 msgstr "Yanıt vermiyor"
 
-#: src/Admin/Strings.php:841
+#: src/Admin/Strings.php:873
 msgid "Healthy"
 msgstr "Sağlıklı"
 
-#: src/Admin/Strings.php:843
+#: src/Admin/Strings.php:875
 msgid "Not checked yet"
 msgstr "Henüz denetlenmedi"
 
 #. translators: %d: milliseconds
-#: src/Admin/Strings.php:845
+#: src/Admin/Strings.php:877
 #, php-format
 msgid "Answers in %d ms"
 msgstr "%d ms içinde yanıt veriyor"
 
 #. translators: 1: number of failed checks, 2: time of last answer
-#: src/Admin/Strings.php:847
+#: src/Admin/Strings.php:879
 #, php-format
 msgid "No answer %1$d times, last answer %2$s"
 msgstr "%1$d kez yanıt yok, son yanıt %2$s"
 
 #. translators: %s: host name
-#: src/Admin/Strings.php:849
+#: src/Admin/Strings.php:881
 #, php-format
 msgid "%s sees it"
 msgstr "%s görüyor"
 
 #. translators: %s: host name
-#: src/Admin/Strings.php:851
+#: src/Admin/Strings.php:883
 #, php-format
 msgid "%s cannot reach it"
 msgstr "%s ulaşamıyor"
 
-#: src/Admin/Strings.php:852
+#: src/Admin/Strings.php:884
 msgid "Source of all changes"
 msgstr "Tüm değişikliklerin kaynağı"
 
 #. translators: %s: relative time
-#: src/Admin/Strings.php:854
+#: src/Admin/Strings.php:886
 #, php-format
 msgid "Up to date, %s"
 msgstr "Güncel, %s"
 
 #. translators: %s: relative time
-#: src/Admin/Strings.php:856
+#: src/Admin/Strings.php:888
 #, php-format
 msgid "Catching up, last sync %s"
 msgstr "Yetişiyor, son eşitleme %s"
 
-#: src/Admin/Strings.php:857
+#: src/Admin/Strings.php:889
 msgid "Hosts"
 msgstr "Sunucular"
 
-#: src/Admin/Strings.php:858
+#: src/Admin/Strings.php:890
 msgid "Health is checked every minute from each host. A copy that does not answer three times in a row, and that no other host can reach, is taken out of DNS. The main host always stays in DNS."
 msgstr "Sağlık her dakika her sunucudan denetlenir. Üst üste üç kez yanıt vermeyen ve başka hiçbir sunucunun ulaşamadığı kopya DNS'ten çıkarılır. Ana sunucu her zaman DNS'te kalır."
 
 #. translators: %s: site address
-#: src/Admin/Strings.php:860
+#: src/Admin/Strings.php:892
 #, php-format
 msgid "All hosts answer for %s."
 msgstr "Tüm sunucular %s için yanıt verir."
 
-#: src/Admin/Strings.php:861
+#: src/Admin/Strings.php:893
 msgid "The copies were told to sync."
 msgstr "Kopyalara eşitleme bildirildi."
 
-#: src/Admin/Strings.php:862
+#: src/Admin/Strings.php:894
 msgid "Copying the site to the new host"
 msgstr "Site yeni sunucuya kopyalanıyor"
 
-#: src/Admin/Strings.php:864
+#: src/Admin/Strings.php:896
 msgid "Copy host"
 msgstr "Kopya sunucu"
 
-#: src/Admin/Strings.php:865
+#: src/Admin/Strings.php:897
 msgid "You are here"
 msgstr "Buradasınız"
 
-#: src/Admin/Strings.php:866
+#: src/Admin/Strings.php:898
 msgid "IP address"
 msgstr "IP adresi"
 
-#: src/Admin/Strings.php:867
+#: src/Admin/Strings.php:899
 msgid "From this host"
 msgstr "Bu sunucudan"
 
-#: src/Admin/Strings.php:868
+#: src/Admin/Strings.php:900
 msgid "Sync"
 msgstr "Eşitleme"
 
-#: src/Admin/Strings.php:869
+#: src/Admin/Strings.php:901
 msgid "Rafoo version"
 msgstr "Rafoo sürümü"
 
-#: src/Admin/Strings.php:870
+#: src/Admin/Strings.php:902
 msgid "The international internet is down on this host."
 msgstr "Bu sunucuda uluslararası internet kesik."
 
 #. translators: %s: list of countries and regions
-#: src/Admin/Strings.php:872
+#: src/Admin/Strings.php:904
 #, php-format
 msgid "Visitors sent here: %s"
 msgstr "Buraya gönderilen ziyaretçiler: %s"
 
-#: src/Admin/Strings.php:873
+#: src/Admin/Strings.php:905
 msgid "everyone else"
 msgstr "diğer herkes"
 
-#: src/Admin/Strings.php:874
+#: src/Admin/Strings.php:906
 msgid "The IP address of this host is not known, so DNS cannot point to it. Edit the host and enter its IP."
 msgstr "Bu sunucunun IP adresi bilinmiyor, bu yüzden DNS ona yönlendiremez. Sunucuyu düzenleyip IP'sini girin."
 
 #. translators: %s: reason
-#: src/Admin/Strings.php:876
+#: src/Admin/Strings.php:908
 #, php-format
 msgid "The first copy did not finish (%s). Remove this host, make a new code on it and add it again."
 msgstr "İlk kopyalama bitmedi (%s). Bu sunucuyu kaldırın, üzerinde yeni bir kod oluşturup yeniden ekleyin."
 
-#: src/Admin/Strings.php:877
+#: src/Admin/Strings.php:909
 msgid "Edit"
 msgstr "Düzenle"
 
-#: src/Admin/Strings.php:879
+#: src/Admin/Strings.php:911
 msgid "Leave the IP empty to use the address the technical subdomain points to. Enter it if the subdomain is behind a CDN."
 msgstr "Teknik alt alan adının gösterdiği adresi kullanmak için IP'yi boş bırakın. Alt alan adı bir CDN arkasındaysa girin."
 
 #. translators: %s: host name
-#: src/Admin/Strings.php:881
+#: src/Admin/Strings.php:913
 #, php-format
 msgid "%s leaves the group, is taken out of DNS and stops syncing. Its content stays on that host."
 msgstr "%s gruptan ayrılır, DNS'ten çıkarılır ve eşitlemesi durur. İçeriği o sunucuda kalır."
 
-#: src/Admin/Strings.php:882
+#: src/Admin/Strings.php:914
 msgid "The host was removed."
 msgstr "Sunucu kaldırıldı."
 
-#: src/Admin/Strings.php:883
+#: src/Admin/Strings.php:915
 msgid "Remove the host"
 msgstr "Sunucuyu kaldır"
 
 #. translators: 1: number of files, 2: relative time
-#: src/Admin/Strings.php:885
+#: src/Admin/Strings.php:917
 #, php-format
 msgid "File list: %1$s files, updated %2$s"
 msgstr "Dosya listesi: %1$s dosya, güncelleme %2$s"
 
-#: src/Admin/Strings.php:886
+#: src/Admin/Strings.php:918
 msgid "Add a copy"
 msgstr "Kopya ekle"
 
-#: src/Admin/Strings.php:887
+#: src/Admin/Strings.php:919
 msgid "The whole site is sent to the new host once, directly and encrypted. After that only changes are sent."
 msgstr "Sitenin tamamı yeni sunucuya bir kez, doğrudan ve şifreli gönderilir. Sonrasında yalnızca değişiklikler gönderilir."
 
 #. translators: %d: maximum number of copies
-#: src/Admin/Strings.php:889
+#: src/Admin/Strings.php:921
 #, php-format
 msgid "Up to %d copies on other hosts."
 msgstr "Diğer sunucularda en fazla %d kopya."
 
-#: src/Admin/Strings.php:890
+#: src/Admin/Strings.php:922
 msgid "This site already has the most copies allowed."
 msgstr "Bu sitede izin verilen en fazla kopya zaten var."
 
-#: src/Admin/Strings.php:891
+#: src/Admin/Strings.php:923
 msgid "Join code from the new host"
 msgstr "Yeni sunucudan katılım kodu"
 
-#: src/Admin/Strings.php:892
+#: src/Admin/Strings.php:924
 msgid "IP address (optional)"
 msgstr "IP adresi (isteğe bağlı)"
 
-#: src/Admin/Strings.php:893
+#: src/Admin/Strings.php:925
 msgid "The host was added. The site is being copied to it."
 msgstr "Sunucu eklendi. Site ona kopyalanıyor."
 
-#: src/Admin/Strings.php:894
+#: src/Admin/Strings.php:926
 msgid "Add and copy the site"
 msgstr "Ekle ve siteyi kopyala"
 
-#: src/Admin/Strings.php:895
+#: src/Admin/Strings.php:927
 msgid "How visitors reach the nearest host"
 msgstr "Ziyaretçiler en yakın sunucuya nasıl ulaşır"
 
-#: src/Admin/Strings.php:896
+#: src/Admin/Strings.php:928
 msgid "A DNS service with an API is the most automatic way. The control panel way needs no other service. Manual works with any DNS that has geography rules."
 msgstr "API'li bir DNS hizmeti en otomatik yoldur. Kontrol paneli yolu başka hizmet gerektirmez. Elle yöntem coğrafi kuralları olan her DNS ile çalışır."
 
-#: src/Admin/Strings.php:897
+#: src/Admin/Strings.php:929
 msgid "Rafoo decides which host is healthy. The DNS only answers by the visitor's location."
 msgstr "Hangi sunucunun sağlıklı olduğuna Rafoo karar verir. DNS yalnızca ziyaretçinin konumuna göre yanıt verir."
 
-#: src/Admin/Strings.php:898
+#: src/Admin/Strings.php:930
 msgid "Routing method"
 msgstr "Yönlendirme yöntemi"
 
-#: src/Admin/Strings.php:899 src/Admin/Strings.php:905
+#: src/Admin/Strings.php:931 src/Admin/Strings.php:937
 msgid "DNS service"
 msgstr "DNS hizmeti"
 
-#: src/Admin/Strings.php:900
+#: src/Admin/Strings.php:932
 msgid "Rafoo creates and updates the records itself through the API."
 msgstr "Rafoo kayıtları API ile kendisi oluşturur ve günceller."
 
-#: src/Admin/Strings.php:901
+#: src/Admin/Strings.php:933
 msgid "Host control panels"
 msgstr "Sunucu kontrol panelleri"
 
-#: src/Admin/Strings.php:902
+#: src/Admin/Strings.php:934
 msgid "cPanel or DirectAdmin. Each host's own DNS answers with that host."
 msgstr "cPanel veya DirectAdmin. Her sunucunun kendi DNS'i o sunucuyla yanıt verir."
 
-#: src/Admin/Strings.php:903
+#: src/Admin/Strings.php:935
 msgid "Manual"
 msgstr "Elle"
 
-#: src/Admin/Strings.php:904
+#: src/Admin/Strings.php:936
 msgid "You create the records in any DNS. Rafoo shows them and checks them."
 msgstr "Kayıtları herhangi bir DNS'te siz oluşturursunuz. Rafoo bunları gösterir ve denetler."
 
-#: src/Admin/Strings.php:907
+#: src/Admin/Strings.php:939
 msgid "Iranian CDN and DNS with servers inside and outside Iran. Best when most visitors are in Iran."
 msgstr "İran içinde ve dışında sunucuları olan İranlı CDN ve DNS. Ziyaretçilerin çoğu İran'daysa en iyisi."
 
-#: src/Admin/Strings.php:908
+#: src/Admin/Strings.php:940
 msgid "Gcore DNS"
 msgstr "Gcore DNS"
 
-#: src/Admin/Strings.php:909
+#: src/Admin/Strings.php:941
 msgid "Global DNS. Geo balancing is included in the free plan."
 msgstr "Küresel DNS. Coğrafi dengeleme ücretsiz plana dahil."
 
-#: src/Admin/Strings.php:911
+#: src/Admin/Strings.php:943
 msgid "Global DNS. Geo steering needs the paid Load Balancing add-on."
 msgstr "Küresel DNS. Coğrafi yönlendirme ücretli Load Balancing eklentisini gerektirir."
 
-#: src/Admin/Strings.php:912
+#: src/Admin/Strings.php:944
 msgid "Amazon Route 53"
 msgstr "Amazon Route 53"
 
-#: src/Admin/Strings.php:913
+#: src/Admin/Strings.php:945
 msgid "Amazon DNS with geolocation records. Paid per zone and per query."
 msgstr "Coğrafi kayıtlı Amazon DNS. Bölge ve sorgu başına ücretli."
 
-#: src/Admin/Strings.php:914
+#: src/Admin/Strings.php:946
 msgid "Bunny DNS"
 msgstr "Bunny DNS"
 
-#: src/Admin/Strings.php:915
+#: src/Admin/Strings.php:947
 msgid "Global DNS with smart geo routing. Billed by usage."
 msgstr "Akıllı coğrafi yönlendirmeli küresel DNS. Kullanıma göre ücretlendirilir."
 
 #. translators: %s: name of the DNS service
-#: src/Admin/Strings.php:917
+#: src/Admin/Strings.php:949
 #, php-format
 msgid "How to get the key for %s"
 msgstr "%s anahtarı nasıl alınır"
 
-#: src/Admin/Strings.php:918
+#: src/Admin/Strings.php:950
 msgid "The key is kept encrypted on this host and on the copies, so a copy can update DNS when this host cannot be reached. Give it only the access listed."
 msgstr "Anahtar bu sunucuda ve kopyalarda şifreli tutulur; böylece bu sunucuya ulaşılamazsa bir kopya DNS'i güncelleyebilir. Yalnızca belirtilen erişimi verin."
 
-#: src/Admin/Strings.php:919
+#: src/Admin/Strings.php:951
 msgid "API key"
 msgstr "API anahtarı"
 
-#: src/Admin/Strings.php:920 src/Admin/Strings.php:923 src/Admin/Strings.php:936
+#: src/Admin/Strings.php:952 src/Admin/Strings.php:955 src/Admin/Strings.php:968
 msgid "API token"
 msgstr "API belirteci"
 
-#: src/Admin/Strings.php:921
+#: src/Admin/Strings.php:953
 msgid "Access key ID"
 msgstr "Erişim anahtarı kimliği"
 
-#: src/Admin/Strings.php:922
+#: src/Admin/Strings.php:954
 msgid "Secret access key"
 msgstr "Gizli erişim anahtarı"
 
-#: src/Admin/Strings.php:924
+#: src/Admin/Strings.php:956
 msgid "Account API key"
 msgstr "Hesap API anahtarı"
 
-#: src/Admin/Strings.php:926
+#: src/Admin/Strings.php:958
 msgid "Control panel of the hosts"
 msgstr "Sunucuların kontrol paneli"
 
-#: src/Admin/Strings.php:927
+#: src/Admin/Strings.php:959
 msgid "Rafoo uses a cPanel API token."
 msgstr "Rafoo bir cPanel API belirteci kullanır."
 
-#: src/Admin/Strings.php:928
+#: src/Admin/Strings.php:960
 msgid "Rafoo uses a DirectAdmin login key."
 msgstr "Rafoo bir DirectAdmin giriş anahtarı kullanır."
 
-#: src/Admin/Strings.php:929
+#: src/Admin/Strings.php:961
 msgid "The domain gets the nameservers of the main host and of the copies together. Each host's DNS answers with that host's own IP. Resolvers mostly ask the nearest nameserver, and when the border is closed each side only reaches its own nameserver."
 msgstr "Alan adı, ana sunucunun ve kopyaların ad sunucularını birlikte alır. Her sunucunun DNS'i kendi IP'siyle yanıt verir. Çözümleyiciler çoğunlukla en yakın ad sunucusuna sorar; sınır kapandığında her taraf yalnızca kendi ad sunucusuna ulaşır."
 
-#: src/Admin/Strings.php:930
+#: src/Admin/Strings.php:962
 msgid "How to make the login for each host"
 msgstr "Her sunucu için giriş nasıl oluşturulur"
 
-#: src/Admin/Strings.php:931
+#: src/Admin/Strings.php:963
 msgid "A login is optional. For a host without one, create the records of its zone by hand from the table below."
 msgstr "Giriş isteğe bağlıdır. Girişi olmayan sunucu için bölge kayıtlarını aşağıdaki tablodan elle oluşturun."
 
 #. translators: %s: user name
-#: src/Admin/Strings.php:933
+#: src/Admin/Strings.php:965
 #, php-format
 msgid "Login saved for %s"
 msgstr "%s için giriş kaydedildi"
 
-#: src/Admin/Strings.php:934
+#: src/Admin/Strings.php:966
 msgid "Panel address"
 msgstr "Panel adresi"
 
-#: src/Admin/Strings.php:937
+#: src/Admin/Strings.php:969
 msgid "Login key"
 msgstr "Giriş anahtarı"
 
-#: src/Admin/Strings.php:938
+#: src/Admin/Strings.php:970
 msgid "Your DNS must answer by the visitor's country or continent (geo DNS). If it cannot, use the control panel method instead."
 msgstr "DNS'iniz ziyaretçinin ülkesine veya kıtasına göre yanıt verebilmeli (coğrafi DNS). Veremiyorsa kontrol paneli yöntemini kullanın."
 
-#: src/Admin/Strings.php:939
+#: src/Admin/Strings.php:971
 msgid "Record lifetime (TTL)"
 msgstr "Kayıt ömrü (TTL)"
 
-#: src/Admin/Strings.php:940
+#: src/Admin/Strings.php:972
 msgid "How long resolvers keep an answer. Shorter means a broken host leaves faster; 2 minutes is a good balance."
 msgstr "Çözümleyicilerin bir yanıtı ne kadar tuttuğu. Kısa olursa bozuk sunucu daha hızlı çıkar; 2 dakika iyi bir dengedir."
 
-#: src/Admin/Strings.php:942
+#: src/Admin/Strings.php:974
 msgid "2 minutes"
 msgstr "2 dakika"
 
-#: src/Admin/Strings.php:944
+#: src/Admin/Strings.php:976
 msgid "10 minutes"
 msgstr "10 dakika"
 
-#: src/Admin/Strings.php:945
+#: src/Admin/Strings.php:977
 msgid "Test connection"
 msgstr "Bağlantıyı dene"
 
-#: src/Admin/Strings.php:946
+#: src/Admin/Strings.php:978
 msgid "The DNS records were updated."
 msgstr "DNS kayıtları güncellendi."
 
-#: src/Admin/Strings.php:947
+#: src/Admin/Strings.php:979
 msgid "Update DNS now"
 msgstr "DNS'i şimdi güncelle"
 
-#: src/Admin/Strings.php:948
+#: src/Admin/Strings.php:980
 msgid "Save the changes first."
 msgstr "Önce değişiklikleri kaydedin."
 
 #. translators: %s: DNS zone
-#: src/Admin/Strings.php:950
+#: src/Admin/Strings.php:982
 #, php-format
 msgid "Connected, zone %s"
 msgstr "Bağlandı, bölge %s"
 
 #. translators: %s: list of nameservers
-#: src/Admin/Strings.php:952
+#: src/Admin/Strings.php:984
 #, php-format
 msgid "nameservers: %s"
 msgstr "ad sunucuları: %s"
 
 #. translators: %s: relative time
-#: src/Admin/Strings.php:954
+#: src/Admin/Strings.php:986
 #, php-format
 msgid "DNS records updated %s"
 msgstr "DNS kayıtları %s güncellendi"
 
 #. translators: %s: host name
-#: src/Admin/Strings.php:956
+#: src/Admin/Strings.php:988
 #, php-format
 msgid "by %s"
 msgstr "%s tarafından"
 
 #. translators: %s: error message
-#: src/Admin/Strings.php:958
+#: src/Admin/Strings.php:990
 #, php-format
 msgid "The DNS records could not be updated: %s"
 msgstr "DNS kayıtları güncellenemedi: %s"
 
-#: src/Admin/Strings.php:959
+#: src/Admin/Strings.php:991
 msgid "The records will be updated in a moment."
 msgstr "Kayıtlar birazdan güncellenecek."
 
-#: src/Admin/Strings.php:960
+#: src/Admin/Strings.php:992
 msgid "DNS records"
 msgstr "DNS kayıtları"
 
-#: src/Admin/Strings.php:961
+#: src/Admin/Strings.php:993
 msgid "The technical subdomains always point to their own host. The main address answers by the visitor's location."
 msgstr "Teknik alt alan adları her zaman kendi sunucularını gösterir. Ana adres ziyaretçinin konumuna göre yanıt verir."
 
-#: src/Admin/Strings.php:962
+#: src/Admin/Strings.php:994
 msgid "Rafoo creates these records in the DNS service and keeps them up to date."
 msgstr "Rafoo bu kayıtları DNS hizmetinde oluşturur ve güncel tutar."
 
-#: src/Admin/Strings.php:963
+#: src/Admin/Strings.php:995
 msgid "The zone of each host. Rafoo writes them for hosts with a login; create the rest by hand."
 msgstr "Her sunucunun bölgesi. Rafoo girişi olan sunucular için yazar; kalanını elle oluşturun."
 
-#: src/Admin/Strings.php:964
+#: src/Admin/Strings.php:996
 msgid "Create these records in your DNS. Use geography rules for the main address."
 msgstr "Bu kayıtları DNS'inizde oluşturun. Ana adres için coğrafi kurallar kullanın."
 
-#: src/Admin/Strings.php:965
+#: src/Admin/Strings.php:997
 msgid "Choose and save a routing method first."
 msgstr "Önce bir yönlendirme yöntemi seçip kaydedin."
 
 #. translators: %s: host name
-#: src/Admin/Strings.php:967
+#: src/Admin/Strings.php:999
 #, php-format
 msgid "Zone on %s"
 msgstr "%s üzerindeki bölge"
 
-#: src/Admin/Strings.php:968
+#: src/Admin/Strings.php:1000
 msgid "Record name"
 msgstr "Kayıt adı"
 
-#: src/Admin/Strings.php:970
+#: src/Admin/Strings.php:1002
 msgid "Value"
 msgstr "Değer"
 
-#: src/Admin/Strings.php:971
+#: src/Admin/Strings.php:1003
 msgid "Visitors from"
 msgstr "Ziyaretçiler"
 
-#: src/Admin/Strings.php:972
+#: src/Admin/Strings.php:1004
 msgid "Host"
 msgstr "Sunucu"
 
 #. translators: %s: site address
-#: src/Admin/Strings.php:974
+#: src/Admin/Strings.php:1006
 #, php-format
 msgid "Answers for %s"
 msgstr "%s için yanıtlar"
 
-#: src/Admin/Strings.php:975
+#: src/Admin/Strings.php:1007
 msgid "Technical subdomains"
 msgstr "Teknik alt alan adları"
 
-#: src/Admin/Strings.php:976
+#: src/Admin/Strings.php:1008
 msgid "Nameservers"
 msgstr "Ad sunucuları"
 
-#: src/Admin/Strings.php:977
+#: src/Admin/Strings.php:1009
 msgid "At the domain registrar, set the nameservers to the ones of the DNS service (\"Test connection\" shows them)."
 msgstr "Alan adı kayıt firmasında ad sunucularını DNS hizmetininkilerle değiştirin (\"Bağlantıyı dene\" bunları gösterir)."
 
-#: src/Admin/Strings.php:978
+#: src/Admin/Strings.php:1010
 msgid "At the domain registrar, list the nameservers of the main host and of every copy together, for example two of the main host and one or two of each copy. Each host must already have the main domain added, so its DNS holds the zone."
 msgstr "Alan adı kayıt firmasında ana sunucunun ve her kopyanın ad sunucularını birlikte girin; örneğin ana sunucudan iki, her kopyadan bir veya iki. Ana alan adı her sunucuya önceden eklenmiş olmalı ki DNS bölgeyi tutsun."
 
-#: src/Admin/Strings.php:979
+#: src/Admin/Strings.php:1011
 msgid "Keep the nameservers of the DNS you use, and check that it answers by location."
 msgstr "Kullandığınız DNS'in ad sunucularını koruyun ve konuma göre yanıt verdiğini denetleyin."
 
-#: src/Admin/Strings.php:980
+#: src/Admin/Strings.php:1012
 msgid "Live DNS check"
 msgstr "Canlı DNS denetimi"
 
-#: src/Admin/Strings.php:981
+#: src/Admin/Strings.php:1013
 msgid "Each host asks the nameservers of the domain directly. Different hosts may get different answers; that is how geo DNS works."
 msgstr "Her sunucu alan adının ad sunucularına doğrudan sorar. Farklı sunucular farklı yanıtlar alabilir; coğrafi DNS böyle çalışır."
 
-#: src/Admin/Strings.php:982
+#: src/Admin/Strings.php:1014
 msgid "What the world sees for your domain, from every host."
 msgstr "Dünyanın alan adınız için gördüğü, her sunucudan."
 
-#: src/Admin/Strings.php:984
+#: src/Admin/Strings.php:1016
 msgid "Not checked yet."
 msgstr "Henüz denetlenmedi."
 
 #. translators: %s: date and time
-#: src/Admin/Strings.php:986
+#: src/Admin/Strings.php:1018
 #, php-format
 msgid "Checked %s"
 msgstr "%s tarihinde denetlendi"
 
 #. translators: %s: host name
-#: src/Admin/Strings.php:988
+#: src/Admin/Strings.php:1020
 #, php-format
 msgid "Seen from %s"
 msgstr "%s açısından"
 
-#: src/Admin/Strings.php:989
+#: src/Admin/Strings.php:1021
 msgid "No answer"
 msgstr "Yanıt yok"
 
 #. translators: %s: DNS zone
-#: src/Admin/Strings.php:991
+#: src/Admin/Strings.php:1023
 #, php-format
 msgid "Zone %s"
 msgstr "Bölge %s"
 
-#: src/Admin/Strings.php:992
+#: src/Admin/Strings.php:1024
 msgid "The nameservers of the domain could not be found."
 msgstr "Alan adının ad sunucuları bulunamadı."
 
-#: src/Admin/Strings.php:993
+#: src/Admin/Strings.php:1025
 msgid "does not answer"
 msgstr "yanıt vermiyor"
 
-#: src/Admin/Strings.php:994
+#: src/Admin/Strings.php:1026
 msgid "no A record"
 msgstr "A kaydı yok"
 
-#: src/Admin/Strings.php:995
+#: src/Admin/Strings.php:1027
 msgid "One of your hosts"
 msgstr "Sunucularınızdan biri"
 
-#: src/Admin/Strings.php:996 src/Admin/Strings.php:1274
+#: src/Admin/Strings.php:1028 src/Admin/Strings.php:1306
 msgid "Unknown address"
 msgstr "Bilinmeyen adres"
 
-#: src/Admin/Strings.php:997
+#: src/Admin/Strings.php:1029
 msgid "Correct"
 msgstr "Doğru"
 
 #. translators: %s: IP address
-#: src/Admin/Strings.php:999
+#: src/Admin/Strings.php:1031
 #, php-format
 msgid "Should be %s"
 msgstr "%s olmalı"
 
 #. translators: %s: list of IP addresses
-#: src/Admin/Strings.php:1001
+#: src/Admin/Strings.php:1033
 #, php-format
 msgid "This host's own resolver answers: %s"
 msgstr "Bu sunucunun kendi çözümleyicisinin yanıtı: %s"
 
-#: src/Admin/Strings.php:1002
+#: src/Admin/Strings.php:1034
 msgid "Google"
 msgstr "Google"
 
-#: src/Admin/Strings.php:1003
+#: src/Admin/Strings.php:1035
 msgid "Bing"
 msgstr "Bing"
 
-#: src/Admin/Strings.php:1004
+#: src/Admin/Strings.php:1036
 msgid "Yandex"
 msgstr "Yandex"
 
-#: src/Admin/Strings.php:1005
+#: src/Admin/Strings.php:1037
 msgid "Apple"
 msgstr "Apple"
 
-#: src/Admin/Strings.php:1006
+#: src/Admin/Strings.php:1038
 msgid "Other bots"
 msgstr "Diğer botlar"
 
-#: src/Admin/Strings.php:1007
+#: src/Admin/Strings.php:1039
 msgid "Search engines"
 msgstr "Arama motorları"
 
-#: src/Admin/Strings.php:1008
+#: src/Admin/Strings.php:1040
 msgid "Every host shows the same pages at the same address. The technical subdomains redirect to the main address and are marked noindex, so search engines see one site."
 msgstr "Her sunucu aynı sayfaları aynı adreste gösterir. Teknik alt alan adları ana adrese yönlenir ve noindex işaretlidir; arama motorları tek site görür."
 
-#: src/Admin/Strings.php:1009
+#: src/Admin/Strings.php:1041
 msgid "Checks that every host looks the same to search engines, and how bots crawl each host."
 msgstr "Her sunucunun arama motorlarına aynı göründüğünü ve botların her sunucuyu nasıl taradığını denetler."
 
-#: src/Admin/Strings.php:1010
+#: src/Admin/Strings.php:1042
 msgid "Run the checks"
 msgstr "Denetimleri çalıştır"
 
-#: src/Admin/Strings.php:1011
+#: src/Admin/Strings.php:1043
 msgid "The checks have not run yet."
 msgstr "Denetimler henüz çalışmadı."
 
-#: src/Admin/Strings.php:1012
+#: src/Admin/Strings.php:1044
 msgid "Technical address redirects"
 msgstr "Teknik adres yönlendiriyor"
 
-#: src/Admin/Strings.php:1013
+#: src/Admin/Strings.php:1045
 msgid "Same robots.txt and sitemap"
 msgstr "Aynı robots.txt ve site haritası"
 
-#: src/Admin/Strings.php:1014
+#: src/Admin/Strings.php:1046
 msgid "Canonical address"
 msgstr "Kanonik adres"
 
-#: src/Admin/Strings.php:1015
+#: src/Admin/Strings.php:1047
 msgid "Home page indexable"
 msgstr "Ana sayfa dizinlenebilir"
 
-#: src/Admin/Strings.php:1016
+#: src/Admin/Strings.php:1048
 msgid "OK"
 msgstr "Tamam"
 
-#: src/Admin/Strings.php:1017
+#: src/Admin/Strings.php:1049
 msgid "Problem"
 msgstr "Sorun"
 
-#: src/Admin/Strings.php:1018
+#: src/Admin/Strings.php:1050
 msgid "Different"
 msgstr "Farklı"
 
-#: src/Admin/Strings.php:1019
+#: src/Admin/Strings.php:1051
 msgid "Marked noindex"
 msgstr "noindex işaretli"
 
 #. translators: %d: HTTP status code
-#: src/Admin/Strings.php:1021
+#: src/Admin/Strings.php:1053
 #, php-format
 msgid "HTTP %d"
 msgstr "HTTP %d"
 
-#: src/Admin/Strings.php:1022
+#: src/Admin/Strings.php:1054
 msgid "Crawling in the last 7 days"
 msgstr "Son 7 gündeki tarama"
 
-#: src/Admin/Strings.php:1023
+#: src/Admin/Strings.php:1055
 msgid "No search engine bot has visited the hosts yet."
 msgstr "Henüz hiçbir arama motoru botu sunuculara gelmedi."
 
-#: src/Admin/Strings.php:1024
+#: src/Admin/Strings.php:1056
 msgid "Bot"
 msgstr "Bot"
 
-#: src/Admin/Strings.php:1026
+#: src/Admin/Strings.php:1058
 msgid "Answers"
 msgstr "Yanıtlar"
 
-#: src/Admin/Strings.php:1028
+#: src/Admin/Strings.php:1060
 msgid "Genuine / fake"
 msgstr "Gerçek / sahte"
 
-#: src/Admin/Strings.php:1029
+#: src/Admin/Strings.php:1061
 msgid "Last visit"
 msgstr "Son ziyaret"
 
 #. translators: %d: milliseconds
-#: src/Admin/Strings.php:1031
+#: src/Admin/Strings.php:1063
 #, php-format
 msgid "%d ms"
 msgstr "%d ms"
 
 #. translators: 1: number of verified bot addresses, 2: number of fake ones
-#: src/Admin/Strings.php:1033
+#: src/Admin/Strings.php:1065
 #, php-format
 msgid "%1$d / %2$d"
 msgstr "%1$d / %2$d"
 
 #. translators: 1: host name, 2: relative time
-#: src/Admin/Strings.php:1035
+#: src/Admin/Strings.php:1067
 #, php-format
 msgid "A certificate check file was taken from %1$s %2$s."
 msgstr "Bir sertifika doğrulama dosyası %2$s %1$s sunucusundan alındı."
 
 #. translators: %s: technical address
-#: src/Admin/Strings.php:1037
+#: src/Admin/Strings.php:1069
 #, php-format
 msgid "This site became the main host (%s)"
 msgstr "Bu site ana sunucu oldu (%s)"
 
 #. translators: %s: technical address
-#: src/Admin/Strings.php:1039
+#: src/Admin/Strings.php:1071
 #, php-format
 msgid "A copy was added: %s"
 msgstr "Bir kopya eklendi: %s"
 
 #. translators: %s: technical address
-#: src/Admin/Strings.php:1041
+#: src/Admin/Strings.php:1073
 #, php-format
 msgid "The copy is ready: %s"
 msgstr "Kopya hazır: %s"
 
 #. translators: %s: technical address
-#: src/Admin/Strings.php:1043
+#: src/Admin/Strings.php:1075
 #, php-format
 msgid "A copy was removed: %s"
 msgstr "Bir kopya kaldırıldı: %s"
 
-#: src/Admin/Strings.php:1044
+#: src/Admin/Strings.php:1076
 msgid "The group of hosts ended on this site"
 msgstr "Bu sitede sunucu grubu sona erdi"
 
 #. translators: %s: domain
-#: src/Admin/Strings.php:1046
+#: src/Admin/Strings.php:1078
 #, php-format
 msgid "DNS records updated for %s"
 msgstr "%s için DNS kayıtları güncellendi"
 
 #. translators: %s: error message
-#: src/Admin/Strings.php:1048
+#: src/Admin/Strings.php:1080
 #, php-format
 msgid "DNS update failed: %s"
 msgstr "DNS güncellemesi başarısız: %s"
 
-#: src/Admin/Strings.php:1049
+#: src/Admin/Strings.php:1081
 msgid "How to make the technical address"
 msgstr "Teknik adres nasıl oluşturulur"
 
-#: src/Admin/Strings.php:1050
+#: src/Admin/Strings.php:1082
 msgid "Pick a short subdomain for this host, for example ir.example.com."
 msgstr "Bu sunucu için kısa bir alt alan adı seçin, örneğin ir.example.com."
 
-#: src/Admin/Strings.php:1051
+#: src/Admin/Strings.php:1083
 msgid "In cPanel open Domains, then Create a New Domain, enter the subdomain and keep \"Share document root\" checked. In DirectAdmin open Domain Setup, then Domain Pointers, and add it as an alias of the main domain."
 msgstr "cPanel'de Domains, ardından Create a New Domain'i açın, alt alan adını girin ve \"Share document root\" işaretli kalsın. DirectAdmin'de Domain Setup, ardından Domain Pointers'ı açın ve ana alan adının takma adı (alias) olarak ekleyin."
 
-#: src/Admin/Strings.php:1052
+#: src/Admin/Strings.php:1084
 msgid "Make sure the DNS has an A record for the subdomain with the IP of this host. cPanel and DirectAdmin usually add it themselves."
 msgstr "DNS'te alt alan adı için bu sunucunun IP'sini gösteren bir A kaydı olduğundan emin olun. cPanel ve DirectAdmin genellikle bunu kendisi ekler."
 
-#: src/Admin/Strings.php:1053
+#: src/Admin/Strings.php:1085
 msgid "Turn on an SSL certificate for the subdomain (AutoSSL in cPanel, Let's Encrypt in DirectAdmin)."
 msgstr "Alt alan adı için SSL sertifikasını açın (cPanel'de AutoSSL, DirectAdmin'de Let's Encrypt)."
 
-#: src/Admin/Strings.php:1054
+#: src/Admin/Strings.php:1086
 msgid "Enter the address below. Rafoo checks that it really opens this same site."
 msgstr "Adresi aşağıya girin. Rafoo bunun gerçekten bu siteyi açtığını denetler."
 
-#: src/Admin/Strings.php:1055
+#: src/Admin/Strings.php:1087
 msgid "Opening the subdomain in a browser takes you to the main address. That is expected."
 msgstr "Alt alan adını tarayıcıda açmak sizi ana adrese götürür. Bu beklenen davranıştır."
 
-#: src/Admin/Strings.php:1056
+#: src/Admin/Strings.php:1088
 msgid "How to prepare the copy host"
 msgstr "Kopya sunucusu nasıl hazırlanır"
 
-#: src/Admin/Strings.php:1057
+#: src/Admin/Strings.php:1089
 msgid "Add your main domain (example.com) to this host, as the main or an addon domain. The copy must be able to serve it."
 msgstr "Ana alan adınızı (example.com) bu sunucuya ana veya ek alan adı olarak ekleyin. Kopyanın onu sunabilmesi gerekir."
 
-#: src/Admin/Strings.php:1058
+#: src/Admin/Strings.php:1090
 msgid "Add a technical subdomain such as de.example.com on the same folder, and create its A record with this host's IP in the DNS the domain uses now. Do not change the main domain's records yet."
 msgstr "Aynı klasörde de.example.com gibi bir teknik alt alan adı ekleyin ve alan adının şu an kullandığı DNS'te bu sunucunun IP'siyle A kaydını oluşturun. Ana alan adının kayıtlarını henüz değiştirmeyin."
 
-#: src/Admin/Strings.php:1059
+#: src/Admin/Strings.php:1091
 msgid "Turn on SSL for the subdomain, then install WordPress at https://de.example.com with any admin user."
 msgstr "Alt alan adı için SSL'i açın, sonra herhangi bir yönetici kullanıcıyla WordPress'i https://de.example.com adresine kurun."
 
-#: src/Admin/Strings.php:1060
+#: src/Admin/Strings.php:1092
 msgid "Install and activate Rafoo 1.4 or newer, open Geo DNS, choose \"This host will be a copy\" and make the code."
 msgstr "Rafoo 1.4 veya daha yenisini kurup etkinleştirin, Geo DNS'i açın, \"Bu sunucu bir kopya olacak\"ı seçin ve kodu oluşturun."
 
-#: src/Admin/Strings.php:1061
+#: src/Admin/Strings.php:1093
 msgid "Paste the code on the main site. The main site sends itself here; this can take from a few minutes to an hour for large sites."
 msgstr "Kodu ana siteye yapıştırın. Ana site kendini buraya gönderir; büyük sitelerde bu birkaç dakikadan bir saate kadar sürebilir."
 
-#: src/Admin/Strings.php:1062
+#: src/Admin/Strings.php:1094
 msgid "Steps to add a copy"
 msgstr "Kopya ekleme adımları"
 
-#: src/Admin/Strings.php:1063
+#: src/Admin/Strings.php:1095
 msgid "Prepare the new host: add your main domain and a technical subdomain such as de.example.com, then install WordPress and Rafoo on the subdomain."
 msgstr "Yeni sunucuyu hazırlayın: ana alan adınızı ve de.example.com gibi bir teknik alt alan adı ekleyin, sonra WordPress ve Rafoo'yu alt alan adına kurun."
 
-#: src/Admin/Strings.php:1064
+#: src/Admin/Strings.php:1096
 msgid "In Rafoo on the new host, open Geo DNS, choose \"This host will be a copy\" and make a join code."
 msgstr "Yeni sunucudaki Rafoo'da Geo DNS'i açın, \"Bu sunucu bir kopya olacak\"ı seçin ve bir katılım kodu oluşturun."
 
-#: src/Admin/Strings.php:1065
+#: src/Admin/Strings.php:1097
 msgid "Paste the code here, choose the country of that host and press \"Add and copy the site\"."
 msgstr "Kodu buraya yapıştırın, o sunucunun ülkesini seçin ve \"Ekle ve siteyi kopyala\"ya basın."
 
-#: src/Admin/Strings.php:1066
+#: src/Admin/Strings.php:1098
 msgid "When the copy is healthy, choose the routing method below. Until then visitors keep reaching this host only."
 msgstr "Kopya sağlıklı olunca aşağıdan yönlendirme yöntemini seçin. O zamana kadar ziyaretçiler yalnızca bu sunucuya ulaşır."
 
-#: src/Admin/Strings.php:1067
+#: src/Admin/Strings.php:1099
 msgid "The new host needs enough disk space for the whole site and its database."
 msgstr "Yeni sunucunun sitenin tamamı ve veritabanı için yeterli disk alanı olmalı."
 
-#: src/Admin/Strings.php:1068
+#: src/Admin/Strings.php:1100
 msgid "Sign in at panel.arvancloud.ir, open CDN, choose \"Add new domain\" and add your domain. Note the two nameservers it shows."
 msgstr "panel.arvancloud.ir'de oturum açın, CDN'i açın, \"Add new domain\" ile alan adınızı ekleyin. Gösterilen iki ad sunucusunu not edin."
 
-#: src/Admin/Strings.php:1069
+#: src/Admin/Strings.php:1101
 msgid "Open Profile, then Settings, then Machine user. Create a machine user, give it access to CDN, and make an API key for it."
 msgstr "Profile, Settings, ardından Machine user'ı açın. Bir makine kullanıcısı oluşturun, ona CDN erişimi verin ve bir API anahtarı oluşturun."
 
-#: src/Admin/Strings.php:1070
+#: src/Admin/Strings.php:1102
 msgid "Copy the whole key, including the word \"Apikey\", paste it below and save."
 msgstr "\"Apikey\" kelimesi dahil anahtarın tamamını kopyalayın, aşağıya yapıştırıp kaydedin."
 
-#: src/Admin/Strings.php:1071
+#: src/Admin/Strings.php:1103
 msgid "Press \"Test connection\", then set the domain's nameservers to ArvanCloud's at the registrar."
 msgstr "\"Bağlantıyı dene\"ye basın, sonra kayıt firmasında alan adının ad sunucularını ArvanCloud'unkilerle değiştirin."
 
-#: src/Admin/Strings.php:1072
+#: src/Admin/Strings.php:1104
 msgid "Sign up at gcore.com, open DNS and add your domain as a zone. The free plan is enough."
 msgstr "gcore.com'a kaydolun, DNS'i açın ve alan adınızı bölge olarak ekleyin. Ücretsiz plan yeterlidir."
 
-#: src/Admin/Strings.php:1073
+#: src/Admin/Strings.php:1105
 msgid "Click the avatar at the top, open Profile, then API tokens, and create a token with a role that can edit DNS zones."
 msgstr "Üstteki avatara tıklayın, Profile ve ardından API tokens'ı açın, DNS bölgelerini düzenleyebilen bir rolle belirteç oluşturun."
 
-#: src/Admin/Strings.php:1074
+#: src/Admin/Strings.php:1106
 msgid "Copy the token (it is shown only once), paste it below and save."
 msgstr "Belirteci kopyalayın (yalnızca bir kez gösterilir), aşağıya yapıştırıp kaydedin."
 
-#: src/Admin/Strings.php:1075
+#: src/Admin/Strings.php:1107
 msgid "Press \"Test connection\", then set the domain's nameservers to Gcore's at the registrar."
 msgstr "\"Bağlantıyı dene\"ye basın, sonra kayıt firmasında ad sunucularını Gcore'unkilerle değiştirin."
 
-#: src/Admin/Strings.php:1076
+#: src/Admin/Strings.php:1108
 msgid "Add the domain to Cloudflare and turn on the Load Balancing add-on (paid)."
 msgstr "Alan adını Cloudflare'e ekleyin ve Load Balancing eklentisini (ücretli) açın."
 
-#: src/Admin/Strings.php:1077
+#: src/Admin/Strings.php:1109
 msgid "Open My Profile, then API Tokens, then Create Token, and choose a custom token with: Zone · Zone · Read, Zone · DNS · Edit, Zone · Load Balancers · Edit, Account · Load Balancing: Monitors and Pools · Edit."
 msgstr "My Profile, API Tokens, ardından Create Token'ı açın ve şu izinlerle özel belirteç oluşturun: Zone · Zone · Read, Zone · DNS · Edit, Zone · Load Balancers · Edit, Account · Load Balancing: Monitors and Pools · Edit."
 
-#: src/Admin/Strings.php:1078
+#: src/Admin/Strings.php:1110
 msgid "Limit the token to this zone and account, create it, then paste it below and save."
 msgstr "Belirteci bu bölge ve hesapla sınırlayın, oluşturun, sonra aşağıya yapıştırıp kaydedin."
 
-#: src/Admin/Strings.php:1079
+#: src/Admin/Strings.php:1111
 msgid "Press \"Test connection\". Rafoo makes the records \"DNS only\", so visitors reach your hosts directly."
 msgstr "\"Bağlantıyı dene\"ye basın. Rafoo kayıtları \"DNS only\" yapar, böylece ziyaretçiler sunucularınıza doğrudan ulaşır."
 
-#: src/Admin/Strings.php:1080
+#: src/Admin/Strings.php:1112
 msgid "In the AWS console open Route 53, then Hosted zones, and create a public hosted zone for your domain. Note its four nameservers."
 msgstr "AWS konsolunda Route 53, ardından Hosted zones'u açın ve alan adınız için genel bir hosted zone oluşturun. Dört ad sunucusunu not edin."
 
-#: src/Admin/Strings.php:1081
+#: src/Admin/Strings.php:1113
 msgid "In IAM create a user without console access and give it only: route53:ListHostedZonesByName, route53:GetHostedZone, route53:ListResourceRecordSets and route53:ChangeResourceRecordSets."
 msgstr "IAM'de konsol erişimi olmayan bir kullanıcı oluşturun ve yalnızca şunları verin: route53:ListHostedZonesByName, route53:GetHostedZone, route53:ListResourceRecordSets ve route53:ChangeResourceRecordSets."
 
-#: src/Admin/Strings.php:1082
+#: src/Admin/Strings.php:1114
 msgid "Under Security credentials create an access key for an application outside AWS, and copy both values."
 msgstr "Security credentials altında AWS dışındaki bir uygulama için erişim anahtarı oluşturun ve iki değeri de kopyalayın."
 
-#: src/Admin/Strings.php:1083
+#: src/Admin/Strings.php:1115
 msgid "Paste them below, save, press \"Test connection\", then set the four nameservers at the registrar."
 msgstr "Aşağıya yapıştırıp kaydedin, \"Bağlantıyı dene\"ye basın, sonra dört ad sunucusunu kayıt firmasında ayarlayın."
 
-#: src/Admin/Strings.php:1084
+#: src/Admin/Strings.php:1116
 msgid "Sign in at bunny.net, open DNS and add your domain as a DNS zone."
 msgstr "bunny.net'te oturum açın, DNS'i açın ve alan adınızı DNS bölgesi olarak ekleyin."
 
-#: src/Admin/Strings.php:1085
+#: src/Admin/Strings.php:1117
 msgid "Open Account settings, then API, and copy the account API key."
 msgstr "Account settings, ardından API'yi açın ve hesap API anahtarını kopyalayın."
 
-#: src/Admin/Strings.php:1086
+#: src/Admin/Strings.php:1118
 msgid "Paste it below, save and press \"Test connection\"."
 msgstr "Aşağıya yapıştırın, kaydedin ve \"Bağlantıyı dene\"ye basın."
 
-#: src/Admin/Strings.php:1087
+#: src/Admin/Strings.php:1119
 msgid "Set the domain's nameservers to Bunny's at the registrar."
 msgstr "Kayıt firmasında ad sunucularını Bunny'ninkilerle değiştirin."
 
-#: src/Admin/Strings.php:1088
+#: src/Admin/Strings.php:1120
 msgid "Sign in to cPanel on the host and open Security, then Manage API Tokens."
 msgstr "Sunucudaki cPanel'e girin ve Security, ardından Manage API Tokens'ı açın."
 
-#: src/Admin/Strings.php:1089
+#: src/Admin/Strings.php:1121
 msgid "Press Create, give the token a name and create it. Copy it right away; it is shown only once."
 msgstr "Create'e basın, belirtece bir ad verip oluşturun. Hemen kopyalayın; yalnızca bir kez gösterilir."
 
-#: src/Admin/Strings.php:1090
+#: src/Admin/Strings.php:1122
 msgid "Enter the panel address (for example https://example.com:2083), your cPanel username and the token."
 msgstr "Panel adresini (örneğin https://example.com:2083), cPanel kullanıcı adınızı ve belirteci girin."
 
-#: src/Admin/Strings.php:1091 src/Admin/Strings.php:1095
+#: src/Admin/Strings.php:1123 src/Admin/Strings.php:1127
 msgid "Do this for every host, save, and press \"Test connection\"."
 msgstr "Bunu her sunucu için yapın, kaydedin ve \"Bağlantıyı dene\"ye basın."
 
-#: src/Admin/Strings.php:1092
+#: src/Admin/Strings.php:1124
 msgid "Sign in to DirectAdmin on the host and open Advanced Features, then Login Keys."
 msgstr "Sunucudaki DirectAdmin'e girin ve Advanced Features, ardından Login Keys'i açın."
 
-#: src/Admin/Strings.php:1093
+#: src/Admin/Strings.php:1125
 msgid "Create a key that never expires and allow only the command CMD_API_DNS_CONTROL."
 msgstr "Süresi dolmayan bir anahtar oluşturun ve yalnızca CMD_API_DNS_CONTROL komutuna izin verin."
 
-#: src/Admin/Strings.php:1094
+#: src/Admin/Strings.php:1126
 msgid "Enter the panel address (for example https://example.com:2222), your DirectAdmin username and the key."
 msgstr "Panel adresini (örneğin https://example.com:2222), DirectAdmin kullanıcı adınızı ve anahtarı girin."
 
-#: src/Admin/Strings.php:1096
+#: src/Admin/Strings.php:1128
 msgid "How to create an A record in cPanel"
 msgstr "cPanel'de A kaydı nasıl oluşturulur"
 
-#: src/Admin/Strings.php:1097
+#: src/Admin/Strings.php:1129
 msgid "Sign in to cPanel and open Domains, then Zone Editor."
 msgstr "cPanel'e girin ve Domains, ardından Zone Editor'ü açın."
 
-#: src/Admin/Strings.php:1098
+#: src/Admin/Strings.php:1130
 msgid "Press Manage next to your domain."
 msgstr "Alan adınızın yanındaki Manage'e basın."
 
-#: src/Admin/Strings.php:1099
+#: src/Admin/Strings.php:1131
 msgid "If an A record with the same name exists, press Edit; otherwise press Add Record and choose A."
 msgstr "Aynı adlı bir A kaydı varsa Edit'e basın; yoksa Add Record'a basıp A'yı seçin."
 
-#: src/Admin/Strings.php:1100
+#: src/Admin/Strings.php:1132
 msgid "Enter the name and the IP from the table, set the TTL, and save. Keep only one A record per name."
 msgstr "Tablodaki adı ve IP'yi girin, TTL'yi ayarlayıp kaydedin. Her ad için yalnızca bir A kaydı bırakın."
 
-#: src/Admin/Strings.php:1101
+#: src/Admin/Strings.php:1133
 msgid "How to create an A record in DirectAdmin"
 msgstr "DirectAdmin'de A kaydı nasıl oluşturulur"
 
-#: src/Admin/Strings.php:1102
+#: src/Admin/Strings.php:1134
 msgid "Sign in to DirectAdmin and open Account Manager, then DNS Management."
 msgstr "DirectAdmin'e girin ve Account Manager, ardından DNS Management'ı açın."
 
-#: src/Admin/Strings.php:1103
+#: src/Admin/Strings.php:1135
 msgid "Delete the old A record with the same name, if there is one."
 msgstr "Aynı adlı eski bir A kaydı varsa silin."
 
-#: src/Admin/Strings.php:1104
+#: src/Admin/Strings.php:1136
 msgid "Press Add Record, choose A, and enter the name and the IP from the table."
 msgstr "Add Record'a basın, A'yı seçin ve tablodaki adı ve IP'yi girin."
 
-#: src/Admin/Strings.php:1105
+#: src/Admin/Strings.php:1137
 msgid "Save. For the main domain itself, use the domain name followed by a dot (example.com.) or leave the name empty, as your panel shows."
 msgstr "Kaydedin. Ana alan adının kendisi için panelinizin gösterdiği gibi sonunda nokta olan alan adını (example.com.) kullanın veya adı boş bırakın."
 
-#: src/Admin/Strings.php:1106
+#: src/Admin/Strings.php:1138
 msgid "DNS changes can take as long as the old TTL to be seen everywhere."
 msgstr "DNS değişikliklerinin her yerde görünmesi eski TTL kadar sürebilir."
 
-#: src/Admin/Strings.php:1107
+#: src/Admin/Strings.php:1139
 msgid "How to change nameservers at IRNIC (.ir domains)"
 msgstr "IRNIC'te ad sunucuları nasıl değiştirilir (.ir alan adları)"
 
-#: src/Admin/Strings.php:1108
+#: src/Admin/Strings.php:1140
 msgid "Add the domain on the DNS service or on every host first. IRNIC checks that the new nameservers already answer for the domain."
 msgstr "Önce alan adını DNS hizmetine veya her sunucuya ekleyin. IRNIC yeni ad sunucularının alan adı için yanıt verdiğini denetler."
 
-#: src/Admin/Strings.php:1109
+#: src/Admin/Strings.php:1141
 msgid "Sign in at nic.ir with your IRNIC handle and password."
 msgstr "IRNIC tanıtıcınız ve parolanızla nic.ir'de oturum açın."
 
-#: src/Admin/Strings.php:1110
+#: src/Admin/Strings.php:1142
 msgid "Open your domains, choose the domain and open the nameserver (DNS servers) section."
 msgstr "Alan adlarınızı açın, alan adını seçin ve ad sunucuları (DNS) bölümünü açın."
 
-#: src/Admin/Strings.php:1111
+#: src/Admin/Strings.php:1143
 msgid "Enter the new nameservers, remove the old ones and submit."
 msgstr "Yeni ad sunucularını girin, eskileri kaldırın ve gönderin."
 
-#: src/Admin/Strings.php:1112
+#: src/Admin/Strings.php:1144
 msgid "If you bought the domain from a reseller, change the nameservers in the reseller's panel instead. The change usually takes a few hours."
 msgstr "Alan adını bir bayiden aldıysanız ad sunucularını bayinin panelinden değiştirin. Değişiklik genellikle birkaç saat sürer."
 
-#: src/Admin/Strings.php:1113
+#: src/Admin/Strings.php:1145
 msgid "How to change nameservers at other registrars"
 msgstr "Diğer kayıt firmalarında ad sunucuları nasıl değiştirilir"
 
-#: src/Admin/Strings.php:1114
+#: src/Admin/Strings.php:1146
 msgid "Sign in where you bought the domain and open the domain's settings."
 msgstr "Alan adını aldığınız yerde oturum açın ve alan adı ayarlarını açın."
 
-#: src/Admin/Strings.php:1115
+#: src/Admin/Strings.php:1147
 msgid "Find Nameservers (sometimes called DNS or Custom DNS)."
 msgstr "Nameservers bölümünü bulun (bazen DNS veya Custom DNS denir)."
 
-#: src/Admin/Strings.php:1116
+#: src/Admin/Strings.php:1148
 msgid "Choose custom nameservers, enter the new ones and save."
 msgstr "Özel ad sunucularını seçin, yenilerini girip kaydedin."
 
-#: src/Admin/Strings.php:1117
+#: src/Admin/Strings.php:1149
 msgid "The change can take up to a day. Press \"Check now\" below to see when it is live."
 msgstr "Değişiklik bir güne kadar sürebilir. Ne zaman etkin olduğunu görmek için aşağıdaki \"Şimdi denetle\"ye basın."
 
-#: src/Admin/Strings.php:1118
+#: src/Admin/Strings.php:1150
 msgid "Google Search Console with several hosts"
 msgstr "Birden çok sunucuyla Google Search Console"
 
-#: src/Admin/Strings.php:1119
+#: src/Admin/Strings.php:1151
 msgid "Add a \"Domain\" property for your domain. It covers every host and every address of the site."
 msgstr "Alan adınız için \"Domain\" türünde bir mülk ekleyin. Tüm sunucuları ve sitenin tüm adreslerini kapsar."
 
-#: src/Admin/Strings.php:1120
+#: src/Admin/Strings.php:1152
 msgid "Google asks for a TXT record. Add it in the DNS service, or in the zone of every host when you use the control panel method."
 msgstr "Google bir TXT kaydı ister. Bunu DNS hizmetine veya kontrol paneli yönteminde her sunucunun bölgesine ekleyin."
 
-#: src/Admin/Strings.php:1121
+#: src/Admin/Strings.php:1153
 msgid "Submit only the sitemap of the main address. Never add the technical subdomains as properties."
 msgstr "Yalnızca ana adresin site haritasını gönderin. Teknik alt alan adlarını asla mülk olarak eklemeyin."
 
-#: src/Admin/Strings.php:1122
+#: src/Admin/Strings.php:1154
 msgid "Googlebot crawls mostly from the United States, so it usually reaches the copy nearest to it. The crawl table below shows this."
 msgstr "Googlebot çoğunlukla ABD'den tarar, bu yüzden genellikle ona en yakın kopyaya ulaşır. Aşağıdaki tarama tablosu bunu gösterir."
 
-#: src/Admin/Strings.php:1123
+#: src/Admin/Strings.php:1155
 msgid "Security plugins and firewalls"
 msgstr "Güvenlik eklentileri ve güvenlik duvarları"
 
-#: src/Admin/Strings.php:1124
+#: src/Admin/Strings.php:1156
 msgid "Hosts talk to each other often. A security plugin (such as Wordfence) or a server firewall (such as Imunify360 or ModSecurity) may block them."
 msgstr "Sunucular sık sık birbirleriyle konuşur. Bir güvenlik eklentisi (Wordfence gibi) veya sunucu güvenlik duvarı (Imunify360, ModSecurity gibi) bunları engelleyebilir."
 
-#: src/Admin/Strings.php:1125
+#: src/Admin/Strings.php:1157
 msgid "Add the IP of every host to the allowlist of each plugin and firewall."
 msgstr "Her sunucunun IP'sini her eklentinin ve güvenlik duvarının izin listesine ekleyin."
 
-#: src/Admin/Strings.php:1126
+#: src/Admin/Strings.php:1158
 msgid "Do not block admin-ajax.php?action=rafoo_geo or ?rafoo-ping. These requests are signed and answer only Rafoo."
 msgstr "admin-ajax.php?action=rafoo_geo veya ?rafoo-ping'i engellemeyin. Bu istekler imzalıdır ve yalnızca Rafoo'ya yanıt verir."
 
-#: src/Admin/Strings.php:1127
+#: src/Admin/Strings.php:1159
 msgid "If a host blocks foreign or Iranian addresses, ask the host to allow the IPs of your other hosts. The hosts card above shows which host cannot reach which."
 msgstr "Bir sunucu yabancı veya İran adreslerini engelliyorsa, diğer sunucularınızın IP'lerine izin vermesini isteyin. Yukarıdaki sunucular kartı hangisinin hangisine ulaşamadığını gösterir."
 
-#: src/Admin/Strings.php:1128
+#: src/Admin/Strings.php:1160
 msgid "SSL certificates on every host"
 msgstr "Her sunucuda SSL sertifikası"
 
-#: src/Admin/Strings.php:1129
+#: src/Admin/Strings.php:1161
 msgid "Every host needs its own certificate for the main domain and its technical subdomain. Turn on AutoSSL or Let's Encrypt on each host."
 msgstr "Her sunucunun ana alan adı ve teknik alt alan adı için kendi sertifikası olmalı. Her sunucuda AutoSSL veya Let's Encrypt'i açın."
 
-#: src/Admin/Strings.php:1130
+#: src/Admin/Strings.php:1162
 msgid "With geo DNS the certificate authority may reach another host. Rafoo fetches the check file from the other hosts, so issuing still works."
 msgstr "Coğrafi DNS ile sertifika yetkilisi başka bir sunucuya ulaşabilir. Rafoo doğrulama dosyasını diğer sunuculardan getirir, böylece sertifika yine verilir."
 
-#: src/Admin/Strings.php:1131
+#: src/Admin/Strings.php:1163
 msgid "If a host still fails, try again after DNS has spread, or use the certificate of your DNS or CDN service."
 msgstr "Bir sunucu yine başarısız olursa DNS yayıldıktan sonra yeniden deneyin veya DNS ya da CDN hizmetinizin sertifikasını kullanın."
 
-#: src/Admin/Strings.php:1133
+#: src/Admin/Strings.php:1165
 msgid "Beta"
 msgstr "Beta"
 
-#: src/Admin/Strings.php:1134
+#: src/Admin/Strings.php:1166
 msgid "This part is in beta. It passed every test on test servers, and tests on real hosts and DNS services are still going on. Please report any problem from the Feedback tab."
 msgstr "Bu bölüm beta aşamasında. Test sunucularındaki tüm testleri geçti; gerçek sunucular ve DNS hizmetleri üzerindeki testler sürüyor. Lütfen her sorunu Geri bildirim sekmesinden bildirin."
 
-#: src/Admin/Strings.php:1136
+#: src/Admin/Strings.php:1168
 msgid "Africa"
 msgstr "Afrika"
 
-#: src/Admin/Strings.php:1137
+#: src/Admin/Strings.php:1169
 msgid "Antarctica"
 msgstr "Antarktika"
 
-#: src/Admin/Strings.php:1138
+#: src/Admin/Strings.php:1170
 msgid "Asia"
 msgstr "Asya"
 
-#: src/Admin/Strings.php:1139
+#: src/Admin/Strings.php:1171
 msgid "Europe"
 msgstr "Avrupa"
 
-#: src/Admin/Strings.php:1140
+#: src/Admin/Strings.php:1172
 msgid "North America"
 msgstr "Kuzey Amerika"
 
-#: src/Admin/Strings.php:1141
+#: src/Admin/Strings.php:1173
 msgid "Oceania"
 msgstr "Okyanusya"
 
-#: src/Admin/Strings.php:1142
+#: src/Admin/Strings.php:1174
 msgid "South America"
 msgstr "Güney Amerika"
 
-#: src/Admin/Strings.php:1144 src/Admin/Strings.php:1145
+#: src/Admin/Strings.php:1176 src/Admin/Strings.php:1177
 msgid "Outage rehearsal"
 msgstr "Kesinti provası"
 
-#: src/Admin/Strings.php:1146
+#: src/Admin/Strings.php:1178
 msgid "See your site exactly as it would work if the international internet went down today, and fix every problem before a real outage."
 msgstr "Uluslararası internet bugün kesilseydi sitenizin nasıl çalışacağını tam olarak görün ve gerçek bir kesintiden önce her sorunu düzeltin."
 
-#: src/Admin/Strings.php:1147
+#: src/Admin/Strings.php:1179
 msgid "Only you see the outage. Visitors, search engines and the page cache keep the normal site."
 msgstr "Kesinti yalnızca sizin için canlandırılır. Ziyaretçiler, arama motorları ve sayfa önbelleği normal siteyi görür."
 
-#: src/Admin/Strings.php:1148
+#: src/Admin/Strings.php:1180
 msgid "Rafoo opens your important pages, records every outside file, server request and error, and names the plugin or theme behind each one."
 msgstr "Rafoo önemli sayfalarınızı açar, her dış dosyayı, sunucu isteğini ve hatayı kaydeder ve her birinin arkasındaki eklentiyi veya temayı gösterir."
 
-#: src/Admin/Strings.php:1149
+#: src/Admin/Strings.php:1181
 msgid "Most problems are fixed with one button: download a library or font, turn on a protection, or block a foreign address."
 msgstr "Çoğu sorun tek düğmeyle çözülür: bir kütüphane veya yazı tipi indirin, bir korumayı açın ya da yabancı bir adresi engelleyin."
 
-#: src/Admin/Strings.php:1150
+#: src/Admin/Strings.php:1182
 msgid "The international internet is down right now, so the rehearsal shows the real situation."
 msgstr "Uluslararası internet şu anda kesik; bu yüzden prova gerçek durumu gösterir."
 
-#: src/Admin/Strings.php:1151
+#: src/Admin/Strings.php:1183
 msgid "Start a rehearsal"
 msgstr "Provayı başlat"
 
-#: src/Admin/Strings.php:1152 src/Drill/Api.php:168
+#: src/Admin/Strings.php:1184 src/Drill/Api.php:168
 msgid "Rafoo is paused. Resume it first, then run the rehearsal."
 msgstr "Rafoo duraklatıldı. Önce sürdürün, ardından provayı çalıştırın."
 
-#: src/Admin/Strings.php:1153
+#: src/Admin/Strings.php:1185
 msgid "How to test"
 msgstr "Nasıl test edilsin"
 
-#: src/Admin/Strings.php:1155
+#: src/Admin/Strings.php:1187
 msgid "Rafoo opens the chosen pages one by one here and builds the report. About 5 to 10 seconds per page."
 msgstr "Rafoo seçilen sayfaları burada tek tek açar ve raporu oluşturur. Sayfa başına yaklaşık 5-10 saniye."
 
-#: src/Admin/Strings.php:1156
+#: src/Admin/Strings.php:1188
 msgid "Browse yourself"
 msgstr "Kendiniz gezin"
 
-#: src/Admin/Strings.php:1157
+#: src/Admin/Strings.php:1189
 msgid "For 15 minutes your browser sees the outage on any page. Try forms, the cart or payment, then finish to get the report."
 msgstr "15 dakika boyunca tarayıcınız her sayfada kesintiyi görür. Formları, sepeti veya ödemeyi deneyin, ardından rapor için provayı bitirin."
 
-#: src/Admin/Strings.php:1158
+#: src/Admin/Strings.php:1190
 msgid "Pages to test"
 msgstr "Test edilecek sayfalar"
 
-#: src/Admin/Strings.php:1159
+#: src/Admin/Strings.php:1191
 msgid "Site"
 msgstr "Site"
 
-#: src/Admin/Strings.php:1160
+#: src/Admin/Strings.php:1192
 msgid "Store"
 msgstr "Mağaza"
 
-#: src/Admin/Strings.php:1161 src/Admin/Strings.php:1171
+#: src/Admin/Strings.php:1193 src/Admin/Strings.php:1203
 msgid "Dashboard"
 msgstr "Yönetim paneli"
 
-#: src/Admin/Strings.php:1162
+#: src/Admin/Strings.php:1194
 msgid "Home page"
 msgstr "Ana sayfa"
 
-#: src/Admin/Strings.php:1163
+#: src/Admin/Strings.php:1195
 msgid "Latest post"
 msgstr "Son yazı"
 
-#: src/Admin/Strings.php:1164
+#: src/Admin/Strings.php:1196
 msgid "A page"
 msgstr "Bir sayfa"
 
-#: src/Admin/Strings.php:1165
+#: src/Admin/Strings.php:1197
 msgid "Shop"
 msgstr "Mağaza"
 
-#: src/Admin/Strings.php:1166
+#: src/Admin/Strings.php:1198
 msgid "A product"
 msgstr "Bir ürün"
 
-#: src/Admin/Strings.php:1167
+#: src/Admin/Strings.php:1199
 msgid "Cart"
 msgstr "Sepet"
 
-#: src/Admin/Strings.php:1168
+#: src/Admin/Strings.php:1200
 msgid "Checkout"
 msgstr "Ödeme"
 
-#: src/Admin/Strings.php:1169
+#: src/Admin/Strings.php:1201
 msgid "My account"
 msgstr "Hesabım"
 
-#: src/Admin/Strings.php:1170
+#: src/Admin/Strings.php:1202
 msgid "Login"
 msgstr "Giriş"
 
-#: src/Admin/Strings.php:1172
+#: src/Admin/Strings.php:1204
 msgid "Post editor"
 msgstr "Yazı düzenleyici"
 
-#: src/Admin/Strings.php:1173
+#: src/Admin/Strings.php:1205
 msgid "Other pages"
 msgstr "Diğer sayfalar"
 
-#: src/Admin/Strings.php:1174
+#: src/Admin/Strings.php:1206
 msgid "/contact/"
 msgstr "/contact/"
 
-#: src/Admin/Strings.php:1175
+#: src/Admin/Strings.php:1207
 msgid "Up to 5 addresses on this site, one per line, for example /contact/ or a landing page."
 msgstr "Bu siteden en fazla 5 adres, her satıra bir tane; örneğin /contact/ veya bir açılış sayfası."
 
-#: src/Admin/Strings.php:1176
+#: src/Admin/Strings.php:1208
 msgid "Compare with normal mode"
 msgstr "Normal modla karşılaştır"
 
-#: src/Admin/Strings.php:1177
+#: src/Admin/Strings.php:1209
 msgid "Each page is opened once normally and once in outage mode, so errors that already exist are not blamed on the outage."
 msgstr "Her sayfa bir kez normal, bir kez kesinti modunda açılır; böylece zaten var olan hatalar kesintiye yüklenmez."
 
-#: src/Admin/Strings.php:1178
+#: src/Admin/Strings.php:1210
 msgid "See pages as a visitor"
 msgstr "Sayfaları ziyaretçi gibi gör"
 
-#: src/Admin/Strings.php:1179
+#: src/Admin/Strings.php:1211
 msgid "Public pages are built as for a visitor who is not logged in. Dashboard pages still use your account."
 msgstr "Herkese açık sayfalar giriş yapmamış bir ziyaretçi için oluşturulur. Yönetim sayfaları yine hesabınızla açılır."
 
-#: src/Admin/Strings.php:1180
+#: src/Admin/Strings.php:1212
 msgid "Start the rehearsal"
 msgstr "Provayı başlat"
 
-#: src/Admin/Strings.php:1181
+#: src/Admin/Strings.php:1213
 msgid "Start 15 minutes of outage"
 msgstr "15 dakikalık kesintiyi başlat"
 
-#: src/Admin/Strings.php:1182
+#: src/Admin/Strings.php:1214
 msgid "Nothing changes for visitors and no setting is changed without your click."
 msgstr "Ziyaretçiler için hiçbir şey değişmez ve tıklamanız olmadan hiçbir ayar değiştirilmez."
 
-#: src/Admin/Strings.php:1183
+#: src/Admin/Strings.php:1215
 msgid "Rehearsal in progress"
 msgstr "Prova sürüyor"
 
 #. translators: %1$d: page number, %2$d: total pages, %3$s: page name
-#: src/Admin/Strings.php:1185
+#: src/Admin/Strings.php:1217
 #, php-format
 msgid "Page %1$d of %2$d: %3$s"
 msgstr "Sayfa %1$d / %2$d: %3$s"
 
-#: src/Admin/Strings.php:1186
+#: src/Admin/Strings.php:1218
 msgid "Building the report…"
 msgstr "Rapor hazırlanıyor…"
 
-#: src/Admin/Strings.php:1187
+#: src/Admin/Strings.php:1219
 msgid "Stop the rehearsal"
 msgstr "Provayı durdur"
 
-#: src/Admin/Strings.php:1188
+#: src/Admin/Strings.php:1220
 msgid "Opening the page in normal mode for comparison."
 msgstr "Karşılaştırma için sayfa normal modda açılıyor."
 
-#: src/Admin/Strings.php:1189
+#: src/Admin/Strings.php:1221
 msgid "Opening the page as if the international internet were down."
 msgstr "Sayfa uluslararası internet kesikmiş gibi açılıyor."
 
-#: src/Admin/Strings.php:1190
+#: src/Admin/Strings.php:1222
 msgid "Checking server records, finding the plugins behind each problem and scoring the site."
 msgstr "Sunucu kayıtları inceleniyor, her sorunun arkasındaki eklentiler bulunuyor ve site puanlanıyor."
 
-#: src/Admin/Strings.php:1192
+#: src/Admin/Strings.php:1224
 msgid "Normal mode…"
 msgstr "Normal mod…"
 
-#: src/Admin/Strings.php:1193
+#: src/Admin/Strings.php:1225
 msgid "Outage mode…"
 msgstr "Kesinti modu…"
 
 #. translators: %d: number of addresses
-#: src/Admin/Strings.php:1195
+#: src/Admin/Strings.php:1227
 #, php-format
 msgid "%d stopped by Rafoo"
 msgstr "Rafoo %d isteği durdurdu"
 
-#: src/Admin/Strings.php:1196
+#: src/Admin/Strings.php:1228
 msgid "Live preview, visible only to you"
 msgstr "Canlı önizleme, yalnızca size görünür"
 
-#: src/Admin/Strings.php:1197
+#: src/Admin/Strings.php:1229
 msgid "Opened"
 msgstr "Açıldı"
 
-#: src/Admin/Strings.php:1198
+#: src/Admin/Strings.php:1230
 msgid "Not shown in preview"
 msgstr "Önizlemede açılmadı"
 
-#: src/Admin/Strings.php:1199
+#: src/Admin/Strings.php:1231
 msgid "Took over 30 seconds"
 msgstr "30 saniyeden uzun sürdü"
 
-#: src/Admin/Strings.php:1200
+#: src/Admin/Strings.php:1232
 msgid "Could not open"
 msgstr "Açılamadı"
 
-#: src/Admin/Strings.php:1201
+#: src/Admin/Strings.php:1233
 msgid "Not tested"
 msgstr "Test edilmedi"
 
-#: src/Admin/Strings.php:1202
+#: src/Admin/Strings.php:1234
 msgid "Visited"
 msgstr "Ziyaret edildi"
 
-#: src/Admin/Strings.php:1203
+#: src/Admin/Strings.php:1235
 msgid "Outage is on for your browser"
 msgstr "Tarayıcınız için kesinti açık"
 
 #. translators: %d: minutes
-#: src/Admin/Strings.php:1205
+#: src/Admin/Strings.php:1237
 #, php-format
 msgid "%d minutes left. Visitors still see the normal site."
 msgstr "%d dakika kaldı. Ziyaretçiler hâlâ normal siteyi görüyor."
 
-#: src/Admin/Strings.php:1206
+#: src/Admin/Strings.php:1238
 msgid "Open the site in a new tab. A small note at the corner shows that the rehearsal is on."
 msgstr "Siteyi yeni sekmede açın. Köşedeki küçük not provanın açık olduğunu gösterir."
 
-#: src/Admin/Strings.php:1207
+#: src/Admin/Strings.php:1239
 msgid "Go through what matters to you: search, forms, the cart, checkout and payment."
 msgstr "Sizin için önemli olanları deneyin: arama, formlar, sepet, ödeme adımı ve ödeme."
 
-#: src/Admin/Strings.php:1208
+#: src/Admin/Strings.php:1240
 msgid "Come back here and finish the rehearsal to see the report."
 msgstr "Buraya dönün ve raporu görmek için provayı bitirin."
 
-#: src/Admin/Strings.php:1209
+#: src/Admin/Strings.php:1241
 msgid "Open the site"
 msgstr "Siteyi aç"
 
-#: src/Admin/Strings.php:1210
+#: src/Admin/Strings.php:1242
 msgid "Finish and show the report"
 msgstr "Bitir ve raporu göster"
 
-#: src/Admin/Strings.php:1211
+#: src/Admin/Strings.php:1243
 msgid "The rehearsal was interrupted"
 msgstr "Prova yarıda kaldı"
 
-#: src/Admin/Strings.php:1212
+#: src/Admin/Strings.php:1244
 msgid "The page was closed or reloaded during the rehearsal. Run it again or stop it."
 msgstr "Prova sırasında sayfa kapatıldı veya yenilendi. Yeniden çalıştırın ya da durdurun."
 
-#: src/Admin/Strings.php:1213
+#: src/Admin/Strings.php:1245
 msgid "Run again"
 msgstr "Yeniden çalıştır"
 
-#: src/Admin/Strings.php:1214
+#: src/Admin/Strings.php:1246
 msgid "Rehearsal result"
 msgstr "Prova sonucu"
 
 #. translators: %1$s: date, %2$d: number of pages
-#: src/Admin/Strings.php:1216
+#: src/Admin/Strings.php:1248
 #, php-format
 msgid "%1$s · %2$d pages"
 msgstr "%1$s · %2$d sayfa"
 
-#: src/Admin/Strings.php:1217
+#: src/Admin/Strings.php:1249
 msgid "of 100"
 msgstr "/ 100"
 
-#: src/Admin/Strings.php:1218
+#: src/Admin/Strings.php:1250
 msgid "Ready for an outage"
 msgstr "Kesintiye hazır"
 
-#: src/Admin/Strings.php:1219
+#: src/Admin/Strings.php:1251
 msgid "Mostly ready"
 msgstr "Büyük ölçüde hazır"
 
-#: src/Admin/Strings.php:1220
+#: src/Admin/Strings.php:1252
 msgid "Needs work"
 msgstr "İyileştirme gerekli"
 
-#: src/Admin/Strings.php:1221
+#: src/Admin/Strings.php:1253
 msgid "Not ready"
 msgstr "Hazır değil"
 
-#: src/Admin/Strings.php:1222
+#: src/Admin/Strings.php:1254
 msgid "Visitors in Iran can use the tested pages during an outage without waiting or broken parts."
 msgstr "İran içindeki ziyaretçiler kesinti sırasında test edilen sayfaları beklemeden ve bozuk parça olmadan kullanabilir."
 
-#: src/Admin/Strings.php:1223
+#: src/Admin/Strings.php:1255
 msgid "The site works during an outage, with a few slow or missing parts listed below."
 msgstr "Site kesinti sırasında çalışır; aşağıda birkaç yavaş veya eksik parça listelenmiştir."
 
-#: src/Admin/Strings.php:1224
+#: src/Admin/Strings.php:1256
 msgid "Important parts break or keep visitors waiting during an outage. Fix the items below first."
 msgstr "Kesinti sırasında önemli parçalar bozuluyor veya ziyaretçiyi bekletiyor. Önce aşağıdakileri düzeltin."
 
-#: src/Admin/Strings.php:1225
+#: src/Admin/Strings.php:1257
 msgid "During an outage the tested pages would not work for most visitors. Start with the problems that must be fixed."
 msgstr "Kesinti sırasında test edilen sayfalar çoğu ziyaretçi için çalışmaz. Düzeltilmesi gereken sorunlarla başlayın."
 
 #. translators: %1$s: normal load time, %2$s: outage load time
-#: src/Admin/Strings.php:1227
+#: src/Admin/Strings.php:1259
 #, php-format
 msgid "Average load: %1$s normally, %2$s during the outage."
 msgstr "Ortalama yükleme: normalde %1$s, kesintide %2$s."
 
-#: src/Admin/Strings.php:1228
+#: src/Admin/Strings.php:1260
 msgid "Built from the pages you visited during the rehearsal."
 msgstr "Prova sırasında ziyaret ettiğiniz sayfalardan oluşturuldu."
 
-#: src/Admin/Strings.php:1229
+#: src/Admin/Strings.php:1261
 msgid "Must fix"
 msgstr "Düzeltilmeli"
 
-#: src/Admin/Strings.php:1230
+#: src/Admin/Strings.php:1262
 msgid "Should fix"
 msgstr "Düzeltilmesi iyi olur"
 
-#: src/Admin/Strings.php:1231
+#: src/Admin/Strings.php:1263
 msgid "Handled by Rafoo"
 msgstr "Rafoo halletti"
 
-#: src/Admin/Strings.php:1232
+#: src/Admin/Strings.php:1264
 msgid "Outside requests stopped at once"
 msgstr "Hemen durdurulan dış istekler"
 
-#: src/Admin/Strings.php:1233
+#: src/Admin/Strings.php:1265
 msgid "Served from your server"
 msgstr "Sunucunuzdan sunuldu"
 
-#: src/Admin/Strings.php:1234
+#: src/Admin/Strings.php:1266
 msgid "Libraries and fonts used locally"
 msgstr "Yerel kullanılan kütüphane ve yazı tipleri"
 
 #. translators: %d: number of items
-#: src/Admin/Strings.php:1236
+#: src/Admin/Strings.php:1268
 #, php-format
 msgid "Must fix (%d)"
 msgstr "Düzeltilmeli (%d)"
 
 #. translators: %d: number of items
-#: src/Admin/Strings.php:1238
+#: src/Admin/Strings.php:1270
 #, php-format
 msgid "Should fix (%d)"
 msgstr "Düzeltilmesi iyi olur (%d)"
 
 #. translators: %d: number of items
-#: src/Admin/Strings.php:1240
+#: src/Admin/Strings.php:1272
 #, php-format
 msgid "Good to know (%d)"
 msgstr "Bilginize (%d)"
 
 #. translators: %d: number of items
-#: src/Admin/Strings.php:1242
+#: src/Admin/Strings.php:1274
 #, php-format
 msgid "Handled by Rafoo (%d)"
 msgstr "Rafoo halletti (%d)"
 
-#: src/Admin/Strings.php:1243
+#: src/Admin/Strings.php:1275
 msgid "Important"
 msgstr "Önemli"
 
-#: src/Admin/Strings.php:1244
+#: src/Admin/Strings.php:1276
 msgid "Worth fixing"
 msgstr "Önerilir"
 
-#: src/Admin/Strings.php:1245
+#: src/Admin/Strings.php:1277
 msgid "Optional"
 msgstr "İsteğe bağlı"
 
-#: src/Admin/Strings.php:1246
+#: src/Admin/Strings.php:1278
 msgid "Handled"
 msgstr "Halledildi"
 
 #. translators: %d: number of items
-#: src/Admin/Strings.php:1248
+#: src/Admin/Strings.php:1280
 #, php-format
 msgid "Show what Rafoo handled (%d)"
 msgstr "Rafoo'nun hallettiklerini göster (%d)"
 
-#: src/Admin/Strings.php:1249
+#: src/Admin/Strings.php:1281
 msgid "No problem was found on the tested pages."
 msgstr "Test edilen sayfalarda sorun bulunmadı."
 
-#: src/Admin/Strings.php:1250
+#: src/Admin/Strings.php:1282
 msgid "Blocks the page"
 msgstr "Sayfayı bekletir"
 
-#: src/Admin/Strings.php:1251
+#: src/Admin/Strings.php:1283
 msgid "Fixed. Run again to confirm"
 msgstr "Düzeltildi. Doğrulamak için yeniden çalıştırın"
 
 #. translators: %s: list of pages
-#: src/Admin/Strings.php:1253
+#: src/Admin/Strings.php:1285
 #, php-format
 msgid "On: %s"
 msgstr "Sayfalar: %s"
 
 #. translators: %s: error message
-#: src/Admin/Strings.php:1255
+#: src/Admin/Strings.php:1287
 #, php-format
 msgid "Last download error: %s"
 msgstr "Son indirme hatası: %s"
 
 #. translators: %s: plugin name
-#: src/Admin/Strings.php:1257
+#: src/Admin/Strings.php:1289
 #, php-format
 msgid "Plugin: %s"
 msgstr "Eklenti: %s"
 
 #. translators: %s: theme name
-#: src/Admin/Strings.php:1259
+#: src/Admin/Strings.php:1291
 #, php-format
 msgid "Theme: %s"
 msgstr "Tema: %s"
 
-#: src/Admin/Strings.php:1260
+#: src/Admin/Strings.php:1292
 msgid "WordPress itself"
 msgstr "WordPress'in kendisi"
 
 #. translators: %s: number of seconds
-#: src/Admin/Strings.php:1262
+#: src/Admin/Strings.php:1294
 #, php-format
 msgid "%s s"
 msgstr "%s sn"
 
 #. translators: %d: HTTP status code
-#: src/Admin/Strings.php:1264
+#: src/Admin/Strings.php:1296
 #, php-format
 msgid "Code %d"
 msgstr "Kod %d"
 
-#: src/Admin/Strings.php:1265
+#: src/Admin/Strings.php:1297
 msgid "Library from a foreign CDN"
 msgstr "Yabancı CDN'den kütüphane"
 
-#: src/Admin/Strings.php:1267
+#: src/Admin/Strings.php:1299
 msgid "Profile pictures from Gravatar"
 msgstr "Gravatar profil resimleri"
 
-#: src/Admin/Strings.php:1268
+#: src/Admin/Strings.php:1300
 msgid "Foreign captcha"
 msgstr "Yabancı captcha"
 
-#: src/Admin/Strings.php:1269
+#: src/Admin/Strings.php:1301
 msgid "Video or map embed"
 msgstr "Gömülü video veya harita"
 
-#: src/Admin/Strings.php:1270
+#: src/Admin/Strings.php:1302
 msgid "Analytics or ads script"
 msgstr "Analiz veya reklam betiği"
 
-#: src/Admin/Strings.php:1271
+#: src/Admin/Strings.php:1303
 msgid "Social login"
 msgstr "Sosyal giriş"
 
-#: src/Admin/Strings.php:1272
+#: src/Admin/Strings.php:1304
 msgid "WordPress files from abroad"
 msgstr "Yurt dışından WordPress dosyaları"
 
-#: src/Admin/Strings.php:1273
+#: src/Admin/Strings.php:1305
 msgid "Foreign service"
 msgstr "Yabancı hizmet"
 
-#: src/Admin/Strings.php:1275
+#: src/Admin/Strings.php:1307
 msgid "Server request to a foreign address"
 msgstr "Yabancı adrese sunucu isteği"
 
-#: src/Admin/Strings.php:1276
+#: src/Admin/Strings.php:1308
 msgid "Server request to an unknown address"
 msgstr "Bilinmeyen adrese sunucu isteği"
 
-#: src/Admin/Strings.php:1277
+#: src/Admin/Strings.php:1309
 msgid "PHP error"
 msgstr "PHP hatası"
 
-#: src/Admin/Strings.php:1278
+#: src/Admin/Strings.php:1310
 msgid "Page error"
 msgstr "Sayfa hatası"
 
-#: src/Admin/Strings.php:1279
+#: src/Admin/Strings.php:1311
 msgid "Slow page on the server"
 msgstr "Sunucuda yavaş sayfa"
 
-#: src/Admin/Strings.php:1280
+#: src/Admin/Strings.php:1312
 msgid "JavaScript error"
 msgstr "JavaScript hatası"
 
-#: src/Admin/Strings.php:1281
+#: src/Admin/Strings.php:1313
 msgid "Page came from the cache"
 msgstr "Sayfa önbellekten geldi"
 
-#: src/Admin/Strings.php:1282
+#: src/Admin/Strings.php:1314
 msgid "Page not shown in the preview"
 msgstr "Sayfa önizlemede görünmedi"
 
-#: src/Admin/Strings.php:1283
+#: src/Admin/Strings.php:1315
 msgid "This library loads from a foreign CDN and does not open during an outage. Download it once to the Rafoo library and the local copy takes its place."
 msgstr "Bu kütüphane yabancı bir CDN'den yüklenir ve kesintide açılmaz. Rafoo kütüphanesine bir kez indirin, yerel kopya onun yerini alır."
 
-#: src/Admin/Strings.php:1284
+#: src/Admin/Strings.php:1316
 msgid "This font file still loads from Google. During an outage text waits for it, then falls back to another font."
 msgstr "Bu yazı tipi dosyası hâlâ Google'dan yükleniyor. Kesintide metin onu bekler, sonra başka bir yazı tipine geçer."
 
-#: src/Admin/Strings.php:1285
+#: src/Admin/Strings.php:1317
 msgid "Rafoo removed this Google Fonts stylesheet so the page did not wait. Download it to keep the exact look during an outage."
 msgstr "Rafoo bu Google Fonts stil dosyasını kaldırdı, sayfa beklemedi. Kesintide aynı görünüm için indirin."
 
-#: src/Admin/Strings.php:1286
+#: src/Admin/Strings.php:1318
 msgid "Profile pictures come from Gravatar and do not open during an outage. Rafoo can show simple letter avatars instead."
 msgstr "Profil resimleri Gravatar'dan gelir ve kesintide açılmaz. Rafoo yerine basit harf avatarları gösterebilir."
 
-#: src/Admin/Strings.php:1287
+#: src/Admin/Strings.php:1319
 msgid "Google reCAPTCHA or a similar service does not load during an outage, so login and contact forms stop working. Rafoo can put its own captcha in its place."
 msgstr "Google reCAPTCHA veya benzeri kesintide yüklenmez; giriş ve iletişim formları çalışmaz. Rafoo yerine kendi captcha'sını koyabilir."
 
-#: src/Admin/Strings.php:1288
+#: src/Admin/Strings.php:1320
 msgid "A foreign video or map does not show during an outage. Rafoo can replace it with a simple box and a link."
 msgstr "Yabancı video veya harita kesintide görünmez. Rafoo onu basit bir kutu ve bağlantıyla değiştirebilir."
 
-#: src/Admin/Strings.php:1289
+#: src/Admin/Strings.php:1321
 msgid "This analytics or ads script does nothing during an outage and only makes the page slower."
 msgstr "Bu analiz veya reklam betiği kesintide hiçbir şey yapmaz, yalnızca sayfayı yavaşlatır."
 
-#: src/Admin/Strings.php:1290
+#: src/Admin/Strings.php:1322
 msgid "Login with Google or another network does not work during an outage. Rafoo can hide these buttons so visitors use the normal form."
 msgstr "Google veya başka bir ağla giriş kesintide çalışmaz. Rafoo bu düğmeleri gizleyebilir, ziyaretçi normal formu kullanır."
 
-#: src/Admin/Strings.php:1291
+#: src/Admin/Strings.php:1323
 msgid "WordPress loads parts such as emoji from WordPress.org servers. Rafoo can turn these off during an outage."
 msgstr "WordPress emoji gibi parçaları WordPress.org sunucularından yükler. Rafoo bunları kesintide kapatabilir."
 
-#: src/Admin/Strings.php:1292
+#: src/Admin/Strings.php:1324
 msgid "This known foreign service is not reachable during an outage and keeps the page waiting. Block it if the site works without it, or ask the plugin author for an option to turn it off."
 msgstr "Bu bilinen yabancı hizmet kesintide erişilemez ve sayfayı bekletir. Site onsuz çalışıyorsa engelleyin ya da eklenti yazarından kapatma seçeneği isteyin."
 
-#: src/Admin/Strings.php:1293
+#: src/Admin/Strings.php:1325
 msgid "Rafoo does not know this address. If it is abroad, block it. If it is inside Iran, allow it so Rafoo never waits for it."
 msgstr "Rafoo bu adresi tanımıyor. Yurt dışındaysa engelleyin; İran içindeyse Rafoo hiç beklemesin diye izin verin."
 
-#: src/Admin/Strings.php:1294
+#: src/Admin/Strings.php:1326
 msgid "The site called this foreign address from the server. Rafoo refuses such calls at once during an outage, so the page does not wait."
 msgstr "Site bu yabancı adresi sunucudan çağırdı. Rafoo kesintide bu çağrıları hemen reddeder, sayfa beklemez."
 
 #. translators: %s: time
-#: src/Admin/Strings.php:1296
+#: src/Admin/Strings.php:1328
 #, php-format
 msgid "The site called an unknown address from the server (it took %s now). During a real outage each call can wait up to 3 seconds. Block it if it is abroad, or allow it if it is inside Iran."
 msgstr "Site sunucudan bilinmeyen bir adresi çağırdı (şimdi %s sürdü). Gerçek kesintide her çağrı 3 saniyeye kadar bekleyebilir. Yurt dışındaysa engelleyin, İran içindeyse izin verin."
 
-#: src/Admin/Strings.php:1297
+#: src/Admin/Strings.php:1329
 msgid "The page stopped with a PHP error in outage mode. Usually a plugin does not check for a failed internet request. Send this message to the plugin author."
 msgstr "Sayfa kesinti modunda bir PHP hatasıyla durdu. Genellikle bir eklenti başarısız internet isteğini kontrol etmez. Bu mesajı eklenti yazarına gönderin."
 
 #. translators: %d: HTTP status code
-#: src/Admin/Strings.php:1299
+#: src/Admin/Strings.php:1331
 #, php-format
 msgid "In outage mode the page answered with code %d."
 msgstr "Kesinti modunda sayfa %d koduyla yanıt verdi."
 
 #. translators: %s: time
-#: src/Admin/Strings.php:1301
+#: src/Admin/Strings.php:1333
 #, php-format
 msgid "Building the page on the server took %s, which usually means it waited for outside services."
 msgstr "Sayfanın sunucuda oluşturulması %s sürdü; bu genellikle dış hizmetleri beklediği anlamına gelir."
 
-#: src/Admin/Strings.php:1302
+#: src/Admin/Strings.php:1334
 msgid "This error happened only in outage mode. A script probably expects a file or service from abroad."
 msgstr "Bu hata yalnızca kesinti modunda oluştu. Muhtemelen bir betik yurt dışından bir dosya veya hizmet bekliyor."
 
-#: src/Admin/Strings.php:1303
+#: src/Admin/Strings.php:1335
 msgid "This error also happens in normal mode, so it is not caused by the outage."
 msgstr "Bu hata normal modda da oluşuyor; kesintiden kaynaklanmıyor."
 
-#: src/Admin/Strings.php:1304
+#: src/Admin/Strings.php:1336
 msgid "This page came from a page cache, so the outage version was not shown. Clear the cache or exclude this page, then run again."
 msgstr "Bu sayfa sayfa önbelleğinden geldi; kesinti sürümü gösterilmedi. Önbelleği temizleyin veya sayfayı hariç tutun, sonra yeniden çalıştırın."
 
-#: src/Admin/Strings.php:1305
+#: src/Admin/Strings.php:1337
 msgid "A security setting does not let this page open inside another page. The server side was still checked."
 msgstr "Bir güvenlik ayarı bu sayfanın başka bir sayfa içinde açılmasına izin vermiyor. Sunucu tarafı yine de kontrol edildi."
 
-#: src/Admin/Strings.php:1306
+#: src/Admin/Strings.php:1338
 msgid "The page did not finish loading within 30 seconds in outage mode."
 msgstr "Sayfa kesinti modunda 30 saniye içinde yüklenmeyi bitirmedi."
 
-#: src/Admin/Strings.php:1307
+#: src/Admin/Strings.php:1339
 msgid "The page could not be opened in the preview."
 msgstr "Sayfa önizlemede açılamadı."
 
-#: src/Admin/Strings.php:1308
+#: src/Admin/Strings.php:1340
 msgid "This page was not tested because the rehearsal stopped early."
 msgstr "Prova erken durduğu için bu sayfa test edilmedi."
 
-#: src/Admin/Strings.php:1309
+#: src/Admin/Strings.php:1341
 msgid "Rafoo stopped this at once in outage mode, so the page did not wait for it."
 msgstr "Rafoo bunu kesinti modunda hemen durdurdu, sayfa beklemedi."
 
-#: src/Admin/Strings.php:1310
+#: src/Admin/Strings.php:1342
 msgid "Download to the library"
 msgstr "Kütüphaneye indir"
 
-#: src/Admin/Strings.php:1311
+#: src/Admin/Strings.php:1343
 msgid "Use the local copy again"
 msgstr "Yerel kopyayı yeniden kullan"
 
 #. translators: %s: setting name
-#: src/Admin/Strings.php:1313
+#: src/Admin/Strings.php:1345
 #, php-format
 msgid "Turn on: %s"
 msgstr "Aç: %s"
 
 #. translators: %s: host name
-#: src/Admin/Strings.php:1315
+#: src/Admin/Strings.php:1347
 #, php-format
 msgid "Block %s"
 msgstr "%s adresini engelle"
 
-#: src/Admin/Strings.php:1316
+#: src/Admin/Strings.php:1348
 msgid "It is inside Iran, allow it"
 msgstr "İran içinde, izin ver"
 
-#: src/Admin/Strings.php:1317
+#: src/Admin/Strings.php:1349
 msgid "Scan the site again"
 msgstr "Siteyi yeniden tara"
 
-#: src/Admin/Strings.php:1318
+#: src/Admin/Strings.php:1350
 msgid "Download waiting files now"
 msgstr "Bekleyen dosyaları şimdi indir"
 
-#: src/Admin/Strings.php:1320
+#: src/Admin/Strings.php:1352
 msgid "Done"
 msgstr "Tamam"
 
-#: src/Admin/Strings.php:1321
+#: src/Admin/Strings.php:1353
 msgid "Downloaded"
 msgstr "İndirildi"
 
-#: src/Admin/Strings.php:1322
+#: src/Admin/Strings.php:1354
 msgid "Queued for download"
 msgstr "İndirme sırasında"
 
-#: src/Admin/Strings.php:1323
+#: src/Admin/Strings.php:1355
 msgid "Another download is running"
 msgstr "Başka bir indirme sürüyor"
 
-#: src/Admin/Strings.php:1325 src/Admin/Strings.php:1374
+#: src/Admin/Strings.php:1357 src/Admin/Strings.php:1406
 msgid "Pages"
 msgstr "Sayfalar"
 
-#: src/Admin/Strings.php:1326
+#: src/Admin/Strings.php:1358
 msgid "Page"
 msgstr "Sayfa"
 
-#: src/Admin/Strings.php:1327
+#: src/Admin/Strings.php:1359
 msgid "Result"
 msgstr "Sonuç"
 
-#: src/Admin/Strings.php:1328
+#: src/Admin/Strings.php:1360
 msgid "Normal load"
 msgstr "Normal yükleme"
 
-#: src/Admin/Strings.php:1329
+#: src/Admin/Strings.php:1361
 msgid "Outage load"
 msgstr "Kesintide yükleme"
 
-#: src/Admin/Strings.php:1331
+#: src/Admin/Strings.php:1363
 msgid "Works"
 msgstr "Çalışıyor"
 
-#: src/Admin/Strings.php:1332
+#: src/Admin/Strings.php:1364
 msgid "Works with issues"
 msgstr "Sorunlarla çalışıyor"
 
-#: src/Admin/Strings.php:1333
+#: src/Admin/Strings.php:1365
 msgid "Breaks"
 msgstr "Bozuluyor"
 
-#: src/Admin/Strings.php:1334
+#: src/Admin/Strings.php:1366
 msgid "Not checked"
 msgstr "Kontrol edilmedi"
 
-#: src/Admin/Strings.php:1335
+#: src/Admin/Strings.php:1367
 msgid "Outage readiness"
 msgstr "Kesinti hazırlığı"
 
-#: src/Admin/Strings.php:1336
+#: src/Admin/Strings.php:1368
 msgid "Every Rafoo protection that matters during an outage is on."
 msgstr "Kesintide önemli olan tüm Rafoo korumaları açık."
 
 #. translators: %d: number of items
-#: src/Admin/Strings.php:1338
+#: src/Admin/Strings.php:1370
 #, php-format
 msgid "%d items can make the site better prepared."
 msgstr "%d madde siteyi daha hazır hale getirebilir."
 
-#: src/Admin/Strings.php:1339
+#: src/Admin/Strings.php:1371
 msgid "Ready"
 msgstr "Hazır"
 
-#: src/Admin/Strings.php:1340
+#: src/Admin/Strings.php:1372
 msgid "Rafoo is running"
 msgstr "Rafoo çalışıyor"
 
-#: src/Admin/Strings.php:1341
+#: src/Admin/Strings.php:1373
 msgid "Rafoo is paused, so nothing is protected during an outage."
 msgstr "Rafoo duraklatıldı; kesintide hiçbir şey korunmuyor."
 
-#: src/Admin/Strings.php:1342
+#: src/Admin/Strings.php:1374
 msgid "Browser protection"
 msgstr "Tarayıcı koruması"
 
-#: src/Admin/Strings.php:1343
+#: src/Admin/Strings.php:1375
 msgid "Without it, scripts that load foreign files on their own keep pages waiting."
 msgstr "Onsuz, kendi başına yabancı dosya yükleyen betikler sayfaları bekletir."
 
-#: src/Admin/Strings.php:1344
+#: src/Admin/Strings.php:1376
 msgid "Local copies of CDN files"
 msgstr "CDN dosyalarının yerel kopyaları"
 
-#: src/Admin/Strings.php:1345
+#: src/Admin/Strings.php:1377
 msgid "Replacing CDN files is off, so downloaded copies are never used."
 msgstr "CDN dosyalarını değiştirme kapalı; indirilen kopyalar hiç kullanılmıyor."
 
-#: src/Admin/Strings.php:1346
+#: src/Admin/Strings.php:1378
 msgid "Find CDN addresses in page HTML"
 msgstr "Sayfa HTML'inde CDN adreslerini bul"
 
-#: src/Admin/Strings.php:1347
+#: src/Admin/Strings.php:1379
 msgid "Files that builders write directly into the page are not replaced."
 msgstr "Sayfa oluşturucuların doğrudan sayfaya yazdığı dosyalar değiştirilmez."
 
-#: src/Admin/Strings.php:1349
+#: src/Admin/Strings.php:1381
 msgid "Text loses its font during an outage."
 msgstr "Metin kesintide yazı tipini kaybeder."
 
-#: src/Admin/Strings.php:1350
+#: src/Admin/Strings.php:1382
 msgid "Library files are downloaded"
 msgstr "Kütüphane dosyaları indirildi"
 
 #. translators: %1$d: waiting files, %2$d: failed files
-#: src/Admin/Strings.php:1352
+#: src/Admin/Strings.php:1384
 #, php-format
 msgid "%1$d files are waiting and %2$d failed. They will not work during an outage until downloaded."
 msgstr "%1$d dosya bekliyor, %2$d başarısız. İndirilene kadar kesintide çalışmazlar."
 
-#: src/Admin/Strings.php:1353
+#: src/Admin/Strings.php:1385
 msgid "Outage detection is running"
 msgstr "Kesinti algılama çalışıyor"
 
-#: src/Admin/Strings.php:1354
+#: src/Admin/Strings.php:1386
 msgid "The connection check has not run recently. Outage mode turns on through WP-Cron, so make sure cron runs on this site."
 msgstr "Bağlantı denetimi son zamanlarda çalışmadı. Kesinti modu WP-Cron ile açılır; bu sitede cron'un çalıştığından emin olun."
 
-#: src/Admin/Strings.php:1355
+#: src/Admin/Strings.php:1387
 msgid "Mail waits during an outage"
 msgstr "Kesintide e-posta bekler"
 
-#: src/Admin/Strings.php:1356
+#: src/Admin/Strings.php:1388
 msgid "Emails sent during an outage may be lost."
 msgstr "Kesinti sırasında gönderilen e-postalar kaybolabilir."
 
-#: src/Admin/Strings.php:1357
+#: src/Admin/Strings.php:1389
 msgid "Updates from the domestic mirror"
 msgstr "Yurt içi aynadan güncelleme"
 
-#: src/Admin/Strings.php:1358
+#: src/Admin/Strings.php:1390
 msgid "WordPress, plugins and themes cannot be updated during an outage."
 msgstr "Kesintide WordPress, eklentiler ve temalar güncellenemez."
 
-#: src/Admin/Strings.php:1359
+#: src/Admin/Strings.php:1391
 msgid "The library has local files"
 msgstr "Kütüphanede yerel dosyalar var"
 
-#: src/Admin/Strings.php:1360
+#: src/Admin/Strings.php:1392
 msgid "No file has been downloaded yet. Scan the site so Rafoo finds the CDN files it uses."
 msgstr "Henüz hiçbir dosya indirilmedi. Rafoo'nun kullanılan CDN dosyalarını bulması için siteyi tarayın."
 
-#: src/Admin/Strings.php:1361
+#: src/Admin/Strings.php:1393
 msgid "The international internet is down now"
 msgstr "Uluslararası internet şu an kesik"
 
-#: src/Admin/Strings.php:1362
+#: src/Admin/Strings.php:1394
 msgid "Resume"
 msgstr "Sürdür"
 
-#: src/Admin/Strings.php:1370
+#: src/Admin/Strings.php:1402
 msgid "Scan now"
 msgstr "Şimdi tara"
 
-#: src/Admin/Strings.php:1371
+#: src/Admin/Strings.php:1403
 msgid "Earlier rehearsals"
 msgstr "Önceki provalar"
 
-#: src/Admin/Strings.php:1373
+#: src/Admin/Strings.php:1405
 msgid "Score"
 msgstr "Puan"
 
-#: src/Admin/Strings.php:1375
+#: src/Admin/Strings.php:1407
 msgid "Found"
 msgstr "Bulunanlar"
 
 #. translators: %1$d: must fix, %2$d: should fix, %3$d: handled
-#: src/Admin/Strings.php:1377
+#: src/Admin/Strings.php:1409
 #, php-format
 msgid "%1$d must fix · %2$d should fix · %3$d handled"
 msgstr "%1$d gerekli · %2$d önerilen · %3$d halledildi"
 
-#: src/Admin/Strings.php:1378
+#: src/Admin/Strings.php:1410
 msgid "How the rehearsal works"
 msgstr "Prova nasıl çalışır"
 
-#: src/Admin/Strings.php:1379
+#: src/Admin/Strings.php:1411
 msgid "Read the steps"
 msgstr "Adımları oku"
 
-#: src/Admin/Strings.php:1380
+#: src/Admin/Strings.php:1412
 msgid "Rafoo gives only your browser a short-lived key. Requests that carry it see outage mode; everyone else sees the normal site."
 msgstr "Rafoo yalnızca tarayıcınıza kısa ömürlü bir anahtar verir. Bu anahtarı taşıyan istekler kesinti modunu görür, diğer herkes normal siteyi."
 
-#: src/Admin/Strings.php:1381
+#: src/Admin/Strings.php:1413
 msgid "In outage mode Rafoo does exactly what it would do in a real outage: local copies, blocked foreign requests, replaced captcha and embeds."
 msgstr "Kesinti modunda Rafoo gerçek kesintide yapacağının aynısını yapar: yerel kopyalar, engellenen yabancı istekler, değiştirilen captcha ve gömülü içerikler."
 
-#: src/Admin/Strings.php:1382
+#: src/Admin/Strings.php:1414
 msgid "Each page is opened in a hidden preview. Rafoo records outside files the browser still loads, server requests to foreign addresses and every error."
 msgstr "Her sayfa bir önizlemede açılır. Rafoo tarayıcının hâlâ yüklediği dış dosyaları, yabancı adreslere sunucu isteklerini ve her hatayı kaydeder."
 
-#: src/Admin/Strings.php:1383
+#: src/Admin/Strings.php:1415
 msgid "Anything that would hang in a real outage is listed with the plugin or theme behind it, found from the call stack or by searching their files."
 msgstr "Gerçek kesintide takılacak her şey, çağrı yığınından veya dosyalarında arayarak bulunan eklenti ya da temasıyla listelenir."
 
-#: src/Admin/Strings.php:1384
+#: src/Admin/Strings.php:1416
 msgid "Fix buttons use Rafoo's own tools: the library downloads CDN files and fonts, settings turn on protections, and block or allow lists teach Rafoo unknown addresses."
 msgstr "Düzeltme düğmeleri Rafoo'nun kendi araçlarını kullanır: kütüphane CDN dosyalarını ve yazı tiplerini indirir, ayarlar korumaları açar, engelleme veya izin listeleri bilinmeyen adresleri Rafoo'ya tanıtır."
 
-#: src/Admin/Strings.php:1385
+#: src/Admin/Strings.php:1417
 msgid "After fixing, run the rehearsal again. The score shows how ready the site is, and earlier runs are kept for comparison."
 msgstr "Düzelttikten sonra provayı yeniden çalıştırın. Puan sitenin ne kadar hazır olduğunu gösterir; önceki çalıştırmalar karşılaştırma için saklanır."
 
-#: src/Admin/Strings.php:1386
+#: src/Admin/Strings.php:1418
 msgid "The rehearsal does not cut your server's internet and does not send anything outside. It ends by itself after 15 minutes."
 msgstr "Prova sunucunuzun internetini kesmez ve dışarıya hiçbir şey göndermez. 15 dakika sonra kendiliğinden biter."
 
-#: src/Admin/Strings.php:1387
+#: src/Admin/Strings.php:1419
 msgid "A safe test that shows how the site behaves during an international outage, only for you, with a list of problems and one-click fixes."
 msgstr "Sitenin uluslararası kesintide nasıl davrandığını yalnızca size gösteren güvenli bir test; sorun listesi ve tek tıkla düzeltmelerle."
 
-#: src/Admin/Strings.php:1388
+#: src/Admin/Strings.php:1420
 msgid "Choose how and what to test. The default pages cover what most visitors open. The settings of the site are not changed by starting a rehearsal."
 msgstr "Nasıl ve neyin test edileceğini seçin. Varsayılan sayfalar çoğu ziyaretçinin açtıklarını kapsar. Provayı başlatmak site ayarlarını değiştirmez."
 
-#: src/Admin/Strings.php:1389
+#: src/Admin/Strings.php:1421
 msgid "Automatic opens the chosen pages here and needs no work from you. Browse yourself lets you test steps that need clicks, such as adding to the cart or paying."
 msgstr "Otomatik, seçilen sayfaları burada açar ve sizden iş istemez. Kendiniz gezin, sepete ekleme veya ödeme gibi tıklama gerektiren adımları test etmenizi sağlar."
 
-#: src/Admin/Strings.php:1390
+#: src/Admin/Strings.php:1422
 msgid "Rafoo finds these pages on your site by itself. Store pages appear when WooCommerce is active. Dashboard pages show what you, as an admin, see during an outage."
 msgstr "Rafoo bu sayfaları sitenizde kendisi bulur. Mağaza sayfaları WooCommerce etkinken görünür. Yönetim sayfaları, yönetici olarak kesintide ne gördüğünüzü gösterir."
 
-#: src/Admin/Strings.php:1391
+#: src/Admin/Strings.php:1423
 msgid "Add any other page of this site, for example a landing page or a form. Addresses on other sites and the logout link are ignored."
 msgstr "Bu sitenin başka bir sayfasını ekleyin, örneğin bir açılış sayfası veya form. Başka sitelerin adresleri ve çıkış bağlantısı yok sayılır."
 
-#: src/Admin/Strings.php:1392
+#: src/Admin/Strings.php:1424
 msgid "Doubles the time, but separates real outage problems from errors that the site already has."
 msgstr "Süreyi ikiye katlar, ancak gerçek kesinti sorunlarını sitede zaten var olan hatalardan ayırır."
 
-#: src/Admin/Strings.php:1393
+#: src/Admin/Strings.php:1425
 msgid "Visitors are not logged in, so some plugins load different files for them. Keep this on to test what your visitors get."
 msgstr "Ziyaretçiler giriş yapmamıştır ve bazı eklentiler onlar için farklı dosyalar yükler. Ziyaretçilerin gördüğünü test etmek için bunu açık tutun."
 
-#: src/Admin/Strings.php:1394
+#: src/Admin/Strings.php:1426
 msgid "The preview is only for you. You can leave this tab open and keep working in another tab until the report is ready."
 msgstr "Önizleme yalnızca sizin içindir. Rapor hazır olana kadar bu sekmeyi açık bırakıp başka bir sekmede çalışabilirsiniz."
 
-#: src/Admin/Strings.php:1395
+#: src/Admin/Strings.php:1427
 msgid "Only this browser sees the outage. Requests from the server, cron and other visitors are not affected. The rehearsal ends by itself when the time is up."
 msgstr "Kesintiyi yalnızca bu tarayıcı görür. Sunucu istekleri, cron ve diğer ziyaretçiler etkilenmez. Süre dolunca prova kendiliğinden biter."
 
-#: src/Admin/Strings.php:1396
+#: src/Admin/Strings.php:1428
 msgid "The score starts at 100. Each problem that must be fixed, each suggested fix and each broken page lowers it. Problems that Rafoo already handled do not lower it."
 msgstr "Puan 100'den başlar. Düzeltilmesi gereken her sorun, her öneri ve her bozuk sayfa puanı düşürür. Rafoo'nun hallettikleri düşürmez."
 
-#: src/Admin/Strings.php:1397
+#: src/Admin/Strings.php:1429
 msgid "These make a page freeze, break a form or stop the page with an error during an outage."
 msgstr "Bunlar kesintide sayfayı dondurur, bir formu bozar veya sayfayı hatayla durdurur."
 
-#: src/Admin/Strings.php:1398
+#: src/Admin/Strings.php:1430
 msgid "The page works, but is slower or loses a part such as a font, an image or a widget."
 msgstr "Sayfa çalışır ama daha yavaştır ya da yazı tipi, resim veya bileşen gibi bir parçayı kaybeder."
 
-#: src/Admin/Strings.php:1399
+#: src/Admin/Strings.php:1431
 msgid "Details that do not hurt visitors, shown so you have the full picture."
 msgstr "Ziyaretçiye zarar vermeyen, tam resmi görmeniz için gösterilen ayrıntılar."
 
-#: src/Admin/Strings.php:1400
+#: src/Admin/Strings.php:1432
 msgid "Foreign requests that Rafoo stopped at once, and parts it replaced. Nothing to do here."
 msgstr "Rafoo'nun hemen durdurduğu yabancı istekler ve değiştirdiği parçalar. Burada yapılacak bir şey yok."
 
-#: src/Admin/Strings.php:1401
+#: src/Admin/Strings.php:1433
 msgid "Load times are measured in your browser. Server time is how long WordPress took to build the page in outage mode."
 msgstr "Yükleme süreleri tarayıcınızda ölçülür. Sunucu süresi, WordPress'in sayfayı kesinti modunda oluşturma süresidir."
 
-#: src/Admin/Strings.php:1402
+#: src/Admin/Strings.php:1434
 msgid "Rafoo protections that matter during an outage. Turning one on here is the same as turning it on in Settings."
 msgstr "Kesintide önemli olan Rafoo korumaları. Birini burada açmak Ayarlar'da açmakla aynıdır."
 
-#: src/Admin/Strings.php:1403
+#: src/Admin/Strings.php:1435
 msgid "The last 10 rehearsals, so you can see whether the site is getting better prepared."
 msgstr "Sitenin daha hazır hale gelip gelmediğini görmeniz için son 10 prova."
 
-#: src/Admin/Strings.php:1404
+#: src/Admin/Strings.php:1436
 msgid "What happens behind the scenes during a rehearsal."
 msgstr "Prova sırasında perde arkasında olanlar."
 
-#: src/Admin/Strings.php:1405
+#: src/Admin/Strings.php:1437
 msgid "Outage rehearsal started"
 msgstr "Kesinti provası başladı"
 
-#: src/Admin/Strings.php:1406
+#: src/Admin/Strings.php:1438
 msgid "Outage rehearsal finished"
 msgstr "Kesinti provası bitti"
 
-#: src/Admin/Strings.php:1407
+#: src/Admin/Strings.php:1439
 msgid "Outage rehearsal stopped"
 msgstr "Kesinti provası durduruldu"
 
-#: src/Admin/Strings.php:1409
+#: src/Admin/Strings.php:1441
 msgid "First check"
 msgstr "Birinci kontrol"
 
-#: src/Admin/Strings.php:1410
+#: src/Admin/Strings.php:1442
 msgid "Second check"
 msgstr "İkinci kontrol"
 
-#: src/Admin/Strings.php:1411
+#: src/Admin/Strings.php:1443
 msgid "Third check"
 msgstr "Üçüncü kontrol"
 
-#: src/Admin/Strings.php:1412
+#: src/Admin/Strings.php:1444
 msgid "First result in a few seconds"
 msgstr "İlk sonuç birkaç saniye içinde"
 
-#: src/Admin/Strings.php:1413 src/Backup/Installer.php:44
+#: src/Admin/Strings.php:1445 src/Backup/Installer.php:44
 msgid "Checking…"
 msgstr "Kontrol ediliyor…"
 
-#: src/Admin/Strings.php:1414
+#: src/Admin/Strings.php:1446
 msgid "Filtered"
 msgstr "Engellenmiş"
 
-#: src/Admin/Strings.php:1416
+#: src/Admin/Strings.php:1448
 msgid "Recheck"
 msgstr "Yeniden kontrol et"
 
-#: src/Admin/Strings.php:1417
+#: src/Admin/Strings.php:1449
 msgid "Your site opens for visitors"
 msgstr "Siteniz ziyaretçiler için açılıyor"
 
-#: src/Admin/Strings.php:1418
+#: src/Admin/Strings.php:1450
 msgid "The checks from inside and outside Iran reached your site."
 msgstr "İran içinden ve dışından yapılan kontroller sitenize ulaştı."
 
-#: src/Admin/Strings.php:1419
+#: src/Admin/Strings.php:1451
 msgid "Opens in Iran, not confirmed abroad"
 msgstr "İran içinde açılıyor, yurt dışından doğrulanmadı"
 
-#: src/Admin/Strings.php:1420
+#: src/Admin/Strings.php:1452
 msgid "Visitors in Iran can open the site. The checks abroad did not reach it; if you have visitors abroad, check your host's firewall."
 msgstr "İran içindeki ziyaretçiler siteyi açabiliyor. Yurt dışı kontrolleri ulaşamadı; yurt dışından ziyaretçiniz varsa barındırma güvenlik duvarını kontrol edin."
 
-#: src/Admin/Strings.php:1421
+#: src/Admin/Strings.php:1453
 msgid "Not confirmed inside Iran"
 msgstr "İran içinde doğrulanmadı"
 
-#: src/Admin/Strings.php:1422
+#: src/Admin/Strings.php:1454
 msgid "Fewer than two checks inside Iran reached the site. Use Check again; if it stays like this, ask your host whether the server is reachable from Iranian networks."
 msgstr "İran içinden ikiden az kontrol siteye ulaştı. Yeniden kontrol edin; böyle kalırsa barındırma firmanıza sunucunun İran ağlarından erişilebilir olup olmadığını sorun."
 
-#: src/Admin/Strings.php:1423
+#: src/Admin/Strings.php:1455
 msgid "The site looks filtered in Iran"
 msgstr "Site İran'da engellenmiş görünüyor"
 
-#: src/Admin/Strings.php:1424
+#: src/Admin/Strings.php:1456
 msgid "A check inside Iran was sent to the filtering page instead of your site. Visitors in Iran may not be able to open it."
 msgstr "İran içindeki bir kontrol siteniz yerine engelleme sayfasına yönlendirildi. İran'daki ziyaretçiler siteyi açamayabilir."
 
-#: src/Admin/Strings.php:1425
+#: src/Admin/Strings.php:1457
 msgid "Checking your site"
 msgstr "Siteniz kontrol ediliyor"
 
-#: src/Admin/Strings.php:1426
+#: src/Admin/Strings.php:1458
 msgid "The first checks have been requested. Results appear here within a minute."
 msgstr "İlk kontroller istendi. Sonuçlar bir dakika içinde burada görünür."
 
-#: src/Admin/Strings.php:1427
+#: src/Admin/Strings.php:1459
 msgid "Your site is checked from 3 points inside Iran and 2 points abroad in the Rafoo monitoring network. One network may sometimes have trouble; if two checks inside or outside Iran are fine, your site is fully reachable."
 msgstr "Siteniz Rafoo izleme ağında İran içinden 3, yurt dışından 2 noktadan kontrol edilir. Bazen bir ağda sorun olabilir; içeriden veya dışarıdan iki kontrol sağlamsa siteniz tamamen erişilebilirdir."
 
-#: src/Admin/Strings.php:1428
+#: src/Admin/Strings.php:1460
 msgid "Three member sites on different Iranian networks open your site's signed check address. Which networks they are is not shown, to keep members private."
 msgstr "Farklı İran ağlarındaki üç üye site, sitenizin imzalı kontrol adresini açar. Üyelerin gizliliği için ağların adı gösterilmez."
 
-#: src/Admin/Strings.php:1429
+#: src/Admin/Strings.php:1461
 msgid "Two member sites outside Iran, in different countries, check your site. During an international outage these checks pause."
 msgstr "İran dışında, farklı ülkelerdeki iki üye site sitenizi kontrol eder. Uluslararası kesintide bu kontroller durur."
 
-#: src/Admin/Strings.php:1431
+#: src/Admin/Strings.php:1463
 msgid "Updated by its maker"
 msgstr "Kendi geliştiricisinden güncellenir"
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:1433
+#: src/Admin/Strings.php:1465
 #, php-format
 msgid "Older version on the mirror (%s)"
 msgstr "Aynada daha eski sürüm (%s)"
 
-#: src/Admin/Strings.php:1434
+#: src/Admin/Strings.php:1466
 msgid "Your hosting quota"
 msgstr "Barındırma kotanıza göre"
 
-#: src/Admin/Strings.php:1435
+#: src/Admin/Strings.php:1467
 msgid "This is a shared host, so the free disk of the whole server says nothing about your own quota. See the disk usage of your account in cPanel or DirectAdmin. If the quota fills up during a backup, Rafoo stops with a clear message and removes the unfinished part."
 msgstr "Bu paylaşımlı bir barındırma; tüm sunucunun boş diski hesabınızın kotası hakkında bilgi vermez. Hesabınızın disk kullanımını cPanel veya DirectAdmin'de görün. Yedek sırasında kota dolarsa Rafoo açık bir mesajla durur ve yarım kalan parçayı siler."
 
-#: src/Admin/Strings.php:1436
+#: src/Admin/Strings.php:1468
 msgid "Free space Rafoo can use for backups on this host. A backup needs roughly the size of the site."
 msgstr "Rafoo'nun bu barındırmada yedekler için kullanabileceği boş alan. Bir yedek kabaca sitenin boyutu kadar yer ister."
 
-#: src/Admin/Strings.php:1437
+#: src/Admin/Strings.php:1469
 msgid "Updates from the Iranian mirror for what is installed on this site. Premium plugins and themes that update from their own server, such as Divi, are never changed."
 msgstr "Bu sitede kurulu olanlar için İran aynasından güncellemeler. Divi gibi kendi sunucusundan güncellenen ücretli eklenti ve temalara hiç dokunulmaz."
 
-#: src/Admin/Strings.php:1445
+#: src/Admin/Strings.php:1477
 msgid "Updates WordPress, plugins and themes from the Iranian mirror with a signature check, so updates work during an outage."
 msgstr "WordPress'i, eklentileri ve temaları imza kontrolüyle İran yansısından günceller; güncellemeler kesinti sırasında da çalışır."
 
-#: src/Admin/Strings.php:1446
+#: src/Admin/Strings.php:1478
 msgid "Translation updates come from the mirror too, only for the languages installed on the site."
 msgstr "Çeviri güncellemeleri de yansıdan gelir; yalnızca sitede yüklü diller için."
 
-#: src/Admin/Strings.php:1447
+#: src/Admin/Strings.php:1479
 msgid "Translations from the mirror"
 msgstr "Yansıdan çeviriler"
 
-#: src/Admin/Strings.php:1448
+#: src/Admin/Strings.php:1480
 msgid "During an outage, translations of WordPress, plugins and themes are updated from the mirror, only for the languages installed on this site."
 msgstr "Kesinti sırasında WordPress, eklenti ve tema çevirileri yansıdan güncellenir; yalnızca bu sitede yüklü diller için."
 
-#: src/Admin/Strings.php:1450
+#: src/Admin/Strings.php:1482
 msgid "Update from the domestic mirror"
 msgstr "Yerel yansıdan güncelle"
 
-#: src/Admin/Strings.php:1451
+#: src/Admin/Strings.php:1483
 msgid "WordPress, plugins and themes are updated from the mirror while the international internet is down."
 msgstr "Uluslararası internet kesikken WordPress, eklentiler ve temalar yansıdan güncellenir."
 
-#: src/Admin/Strings.php:1452
+#: src/Admin/Strings.php:1484
 msgid "Packages are always downloaded from the mirror when it has the same version. Faster inside Iran."
 msgstr "Yansıda aynı sürüm varsa paketler her zaman yansıdan indirilir. İran içinde daha hızlı."
 
-#: src/Admin/Strings.php:1453
+#: src/Admin/Strings.php:1485
 msgid "Mirror coverage"
 msgstr "Yansı kapsamı"
 
-#: src/Admin/Strings.php:1454
+#: src/Admin/Strings.php:1486
 msgid "Which of your installed plugins, themes and WordPress version the domestic mirror can update."
 msgstr "Yüklü eklentilerinizden, temalarınızdan ve WordPress sürümünüzden hangilerini yerel yansının güncelleyebileceği."
 
-#: src/Admin/Strings.php:1455
+#: src/Admin/Strings.php:1487
 msgid "Check again"
 msgstr "Yeniden kontrol et"
 
-#: src/Admin/Strings.php:1456
+#: src/Admin/Strings.php:1488
 msgid "The signed mirror index is not available yet. Updates keep coming from WordPress.org until it is."
 msgstr "İmzalı yansı dizini henüz kullanılamıyor. O zamana kadar güncellemeler WordPress.org'dan gelmeye devam eder."
 
-#: src/Admin/Strings.php:1457
+#: src/Admin/Strings.php:1489
 msgid "Mirror"
 msgstr "Yansı"
 
-#: src/Admin/Strings.php:1458
+#: src/Admin/Strings.php:1490
 msgid "Not on the mirror"
 msgstr "Yansıda yok"
 
 #. translators: %s: version number
-#: src/Admin/Strings.php:1460
+#: src/Admin/Strings.php:1492
 #, php-format
 msgid "Version %s available"
 msgstr "%s sürümü mevcut"
 
-#: src/Admin/Strings.php:1461
+#: src/Admin/Strings.php:1493
 msgid "Up to date"
 msgstr "Güncel"
 
-#: src/Admin/Strings.php:1462
+#: src/Admin/Strings.php:1494
 msgid "WordPress"
 msgstr "WordPress"
 
-#: src/Backup/Api.php:175 src/Backup/Api.php:262 src/Backup/Restorer.php:28
+#: src/Backup/Api.php:200 src/Backup/Api.php:323 src/Backup/Restorer.php:28
 msgid "This backup is no longer in the list."
 msgstr "Bu yedek artık listede değil."
 
-#: src/Backup/Api.php:179
+#: src/Backup/Api.php:204
 msgid "Newer backups are built on this one, so it cannot be deleted on its own."
 msgstr "Daha yeni yedekler bunun üzerine kurulu, bu yüzden tek başına silinemez."
 
-#: src/Backup/Api.php:184 src/Backup/Job.php:40 src/Geo/Nodes.php:182
+#: src/Backup/Api.php:209 src/Backup/Job.php:40 src/Geo/Nodes.php:182
 msgid "Another backup task is running. Wait until it finishes."
 msgstr "Başka bir yedekleme görevi çalışıyor. Bitmesini bekleyin."
 
-#: src/Backup/Api.php:193
+#: src/Backup/Api.php:218
 msgid "Use at least 8 characters."
 msgstr "En az 8 karakter kullanın."
 
-#: src/Backup/Api.php:204
+#: src/Backup/Api.php:229
 msgid "The server answered but did not accept this username or password."
 msgstr "Sunucu yanıt verdi ama bu kullanıcı adını veya parolayı kabul etmedi."
 
-#: src/Backup/Api.php:205
+#: src/Backup/Api.php:230
 msgid "Enter a server address such as backup.example.ir."
 msgstr "backup.example.ir gibi bir sunucu adresi girin."
 
-#: src/Backup/Api.php:205
+#: src/Backup/Api.php:230
 msgid "No SFTP, FTPS or FTP connection could be made to this server. Check the address and that the port is open."
 msgstr "Bu sunucuya SFTP, FTPS veya FTP bağlantısı kurulamadı. Adresi ve bağlantı noktasının açık olduğunu kontrol edin."
 
-#: src/Backup/Api.php:210
+#: src/Backup/Api.php:235
 msgid "Up to five servers can be added."
 msgstr "En fazla beş sunucu eklenebilir."
 
-#: src/Backup/Api.php:223 src/Backup/Mover.php:14
+#: src/Backup/Api.php:248 src/Backup/Mover.php:14
 msgid "This server is no longer in the list."
 msgstr "Bu sunucu artık listede değil."
 
-#: src/Backup/Api.php:229
+#: src/Backup/Api.php:254
 msgid "The server could not be reached or did not accept a test file."
 msgstr "Sunucuya ulaşılamadı veya bir test dosyasını kabul etmedi."
+
+#: src/Backup/Api.php:273
+msgid "This does not look like a Files.ir API key. Copy the whole key again from your Files.ir account."
+msgstr "Bu bir Files.ir API anahtarına benzemiyor. Anahtarın tamamını Files.ir hesabınızdan yeniden kopyalayın."
+
+#: src/Backup/Api.php:274
+msgid "Files.ir did not accept this API key. Check that it is active and has access to files."
+msgstr "Files.ir bu API anahtarını kabul etmedi. Anahtarın etkin olduğunu ve dosyalara erişimi olduğunu kontrol edin."
+
+#: src/Backup/Api.php:275
+msgid "This API key has no access to a drive or workspace. Give it access in your Files.ir account and try again."
+msgstr "Bu API anahtarının hiçbir sürücüye veya çalışma alanına erişimi yok. Files.ir hesabınızda erişim verin ve yeniden deneyin."
+
+#: src/Backup/Api.php:276
+msgid "The backup folder could not be created in Files.ir. Check that the key may create folders."
+msgstr "Yedek klasörü Files.ir’da oluşturulamadı. Anahtarın klasör oluşturma izni olduğunu kontrol edin."
+
+#: src/Backup/Api.php:277
+msgid "Files.ir accepted the key but a test file could not be uploaded and read back. Check the free space and the key permissions."
+msgstr "Files.ir anahtarı kabul etti ama test dosyası yüklenip geri okunamadı. Boş alanı ve anahtar izinlerini kontrol edin."
+
+#: src/Backup/Api.php:278
+msgid "Files.ir could not be reached from this server. Try again in a few minutes."
+msgstr "Bu sunucudan Files.ir’a ulaşılamadı. Birkaç dakika sonra yeniden deneyin."
+
+#: src/Backup/Api.php:290
+msgid "Connect Files.ir with an API key first."
+msgstr "Önce Files.ir’ı bir API anahtarıyla bağlayın."
 
 #: src/Backup/Installer.php:35
 msgid "Restore the site with Rafoo"
@@ -6266,6 +6412,10 @@ msgid "If the site administrator turns on community defense, the IP addresses of
 msgstr "Site yöneticisi topluluk savunmasını açarsa, durdurulan saldırıların IP adresleri saldırı türüyle birlikte rafoo.ir’ye gönderilir ve diğer sitelerin bildirdiği adreslerin listesi alınır. Durdurulmayan ziyaretçilerin ve giriş yapmış kullanıcıların adresleri asla gönderilmez."
 
 #: src/Privacy.php:20
+msgid "If the site administrator turns on Files.ir under Rafoo › Backup, backups of this site's files and database, which may contain personal data, are stored in the administrator's Files.ir account, a storage service inside Iran."
+msgstr "Site yöneticisi Rafoo › Yedekleme altında Files.ir’ı açarsa, bu sitenin dosyalarının ve veritabanının kişisel veri içerebilecek yedekleri, yöneticinin İran içindeki bir depolama hizmeti olan Files.ir hesabında saklanır."
+
+#: src/Privacy.php:21
 msgid "Apart from the above, Rafoo does not collect or send any information about visitors. If the site administrator turns on anonymous usage reports, a weekly report is sent to rafoo.ir with a random site identifier, software versions and the names of installed plugins and themes. It never includes the site address or any personal data."
 msgstr "Yukarıdakiler dışında, Rafoo ziyaretçiler hakkında hiçbir bilgi toplamaz veya göndermez. Site yöneticisi anonim kullanım raporlarını açarsa rafoo.ir'ye rastgele bir site kimliği, yazılım sürümleri ve yüklü eklenti ve temaların adlarını içeren haftalık bir rapor gönderilir. Site adresini veya kişisel verileri asla içermez."
 

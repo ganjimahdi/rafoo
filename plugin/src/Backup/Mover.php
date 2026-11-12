@@ -10,7 +10,7 @@ final class Mover {
 
 	public static function start( $destination, $folder, $url ) {
 		$config = Destinations::get( $destination );
-		if ( ! $config ) {
+		if ( ! $config || Remote\FilesIr::TYPE === $config['type'] ) {
 			return new \WP_Error( 'rafoo_not_found', __( 'This server is no longer in the list.', 'rafoo' ) );
 		}
 		$url = esc_url_raw( (string) $url, array( 'http', 'https' ) );

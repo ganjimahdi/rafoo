@@ -137,6 +137,7 @@ final class ShieldStrings {
 			/* translators: %d: number of IP addresses */
 			'shield_edge_count'           => __( '%d addresses at the edge', 'rafoo' ),
 			'event_shield_mode'           => __( 'Shield mode changed', 'rafoo' ),
+			'event_files_connected'       => __( 'Files.ir connected for backups', 'rafoo' ),
 			'event_shield_prepend_on'     => __( 'Shield protection before WordPress turned on', 'rafoo' ),
 			'event_shield_prepend_off'    => __( 'Shield protection before WordPress turned off', 'rafoo' ),
 			'event_shield_network_joined' => __( 'Joined community defense', 'rafoo' ),

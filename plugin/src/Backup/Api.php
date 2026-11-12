@@ -4,6 +4,7 @@ namespace Rafoo\Backup;
 
 use Rafoo\Admin\Rest;
 use Rafoo\Backup\Remote\Detect;
+use Rafoo\Backup\Remote\FilesIr;
 use Rafoo\Backup\Remote\Ftp;
 use Rafoo\Backup\Remote\Remote;
 use Rafoo\Settings;
@@ -59,6 +60,28 @@ final class Api {
 				),
 			),
 			array( '/backup/destinations/delete', WP_REST_Server::CREATABLE, 'remove', $id ),
+			array(
+				'/backup/files/connect',
+				WP_REST_Server::CREATABLE,
+				'files_connect',
+				array(
+					'key' => array(
+						'type'     => 'string',
+						'required' => true,
+					),
+				),
+			),
+			array(
+				'/backup/files/enable',
+				WP_REST_Server::CREATABLE,
+				'files_enable',
+				array(
+					'enabled' => array(
+						'type'     => 'boolean',
+						'required' => true,
+					),
+				),
+			),
 			array( '/backup/destinations/test', WP_REST_Server::CREATABLE, 'test', $id ),
 			array( '/transfer/invite', WP_REST_Server::CREATABLE, 'invite', array() ),
 			array( '/transfer/invite/cancel', WP_REST_Server::CREATABLE, 'cancel_invite', array() ),
@@ -115,6 +138,7 @@ final class Api {
 			'job'          => Job::view(),
 			'backups'      => Catalog::view(),
 			'destinations' => Destinations::view(),
+			'files'        => Destinations::files_view(),
 			'next'         => (int) wp_next_scheduled( Schedule::HOOK ),
 			'last'         => $latest ? (int) $latest['created'] : 0,
 			'password'     => '' !== Maker::password(),
@@ -129,6 +153,7 @@ final class Api {
 				'free'     => $space['free'],
 				'space'    => $space['source'],
 				'writable' => '' !== Ledger::dir(),
+				'stream'   => FilesIr::stream(),
 			),
 			'invite'       => Transfer::invite_view(),
 			'frozen'       => Transfer::frozen(),
@@ -228,7 +253,43 @@ final class Api {
 			Destinations::update( $request['id'], array( 'last_error' => $remote->error(), 'checked_at' => time() ) );
 			return new WP_Error( 'rafoo_destination', __( 'The server could not be reached or did not accept a test file.', 'rafoo' ), array( 'status' => 502 ) );
 		}
-		Destinations::update( $request['id'], array( 'speed' => $result['speed'], 'checked_at' => time(), 'last_error' => '' ) );
+		$changes = array( 'speed' => $result['speed'], 'checked_at' => time(), 'last_error' => '' );
+		if ( $remote instanceof FilesIr ) {
+			$usage = $remote->usage();
+			if ( $usage ) {
+				$changes['free'] = $usage['free'];
+				$changes['used'] = $usage['used'];
+			}
+		}
+		Destinations::update( $request['id'], $changes );
+		return self::status();
+	}
+
+	public static function files_connect( WP_REST_Request $request ) {
+		$key   = trim( (string) $request['key'] );
+		$found = FilesIr::probe( $key );
+		if ( empty( $found['ok'] ) ) {
+			$messages = array(
+				'bad_key'      => __( 'This does not look like a Files.ir API key. Copy the whole key again from your Files.ir account.', 'rafoo' ),
+				'rejected'     => __( 'Files.ir did not accept this API key. Check that it is active and has access to files.', 'rafoo' ),
+				'no_workspace' => __( 'This API key has no access to a drive or workspace. Give it access in your Files.ir account and try again.', 'rafoo' ),
+				'folder'       => __( 'The backup folder could not be created in Files.ir. Check that the key may create folders.', 'rafoo' ),
+				'write'        => __( 'Files.ir accepted the key but a test file could not be uploaded and read back. Check the free space and the key permissions.', 'rafoo' ),
+				'unreachable'  => __( 'Files.ir could not be reached from this server. Try again in a few minutes.', 'rafoo' ),
+			);
+			$message = isset( $messages[ $found['error'] ] ) ? $messages[ $found['error'] ] : $messages['unreachable'];
+			return new WP_Error( 'rafoo_files', $message, array( 'status' => 400, 'detail' => isset( $found['detail'] ) ? (string) $found['detail'] : '' ) );
+		}
+		Destinations::add_files( $key, $found );
+		\Rafoo\State::event( 'files_connected' );
+		return self::status();
+	}
+
+	public static function files_enable( WP_REST_Request $request ) {
+		if ( ! Destinations::get( FilesIr::ID ) ) {
+			return new WP_Error( 'rafoo_not_found', __( 'Connect Files.ir with an API key first.', 'rafoo' ), array( 'status' => 404 ) );
+		}
+		Destinations::update( FilesIr::ID, array( 'enabled' => (bool) $request['enabled'] ) );
 		return self::status();
 	}
 

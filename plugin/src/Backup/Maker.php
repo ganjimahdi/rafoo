@@ -53,7 +53,7 @@ final class Maker {
 				'salt' => bin2hex( $salt ),
 			);
 		}
-		$targets = isset( $args['targets'] ) ? (array) $args['targets'] : array_keys( Destinations::all() );
+		$targets = isset( $args['targets'] ) ? (array) $args['targets'] : Destinations::targets();
 		$targets = array_values( array_filter( $targets, array( Destinations::class, 'get' ) ) );
 		return array(
 			'role'     => 'backup',
