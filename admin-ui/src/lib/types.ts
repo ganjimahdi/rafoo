@@ -265,6 +265,8 @@ export interface FilesDestination {
 	checked_at: number;
 	last_ok: number;
 	last_error: string;
+	issue: '' | 'size' | 'space' | 'key' | 'php' | 'ssl' | 'network' | 'other';
+	max_file: number;
 }
 
 export interface BackupStatus {

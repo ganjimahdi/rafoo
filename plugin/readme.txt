@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,7 +88,7 @@ Rafoo fixes this without touching the files of your theme or plugins.
 
 * Full or changes-only backups of files and database on a schedule, made in short steps so they work on shared hosting.
 * Copies on this host and on other servers over SFTP, FTPS or FTP. Rafoo finds the right connection and folder by itself.
-* Optional Files.ir destination, a storage service inside Iran with up to 5 GB free: connect it with an API key, which is stored encrypted. Large parts go in pieces and resume after an interruption.
+* Optional Files.ir destination, a storage service inside Iran with up to 5 GB free: connect it with an API key, which is stored encrypted. Large parts go in pieces, resume after an interruption and fit the plan's file size limit. Each error comes with a step-by-step guide.
 * Optional encryption with a password (XChaCha20-Poly1305).
 * Restore checks the site afterwards and puts the previous database back if the restored site does not load.
 * Copy the whole site to another WordPress site with Rafoo using a one-time code, directly between the two servers, with a short final pass for WooCommerce orders. A different domain and table prefix are handled.
@@ -240,6 +240,11 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.6.5 =
+* Files.ir: when the Files.ir plan limits the file size (50 MB on the free plan), Rafoo learns the limit from the answer and sends each backup part in pieces below it. Restores, checks and deletions treat the pieces as one part; the pieces can also be joined with 7-Zip.
+* Files.ir: a part is not sent when the account has less free space than it needs, with a clear message.
+* A "How to fix" button next to a Files.ir error opens a step-by-step guide for that error: plan size limit, full account, rejected key, PHP settings (php.ini in cPanel and DirectAdmin), certificate problems and connection problems.
+
 = 1.6.4 =
 * Backup: a new "Where backups are kept" card at the top of the Backup page, with a switch for this host, a switch for SFTP, FTPS and FTP servers (they stay saved when off) and Files.ir.
 * Files.ir (off by default): send scheduled and manual backups to a Files.ir account, a storage service inside Iran with up to 5 GB free. The API key is stored encrypted and never shown again. Uploads follow the Files.ir API (direct, S3 and resumable tus uploads); large parts go in pieces and continue after an interruption. Old backups are deleted there by the same keeping rules, and a check or restore downloads from Files.ir.
@@ -321,6 +326,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.6.5 =
+Backups now reach Files.ir on the free plan: parts larger than the plan limit are sent in pieces. Adds a step-by-step guide for Files.ir errors.
+
 = 1.6.4 =
 Adds Files.ir as an optional backup destination (off by default) and a card to choose where backups are kept. Existing backup settings and servers do not change.
 

@@ -15,7 +15,7 @@ final class Destinations {
 
 	const MAX = 5;
 
-	const CHANGES = array( 'last_ok', 'last_error', 'checked_at', 'speed', 'free', 'used', 'folder_id', 'enabled' );
+	const CHANGES = array( 'last_ok', 'last_error', 'checked_at', 'speed', 'free', 'used', 'folder_id', 'enabled', 'max_file' );
 
 	public static function all() {
 		wp_cache_delete( self::OPTION, 'options' );
@@ -171,6 +171,8 @@ final class Destinations {
 			'checked_at' => (int) $item['checked_at'],
 			'last_ok'    => (int) $item['last_ok'],
 			'last_error' => (string) $item['last_error'],
+			'issue'      => FilesIr::issue( $item['last_error'] ),
+			'max_file'   => isset( $item['max_file'] ) ? (int) $item['max_file'] : 0,
 		);
 	}
 }

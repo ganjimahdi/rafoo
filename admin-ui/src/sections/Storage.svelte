@@ -4,6 +4,8 @@
 	import Card from '../components/Card.svelte';
 	import Notice from '../components/Notice.svelte';
 	import Toggle from '../components/Toggle.svelte';
+	import Mixed from '../components/Mixed.svelte';
+	import FilesFix from './FilesFix.svelte';
 	import { api } from '../lib/api';
 	import { ago, bytes, help, t } from '../lib/i18n';
 	import { store } from '../lib/store.svelte';
@@ -18,6 +20,7 @@
 
 	const SIGNUP = 'https://my.files.ir/register';
 	const TERMS = 'https://my.files.ir/pages/terms-of-service';
+	const KEYS = 'https://my.files.ir/account-settings/#developers';
 
 	let local = $state(store.settings.backup_local);
 	let remote = $state(store.settings.backup_remote ?? true);
@@ -62,6 +65,23 @@
 		return run('files-enable', () => api<BackupStatus>('backup/files/enable', 'POST', { enabled: on }));
 	}
 
+	function test() {
+		const id = files?.id;
+		if (!id) return;
+		return run(
+			'files-test',
+			async () => {
+				try {
+					return await api<BackupStatus>('backup/destinations/test', 'POST', { id });
+				} catch (e) {
+					onupdate(await api<BackupStatus>('backup'));
+					throw e;
+				}
+			},
+			t('destination_tested')
+		);
+	}
+
 	function connect(event: SubmitEvent) {
 		event.preventDefault();
 		return run('files-connect', async () => {
@@ -102,11 +122,23 @@
 				{#if files.space}<span class="rf-small">{t('filesir_workspace', files.space)}</span>{/if}
 				{#if files.used >= 0 && files.free >= 0}<span class="rf-subtle rf-small">{t('filesir_space', bytes(files.used), bytes(files.free))}</span>{/if}
 				{#if files.speed}<span class="rf-subtle rf-small">{t('destination_speed', bytes(files.speed))}</span>{/if}
-				{#if files.last_error}<span class="rf-small rf-mono">{files.last_error}</span>{/if}
+				{#if files.max_file > 0}<span class="rf-subtle rf-small">{t('filesir_pieces', bytes(files.max_file))}</span>{/if}
+				{#if files.last_error}
+					{#if /[\u0600-\u06FF]/.test(files.last_error)}
+						<span class="rf-small" dir="rtl"><Mixed text={files.last_error} /></span>
+					{:else}
+						<span class="rf-small rf-mono" dir="ltr">{files.last_error}</span>
+					{/if}
+				{/if}
 			</div>
+			{#if files.last_error}
+				<div class="rf-row">
+					<FilesFix {files} busy={busy === 'files-test'} {message} {error} ontest={test} />
+				</div>
+			{/if}
 			{#if !status.support.stream}<Notice tone="warning">{t('filesir_stream_missing')}</Notice>{/if}
 			<div class="rf-row rf-end">
-				<Button size="sm" variant="ghost" busy={busy === 'files-test'} disabled={busy !== ''} onclick={() => run('files-test', () => api<BackupStatus>('backup/destinations/test', 'POST', { id: files.id }), t('destination_tested'))}>{t('destination_test')}</Button>
+				<Button size="sm" variant="ghost" busy={busy === 'files-test'} disabled={busy !== ''} onclick={test}>{t('destination_test')}</Button>
 				<Button size="sm" variant="ghost" busy={busy === 'files-remove'} disabled={busy !== ''} onclick={() => run('files-remove', () => api<BackupStatus>('backup/destinations/delete', 'POST', { id: files.id }))}>{t('filesir_disconnect')}</Button>
 			</div>
 		{:else if wanted}
@@ -118,7 +150,9 @@
 				</p>
 				<div class="rf-field">
 					<label for="rafoo-files-key">{t('filesir_key')}</label>
-					<p id="rafoo-files-key-help" class="rf-subtle rf-small">{t('filesir_key_help')}</p>
+					<p id="rafoo-files-key-help" class="rf-subtle rf-small">
+						{t('filesir_key_where')} <a href={KEYS} target="_blank" rel="noopener noreferrer">{t('filesir_key_page')}</a>. {t('filesir_key_help')}
+					</p>
 					<input id="rafoo-files-key" class="rf-input rf-mono" type="password" autocomplete="off" spellcheck="false" dir="ltr" aria-describedby="rafoo-files-key-help" bind:value={key} />
 				</div>
 				{#if !status.support.stream}<Notice tone="warning">{t('filesir_stream_missing')}</Notice>{/if}

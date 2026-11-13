@@ -4,6 +4,14 @@ All notable changes to Rafoo. Both editions share one version number: **Rafoo** 
 
 Downloads: [GitHub Releases](https://github.com/ganjimahdi/rafoo/releases) and [rafoo.ir](https://rafoo.ir).
 
+## [1.6.5] - 2026-11-12
+### Fixed
+- **Files.ir free plan.** The free plan accepts files up to 50 MB, so every backup part (128 MB or larger) was refused with `HTTP 422`. Rafoo now reads the limit from the Files.ir answer, remembers it, and sends each part as pieces just below it (`…-p001.tar.gz.001`, `.002`, …). The pieces are listed, checked, restored and deleted as one part, and 7-Zip can join them by hand. The limit is forgotten when the key is removed, for example after a plan upgrade.
+- A part is no longer started when the Files.ir account has less free space than the part needs; the message says how much is free and needed.
+- Test on a Files.ir card no longer hides a size or space error that a small test file cannot prove fixed.
+### Added
+- **How to fix.** A button next to a Files.ir error opens a window with the cause and the steps for that error: plan file size limit, full account, rejected API key (with the Files.ir page where keys are made), PHP settings (cURL, `memory_limit` and `max_execution_time` in cPanel's MultiPHP INI Editor or Select PHP Version, and DirectAdmin's PHP Settings, with a ready message for host support), certificate problems and connection problems, plus a general guide for unknown messages. A Test button in the window checks the fix.
+
 ## [1.6.4] - 2026-11-12
 ### Added
 - **Files.ir backup destination**, in both editions, off by default. Files.ir is a storage service inside Iran that gives up to 5 GB free. Scheduled and manual backups are sent there in the same parts as to the other places, old backups are deleted there by the same keeping rules, and a check or restore downloads from Files.ir when the local copy is gone.
@@ -214,6 +222,7 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 
 ## خلاصه فارسی
 
+- **۱٫۶٫۵:** پشتیبان‌گیری در پلن رایگان Files.ir درست شد. این پلن فایل بزرگ‌تر از ۵۰ مگابایت را نمی‌پذیرد؛ حالا رفو این سقف را از پاسخ Files.ir می‌خواند و هر بخش پشتیبان را در تکه‌هایی کوچک‌تر از آن می‌فرستد. بازگردانی و حذف، تکه‌ها را مثل یک فایل می‌بینند. اگر فضای حساب کافی نباشد، پیش از ارسال پیام روشن نمایش داده می‌شود. کنار هر خطای Files.ir دکمه «راه‌حل» آمده است که مرحله‌به‌مرحله راه رفع همان خطا را توضیح می‌دهد؛ از جمله تنظیم php.ini در سی‌پنل و دایرکت‌ادمین.
 - **۱٫۶٫۴:** پشتیبان‌گیری در Files.ir (فایلز)، در هر دو نسخه رفو و به‌طور پیش‌فرض خاموش. Files.ir یک سرویس ذخیره‌سازی داخل ایران است و تا ۵ گیگابایت فضای رایگان می‌دهد. اتصال با کلید API انجام می‌شود. کلید رمزگذاری‌شده ذخیره می‌شود و فقط به API سرویس Files.ir فرستاده می‌شود. پشتیبان‌های زمان‌بندی‌شده و دستی تکه‌تکه ارسال می‌شوند و اگر ارسال قطع شود، از همان‌جا ادامه پیدا می‌کند. کارت تازه «محل نگهداری پشتیبان‌ها» بالای صفحه پشتیبان آمده است: همین هاست، سرورهای دیگر (SFTP، FTPS یا FTP) و Files.ir، هر کدام با کلید روشن و خاموش. تیم رفو با Files.ir همکاری تجاری ندارد.
 - **۱٫۶٫۳:** سپر رفو دیگر هیچ‌وقت ربات واقعی گوگل، بینگ، اپل و داک‌داک‌گو را مسدود، محدود یا گزارش نمی‌کند و از آن بررسی مرورگر نمی‌خواهد؛ فقط همان یک درخواست حمله‌مانند ۴۰۳ می‌گیرد. ربات‌ها از روی IPهای رسمی شناخته می‌شوند و وسط بازدید هیچ جست‌وجوی DNS انجام نمی‌شود. بررسی مرورگر با کد ۵۰۳ پاسخ می‌دهد تا موتورهای جست‌وجو آن را موقت بدانند. پاسخ پله‌ای: مرورگر مشکوک اول بررسی مرورگر می‌گیرد و فقط اگر ادامه دهد مسدود می‌شود. در حالت هوشمند، IP خارجی فهرست جمعی بررسی مرورگر می‌گیرد. روی هاست بدون APCu حدود چهار برابر کمتر فایل نوشته می‌شود و اسکریپت هر صفحه از ۶٫۸ به ۰٫۷ کیلوبایت رسید.
 - **۱٫۶٫۲:** همه متن‌های فارسی افزونه، سایت و پنل rafoo.ir، نقطه پایش و GitHub با جمله‌های کوتاه‌تر و اصطلاح‌های آشنا بازنویسی شد؛ مثلاً «پچ امنیتی موقت» به‌جای «وصله مجازی». در سپر رفو، «پچ امنیتی موقت» و «ایمنی جمعی» همان‌جا که اولین بار دیده می‌شوند توضیح دارند. تنظیمات و رفتار افزونه تغییری نکرد.
@@ -230,6 +239,7 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 - **نقطه پایش ۲٫۱٫۰:** بعد از اینکه مدیر rafoo.ir نقطه را حذف و مسدود کند، یک روز صبر می‌کند و بعد دوباره درخواست عضویت می‌دهد. نقطه‌های ۲٫۰ خودشان به‌روزرسانی می‌شوند.
 - **نقطه پایش ۲٫۰٫۰:** بدون نیاز به افزونه sodium، بررسی فوری، تشخیص فیلترینگ و به‌روزرسانی خودکار با امضای دیجیتال.
 
+[1.6.5]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.5
 [1.6.4]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.4
 [1.6.3]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.3
 [1.6.2]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.2

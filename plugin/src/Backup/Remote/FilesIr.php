@@ -32,9 +32,24 @@ final class FilesIr extends Remote {
 
 	const PER_PAGE = 500;
 
+	const PIECE = '/^(.+)\.(\d{3})$/';
+
+	const ISSUES = array(
+		'size'    => '/حداکثر اندازه|max(imum)?[ _]?(file[ _]?)?size|file (is )?too (large|big)|larger than|HTTP 413|بزرگ‌تر از/iu',
+		'space'   => '/free space|not enough space|quota|storage (is )?full|insufficient|فضای (کافی|خالی)|فضا.{0,20}(پر|کافی نیست)|حجم.{0,20}(پر|تمام)/iu',
+		'key'     => '/HTTP 40[13]\b|Unauthenticated|unauthori[sz]ed|forbidden|no api key|توکن|کلید.{0,20}(نامعتبر|منقضی)/iu',
+		'php'     => '/cURL extension|Allowed memory|memory size|Maximum execution time|set_time_limit|php_(killed|memory|time)/iu',
+		'ssl'     => '/certificate|SSL certificate|cURL error (51|58|60|77)\b|CA ?file|self[- ]signed/iu',
+		'network' => '/cURL error (5|6|7|18|28|35|52|55|56)\b|timed? ?out|resolve host|could not resolve|connection (refused|reset)|failed to connect|unreachable|HTTP (429|5\d\d)\b|storage HTTP 5|stopped at byte|did not move forward|empty answer/iu',
+	);
+
 	private $entries = null;
 
 	private $code = 0;
+
+	private $base = 0;
+
+	private $learned = 0;
 
 	public static function base() {
 		return untrailingslashit( (string) apply_filters( 'rafoo_files_ir_base', self::BASE ) );
@@ -149,6 +164,30 @@ final class FilesIr extends Remote {
 		return $first ? $first : array( null, '' );
 	}
 
+	public static function issue( $error ) {
+		$error = trim( (string) $error );
+		if ( '' === $error ) {
+			return '';
+		}
+		foreach ( self::ISSUES as $issue => $pattern ) {
+			if ( preg_match( $pattern, $error ) ) {
+				return $issue;
+			}
+		}
+		return 'other';
+	}
+
+	public static function limit_of( $message, $size ) {
+		$message = strtr( (string) $message, array_combine( array( '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹' ), range( 0, 9 ) ) );
+		if ( 'size' !== self::issue( $message ) || ! preg_match( '/(\d+(?:[.,]\d+)?)\s*(GB|MB|گیگابایت|مگابایت|گیگ|مگ)/iu', $message, $m ) ) {
+			return 0;
+		}
+		$giga  = in_array( strtolower( $m[2] ), array( 'gb', 'گیگابایت', 'گیگ' ), true );
+		$bytes = (float) str_replace( ',', '.', $m[1] ) * ( $giga ? 1000000000 : 1000000 );
+		$piece = (int) ( floor( ( $bytes - 1048576 ) / 1048576 ) * 1048576 );
+		return $piece >= 1048576 && $piece < (int) $size ? $piece : 0;
+	}
+
 	public function connect( $timeout = 15 ) {
 		return '' !== $this->token() || $this->fail( 'no api key' );
 	}
@@ -200,24 +239,40 @@ final class FilesIr extends Remote {
 	}
 
 	public function size( $name ) {
-		$entries = $this->entries();
-		$name    = basename( $name );
-		return isset( $entries[ $name ] ) ? (int) $entries[ $name ][0]['size'] : -1;
+		$pieces = $this->pieces( $name );
+		if ( ! $pieces ) {
+			return -1;
+		}
+		return (int) array_sum( array_column( $pieces, 'size' ) );
 	}
 
 	public function names() {
-		return array_keys( $this->entries() );
+		$out = array();
+		foreach ( array_keys( $this->entries() ) as $name ) {
+			$name         = (string) $name;
+			$out[ preg_match( self::PIECE, $name, $m ) ? $m[1] : $name ] = true;
+		}
+		return array_map( 'strval', array_keys( $out ) );
 	}
 
 	public function delete( $name ) {
 		$entries = $this->entries();
 		$name    = basename( $name );
-		if ( empty( $entries[ $name ] ) ) {
+		$raw     = array();
+		foreach ( array_keys( $entries ) as $other ) {
+			$other = (string) $other;
+			if ( $other === $name || ( preg_match( self::PIECE, $other, $m ) && $m[1] === $name ) ) {
+				$raw[] = $other;
+			}
+		}
+		if ( ! $raw ) {
 			return true;
 		}
 		$ids = array();
-		foreach ( $entries[ $name ] as $item ) {
-			$ids[] = (string) $item['id'];
+		foreach ( $raw as $other ) {
+			foreach ( $entries[ $other ] as $item ) {
+				$ids[] = (string) $item['id'];
+			}
 		}
 		$res = $this->call(
 			'POST',
@@ -232,8 +287,23 @@ final class FilesIr extends Remote {
 		if ( false === $res ) {
 			return false;
 		}
-		unset( $this->entries[ $name ] );
+		foreach ( $raw as $other ) {
+			unset( $this->entries[ $other ] );
+		}
 		return true;
+	}
+
+	private function pieces( $name ) {
+		$entries = $this->entries();
+		$name    = basename( $name );
+		if ( ! empty( $entries[ $name ] ) ) {
+			return array( $entries[ $name ][0] );
+		}
+		$out = array();
+		for ( $i = 1; $i <= 999 && ! empty( $entries[ $name . '.' . sprintf( '%03d', $i ) ] ); $i++ ) {
+			$out[] = $entries[ $name . '.' . sprintf( '%03d', $i ) ][0];
+		}
+		return $out;
 	}
 
 	public function put( $local, $name, $offset, $deadline ) {
@@ -241,9 +311,63 @@ final class FilesIr extends Remote {
 		if ( ! is_readable( $local ) ) {
 			return $this->fail( 'local file missing' );
 		}
-		$name  = basename( $name );
-		$size  = (int) filesize( $local );
-		$key   = $this->state_key( $name );
+		$name   = basename( $name );
+		$size   = (int) filesize( $local );
+		$offset = max( 0, (int) $offset );
+		if ( 0 === $offset ) {
+			$free = $this->free_space();
+			if ( $free >= 0 && $free < $size ) {
+				return $this->fail( 'not enough free space in Files.ir: ' . number_format( $free / 1048576, 1, '.', '' ) . ' MB free, ' . number_format( $size / 1048576, 1, '.', '' ) . ' MB needed' );
+			}
+		}
+		$limit = isset( $this->config['max_file'] ) ? (int) $this->config['max_file'] : 0;
+		if ( $limit <= 0 || $size <= $limit ) {
+			$this->learned = 0;
+			$sent          = $this->put_file( $local, $name, $offset, $deadline, 0, $size );
+			$limit         = false === $sent ? max( $this->learned, self::limit_of( $this->error, $size ) ) : 0;
+			if ( $limit <= 0 ) {
+				return $sent;
+			}
+			$this->config['max_file'] = $limit;
+			if ( ! empty( $this->config['id'] ) ) {
+				Destinations::update( $this->config['id'], array( 'max_file' => $limit ) );
+			}
+			$this->error = '';
+			$offset      = 0;
+		}
+		return $this->put_pieces( $local, $name, $offset, $deadline, $size, $limit );
+	}
+
+	private function put_pieces( $local, $name, $offset, $deadline, $size, $limit ) {
+		$count = (int) ceil( $size / $limit );
+		$index = (int) floor( $offset / $limit );
+		if ( 0 === $offset ) {
+			$this->delete( $name );
+		}
+		while ( $index < $count ) {
+			$base = $index * $limit;
+			$part = min( $limit, $size - $base );
+			$sent = $this->put_file( $local, $name . '.' . sprintf( '%03d', $index + 1 ), $offset - $base, $deadline, $base, $part );
+			if ( false === $sent ) {
+				return false;
+			}
+			if ( $sent < $part ) {
+				return $base + (int) $sent;
+			}
+			++$index;
+			$offset = $index * $limit;
+			if ( $index < $count && microtime( true ) >= $deadline ) {
+				return $offset;
+			}
+		}
+		$this->entries = null;
+		return $size;
+	}
+
+	private function put_file( $local, $name, $offset, $deadline, $base, $size ) {
+		$this->base = (int) $base;
+		$size       = (int) $size;
+		$key        = $this->state_key( $name );
 		$state = Ledger::read( $key );
 		$fresh = ! $state || 0 === (int) $offset || (int) $state['size'] !== $size || time() - (int) $state['at'] > self::STALE;
 		if ( $fresh ) {
@@ -290,19 +414,43 @@ final class FilesIr extends Remote {
 	}
 
 	public function get( $name, $local, $offset, $deadline ) {
-		$entries = $this->entries();
-		$name    = basename( $name );
-		if ( empty( $entries[ $name ] ) ) {
+		$name   = basename( $name );
+		$pieces = $this->pieces( $name );
+		if ( ! $pieces ) {
 			return $this->fail( 'file not found on Files.ir' );
 		}
-		$id    = (int) $entries[ $name ][0]['id'];
-		$total = (int) $entries[ $name ][0]['size'];
-		$url   = $this->download_url( $id );
-		if ( '' === $url ) {
-			return false;
-		}
+		$offset = max( 0, (int) $offset );
 		if ( 0 === $offset && false === file_put_contents( $local, '' ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- a part file in Rafoo's private backup folder.
 			return $this->fail( 'local file not writable' );
+		}
+		$start = 0;
+		foreach ( $pieces as $piece ) {
+			$end = $start + (int) $piece['size'];
+			if ( $offset < $end ) {
+				$reached = $this->fetch( $piece, $local, $offset - $start, $deadline, $name );
+				if ( false === $reached ) {
+					return false;
+				}
+				$offset = $start + $reached;
+				if ( $offset < $end ) {
+					break;
+				}
+			}
+			$start = $end;
+		}
+		clearstatcache( true, $local );
+		return (int) filesize( $local );
+	}
+
+	private function fetch( array $piece, $local, $offset, $deadline, $name ) {
+		$id    = (int) $piece['id'];
+		$total = (int) $piece['size'];
+		if ( $offset >= $total ) {
+			return $total;
+		}
+		$url = $this->download_url( $id );
+		if ( '' === $url ) {
+			return false;
 		}
 		$retried = false;
 		while ( $offset < $total && microtime( true ) < $deadline ) {
@@ -343,8 +491,7 @@ final class FilesIr extends Remote {
 				break;
 			}
 		}
-		clearstatcache( true, $local );
-		return (int) filesize( $local );
+		return $offset;
 	}
 
 	public function write_test() {
@@ -359,6 +506,12 @@ final class FilesIr extends Remote {
 		}
 		$this->delete( $name );
 		$init = $this->init( $name, $size );
+		if ( false === $init ) {
+			$this->learned = self::limit_of( $this->error, $size );
+			if ( $this->learned > 0 ) {
+				return false;
+			}
+		}
 		if ( false === $init && in_array( $this->code, array( 403, 404, 422 ), true ) ) {
 			$this->config['folder_id'] = 0;
 			if ( ! empty( $this->config['id'] ) ) {
@@ -412,7 +565,7 @@ final class FilesIr extends Remote {
 		}
 		if ( 'single' === $state['mode'] ) {
 			$url = self::base() . '/uploads-new/' . rawurlencode( $state['session'] ) . '/file';
-			$res = self::stream()
+			$res = self::stream() && 0 === $this->base && (int) filesize( $local ) === (int) $size
 				? FilesCurl::multipart( $url, $this->headers_for( $url ), $local, $state['name'], $wait )
 				: $this->memory_multipart( $url, $local, $state['name'], $size, $wait );
 			if ( ! $this->accepted( $res ) ) {
@@ -428,7 +581,7 @@ final class FilesIr extends Remote {
 		if ( '' === $url ) {
 			return $this->fail( 'Files.ir gave no upload address' );
 		}
-		$res = $this->send( 'PUT', $url, $this->extra_headers( isset( $next['headers'] ) ? $next['headers'] : array() ), $local, 0, $size, $wait );
+		$res = $this->send( 'PUT', $url, $this->extra_headers( isset( $next['headers'] ) ? $next['headers'] : array() ), $local, $this->base, $size, $wait );
 		if ( ! $this->accepted( $res ) ) {
 			return false;
 		}
@@ -457,7 +610,7 @@ final class FilesIr extends Remote {
 			$start = ( $number - 1 ) * $part;
 			$bytes = min( $part, $size - $start );
 			$wait  = (int) min( 1800, max( 120, $bytes / 65536 ) );
-			$res   = $this->send( 'PUT', $urls[ $number ], array(), $local, $start, $bytes, $wait );
+			$res   = $this->send( 'PUT', $urls[ $number ], array(), $local, $this->base + $start, $bytes, $wait );
 			if ( ! $this->accepted( $res ) ) {
 				return false;
 			}
@@ -510,7 +663,7 @@ final class FilesIr extends Remote {
 		}
 		while ( $state['sent'] < $size && microtime( true ) < $deadline ) {
 			$bytes = min( self::TUS_CHUNK, $size - $state['sent'] );
-			$chunk = $this->read( $local, $state['sent'], $bytes );
+			$chunk = $this->read( $local, $this->base + $state['sent'], $bytes );
 			if ( false === $chunk ) {
 				return false;
 			}
@@ -836,7 +989,7 @@ final class FilesIr extends Remote {
 		if ( $size > self::MEMORY ) {
 			return $this->fail( 'this upload needs the PHP cURL extension' );
 		}
-		$data = $this->read( $local, 0, $size );
+		$data = $this->read( $local, $this->base, $size );
 		if ( false === $data ) {
 			return false;
 		}

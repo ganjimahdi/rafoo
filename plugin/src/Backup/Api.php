@@ -255,6 +255,10 @@ final class Api {
 		}
 		$changes = array( 'speed' => $result['speed'], 'checked_at' => time(), 'last_error' => '' );
 		if ( $remote instanceof FilesIr ) {
+			$before = Destinations::get( $request['id'] );
+			if ( $before && in_array( FilesIr::issue( $before['last_error'] ), array( 'size', 'space' ), true ) ) {
+				unset( $changes['last_error'] );
+			}
 			$usage = $remote->usage();
 			if ( $usage ) {
 				$changes['free'] = $usage['free'];
