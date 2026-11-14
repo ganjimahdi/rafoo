@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.5
+Stable tag: 1.6.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -240,6 +240,9 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.6.6 =
+* Files.ir: the largest file size of the plan is read from the new `max_upload_size` field of `/api/v1/user/space-usage` before each part is sent, so parts are split into pieces from the first try and a plan upgrade is picked up by itself. Reading the limit from the error message stays as a fallback.
+
 = 1.6.5 =
 * Files.ir: when the Files.ir plan limits the file size (50 MB on the free plan), Rafoo learns the limit from the answer and sends each backup part in pieces below it. Restores, checks and deletions treat the pieces as one part; the pieces can also be joined with 7-Zip.
 * Files.ir: a part is not sent when the account has less free space than it needs, with a clear message.
@@ -326,6 +329,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.6.6 =
+Files.ir backups use the file size limit reported by Files.ir, with no failed first attempt.
+
 = 1.6.5 =
 Backups now reach Files.ir on the free plan: parts larger than the plan limit are sent in pieces. Adds a step-by-step guide for Files.ir errors.
 

@@ -177,6 +177,18 @@ final class FilesIr extends Remote {
 		return 'other';
 	}
 
+	public static function bytes_of( $value ) {
+		if ( is_string( $value ) && preg_match( '/^\s*(\d+(?:\.\d+)?)\s*([KMGT])i?B?\s*$/i', $value, $m ) ) {
+			return (int) ( (float) $m[1] * pow( 1000, strpos( 'KMGT', strtoupper( $m[2] ) ) + 1 ) );
+		}
+		$value = is_numeric( $value ) ? (float) $value : 0;
+		return (int) ( $value > 0 && $value <= 102400 ? $value * 1000000 : max( 0, $value ) );
+	}
+
+	public static function piece( $bytes ) {
+		return (int) max( 1048576, floor( ( (int) $bytes - 1048576 ) / 1048576 ) * 1048576 );
+	}
+
 	public static function limit_of( $message, $size ) {
 		$message = strtr( (string) $message, array_combine( array( '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹' ), range( 0, 9 ) ) );
 		if ( 'size' !== self::issue( $message ) || ! preg_match( '/(\d+(?:[.,]\d+)?)\s*(GB|MB|گیگابایت|مگابایت|گیگ|مگ)/iu', $message, $m ) ) {
@@ -211,6 +223,7 @@ final class FilesIr extends Remote {
 			'used'  => $used,
 			'total' => $total,
 			'free'  => $free,
+			'max'   => self::bytes_of( isset( $body['max_upload_size'] ) ? $body['max_upload_size'] : 0 ),
 		);
 	}
 
@@ -315,7 +328,9 @@ final class FilesIr extends Remote {
 		$size   = (int) filesize( $local );
 		$offset = max( 0, (int) $offset );
 		if ( 0 === $offset ) {
-			$free = $this->free_space();
+			$usage = $this->usage();
+			$free  = $usage ? (int) $usage['free'] : -1;
+			$this->plan_limit( $usage );
 			if ( $free >= 0 && $free < $size ) {
 				return $this->fail( 'not enough free space in Files.ir: ' . number_format( $free / 1048576, 1, '.', '' ) . ' MB free, ' . number_format( $size / 1048576, 1, '.', '' ) . ' MB needed' );
 			}
@@ -336,6 +351,21 @@ final class FilesIr extends Remote {
 			$offset      = 0;
 		}
 		return $this->put_pieces( $local, $name, $offset, $deadline, $size, $limit );
+	}
+
+	private function plan_limit( $usage ) {
+		if ( ! $usage || empty( $usage['max'] ) ) {
+			return;
+		}
+		$piece = self::piece( $usage['max'] );
+		$piece = $piece < \Rafoo\Backup\Packer::target() ? $piece : 0;
+		if ( $piece === ( isset( $this->config['max_file'] ) ? (int) $this->config['max_file'] : 0 ) ) {
+			return;
+		}
+		$this->config['max_file'] = $piece;
+		if ( ! empty( $this->config['id'] ) ) {
+			Destinations::update( $this->config['id'], array( 'max_file' => $piece ) );
+		}
 	}
 
 	private function put_pieces( $local, $name, $offset, $deadline, $size, $limit ) {

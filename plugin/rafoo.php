@@ -3,7 +3,7 @@
  * Plugin Name:       Rafoo – Offline-Ready Assets & Updates
  * Plugin URI:        https://rafoo.ir
  * Description:       Keeps WordPress fast and working when the international internet is cut off: serves CDN libraries and fonts from your own site, fails unreachable outside requests instantly and replaces services that cannot be mirrored.
- * Version:           1.6.5
+ * Version:           1.6.6
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Wbweb
@@ -22,7 +22,7 @@ if ( defined( 'RAFOO_FILE' ) ) {
 }
 
 define( 'RAFOO_FILE', __FILE__ );
-define( 'RAFOO_VERSION', '1.6.5' );
+define( 'RAFOO_VERSION', '1.6.6' );
 define( 'RAFOO_EDITION', 'standard' );
 
 require_once __DIR__ . '/src/autoload.php';
