@@ -146,7 +146,8 @@ final class Plugin {
 			array( 'rafoo_mode_changed', array( Purge::class, 'later' ) ),
 			array( 'rafoo_map_changed', array( Purge::class, 'later' ) ),
 			array( 'rafoo_mode_changed', array( __CLASS__, 'mode_changed' ) ),
-			array( 'cron_schedules', array( __CLASS__, 'schedules' ) ),
+			array( 'cron_schedules', array( __CLASS__, 'schedules' ), PHP_INT_MAX ),
+			array( 'init', array( __CLASS__, 'heal' ), 1 ),
 			array( 'init', array( __CLASS__, 'init' ) ),
 			array( 'rest_api_init', array( Rest::class, 'register' ) ),
 			array( 'rafoo_check', array( __CLASS__, 'check' ) ),
@@ -253,7 +254,14 @@ final class Plugin {
 		}
 	}
 
+	public static function heal() {
+		if ( ! wp_doing_cron() && ! wp_next_scheduled( 'rafoo_check' ) && ! Settings::paused() && get_option( 'rafoo_settings' ) ) {
+			self::schedule();
+		}
+	}
+
 	public static function schedules( $schedules ) {
+		$schedules = is_array( $schedules ) ? $schedules : array();
 		$schedules[ self::MINUTE ] = array(
 			'interval' => 60,
 			'display'  => 'Rafoo: every minute',
@@ -323,8 +331,12 @@ final class Plugin {
 		if ( ! $network && ! ( defined( 'WP_CLI' ) && WP_CLI ) && '' === Settings::get( 'setup' ) ) {
 			set_transient( 'rafoo_setup_redirect', get_current_user_id(), 60 );
 		}
-		Telemetry::ping( 'activate' );
-		Shield\Shield::recompile();
+		try {
+			Telemetry::ping( 'activate' );
+			Shield\Shield::recompile();
+		} catch ( \Throwable $e ) {
+			State::event( 'activation_note', array( 'error' => substr( $e->getMessage(), 0, 200 ) ) );
+		}
 		if ( 'complete' === RAFOO_EDITION ) {
 			self::retire_standard();
 		}

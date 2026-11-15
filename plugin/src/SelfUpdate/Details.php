@@ -56,7 +56,9 @@ final class Details {
 	public static function remote( $lang ) {
 		$key    = self::CACHE . Release::slug() . '_' . $lang;
 		$cached = get_site_transient( $key );
-		if ( is_array( $cached ) ) {
+		$known  = get_site_transient( Release::CACHE );
+		$stale  = is_array( $cached ) && is_array( $known ) && isset( $known['version'], $cached['version'] ) && version_compare( (string) $known['version'], (string) $cached['version'], '>' );
+		if ( is_array( $cached ) && ! $stale ) {
 			return $cached;
 		}
 		$body = Client::body( Release::BASE . '/api/v1/releases/' . Release::slug() . '/info?lang=' . $lang, array( 'timeout' => 8 ), 262144 );

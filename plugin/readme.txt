@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.6
+Stable tag: 1.6.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -240,6 +240,10 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.6.7 =
+* Fix: on some sites the log filled with "invalid_schedule" errors for rafoo_check and rafoo_shield_tick. Another plugin could replace the list of WordPress cron intervals and remove Rafoo's one-minute interval. Rafoo now adds it last, and puts its scheduled tasks back by itself if they are missing.
+* Fix: a failure while the Shield file or the first report is prepared no longer stops the activation of the plugin.
+
 = 1.6.6 =
 * Files.ir: the largest file size of the plan is read from the new `max_upload_size` field of `/api/v1/user/space-usage` before each part is sent, so parts are split into pieces from the first try and a plan upgrade is picked up by itself. Reading the limit from the error message stays as a fallback.
 
@@ -329,6 +333,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.6.7 =
+Fixes the cron schedule errors and activation problems seen on some sites.
+
 = 1.6.6 =
 Files.ir backups use the file size limit reported by Files.ir, with no failed first attempt.
 
