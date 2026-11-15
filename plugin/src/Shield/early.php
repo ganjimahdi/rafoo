@@ -2,6 +2,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
+foreach ( array( 'Ip', 'Request', 'Rules', 'Store', 'Feed', 'Challenge', 'Reply', 'Log', 'Modes', 'Trust', 'Patches', 'Crawler', 'Gate' ) as $rafoo_shield_need ) {
+	if ( ! is_readable( __DIR__ . '/' . $rafoo_shield_need . '.php' ) ) {
+		if ( ! defined( 'RAFOO_SHIELD_DAMAGED' ) ) {
+			define( 'RAFOO_SHIELD_DAMAGED', true );
+		}
+		return;
+	}
+}
 if ( ! defined( 'RAFOO_SHIELD_RAN' ) ) {
 	define( 'RAFOO_SHIELD_RAN', true );
 	foreach ( array( 'Ip', 'Request', 'Rules', 'Store', 'Feed', 'Challenge', 'Reply', 'Log', 'Modes', 'Trust', 'Patches', 'Crawler', 'Gate' ) as $rafoo_shield_class ) {

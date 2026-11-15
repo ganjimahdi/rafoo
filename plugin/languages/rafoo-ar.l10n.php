@@ -1615,5 +1615,6 @@ return array (
     'Rafoo does not know this message yet. Below is the exact answer it received.' => 'لا يعرف Rafoo هذه الرسالة بعد. في الأسفل نص الرد كما وصل تمامًا.',
     'Press Test below. If the test passes, press Back up now to try again.' => 'اضغط «اختبار» في الأسفل. إذا نجح الاختبار، اضغط «انسخ احتياطيًا الآن» لتحاول من جديد.',
     'If it fails again, copy the message and send it to us in Feedback, or to Files.ir support if the message is from Files.ir.' => 'إذا فشل مجددًا، انسخ الرسالة وأرسلها إلينا من «الاقتراحات»، أو إلى دعم Files.ir إذا كانت الرسالة من Files.ir.',
+    'Some Rafoo files are missing (the src/Shield folder). A malware scanner on your host may have removed them. Install Rafoo again from rafoo.ir or GitHub. Until then the Shield stays off.' => 'بعض ملفات Rafoo مفقودة (مجلد src/Shield). قد يكون ماسح البرمجيات الخبيثة في استضافتك قد حذفها. ثبّت Rafoo من جديد من rafoo.ir أو GitHub. حتى ذلك الحين يبقى الدرع متوقفًا.',
   ),
 );

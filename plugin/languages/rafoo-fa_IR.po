@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rafoo 1.6.7\n"
+"Project-Id-Version: Rafoo 1.6.8\n"
 "Report-Msgid-Bugs-To: https://rafoo.ir\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6576,6 +6576,10 @@ msgstr "پاسخ rafoo.ir قابل خواندن نبود."
 #: src/Peers/Engine.php:238
 msgid "The task list from rafoo.ir could not be verified."
 msgstr "امضای دیجیتال فهرست کارهای rafoo.ir تأیید نشد."
+
+#: src/Plugin.php:262
+msgid "Some Rafoo files are missing (the src/Shield folder). A malware scanner on your host may have removed them. Install Rafoo again from rafoo.ir or GitHub. Until then the Shield stays off."
+msgstr "بعضی فایل‌های رفو پیدا نشد (پوشه src/Shield). ممکن است اسکنر بدافزار هاست آن‌ها را حذف کرده باشد. رفو را دوباره از rafoo.ir یا GitHub نصب کنید. تا آن موقع سپر خاموش می‌ماند."
 
 #: src/Privacy.php:14
 msgid "This site uses Rafoo to serve JavaScript libraries, stylesheets and web fonts from its own server instead of third-party networks such as jsDelivr, cdnjs and Google Fonts. Visitors' browsers therefore do not connect to those networks for these files."

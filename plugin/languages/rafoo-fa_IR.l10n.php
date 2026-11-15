@@ -1615,5 +1615,6 @@ return array (
     'Rafoo does not know this message yet. Below is the exact answer it received.' => 'رفو هنوز این پیام را نمی‌شناسد. متن دقیق پاسخی که دریافت شد، پایین آمده است.',
     'Press Test below. If the test passes, press Back up now to try again.' => 'روی «آزمایش» در پایین بزنید. اگر آزمایش موفق بود، روی «پشتیبان‌گیری الان» بزنید تا دوباره امتحان شود.',
     'If it fails again, copy the message and send it to us in Feedback, or to Files.ir support if the message is from Files.ir.' => 'اگر باز هم انجام نشد، پیام را کپی کنید و از بخش «پیشنهاد» برای ما بفرستید؛ اگر پیام از طرف Files.ir است، برای پشتیبانی Files.ir بفرستید.',
+    'Some Rafoo files are missing (the src/Shield folder). A malware scanner on your host may have removed them. Install Rafoo again from rafoo.ir or GitHub. Until then the Shield stays off.' => 'بعضی فایل‌های رفو پیدا نشد (پوشه src/Shield). ممکن است اسکنر بدافزار هاست آن‌ها را حذف کرده باشد. رفو را دوباره از rafoo.ir یا GitHub نصب کنید. تا آن موقع سپر خاموش می‌ماند.',
   ),
 );

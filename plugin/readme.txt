@@ -4,7 +4,7 @@ Tags: offline, cdn, google fonts, performance, iran
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.7
+Stable tag: 1.6.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -240,6 +240,9 @@ The Rafoo screen uses the Vazirmatn font by Saber Rastikerdar, licensed under th
 SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_encoding (MIT license), bundled in `vendor` under the `Rafoo\Vendor` namespace so they never clash with copies used by other plugins.
 
 == Changelog ==
+= 1.6.8 =
+* Fix: if a file of the Shield is missing, for example removed by a malware scanner on the host, the site no longer stops with a fatal error. The Shield stays off and the dashboard shows a notice to install Rafoo again.
+
 = 1.6.7 =
 * Fix: on some sites the log filled with "invalid_schedule" errors for rafoo_check and rafoo_shield_tick. Another plugin could replace the list of WordPress cron intervals and remove Rafoo's one-minute interval. Rafoo now adds it last, and puts its scheduled tasks back by itself if they are missing.
 * Fix: a failure while the Shield file or the first report is prepared no longer stops the activation of the plugin.
@@ -333,6 +336,9 @@ SFTP connections use phpseclib 3 (MIT license) with paragonie/constant_time_enco
 * First release.
 
 == Upgrade Notice ==
+= 1.6.8 =
+A missing Shield file no longer takes the site down.
+
 = 1.6.7 =
 Fixes the cron schedule errors and activation problems seen on some sites.
 

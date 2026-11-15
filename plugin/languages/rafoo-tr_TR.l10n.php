@@ -1615,5 +1615,6 @@ return array (
     'Rafoo does not know this message yet. Below is the exact answer it received.' => 'Rafoo bu mesajı henüz tanımıyor. Aşağıda alınan yanıtın tam metni var.',
     'Press Test below. If the test passes, press Back up now to try again.' => 'Aşağıdaki «Test et»e basın. Test geçerse yeniden denemek için «Şimdi yedekle»ye basın.',
     'If it fails again, copy the message and send it to us in Feedback, or to Files.ir support if the message is from Files.ir.' => 'Yine başarısız olursa mesajı kopyalayıp «Geri bildirim» bölümünden bize, mesaj Files.ir’dan geliyorsa Files.ir desteğine gönderin.',
+    'Some Rafoo files are missing (the src/Shield folder). A malware scanner on your host may have removed them. Install Rafoo again from rafoo.ir or GitHub. Until then the Shield stays off.' => 'Bazı Rafoo dosyaları eksik (src/Shield klasörü). Barındırmanızdaki kötü amaçlı yazılım tarayıcısı onları silmiş olabilir. Rafoo’yu rafoo.ir veya GitHub’dan yeniden kurun. O zamana kadar Kalkan kapalı kalır.',
   ),
 );

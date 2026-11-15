@@ -4,6 +4,10 @@ All notable changes to Rafoo. Both editions share one version number: **Rafoo** 
 
 Downloads: [GitHub Releases](https://github.com/ganjimahdi/rafoo/releases) and [rafoo.ir](https://rafoo.ir).
 
+## [1.6.8] - 2026-11-15
+### Fixed
+- **Fatal error when a Shield file is missing.** On some hosts `src/Shield/Rules.php` was missing from the installed plugin (a malware scanner can remove it, because it holds attack patterns, or an update stops half way), and `early.php` stopped every page with `Failed opening required`. The loader now checks that every Shield file is readable; if one is missing the Shield stays off, the site keeps working and an error notice asks the administrator to install Rafoo again.
+
 ## [1.6.7] - 2026-11-15
 ### Fixed
 - **`invalid_schedule` errors in the log.** Rafoo's one-minute cron interval (`rafoo_minute`) was added to the `cron_schedules` filter at the default priority. A plugin that replaces the list instead of extending it removed the interval, and WordPress logged `invalid_schedule` for `rafoo_check` and `rafoo_shield_tick` and dropped them. The interval is now added at the last priority, the filter accepts a non-array value, and tasks that are missing are scheduled again on the next visit of a site that was set up.
@@ -231,6 +235,7 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 
 ## خلاصه فارسی
 
+- **۱٫۶٫۸:** اگر یکی از فایل‌های سپر (مثلاً Rules.php) روی هاست نباشد، دیگر کل سایت از کار نمی‌افتد. سپر خاموش می‌ماند و در پیشخوان پیام می‌آید که رفو را دوباره نصب کنید. ممکن است اسکنر بدافزار هاست آن فایل را حذف کرده باشد.
 - **۱٫۶٫۷:** خطای invalid_schedule در لاگ بعضی سایت‌ها برطرف شد. افزونه‌ای دیگر می‌توانست فهرست بازه‌های کرون را جایگزین کند و بازه یک‌دقیقه‌ای رفو حذف می‌شد. حالا رفو آن را آخر از همه اضافه می‌کند و اگر کاری از زمان‌بندی افتاده باشد، خودش دوباره می‌گذارد. خطا در ساخت فایل سپر یا ارسال گزارش اول هم دیگر جلوی فعال شدن افزونه را نمی‌گیرد.
 - **۱٫۶٫۶:** Files.ir حالا سقف اندازه فایل پلن را در پاسخ API اعلام می‌کند. رفو پیش از ارسال هر بخش این سقف را می‌خواند و از همان اول تکه‌تکه می‌فرستد؛ دیگر اولین ارسال با خطا رد نمی‌شود. بعد از ارتقای پلن هم سقف تازه خودکار اعمال می‌شود. از تیم Files.ir برای این تغییر سپاسگزاریم.
 - **۱٫۶٫۵:** پشتیبان‌گیری در پلن رایگان Files.ir درست شد. این پلن فایل بزرگ‌تر از ۵۰ مگابایت را نمی‌پذیرد؛ حالا رفو این سقف را از پاسخ Files.ir می‌خواند و هر بخش پشتیبان را در تکه‌هایی کوچک‌تر از آن می‌فرستد. بازگردانی و حذف، تکه‌ها را مثل یک فایل می‌بینند. اگر فضای حساب کافی نباشد، پیش از ارسال پیام روشن نمایش داده می‌شود. کنار هر خطای Files.ir دکمه «راه‌حل» آمده است که مرحله‌به‌مرحله راه رفع همان خطا را توضیح می‌دهد؛ از جمله تنظیم php.ini در سی‌پنل و دایرکت‌ادمین.
@@ -250,6 +255,7 @@ A standalone PHP script (`point/`) that turns an empty host into a monitoring po
 - **نقطه پایش ۲٫۱٫۰:** بعد از اینکه مدیر rafoo.ir نقطه را حذف و مسدود کند، یک روز صبر می‌کند و بعد دوباره درخواست عضویت می‌دهد. نقطه‌های ۲٫۰ خودشان به‌روزرسانی می‌شوند.
 - **نقطه پایش ۲٫۰٫۰:** بدون نیاز به افزونه sodium، بررسی فوری، تشخیص فیلترینگ و به‌روزرسانی خودکار با امضای دیجیتال.
 
+[1.6.8]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.8
 [1.6.7]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.7
 [1.6.6]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.6
 [1.6.5]: https://github.com/ganjimahdi/rafoo/releases/tag/v1.6.5

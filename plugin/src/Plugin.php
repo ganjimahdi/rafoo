@@ -84,7 +84,10 @@ final class Plugin {
 			Drill\Session::boot();
 		}
 
-		$hooks = array_merge( self::hooks(), Shield\Shield::hooks(), Settings::paused() ? array() : self::changes() );
+		if ( defined( 'RAFOO_SHIELD_DAMAGED' ) ) {
+			add_action( 'admin_notices', array( __CLASS__, 'damaged' ) );
+		}
+		$hooks = array_merge( self::hooks(), defined( 'RAFOO_SHIELD_DAMAGED' ) ? array() : Shield\Shield::hooks(), Settings::paused() ? array() : self::changes() );
 		foreach ( $hooks as $hook ) {
 			add_filter( $hook[0], $hook[1], isset( $hook[2] ) ? $hook[2] : 10, isset( $hook[3] ) ? $hook[3] : 1 );
 		}
@@ -251,6 +254,12 @@ final class Plugin {
 		Network::sync();
 		if ( is_admin() || wp_doing_cron() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 			self::schedule();
+		}
+	}
+
+	public static function damaged() {
+		if ( current_user_can( 'activate_plugins' ) ) {
+			echo '<div class="notice notice-error"><p>' . esc_html__( 'Some Rafoo files are missing (the src/Shield folder). A malware scanner on your host may have removed them. Install Rafoo again from rafoo.ir or GitHub. Until then the Shield stays off.', 'rafoo' ) . '</p></div>';
 		}
 	}
 
